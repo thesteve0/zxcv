@@ -56,95 +56,78 @@
 
 
 <div class="container-fluid header-holder tutorials-header" id="header-holder">
-  <nav id="nav__main" class="nav__main">
-    <div class="nav__main__logo">
-      <a href="https://voxel51.com/">
-        <img
-          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
-        />
-      </a>
+  <div class="container">
+    <div class="header-container">
+      <a class="header-logo" href="https://pytorch.org/" aria-label="PyTorch"></a>
+
+      <div class="main-menu">
+        <ul>
+          <li>
+            <a href="https://pytorch.org/get-started">Get Started</a>
+          </li>
+
+          <li>
+            <div class="ecosystem-dropdown">
+              <a id="dropdownMenuButton" data-toggle="ecosystem-dropdown">
+                Ecosystem
+              </a>
+              <div class="ecosystem-dropdown-menu">
+                <a class="nav-dropdown-item" href="https://pytorch.org/hub"">
+                  <span class=dropdown-title>Models (Beta)</span>
+                  <p>Discover, publish, and reuse pre-trained models</p>
+                </a>
+                <a class="nav-dropdown-item" href="https://pytorch.org/ecosystem">
+                  <span class=dropdown-title>Tools & Libraries</span>
+                  <p>Explore the ecosystem of tools and libraries</p>
+                </a>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/mobile">Mobile</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/blog/">Blog</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/tutorials">Tutorials</a>
+          </li>
+
+          <li class="active">
+            <a href="https://pytorch.org/docs/stable/index.html">Docs</a>
+          </li>
+
+          <li>
+            <div class="resources-dropdown">
+              <a id="resourcesDropdownButton" data-toggle="resources-dropdown">
+                Resources
+              </a>
+              <div class="resources-dropdown-menu">
+                <a class="nav-dropdown-item" href="https://pytorch.org/resources"">
+                  <span class=dropdown-title>Developer Resources</span>
+                  <p>Find resources and get questions answered</p>
+                </a>
+                <a class="nav-dropdown-item" href="https://pytorch.org/features">
+                  <span class=dropdown-title>About</span>
+                  <p>Learn about PyTorch’s features and capabilities</p>
+                </a>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <a href="https://github.com/pytorch/pytorch">Github</a>
+          </li>
+        </ul>
+      </div>
+
+      <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
     </div>
 
-    <div class="nav__spacer desktop_only"></div>
-
-    <div id="nav__main__mobilebutton--on">
-      <a href="javascript:void(0);" onclick="navMobileButton()">
-        <i class="fa-solid fa-bars"></i>
-      </a>
-    </div>
-
-    <div id="nav__main__mobilebutton--off">
-      <a href="javascript:void(0);" onclick="navMobileButton()">
-        <i class="fa-solid fa-times"></i>
-      </a>
-    </div>
-
-    <div id="nav__main__items">
-      <div class="nav__item nav__dropdown">
-        <div class="nav__dropdown__trigger">Products</div>
-        <div class="nav__item nav__dropdown__menu has-arrows">
-          <div class="arrow-up--light-primary arrow-left20"></div>
-          <ul>
-            <li><a href="https://voxel51.com/fiftyone/">Open Source</a></li>
-            <li><a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a></li>
-            <li><a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a></li>
-            <li><a href="https://voxel51.com/success-stories/">Success Stories</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="nav__item nav__dropdown">
-        <div class="nav__dropdown__trigger">Learn</div>
-        <div class="nav__item nav__dropdown__menu has-arrows">
-          <div class="arrow-up--light-primary arrow-left20"></div>
-          <ul>
-            <li><a href="https://community.voxel51.com">Community Discord</a></li>
-            <li><a href="https://voxel51.com/blog/">Blog</a></li>
-            <li><a href="https://voxel51.com/computer-vision-events/">Events</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="nav__item">
-        <a href="https://docs.voxel51.com/">Docs</a>
-      </div>
-
-      <div class="nav__item nav__dropdown">
-        <div class="nav__dropdown__trigger">Company</div>
-        <div class="nav__item nav__dropdown__menu has-arrows">
-          <div class="arrow-up--light-primary arrow-left20"></div>
-          <ul>
-            <li><a href="https://voxel51.com/ourstory/">About Us</a></li>
-            <li><a href="https://voxel51.com/jobs/">Careers</a></li>
-            <li><a href="https://voxel51.com/talk-to-sales/">Talk to Sales</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="nav__item mobile_only">
-        <a href="https://github.com/voxel51/fiftyone">GitHub</a>
-      </div>
-
-      <div class="nav__item desktop_only" id="octocat">
-        <!-- https://buttons.github.io -->
-        <a
-          class="github-button"
-          href="https://github.com/voxel51/fiftyone"
-          data-color-scheme="no-preference: dark_high_contrast; light: dark_high_contrast; dark: dark_high_contrast;"
-          data-size="large"
-          data-show-count="true"
-          aria-label="Star voxel51/fiftyone on GitHub"
-          >Star</a
-        >
-      </div>
-
-      <div class="nav__item full_nav_only">
-        <a class="button-primary" href="https://voxel51.com/schedule-teams-workshop/" target="_blank"
-          >Schedule a workshop</a
-        >
-      </div>
-    </div>
-  </nav>
+  </div>
 </div>
 
 
@@ -188,7 +171,13 @@
             
           </div>
 
-           <ul class="current">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../index.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../teams/index.html">FiftyOne Teams 🚀</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../getting_started/install.html">Installation</a></li>
@@ -196,27 +185,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../recipes/index.html">Recipes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../cheat_sheets/index.html">Cheat Sheets</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../index.html">User Guide</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../basics.html">FiftyOne basics</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="index.html">Loading datasets</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="datasets.html">Datasets from disk</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Using sample parsers</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../using_datasets.html">Using datasets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../using_views.html">Dataset views</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../app.html">Using the App</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../groups.html">Grouped datasets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../annotation.html">Annotating datasets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../evaluation.html">Evaluating models <strong style="color: hsl(25, 100%, 51%); font-size: 0.85em; vertical-align: top">NEW</strong></a></li>
-<li class="toctree-l2"><a class="reference internal" href="../using_aggregations.html">Using aggregations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../plots.html">Interactive plots</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../export_datasets.html">Exporting datasets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../draw_labels.html">Drawing labels on samples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../config.html">Configuring FiftyOne</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../config.html#configuring-the-app">Configuring the App</a></li>
-</ul>
-</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">User Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../dataset_zoo/index.html">Dataset Zoo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../model_zoo/index.html">Model Zoo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../brain.html">FiftyOne Brain</a></li>
@@ -228,7 +197,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../../deprecation.html">Deprecation Notices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq/index.html">FAQ</a></li>
 </ul>
- 
+
+            
+          
         </div>
       </div>
     </nav>
@@ -336,15 +307,7 @@ datasets.</p>
 <h4>Adding a directory of images<a class="headerlink" href="#adding-a-directory-of-images" title="Permalink to this headline">¶</a></h4>
 <p>Use <a class="reference internal" href="../../api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset.add_images_dir" title="fiftyone.core.dataset.Dataset.add_images_dir"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Dataset.add_images_dir()</span></code></a>
 to add a directory of images to a dataset:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Dataset</span><span class="p">()</span>
 
@@ -353,22 +316,14 @@ to add a directory of images to a dataset:</p>
 
 <span class="c1"># Add images to the dataset</span>
 <span class="n">dataset</span><span class="o">.</span><span class="n">add_images_dir</span><span class="p">(</span><span class="n">images_dir</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 </div>
 <div class="section" id="adding-a-glob-pattern-of-images">
 <h4>Adding a glob pattern of images<a class="headerlink" href="#adding-a-glob-pattern-of-images" title="Permalink to this headline">¶</a></h4>
 <p>Use <a class="reference internal" href="../../api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset.add_images_patt" title="fiftyone.core.dataset.Dataset.add_images_patt"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Dataset.add_images_patt()</span></code></a>
 to add a glob pattern of images to a dataset:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Dataset</span><span class="p">()</span>
 
@@ -377,7 +332,7 @@ to add a glob pattern of images to a dataset:</p>
 
 <span class="c1"># Add images to the dataset</span>
 <span class="n">dataset</span><span class="o">.</span><span class="n">add_images_patt</span><span class="p">(</span><span class="n">images_patt</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 </div>
 <div class="section" id="adding-images-using-a-sampleparser">
@@ -391,18 +346,7 @@ to add an iterable of unlabeled images that can be parsed via a specified
 that handles samples that contain either an image that can be converted to
 <a class="reference external" href="https://numpy.org">numpy format</a> via <code class="docutils literal notranslate"><span class="pre">np.asarray()</span></code> of the path to an
 image on disk.</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.utils.data</span> <span class="k">as</span> <span class="nn">foud</span>
 
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Dataset</span><span class="p">()</span>
@@ -414,7 +358,7 @@ image on disk.</p>
 
 <span class="c1"># Add images to the dataset</span>
 <span class="n">dataset</span><span class="o">.</span><span class="n">add_images</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">sample_parser</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 </div>
 </div>
@@ -434,18 +378,7 @@ format via <code class="docutils literal notranslate"><span class="pre">np.asarr
 </ul>
 <p>The snippet below adds an iterable of image classification data in the above
 format to a dataset:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.utils.data</span> <span class="k">as</span> <span class="nn">foud</span>
 
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Dataset</span><span class="p">()</span>
@@ -457,7 +390,7 @@ format to a dataset:</p>
 
 <span class="c1"># Add labeled images to the dataset</span>
 <span class="n">dataset</span><span class="o">.</span><span class="n">add_labeled_images</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">sample_parser</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 </div>
 <div class="section" id="adding-unlabeled-videos">
@@ -468,15 +401,7 @@ datasets.</p>
 <h4>Adding a directory of videos<a class="headerlink" href="#adding-a-directory-of-videos" title="Permalink to this headline">¶</a></h4>
 <p>Use <a class="reference internal" href="../../api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset.add_videos_dir" title="fiftyone.core.dataset.Dataset.add_videos_dir"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Dataset.add_videos_dir()</span></code></a>
 to add a directory of videos to a dataset:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Dataset</span><span class="p">()</span>
 
@@ -485,22 +410,14 @@ to add a directory of videos to a dataset:</p>
 
 <span class="c1"># Add videos to the dataset</span>
 <span class="n">dataset</span><span class="o">.</span><span class="n">add_videos_dir</span><span class="p">(</span><span class="n">videos_dir</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 </div>
 <div class="section" id="adding-a-glob-pattern-of-videos">
 <h4>Adding a glob pattern of videos<a class="headerlink" href="#adding-a-glob-pattern-of-videos" title="Permalink to this headline">¶</a></h4>
 <p>Use <a class="reference internal" href="../../api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset.add_videos_patt" title="fiftyone.core.dataset.Dataset.add_videos_patt"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Dataset.add_videos_patt()</span></code></a>
 to add a glob pattern of videos to a dataset:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Dataset</span><span class="p">()</span>
 
@@ -509,7 +426,7 @@ to add a glob pattern of videos to a dataset:</p>
 
 <span class="c1"># Add videos to the dataset</span>
 <span class="n">dataset</span><span class="o">.</span><span class="n">add_videos_patt</span><span class="p">(</span><span class="n">videos_patt</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 </div>
 <div class="section" id="adding-videos-using-a-sampleparser">
@@ -521,18 +438,7 @@ to add an iterable of unlabeled videos that can be parsed via a specified
 <p>FiftyOne provides a
 <a class="reference internal" href="../../api/fiftyone.utils.data.parsers.html#fiftyone.utils.data.parsers.VideoSampleParser" title="fiftyone.utils.data.parsers.VideoSampleParser"><code class="xref py py-class docutils literal notranslate"><span class="pre">VideoSampleParser</span></code></a>
 that handles samples that directly contain the path to the video on disk.</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.utils.data</span> <span class="k">as</span> <span class="nn">foud</span>
 
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Dataset</span><span class="p">()</span>
@@ -544,7 +450,7 @@ that handles samples that directly contain the path to the video on disk.</p>
 
 <span class="c1"># Add videos to the dataset</span>
 <span class="n">dataset</span><span class="o">.</span><span class="n">add_videos</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">sample_parser</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 </div>
 </div>
@@ -565,18 +471,7 @@ instance, a serialized dict representation of one, or the path to one on disk</p
 </ul>
 <p>The snippet below adds an iterable of labeled video samples in the above format
 to a dataset:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.utils.data</span> <span class="k">as</span> <span class="nn">foud</span>
 
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Dataset</span><span class="p">()</span>
@@ -588,7 +483,7 @@ to a dataset:</p>
 
 <span class="c1"># Add labeled videos to the dataset</span>
 <span class="n">dataset</span><span class="o">.</span><span class="n">add_labeled_videos</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">sample_parser</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 </div>
 </div>
@@ -635,23 +530,7 @@ and then written to the backing directory.</p>
 that handles samples that contain either an image that can be converted to
 <a class="reference external" href="https://numpy.org">numpy format</a> via <code class="docutils literal notranslate"><span class="pre">np.asarray()</span></code> of the path to an
 image on disk.</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.utils.data</span> <span class="k">as</span> <span class="nn">foud</span>
 
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Dataset</span><span class="p">()</span>
@@ -668,7 +547,7 @@ image on disk.</p>
 <span class="c1"># Ingest the images into the dataset</span>
 <span class="c1"># The source images are copied into `dataset_dir`</span>
 <span class="n">dataset</span><span class="o">.</span><span class="n">ingest_images</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">sample_parser</span><span class="p">,</span> <span class="n">dataset_dir</span><span class="o">=</span><span class="n">dataset_dir</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 </div>
 <div class="section" id="ingesting-labeled-images">
@@ -694,23 +573,7 @@ format via <code class="docutils literal notranslate"><span class="pre">np.asarr
 </ul>
 <p>The snippet below ingests an iterable of image classification data in the above
 format intoa a FiftyOne dataset:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.utils.data</span> <span class="k">as</span> <span class="nn">foud</span>
 
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Dataset</span><span class="p">()</span>
@@ -727,7 +590,7 @@ format intoa a FiftyOne dataset:</p>
 <span class="c1"># Ingest the labeled images into the dataset</span>
 <span class="c1"># The source images are copied into `dataset_dir`</span>
 <span class="n">dataset</span><span class="o">.</span><span class="n">ingest_labeled_images</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">sample_parser</span><span class="p">,</span> <span class="n">dataset_dir</span><span class="o">=</span><span class="n">dataset_dir</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 </div>
 <div class="section" id="ingesting-unlabeled-videos">
@@ -741,23 +604,7 @@ backing directory for the dataset.</p>
 <p>FiftyOne provides a
 <a class="reference internal" href="../../api/fiftyone.utils.data.parsers.html#fiftyone.utils.data.parsers.VideoSampleParser" title="fiftyone.utils.data.parsers.VideoSampleParser"><code class="xref py py-class docutils literal notranslate"><span class="pre">VideoSampleParser</span></code></a>
 that handles samples that directly contain the paths to videos on disk.</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.utils.data</span> <span class="k">as</span> <span class="nn">foud</span>
 
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Dataset</span><span class="p">()</span>
@@ -774,7 +621,7 @@ that handles samples that directly contain the paths to videos on disk.</p>
 <span class="c1"># Ingest the videos into the dataset</span>
 <span class="c1"># The source videos are copied into `dataset_dir`</span>
 <span class="n">dataset</span><span class="o">.</span><span class="n">ingest_videos</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">sample_parser</span><span class="p">,</span> <span class="n">dataset_dir</span><span class="o">=</span><span class="n">dataset_dir</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 </div>
 <div class="section" id="ingesting-labeled-videos">
@@ -796,23 +643,7 @@ serialized dict representation of one, or the path to one on disk</p></li>
 </ul>
 <p>The snippet below ingests an iterable of labeled videos in the above format
 into a FiftyOne dataset:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.utils.data</span> <span class="k">as</span> <span class="nn">foud</span>
 
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Dataset</span><span class="p">()</span>
@@ -829,7 +660,7 @@ into a FiftyOne dataset:</p>
 <span class="c1"># Ingest the labeled videos into the dataset</span>
 <span class="c1"># The source videos are copied into `dataset_dir`</span>
 <span class="n">dataset</span><span class="o">.</span><span class="n">ingest_labeled_videos</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">sample_parser</span><span class="p">,</span> <span class="n">dataset_dir</span><span class="o">=</span><span class="n">dataset_dir</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 </div>
 </div>
@@ -1011,199 +842,104 @@ classification or object detections) associated with the image.</p>
   <!-- Begin Footer -->
 
 
-<footer class="footer-wrapper" id="docs-tutorials-resources">
-  <div class="footer pytorch-container">
-    <div class="footer__logo">
-      <a href="https://voxel51.com/"
-        ><img
-          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
-      /></a>
-    </div>
+  <div class="container-fluid docs-tutorials-resources" id="docs-tutorials-resources">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 text-center">
+          <h2>Docs</h2>
+          <p>Access comprehensive developer documentation for PyTorch</p>
+          <a class="with-right-arrow" href="https://pytorch.org/docs/stable/index.html">View Docs</a>
+        </div>
 
-    <div class="footer__address">
-      330 E Liberty St<br />
-      Ann Arbor, MI 48104<br />
-      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
-    </div>
+        <div class="col-md-4 text-center">
+          <h2>Tutorials</h2>
+          <p>Get in-depth tutorials for beginners and advanced developers</p>
+          <a class="with-right-arrow" href="https://pytorch.org/tutorials">View Tutorials</a>
+        </div>
 
-    <!--
-    <div class="footer__contact">
-      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
-    </div>
-    -->
-
-    <div class="footer__links">
-      <div class="footer__links--col2">
-        <p class="nav__item--brand">Products</p>
-        <a href="https://voxel51.com/fiftyone/">FiftyOne</a>
-        <a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a>
-        <a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a>
-        <a href="https://voxel51.com/success-stories/">Success Stories</a>
+        <div class="col-md-4 text-center">
+          <h2>Resources</h2>
+          <p>Find development resources and get your questions answered</p>
+          <a class="with-right-arrow" href="https://pytorch.org/resources">View Resources</a>
+        </div>
       </div>
-      <div class="footer__links--col3">
-        <p class="nav__item--brand">Resources</p>
-        <a href="https://voxel51.com/blog/">Blog</a>
-        <a href="https://docs.voxel51.com/">Docs</a>
-        <a href="https://github.com/voxel51/">GitHub</a>
-        <a href="https://community.voxel51.com">Discord</a>
-        <a href="https://voxel51.com/ourstory/">About Us</a>
-        <a href="https://voxel51.com/computer-vision-events/">Events</a>
-        <a href="https://voxel51.com/jobs/">Careers</a>
-        <a href="https://voxel51.com/press/">Press</a>
-      </div>
-    </div>
-
-    <div class="footer__icons">
-      <ul class="list-inline">
-        <li>
-          <a href="https://www.linkedin.com/company/voxel51/">
-            <i class="fa-brands fa-linkedin"></i>
-          </a>
-        </li>
-        <li>
-          <a href="https://github.com/voxel51/">
-            <i class="fa-brands fa-github"></i>
-          </a>
-        </li>
-        <li>
-          <a href="https://twitter.com/voxel51">
-            <i class="fa-brands fa-twitter"></i>
-          </a>
-        </li>
-        <li>
-          <a href="https://www.facebook.com/voxel51/">
-            <i class="fa-brands fa-facebook"></i>
-          </a>
-        </li>
-      </ul>
-    </div>
-
-    <div class="footer__copyright">
-      <ul class="list-inline">
-        <li>&copy; 2024 Voxel51 Inc.</li>
-        <li>
-          <a href="https://voxel51.com/privacy/">Privacy Policy</a>
-        </li>
-        <li>
-          <a href="https://voxel51.com/terms/">Terms of Service</a>
-        </li>
-      </ul>
     </div>
   </div>
-</footer>
 
-<!-- https://buttons.github.io -->
-<script async defer src="https://buttons.github.io/buttons.js" ></script>
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-logo-wrapper">
+        <a href="https://pytorch.org/" class="footer-logo"></a>
+      </div>
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XD15NFRY3M" ></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag() {
-    dataLayer.push(arguments);
-  }
-  gtag("js", new Date());
-  gtag("config", "G-XD15NFRY3M");
-</script>
+      <div class="footer-links-wrapper">
+        <div class="footer-links-col">
+          <ul>
+            <li class="list-title"><a href="https://pytorch.org/">PyTorch</a></li>
+            <li><a href="https://pytorch.org/get-started">Get Started</a></li>
+            <li><a href="https://pytorch.org/features">Features</a></li>
+            <li><a href="https://pytorch.org/ecosystem">Ecosystem</a></li>
+            <li><a href="https://pytorch.org/blog/">Blog</a></li>
+            <li><a href="https://github.com/pytorch/pytorch/blob/master/CONTRIBUTING.md">Contributing</a></li>
+          </ul>
+        </div>
 
-<script>
-  function open_modal(modal_id, modal_closer_id) {
-    // Get the modal
-    let the_modal = document.getElementById(modal_id);
+        <div class="footer-links-col">
+          <ul>
+            <li class="list-title"><a href="https://pytorch.org/resources">Resources</a></li>
+            <li><a href="https://pytorch.org/tutorials">Tutorials</a></li>
+            <li><a href="https://pytorch.org/docs/stable/index.html">Docs</a></li>
+            <li><a href="https://discuss.pytorch.org" target="_blank">Discuss</a></li>
+            <li><a href="https://github.com/pytorch/pytorch/issues" target="_blank">Github Issues</a></li>
+            <li><a href="https://pytorch.org/assets/brand-guidelines/PyTorch-Brand-Guidelines.pdf" target="_blank">Brand Guidelines</a></li>
+          </ul>
+        </div>
 
-    the_modal.style.display = "flex";
-    document.body.style.overflow = "hidden";
+        <div class="footer-links-col follow-us-col">
+          <ul>
+            <li class="list-title">Stay Connected</li>
+            <li>
+              <div id="mc_embed_signup">
+                <form
+                  action="https://twitter.us14.list-manage.com/subscribe/post?u=75419c71fe0a935e53dfa4a3f&id=91d0dccd39"
+                  method="post"
+                  id="mc-embedded-subscribe-form"
+                  name="mc-embedded-subscribe-form"
+                  class="email-subscribe-form validate"
+                  target="_blank"
+                  novalidate>
+                  <div id="mc_embed_signup_scroll" class="email-subscribe-form-fields-wrapper">
+                    <div class="mc-field-group">
+                      <label for="mce-EMAIL" style="display:none;">Email Address</label>
+                      <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="Email Address">
+                    </div>
 
-    let the_modal_closer = document.getElementById(modal_closer_id);
+                    <div id="mce-responses" class="clear">
+                      <div class="response" id="mce-error-response" style="display:none"></div>
+                      <div class="response" id="mce-success-response" style="display:none"></div>
+                    </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
 
-    // When the user clicks on <span> (x), close the modal
-    the_modal_closer &&
-      (the_modal_closer.onclick = function () {
-        the_modal.style.display = "none";
-      });
+                    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_75419c71fe0a935e53dfa4a3f_91d0dccd39" tabindex="-1" value=""></div>
 
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function (event) {
-      if (event.target == the_modal) {
-        the_modal.style.display = "none";
-        document.body.style.overflow = "unset";
-        window.onclick = undefined;
-      }
-    };
-  }
-</script>
+                    <div class="clear">
+                      <input type="submit" value="" name="subscribe" id="mc-embedded-subscribe" class="button email-subscribe-button">
+                    </div>
+                  </div>
+                </form>
+              </div>
 
-<!-- bigpicture.io -->
-<script>
-  !(function (e, t, i) {
-    var r = (e.bigPicture = e.bigPicture || []);
-    if (!r.initialized)
-      if (r.invoked)
-        e.console &&
-          console.error &&
-          console.error("BigPicture.io snippet included twice.");
-      else {
-        (r.invoked = !0),
-          (r.SNIPPET_VERSION = 1.5),
-          (r.handler = function (e) {
-            if (void 0 !== r.callback)
-              try {
-                return r.callback(e);
-              } catch (e) {}
-          }),
-          (r.eventList = ["mousedown", "mouseup", "click", "submit"]),
-          (r.methods = [
-            "track",
-            "identify",
-            "page",
-            "group",
-            "alias",
-            "integration",
-            "ready",
-            "intelReady",
-            "consentReady",
-            "on",
-            "off",
-          ]),
-          (r.factory = function (e) {
-            return function () {
-              var t = Array.prototype.slice.call(arguments);
-              return t.unshift(e), r.push(t), r;
-            };
-          });
-        for (var n = 0; n < r.methods.length; n++) {
-          var o = r.methods[n];
-          r[o] = r.factory(o);
-        }
-        r.getCookie = function (e) {
-          var i = ("; " + t.cookie).split("; " + e + "=");
-          return 2 == i.length && i.pop().split(";").shift();
-        };
-        var c = (r.isEditor = (function () {
-          try {
-            return (
-              e.self !== e.top &&
-              (new RegExp("app" + i, "ig").test(t.referrer) ||
-                "edit" == r.getCookie("_bpr_edit"))
-            );
-          } catch (e) {
-            return !1;
-          }
-        })());
-        r.init = function (n, o) {
-          if (((r.projectId = n), (r._config = o), !c))
-            for (var a = 0; a < r.eventList.length; a++)
-              e.addEventListener(r.eventList[a], r.handler, !0);
-          var s = t.createElement("script");
-          s.async = !0;
-          var d = c ? "/editor/editor" : "/public-" + n;
-          (s.src = "//cdn" + i + d + ".js"),
-            t.getElementsByTagName("head")[0].appendChild(s);
-        };
-      }
-  })(window, document, ".bigpicture.io");
-  bigPicture.init("1646");
-</script>
+            </li>
+          </ul>
+
+          <div class="footer-social-icons">
+            <a href="https://www.facebook.com/pytorch" target="_blank" class="facebook"></a>
+            <a href="https://twitter.com/pytorch" target="_blank" class="twitter"></a>
+            <a href="https://www.youtube.com/pytorch" target="_blank" class="youtube"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
 
 
   
@@ -1212,7 +948,64 @@ classification or object detections) associated with the image.</p>
 
   <!-- Begin Mobile Menu -->
 
-  
+
+  <div class="mobile-main-menu">
+    <div class="container-fluid">
+      <div class="container">
+        <div class="mobile-main-menu-header-container">
+          <a class="header-logo" href="https://pytorch.org/" aria-label="PyTorch"></a>
+          <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="mobile-main-menu-links-container">
+      <div class="main-menu">
+        <ul>
+          <li>
+            <a href="https://pytorch.org/get-started">Get Started</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/features">Features</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/ecosystem">Ecosystem</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/mobile">Mobile</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/hub">PyTorch Hub</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/blog/">Blog</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/tutorials">Tutorials</a>
+          </li>
+
+          <li class="active">
+            <a href="https://pytorch.org/docs/stable/index.html">Docs</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/resources">Resources</a>
+          </li>
+
+          <li>
+            <a href="https://github.com/pytorch/pytorch">Github</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
 
   <!-- End Mobile Menu -->
 

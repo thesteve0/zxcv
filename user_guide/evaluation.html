@@ -56,95 +56,78 @@
 
 
 <div class="container-fluid header-holder tutorials-header" id="header-holder">
-  <nav id="nav__main" class="nav__main">
-    <div class="nav__main__logo">
-      <a href="https://voxel51.com/">
-        <img
-          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
-        />
-      </a>
+  <div class="container">
+    <div class="header-container">
+      <a class="header-logo" href="https://pytorch.org/" aria-label="PyTorch"></a>
+
+      <div class="main-menu">
+        <ul>
+          <li>
+            <a href="https://pytorch.org/get-started">Get Started</a>
+          </li>
+
+          <li>
+            <div class="ecosystem-dropdown">
+              <a id="dropdownMenuButton" data-toggle="ecosystem-dropdown">
+                Ecosystem
+              </a>
+              <div class="ecosystem-dropdown-menu">
+                <a class="nav-dropdown-item" href="https://pytorch.org/hub"">
+                  <span class=dropdown-title>Models (Beta)</span>
+                  <p>Discover, publish, and reuse pre-trained models</p>
+                </a>
+                <a class="nav-dropdown-item" href="https://pytorch.org/ecosystem">
+                  <span class=dropdown-title>Tools & Libraries</span>
+                  <p>Explore the ecosystem of tools and libraries</p>
+                </a>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/mobile">Mobile</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/blog/">Blog</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/tutorials">Tutorials</a>
+          </li>
+
+          <li class="active">
+            <a href="https://pytorch.org/docs/stable/index.html">Docs</a>
+          </li>
+
+          <li>
+            <div class="resources-dropdown">
+              <a id="resourcesDropdownButton" data-toggle="resources-dropdown">
+                Resources
+              </a>
+              <div class="resources-dropdown-menu">
+                <a class="nav-dropdown-item" href="https://pytorch.org/resources"">
+                  <span class=dropdown-title>Developer Resources</span>
+                  <p>Find resources and get questions answered</p>
+                </a>
+                <a class="nav-dropdown-item" href="https://pytorch.org/features">
+                  <span class=dropdown-title>About</span>
+                  <p>Learn about PyTorch’s features and capabilities</p>
+                </a>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <a href="https://github.com/pytorch/pytorch">Github</a>
+          </li>
+        </ul>
+      </div>
+
+      <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
     </div>
 
-    <div class="nav__spacer desktop_only"></div>
-
-    <div id="nav__main__mobilebutton--on">
-      <a href="javascript:void(0);" onclick="navMobileButton()">
-        <i class="fa-solid fa-bars"></i>
-      </a>
-    </div>
-
-    <div id="nav__main__mobilebutton--off">
-      <a href="javascript:void(0);" onclick="navMobileButton()">
-        <i class="fa-solid fa-times"></i>
-      </a>
-    </div>
-
-    <div id="nav__main__items">
-      <div class="nav__item nav__dropdown">
-        <div class="nav__dropdown__trigger">Products</div>
-        <div class="nav__item nav__dropdown__menu has-arrows">
-          <div class="arrow-up--light-primary arrow-left20"></div>
-          <ul>
-            <li><a href="https://voxel51.com/fiftyone/">Open Source</a></li>
-            <li><a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a></li>
-            <li><a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a></li>
-            <li><a href="https://voxel51.com/success-stories/">Success Stories</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="nav__item nav__dropdown">
-        <div class="nav__dropdown__trigger">Learn</div>
-        <div class="nav__item nav__dropdown__menu has-arrows">
-          <div class="arrow-up--light-primary arrow-left20"></div>
-          <ul>
-            <li><a href="https://community.voxel51.com">Community Discord</a></li>
-            <li><a href="https://voxel51.com/blog/">Blog</a></li>
-            <li><a href="https://voxel51.com/computer-vision-events/">Events</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="nav__item">
-        <a href="https://docs.voxel51.com/">Docs</a>
-      </div>
-
-      <div class="nav__item nav__dropdown">
-        <div class="nav__dropdown__trigger">Company</div>
-        <div class="nav__item nav__dropdown__menu has-arrows">
-          <div class="arrow-up--light-primary arrow-left20"></div>
-          <ul>
-            <li><a href="https://voxel51.com/ourstory/">About Us</a></li>
-            <li><a href="https://voxel51.com/jobs/">Careers</a></li>
-            <li><a href="https://voxel51.com/talk-to-sales/">Talk to Sales</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="nav__item mobile_only">
-        <a href="https://github.com/voxel51/fiftyone">GitHub</a>
-      </div>
-
-      <div class="nav__item desktop_only" id="octocat">
-        <!-- https://buttons.github.io -->
-        <a
-          class="github-button"
-          href="https://github.com/voxel51/fiftyone"
-          data-color-scheme="no-preference: dark_high_contrast; light: dark_high_contrast; dark: dark_high_contrast;"
-          data-size="large"
-          data-show-count="true"
-          aria-label="Star voxel51/fiftyone on GitHub"
-          >Star</a
-        >
-      </div>
-
-      <div class="nav__item full_nav_only">
-        <a class="button-primary" href="https://voxel51.com/schedule-teams-workshop/" target="_blank"
-          >Schedule a workshop</a
-        >
-      </div>
-    </div>
-  </nav>
+  </div>
 </div>
 
 
@@ -188,7 +171,13 @@
             
           </div>
 
-           <ul class="current">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../teams/index.html">FiftyOne Teams 🚀</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/install.html">Installation</a></li>
@@ -196,23 +185,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../recipes/index.html">Recipes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cheat_sheets/index.html">Cheat Sheets</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">User Guide</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="basics.html">FiftyOne basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dataset_creation/index.html">Loading datasets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="using_datasets.html">Using datasets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="using_views.html">Dataset views</a></li>
-<li class="toctree-l2"><a class="reference internal" href="app.html">Using the App</a></li>
-<li class="toctree-l2"><a class="reference internal" href="groups.html">Grouped datasets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="annotation.html">Annotating datasets</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Evaluating models <strong style="color: hsl(25, 100%, 51%); font-size: 0.85em; vertical-align: top">NEW</strong></a></li>
-<li class="toctree-l2"><a class="reference internal" href="using_aggregations.html">Using aggregations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="plots.html">Interactive plots</a></li>
-<li class="toctree-l2"><a class="reference internal" href="export_datasets.html">Exporting datasets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="draw_labels.html">Drawing labels on samples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="config.html">Configuring FiftyOne</a></li>
-<li class="toctree-l2"><a class="reference internal" href="config.html#configuring-the-app">Configuring the App</a></li>
-</ul>
-</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">User Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dataset_zoo/index.html">Dataset Zoo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../model_zoo/index.html">Model Zoo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../brain.html">FiftyOne Brain</a></li>
@@ -224,7 +197,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../deprecation.html">Deprecation Notices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a></li>
 </ul>
- 
+
+            
+          
         </div>
       </div>
     </nav>
@@ -326,20 +301,7 @@ datasets or specific views into them via the same syntax.</p>
 detections in its <code class="code docutils literal notranslate"><span class="pre">predictions</span></code> field using the
 <a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.evaluate_detections" title="fiftyone.core.collections.SampleCollection.evaluate_detections"><code class="xref py py-meth docutils literal notranslate"><span class="pre">evaluate_detections()</span></code></a>
 method:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
@@ -353,7 +315,7 @@ method:</p>
 <span class="p">)</span>
 
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 <div class="section" id="model-evaluation-panel-sub-new">
 <h3>Model Evaluation panel <strong style="color: hsl(25, 100%, 51%); font-size: 0.85em; vertical-align: top">NEW</strong><a class="headerlink" href="#model-evaluation-panel-sub-new" title="Permalink to this headline">¶</a></h3>
@@ -369,18 +331,13 @@ interactively explore the evaluation results in the App:</p>
 <p>Running an evaluation returns an instance of a task-specific subclass of
 <a class="reference internal" href="../api/fiftyone.core.evaluation.html#fiftyone.core.evaluation.EvaluationResults" title="fiftyone.core.evaluation.EvaluationResults"><code class="xref py py-class docutils literal notranslate"><span class="pre">EvaluationResults</span></code></a> that provides a handful of methods for generating aggregate
 statistics about your dataset.</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># Get the 10 most common classes in the dataset</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get the 10 most common classes in the dataset</span>
 <span class="n">counts</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">count_values</span><span class="p">(</span><span class="s2">&quot;ground_truth.detections.label&quot;</span><span class="p">)</span>
 <span class="n">classes</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">counts</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">counts</span><span class="o">.</span><span class="n">get</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)[:</span><span class="mi">10</span><span class="p">]</span>
 
 <span class="c1"># Print a classification report for the top-10 classes</span>
 <span class="n">results</span><span class="o">.</span><span class="n">print_report</span><span class="p">(</span><span class="n">classes</span><span class="o">=</span><span class="n">classes</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>               precision    recall  f1-score   support
 
@@ -416,19 +373,7 @@ as false negative/positive counts and per-sample accuracies.</p>
 the <a class="reference internal" href="app.html#fiftyone-app"><span class="std std-ref">FiftyOne App</span></a> to leverage these sample metrics to
 investigate the samples with the most false positive predictions in the
 dataset:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">from</span> <span class="nn">fiftyone</span> <span class="kn">import</span> <span class="n">ViewField</span> <span class="k">as</span> <span class="n">F</span>
 
 <span class="c1"># Create a view that has samples with the most false positives first, and</span>
@@ -441,7 +386,7 @@ dataset:</p>
 
 <span class="c1"># Visualize results in the App</span>
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">view</span><span class="o">=</span><span class="n">view</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 <img alt="quickstart-evaluate-detections" class="align-center" src="../_images/quickstart_evaluate_detections.gif" />
 <p><br />
@@ -469,18 +414,13 @@ that support confusion matrices, you can use the
 <a class="reference internal" href="../api/fiftyone.utils.eval.detection.html#fiftyone.utils.eval.detection.DetectionResults.plot_confusion_matrix" title="fiftyone.utils.eval.detection.DetectionResults.plot_confusion_matrix"><code class="xref py py-meth docutils literal notranslate"><span class="pre">plot_confusion_matrix()</span></code></a>
 method to render responsive plots that can be attached to App instances to
 interactively explore specific cases of your model’s performance:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># Plot confusion matrix</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot confusion matrix</span>
 <span class="n">plot</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">plot_confusion_matrix</span><span class="p">(</span><span class="n">classes</span><span class="o">=</span><span class="n">classes</span><span class="p">)</span>
 <span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
 <span class="c1"># Connect to session</span>
 <span class="n">session</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">attach</span><span class="p">(</span><span class="n">plot</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 <img alt="detection-evaluation" class="align-center" src="../_images/detection-evaluation.gif" />
 <p>In this setup, you can click on individual cells of the confusion matrix to
@@ -509,24 +449,7 @@ on using the following methods on your dataset:</p>
 <li><p><a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.delete_evaluation" title="fiftyone.core.collections.SampleCollection.delete_evaluation"><code class="xref py py-meth docutils literal notranslate"><span class="pre">delete_evaluation()</span></code></a></p></li>
 </ul>
 <p>The example below demonstrates the basic interface:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># List evaluations you&#39;ve run on a dataset</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># List evaluations you&#39;ve run on a dataset</span>
 <span class="n">dataset</span><span class="o">.</span><span class="n">list_evaluations</span><span class="p">()</span>
 <span class="c1"># [&#39;eval&#39;]</span>
 
@@ -544,7 +467,7 @@ on using the following methods on your dataset:</p>
 <span class="c1"># Delete the evaluation</span>
 <span class="c1"># This will remove any evaluation data that was populated on your dataset</span>
 <span class="n">dataset</span><span class="o">.</span><span class="n">delete_evaluation</span><span class="p">(</span><span class="s2">&quot;still_eval&quot;</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 <p>The sections below discuss evaluating various types of predictions in more
 detail.</p>
@@ -582,51 +505,7 @@ which can take any value supported by
 <p>The example below demonstrates simple evaluation on the
 <a class="reference internal" href="../dataset_zoo/datasets.html#dataset-zoo-quickstart"><span class="std std-ref">quickstart dataset</span></a> with some fake regression
 data added to it to demonstrate the workflow:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span>
-<span class="normal">39</span>
-<span class="normal">40</span>
-<span class="normal">41</span>
-<span class="normal">42</span>
-<span class="normal">43</span>
-<span class="normal">44</span>
-<span class="normal">45</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
@@ -671,7 +550,7 @@ data added to it to demonstrate the workflow:</p>
 
 <span class="c1"># Show the samples with the largest regression error</span>
 <span class="n">session</span><span class="o">.</span><span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">sort_by</span><span class="p">(</span><span class="s2">&quot;eval&quot;</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>mean squared error        59.69
 root mean squared error   7.73
@@ -725,61 +604,7 @@ correct.</p>
 <p>The example below demonstrates simple evaluation on the
 <a class="reference internal" href="../dataset_zoo/datasets.html#dataset-zoo-cifar10"><span class="std std-ref">CIFAR-10 dataset</span></a> with some fake predictions added
 to it to demonstrate the workflow:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span>
-<span class="normal">39</span>
-<span class="normal">40</span>
-<span class="normal">41</span>
-<span class="normal">42</span>
-<span class="normal">43</span>
-<span class="normal">44</span>
-<span class="normal">45</span>
-<span class="normal">46</span>
-<span class="normal">47</span>
-<span class="normal">48</span>
-<span class="normal">49</span>
-<span class="normal">50</span>
-<span class="normal">51</span>
-<span class="normal">52</span>
-<span class="normal">53</span>
-<span class="normal">54</span>
-<span class="normal">55</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
 
 <span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
@@ -834,7 +659,7 @@ to it to demonstrate the workflow:</p>
 
 <span class="c1"># View only the incorrect predictions in the App</span>
 <span class="n">session</span><span class="o">.</span><span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s2">&quot;eval_simple&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">False</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
 
@@ -883,51 +708,7 @@ provide support for storing logits for their predictions!</p>
 <p>The example below demonstrates top-k evaluation on a
 <a class="reference internal" href="../dataset_zoo/datasets.html#dataset-zoo-imagenet-sample"><span class="std std-ref">small ImageNet sample</span></a> with predictions
 from a pre-trained model from the <a class="reference internal" href="../model_zoo/index.html#model-zoo"><span class="std std-ref">Model Zoo</span></a>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span>
-<span class="normal">39</span>
-<span class="normal">40</span>
-<span class="normal">41</span>
-<span class="normal">42</span>
-<span class="normal">43</span>
-<span class="normal">44</span>
-<span class="normal">45</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 <span class="kn">from</span> <span class="nn">fiftyone</span> <span class="kn">import</span> <span class="n">ViewField</span> <span class="k">as</span> <span class="n">F</span>
 
@@ -972,7 +753,7 @@ from a pre-trained model from the <a class="reference internal" href="../model_z
     <span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s2">&quot;ground_truth.label&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">is_in</span><span class="p">(</span><span class="n">classes</span><span class="p">))</span>
     <span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s2">&quot;eval_top_k&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">False</span><span class="p">)</span>
 <span class="p">)</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 <img alt="imagenet-top-k-eval" class="align-center" src="../_images/imagenet_top_k_eval.png" />
 <div class="admonition note">
@@ -999,60 +780,7 @@ false positive, true negative, or false negative.</p>
 <p>The example below demonstrates binary evaluation on the
 <a class="reference internal" href="../dataset_zoo/datasets.html#dataset-zoo-cifar10"><span class="std std-ref">CIFAR-10 dataset</span></a> with some fake binary predictions
 added to it to demonstrate the workflow:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span>
-<span class="normal">39</span>
-<span class="normal">40</span>
-<span class="normal">41</span>
-<span class="normal">42</span>
-<span class="normal">43</span>
-<span class="normal">44</span>
-<span class="normal">45</span>
-<span class="normal">46</span>
-<span class="normal">47</span>
-<span class="normal">48</span>
-<span class="normal">49</span>
-<span class="normal">50</span>
-<span class="normal">51</span>
-<span class="normal">52</span>
-<span class="normal">53</span>
-<span class="normal">54</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
 
 <span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
@@ -1106,7 +834,7 @@ added to it to demonstrate the workflow:</p>
 <span class="c1"># Plot a PR curve</span>
 <span class="n">plot</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">plot_pr_curve</span><span class="p">()</span>
 <span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
 
@@ -1243,27 +971,7 @@ to load the view and then convert to patches.</p>
 <p>The example below demonstrates loading an evaluation patches view for the
 results of an evaluation on the
 <a class="reference internal" href="../dataset_zoo/datasets.html#dataset-zoo-quickstart"><span class="std std-ref">quickstart dataset</span></a>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
@@ -1284,7 +992,7 @@ results of an evaluation on the
 
 <span class="c1"># View patches in the App</span>
 <span class="n">session</span><span class="o">.</span><span class="n">view</span> <span class="o">=</span> <span class="n">eval_patches</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Dataset:     quickstart
 Media type:  image
@@ -1405,43 +1113,7 @@ when running COCO-style evaluation.</p>
 <h4>Example evaluation<a class="headerlink" href="#example-evaluation" title="Permalink to this headline">¶</a></h4>
 <p>The example below demonstrates COCO-style detection evaluation on the
 <a class="reference internal" href="../dataset_zoo/datasets.html#dataset-zoo-quickstart"><span class="std std-ref">quickstart dataset</span></a>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 <span class="kn">from</span> <span class="nn">fiftyone</span> <span class="kn">import</span> <span class="n">ViewField</span> <span class="k">as</span> <span class="n">F</span>
 
@@ -1478,7 +1150,7 @@ when running COCO-style evaluation.</p>
 
 <span class="c1"># Visualize results in the App</span>
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">view</span><span class="o">=</span><span class="n">view</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>               precision    recall  f1-score   support
 
@@ -1516,27 +1188,7 @@ precision-recall (PR) curves for your predictions by passing the
 <p>All mAP and mAR calculations are performed according to the
 <a class="reference external" href="https://cocodataset.org/#detection-eval">COCO evaluation protocol</a>.</p>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
@@ -1557,7 +1209,7 @@ precision-recall (PR) curves for your predictions by passing the
 
 <span class="n">plot</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">plot_pr_curves</span><span class="p">(</span><span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;person&quot;</span><span class="p">,</span> <span class="s2">&quot;kite&quot;</span><span class="p">,</span> <span class="s2">&quot;car&quot;</span><span class="p">])</span>
 <span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 <img alt="coco-pr-curves" class="align-center" src="../_images/coco_pr_curves.png" />
 </div>
@@ -1570,19 +1222,7 @@ positive/negative counts, you will likely want to set the
 <a class="reference internal" href="../api/fiftyone.utils.eval.coco.html#fiftyone.utils.eval.coco.COCOEvaluationConfig" title="fiftyone.utils.eval.coco.COCOEvaluationConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">classwise</span></code></a> parameter
 to <code class="docutils literal notranslate"><span class="pre">False</span></code> during evaluation so that predicted objects can be matched with
 ground truth objects of different classes.</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
@@ -1595,7 +1235,7 @@ ground truth objects of different classes.</p>
 <span class="c1"># Generate a confusion matrix for the specified classes</span>
 <span class="n">plot</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">plot_confusion_matrix</span><span class="p">(</span><span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;car&quot;</span><span class="p">,</span> <span class="s2">&quot;truck&quot;</span><span class="p">,</span> <span class="s2">&quot;motorcycle&quot;</span><span class="p">])</span>
 <span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 <img alt="coco-confusion-matrix" class="align-center" src="../_images/coco_confusion_matrix.png" />
 </div>
@@ -1681,44 +1321,7 @@ when running Open Images-style evaluation.</p>
 <h4>Example evaluation<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h4>
 <p>The example below demonstrates Open Images-style detection evaluation on the
 <a class="reference internal" href="../dataset_zoo/datasets.html#dataset-zoo-quickstart"><span class="std std-ref">quickstart dataset</span></a>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 <span class="kn">from</span> <span class="nn">fiftyone</span> <span class="kn">import</span> <span class="n">ViewField</span> <span class="k">as</span> <span class="n">F</span>
 
@@ -1756,7 +1359,7 @@ when running Open Images-style evaluation.</p>
 
 <span class="c1"># Visualize results in the App</span>
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">view</span><span class="o">=</span><span class="n">view</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>               precision    recall  f1-score   support
 
@@ -1794,23 +1397,7 @@ curves using the results object returned by
 reference implementation available via the
 <a class="reference external" href="https://github.com/tensorflow/models/tree/master/research/object_detection">TF Object Detection API</a>.</p>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
@@ -1827,7 +1414,7 @@ reference implementation available via the
 
 <span class="n">plot</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">plot_pr_curves</span><span class="p">(</span><span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;person&quot;</span><span class="p">,</span> <span class="s2">&quot;dog&quot;</span><span class="p">,</span> <span class="s2">&quot;car&quot;</span><span class="p">])</span>
 <span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 <img alt="oi-pr-curve" class="align-center" src="../_images/oi_pr_curve.png" />
 </div>
@@ -1840,22 +1427,7 @@ positive/negative counts, you will likely want to set the
 <a class="reference internal" href="../api/fiftyone.utils.eval.openimages.html#fiftyone.utils.eval.openimages.OpenImagesEvaluationConfig" title="fiftyone.utils.eval.openimages.OpenImagesEvaluationConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">classwise</span></code></a>
 parameter to <code class="docutils literal notranslate"><span class="pre">False</span></code> during evaluation so that predicted objects can be
 matched with ground truth objects of different classes.</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
@@ -1871,7 +1443,7 @@ matched with ground truth objects of different classes.</p>
 <span class="c1"># Generate a confusion matrix for the specified classes</span>
 <span class="n">plot</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">plot_confusion_matrix</span><span class="p">(</span><span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;car&quot;</span><span class="p">,</span> <span class="s2">&quot;truck&quot;</span><span class="p">,</span> <span class="s2">&quot;motorcycle&quot;</span><span class="p">])</span>
 <span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 <img alt="oi-confusion-matrix" class="align-center" src="../_images/oi_confusion_matrix.png" />
 </div>
@@ -1937,62 +1509,7 @@ when running ActivityNet-style evaluation.</p>
 <h4>Example evaluation<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h4>
 <p>The example below demonstrates ActivityNet-style temporal detection evaluation
 on the <a class="reference internal" href="../dataset_zoo/datasets.html#dataset-zoo-activitynet-200"><span class="std std-ref">ActivityNet 200 dataset</span></a>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span>
-<span class="normal">39</span>
-<span class="normal">40</span>
-<span class="normal">41</span>
-<span class="normal">42</span>
-<span class="normal">43</span>
-<span class="normal">44</span>
-<span class="normal">45</span>
-<span class="normal">46</span>
-<span class="normal">47</span>
-<span class="normal">48</span>
-<span class="normal">49</span>
-<span class="normal">50</span>
-<span class="normal">51</span>
-<span class="normal">52</span>
-<span class="normal">53</span>
-<span class="normal">54</span>
-<span class="normal">55</span>
-<span class="normal">56</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 <span class="kn">from</span> <span class="nn">fiftyone</span> <span class="kn">import</span> <span class="n">ViewField</span> <span class="k">as</span> <span class="n">F</span>
 
@@ -2048,7 +1565,7 @@ on the <a class="reference internal" href="../dataset_zoo/datasets.html#dataset-
 
 <span class="c1"># Visualize results in the App</span>
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">view</span><span class="o">=</span><span class="n">view</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                 precision    recall  f1-score   support
 
@@ -2077,48 +1594,7 @@ for your segments by passing the <code class="docutils literal notranslate"><spa
 <p>All mAP calculations are performed according to the
 <a class="reference external" href="https://github.com/activitynet/ActivityNet/tree/master/Evaluation">ActivityNet evaluation protocol</a>.</p>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span>
-<span class="normal">39</span>
-<span class="normal">40</span>
-<span class="normal">41</span>
-<span class="normal">42</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
 
 <span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
@@ -2160,7 +1636,7 @@ for your segments by passing the <code class="docutils literal notranslate"><spa
 
 <span class="n">plot</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">plot_pr_curves</span><span class="p">(</span><span class="n">classes</span><span class="o">=</span><span class="n">classes</span><span class="p">)</span>
 <span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 <img alt="activitynet-pr-curves" class="align-center" src="../_images/activitynet_pr_curves.png" />
 </div>
@@ -2173,43 +1649,7 @@ positive/negative counts, you will likely want to set the
 <code class="xref py py-class docutils literal notranslate"><span class="pre">classwise</span></code>
 parameter to <code class="docutils literal notranslate"><span class="pre">False</span></code> during evaluation so that predicted segments can be
 matched with ground truth segments of different classes.</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
 
 <span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
@@ -2246,7 +1686,7 @@ matched with ground truth segments of different classes.</p>
 <span class="c1"># Generate a confusion matrix for the specified classes</span>
 <span class="n">plot</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">plot_confusion_matrix</span><span class="p">(</span><span class="n">classes</span><span class="o">=</span><span class="n">classes</span><span class="p">)</span>
 <span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 <img alt="activitynet-confusion-matrix" class="align-center" src="../_images/activitynet_confusion_matrix.png" />
 </div>
@@ -2311,55 +1751,7 @@ recall.</p>
 masks generated by two DeepLabv3 models (with
 <a class="reference internal" href="../model_zoo/models.html#model-zoo-deeplabv3-resnet50-coco-torch"><span class="std std-ref">ResNet50</span></a> and
 <a class="reference internal" href="../model_zoo/models.html#model-zoo-deeplabv3-resnet101-coco-torch"><span class="std std-ref">ResNet101</span></a> backbones):</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span>
-<span class="normal">39</span>
-<span class="normal">40</span>
-<span class="normal">41</span>
-<span class="normal">42</span>
-<span class="normal">43</span>
-<span class="normal">44</span>
-<span class="normal">45</span>
-<span class="normal">46</span>
-<span class="normal">47</span>
-<span class="normal">48</span>
-<span class="normal">49</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
 <span class="c1"># Load a few samples from COCO-2017</span>
@@ -2408,7 +1800,7 @@ masks generated by two DeepLabv3 models (with
 
 <span class="c1"># Visualize results in the App</span>
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 <img alt="evaluate-segmentations" class="align-center" src="../_images/evaluate_segmentations.gif" />
 <div class="admonition note">
@@ -2427,42 +1819,7 @@ you can define arbitrarily complex views into your datasets and run evaluation
 on those.</p>
 <p>For example, the snippet below evaluates only the medium-sized objects in a
 dataset:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 <span class="kn">from</span> <span class="nn">fiftyone</span> <span class="kn">import</span> <span class="n">ViewField</span> <span class="k">as</span> <span class="n">F</span>
 
@@ -2498,7 +1855,7 @@ dataset:</p>
 
 <span class="c1"># View results in the App</span>
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">view</span><span class="o">=</span><span class="n">medium_view</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -2515,16 +1872,7 @@ run on a dataset via
 was run on a view into your dataset, you can use
 <a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.load_evaluation_view" title="fiftyone.core.collections.SampleCollection.load_evaluation_view"><code class="xref py py-meth docutils literal notranslate"><span class="pre">load_evaluation_view()</span></code></a>
 to retrieve the exact view on which you evaluated:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
 
@@ -2534,7 +1882,7 @@ to retrieve the exact view on which you evaluated:</p>
 
 <span class="c1"># Load the view into the dataset on which `my_eval1` was run</span>
 <span class="n">eval1_view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">load_evaluation_view</span><span class="p">(</span><span class="s2">&quot;my_eval1&quot;</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -2572,62 +1920,7 @@ documentation of the relevant evaluation method for more details.</p>
 <p>The example below demonstrates evaluating (mocked) frame-level detections on
 the <a class="reference internal" href="../dataset_zoo/datasets.html#dataset-zoo-quickstart-video"><span class="std std-ref">quickstart-video dataset</span></a> from the
 Dataset Zoo:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span>
-<span class="normal">39</span>
-<span class="normal">40</span>
-<span class="normal">41</span>
-<span class="normal">42</span>
-<span class="normal">43</span>
-<span class="normal">44</span>
-<span class="normal">45</span>
-<span class="normal">46</span>
-<span class="normal">47</span>
-<span class="normal">48</span>
-<span class="normal">49</span>
-<span class="normal">50</span>
-<span class="normal">51</span>
-<span class="normal">52</span>
-<span class="normal">53</span>
-<span class="normal">54</span>
-<span class="normal">55</span>
-<span class="normal">56</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
 
 <span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
@@ -2683,7 +1976,7 @@ Dataset Zoo:</p>
 
 <span class="c1"># Print a classification report</span>
 <span class="n">results</span><span class="o">.</span><span class="n">print_report</span><span class="p">()</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
 
@@ -2699,15 +1992,7 @@ weighted avg       0.94      0.94      0.94     11345
 <p>You can also view frame-level evaluation results as
 <a class="reference internal" href="#evaluation-patches"><span class="std std-ref">evaluation patches</span></a> by first converting
 <a class="reference internal" href="using_views.html#frame-views"><span class="std std-ref">to frames</span></a> and then <a class="reference internal" href="using_views.html#eval-patches-views"><span class="std std-ref">to patches</span></a>!</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># Convert to frame evaluation patches</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Convert to frame evaluation patches</span>
 <span class="n">frames</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">to_frames</span><span class="p">(</span><span class="n">sample_frames</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">frame_eval_patches</span> <span class="o">=</span> <span class="n">frames</span><span class="o">.</span><span class="n">to_evaluation_patches</span><span class="p">(</span><span class="s2">&quot;eval&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">frame_eval_patches</span><span class="p">)</span>
@@ -2716,7 +2001,7 @@ weighted avg       0.94      0.94      0.94     11345
 <span class="c1"># {&#39;tp&#39;: 10578, &#39;fn&#39;: 767, &#39;fp&#39;: 767}</span>
 
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">view</span><span class="o">=</span><span class="n">frame_eval_patches</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Dataset:     video-eval-demo
 Media type:  image
@@ -2848,12 +2133,10 @@ editing the <code class="code docutils literal notranslate"><span class="pre">fi
 <p>Any changes to your evaluation config applied via this manner will immediately
 take effect in all subsequent calls to <code class="code docutils literal notranslate"><span class="pre">fiftyone.evaluation_config</span></code> during your
 current session.</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 
 <span class="n">fo</span><span class="o">.</span><span class="n">evaluation_config</span><span class="o">.</span><span class="n">default_detection_backend</span> <span class="o">=</span> <span class="s2">&quot;custom&quot;</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 </div>
 </div>
@@ -2993,199 +2276,104 @@ current session.</p>
   <!-- Begin Footer -->
 
 
-<footer class="footer-wrapper" id="docs-tutorials-resources">
-  <div class="footer pytorch-container">
-    <div class="footer__logo">
-      <a href="https://voxel51.com/"
-        ><img
-          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
-      /></a>
-    </div>
+  <div class="container-fluid docs-tutorials-resources" id="docs-tutorials-resources">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 text-center">
+          <h2>Docs</h2>
+          <p>Access comprehensive developer documentation for PyTorch</p>
+          <a class="with-right-arrow" href="https://pytorch.org/docs/stable/index.html">View Docs</a>
+        </div>
 
-    <div class="footer__address">
-      330 E Liberty St<br />
-      Ann Arbor, MI 48104<br />
-      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
-    </div>
+        <div class="col-md-4 text-center">
+          <h2>Tutorials</h2>
+          <p>Get in-depth tutorials for beginners and advanced developers</p>
+          <a class="with-right-arrow" href="https://pytorch.org/tutorials">View Tutorials</a>
+        </div>
 
-    <!--
-    <div class="footer__contact">
-      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
-    </div>
-    -->
-
-    <div class="footer__links">
-      <div class="footer__links--col2">
-        <p class="nav__item--brand">Products</p>
-        <a href="https://voxel51.com/fiftyone/">FiftyOne</a>
-        <a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a>
-        <a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a>
-        <a href="https://voxel51.com/success-stories/">Success Stories</a>
+        <div class="col-md-4 text-center">
+          <h2>Resources</h2>
+          <p>Find development resources and get your questions answered</p>
+          <a class="with-right-arrow" href="https://pytorch.org/resources">View Resources</a>
+        </div>
       </div>
-      <div class="footer__links--col3">
-        <p class="nav__item--brand">Resources</p>
-        <a href="https://voxel51.com/blog/">Blog</a>
-        <a href="https://docs.voxel51.com/">Docs</a>
-        <a href="https://github.com/voxel51/">GitHub</a>
-        <a href="https://community.voxel51.com">Discord</a>
-        <a href="https://voxel51.com/ourstory/">About Us</a>
-        <a href="https://voxel51.com/computer-vision-events/">Events</a>
-        <a href="https://voxel51.com/jobs/">Careers</a>
-        <a href="https://voxel51.com/press/">Press</a>
-      </div>
-    </div>
-
-    <div class="footer__icons">
-      <ul class="list-inline">
-        <li>
-          <a href="https://www.linkedin.com/company/voxel51/">
-            <i class="fa-brands fa-linkedin"></i>
-          </a>
-        </li>
-        <li>
-          <a href="https://github.com/voxel51/">
-            <i class="fa-brands fa-github"></i>
-          </a>
-        </li>
-        <li>
-          <a href="https://twitter.com/voxel51">
-            <i class="fa-brands fa-twitter"></i>
-          </a>
-        </li>
-        <li>
-          <a href="https://www.facebook.com/voxel51/">
-            <i class="fa-brands fa-facebook"></i>
-          </a>
-        </li>
-      </ul>
-    </div>
-
-    <div class="footer__copyright">
-      <ul class="list-inline">
-        <li>&copy; 2024 Voxel51 Inc.</li>
-        <li>
-          <a href="https://voxel51.com/privacy/">Privacy Policy</a>
-        </li>
-        <li>
-          <a href="https://voxel51.com/terms/">Terms of Service</a>
-        </li>
-      </ul>
     </div>
   </div>
-</footer>
 
-<!-- https://buttons.github.io -->
-<script async defer src="https://buttons.github.io/buttons.js" ></script>
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-logo-wrapper">
+        <a href="https://pytorch.org/" class="footer-logo"></a>
+      </div>
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XD15NFRY3M" ></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag() {
-    dataLayer.push(arguments);
-  }
-  gtag("js", new Date());
-  gtag("config", "G-XD15NFRY3M");
-</script>
+      <div class="footer-links-wrapper">
+        <div class="footer-links-col">
+          <ul>
+            <li class="list-title"><a href="https://pytorch.org/">PyTorch</a></li>
+            <li><a href="https://pytorch.org/get-started">Get Started</a></li>
+            <li><a href="https://pytorch.org/features">Features</a></li>
+            <li><a href="https://pytorch.org/ecosystem">Ecosystem</a></li>
+            <li><a href="https://pytorch.org/blog/">Blog</a></li>
+            <li><a href="https://github.com/pytorch/pytorch/blob/master/CONTRIBUTING.md">Contributing</a></li>
+          </ul>
+        </div>
 
-<script>
-  function open_modal(modal_id, modal_closer_id) {
-    // Get the modal
-    let the_modal = document.getElementById(modal_id);
+        <div class="footer-links-col">
+          <ul>
+            <li class="list-title"><a href="https://pytorch.org/resources">Resources</a></li>
+            <li><a href="https://pytorch.org/tutorials">Tutorials</a></li>
+            <li><a href="https://pytorch.org/docs/stable/index.html">Docs</a></li>
+            <li><a href="https://discuss.pytorch.org" target="_blank">Discuss</a></li>
+            <li><a href="https://github.com/pytorch/pytorch/issues" target="_blank">Github Issues</a></li>
+            <li><a href="https://pytorch.org/assets/brand-guidelines/PyTorch-Brand-Guidelines.pdf" target="_blank">Brand Guidelines</a></li>
+          </ul>
+        </div>
 
-    the_modal.style.display = "flex";
-    document.body.style.overflow = "hidden";
+        <div class="footer-links-col follow-us-col">
+          <ul>
+            <li class="list-title">Stay Connected</li>
+            <li>
+              <div id="mc_embed_signup">
+                <form
+                  action="https://twitter.us14.list-manage.com/subscribe/post?u=75419c71fe0a935e53dfa4a3f&id=91d0dccd39"
+                  method="post"
+                  id="mc-embedded-subscribe-form"
+                  name="mc-embedded-subscribe-form"
+                  class="email-subscribe-form validate"
+                  target="_blank"
+                  novalidate>
+                  <div id="mc_embed_signup_scroll" class="email-subscribe-form-fields-wrapper">
+                    <div class="mc-field-group">
+                      <label for="mce-EMAIL" style="display:none;">Email Address</label>
+                      <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="Email Address">
+                    </div>
 
-    let the_modal_closer = document.getElementById(modal_closer_id);
+                    <div id="mce-responses" class="clear">
+                      <div class="response" id="mce-error-response" style="display:none"></div>
+                      <div class="response" id="mce-success-response" style="display:none"></div>
+                    </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
 
-    // When the user clicks on <span> (x), close the modal
-    the_modal_closer &&
-      (the_modal_closer.onclick = function () {
-        the_modal.style.display = "none";
-      });
+                    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_75419c71fe0a935e53dfa4a3f_91d0dccd39" tabindex="-1" value=""></div>
 
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function (event) {
-      if (event.target == the_modal) {
-        the_modal.style.display = "none";
-        document.body.style.overflow = "unset";
-        window.onclick = undefined;
-      }
-    };
-  }
-</script>
+                    <div class="clear">
+                      <input type="submit" value="" name="subscribe" id="mc-embedded-subscribe" class="button email-subscribe-button">
+                    </div>
+                  </div>
+                </form>
+              </div>
 
-<!-- bigpicture.io -->
-<script>
-  !(function (e, t, i) {
-    var r = (e.bigPicture = e.bigPicture || []);
-    if (!r.initialized)
-      if (r.invoked)
-        e.console &&
-          console.error &&
-          console.error("BigPicture.io snippet included twice.");
-      else {
-        (r.invoked = !0),
-          (r.SNIPPET_VERSION = 1.5),
-          (r.handler = function (e) {
-            if (void 0 !== r.callback)
-              try {
-                return r.callback(e);
-              } catch (e) {}
-          }),
-          (r.eventList = ["mousedown", "mouseup", "click", "submit"]),
-          (r.methods = [
-            "track",
-            "identify",
-            "page",
-            "group",
-            "alias",
-            "integration",
-            "ready",
-            "intelReady",
-            "consentReady",
-            "on",
-            "off",
-          ]),
-          (r.factory = function (e) {
-            return function () {
-              var t = Array.prototype.slice.call(arguments);
-              return t.unshift(e), r.push(t), r;
-            };
-          });
-        for (var n = 0; n < r.methods.length; n++) {
-          var o = r.methods[n];
-          r[o] = r.factory(o);
-        }
-        r.getCookie = function (e) {
-          var i = ("; " + t.cookie).split("; " + e + "=");
-          return 2 == i.length && i.pop().split(";").shift();
-        };
-        var c = (r.isEditor = (function () {
-          try {
-            return (
-              e.self !== e.top &&
-              (new RegExp("app" + i, "ig").test(t.referrer) ||
-                "edit" == r.getCookie("_bpr_edit"))
-            );
-          } catch (e) {
-            return !1;
-          }
-        })());
-        r.init = function (n, o) {
-          if (((r.projectId = n), (r._config = o), !c))
-            for (var a = 0; a < r.eventList.length; a++)
-              e.addEventListener(r.eventList[a], r.handler, !0);
-          var s = t.createElement("script");
-          s.async = !0;
-          var d = c ? "/editor/editor" : "/public-" + n;
-          (s.src = "//cdn" + i + d + ".js"),
-            t.getElementsByTagName("head")[0].appendChild(s);
-        };
-      }
-  })(window, document, ".bigpicture.io");
-  bigPicture.init("1646");
-</script>
+            </li>
+          </ul>
+
+          <div class="footer-social-icons">
+            <a href="https://www.facebook.com/pytorch" target="_blank" class="facebook"></a>
+            <a href="https://twitter.com/pytorch" target="_blank" class="twitter"></a>
+            <a href="https://www.youtube.com/pytorch" target="_blank" class="youtube"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
 
 
   
@@ -3194,7 +2382,64 @@ current session.</p>
 
   <!-- Begin Mobile Menu -->
 
-  
+
+  <div class="mobile-main-menu">
+    <div class="container-fluid">
+      <div class="container">
+        <div class="mobile-main-menu-header-container">
+          <a class="header-logo" href="https://pytorch.org/" aria-label="PyTorch"></a>
+          <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="mobile-main-menu-links-container">
+      <div class="main-menu">
+        <ul>
+          <li>
+            <a href="https://pytorch.org/get-started">Get Started</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/features">Features</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/ecosystem">Ecosystem</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/mobile">Mobile</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/hub">PyTorch Hub</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/blog/">Blog</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/tutorials">Tutorials</a>
+          </li>
+
+          <li class="active">
+            <a href="https://pytorch.org/docs/stable/index.html">Docs</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/resources">Resources</a>
+          </li>
+
+          <li>
+            <a href="https://github.com/pytorch/pytorch">Github</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
 
   <!-- End Mobile Menu -->
 

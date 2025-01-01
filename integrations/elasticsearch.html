@@ -56,95 +56,78 @@
 
 
 <div class="container-fluid header-holder tutorials-header" id="header-holder">
-  <nav id="nav__main" class="nav__main">
-    <div class="nav__main__logo">
-      <a href="https://voxel51.com/">
-        <img
-          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
-        />
-      </a>
+  <div class="container">
+    <div class="header-container">
+      <a class="header-logo" href="https://pytorch.org/" aria-label="PyTorch"></a>
+
+      <div class="main-menu">
+        <ul>
+          <li>
+            <a href="https://pytorch.org/get-started">Get Started</a>
+          </li>
+
+          <li>
+            <div class="ecosystem-dropdown">
+              <a id="dropdownMenuButton" data-toggle="ecosystem-dropdown">
+                Ecosystem
+              </a>
+              <div class="ecosystem-dropdown-menu">
+                <a class="nav-dropdown-item" href="https://pytorch.org/hub"">
+                  <span class=dropdown-title>Models (Beta)</span>
+                  <p>Discover, publish, and reuse pre-trained models</p>
+                </a>
+                <a class="nav-dropdown-item" href="https://pytorch.org/ecosystem">
+                  <span class=dropdown-title>Tools & Libraries</span>
+                  <p>Explore the ecosystem of tools and libraries</p>
+                </a>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/mobile">Mobile</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/blog/">Blog</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/tutorials">Tutorials</a>
+          </li>
+
+          <li class="active">
+            <a href="https://pytorch.org/docs/stable/index.html">Docs</a>
+          </li>
+
+          <li>
+            <div class="resources-dropdown">
+              <a id="resourcesDropdownButton" data-toggle="resources-dropdown">
+                Resources
+              </a>
+              <div class="resources-dropdown-menu">
+                <a class="nav-dropdown-item" href="https://pytorch.org/resources"">
+                  <span class=dropdown-title>Developer Resources</span>
+                  <p>Find resources and get questions answered</p>
+                </a>
+                <a class="nav-dropdown-item" href="https://pytorch.org/features">
+                  <span class=dropdown-title>About</span>
+                  <p>Learn about PyTorch’s features and capabilities</p>
+                </a>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <a href="https://github.com/pytorch/pytorch">Github</a>
+          </li>
+        </ul>
+      </div>
+
+      <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
     </div>
 
-    <div class="nav__spacer desktop_only"></div>
-
-    <div id="nav__main__mobilebutton--on">
-      <a href="javascript:void(0);" onclick="navMobileButton()">
-        <i class="fa-solid fa-bars"></i>
-      </a>
-    </div>
-
-    <div id="nav__main__mobilebutton--off">
-      <a href="javascript:void(0);" onclick="navMobileButton()">
-        <i class="fa-solid fa-times"></i>
-      </a>
-    </div>
-
-    <div id="nav__main__items">
-      <div class="nav__item nav__dropdown">
-        <div class="nav__dropdown__trigger">Products</div>
-        <div class="nav__item nav__dropdown__menu has-arrows">
-          <div class="arrow-up--light-primary arrow-left20"></div>
-          <ul>
-            <li><a href="https://voxel51.com/fiftyone/">Open Source</a></li>
-            <li><a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a></li>
-            <li><a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a></li>
-            <li><a href="https://voxel51.com/success-stories/">Success Stories</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="nav__item nav__dropdown">
-        <div class="nav__dropdown__trigger">Learn</div>
-        <div class="nav__item nav__dropdown__menu has-arrows">
-          <div class="arrow-up--light-primary arrow-left20"></div>
-          <ul>
-            <li><a href="https://community.voxel51.com">Community Discord</a></li>
-            <li><a href="https://voxel51.com/blog/">Blog</a></li>
-            <li><a href="https://voxel51.com/computer-vision-events/">Events</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="nav__item">
-        <a href="https://docs.voxel51.com/">Docs</a>
-      </div>
-
-      <div class="nav__item nav__dropdown">
-        <div class="nav__dropdown__trigger">Company</div>
-        <div class="nav__item nav__dropdown__menu has-arrows">
-          <div class="arrow-up--light-primary arrow-left20"></div>
-          <ul>
-            <li><a href="https://voxel51.com/ourstory/">About Us</a></li>
-            <li><a href="https://voxel51.com/jobs/">Careers</a></li>
-            <li><a href="https://voxel51.com/talk-to-sales/">Talk to Sales</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="nav__item mobile_only">
-        <a href="https://github.com/voxel51/fiftyone">GitHub</a>
-      </div>
-
-      <div class="nav__item desktop_only" id="octocat">
-        <!-- https://buttons.github.io -->
-        <a
-          class="github-button"
-          href="https://github.com/voxel51/fiftyone"
-          data-color-scheme="no-preference: dark_high_contrast; light: dark_high_contrast; dark: dark_high_contrast;"
-          data-size="large"
-          data-show-count="true"
-          aria-label="Star voxel51/fiftyone on GitHub"
-          >Star</a
-        >
-      </div>
-
-      <div class="nav__item full_nav_only">
-        <a class="button-primary" href="https://voxel51.com/schedule-teams-workshop/" target="_blank"
-          >Schedule a workshop</a
-        >
-      </div>
-    </div>
-  </nav>
+  </div>
 </div>
 
 
@@ -188,7 +171,13 @@
             
           </div>
 
-           <ul class="current">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../teams/index.html">FiftyOne Teams 🚀</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/install.html">Installation</a></li>
@@ -200,30 +189,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../dataset_zoo/index.html">Dataset Zoo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../model_zoo/index.html">Model Zoo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../brain.html">FiftyOne Brain</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Integrations</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="coco.html"> COCO</a></li>
-<li class="toctree-l2"><a class="reference internal" href="open_images.html"> Open Images</a></li>
-<li class="toctree-l2"><a class="reference internal" href="activitynet.html"> ActivityNet</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cvat.html"> CVAT</a></li>
-<li class="toctree-l2"><a class="reference internal" href="labelstudio.html"> Label Studio</a></li>
-<li class="toctree-l2"><a class="reference internal" href="v7.html"> V7</a></li>
-<li class="toctree-l2"><a class="reference internal" href="labelbox.html"> Labelbox</a></li>
-<li class="toctree-l2"><a class="reference internal" href="qdrant.html"> Qdrant</a></li>
-<li class="toctree-l2"><a class="reference internal" href="redis.html"> Redis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pinecone.html"> Pinecone</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mongodb.html"> MongoDB</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#"> Elasticsearch</a></li>
-<li class="toctree-l2"><a class="reference internal" href="milvus.html"> Milvus</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lancedb.html"> LanceDB</a></li>
-<li class="toctree-l2"><a class="reference internal" href="huggingface.html"> Hugging Face</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ultralytics.html"> Ultralytics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="albumentations.html"> Albumentations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="super_gradients.html"> SuperGradients</a></li>
-<li class="toctree-l2"><a class="reference internal" href="openclip.html"> OpenCLIP</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pytorch_hub.html"> PyTorch Hub</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lightning_flash.html"> Lightning Flash</a></li>
-</ul>
-</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Integrations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../plugins/index.html">Plugins</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cli/index.html">CLI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/fiftyone.html">API Reference</a></li>
@@ -231,7 +197,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../deprecation.html">Deprecation Notices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a></li>
 </ul>
- 
+
+            
+          
         </div>
       </div>
     </nav>
@@ -353,19 +321,7 @@ to avoid entering them manually each time you interact with your
 Elasticsearch index.</p>
 </div>
 <p>First let’s load a dataset into FiftyOne and compute embeddings for the samples:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.brain</span> <span class="k">as</span> <span class="nn">fob</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
@@ -378,25 +334,11 @@ Elasticsearch index.</p>
     <span class="n">brain_key</span><span class="o">=</span><span class="s2">&quot;elasticsearch_index&quot;</span><span class="p">,</span>
     <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;elasticsearch&quot;</span><span class="p">,</span>
 <span class="p">)</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 <p>Once the similarity index has been generated, we can query our data in FiftyOne
 by specifying the <code class="code docutils literal notranslate"><span class="pre">brain_key</span></code>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># Step 4: Query your data</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Step 4: Query your data</span>
 <span class="n">query</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">id</span>  <span class="c1"># query by sample ID</span>
 <span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">sort_by_similarity</span><span class="p">(</span>
     <span class="n">query</span><span class="p">,</span>
@@ -411,7 +353,7 @@ by specifying the <code class="code docutils literal notranslate"><span class="p
 
 <span class="c1"># Delete run record from FiftyOne</span>
 <span class="n">dataset</span><span class="o">.</span><span class="n">delete_brain_run</span><span class="p">(</span><span class="s2">&quot;elasticsearch_index&quot;</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -440,12 +382,10 @@ will use an sklearn backend.</p>
 <p>To use the Elasticsearch backend, simply set the optional <code class="code docutils literal notranslate"><span class="pre">backend</span></code> parameter of
 <a class="reference internal" href="../api/fiftyone.brain.html#fiftyone.brain.compute_similarity" title="fiftyone.brain.compute_similarity"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_similarity()</span></code></a> to
 <code class="code docutils literal notranslate"><span class="pre">&quot;elasticsearch&quot;</span></code>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone.brain</span> <span class="k">as</span> <span class="nn">fob</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone.brain</span> <span class="k">as</span> <span class="nn">fob</span>
 
 <span class="n">fob</span><span class="o">.</span><span class="n">compute_similarity</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;elasticsearch&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 <p>Alternatively, you can permanently configure FiftyOne to use the Elasticsearch
 backend by setting the following environment variable:</p>
@@ -496,16 +436,7 @@ located at <code class="code docutils literal notranslate"><span class="pre">~/.
 <p>You can manually provide credentials as keyword arguments each time you call
 methods like <a class="reference internal" href="../api/fiftyone.brain.html#fiftyone.brain.compute_similarity" title="fiftyone.brain.compute_similarity"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_similarity()</span></code></a>
 that require connections to Elasticsearch:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone.brain</span> <span class="k">as</span> <span class="nn">fob</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone.brain</span> <span class="k">as</span> <span class="nn">fob</span>
 
 <span class="n">elasticsearch_index</span> <span class="o">=</span> <span class="n">fob</span><span class="o">.</span><span class="n">compute_similarity</span><span class="p">(</span>
     <span class="o">...</span>
@@ -515,23 +446,18 @@ that require connections to Elasticsearch:</p>
     <span class="n">username</span><span class="o">=</span><span class="s2">&quot;XXXXXXXX&quot;</span><span class="p">,</span>
     <span class="n">password</span><span class="o">=</span><span class="s2">&quot;XXXXXXXX&quot;</span><span class="p">,</span>
 <span class="p">)</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 <p>Note that, when using this strategy, you must manually provide the credentials
 when loading an index later via
 <a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.load_brain_results" title="fiftyone.core.collections.SampleCollection.load_brain_results"><code class="xref py py-meth docutils literal notranslate"><span class="pre">load_brain_results()</span></code></a>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">elasticsearch_index</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">load_brain_results</span><span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">elasticsearch_index</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">load_brain_results</span><span class="p">(</span>
     <span class="s2">&quot;elasticsearch_index&quot;</span><span class="p">,</span>
     <span class="n">hosts</span><span class="o">=</span><span class="s2">&quot;http://localhost:9200&quot;</span><span class="p">,</span>
     <span class="n">username</span><span class="o">=</span><span class="s2">&quot;XXXXXXXX&quot;</span><span class="p">,</span>
     <span class="n">password</span><span class="o">=</span><span class="s2">&quot;XXXXXXXX&quot;</span><span class="p">,</span>
 <span class="p">)</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 </div>
 <div class="section" id="elasticsearch-config-parameters">
@@ -563,20 +489,14 @@ that includes all of the available parameters:</p>
 <p>However, typically these parameters are directly passed to
 <a class="reference internal" href="../api/fiftyone.brain.html#fiftyone.brain.compute_similarity" title="fiftyone.brain.compute_similarity"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_similarity()</span></code></a> to configure
 a specific new index:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">elasticsearch_index</span> <span class="o">=</span> <span class="n">fob</span><span class="o">.</span><span class="n">compute_similarity</span><span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">elasticsearch_index</span> <span class="o">=</span> <span class="n">fob</span><span class="o">.</span><span class="n">compute_similarity</span><span class="p">(</span>
     <span class="o">...</span>
     <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;elasticsearch&quot;</span><span class="p">,</span>
     <span class="n">brain_key</span><span class="o">=</span><span class="s2">&quot;elasticsearch_index&quot;</span><span class="p">,</span>
     <span class="n">index_name</span><span class="o">=</span><span class="s2">&quot;your-index&quot;</span><span class="p">,</span>
     <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;cosine&quot;</span><span class="p">,</span>
 <span class="p">)</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 </div>
 </div>
@@ -586,20 +506,7 @@ a specific new index:</p>
 <p>For example, you can call
 <a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.list_brain_runs" title="fiftyone.core.collections.SampleCollection.list_brain_runs"><code class="xref py py-meth docutils literal notranslate"><span class="pre">list_brain_runs()</span></code></a>
 to see the available brain keys on a dataset:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone.brain</span> <span class="k">as</span> <span class="nn">fob</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone.brain</span> <span class="k">as</span> <span class="nn">fob</span>
 
 <span class="c1"># List all brain runs</span>
 <span class="n">dataset</span><span class="o">.</span><span class="n">list_brain_runs</span><span class="p">()</span>
@@ -613,30 +520,29 @@ to see the available brain keys on a dataset:</p>
     <span class="n">patches_field</span><span class="o">=</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span>
     <span class="n">supports_prompts</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 <span class="p">)</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 <p>Or, you can use
 <a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.get_brain_info" title="fiftyone.core.collections.SampleCollection.get_brain_info"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_brain_info()</span></code></a>
 to retrieve information about the configuration of a brain run:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">info</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">get_brain_info</span><span class="p">(</span><span class="n">brain_key</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">info</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">get_brain_info</span><span class="p">(</span><span class="n">brain_key</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">info</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 <p>Use <a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.load_brain_results" title="fiftyone.core.collections.SampleCollection.load_brain_results"><code class="xref py py-meth docutils literal notranslate"><span class="pre">load_brain_results()</span></code></a>
 to load the <a class="reference internal" href="../api/fiftyone.brain.similarity.html#fiftyone.brain.similarity.SimilarityIndex" title="fiftyone.brain.similarity.SimilarityIndex"><code class="xref py py-class docutils literal notranslate"><span class="pre">SimilarityIndex</span></code></a> instance for a brain run.</p>
 <p>You can use
 <a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.rename_brain_run" title="fiftyone.core.collections.SampleCollection.rename_brain_run"><code class="xref py py-meth docutils literal notranslate"><span class="pre">rename_brain_run()</span></code></a>
 to rename the brain key associated with an existing similarity results run:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">rename_brain_run</span><span class="p">(</span><span class="n">brain_key</span><span class="p">,</span> <span class="n">new_brain_key</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">rename_brain_run</span><span class="p">(</span><span class="n">brain_key</span><span class="p">,</span> <span class="n">new_brain_key</span><span class="p">)</span>
+</pre></div>
 </div>
 <p>Finally, you can use
 <a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.delete_brain_run" title="fiftyone.core.collections.SampleCollection.delete_brain_run"><code class="xref py py-meth docutils literal notranslate"><span class="pre">delete_brain_run()</span></code></a>
 to delete the record of a similarity index computation from your FiftyOne
 dataset:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">delete_brain_run</span><span class="p">(</span><span class="n">brain_key</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">delete_brain_run</span><span class="p">(</span><span class="n">brain_key</span><span class="p">)</span>
+</pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -667,48 +573,7 @@ server as described in <a class="reference internal" href="#elasticsearch-setup"
 either the <code class="code docutils literal notranslate"><span class="pre">embeddings</span></code> or <code class="code docutils literal notranslate"><span class="pre">model</span></code> argument to
 <a class="reference internal" href="../api/fiftyone.brain.html#fiftyone.brain.compute_similarity" title="fiftyone.brain.compute_similarity"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_similarity()</span></code></a>. Here’s a few
 possibilities:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span>
-<span class="normal">39</span>
-<span class="normal">40</span>
-<span class="normal">41</span>
-<span class="normal">42</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.brain</span> <span class="k">as</span> <span class="nn">fob</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
@@ -750,7 +615,7 @@ possibilities:</p>
     <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;elasticsearch&quot;</span><span class="p">,</span>
     <span class="n">brain_key</span><span class="o">=</span><span class="n">brain_key</span><span class="p">,</span>
 <span class="p">)</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 </div>
 <div class="section" id="create-a-patch-similarity-index">
@@ -759,19 +624,7 @@ possibilities:</p>
 <a class="reference internal" href="../brain.html#brain-object-similarity"><span class="std std-ref">object patches</span></a> within your dataset by
 including the <code class="code docutils literal notranslate"><span class="pre">patches_field</span></code> argument to
 <a class="reference internal" href="../api/fiftyone.brain.html#fiftyone.brain.compute_similarity" title="fiftyone.brain.compute_similarity"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_similarity()</span></code></a>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.brain</span> <span class="k">as</span> <span class="nn">fob</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
@@ -784,7 +637,7 @@ including the <code class="code docutils literal notranslate"><span class="pre">
     <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;elasticsearch&quot;</span><span class="p">,</span>
     <span class="n">brain_key</span><span class="o">=</span><span class="s2">&quot;elasticsearch_patches&quot;</span><span class="p">,</span>
 <span class="p">)</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 </div>
 <div class="section" id="connect-to-an-existing-index">
@@ -793,20 +646,7 @@ including the <code class="code docutils literal notranslate"><span class="pre">
 for the samples or patches in your dataset, you can connect to it by passing
 the <code class="code docutils literal notranslate"><span class="pre">index_name</span></code> to
 <a class="reference internal" href="../api/fiftyone.brain.html#fiftyone.brain.compute_similarity" title="fiftyone.brain.compute_similarity"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_similarity()</span></code></a>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.brain</span> <span class="k">as</span> <span class="nn">fob</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
@@ -820,7 +660,7 @@ the <code class="code docutils literal notranslate"><span class="pre">index_name
     <span class="n">brain_key</span><span class="o">=</span><span class="s2">&quot;elasticsearch_index&quot;</span><span class="p">,</span>
     <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;elasticsearch&quot;</span><span class="p">,</span>
 <span class="p">)</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 </div>
 <div class="section" id="add-remove-embeddings-from-an-index">
@@ -832,40 +672,7 @@ and
 to add and remove embeddings from an existing Elasticsearch index.</p>
 <p>These methods can come in handy if you modify your FiftyOne dataset and need
 to update the Elasticsearch index to reflect these changes:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.brain</span> <span class="k">as</span> <span class="nn">fob</span>
@@ -899,7 +706,7 @@ to update the Elasticsearch index to reflect these changes:</p>
 <span class="n">elasticsearch_index</span><span class="o">.</span><span class="n">add_to_index</span><span class="p">(</span><span class="n">embeddings</span><span class="p">,</span> <span class="n">sample_ids</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">elasticsearch_index</span><span class="o">.</span><span class="n">total_index_size</span><span class="p">)</span>  <span class="c1"># 210</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 </div>
 <div class="section" id="retrieve-embeddings-from-an-index">
@@ -907,30 +714,7 @@ to update the Elasticsearch index to reflect these changes:</p>
 <p>You can use
 <a class="reference internal" href="../api/fiftyone.brain.similarity.html#fiftyone.brain.similarity.SimilarityIndex.get_embeddings" title="fiftyone.brain.similarity.SimilarityIndex.get_embeddings"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_embeddings()</span></code></a>
 to retrieve embeddings from a Elasticsearch index by ID:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.brain</span> <span class="k">as</span> <span class="nn">fob</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
@@ -954,7 +738,7 @@ to retrieve embeddings from a Elasticsearch index by ID:</p>
 <span class="n">embeddings</span><span class="p">,</span> <span class="n">sample_ids</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">elasticsearch_index</span><span class="o">.</span><span class="n">get_embeddings</span><span class="p">(</span><span class="n">sample_ids</span><span class="o">=</span><span class="n">ids</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">embeddings</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>  <span class="c1"># (10, 512)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">sample_ids</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>  <span class="c1"># (10,)</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 </div>
 <div class="section" id="querying-a-elasticsearch-index">
@@ -968,36 +752,7 @@ stage to any dataset or view. The query can be any of the following:</p>
 <li><p>A list of IDs (samples or patches)</p></li>
 <li><p>A text prompt (if <a class="reference internal" href="../brain.html#brain-similarity-text"><span class="std std-ref">supported by the model</span></a>)</p></li>
 </ul>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.brain</span> <span class="k">as</span> <span class="nn">fob</span>
@@ -1027,7 +782,7 @@ stage to any dataset or view. The query can be any of the following:</p>
 <span class="c1"># Query by text prompt</span>
 <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;a photo of a dog&quot;</span>
 <span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">sort_by_similarity</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">brain_key</span><span class="o">=</span><span class="s2">&quot;elasticsearch_index&quot;</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1044,21 +799,7 @@ interest.</p>
 <span id="elasticsearch-access-client"></span><h3>Accessing the Elasticsearch client<a class="headerlink" href="#accessing-the-elasticsearch-client" title="Permalink to this headline">¶</a></h3>
 <p>You can use the <code class="code docutils literal notranslate"><span class="pre">client</span></code> property of a Elasticsearch index to directly access
 the underlying Elasticsearch client instance and use its methods as desired:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.brain</span> <span class="k">as</span> <span class="nn">fob</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
@@ -1073,7 +814,7 @@ the underlying Elasticsearch client instance and use its methods as desired:</p>
 
 <span class="n">elasticsearch_client</span> <span class="o">=</span> <span class="n">elasticsearch_index</span><span class="o">.</span><span class="n">client</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">elasticsearch_client</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 </div>
 <div class="section" id="advanced-usage">
@@ -1084,27 +825,7 @@ customize your Elasticsearch indexes by providing optional parameters to
 <p>Here’s an example of creating a similarity index backed by a customized
 Elasticsearch index. Just for fun, we’ll specify a custom index name, use dot
 product similarity, and populate the index for only a subset of our dataset:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.brain</span> <span class="k">as</span> <span class="nn">fob</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
@@ -1125,7 +846,7 @@ product similarity, and populate the index for only a subset of our dataset:</p>
 <span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 <span class="n">embeddings</span><span class="p">,</span> <span class="n">sample_ids</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">elasticsearch_index</span><span class="o">.</span><span class="n">compute_embeddings</span><span class="p">(</span><span class="n">view</span><span class="p">)</span>
 <span class="n">elasticsearch_index</span><span class="o">.</span><span class="n">add_to_index</span><span class="p">(</span><span class="n">embeddings</span><span class="p">,</span> <span class="n">sample_ids</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 </div>
 </div>
@@ -1216,199 +937,104 @@ product similarity, and populate the index for only a subset of our dataset:</p>
   <!-- Begin Footer -->
 
 
-<footer class="footer-wrapper" id="docs-tutorials-resources">
-  <div class="footer pytorch-container">
-    <div class="footer__logo">
-      <a href="https://voxel51.com/"
-        ><img
-          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
-      /></a>
-    </div>
+  <div class="container-fluid docs-tutorials-resources" id="docs-tutorials-resources">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 text-center">
+          <h2>Docs</h2>
+          <p>Access comprehensive developer documentation for PyTorch</p>
+          <a class="with-right-arrow" href="https://pytorch.org/docs/stable/index.html">View Docs</a>
+        </div>
 
-    <div class="footer__address">
-      330 E Liberty St<br />
-      Ann Arbor, MI 48104<br />
-      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
-    </div>
+        <div class="col-md-4 text-center">
+          <h2>Tutorials</h2>
+          <p>Get in-depth tutorials for beginners and advanced developers</p>
+          <a class="with-right-arrow" href="https://pytorch.org/tutorials">View Tutorials</a>
+        </div>
 
-    <!--
-    <div class="footer__contact">
-      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
-    </div>
-    -->
-
-    <div class="footer__links">
-      <div class="footer__links--col2">
-        <p class="nav__item--brand">Products</p>
-        <a href="https://voxel51.com/fiftyone/">FiftyOne</a>
-        <a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a>
-        <a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a>
-        <a href="https://voxel51.com/success-stories/">Success Stories</a>
+        <div class="col-md-4 text-center">
+          <h2>Resources</h2>
+          <p>Find development resources and get your questions answered</p>
+          <a class="with-right-arrow" href="https://pytorch.org/resources">View Resources</a>
+        </div>
       </div>
-      <div class="footer__links--col3">
-        <p class="nav__item--brand">Resources</p>
-        <a href="https://voxel51.com/blog/">Blog</a>
-        <a href="https://docs.voxel51.com/">Docs</a>
-        <a href="https://github.com/voxel51/">GitHub</a>
-        <a href="https://community.voxel51.com">Discord</a>
-        <a href="https://voxel51.com/ourstory/">About Us</a>
-        <a href="https://voxel51.com/computer-vision-events/">Events</a>
-        <a href="https://voxel51.com/jobs/">Careers</a>
-        <a href="https://voxel51.com/press/">Press</a>
-      </div>
-    </div>
-
-    <div class="footer__icons">
-      <ul class="list-inline">
-        <li>
-          <a href="https://www.linkedin.com/company/voxel51/">
-            <i class="fa-brands fa-linkedin"></i>
-          </a>
-        </li>
-        <li>
-          <a href="https://github.com/voxel51/">
-            <i class="fa-brands fa-github"></i>
-          </a>
-        </li>
-        <li>
-          <a href="https://twitter.com/voxel51">
-            <i class="fa-brands fa-twitter"></i>
-          </a>
-        </li>
-        <li>
-          <a href="https://www.facebook.com/voxel51/">
-            <i class="fa-brands fa-facebook"></i>
-          </a>
-        </li>
-      </ul>
-    </div>
-
-    <div class="footer__copyright">
-      <ul class="list-inline">
-        <li>&copy; 2024 Voxel51 Inc.</li>
-        <li>
-          <a href="https://voxel51.com/privacy/">Privacy Policy</a>
-        </li>
-        <li>
-          <a href="https://voxel51.com/terms/">Terms of Service</a>
-        </li>
-      </ul>
     </div>
   </div>
-</footer>
 
-<!-- https://buttons.github.io -->
-<script async defer src="https://buttons.github.io/buttons.js" ></script>
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-logo-wrapper">
+        <a href="https://pytorch.org/" class="footer-logo"></a>
+      </div>
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XD15NFRY3M" ></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag() {
-    dataLayer.push(arguments);
-  }
-  gtag("js", new Date());
-  gtag("config", "G-XD15NFRY3M");
-</script>
+      <div class="footer-links-wrapper">
+        <div class="footer-links-col">
+          <ul>
+            <li class="list-title"><a href="https://pytorch.org/">PyTorch</a></li>
+            <li><a href="https://pytorch.org/get-started">Get Started</a></li>
+            <li><a href="https://pytorch.org/features">Features</a></li>
+            <li><a href="https://pytorch.org/ecosystem">Ecosystem</a></li>
+            <li><a href="https://pytorch.org/blog/">Blog</a></li>
+            <li><a href="https://github.com/pytorch/pytorch/blob/master/CONTRIBUTING.md">Contributing</a></li>
+          </ul>
+        </div>
 
-<script>
-  function open_modal(modal_id, modal_closer_id) {
-    // Get the modal
-    let the_modal = document.getElementById(modal_id);
+        <div class="footer-links-col">
+          <ul>
+            <li class="list-title"><a href="https://pytorch.org/resources">Resources</a></li>
+            <li><a href="https://pytorch.org/tutorials">Tutorials</a></li>
+            <li><a href="https://pytorch.org/docs/stable/index.html">Docs</a></li>
+            <li><a href="https://discuss.pytorch.org" target="_blank">Discuss</a></li>
+            <li><a href="https://github.com/pytorch/pytorch/issues" target="_blank">Github Issues</a></li>
+            <li><a href="https://pytorch.org/assets/brand-guidelines/PyTorch-Brand-Guidelines.pdf" target="_blank">Brand Guidelines</a></li>
+          </ul>
+        </div>
 
-    the_modal.style.display = "flex";
-    document.body.style.overflow = "hidden";
+        <div class="footer-links-col follow-us-col">
+          <ul>
+            <li class="list-title">Stay Connected</li>
+            <li>
+              <div id="mc_embed_signup">
+                <form
+                  action="https://twitter.us14.list-manage.com/subscribe/post?u=75419c71fe0a935e53dfa4a3f&id=91d0dccd39"
+                  method="post"
+                  id="mc-embedded-subscribe-form"
+                  name="mc-embedded-subscribe-form"
+                  class="email-subscribe-form validate"
+                  target="_blank"
+                  novalidate>
+                  <div id="mc_embed_signup_scroll" class="email-subscribe-form-fields-wrapper">
+                    <div class="mc-field-group">
+                      <label for="mce-EMAIL" style="display:none;">Email Address</label>
+                      <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="Email Address">
+                    </div>
 
-    let the_modal_closer = document.getElementById(modal_closer_id);
+                    <div id="mce-responses" class="clear">
+                      <div class="response" id="mce-error-response" style="display:none"></div>
+                      <div class="response" id="mce-success-response" style="display:none"></div>
+                    </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
 
-    // When the user clicks on <span> (x), close the modal
-    the_modal_closer &&
-      (the_modal_closer.onclick = function () {
-        the_modal.style.display = "none";
-      });
+                    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_75419c71fe0a935e53dfa4a3f_91d0dccd39" tabindex="-1" value=""></div>
 
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function (event) {
-      if (event.target == the_modal) {
-        the_modal.style.display = "none";
-        document.body.style.overflow = "unset";
-        window.onclick = undefined;
-      }
-    };
-  }
-</script>
+                    <div class="clear">
+                      <input type="submit" value="" name="subscribe" id="mc-embedded-subscribe" class="button email-subscribe-button">
+                    </div>
+                  </div>
+                </form>
+              </div>
 
-<!-- bigpicture.io -->
-<script>
-  !(function (e, t, i) {
-    var r = (e.bigPicture = e.bigPicture || []);
-    if (!r.initialized)
-      if (r.invoked)
-        e.console &&
-          console.error &&
-          console.error("BigPicture.io snippet included twice.");
-      else {
-        (r.invoked = !0),
-          (r.SNIPPET_VERSION = 1.5),
-          (r.handler = function (e) {
-            if (void 0 !== r.callback)
-              try {
-                return r.callback(e);
-              } catch (e) {}
-          }),
-          (r.eventList = ["mousedown", "mouseup", "click", "submit"]),
-          (r.methods = [
-            "track",
-            "identify",
-            "page",
-            "group",
-            "alias",
-            "integration",
-            "ready",
-            "intelReady",
-            "consentReady",
-            "on",
-            "off",
-          ]),
-          (r.factory = function (e) {
-            return function () {
-              var t = Array.prototype.slice.call(arguments);
-              return t.unshift(e), r.push(t), r;
-            };
-          });
-        for (var n = 0; n < r.methods.length; n++) {
-          var o = r.methods[n];
-          r[o] = r.factory(o);
-        }
-        r.getCookie = function (e) {
-          var i = ("; " + t.cookie).split("; " + e + "=");
-          return 2 == i.length && i.pop().split(";").shift();
-        };
-        var c = (r.isEditor = (function () {
-          try {
-            return (
-              e.self !== e.top &&
-              (new RegExp("app" + i, "ig").test(t.referrer) ||
-                "edit" == r.getCookie("_bpr_edit"))
-            );
-          } catch (e) {
-            return !1;
-          }
-        })());
-        r.init = function (n, o) {
-          if (((r.projectId = n), (r._config = o), !c))
-            for (var a = 0; a < r.eventList.length; a++)
-              e.addEventListener(r.eventList[a], r.handler, !0);
-          var s = t.createElement("script");
-          s.async = !0;
-          var d = c ? "/editor/editor" : "/public-" + n;
-          (s.src = "//cdn" + i + d + ".js"),
-            t.getElementsByTagName("head")[0].appendChild(s);
-        };
-      }
-  })(window, document, ".bigpicture.io");
-  bigPicture.init("1646");
-</script>
+            </li>
+          </ul>
+
+          <div class="footer-social-icons">
+            <a href="https://www.facebook.com/pytorch" target="_blank" class="facebook"></a>
+            <a href="https://twitter.com/pytorch" target="_blank" class="twitter"></a>
+            <a href="https://www.youtube.com/pytorch" target="_blank" class="youtube"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
 
 
   
@@ -1417,7 +1043,64 @@ product similarity, and populate the index for only a subset of our dataset:</p>
 
   <!-- Begin Mobile Menu -->
 
-  
+
+  <div class="mobile-main-menu">
+    <div class="container-fluid">
+      <div class="container">
+        <div class="mobile-main-menu-header-container">
+          <a class="header-logo" href="https://pytorch.org/" aria-label="PyTorch"></a>
+          <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="mobile-main-menu-links-container">
+      <div class="main-menu">
+        <ul>
+          <li>
+            <a href="https://pytorch.org/get-started">Get Started</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/features">Features</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/ecosystem">Ecosystem</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/mobile">Mobile</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/hub">PyTorch Hub</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/blog/">Blog</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/tutorials">Tutorials</a>
+          </li>
+
+          <li class="active">
+            <a href="https://pytorch.org/docs/stable/index.html">Docs</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/resources">Resources</a>
+          </li>
+
+          <li>
+            <a href="https://github.com/pytorch/pytorch">Github</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
 
   <!-- End Mobile Menu -->
 

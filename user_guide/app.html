@@ -56,95 +56,78 @@
 
 
 <div class="container-fluid header-holder tutorials-header" id="header-holder">
-  <nav id="nav__main" class="nav__main">
-    <div class="nav__main__logo">
-      <a href="https://voxel51.com/">
-        <img
-          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
-        />
-      </a>
+  <div class="container">
+    <div class="header-container">
+      <a class="header-logo" href="https://pytorch.org/" aria-label="PyTorch"></a>
+
+      <div class="main-menu">
+        <ul>
+          <li>
+            <a href="https://pytorch.org/get-started">Get Started</a>
+          </li>
+
+          <li>
+            <div class="ecosystem-dropdown">
+              <a id="dropdownMenuButton" data-toggle="ecosystem-dropdown">
+                Ecosystem
+              </a>
+              <div class="ecosystem-dropdown-menu">
+                <a class="nav-dropdown-item" href="https://pytorch.org/hub"">
+                  <span class=dropdown-title>Models (Beta)</span>
+                  <p>Discover, publish, and reuse pre-trained models</p>
+                </a>
+                <a class="nav-dropdown-item" href="https://pytorch.org/ecosystem">
+                  <span class=dropdown-title>Tools & Libraries</span>
+                  <p>Explore the ecosystem of tools and libraries</p>
+                </a>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/mobile">Mobile</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/blog/">Blog</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/tutorials">Tutorials</a>
+          </li>
+
+          <li class="active">
+            <a href="https://pytorch.org/docs/stable/index.html">Docs</a>
+          </li>
+
+          <li>
+            <div class="resources-dropdown">
+              <a id="resourcesDropdownButton" data-toggle="resources-dropdown">
+                Resources
+              </a>
+              <div class="resources-dropdown-menu">
+                <a class="nav-dropdown-item" href="https://pytorch.org/resources"">
+                  <span class=dropdown-title>Developer Resources</span>
+                  <p>Find resources and get questions answered</p>
+                </a>
+                <a class="nav-dropdown-item" href="https://pytorch.org/features">
+                  <span class=dropdown-title>About</span>
+                  <p>Learn about PyTorch’s features and capabilities</p>
+                </a>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <a href="https://github.com/pytorch/pytorch">Github</a>
+          </li>
+        </ul>
+      </div>
+
+      <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
     </div>
 
-    <div class="nav__spacer desktop_only"></div>
-
-    <div id="nav__main__mobilebutton--on">
-      <a href="javascript:void(0);" onclick="navMobileButton()">
-        <i class="fa-solid fa-bars"></i>
-      </a>
-    </div>
-
-    <div id="nav__main__mobilebutton--off">
-      <a href="javascript:void(0);" onclick="navMobileButton()">
-        <i class="fa-solid fa-times"></i>
-      </a>
-    </div>
-
-    <div id="nav__main__items">
-      <div class="nav__item nav__dropdown">
-        <div class="nav__dropdown__trigger">Products</div>
-        <div class="nav__item nav__dropdown__menu has-arrows">
-          <div class="arrow-up--light-primary arrow-left20"></div>
-          <ul>
-            <li><a href="https://voxel51.com/fiftyone/">Open Source</a></li>
-            <li><a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a></li>
-            <li><a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a></li>
-            <li><a href="https://voxel51.com/success-stories/">Success Stories</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="nav__item nav__dropdown">
-        <div class="nav__dropdown__trigger">Learn</div>
-        <div class="nav__item nav__dropdown__menu has-arrows">
-          <div class="arrow-up--light-primary arrow-left20"></div>
-          <ul>
-            <li><a href="https://community.voxel51.com">Community Discord</a></li>
-            <li><a href="https://voxel51.com/blog/">Blog</a></li>
-            <li><a href="https://voxel51.com/computer-vision-events/">Events</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="nav__item">
-        <a href="https://docs.voxel51.com/">Docs</a>
-      </div>
-
-      <div class="nav__item nav__dropdown">
-        <div class="nav__dropdown__trigger">Company</div>
-        <div class="nav__item nav__dropdown__menu has-arrows">
-          <div class="arrow-up--light-primary arrow-left20"></div>
-          <ul>
-            <li><a href="https://voxel51.com/ourstory/">About Us</a></li>
-            <li><a href="https://voxel51.com/jobs/">Careers</a></li>
-            <li><a href="https://voxel51.com/talk-to-sales/">Talk to Sales</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="nav__item mobile_only">
-        <a href="https://github.com/voxel51/fiftyone">GitHub</a>
-      </div>
-
-      <div class="nav__item desktop_only" id="octocat">
-        <!-- https://buttons.github.io -->
-        <a
-          class="github-button"
-          href="https://github.com/voxel51/fiftyone"
-          data-color-scheme="no-preference: dark_high_contrast; light: dark_high_contrast; dark: dark_high_contrast;"
-          data-size="large"
-          data-show-count="true"
-          aria-label="Star voxel51/fiftyone on GitHub"
-          >Star</a
-        >
-      </div>
-
-      <div class="nav__item full_nav_only">
-        <a class="button-primary" href="https://voxel51.com/schedule-teams-workshop/" target="_blank"
-          >Schedule a workshop</a
-        >
-      </div>
-    </div>
-  </nav>
+  </div>
 </div>
 
 
@@ -188,7 +171,13 @@
             
           </div>
 
-           <ul class="current">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../teams/index.html">FiftyOne Teams 🚀</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/install.html">Installation</a></li>
@@ -196,23 +185,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../recipes/index.html">Recipes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cheat_sheets/index.html">Cheat Sheets</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">User Guide</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="basics.html">FiftyOne basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dataset_creation/index.html">Loading datasets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="using_datasets.html">Using datasets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="using_views.html">Dataset views</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Using the App</a></li>
-<li class="toctree-l2"><a class="reference internal" href="groups.html">Grouped datasets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="annotation.html">Annotating datasets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="evaluation.html">Evaluating models <strong style="color: hsl(25, 100%, 51%); font-size: 0.85em; vertical-align: top">NEW</strong></a></li>
-<li class="toctree-l2"><a class="reference internal" href="using_aggregations.html">Using aggregations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="plots.html">Interactive plots</a></li>
-<li class="toctree-l2"><a class="reference internal" href="export_datasets.html">Exporting datasets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="draw_labels.html">Drawing labels on samples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="config.html">Configuring FiftyOne</a></li>
-<li class="toctree-l2"><a class="reference internal" href="config.html#configuring-the-app">Configuring the App</a></li>
-</ul>
-</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">User Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dataset_zoo/index.html">Dataset Zoo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../model_zoo/index.html">Model Zoo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../brain.html">FiftyOne Brain</a></li>
@@ -224,7 +197,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../deprecation.html">Deprecation Notices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a></li>
 </ul>
- 
+
+            
+          
         </div>
       </div>
     </nav>
@@ -323,12 +298,10 @@ programmatically via a <em>session</em>.</p>
 <a class="reference internal" href="../api/fiftyone.core.session.html#fiftyone.core.session.launch_app" title="fiftyone.core.session.launch_app"><code class="xref py py-func docutils literal notranslate"><span class="pre">launch_app()</span></code></a>. This method returns a
 <a class="reference internal" href="../api/fiftyone.core.session.html#fiftyone.core.session.Session" title="fiftyone.core.session.Session"><code class="xref py py-class docutils literal notranslate"><span class="pre">Session</span></code></a> instance, which you can subsequently use to interact programmatically
 with the App!</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">()</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 <img alt="app-empty" class="align-center" src="../_images/app-empty.png" />
 <p>App sessions are highly flexible. For example, you can launch
@@ -393,18 +366,13 @@ App is served via a separate process:</p>
 <p>Sessions can be updated to show a new <a class="reference internal" href="../api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset" title="fiftyone.core.dataset.Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dataset</span></code></a> by updating the
 <a class="reference internal" href="../api/fiftyone.core.session.html#fiftyone.core.session.Session.dataset" title="fiftyone.core.session.Session.dataset"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Session.dataset</span></code></a> property of the
 session object:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;cifar10&quot;</span><span class="p">)</span>
 
 <span class="c1"># View the dataset in the App</span>
 <span class="n">session</span><span class="o">.</span><span class="n">dataset</span> <span class="o">=</span> <span class="n">dataset</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 <img alt="app-scroll" class="align-center" src="../_images/app-scroll.gif" />
 </div>
@@ -416,8 +384,8 @@ in the App by setting the
 session.</p>
 <p>For example, the command below loads a <a class="reference internal" href="../api/fiftyone.core.view.html#fiftyone.core.view.DatasetView" title="fiftyone.core.view.DatasetView"><code class="xref py py-class docutils literal notranslate"><span class="pre">DatasetView</span></code></a> in the App that shows the
 first 10 samples in the dataset sorted by their <code class="code docutils literal notranslate"><span class="pre">uniqueness</span></code> field:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">session</span><span class="o">.</span><span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">sort_by</span><span class="p">(</span><span class="s2">&quot;uniqueness&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">session</span><span class="o">.</span><span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">sort_by</span><span class="p">(</span><span class="s2">&quot;uniqueness&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
 </div>
 <img alt="app-views1" class="align-center" src="../_images/app-views1.gif" />
 </div>
@@ -426,30 +394,22 @@ first 10 samples in the dataset sorted by their <code class="code docutils liter
 <p>You can immediately load a specific sample
 <a class="reference internal" href="#app-sample-view"><span class="std std-ref">in the modal</span></a> when launching a new <a class="reference internal" href="../api/fiftyone.core.session.html#fiftyone.core.session.Session" title="fiftyone.core.session.Session"><code class="xref py py-class docutils literal notranslate"><span class="pre">Session</span></code></a> by
 providing its ID via the <code class="code docutils literal notranslate"><span class="pre">sample_id</span></code> parameter:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
 <span class="n">sample_id</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">last</span><span class="p">()</span><span class="o">.</span><span class="n">id</span>
 
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">sample_id</span><span class="o">=</span><span class="n">sample_id</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 <p>You can also programmatically load a sample in the modal on an existing session
 by setting its
 <a class="reference internal" href="../api/fiftyone.core.session.html#fiftyone.core.session.Session.sample_id" title="fiftyone.core.session.Session.sample_id"><code class="xref py py-meth docutils literal notranslate"><span class="pre">session.sample_id</span></code></a> property:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">sample_id</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">id</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sample_id</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">id</span>
 
 <span class="n">session</span><span class="o">.</span><span class="n">sample_id</span> <span class="o">=</span> <span class="n">sample_id</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -459,30 +419,22 @@ URL into your browser search bar!</p>
 <p>Similarly, for <a class="reference internal" href="groups.html#groups"><span class="std std-ref">group datasets</span></a>, you can immediately load a
 specific group in the modal when launching a new <a class="reference internal" href="../api/fiftyone.core.session.html#fiftyone.core.session.Session" title="fiftyone.core.session.Session"><code class="xref py py-class docutils literal notranslate"><span class="pre">Session</span></code></a> by providing its ID
 via the <code class="code docutils literal notranslate"><span class="pre">group_id</span></code> parameter:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart-groups&quot;</span><span class="p">)</span>
 <span class="n">group_id</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">last</span><span class="p">()</span><span class="o">.</span><span class="n">group</span><span class="o">.</span><span class="n">id</span>
 
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">group_id</span><span class="o">=</span><span class="n">group_id</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 <p>You can also programmatically load a group in the modal on an existing session
 by setting its
 <a class="reference internal" href="../api/fiftyone.core.session.html#fiftyone.core.session.Session.group_id" title="fiftyone.core.session.Session.group_id"><code class="xref py py-meth docutils literal notranslate"><span class="pre">session.group_id</span></code></a> property:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">group_id</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">group</span><span class="o">.</span><span class="n">id</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">group_id</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">group</span><span class="o">.</span><span class="n">id</span>
 
 <span class="n">session</span><span class="o">.</span><span class="n">group_id</span> <span class="o">=</span> <span class="n">group_id</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -556,21 +508,7 @@ field/attribute names:</p>
 <p>The above GIF shows query performance in action on the train split of the
 <a class="reference internal" href="../dataset_zoo/datasets.html#dataset-zoo-bdd100k"><span class="std std-ref">BDD100K dataset</span></a> with an index on the
 <code class="code docutils literal notranslate"><span class="pre">detections.detections.label</span></code> field:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
 <span class="c1"># The path to the source files that you manually downloaded</span>
@@ -585,7 +523,7 @@ field/attribute names:</p>
 <span class="n">dataset</span><span class="o">.</span><span class="n">create_index</span><span class="p">(</span><span class="s2">&quot;detections.detections.label&quot;</span><span class="p">)</span>
 
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -612,24 +550,7 @@ indexes natively in the App via the
 </div>
 <p>In general, we recommend indexing <em>only</em> the specific fields that you wish to
 perform initial filters on:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Dataset</span><span class="p">()</span>
 
@@ -647,7 +568,7 @@ perform initial filters on:</p>
 <span class="n">dataset</span><span class="o">.</span><span class="n">add_samples</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
 
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -661,16 +582,7 @@ efficiently query frame-level information on large video datasets.</p>
 <p>For <a class="reference internal" href="groups.html#groups"><span class="std std-ref">grouped datasets</span></a>, you should create two indexes for each
 field you wish to filter by: the field itself and a compound index that
 includes the group slice name:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart-groups&quot;</span><span class="p">)</span>
@@ -680,25 +592,19 @@ includes the group slice name:</p>
 <span class="n">dataset</span><span class="o">.</span><span class="n">create_index</span><span class="p">([(</span><span class="s2">&quot;group.name&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;ground_truth.detections.label&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)])</span>
 
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 <p>For datasets with a small number of fields, you can index all fields by adding
 a single
 <a class="reference external" href="https://www.mongodb.com/docs/manual/core/indexes/index-types/index-wildcard/create-wildcard-index-all-fields/#std-label-create-wildcard-index-all-fields">global wildcard index</a>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
 <span class="n">dataset</span><span class="o">.</span><span class="n">create_index</span><span class="p">(</span><span class="s2">&quot;$**&quot;</span><span class="p">)</span>
 
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -708,10 +614,9 @@ selectively indexing a smaller number of fields.</p>
 </div>
 <p>You can also wildcard index all attributes of a specific embedded document
 field:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># Wildcard index for all attributes of ground truth detections</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Wildcard index for all attributes of ground truth detections</span>
 <span class="n">dataset</span><span class="o">.</span><span class="n">create_index</span><span class="p">(</span><span class="s2">&quot;ground_truth.detections.$**&quot;</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -737,16 +642,12 @@ label/value counts that are useful but more expensive to compute.</p>
 <span id="app-sidebar-groups"></span><h3>Sidebar groups<a class="headerlink" href="#sidebar-groups" title="Permalink to this headline">¶</a></h3>
 <p>You can customize the layout of the App’s sidebar by creating/renaming/deleting
 groups and dragging fields between groups directly in the App:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 <img alt="app-sidebar-groups" class="align-center" src="../_images/app-sidebar-groups.gif" />
 <div class="admonition note">
@@ -757,21 +658,7 @@ the dataset and will persist between sessions.</p>
 <p>You can also programmatically modify a dataset’s sidebar groups by editing the
 <a class="reference internal" href="../api/fiftyone.core.odm.dataset.html#fiftyone.core.odm.dataset.DatasetAppConfig" title="fiftyone.core.odm.dataset.DatasetAppConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">sidebar_groups</span></code></a> property
 of the <a class="reference internal" href="using_datasets.html#dataset-app-config"><span class="std std-ref">dataset’s App config</span></a>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># Get the default sidebar groups for the dataset</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get the default sidebar groups for the dataset</span>
 <span class="n">sidebar_groups</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">DatasetAppConfig</span><span class="o">.</span><span class="n">default_sidebar_groups</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
 
 <span class="c1"># Collapse the `metadata` section by default</span>
@@ -786,20 +673,16 @@ of the <a class="reference internal" href="using_datasets.html#dataset-app-confi
 <span class="n">dataset</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>  <span class="c1"># must save after edits</span>
 
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 <p>You can conveniently reset the sidebar groups to their default state by setting
 <a class="reference internal" href="../api/fiftyone.core.odm.dataset.html#fiftyone.core.odm.dataset.DatasetAppConfig" title="fiftyone.core.odm.dataset.DatasetAppConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">sidebar_groups</span></code></a> to <code class="code docutils literal notranslate"><span class="pre">None</span></code>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># Reset sidebar groups</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Reset sidebar groups</span>
 <span class="n">dataset</span><span class="o">.</span><span class="n">app_config</span><span class="o">.</span><span class="n">sidebar_groups</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="n">dataset</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>  <span class="c1"># must save after edits</span>
 
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -844,24 +727,7 @@ elements of the group as a video.</p>
 clicking the settings icon in the upper right of the sidebar to open the Field
 visibility modal.</p>
 <p>Consider the following example:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
 
@@ -879,7 +745,7 @@ visibility modal.</p>
 <span class="n">field</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 <div class="section" id="manual-selection">
 <span id="app-field-visibility-selection"></span><h3>Manual selection<a class="headerlink" href="#manual-selection" title="Permalink to this headline">¶</a></h3>
@@ -933,15 +799,7 @@ stringified contents of the relevant field metadata.</p>
 <p>You can configure the color scheme used by the App to render content by
 clicking on the color palette icon above the sample grid.</p>
 <p>Consider the following example:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
@@ -950,7 +808,7 @@ clicking on the color palette icon above the sample grid.</p>
 <span class="p">)</span>
 
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 <div class="section" id="color-schemes-in-the-app">
 <span id="app-color-schemes-app"></span><h3>Color schemes in the App<a class="headerlink" href="#color-schemes-in-the-app" title="Permalink to this headline">¶</a></h3>
@@ -1070,57 +928,7 @@ instances using <code class="code docutils literal notranslate"><span class="pre
 <span id="app-color-schemes-python"></span><h3>Color schemes in Python<a class="headerlink" href="#color-schemes-in-python" title="Permalink to this headline">¶</a></h3>
 <p>You can also programmatically configure a session’s color scheme by creating
 <a class="reference internal" href="../api/fiftyone.core.odm.dataset.html#fiftyone.core.odm.dataset.ColorScheme" title="fiftyone.core.odm.dataset.ColorScheme"><code class="xref py py-class docutils literal notranslate"><span class="pre">ColorScheme</span></code></a> instances in Python:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span>
-<span class="normal">39</span>
-<span class="normal">40</span>
-<span class="normal">41</span>
-<span class="normal">42</span>
-<span class="normal">43</span>
-<span class="normal">44</span>
-<span class="normal">45</span>
-<span class="normal">46</span>
-<span class="normal">47</span>
-<span class="normal">48</span>
-<span class="normal">49</span>
-<span class="normal">50</span>
-<span class="normal">51</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># Create a custom color scheme</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a custom color scheme</span>
 <span class="n">fo</span><span class="o">.</span><span class="n">ColorScheme</span><span class="p">(</span>
     <span class="n">color_pool</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;#ff0000&quot;</span><span class="p">,</span> <span class="s2">&quot;#00ff00&quot;</span><span class="p">,</span> <span class="s2">&quot;#0000ff&quot;</span><span class="p">,</span> <span class="s2">&quot;pink&quot;</span><span class="p">,</span> <span class="s2">&quot;yellowgreen&quot;</span><span class="p">],</span>
     <span class="n">fields</span><span class="o">=</span><span class="p">[</span>
@@ -1171,7 +979,7 @@ instances using <code class="code docutils literal notranslate"><span class="pre
         <span class="p">}</span>
     <span class="p">],</span>
 <span class="p">)</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1181,31 +989,25 @@ customization options.</p>
 <p>You can launch the App with a custom color scheme by passing the optional
 <code class="code docutils literal notranslate"><span class="pre">color_scheme</span></code> parameter to
 <a class="reference internal" href="../api/fiftyone.core.session.html#fiftyone.core.session.launch_app" title="fiftyone.core.session.launch_app"><code class="xref py py-func docutils literal notranslate"><span class="pre">launch_app()</span></code></a>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># Launch App with a custom color scheme</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Launch App with a custom color scheme</span>
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">color_scheme</span><span class="o">=</span><span class="n">color_scheme</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 <p>Once the App is launched, you can retrieve your current color scheme at any
 time via the
 <a class="reference internal" href="../api/fiftyone.core.session.html#fiftyone.core.session.Session.color_scheme" title="fiftyone.core.session.Session.color_scheme"><code class="xref py py-meth docutils literal notranslate"><span class="pre">session.color_scheme</span></code></a>
 property:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">session</span><span class="o">.</span><span class="n">color_scheme</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">session</span><span class="o">.</span><span class="n">color_scheme</span><span class="p">)</span>
+</pre></div>
 </div>
 <p>You can also dynamically edit your current color scheme by modifying it:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># Change the session&#39;s current color scheme</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Change the session&#39;s current color scheme</span>
 <span class="n">session</span><span class="o">.</span><span class="n">color_scheme</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">ColorScheme</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
 
 <span class="c1"># Edit the existing color scheme in-place</span>
 <span class="n">session</span><span class="o">.</span><span class="n">color_scheme</span><span class="o">.</span><span class="n">color_pool</span> <span class="o">=</span> <span class="p">[</span><span class="o">...</span><span class="p">]</span>
 <span class="n">session</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1418,21 +1220,7 @@ fields will be visualized in the grid using an orthographic projection
 <p>In addition, if you have populated
 <a class="reference internal" href="using_datasets.html#orthographic-projection-images"><span class="std std-ref">orthographic projection images</span></a> on your
 dataset, the projection images will be rendered for each sample in the grid:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.utils.utils3d</span> <span class="k">as</span> <span class="nn">fou3d</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
@@ -1447,7 +1235,7 @@ dataset, the projection images will be rendered for each sample in the grid:</p>
 <span class="n">fou3d</span><span class="o">.</span><span class="n">compute_orthographic_projection_images</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">512</span><span class="p">),</span> <span class="s2">&quot;/tmp/proj&quot;</span><span class="p">)</span>
 
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 <img alt="orthographic-projections" class="align-center" src="../_images/app-orthographic-projections.gif" />
 </div>
@@ -1480,16 +1268,12 @@ shown below under the <code class="code docutils literal notranslate"><span clas
 </div>
 <p>You can also store dataset-specific plugin settings by storing any subset of
 the above values on a <a class="reference internal" href="using_datasets.html#dataset-app-config"><span class="std std-ref">dataset’s App config</span></a>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># Configure the 3D visualizer for a dataset&#39;s PCD/Label data</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Configure the 3D visualizer for a dataset&#39;s PCD/Label data</span>
 <span class="n">dataset</span><span class="o">.</span><span class="n">app_config</span><span class="o">.</span><span class="n">plugins</span><span class="p">[</span><span class="s2">&quot;3d&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&quot;defaultCameraPosition&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;z&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">},</span>
 <span class="p">}</span>
 <span class="n">dataset</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1523,14 +1307,7 @@ for the fields of your dataset</p></li>
 <div class="section" id="configuring-spaces-in-the-app">
 <span id="app-spaces-layout"></span><h3>Configuring spaces in the App<a class="headerlink" href="#configuring-spaces-in-the-app" title="Permalink to this headline">¶</a></h3>
 <p>Consider the following example dataset:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.brain</span> <span class="k">as</span> <span class="nn">fob</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
@@ -1538,7 +1315,7 @@ for the fields of your dataset</p></li>
 <span class="n">fob</span><span class="o">.</span><span class="n">compute_visualization</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">brain_key</span><span class="o">=</span><span class="s2">&quot;img_viz&quot;</span><span class="p">)</span>
 
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 <p>You can configure spaces visually in the App in a variety of ways described
 below.</p>
@@ -1556,31 +1333,7 @@ close Panels by clicking their <code class="code docutils literal notranslate"><
 <p>You can also programmatically configure your Space layout and the states of the
 individual Panels via the <code class="xref py py-class docutils literal notranslate"><span class="pre">Space</span></code> and <code class="xref py py-class docutils literal notranslate"><span class="pre">Panel</span></code> classes in Python, as shown
 below:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">samples_panel</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Panel</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Samples&quot;</span><span class="p">,</span> <span class="n">pinned</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">samples_panel</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Panel</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Samples&quot;</span><span class="p">,</span> <span class="n">pinned</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="n">histograms_panel</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Panel</span><span class="p">(</span>
     <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Histograms&quot;</span><span class="p">,</span>
@@ -1605,7 +1358,7 @@ below:</p>
     <span class="p">],</span>
     <span class="n">orientation</span><span class="o">=</span><span class="s2">&quot;vertical&quot;</span><span class="p">,</span>
 <span class="p">)</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 <p>The <code class="xref py py-meth docutils literal notranslate"><span class="pre">children</span></code> property of each
 <code class="xref py py-class docutils literal notranslate"><span class="pre">Space</span></code> describes what the Space contains, which can be either:</p>
@@ -1625,23 +1378,21 @@ the sections below for each Panel’s available state.</p>
 <p>You can launch the App with an initial spaces layout by passing the optional
 <code class="code docutils literal notranslate"><span class="pre">spaces</span></code> parameter to
 <a class="reference internal" href="../api/fiftyone.core.session.html#fiftyone.core.session.launch_app" title="fiftyone.core.session.launch_app"><code class="xref py py-func docutils literal notranslate"><span class="pre">launch_app()</span></code></a>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># Launch the App with an initial Spaces layout</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Launch the App with an initial Spaces layout</span>
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">spaces</span><span class="o">=</span><span class="n">spaces</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 <p>Once the App is launched, you can retrieve your current layout at any time via
 the <a class="reference internal" href="../api/fiftyone.core.session.html#fiftyone.core.session.Session.spaces" title="fiftyone.core.session.Session.spaces"><code class="xref py py-meth docutils literal notranslate"><span class="pre">session.spaces</span></code></a> property:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">session</span><span class="o">.</span><span class="n">spaces</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">session</span><span class="o">.</span><span class="n">spaces</span><span class="p">)</span>
+</pre></div>
 </div>
 <p>You can also programmatically configure the App’s current layout by setting
 <a class="reference internal" href="../api/fiftyone.core.session.html#fiftyone.core.session.Session.spaces" title="fiftyone.core.session.Session.spaces"><code class="xref py py-meth docutils literal notranslate"><span class="pre">session.spaces</span></code></a> to any valid
 <code class="xref py py-class docutils literal notranslate"><span class="pre">Space</span></code> instance:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># Change the session&#39;s current Spaces layout</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Change the session&#39;s current Spaces layout</span>
 <span class="n">session</span><span class="o">.</span><span class="n">spaces</span> <span class="o">=</span> <span class="n">spaces</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1651,10 +1402,9 @@ way to discover the available state options for each Panel type!</p>
 </div>
 <p>You can reset your spaces to their default state by setting
 <a class="reference internal" href="../api/fiftyone.core.session.html#fiftyone.core.session.Session.spaces" title="fiftyone.core.session.Session.spaces"><code class="xref py py-meth docutils literal notranslate"><span class="pre">session.spaces</span></code></a> to None:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># Reset spaces layout in the App</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Reset spaces layout in the App</span>
 <span class="n">session</span><span class="o">.</span><span class="n">spaces</span> <span class="o">=</span> <span class="kc">None</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 </div>
 </div>
@@ -1693,43 +1443,7 @@ modifying the layout in the App.</p>
 <p>You can also programmatically create and manage saved workspaces!</p>
 <p>Use <a class="reference internal" href="../api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset.save_workspace" title="fiftyone.core.dataset.Dataset.save_workspace"><code class="xref py py-meth docutils literal notranslate"><span class="pre">save_workspace()</span></code></a>
 to create a new saved workspace with a name of your choice:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
@@ -1766,7 +1480,7 @@ to create a new saved workspace with a name of your choice:</p>
     <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Samples, embeddings, histograms, oh my!&quot;</span><span class="p">,</span>
     <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#FF6D04&quot;</span><span class="p">,</span>
 <span class="p">)</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1779,16 +1493,7 @@ to create a new saved workspace with a name of your choice:</p>
 </div>
 <p>Then in a future session you can load the workspace by name with
 <a class="reference internal" href="../api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset.load_workspace" title="fiftyone.core.dataset.Dataset.load_workspace"><code class="xref py py-meth docutils literal notranslate"><span class="pre">load_workspace()</span></code></a>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
 
@@ -1798,30 +1503,14 @@ to create a new saved workspace with a name of your choice:</p>
 
 <span class="c1"># Or, load a workspace on an existing session</span>
 <span class="n">session</span><span class="o">.</span><span class="n">spaces</span> <span class="o">=</span> <span class="n">workspace</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 <p>Saved workspaces have certain editable metadata such as a name, description,
 and color that you can view via
 <a class="reference internal" href="../api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset.get_workspace_info" title="fiftyone.core.dataset.Dataset.get_workspace_info"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_workspace_info()</span></code></a>
 and update via
 <a class="reference internal" href="../api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset.get_workspace_info" title="fiftyone.core.dataset.Dataset.get_workspace_info"><code class="xref py py-meth docutils literal notranslate"><span class="pre">update_workspace_info()</span></code></a>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># Get a saved workspace&#39;s editable info</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get a saved workspace&#39;s editable info</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">get_workspace_info</span><span class="p">(</span><span class="s2">&quot;my-workspace&quot;</span><span class="p">))</span>
 
 <span class="c1"># Update the workspace&#39;s name and add a description</span>
@@ -1838,7 +1527,7 @@ and update via
 <span class="c1">#   &#39;description&#39;: &#39;Samples, embeddings, histograms, oh my oh my!!&#39;,</span>
 <span class="c1">#   &#39;color&#39;: None</span>
 <span class="c1"># }</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 <p>You can also use
 <a class="reference internal" href="../api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset.list_workspaces" title="fiftyone.core.dataset.Dataset.list_workspaces"><code class="xref py py-meth docutils literal notranslate"><span class="pre">list_workspaces()</span></code></a>,
@@ -1855,8 +1544,8 @@ space with the Samples panel active:</p>
 <img alt="app-samples-panel" class="align-center" src="../_images/app-samples-panel.gif" />
 <p>When configuring spaces <a class="reference internal" href="#app-spaces-python"><span class="std std-ref">in Python</span></a>, you can create a
 Samples panel as follows:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">samples_panel</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Panel</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Samples&quot;</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">samples_panel</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Panel</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Samples&quot;</span><span class="p">)</span>
+</pre></div>
 </div>
 </div>
 <div class="section" id="embeddings-panel">
@@ -1865,21 +1554,7 @@ Samples panel as follows:</p>
 <a class="reference internal" href="../brain.html#brain-embeddings-visualization"><span class="std std-ref">embeddings visualization</span></a>, you can open
 the Embeddings panel to visualize and interactively explore a scatterplot of
 the embeddings in the App:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.brain</span> <span class="k">as</span> <span class="nn">fob</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
@@ -1894,7 +1569,7 @@ the embeddings in the App:</p>
 <span class="p">)</span>
 
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 <p>Use the two menus in the upper-left corner of the Panel to configure your plot:</p>
 <ul class="simple">
@@ -1933,14 +1608,11 @@ of each class of points:</p>
 <img alt="app-embeddings-panel-controls" class="align-center" src="../_images/app-embeddings-panel-controls.gif" />
 <p>When configuring spaces <a class="reference internal" href="#app-spaces-python"><span class="std std-ref">in Python</span></a>, you can define an
 Embeddings panel as follows:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">embeddings_panel</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Panel</span><span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">embeddings_panel</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Panel</span><span class="p">(</span>
     <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Embeddings&quot;</span><span class="p">,</span>
     <span class="n">state</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">brainResult</span><span class="o">=</span><span class="s2">&quot;img_viz&quot;</span><span class="p">,</span> <span class="n">colorByField</span><span class="o">=</span><span class="s2">&quot;uniqueness&quot;</span><span class="p">),</span>
 <span class="p">)</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 <p>The Embeddings panel supports the following <code class="code docutils literal notranslate"><span class="pre">state</span></code> parameters:</p>
 <ul class="simple">
@@ -1956,20 +1628,7 @@ embeddings) to color the points by</p></li>
 <p>When you load a dataset in the App that contains one or more
 <a class="reference internal" href="evaluation.html#evaluating-models"><span class="std std-ref">evaluations</span></a>, you can open the Model Evaluation panel
 to visualize and interactively explore the evaluation results in the App:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
@@ -1983,7 +1642,7 @@ to visualize and interactively explore the evaluation results in the App:</p>
 <span class="p">)</span>
 
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 <p>The panel’s home page shows a list of evaluation on the dataset, their current
 review status, and any evaluation notes that you’ve added. Click on an
@@ -2042,17 +1701,7 @@ the corresponding labels in the Samples panel:</p>
 <h3>Comparing models<a class="headerlink" href="#comparing-models" title="Permalink to this headline">¶</a></h3>
 <p>When a dataset contains multiple evaluations, you can compare two model’s
 performance by selecting a “Compare against” key:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_model</span><span class="p">(</span><span class="s2">&quot;yolo11s-coco-torch&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_model</span><span class="p">(</span><span class="s2">&quot;yolo11s-coco-torch&quot;</span><span class="p">)</span>
 
 <span class="n">dataset</span><span class="o">.</span><span class="n">apply_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;predictions_yolo11&quot;</span><span class="p">)</span>
 
@@ -2063,7 +1712,7 @@ performance by selecting a “Compare against” key:</p>
 <span class="p">)</span>
 
 <span class="n">session</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 <img alt="model-evaluation-compare" class="align-center" src="../_images/model-evaluation-compare.gif" />
 </div>
@@ -2074,18 +1723,13 @@ performance by selecting a “Compare against” key:</p>
 <a class="reference internal" href="../api/fiftyone.core.labels.html#fiftyone.core.labels.GeoLocation.point" title="fiftyone.core.labels.GeoLocation.point"><code class="xref py py-attr docutils literal notranslate"><span class="pre">point</span></code></a> data populated, you can
 open the Map panel to visualize and interactively explore a scatterplot of the
 location data:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart-geo&quot;</span><span class="p">)</span>
 
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -2112,8 +1756,8 @@ current view’s location data</p></li>
 <img alt="app-map-panel-controls" class="align-center" src="../_images/app-map-panel-controls.gif" />
 <p>When configuring spaces <a class="reference internal" href="#app-spaces-python"><span class="std std-ref">in Python</span></a>, you can define a
 Map panel as follows:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">map_panel</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Panel</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Map&quot;</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">map_panel</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Panel</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Map&quot;</span><span class="p">)</span>
+</pre></div>
 </div>
 <p>Additionally, the map UI can be configured by including any subset of the
 settings shown below under the <code class="code docutils literal notranslate"><span class="pre">plugins.map</span></code> key of your
@@ -2165,12 +1809,10 @@ environment variable:</p>
 </div>
 <p>You can also store dataset-specific plugin settings by storing any subset of
 the above values on a <a class="reference internal" href="using_datasets.html#dataset-app-config"><span class="std std-ref">dataset’s App config</span></a>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># Disable clustering for this dataset</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Disable clustering for this dataset</span>
 <span class="n">dataset</span><span class="o">.</span><span class="n">app_config</span><span class="o">.</span><span class="n">plugins</span><span class="p">[</span><span class="s2">&quot;map&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;clustering&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">}</span>
 <span class="n">dataset</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -2204,8 +1846,8 @@ uniqueness values will be available under this mode.</p></li>
 <img alt="app-histograms-panel" class="align-center" src="../_images/app-histograms-panel.gif" />
 <p>When configuring spaces <a class="reference internal" href="#app-spaces-python"><span class="std std-ref">in Python</span></a>, you can define a
 Histograms panel as follows:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">histograms_panel</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Panel</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Histograms&quot;</span><span class="p">,</span> <span class="n">state</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">plot</span><span class="o">=</span><span class="s2">&quot;Labels&quot;</span><span class="p">))</span>
-</pre></div></td></tr></table></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">histograms_panel</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Panel</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Histograms&quot;</span><span class="p">,</span> <span class="n">state</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">plot</span><span class="o">=</span><span class="s2">&quot;Labels&quot;</span><span class="p">))</span>
+</pre></div>
 </div>
 <p>The Histograms panel supports the following <code class="code docutils literal notranslate"><span class="pre">state</span></code> parameters:</p>
 <ul class="simple">
@@ -2582,21 +2224,7 @@ field(s) to your dataset containing the paths to each media source and then
 configuring your dataset to expose these multiple media fields in the App.</p>
 <p>For example, let’s create thumbnail images for use in the App’s grid view and
 store their paths in a <code class="code docutils literal notranslate"><span class="pre">thumbnail_path</span></code> field:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.utils.image</span> <span class="k">as</span> <span class="nn">foui</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
@@ -2611,7 +2239,7 @@ store their paths in a <code class="code docutils literal notranslate"><span cla
 <span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Name:        quickstart
 Media type:  image
@@ -2633,18 +2261,13 @@ Sample fields:
 </div>
 <p>We can expose the thumbnail images to the App by modifying the
 <a class="reference internal" href="using_datasets.html#dataset-app-config"><span class="std std-ref">dataset’s App config</span></a>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># Modify the dataset&#39;s App config</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Modify the dataset&#39;s App config</span>
 <span class="n">dataset</span><span class="o">.</span><span class="n">app_config</span><span class="o">.</span><span class="n">media_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;filepath&quot;</span><span class="p">,</span> <span class="s2">&quot;thumbnail_path&quot;</span><span class="p">]</span>
 <span class="n">dataset</span><span class="o">.</span><span class="n">app_config</span><span class="o">.</span><span class="n">grid_media_field</span> <span class="o">=</span> <span class="s2">&quot;thumbnail_path&quot;</span>
 <span class="n">dataset</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>  <span class="c1"># must save after edits</span>
 
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 <p>Adding <code class="code docutils literal notranslate"><span class="pre">thumbnail_path</span></code> to the
 <a class="reference internal" href="../api/fiftyone.core.odm.dataset.html#fiftyone.core.odm.dataset.DatasetAppConfig" title="fiftyone.core.odm.dataset.DatasetAppConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">media_fields</span></code></a> property
@@ -2683,23 +2306,7 @@ lower priority settings the next time you load/refresh the App.</p>
 you can use to customize the default App behavior for all sessions and datasets
 on your machine.</p>
 <p>You can also customize the global App config on a per-session basis:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
@@ -2716,7 +2323,7 @@ on your machine.</p>
 <span class="c1"># Launch App with custom config</span>
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">app_config</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">session</span><span class="o">.</span><span class="n">config</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 </div>
 <div class="section" id="modifying-your-session">
@@ -2725,47 +2332,20 @@ on your machine.</p>
 <a class="reference internal" href="../api/fiftyone.core.session.html#fiftyone.core.session.Session.config" title="fiftyone.core.session.Session.config"><code class="xref py py-meth docutils literal notranslate"><span class="pre">session.config</span></code></a> property and
 calling <a class="reference internal" href="../api/fiftyone.core.session.html#fiftyone.core.session.Session.refresh" title="fiftyone.core.session.Session.refresh"><code class="xref py py-meth docutils literal notranslate"><span class="pre">session.refresh()</span></code></a> to
 apply the changes:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">session</span><span class="o">.</span><span class="n">config</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">session</span><span class="o">.</span><span class="n">config</span><span class="p">)</span>
 
 <span class="c1"># Customize the config of a live session</span>
 <span class="n">session</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">show_confidence</span> <span class="o">=</span> <span class="kc">True</span>
 <span class="n">session</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">show_label</span> <span class="o">=</span> <span class="kc">True</span>
 <span class="n">session</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>  <span class="c1"># must refresh after edits</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 </div>
 <div class="section" id="dataset-app-config">
 <h3>Dataset App config<a class="headerlink" href="#dataset-app-config" title="Permalink to this headline">¶</a></h3>
 <p>Datasets also provide an <a class="reference internal" href="using_datasets.html#dataset-app-config"><span class="std std-ref">app_config property</span></a> that
 you can use to customize the behavior of the App for that particular dataset:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.utils.image</span> <span class="k">as</span> <span class="nn">foui</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
@@ -2788,7 +2368,7 @@ you can use to customize the behavior of the App for that particular dataset:</p
 <span class="n">dataset</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>  <span class="c1"># must save after edits</span>
 
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -2950,199 +2530,104 @@ the corresponding settings from your
   <!-- Begin Footer -->
 
 
-<footer class="footer-wrapper" id="docs-tutorials-resources">
-  <div class="footer pytorch-container">
-    <div class="footer__logo">
-      <a href="https://voxel51.com/"
-        ><img
-          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
-      /></a>
-    </div>
+  <div class="container-fluid docs-tutorials-resources" id="docs-tutorials-resources">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 text-center">
+          <h2>Docs</h2>
+          <p>Access comprehensive developer documentation for PyTorch</p>
+          <a class="with-right-arrow" href="https://pytorch.org/docs/stable/index.html">View Docs</a>
+        </div>
 
-    <div class="footer__address">
-      330 E Liberty St<br />
-      Ann Arbor, MI 48104<br />
-      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
-    </div>
+        <div class="col-md-4 text-center">
+          <h2>Tutorials</h2>
+          <p>Get in-depth tutorials for beginners and advanced developers</p>
+          <a class="with-right-arrow" href="https://pytorch.org/tutorials">View Tutorials</a>
+        </div>
 
-    <!--
-    <div class="footer__contact">
-      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
-    </div>
-    -->
-
-    <div class="footer__links">
-      <div class="footer__links--col2">
-        <p class="nav__item--brand">Products</p>
-        <a href="https://voxel51.com/fiftyone/">FiftyOne</a>
-        <a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a>
-        <a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a>
-        <a href="https://voxel51.com/success-stories/">Success Stories</a>
+        <div class="col-md-4 text-center">
+          <h2>Resources</h2>
+          <p>Find development resources and get your questions answered</p>
+          <a class="with-right-arrow" href="https://pytorch.org/resources">View Resources</a>
+        </div>
       </div>
-      <div class="footer__links--col3">
-        <p class="nav__item--brand">Resources</p>
-        <a href="https://voxel51.com/blog/">Blog</a>
-        <a href="https://docs.voxel51.com/">Docs</a>
-        <a href="https://github.com/voxel51/">GitHub</a>
-        <a href="https://community.voxel51.com">Discord</a>
-        <a href="https://voxel51.com/ourstory/">About Us</a>
-        <a href="https://voxel51.com/computer-vision-events/">Events</a>
-        <a href="https://voxel51.com/jobs/">Careers</a>
-        <a href="https://voxel51.com/press/">Press</a>
-      </div>
-    </div>
-
-    <div class="footer__icons">
-      <ul class="list-inline">
-        <li>
-          <a href="https://www.linkedin.com/company/voxel51/">
-            <i class="fa-brands fa-linkedin"></i>
-          </a>
-        </li>
-        <li>
-          <a href="https://github.com/voxel51/">
-            <i class="fa-brands fa-github"></i>
-          </a>
-        </li>
-        <li>
-          <a href="https://twitter.com/voxel51">
-            <i class="fa-brands fa-twitter"></i>
-          </a>
-        </li>
-        <li>
-          <a href="https://www.facebook.com/voxel51/">
-            <i class="fa-brands fa-facebook"></i>
-          </a>
-        </li>
-      </ul>
-    </div>
-
-    <div class="footer__copyright">
-      <ul class="list-inline">
-        <li>&copy; 2024 Voxel51 Inc.</li>
-        <li>
-          <a href="https://voxel51.com/privacy/">Privacy Policy</a>
-        </li>
-        <li>
-          <a href="https://voxel51.com/terms/">Terms of Service</a>
-        </li>
-      </ul>
     </div>
   </div>
-</footer>
 
-<!-- https://buttons.github.io -->
-<script async defer src="https://buttons.github.io/buttons.js" ></script>
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-logo-wrapper">
+        <a href="https://pytorch.org/" class="footer-logo"></a>
+      </div>
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XD15NFRY3M" ></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag() {
-    dataLayer.push(arguments);
-  }
-  gtag("js", new Date());
-  gtag("config", "G-XD15NFRY3M");
-</script>
+      <div class="footer-links-wrapper">
+        <div class="footer-links-col">
+          <ul>
+            <li class="list-title"><a href="https://pytorch.org/">PyTorch</a></li>
+            <li><a href="https://pytorch.org/get-started">Get Started</a></li>
+            <li><a href="https://pytorch.org/features">Features</a></li>
+            <li><a href="https://pytorch.org/ecosystem">Ecosystem</a></li>
+            <li><a href="https://pytorch.org/blog/">Blog</a></li>
+            <li><a href="https://github.com/pytorch/pytorch/blob/master/CONTRIBUTING.md">Contributing</a></li>
+          </ul>
+        </div>
 
-<script>
-  function open_modal(modal_id, modal_closer_id) {
-    // Get the modal
-    let the_modal = document.getElementById(modal_id);
+        <div class="footer-links-col">
+          <ul>
+            <li class="list-title"><a href="https://pytorch.org/resources">Resources</a></li>
+            <li><a href="https://pytorch.org/tutorials">Tutorials</a></li>
+            <li><a href="https://pytorch.org/docs/stable/index.html">Docs</a></li>
+            <li><a href="https://discuss.pytorch.org" target="_blank">Discuss</a></li>
+            <li><a href="https://github.com/pytorch/pytorch/issues" target="_blank">Github Issues</a></li>
+            <li><a href="https://pytorch.org/assets/brand-guidelines/PyTorch-Brand-Guidelines.pdf" target="_blank">Brand Guidelines</a></li>
+          </ul>
+        </div>
 
-    the_modal.style.display = "flex";
-    document.body.style.overflow = "hidden";
+        <div class="footer-links-col follow-us-col">
+          <ul>
+            <li class="list-title">Stay Connected</li>
+            <li>
+              <div id="mc_embed_signup">
+                <form
+                  action="https://twitter.us14.list-manage.com/subscribe/post?u=75419c71fe0a935e53dfa4a3f&id=91d0dccd39"
+                  method="post"
+                  id="mc-embedded-subscribe-form"
+                  name="mc-embedded-subscribe-form"
+                  class="email-subscribe-form validate"
+                  target="_blank"
+                  novalidate>
+                  <div id="mc_embed_signup_scroll" class="email-subscribe-form-fields-wrapper">
+                    <div class="mc-field-group">
+                      <label for="mce-EMAIL" style="display:none;">Email Address</label>
+                      <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="Email Address">
+                    </div>
 
-    let the_modal_closer = document.getElementById(modal_closer_id);
+                    <div id="mce-responses" class="clear">
+                      <div class="response" id="mce-error-response" style="display:none"></div>
+                      <div class="response" id="mce-success-response" style="display:none"></div>
+                    </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
 
-    // When the user clicks on <span> (x), close the modal
-    the_modal_closer &&
-      (the_modal_closer.onclick = function () {
-        the_modal.style.display = "none";
-      });
+                    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_75419c71fe0a935e53dfa4a3f_91d0dccd39" tabindex="-1" value=""></div>
 
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function (event) {
-      if (event.target == the_modal) {
-        the_modal.style.display = "none";
-        document.body.style.overflow = "unset";
-        window.onclick = undefined;
-      }
-    };
-  }
-</script>
+                    <div class="clear">
+                      <input type="submit" value="" name="subscribe" id="mc-embedded-subscribe" class="button email-subscribe-button">
+                    </div>
+                  </div>
+                </form>
+              </div>
 
-<!-- bigpicture.io -->
-<script>
-  !(function (e, t, i) {
-    var r = (e.bigPicture = e.bigPicture || []);
-    if (!r.initialized)
-      if (r.invoked)
-        e.console &&
-          console.error &&
-          console.error("BigPicture.io snippet included twice.");
-      else {
-        (r.invoked = !0),
-          (r.SNIPPET_VERSION = 1.5),
-          (r.handler = function (e) {
-            if (void 0 !== r.callback)
-              try {
-                return r.callback(e);
-              } catch (e) {}
-          }),
-          (r.eventList = ["mousedown", "mouseup", "click", "submit"]),
-          (r.methods = [
-            "track",
-            "identify",
-            "page",
-            "group",
-            "alias",
-            "integration",
-            "ready",
-            "intelReady",
-            "consentReady",
-            "on",
-            "off",
-          ]),
-          (r.factory = function (e) {
-            return function () {
-              var t = Array.prototype.slice.call(arguments);
-              return t.unshift(e), r.push(t), r;
-            };
-          });
-        for (var n = 0; n < r.methods.length; n++) {
-          var o = r.methods[n];
-          r[o] = r.factory(o);
-        }
-        r.getCookie = function (e) {
-          var i = ("; " + t.cookie).split("; " + e + "=");
-          return 2 == i.length && i.pop().split(";").shift();
-        };
-        var c = (r.isEditor = (function () {
-          try {
-            return (
-              e.self !== e.top &&
-              (new RegExp("app" + i, "ig").test(t.referrer) ||
-                "edit" == r.getCookie("_bpr_edit"))
-            );
-          } catch (e) {
-            return !1;
-          }
-        })());
-        r.init = function (n, o) {
-          if (((r.projectId = n), (r._config = o), !c))
-            for (var a = 0; a < r.eventList.length; a++)
-              e.addEventListener(r.eventList[a], r.handler, !0);
-          var s = t.createElement("script");
-          s.async = !0;
-          var d = c ? "/editor/editor" : "/public-" + n;
-          (s.src = "//cdn" + i + d + ".js"),
-            t.getElementsByTagName("head")[0].appendChild(s);
-        };
-      }
-  })(window, document, ".bigpicture.io");
-  bigPicture.init("1646");
-</script>
+            </li>
+          </ul>
+
+          <div class="footer-social-icons">
+            <a href="https://www.facebook.com/pytorch" target="_blank" class="facebook"></a>
+            <a href="https://twitter.com/pytorch" target="_blank" class="twitter"></a>
+            <a href="https://www.youtube.com/pytorch" target="_blank" class="youtube"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
 
 
   
@@ -3151,7 +2636,64 @@ the corresponding settings from your
 
   <!-- Begin Mobile Menu -->
 
-  
+
+  <div class="mobile-main-menu">
+    <div class="container-fluid">
+      <div class="container">
+        <div class="mobile-main-menu-header-container">
+          <a class="header-logo" href="https://pytorch.org/" aria-label="PyTorch"></a>
+          <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="mobile-main-menu-links-container">
+      <div class="main-menu">
+        <ul>
+          <li>
+            <a href="https://pytorch.org/get-started">Get Started</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/features">Features</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/ecosystem">Ecosystem</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/mobile">Mobile</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/hub">PyTorch Hub</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/blog/">Blog</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/tutorials">Tutorials</a>
+          </li>
+
+          <li class="active">
+            <a href="https://pytorch.org/docs/stable/index.html">Docs</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/resources">Resources</a>
+          </li>
+
+          <li>
+            <a href="https://github.com/pytorch/pytorch">Github</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
 
   <!-- End Mobile Menu -->
 
