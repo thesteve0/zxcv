@@ -530,7 +530,7 @@ div.rendered_html tbody tr:hover {
 </ul>
 <div class="section" id="What-is-Data-Augmentation?">
 <h2>What is Data Augmentation?<a class="headerlink" href="#What-is-Data-Augmentation?" title="Permalink to this headline">¶</a></h2>
-<figure><p><img alt="df1ef26279ae4571af84eaad1e429c01" src="../_images/augmentations_illustration.png" /></p>
+<figure><p><img alt="792e4b04cbef46c38a4b252b0f298a5b" src="../_images/augmentations_illustration.png" /></p>
 <figcaption align="center"><p>Illustration of data augmentation applied to a single natural image</p>
 </figcaption></figure><p>Broadly speaking, <a class="reference external" href="https://en.wikipedia.org/wiki/Data_augmentation">data augmentation</a> is any process that involves increasing the size of the training set by modifying the original data. Typically, data augmentation is used to fill expected gaps in the original data and reduce overfitting to the specific data that you were able to collect and curate. It is also a <a class="reference external" href="https://www.picsellia.com/post/improve-imbalanced-datasets-in-computer-vision">handy technique for mitigating class
 imbalance</a>: by augmenting the number of samples for underrepresented classes, you can restore balance to the training distribution. Often, augmentations can account for 90% of the training data, or even more.</p>
@@ -544,20 +544,20 @@ along for the ride, then you’ll need a purpose-built image augmentation librar
 <p>When applied irresponsibly, data augmentations can degrade model performance and have severe real–world consequences. Some transformations clearly push beyond the bounds of the desired data distribution — too much blurring makes an image unrecognizable; vertically flipping a portrait (leading to an upside down face) is clearly undesirable for most use cases.</p>
 <p>But the damage done by blindly boosting dataset size can be far more subtle and pernicious. Let’s look at two examples, to make this explicit.</p>
 <p>Suppose you’re working for a wildlife conservation organization, using computer vision to count the number of <a class="reference external" href="https://animalia.bio/blue-throated-macaw">blue-throated macaws</a>. At last count, there were <a class="reference external" href="https://animalia.bio/blue-throated-macaw?collection=35#:~:text=Recent%20population%20and%20range%20estimates,individuals%20remain%20in%20the%20wild.">only around 350 in the wild</a>, so you only have a few images to start with, and you want to augment your data.</p>
-<figure><p><img alt="ade114d7798342e7951c5b68d5ef521d" src="../_images/augmentations_blue_throated_macaw.png" /></p>
+<figure><p><img alt="2968f881dbda4bd5bb002d87a02b67ab" src="../_images/augmentations_blue_throated_macaw.png" /></p>
 <figcaption align="center"><p>Blue-throated macaw. Image courtesy of wikimedia commons</p>
 </figcaption></figure><p>Your field cameras take pretty high-resolution images, so you augment the data by randomly cropping 600x600 patches from your original images. When you randomly crop, some of the resulting augmentations look like this:</p>
-<figure><p><img alt="0301607a5a404c3ba2a8e562dd7b67a1" src="../_images/augmentations_macaw_crops.png" /></p>
+<figure><p><img alt="e3b586e4c4804e918e923887aa81a122" src="../_images/augmentations_macaw_crops.png" /></p>
 <figcaption align="center"><p>600x600 pixel random crops of the image above</p>
 </figcaption></figure><p>But there’s a problem. If you use this to train your model, the model might incorrectly tag <a class="reference external" href="https://animalia.bio/blue-and-gold-macaw">blue-and-gold macaws</a> — which are far more abundant (<a class="reference external" href="https://en.wikipedia.org/wiki/Blue-and-yellow_macaw#:~:text=The%20species%20is%20therefore%20listed,CITES%20Appendix%20II%2C%20trade%20restricted.">more than 10,000 in the wild</a>), share an overlapping geographic range and apart from their head look pretty similar. This might significantly throw off your
 population estimates.</p>
-<figure><p><img alt="2a5a56963cf54776b5d527bb97b62461" src="../_images/augmentations_blue_and_yellow_macaw.png" /></p>
+<figure><p><img alt="c82487ffa71b416eb15025df92e97aa6" src="../_images/augmentations_blue_and_yellow_macaw.png" /></p>
 <figcaption align="center"><p>Blue and yellow macaw. Image courtesy of Ketian Chen</p>
 </figcaption></figure><p>To hammer this idea home, let’s look at another example. Suppose you’re building a model to detect pneumonia from chest X-rays. Typically, pneumonia shows up in these images as an abnormally opaque region within the chest, so teaching a neural net to diagnose it should be possible, but you only have hundreds of images — far too few to train your desired model.</p>
 <p>One of the augmentations you are interested in performing is changing the contrast in the images. Each lab from which you are receiving data sends you X-ray images with different amounts of contrast, so it seems reasonable to turn each image into a set of images across the spectrum of contrast.</p>
 <p>But there’s a problem here too. Turning the contrast up or down may be viable for some images. However, too high of a contrast can also change the perceived diagnosis. Consider the image on the left side below, of a non-pneumatic patient from the <a class="reference external" href="https://try.fiftyone.ai/datasets/chestx-ray14/samples">ChestX-ray14 dataset</a>. Now look at the image on the right, after the contrast has been increased and a region made substantially more opaque. If we retained the training label from the left, we
 would be telling the model that images like this are non-pneumatic. This could potentially cause confusion and result in false negative diagnoses.</p>
-<figure><p><img alt="9e7ae02c5797420889f175361364f4de" src="../_images/augmentations_lung_contrast_comparison.png" /></p>
+<figure><p><img alt="01dac98f8ff249958ffe8b7b3378a3ae" src="../_images/augmentations_lung_contrast_comparison.png" /></p>
 <figcaption align="center"><p>Left: Lung without pneumonia (image from ChestX-ray14 dataset). Right: Contrast-heightened augmentation of left image</p>
 </figcaption></figure></div>
 <div class="section" id="Testing-Transformations-with-Albumentations-and-FiftyOne">
@@ -596,7 +596,7 @@ Segmentations</a>, <a class="reference external" href="https://github.com/jacobm
 </pre></div>
 </div>
 </div>
-<figure><p><img alt="21003f2c151c4b1e89f1076d604b80e6" src="../_images/augmentations_initial_dataset.png" /></p>
+<figure><p><img alt="dc77c869e9f6465e8f45a575fb4c03b3" src="../_images/augmentations_initial_dataset.png" /></p>
 <figcaption align="center"><p>Subset of 10 images from the train split of the KITTI dataset, visualized in the FiftyOne App</p>
 </figcaption></figure><p>To make things more fun — and to show that this plugin allows you to experiment with all different types of labels — let’s add some pose estimation keypoints with <a class="reference external" href="https://docs.ultralytics.com/">Ultralytics</a>, and some relative depth maps with Hugging Face’s <a class="reference external" href="https://huggingface.co/docs/transformers/index">Transformers</a> library:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span>transformers<span class="w"> </span>ultralytics

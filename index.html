@@ -267,28 +267,7 @@
               
   <div class="section" id="fiftyone">
 <h1>FiftyOne<a class="headerlink" href="#fiftyone" title="Permalink to this headline">¶</a></h1>
-<div class="social-links">
-  <table id="social-links-table">
-    <th>
-      <a target="_blank" href="https://github.com/voxel51/fiftyone">
-        <img alt="GitHub repository" src="_static/images/icons/github-logo-256px.png">
-        &nbsp View on GitHub
-      </a>
-    </th>
-    <th>
-      <a target="_blank" href="https://community.voxel51.com/">
-        <img alt="Discord community" src="_static/images/icons/discord-logo-256px.png">
-        &nbsp Join us on Discord
-      </a>
-    </th>
-    <th>
-      <a target="_blank" href="https://colab.research.google.com/github/voxel51/fiftyone-examples/blob/master/examples/quickstart.ipynb">
-        <img alt="Colab quickstart" src="_static/images/icons/colab-logo-256px.png">
-        &nbsp Try it in Colab
-      </a>
-    </th>
-  </table>
-</div><p><strong>The open-source tool for building high-quality datasets and computer vision models</strong></p>
+<p><strong>The open-source tool for building high-quality datasets and computer vision models</strong></p>
 <p>Nothing hinders the success of machine learning systems more than poor quality
 data. And without the right tools, improving a model can be time-consuming and
 inefficient.</p>
@@ -569,14 +548,11 @@ models.</p>
 <p><div class="tutorials-callout-container">
     <a class="btn with-right-arrow callout-button" href="brain.html">Learn more about the Brain</a>
 </div></p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone.brain</span> <span class="k">as</span> <span class="nn">fob</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone.brain</span> <span class="k">as</span> <span class="nn">fob</span>
 
 <span class="n">fob</span><span class="o">.</span><span class="n">compute_uniqueness</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
 <span class="n">rank_view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">sort_by</span><span class="p">(</span><span class="s2">&quot;uniqueness&quot;</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 </div>
 <div class="section" id="fiftyone-plugins">
@@ -604,18 +580,13 @@ download/preparation methods are provided via GitHub repositories or URLs.</p>
 <p><div class="tutorials-callout-container">
     <a class="btn with-right-arrow callout-button" href="dataset_zoo/index.html">Check out the Dataset Zoo</a>
 </div></p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span> <span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
- <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
- <span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;coco-2017&quot;</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="s2">&quot;validation&quot;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;coco-2017&quot;</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="s2">&quot;validation&quot;</span><span class="p">)</span>
 
- <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+<span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+</pre></div>
 </div>
 <img alt="dataset-zoo" class="align-center" src="_images/dataset_zoo_coco_2017.png" />
 </div>
@@ -629,44 +600,26 @@ provided via GitHub repositories or URLs.</p>
 <p><div class="tutorials-callout-container">
     <a class="btn with-right-arrow callout-button" href="model_zoo/index.html">Check out the Model Zoo</a>
 </div></p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span> <span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
- <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
- <span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span>
-     <span class="s2">&quot;coco-2017&quot;</span><span class="p">,</span>
-     <span class="n">split</span><span class="o">=</span><span class="s2">&quot;validation&quot;</span><span class="p">,</span>
-     <span class="n">max_samples</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
-     <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
- <span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span>
+    <span class="s2">&quot;coco-2017&quot;</span><span class="p">,</span>
+    <span class="n">split</span><span class="o">=</span><span class="s2">&quot;validation&quot;</span><span class="p">,</span>
+    <span class="n">max_samples</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+    <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
 
- <span class="n">model</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_model</span><span class="p">(</span>
-     <span class="s2">&quot;clip-vit-base32-torch&quot;</span><span class="p">,</span>
-     <span class="n">text_prompt</span><span class="o">=</span><span class="s2">&quot;A photo of a&quot;</span><span class="p">,</span>
-     <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;person&quot;</span><span class="p">,</span> <span class="s2">&quot;dog&quot;</span><span class="p">,</span> <span class="s2">&quot;cat&quot;</span><span class="p">,</span> <span class="s2">&quot;bird&quot;</span><span class="p">,</span> <span class="s2">&quot;car&quot;</span><span class="p">,</span> <span class="s2">&quot;tree&quot;</span><span class="p">,</span> <span class="s2">&quot;chair&quot;</span><span class="p">],</span>
- <span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_model</span><span class="p">(</span>
+    <span class="s2">&quot;clip-vit-base32-torch&quot;</span><span class="p">,</span>
+    <span class="n">text_prompt</span><span class="o">=</span><span class="s2">&quot;A photo of a&quot;</span><span class="p">,</span>
+    <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;person&quot;</span><span class="p">,</span> <span class="s2">&quot;dog&quot;</span><span class="p">,</span> <span class="s2">&quot;cat&quot;</span><span class="p">,</span> <span class="s2">&quot;bird&quot;</span><span class="p">,</span> <span class="s2">&quot;car&quot;</span><span class="p">,</span> <span class="s2">&quot;tree&quot;</span><span class="p">,</span> <span class="s2">&quot;chair&quot;</span><span class="p">],</span>
+<span class="p">)</span>
 
- <span class="n">dataset</span><span class="o">.</span><span class="n">apply_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;zero_shot_predictions&quot;</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">apply_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;zero_shot_predictions&quot;</span><span class="p">)</span>
 
- <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
-</pre></div></td></tr></table></div>
+<span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+</pre></div>
 </div>
 </div>
 </div>

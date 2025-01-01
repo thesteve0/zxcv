@@ -284,7 +284,7 @@ datasets and use this to query your data is as follows:</p>
 <li><p>Load a <a class="reference internal" href="../user_guide/dataset_creation/index.html#loading-datasets"><span class="std std-ref">dataset</span></a> into FiftyOne</p></li>
 <li><p>Compute embedding vectors for samples or patches in your dataset, or select
 a model to use to generate embeddings</p></li>
-<li><p>Use the <a class="reference internal" href="../api/fiftyone.brain.html#fiftyone.brain.compute_similarity" title="fiftyone.brain.compute_similarity"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_similarity()</span></code></a>
+<li><p>Use the <code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_similarity()</span></code>
 method to generate a LanceDB table for the samples or object
 patches embeddings in a dataset by setting the parameter <code class="code docutils literal notranslate"><span class="pre">backend=&quot;lancedb&quot;</span></code> and
 specifying a <code class="code docutils literal notranslate"><span class="pre">brain_key</span></code> of your choice</p></li>
@@ -352,11 +352,11 @@ by specifying the <code class="code docutils literal notranslate"><span class="p
 <div class="section" id="using-the-lancedb-backend">
 <h3>Using the LanceDB backend<a class="headerlink" href="#using-the-lancedb-backend" title="Permalink to this headline">¶</a></h3>
 <p>By default, calling
-<a class="reference internal" href="../api/fiftyone.brain.html#fiftyone.brain.compute_similarity" title="fiftyone.brain.compute_similarity"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_similarity()</span></code></a> or
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_similarity()</span></code> or
 <a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.sort_by_similarity" title="fiftyone.core.collections.SampleCollection.sort_by_similarity"><code class="xref py py-meth docutils literal notranslate"><span class="pre">sort_by_similarity()</span></code></a>
 will use an sklearn backend.</p>
 <p>To use the LanceDB backend, simply set the optional <code class="code docutils literal notranslate"><span class="pre">backend</span></code> parameter of
-<a class="reference internal" href="../api/fiftyone.brain.html#fiftyone.brain.compute_similarity" title="fiftyone.brain.compute_similarity"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_similarity()</span></code></a> to
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_similarity()</span></code> to
 <code class="code docutils literal notranslate"><span class="pre">&quot;lancedb&quot;</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone.brain</span> <span class="k">as</span> <span class="nn">fob</span>
 
@@ -402,7 +402,7 @@ that includes all of the available parameters:</p>
 </pre></div>
 </div>
 <p>However, typically these parameters are directly passed to
-<a class="reference internal" href="../api/fiftyone.brain.html#fiftyone.brain.compute_similarity" title="fiftyone.brain.compute_similarity"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_similarity()</span></code></a> to configure
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_similarity()</span></code> to configure
 a specific new index:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">lancedb_index</span> <span class="o">=</span> <span class="n">fob</span><span class="o">.</span><span class="n">compute_similarity</span><span class="p">(</span>
     <span class="o">...</span>
@@ -446,7 +446,7 @@ to retrieve information about the configuration of a brain run:</p>
 </pre></div>
 </div>
 <p>Use <a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.load_brain_results" title="fiftyone.core.collections.SampleCollection.load_brain_results"><code class="xref py py-meth docutils literal notranslate"><span class="pre">load_brain_results()</span></code></a>
-to load the <a class="reference internal" href="../api/fiftyone.brain.similarity.html#fiftyone.brain.similarity.SimilarityIndex" title="fiftyone.brain.similarity.SimilarityIndex"><code class="xref py py-class docutils literal notranslate"><span class="pre">SimilarityIndex</span></code></a> instance for a brain run.</p>
+to load the <code class="xref py py-class docutils literal notranslate"><span class="pre">SimilarityIndex</span></code> instance for a brain run.</p>
 <p>You can use
 <a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.rename_brain_run" title="fiftyone.core.collections.SampleCollection.rename_brain_run"><code class="xref py py-meth docutils literal notranslate"><span class="pre">rename_brain_run()</span></code></a>
 to rename the brain key associated with an existing similarity results run:</p>
@@ -481,7 +481,7 @@ a FiftyOne dataset using the LanceDB backend.</p>
 <span id="lancedb-new-similarity-index"></span><h3>Create a similarity index<a class="headerlink" href="#create-a-similarity-index" title="Permalink to this headline">¶</a></h3>
 <p>In order to create a new LanceDB similarity index, you need to specify either
 the <code class="code docutils literal notranslate"><span class="pre">embeddings</span></code> or <code class="code docutils literal notranslate"><span class="pre">model</span></code> argument to
-<a class="reference internal" href="../api/fiftyone.brain.html#fiftyone.brain.compute_similarity" title="fiftyone.brain.compute_similarity"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_similarity()</span></code></a>. Here’s a few
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_similarity()</span></code>. Here’s a few
 possibilities:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.brain</span> <span class="k">as</span> <span class="nn">fob</span>
@@ -538,7 +538,7 @@ possibilities:</p>
 <p>You can also create a similarity index for
 <a class="reference internal" href="../brain.html#brain-object-similarity"><span class="std std-ref">object patches</span></a> within your dataset by
 specifying a <code class="code docutils literal notranslate"><span class="pre">patches_field</span></code> argument to
-<a class="reference internal" href="../api/fiftyone.brain.html#fiftyone.brain.compute_similarity" title="fiftyone.brain.compute_similarity"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_similarity()</span></code></a>:</p>
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_similarity()</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.brain</span> <span class="k">as</span> <span class="nn">fob</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
@@ -565,7 +565,7 @@ specifying a <code class="code docutils literal notranslate"><span class="pre">p
 <p>If you have already created a LanceDB table storing the embedding vectors for
 the samples or patches in your dataset, you can connect to it by passing the
 <code class="code docutils literal notranslate"><span class="pre">table_name</span></code> to
-<a class="reference internal" href="../api/fiftyone.brain.html#fiftyone.brain.compute_similarity" title="fiftyone.brain.compute_similarity"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_similarity()</span></code></a>:</p>
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_similarity()</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.brain</span> <span class="k">as</span> <span class="nn">fob</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
@@ -586,9 +586,9 @@ the samples or patches in your dataset, you can connect to it by passing the
 <div class="section" id="add-remove-embeddings-from-an-index">
 <span id="lancedb-add-remove-embeddings"></span><h3>Add/remove embeddings from an index<a class="headerlink" href="#add-remove-embeddings-from-an-index" title="Permalink to this headline">¶</a></h3>
 <p>You can use
-<a class="reference internal" href="../api/fiftyone.brain.similarity.html#fiftyone.brain.similarity.SimilarityIndex.add_to_index" title="fiftyone.brain.similarity.SimilarityIndex.add_to_index"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_to_index()</span></code></a>
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">add_to_index()</span></code>
 and
-<a class="reference internal" href="../api/fiftyone.brain.similarity.html#fiftyone.brain.similarity.SimilarityIndex.remove_from_index" title="fiftyone.brain.similarity.SimilarityIndex.remove_from_index"><code class="xref py py-meth docutils literal notranslate"><span class="pre">remove_from_index()</span></code></a>
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">remove_from_index()</span></code>
 to add and remove embeddings from an existing Lancedb index.</p>
 <p>These methods can come in handy if you modify your FiftyOne dataset and need
 to update the LanceDB index to reflect these changes:</p>
@@ -632,7 +632,7 @@ to update the LanceDB index to reflect these changes:</p>
 <div class="section" id="retrieve-embeddings-from-an-index">
 <span id="lancedb-get-embeddings"></span><h3>Retrieve embeddings from an index<a class="headerlink" href="#retrieve-embeddings-from-an-index" title="Permalink to this headline">¶</a></h3>
 <p>You can use
-<a class="reference internal" href="../api/fiftyone.brain.similarity.html#fiftyone.brain.similarity.SimilarityIndex.get_embeddings" title="fiftyone.brain.similarity.SimilarityIndex.get_embeddings"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_embeddings()</span></code></a>
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">get_embeddings()</span></code>
 to retrieve embeddings from a LanceDB index by ID:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.brain</span> <span class="k">as</span> <span class="nn">fob</span>

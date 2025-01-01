@@ -741,7 +741,7 @@ operator can be invoked like so:</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Notice that <a class="reference internal" href="../api/fiftyone.operators.html#fiftyone.operators.get_operator" title="fiftyone.operators.get_operator"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_operator()</span></code></a> is
+<p>Notice that <code class="xref py py-func docutils literal notranslate"><span class="pre">get_operator()</span></code> is
 used to retrieve the operator by its URI.</p>
 </div>
 <p>Behind the scenes, the operator’s <code class="code docutils literal notranslate"><span class="pre">__call__()</span></code> method is implemented as
@@ -763,12 +763,12 @@ follows:</p>
 </div>
 <p>which simply packages up the provided keyword arguments into the correct format
 for the operator’s <code class="code docutils literal notranslate"><span class="pre">ctx.params</span></code> and then passes them to
-<a class="reference internal" href="../api/fiftyone.operators.html#fiftyone.operators.execute_operator" title="fiftyone.operators.execute_operator"><code class="xref py py-func docutils literal notranslate"><span class="pre">execute_operator()</span></code></a>, which
+<code class="xref py py-func docutils literal notranslate"><span class="pre">execute_operator()</span></code>, which
 performs the execution.</p>
 <p>For operators whose
 <a class="reference internal" href="../api/fiftyone.operators.operator.html#fiftyone.operators.operator.Operator.execute" title="fiftyone.operators.operator.Operator.execute"><code class="xref py py-meth docutils literal notranslate"><span class="pre">execute()</span></code></a> method returns
 data, you can access it via the <code class="docutils literal notranslate"><span class="pre">result</span></code> property of the returned
-<a class="reference internal" href="../api/fiftyone.operators.executor.html#fiftyone.operators.executor.ExecutionResult" title="fiftyone.operators.executor.ExecutionResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionResult</span></code></a> object:</p>
+<code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionResult</span></code> object:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">op</span> <span class="o">=</span> <span class="n">foo</span><span class="o">.</span><span class="n">get_operator</span><span class="p">(</span><span class="s2">&quot;@an-operator/with-results&quot;</span><span class="p">)</span>
 
 <span class="n">result</span> <span class="o">=</span> <span class="n">op</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
@@ -779,7 +779,7 @@ data, you can access it via the <code class="docutils literal notranslate"><span
 <p class="admonition-title">Note</p>
 <p>When working in notebook contexts, executing operators returns an
 <code class="docutils literal notranslate"><span class="pre">asyncio.Task</span></code> that you can <code class="docutils literal notranslate"><span class="pre">await</span></code> to retrieve the
-<a class="reference internal" href="../api/fiftyone.operators.executor.html#fiftyone.operators.executor.ExecutionResult" title="fiftyone.operators.executor.ExecutionResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionResult</span></code></a>:</p>
+<code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionResult</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">op</span> <span class="o">=</span> <span class="n">foo</span><span class="o">.</span><span class="n">get_operator</span><span class="p">(</span><span class="s2">&quot;@an-operator/with-results&quot;</span><span class="p">)</span>
 
 <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">op</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
@@ -792,7 +792,7 @@ data, you can access it via the <code class="docutils literal notranslate"><span
 <p>Operators that support <a class="reference internal" href="#delegated-operations"><span class="std std-ref">delegated execution</span></a> can
 support this via the <code class="code docutils literal notranslate"><span class="pre">__call__()</span></code> syntax by passing the
 <code class="code docutils literal notranslate"><span class="pre">request_delegation=True</span></code> flag to
-<a class="reference internal" href="../api/fiftyone.operators.html#fiftyone.operators.execute_operator" title="fiftyone.operators.execute_operator"><code class="xref py py-func docutils literal notranslate"><span class="pre">execute_operator()</span></code></a>.</p>
+<code class="xref py py-func docutils literal notranslate"><span class="pre">execute_operator()</span></code>.</p>
 <p>In fact, the
 <a class="reference external" href="https://github.com/voxel51/fiftyone-plugins/tree/main/plugins/utils">&#64;voxel51/utils/compute_metadata</a>
 operator does just that:</p>
@@ -835,7 +835,7 @@ operator does just that:</p>
 <div class="section" id="direct-execution">
 <span id="direct-operator-execution"></span><h3>Direct execution<a class="headerlink" href="#direct-execution" title="Permalink to this headline">¶</a></h3>
 <p>You can programmatically execute any operator by directly calling
-<a class="reference internal" href="../api/fiftyone.operators.html#fiftyone.operators.execute_operator" title="fiftyone.operators.execute_operator"><code class="xref py py-func docutils literal notranslate"><span class="pre">execute_operator()</span></code></a>:</p>
+<code class="xref py py-func docutils literal notranslate"><span class="pre">execute_operator()</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.operators</span> <span class="k">as</span> <span class="nn">foo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
@@ -858,7 +858,7 @@ operator does just that:</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>In general, to use
-<a class="reference internal" href="../api/fiftyone.operators.html#fiftyone.operators.execute_operator" title="fiftyone.operators.execute_operator"><code class="xref py py-func docutils literal notranslate"><span class="pre">execute_operator()</span></code></a> you must
+<code class="xref py py-func docutils literal notranslate"><span class="pre">execute_operator()</span></code> you must
 inspect the operator’s
 <a class="reference internal" href="../api/fiftyone.operators.operator.html#fiftyone.operators.operator.Operator.execute" title="fiftyone.operators.operator.Operator.execute"><code class="xref py py-meth docutils literal notranslate"><span class="pre">execute()</span></code></a>
 implementation to understand what parameters are required.</p>
@@ -866,7 +866,7 @@ implementation to understand what parameters are required.</p>
 <p>For operators whose
 <a class="reference internal" href="../api/fiftyone.operators.operator.html#fiftyone.operators.operator.Operator.execute" title="fiftyone.operators.operator.Operator.execute"><code class="xref py py-meth docutils literal notranslate"><span class="pre">execute()</span></code></a> method returns
 data, you can access it via the <code class="docutils literal notranslate"><span class="pre">result</span></code> property of the returned
-<a class="reference internal" href="../api/fiftyone.operators.executor.html#fiftyone.operators.executor.ExecutionResult" title="fiftyone.operators.executor.ExecutionResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionResult</span></code></a> object:</p>
+<code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionResult</span></code> object:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">foo</span><span class="o">.</span><span class="n">execute_operator</span><span class="p">(</span><span class="s2">&quot;@an-operator/with-results&quot;</span><span class="p">,</span> <span class="n">ctx</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># {...}</span>
 </pre></div>
@@ -875,7 +875,7 @@ data, you can access it via the <code class="docutils literal notranslate"><span
 <p class="admonition-title">Note</p>
 <p>When working in notebook contexts, executing operators returns an
 <code class="docutils literal notranslate"><span class="pre">asyncio.Task</span></code> that you can <code class="docutils literal notranslate"><span class="pre">await</span></code> to retrieve the
-<a class="reference internal" href="../api/fiftyone.operators.executor.html#fiftyone.operators.executor.ExecutionResult" title="fiftyone.operators.executor.ExecutionResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionResult</span></code></a>:</p>
+<code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionResult</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">foo</span><span class="o">.</span><span class="n">execute_operator</span><span class="p">(</span><span class="s2">&quot;@an-operator/with-results&quot;</span><span class="p">,</span> <span class="n">ctx</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># {...}</span>
 </pre></div>
@@ -887,7 +887,7 @@ data, you can access it via the <code class="docutils literal notranslate"><span
 <a class="reference internal" href="#delegated-operations"><span class="std std-ref">delegated execution</span></a> as specified by its
 <a class="reference internal" href="developing_plugins.html#operator-execution-options"><span class="std std-ref">execution options</span></a>, you can request
 delegated execution by passing the <code class="code docutils literal notranslate"><span class="pre">request_delegation=True</span></code> flag to
-<a class="reference internal" href="../api/fiftyone.operators.html#fiftyone.operators.execute_operator" title="fiftyone.operators.execute_operator"><code class="xref py py-func docutils literal notranslate"><span class="pre">execute_operator()</span></code></a>:</p>
+<code class="xref py py-func docutils literal notranslate"><span class="pre">execute_operator()</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">foo</span><span class="o">.</span><span class="n">execute_operator</span><span class="p">(</span><span class="n">operator_uri</span><span class="p">,</span> <span class="n">ctx</span><span class="o">=</span><span class="n">ctx</span><span class="p">,</span> <span class="n">request_delegation</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>

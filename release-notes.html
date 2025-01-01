@@ -443,9 +443,9 @@ operators now support clearing fields of views, in addition to full datasets
 <ul class="simple">
 <li><p>Added support for passing existing
 <a class="reference internal" href="brain.html#brain-similarity"><span class="std std-ref">similarity indexes</span></a> to
-<a class="reference internal" href="api/fiftyone.brain.html#fiftyone.brain.compute_visualization" title="fiftyone.brain.compute_visualization"><code class="xref py py-func docutils literal notranslate"><span class="pre">compute_visualization()</span></code></a>,
-<a class="reference internal" href="api/fiftyone.brain.html#fiftyone.brain.compute_uniqueness" title="fiftyone.brain.compute_uniqueness"><code class="xref py py-func docutils literal notranslate"><span class="pre">compute_uniqueness()</span></code></a>, and
-<a class="reference internal" href="api/fiftyone.brain.html#fiftyone.brain.compute_representativeness" title="fiftyone.brain.compute_representativeness"><code class="xref py py-func docutils literal notranslate"><span class="pre">compute_representativeness()</span></code></a>
+<code class="xref py py-func docutils literal notranslate"><span class="pre">compute_visualization()</span></code>,
+<code class="xref py py-func docutils literal notranslate"><span class="pre">compute_uniqueness()</span></code>, and
+<code class="xref py py-func docutils literal notranslate"><span class="pre">compute_representativeness()</span></code>
 <a class="reference external" href="https://github.com/voxel51/fiftyone-brain/pull/201">#201</a>,
 <a class="reference external" href="https://github.com/voxel51/fiftyone-brain/pull/204">#204</a></p></li>
 <li><p>Upgraded the <a class="reference internal" href="integrations/pinecone.html#pinecone-integration"><span class="std std-ref">Pinecone integration</span></a> to support
@@ -459,7 +459,7 @@ key-value interface for persisting data beyond the lifetime of a panel
 <a class="reference external" href="https://github.com/voxel51/fiftyone/pull/4827">#4827</a>,
 <a class="reference external" href="https://github.com/voxel51/fiftyone/pull/5144">#5144</a></p></li>
 <li><p>Added
-<a class="reference internal" href="api/fiftyone.operators.executor.html#fiftyone.operators.executor.ExecutionContext.spaces" title="fiftyone.operators.executor.ExecutionContext.spaces"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ctx.spaces</span></code></a>
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">ctx.spaces</span></code>
 and
 <a class="reference internal" href="api/fiftyone.operators.operations.html#fiftyone.operators.operations.Operations.set_spaces" title="fiftyone.operators.operations.Operations.set_spaces"><code class="xref py py-meth docutils literal notranslate"><span class="pre">set_spaces()</span></code></a>
 to the operator execution context
@@ -472,7 +472,7 @@ methods for programmatically controlling what sample(s) are displayed in the
 App’s sample modal
 <a class="reference external" href="https://github.com/voxel51/fiftyone/pull/5168">#5168</a></p></li>
 <li><p>Added a <code class="code docutils literal notranslate"><span class="pre">skip_prompt</span></code> option to
-<a class="reference internal" href="api/fiftyone.operators.executor.html#fiftyone.operators.executor.ExecutionContext.prompt" title="fiftyone.operators.executor.ExecutionContext.prompt"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ctx.prompt</span></code></a>,
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">ctx.prompt</span></code>,
 allowing users to bypass prompts during operation execution
 <a class="reference external" href="https://github.com/voxel51/fiftyone/pull/4992">#4992</a></p></li>
 <li><p>Introduced a new
@@ -674,7 +674,7 @@ the <a class="reference internal" href="api/fiftyone.core.dataset.html#fiftyone.
 <p>Plugins</p>
 <ul class="simple">
 <li><p>Added
-<a class="reference internal" href="api/fiftyone.operators.executor.html#fiftyone.operators.executor.ExecutionContext.group_slice" title="fiftyone.operators.executor.ExecutionContext.group_slice"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ctx.group_slice</span></code></a>
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">ctx.group_slice</span></code>
 to the operator execution context
 <a class="reference external" href="https://github.com/voxel51/fiftyone/pull/4850">#4850</a></p></li>
 <li><p>Added
@@ -910,7 +910,7 @@ operator for programmatically controlling the selected fields in the sidebar
 operator for programmatically showing notifications in the App
 <a class="reference external" href="https://github.com/voxel51/fiftyone/pull/4344">#4344</a></p></li>
 <li><p>Added
-<a class="reference internal" href="api/fiftyone.operators.executor.html#fiftyone.operators.executor.ExecutionContext.extended_selection" title="fiftyone.operators.executor.ExecutionContext.extended_selection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ctx.extended_selection</span></code></a>
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">ctx.extended_selection</span></code>
 to retrieve the current extended selection
 <a class="reference external" href="https://github.com/voxel51/fiftyone/pull/4413">#4413</a></p></li>
 <li><p>Added a
@@ -1331,7 +1331,7 @@ operator
 <a class="reference external" href="https://github.com/voxel51/fiftyone/pull/4178">#4178</a></p></li>
 <li><p>Added ability to <a class="reference internal" href="plugins/developing_plugins.html#operator-execution"><span class="std std-ref">trigger builtin operators</span></a> during
 operator execution via
-<a class="reference internal" href="api/fiftyone.operators.executor.html#fiftyone.operators.executor.ExecutionContext.ops" title="fiftyone.operators.executor.ExecutionContext.ops"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ctx.ops</span></code></a>
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">ctx.ops</span></code>
 <a class="reference external" href="https://github.com/voxel51/fiftyone/pull/4164">#4164</a></p></li>
 <li><p>Fixed issue where JS operator input was not validated when calling
 <code class="code docutils literal notranslate"><span class="pre">ctx.trigger()</span></code> or <code class="code docutils literal notranslate"><span class="pre">executeOperator()</span></code> directly
@@ -1444,7 +1444,7 @@ selection is present
 <ul class="simple">
 <li><p>Added subcounts to search results in the sidebar
 <a class="reference external" href="https://github.com/voxel51/fiftyone/pull/3973">#3973</a></p></li>
-<li><p>Added <a class="reference internal" href="api/fiftyone.operators.types.html#fiftyone.operators.types.ViewTargetProperty" title="fiftyone.operators.types.ViewTargetProperty"><code class="xref py py-class docutils literal notranslate"><span class="pre">fiftyone.operators.types.ViewTargetProperty</span></code></a> to make it simpler to add view selection to a <a class="reference internal" href="api/fiftyone.operators.html#fiftyone.operators.Operator" title="fiftyone.operators.Operator"><code class="xref py py-class docutils literal notranslate"><span class="pre">fiftyone.operators.Operator</span></code></a>
+<li><p>Added <a class="reference internal" href="api/fiftyone.operators.types.html#fiftyone.operators.types.ViewTargetProperty" title="fiftyone.operators.types.ViewTargetProperty"><code class="xref py py-class docutils literal notranslate"><span class="pre">fiftyone.operators.types.ViewTargetProperty</span></code></a> to make it simpler to add view selection to a <code class="xref py py-class docutils literal notranslate"><span class="pre">fiftyone.operators.Operator</span></code>
 <a class="reference external" href="https://github.com/voxel51/fiftyone/pull/4076">#4076</a></p></li>
 <li><p>Added support for apply monocular depth estimation transformers from the
 Hugging Face <code class="code docutils literal notranslate"><span class="pre">transformers</span></code> library directly to FiftyOne datasets
@@ -1515,7 +1515,7 @@ display the API URI to users in the Teams App</p></li>
 <li><p>Fixed an issue where API requests were not being prefixed with the correct
 proxy URL</p></li>
 <li><p>Fixed running
-<a class="reference internal" href="api/fiftyone.brain.html#fiftyone.brain.compute_similarity" title="fiftyone.brain.compute_similarity"><code class="xref py py-func docutils literal notranslate"><span class="pre">compute_similarity()</span></code></a> over API
+<code class="xref py py-func docutils literal notranslate"><span class="pre">compute_similarity()</span></code> over API
 connections with the <a class="reference internal" href="integrations/mongodb.html#mongodb-integration"><span class="std std-ref">MongoDB backend</span></a></p></li>
 </ul>
 </div>
@@ -1558,12 +1558,12 @@ added to video slices in mixed datasets
 <a class="reference internal" href="integrations/super_gradients.html#super-gradients-integration"><span class="std std-ref">SuperGradients</span></a> models directly brain
 methods
 <a class="reference external" href="https://github.com/voxel51/fiftyone/pull/4004">#4004</a></p></li>
-<li><p>Added support to <a class="reference internal" href="api/fiftyone.brain.similarity.html#fiftyone.brain.similarity.Similarity.register_run" title="fiftyone.brain.similarity.Similarity.register_run"><code class="xref py py-meth docutils literal notranslate"><span class="pre">register_run()</span></code></a>
+<li><p>Added support to <code class="xref py py-meth docutils literal notranslate"><span class="pre">register_run()</span></code>
 for configuring whether run cleanup happens
 <a class="reference external" href="https://github.com/voxel51/fiftyone/pull/3978">#3978</a></p></li>
 <li><p>Added support for passing model kwargs to
-<a class="reference internal" href="api/fiftyone.brain.html#fiftyone.brain.compute_similarity" title="fiftyone.brain.compute_similarity"><code class="xref py py-func docutils literal notranslate"><span class="pre">compute_similarity()</span></code></a> and
-<a class="reference internal" href="api/fiftyone.brain.html#fiftyone.brain.compute_visualization" title="fiftyone.brain.compute_visualization"><code class="xref py py-func docutils literal notranslate"><span class="pre">compute_visualization()</span></code></a></p></li>
+<code class="xref py py-func docutils literal notranslate"><span class="pre">compute_similarity()</span></code> and
+<code class="xref py py-func docutils literal notranslate"><span class="pre">compute_visualization()</span></code></p></li>
 <li><p>Fixed issues with similarity searches on views and with pre-computed embeddings
 using the <a class="reference internal" href="integrations/mongodb.html#mongodb-integration"><span class="std std-ref">MongoDB backend</span></a></p></li>
 </ul>
@@ -1596,7 +1596,7 @@ using the <a class="reference internal" href="integrations/mongodb.html#mongodb-
 <li><p>Added a builtin <code class="code docutils literal notranslate"><span class="pre">delete_selected_labels</span></code> operator
 <a class="reference external" href="https://github.com/voxel51/fiftyone/pull/4001">#4001</a></p></li>
 <li><p>Updated
-<a class="reference internal" href="api/fiftyone.operators.executor.html#fiftyone.operators.executor.ExecutionContext.selected_labels" title="fiftyone.operators.executor.ExecutionContext.selected_labels"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ctx.selected_labels</span></code></a>
+<code class="xref py py-attr docutils literal notranslate"><span class="pre">ctx.selected_labels</span></code>
 format to be consistent with other SDK methods
 <a class="reference external" href="https://github.com/voxel51/fiftyone/pull/3998">#3998</a></p></li>
 </ul>
@@ -1860,7 +1860,7 @@ implementation
 <p>Plugins</p>
 <ul class="simple">
 <li><p>Added <code class="docutils literal notranslate"><span class="pre">ctx.current_sample</span></code> to operator’s
-<a class="reference internal" href="api/fiftyone.operators.executor.html#fiftyone.operators.executor.ExecutionContext" title="fiftyone.operators.executor.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a> to
+<code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code> to
 support applying operators to the current sample open in the App modal
 <a class="reference external" href="https://github.com/voxel51/fiftyone/pull/3792">#3792</a></p></li>
 <li><p>Added support for configuring an operator’s available
@@ -2015,7 +2015,7 @@ entire indexes</p></li>
 <li><p>Fixed performing similarity queries on filtered views in the
 <a class="reference internal" href="integrations/lancedb.html#lancedb-integration"><span class="std std-ref">LanceDB integration</span></a></p></li>
 <li><p>Fixed calling
-<a class="reference internal" href="api/fiftyone.brain.similarity.html#fiftyone.brain.similarity.SimilarityIndex.remove_from_index" title="fiftyone.brain.similarity.SimilarityIndex.remove_from_index"><code class="xref py py-meth docutils literal notranslate"><span class="pre">remove_from_index()</span></code></a>
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">remove_from_index()</span></code>
 on an index that uses the <code class="docutils literal notranslate"><span class="pre">embeddings_field</span></code> parameter</p></li>
 <li><p>Fixed
 <a class="reference internal" href="api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.compute_embeddings" title="fiftyone.core.collections.SampleCollection.compute_embeddings"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_embeddings()</span></code></a>
@@ -2100,10 +2100,10 @@ well as filename and type of the
 <li><p>Fixed issue where the <code class="docutils literal notranslate"><span class="pre">fiftyone</span> <span class="pre">delegated</span> <span class="pre">launch</span></code> CLI command would print
 confusing errors
 <a class="reference external" href="https://github.com/voxel51/fiftyone/pull/3694">#3694</a></p></li>
-<li><p>Added a <a class="reference internal" href="api/fiftyone.operators.html#fiftyone.operators.list_operators" title="fiftyone.operators.list_operators"><code class="xref py py-func docutils literal notranslate"><span class="pre">list_operators()</span></code></a> utility
+<li><p>Added a <code class="xref py py-func docutils literal notranslate"><span class="pre">list_operators()</span></code> utility
 for listing operators
 <a class="reference external" href="https://github.com/voxel51/fiftyone/pull/3694">#3694</a></p></li>
-<li><p>Added a <a class="reference internal" href="api/fiftyone.operators.html#fiftyone.operators.operator_exists" title="fiftyone.operators.operator_exists"><code class="xref py py-func docutils literal notranslate"><span class="pre">operator_exists()</span></code></a>
+<li><p>Added a <code class="xref py py-func docutils literal notranslate"><span class="pre">operator_exists()</span></code>
 utility for checking if an operator exists
 <a class="reference external" href="https://github.com/voxel51/fiftyone/pull/3694">#3694</a></p></li>
 <li><p><a class="reference internal" href="api/fiftyone.operators.types.html#fiftyone.operators.types.Number" title="fiftyone.operators.types.Number"><code class="xref py py-class docutils literal notranslate"><span class="pre">Number</span></code></a> properties now support
@@ -2194,7 +2194,7 @@ at a time
 <li><p>Fixed an issue where custom component props were not supported
 <a class="reference external" href="https://github.com/voxel51/fiftyone/pull/3549">#3595</a></p></li>
 <li><p>Fixed issue where <code class="docutils literal notranslate"><span class="pre">selected_labels</span></code> were missing from the
-<a class="reference internal" href="api/fiftyone.operators.executor.html#fiftyone.operators.executor.ExecutionContext" title="fiftyone.operators.executor.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>
+<code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code>
 during
 <a class="reference internal" href="api/fiftyone.operators.operator.html#fiftyone.operators.operator.Operator.resolve_input" title="fiftyone.operators.operator.Operator.resolve_input"><code class="xref py py-meth docutils literal notranslate"><span class="pre">resolve_input()</span></code></a>
 and
@@ -2556,7 +2556,7 @@ applying multiple sidebar filters
 method for merging individual samples into existing datasets
 <a class="reference external" href="https://github.com/voxel51/fiftyone/pull/3274">#3274</a></p></li>
 <li><p>Fixed a bug when passing dict-valued <code class="code docutils literal notranslate"><span class="pre">points</span></code> to
-<a class="reference internal" href="api/fiftyone.brain.html#fiftyone.brain.compute_visualization" title="fiftyone.brain.compute_visualization"><code class="xref py py-func docutils literal notranslate"><span class="pre">compute_visualization()</span></code></a>
+<code class="xref py py-func docutils literal notranslate"><span class="pre">compute_visualization()</span></code>
 <a class="reference external" href="https://github.com/voxel51/fiftyone/pull/3268">#3268</a></p></li>
 <li><p>Fixed a bug when filtering keypoints stored in embedded documents
 <a class="reference external" href="https://github.com/voxel51/fiftyone/pull/3279">#3279</a></p></li>
@@ -4003,7 +4003,7 @@ for plotting lines whose scatter points can be interactively selected via the
 typical <a class="reference external" href="https://voxel51.com/docs/fiftyone/user_guide/plots.html">interactive plotting workflows</a>
 <a class="reference external" href="https://github.com/voxel51/fiftyone/pull/1614">#1614</a></p></li>
 <li><p>Added an optional <code class="code docutils literal notranslate"><span class="pre">force_rgb=True</span></code> syntax when importing/exporting/creating
-TF records using all relevant methods in <a class="reference internal" href="api/fiftyone.utils.tf.html#module-fiftyone.utils.tf" title="fiftyone.utils.tf"><code class="xref py py-mod docutils literal notranslate"><span class="pre">fiftyone.utils.tf</span></code></a>
+TF records using all relevant methods in <code class="xref py py-mod docutils literal notranslate"><span class="pre">fiftyone.utils.tf</span></code>
 <a class="reference external" href="https://github.com/voxel51/fiftyone/pull/1612">#1612</a></p></li>
 <li><p>Added support for passing additional kwargs to the <code class="code docutils literal notranslate"><span class="pre">fiftyone</span> <span class="pre">convert</span></code> CLI
 command
@@ -4013,7 +4013,7 @@ command
 <a class="reference external" href="https://github.com/voxel51/fiftyone/pull/1619">#1619</a></p></li>
 <li><p>Added the ability to slice using a <a class="reference internal" href="api/fiftyone.core.expressions.html#fiftyone.core.expressions.ViewField" title="fiftyone.core.expressions.ViewField"><code class="xref py py-class docutils literal notranslate"><span class="pre">ViewField</span></code></a>
 <a class="reference external" href="https://github.com/voxel51/fiftyone/pull/1630">#1630</a></p></li>
-<li><p>Fixed bug in <a class="reference internal" href="api/fiftyone.utils.tf.html#fiftyone.utils.tf.from_images_dir" title="fiftyone.utils.tf.from_images_dir"><code class="xref py py-func docutils literal notranslate"><span class="pre">from_images_dir()</span></code></a>
+<li><p>Fixed bug in <code class="xref py py-func docutils literal notranslate"><span class="pre">from_images_dir()</span></code>
 where attempting to load 4-channel images errored even if <code class="code docutils literal notranslate"><span class="pre">force_rgb=True</span></code>
 <a class="reference external" href="https://github.com/voxel51/fiftyone/pull/1632">#1632</a></p></li>
 <li><p>Fixed a bug that prevented frames from being attached to video collections
@@ -4192,9 +4192,9 @@ from working as expected when <code class="code docutils literal notranslate"><s
 <p>Brain</p>
 <ul class="simple">
 <li><p>Graceful handling of missing/uncomputable embeddings in
-<a class="reference internal" href="api/fiftyone.brain.html#fiftyone.brain.compute_uniqueness" title="fiftyone.brain.compute_uniqueness"><code class="xref py py-func docutils literal notranslate"><span class="pre">compute_uniqueness()</span></code></a></p></li>
+<code class="xref py py-func docutils literal notranslate"><span class="pre">compute_uniqueness()</span></code></p></li>
 <li><p>Graceful handling of edge cases like <code class="code docutils literal notranslate"><span class="pre">fraction</span> <span class="pre">&lt;=</span> <span class="pre">0</span></code> in
-<a class="reference internal" href="api/fiftyone.brain.similarity.html#fiftyone.brain.similarity.DuplicatesMixin.find_duplicates" title="fiftyone.brain.similarity.DuplicatesMixin.find_duplicates"><code class="xref py py-meth docutils literal notranslate"><span class="pre">find_duplicates()</span></code></a>,</p></li>
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">find_duplicates()</span></code>,</p></li>
 <li><p>Removed a spurious warning message that was previously logged when computing
 patch embeddings for a collection containing samples with no patches</p></li>
 </ul>
@@ -4268,12 +4268,12 @@ datasets with Torch models</p></li>
 <p>Brain</p>
 <ul class="simple">
 <li><p>Added the <code class="code docutils literal notranslate"><span class="pre">points</span></code> keyword argument to
-<a class="reference internal" href="api/fiftyone.brain.html#fiftyone.brain.compute_visualization" title="fiftyone.brain.compute_visualization"><code class="xref py py-func docutils literal notranslate"><span class="pre">compute_visualization()</span></code></a> for
+<code class="xref py py-func docutils literal notranslate"><span class="pre">compute_visualization()</span></code> for
 providing your own manually computed low-dimensional representation for use
 with interactive embeddings plots</p></li>
 <li><p>Graceful handling of missing/uncomputable embeddings in
-<a class="reference internal" href="api/fiftyone.brain.html#fiftyone.brain.compute_visualization" title="fiftyone.brain.compute_visualization"><code class="xref py py-func docutils literal notranslate"><span class="pre">compute_visualization()</span></code></a> and
-<a class="reference internal" href="api/fiftyone.brain.html#fiftyone.brain.compute_similarity" title="fiftyone.brain.compute_similarity"><code class="xref py py-func docutils literal notranslate"><span class="pre">compute_similarity()</span></code></a></p></li>
+<code class="xref py py-func docutils literal notranslate"><span class="pre">compute_visualization()</span></code> and
+<code class="xref py py-func docutils literal notranslate"><span class="pre">compute_similarity()</span></code></p></li>
 <li><p>Added checks that occur at the start of all methods to ensure that any
 required dependencies are installed prior to performing any expensive
 computations</p></li>
@@ -4574,21 +4574,21 @@ builds</p></li>
 <p>Brain</p>
 <ul class="simple">
 <li><p>Added new
-<a class="reference internal" href="api/fiftyone.brain.similarity.html#fiftyone.brain.similarity.DuplicatesMixin.find_unique" title="fiftyone.brain.similarity.DuplicatesMixin.find_unique"><code class="xref py py-meth docutils literal notranslate"><span class="pre">find_unique()</span></code></a>,
-<a class="reference internal" href="api/fiftyone.brain.similarity.html#fiftyone.brain.similarity.DuplicatesMixin.unique_view" title="fiftyone.brain.similarity.DuplicatesMixin.unique_view"><code class="xref py py-meth docutils literal notranslate"><span class="pre">unique_view()</span></code></a>, and
-<a class="reference internal" href="api/fiftyone.brain.similarity.html#fiftyone.brain.similarity.DuplicatesMixin.visualize_unique" title="fiftyone.brain.similarity.DuplicatesMixin.visualize_unique"><code class="xref py py-meth docutils literal notranslate"><span class="pre">visualize_unique()</span></code></a>
-methods to the <a class="reference internal" href="api/fiftyone.brain.similarity.html#fiftyone.brain.similarity.SimilarityIndex" title="fiftyone.brain.similarity.SimilarityIndex"><code class="xref py py-class docutils literal notranslate"><span class="pre">SimilarityIndex</span></code></a> object returned by
-<a class="reference internal" href="api/fiftyone.brain.html#fiftyone.brain.compute_similarity" title="fiftyone.brain.compute_similarity"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_similarity()</span></code></a> that enable
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">find_unique()</span></code>,
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">unique_view()</span></code>, and
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">visualize_unique()</span></code>
+methods to the <code class="xref py py-class docutils literal notranslate"><span class="pre">SimilarityIndex</span></code> object returned by
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_similarity()</span></code> that enable
 you to identify a maximally unique set of images or objects in a dataset</p></li>
 <li><p>Added new
-<a class="reference internal" href="api/fiftyone.brain.similarity.html#fiftyone.brain.similarity.DuplicatesMixin.find_duplicates" title="fiftyone.brain.similarity.DuplicatesMixin.find_duplicates"><code class="xref py py-meth docutils literal notranslate"><span class="pre">find_duplicates()</span></code></a>,
-<a class="reference internal" href="api/fiftyone.brain.similarity.html#fiftyone.brain.similarity.DuplicatesMixin.duplicates_view" title="fiftyone.brain.similarity.DuplicatesMixin.duplicates_view"><code class="xref py py-meth docutils literal notranslate"><span class="pre">duplicates_view()</span></code></a>, and
-<a class="reference internal" href="api/fiftyone.brain.similarity.html#fiftyone.brain.similarity.DuplicatesMixin.visualize_duplicates" title="fiftyone.brain.similarity.DuplicatesMixin.visualize_duplicates"><code class="xref py py-meth docutils literal notranslate"><span class="pre">visualize_duplicates()</span></code></a>
-methods to the <a class="reference internal" href="api/fiftyone.brain.similarity.html#fiftyone.brain.similarity.SimilarityIndex" title="fiftyone.brain.similarity.SimilarityIndex"><code class="xref py py-class docutils literal notranslate"><span class="pre">SimilarityIndex</span></code></a> object returned by
-<a class="reference internal" href="api/fiftyone.brain.html#fiftyone.brain.compute_similarity" title="fiftyone.brain.compute_similarity"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_similarity()</span></code></a> that enable
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">find_duplicates()</span></code>,
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">duplicates_view()</span></code>, and
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">visualize_duplicates()</span></code>
+methods to the <code class="xref py py-class docutils literal notranslate"><span class="pre">SimilarityIndex</span></code> object returned by
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_similarity()</span></code> that enable
 you to identify near-duplicate images or objects in a dataset</p></li>
 <li><p>Added a new
-<a class="reference internal" href="api/fiftyone.brain.html#fiftyone.brain.compute_exact_duplicates" title="fiftyone.brain.compute_exact_duplicates"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_exact_duplicates()</span></code></a>
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_exact_duplicates()</span></code>
 method that can identify exactly duplicate media in a dataset</p></li>
 </ul>
 <p>Core</p>
@@ -5013,7 +5013,7 @@ in browser contexts</p></li>
 </ul>
 <p>Brain</p>
 <ul class="simple">
-<li><p>Added a <a class="reference internal" href="api/fiftyone.brain.html#fiftyone.brain.compute_similarity" title="fiftyone.brain.compute_similarity"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_similarity()</span></code></a>
+<li><p>Added a <code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_similarity()</span></code>
 method for indexing samples and object patches by similarity. See
 <a class="reference internal" href="brain.html#brain-similarity"><span class="std std-ref">this page</span></a> for usage details</p></li>
 </ul>
@@ -5116,7 +5116,7 @@ fields</p></li>
 <p>Brain</p>
 <ul class="simple">
 <li><dl class="simple">
-<dt>Added a <a class="reference internal" href="api/fiftyone.brain.html#fiftyone.brain.compute_visualization" title="fiftyone.brain.compute_visualization"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_visualization()</span></code></a> method that uses embeddings and dimensionality reduction methods to generate interactive visualizations of the samples and/or labels in a dataset. Check out <a class="reference internal" href="brain.html#brain-embeddings-visualization"><span class="std std-ref">this page</span></a> for details. Features include:</dt><dd><ul>
+<dt>Added a <code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_visualization()</span></code> method that uses embeddings and dimensionality reduction methods to generate interactive visualizations of the samples and/or labels in a dataset. Check out <a class="reference internal" href="brain.html#brain-embeddings-visualization"><span class="std std-ref">this page</span></a> for details. Features include:</dt><dd><ul>
 <li><p>Provide your own embeddings, or choose a model from the
 <a class="reference internal" href="model_zoo/index.html#model-zoo"><span class="std std-ref">Model Zoo</span></a>, or use the provided default model</p></li>
 <li><p>Supported dimensionality reduction methods include
@@ -5134,7 +5134,7 @@ results can now be loaded at any time via
 <a class="reference internal" href="api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset.load_brain_results" title="fiftyone.core.dataset.Dataset.load_brain_results"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Dataset.load_brain_results()</span></code></a></p></li>
 <li><p>Added support for providing a custom <a class="reference internal" href="api/fiftyone.core.models.html#fiftyone.core.models.Model" title="fiftyone.core.models.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></a> or model from the
 <a class="reference internal" href="model_zoo/index.html#model-zoo"><span class="std std-ref">Model Zoo</span></a> to
-<a class="reference internal" href="api/fiftyone.brain.html#fiftyone.brain.compute_uniqueness" title="fiftyone.brain.compute_uniqueness"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_uniqueness()</span></code></a></p></li>
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_uniqueness()</span></code></p></li>
 </ul>
 <p>Core</p>
 <ul class="simple">
@@ -5265,7 +5265,7 @@ enable quick exploration of location-based datasets</p></li>
 <p>Docs</p>
 <ul class="simple">
 <li><p>Added <a class="reference internal" href="tutorials/image_embeddings.html"><span class="doc">a tutorial</span></a> demonstrating how to
-use <a class="reference internal" href="api/fiftyone.brain.html#fiftyone.brain.compute_visualization" title="fiftyone.brain.compute_visualization"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_visualization()</span></code></a>
+use <code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_visualization()</span></code>
 on image datasets</p></li>
 <li><p>Added an <a class="reference internal" href="user_guide/plots.html#interactive-plots"><span class="std std-ref">interactive plots</span></a> page to the user guide</p></li>
 <li><p>Added a <a class="reference internal" href="user_guide/app.html#app-tagging"><span class="std std-ref">Tags and tagging</span></a> section to the App user guide</p></li>
@@ -5291,7 +5291,7 @@ evaluations are tracked. See
 and
 <a class="reference internal" href="api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.delete_brain_run" title="fiftyone.core.collections.SampleCollection.delete_brain_run"><code class="xref py py-meth docutils literal notranslate"><span class="pre">delete_brain_run()</span></code></a>
 for details</p></li>
-<li><p>Updated <a class="reference internal" href="api/fiftyone.brain.html#fiftyone.brain.compute_mistakenness" title="fiftyone.brain.compute_mistakenness"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_mistakenness()</span></code></a>
+<li><p>Updated <code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_mistakenness()</span></code>
 to use FiftyOne’s evaluation framework</p></li>
 </ul>
 <p>Core</p>
@@ -5624,7 +5624,7 @@ applying label filters</p></li>
 <p>Brain</p>
 <ul class="simple">
 <li><p>Added support for computing mistakenness for detections when using
-<a class="reference internal" href="api/fiftyone.brain.html#fiftyone.brain.compute_mistakenness" title="fiftyone.brain.compute_mistakenness"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_mistakenness()</span></code></a></p></li>
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_mistakenness()</span></code></p></li>
 </ul>
 <p>Core</p>
 <ul class="simple">
@@ -5640,7 +5640,7 @@ the CLI</p></li>
 <p>Docs</p>
 <ul class="simple">
 <li><p>Added <a class="reference internal" href="tutorials/detection_mistakes.html"><span class="doc">a tutorial</span></a> demonstrating how to
-use <a class="reference internal" href="api/fiftyone.brain.html#fiftyone.brain.compute_mistakenness" title="fiftyone.brain.compute_mistakenness"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_mistakenness()</span></code></a> to
+use <code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_mistakenness()</span></code> to
 detect label mistakes for detection datasets</p></li>
 <li><dl class="simple">
 <dt>Added questions to the <a class="reference internal" href="faq/index.html#faq"><span class="std std-ref">FAQ page</span></a>:</dt><dd><ul>
@@ -5733,7 +5733,7 @@ video datasets</p></li>
 <ul class="simple">
 <li><p>Added support for computing uniqueness within regions-of-interest specified
 by a set of detections/polylines when using
-<a class="reference internal" href="api/fiftyone.brain.html#fiftyone.brain.compute_uniqueness" title="fiftyone.brain.compute_uniqueness"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_uniqueness()</span></code></a></p></li>
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_uniqueness()</span></code></p></li>
 </ul>
 <p>Core</p>
 <ul class="simple">
@@ -5809,8 +5809,8 @@ applied</p></li>
 </ul>
 <p>Brain</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="api/fiftyone.brain.html#fiftyone.brain.compute_uniqueness" title="fiftyone.brain.compute_uniqueness"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_uniqueness()</span></code></a> and
-<a class="reference internal" href="api/fiftyone.brain.html#fiftyone.brain.compute_hardness" title="fiftyone.brain.compute_hardness"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_hardness()</span></code></a> now support
+<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_uniqueness()</span></code> and
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_hardness()</span></code> now support
 multilabel classification tasks</p></li>
 </ul>
 <p>Core</p>

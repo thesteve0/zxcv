@@ -995,12 +995,12 @@ execution:</p>
 </div>
 <div class="section" id="execution-context">
 <span id="operator-execution-context"></span><h3>Execution context<a class="headerlink" href="#execution-context" title="Permalink to this headline">¶</a></h3>
-<p>An <a class="reference internal" href="../api/fiftyone.operators.executor.html#fiftyone.operators.executor.ExecutionContext" title="fiftyone.operators.executor.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a> is
+<p>An <code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code> is
 passed to each of the operator’s methods at runtime. This <code class="code docutils literal notranslate"><span class="pre">ctx</span></code> contains static
 information about the current state of the App (dataset, view, panel,
 selection, etc) as well as dynamic information about the current parameters and
 results.</p>
-<p>An <a class="reference internal" href="../api/fiftyone.operators.executor.html#fiftyone.operators.executor.ExecutionContext" title="fiftyone.operators.executor.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>
+<p>An <code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code>
 contains the following properties:</p>
 <ul class="simple">
 <li><p><code class="code docutils literal notranslate"><span class="pre">ctx.params</span></code>: a dict containing the operator’s current input parameter
@@ -1239,7 +1239,7 @@ deferred to the prior mechanisms described above.</p>
 <div class="section" id="reporting-progress">
 <span id="operator-reporting-progress"></span><h4>Reporting progress<a class="headerlink" href="#reporting-progress" title="Permalink to this headline">¶</a></h4>
 <p>Delegated operations can report their execution progress by calling
-<a class="reference internal" href="../api/fiftyone.operators.executor.html#fiftyone.operators.executor.ExecutionContext.set_progress" title="fiftyone.operators.executor.ExecutionContext.set_progress"><code class="xref py py-meth docutils literal notranslate"><span class="pre">set_progress()</span></code></a>
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">set_progress()</span></code>
 on their execution context from within
 <a class="reference internal" href="../api/fiftyone.operators.operator.html#fiftyone.operators.operator.Operator.execute" title="fiftyone.operators.operator.Operator.execute"><code class="xref py py-meth docutils literal notranslate"><span class="pre">execute()</span></code></a>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
@@ -1270,7 +1270,7 @@ of their delegated operations from the
 <p>For your convenience, all builtin methods of the FiftyOne SDK that support
 rendering progress bars provide an optional <code class="code docutils literal notranslate"><span class="pre">progress</span></code> method that you can use
 trigger calls to
-<a class="reference internal" href="../api/fiftyone.operators.executor.html#fiftyone.operators.executor.ExecutionContext.set_progress" title="fiftyone.operators.executor.ExecutionContext.set_progress"><code class="xref py py-meth docutils literal notranslate"><span class="pre">set_progress()</span></code></a>
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">set_progress()</span></code>
 using the pattern show below:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 
@@ -1294,9 +1294,9 @@ using the pattern show below:</p>
 </pre></div>
 </div>
 <p>You can also use the builtin
-<a class="reference internal" href="../api/fiftyone.operators.html#fiftyone.operators.ProgressHandler" title="fiftyone.operators.ProgressHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProgressHandler</span></code></a> class to
+<code class="xref py py-class docutils literal notranslate"><span class="pre">ProgressHandler</span></code> class to
 automatically forward logging messages to
-<a class="reference internal" href="../api/fiftyone.operators.executor.html#fiftyone.operators.executor.ExecutionContext.set_progress" title="fiftyone.operators.executor.ExecutionContext.set_progress"><code class="xref py py-meth docutils literal notranslate"><span class="pre">set_progress()</span></code></a>
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">set_progress()</span></code>
 as <code class="code docutils literal notranslate"><span class="pre">label</span></code> values using the pattern shown below:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">logging</span>
 <span class="kn">import</span> <span class="nn">fiftyone.operators</span> <span class="k">as</span> <span class="nn">foo</span>
@@ -1372,7 +1372,7 @@ can also be <code class="code docutils literal notranslate"><span class="pre">as
 more complex behaviors. You can trigger other operations from within an
 operator’s <a class="reference internal" href="../api/fiftyone.operators.operator.html#fiftyone.operators.operator.Operator.execute" title="fiftyone.operators.operator.Operator.execute"><code class="xref py py-meth docutils literal notranslate"><span class="pre">execute()</span></code></a>
 method via <a class="reference internal" href="../api/fiftyone.operators.operations.html#fiftyone.operators.operations.Operations" title="fiftyone.operators.operations.Operations"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ctx.ops</span></code></a> and
-<a class="reference internal" href="../api/fiftyone.operators.executor.html#fiftyone.operators.executor.ExecutionContext.trigger" title="fiftyone.operators.executor.ExecutionContext.trigger"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ctx.trigger</span></code></a>.</p>
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">ctx.trigger</span></code>.</p>
 <p>The <a class="reference internal" href="../api/fiftyone.operators.operations.html#fiftyone.operators.operations.Operations" title="fiftyone.operators.operations.Operations"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ctx.ops</span></code></a> property of an
 execution context exposes all builtin
 <code class="xref py py-mod docutils literal notranslate"><span class="pre">Python</span></code> and
@@ -1403,7 +1403,7 @@ involve updating the current state of the App:</p>
     <span class="n">ctx</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">close_panel</span><span class="p">(</span><span class="s2">&quot;Embeddings&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>The <a class="reference internal" href="../api/fiftyone.operators.executor.html#fiftyone.operators.executor.ExecutionContext.trigger" title="fiftyone.operators.executor.ExecutionContext.trigger"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ctx.trigger</span></code></a>
+<p>The <code class="xref py py-meth docutils literal notranslate"><span class="pre">ctx.trigger</span></code>
 property is a lower-level function that allows you to invoke arbitrary
 operations by providing their URI and parameters, including all builtin
 operations as well as any operations installed via custom plugins. For example,
@@ -1440,7 +1440,7 @@ generator via <code class="code docutils literal notranslate"><span class="pre">
 <a class="reference internal" href="../api/fiftyone.operators.operator.html#fiftyone.operators.operator.Operator.execute" title="fiftyone.operators.operator.Operator.execute"><code class="xref py py-meth docutils literal notranslate"><span class="pre">execute()</span></code></a> method should
 <code class="code docutils literal notranslate"><span class="pre">yield</span></code> calls to
 <a class="reference internal" href="../api/fiftyone.operators.operations.html#fiftyone.operators.operations.Operations" title="fiftyone.operators.operations.Operations"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ctx.ops</span></code></a> methods or
-<a class="reference internal" href="../api/fiftyone.operators.executor.html#fiftyone.operators.executor.ExecutionContext.trigger" title="fiftyone.operators.executor.ExecutionContext.trigger"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ctx.trigger()</span></code></a>,
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">ctx.trigger()</span></code>,
 both of which trigger another operation and return a
 <a class="reference internal" href="../api/fiftyone.operators.message.html#fiftyone.operators.message.GeneratedMessage" title="fiftyone.operators.message.GeneratedMessage"><code class="xref py py-class docutils literal notranslate"><span class="pre">GeneratedMessage</span></code></a>
 instance containing the result of the invocation.</p>
@@ -1478,15 +1478,7 @@ in its <a class="reference internal" href="#plugin-fiftyone-yml"><span class="st
 <p>For example, the
 <a class="reference external" href="https://github.com/voxel51/fiftyone-plugins/blob/main/plugins/annotation/fiftyone.yml">&#64;voxel51/annotation</a>
 plugin declares the following secrets:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><span class="nt">secrets</span><span class="p">:</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">secrets</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FIFTYONE_CVAT_URL</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FIFTYONE_CVAT_USERNAME</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FIFTYONE_CVAT_PASSWORD</span>
@@ -1495,7 +1487,7 @@ plugin declares the following secrets:</p>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FIFTYONE_LABELBOX_API_KEY</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FIFTYONE_LABELSTUDIO_URL</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FIFTYONE_LABELSTUDIO_API_KEY</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 <p>As the naming convention implies, any necessary secrets are provided by users
 by setting environment variables with the appropriate names. For example, if
@@ -1511,16 +1503,12 @@ plugin, you would set:</p>
 <p>At runtime, the plugin’s <a class="reference internal" href="#operator-execution-context"><span class="std std-ref">execution context</span></a>
 is automatically hydrated with any available secrets that are declared by the
 plugin. Operators can access these secrets via the <code class="code docutils literal notranslate"><span class="pre">ctx.secrets</span></code> dict:</p>
-<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ctx</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ctx</span><span class="p">):</span>
    <span class="n">url</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="n">secrets</span><span class="p">[</span><span class="s2">&quot;FIFTYONE_CVAT_URL&quot;</span><span class="p">]</span>
    <span class="n">username</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="n">secrets</span><span class="p">[</span><span class="s2">&quot;FIFTYONE_CVAT_USERNAME&quot;</span><span class="p">]</span>
    <span class="n">password</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="n">secrets</span><span class="p">[</span><span class="s2">&quot;FIFTYONE_CVAT_PASSWORD&quot;</span><span class="p">]</span>
    <span class="n">email</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="n">secrets</span><span class="p">[</span><span class="s2">&quot;FIFTYONE_CVAT_EMAIL&quot;</span><span class="p">]</span>
-</pre></div></td></tr></table></div>
+</pre></div>
 </div>
 </div>
 <div class="section" id="operator-outputs">
@@ -2007,7 +1995,7 @@ that focus on individual samples and scenarios</p></li>
 </div>
 <div class="section" id="panel-execution-context">
 <span id="id23"></span><h3>Execution context<a class="headerlink" href="#panel-execution-context" title="Permalink to this headline">¶</a></h3>
-<p>An <a class="reference internal" href="../api/fiftyone.operators.executor.html#fiftyone.operators.executor.ExecutionContext" title="fiftyone.operators.executor.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a> is
+<p>An <code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code> is
 passed to each of the panel’s methods at runtime. This <code class="code docutils literal notranslate"><span class="pre">ctx</span></code> contains static
 information about the current state of the App (dataset, view, panel,
 selection, etc) as well as dynamic information about the panel’s current
@@ -2208,7 +2196,7 @@ is persisted beyond the lifetime of the panel. This is useful for storing
 information that should persist across panel instances and App sessions, such
 as cached data, long-lived panel state, or user preferences.</p>
 <p>You can create/retrieve execution stores scoped to the current <code class="docutils literal notranslate"><span class="pre">ctx.dataset</span></code>
-via <a class="reference internal" href="../api/fiftyone.operators.executor.html#fiftyone.operators.executor.ExecutionContext.store" title="fiftyone.operators.executor.ExecutionContext.store"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ctx.store</span></code></a>:</p>
+via <code class="xref py py-meth docutils literal notranslate"><span class="pre">ctx.store</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">on_load</span><span class="p">(</span><span class="n">ctx</span><span class="p">):</span>
     <span class="c1"># Retrieve a store scoped to the current `ctx.dataset`</span>
     <span class="c1"># The store is automatically created if necessary</span>
@@ -2326,7 +2314,7 @@ and programmatically modify the current state.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>All callback functions have access to the current
-<a class="reference internal" href="../api/fiftyone.operators.executor.html#fiftyone.operators.executor.ExecutionContext" title="fiftyone.operators.executor.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a>
+<code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code>
 via their <code class="code docutils literal notranslate"><span class="pre">ctx</span></code> argument and can use it to get/update panel state and
 trigger other operations.</p>
 </div>
@@ -2755,7 +2743,7 @@ speed of development.</p>
 source code, and see what methods exist on your object during the development
 process.</p>
 <p>For example, declaring that the <code class="code docutils literal notranslate"><span class="pre">ctx</span></code> variable has type
-<a class="reference internal" href="../api/fiftyone.operators.executor.html#fiftyone.operators.executor.ExecutionContext" title="fiftyone.operators.executor.ExecutionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code></a> allows
+<code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionContext</span></code> allows
 you to reveal all of its available methods during development:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fiftyone.operators</span> <span class="kn">import</span> <span class="n">ExecutionContext</span>
 
