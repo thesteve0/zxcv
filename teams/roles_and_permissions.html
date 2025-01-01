@@ -1,0 +1,822 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Roles and permissions &mdash; FiftyOne 1.3.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <link rel="stylesheet" href="../_static/css/voxel51-website.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Dataset Versioning" href="dataset_versioning.html" />
+    <link rel="prev" title="Cloud-Backed Media" href="cloud_media.html" />
+<meta property="og:image" content="https://voxel51.com/wp-content/uploads/2024/03/3.24_webpages_Home_AV.png" />
+
+<link
+  href="https://fonts.googleapis.com/css?family=Palanquin:400,600,700,800"
+  rel="stylesheet"
+/>
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+  rel="stylesheet"
+/>
+<script src="https://tag.clearbitscripts.com/v1/pk_b9ed71c8234edd4f77326bcbfab5a4ca/tags.js"></script>
+
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+  
+</head>
+
+
+<div class="container-fluid header-holder tutorials-header" id="header-holder">
+  <nav id="nav__main" class="nav__main">
+    <div class="nav__main__logo">
+      <a href="https://voxel51.com/">
+        <img
+          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
+        />
+      </a>
+    </div>
+
+    <div class="nav__spacer desktop_only"></div>
+
+    <div id="nav__main__mobilebutton--on">
+      <a href="javascript:void(0);" onclick="navMobileButton()">
+        <i class="fa-solid fa-bars"></i>
+      </a>
+    </div>
+
+    <div id="nav__main__mobilebutton--off">
+      <a href="javascript:void(0);" onclick="navMobileButton()">
+        <i class="fa-solid fa-times"></i>
+      </a>
+    </div>
+
+    <div id="nav__main__items">
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Products</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://voxel51.com/fiftyone/">Open Source</a></li>
+            <li><a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a></li>
+            <li><a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a></li>
+            <li><a href="https://voxel51.com/success-stories/">Success Stories</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Learn</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://community.voxel51.com">Community Discord</a></li>
+            <li><a href="https://voxel51.com/blog/">Blog</a></li>
+            <li><a href="https://voxel51.com/computer-vision-events/">Events</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item">
+        <a href="https://docs.voxel51.com/">Docs</a>
+      </div>
+
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Company</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://voxel51.com/ourstory/">About Us</a></li>
+            <li><a href="https://voxel51.com/jobs/">Careers</a></li>
+            <li><a href="https://voxel51.com/talk-to-sales/">Talk to Sales</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item mobile_only">
+        <a href="https://github.com/voxel51/fiftyone">GitHub</a>
+      </div>
+
+      <div class="nav__item desktop_only" id="octocat">
+        <!-- https://buttons.github.io -->
+        <a
+          class="github-button"
+          href="https://github.com/voxel51/fiftyone"
+          data-color-scheme="no-preference: dark_high_contrast; light: dark_high_contrast; dark: dark_high_contrast;"
+          data-size="large"
+          data-show-count="true"
+          aria-label="Star voxel51/fiftyone on GitHub"
+          >Star</a
+        >
+      </div>
+
+      <div class="nav__item full_nav_only">
+        <a class="button-primary" href="https://voxel51.com/schedule-teams-workshop/" target="_blank"
+          >Schedule a workshop</a
+        >
+      </div>
+    </div>
+  </nav>
+</div>
+
+
+
+<body class="pytorch-body">
+
+   
+
+    
+
+    <div class="table-of-contents-link-wrapper">
+      <span>Table of Contents</span>
+      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+    </div>
+
+    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+      <div class="pytorch-side-scroll">
+        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          <div class="pytorch-left-menu-search">
+            
+
+            
+              
+              
+            
+
+            
+
+
+  
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+            
+          </div>
+
+           <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Overview</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">FiftyOne Teams 🚀</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_connection.html">API connection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloud_media.html">Cloud-backed media</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Roles and permissions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dataset_versioning.html">Dataset Versioning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="teams_app.html">FiftyOne Teams App</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_lens.html">Data Lens <strong style="color: hsl(25, 100%, 51%); font-size: 0.85em; vertical-align: top">NEW</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_quality.html">Data Quality <strong style="color: hsl(25, 100%, 51%); font-size: 0.85em; vertical-align: top">NEW</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="query_performance.html">Query Performance <strong style="color: hsl(25, 100%, 51%); font-size: 0.85em; vertical-align: top">NEW</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="teams_plugins.html">Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="secrets.html">Secrets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="management_sdk.html">Management SDK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migrations.html">Migrations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pluggable_auth.html">Pluggable Auth</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../environments/index.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../recipes/index.html">Recipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheat_sheets/index.html">Cheat Sheets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dataset_zoo/index.html">Dataset Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_zoo/index.html">Model Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brain.html">FiftyOne Brain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/index.html">Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plugins/index.html">Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli/index.html">CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/fiftyone.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deprecation.html">Deprecation Notices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a></li>
+</ul>
+ 
+        </div>
+      </div>
+    </nav>
+
+    <div class="pytorch-container">
+      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+        <div class="pytorch-breadcrumbs-wrapper">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="../index.html">
+          
+            Docs
+          
+        </a> &gt;
+      </li>
+
+        
+          <li><a href="index.html">FiftyOne Teams</a> &gt;</li>
+        
+      <li>Roles and permissions</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+        </div>
+
+        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+          Contents
+        </div>
+      </div>
+
+      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+        <div class="pytorch-content-left">
+
+        
+          
+          <div class="rst-content style-external-links">
+          
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+              
+  <div class="section" id="roles-and-permissions">
+<span id="teams-roles-and-permissions"></span><h1>Roles and permissions<a class="headerlink" href="#roles-and-permissions" title="Permalink to this headline">¶</a></h1>
+<p>FiftyOne Teams is built for collaboration, with the goal of making it as easy
+as possible for engineers, data scientists, and stakeholders to work together
+to build high quality datasets and computer vision models.</p>
+<p>Accordingly, FiftyOne Teams gives you the flexibility to configure user roles,
+user groups and fine-grained permissions so that you can safely and securely
+collaborate both inside and outside your organization at all stages of your
+workflows.</p>
+<p>This page introduces the basic roles and permissions available in
+FiftyOne Teams.</p>
+<div class="section" id="roles">
+<span id="teams-roles"></span><h2>Roles<a class="headerlink" href="#roles" title="Permalink to this headline">¶</a></h2>
+<p>FiftyOne Teams has four user roles: Admin, Member, Collaborator, and Guest.</p>
+<p>Admins can access user management features by clicking on their account icon in
+the upper-right of the FiftyOne Teams App and navigating to the
+“Settings &gt; Team &gt; Users” page:</p>
+<img alt="admin-team-users-page" class="align-center" src="../_images/admin_team_users_page.png" />
+<p>Admins can invite new users by clicking on “Invite people”, as shown below.
+Invited users will receive an email invitation with a link to accept the
+invitation.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Invited users may login using any identity provider that has been enabled on your
+deployment. If you need more information about configuring IdPs or increasing
+your user quotas, contact your Voxel51 CS engineer.</p>
+</div>
+<img alt="user-invitation" class="align-center" src="../_images/user_invitation.png" />
+<div class="section" id="admin">
+<span id="teams-admin"></span><h3>Admin<a class="headerlink" href="#admin" title="Permalink to this headline">¶</a></h3>
+<p>Admins have full access to all of an organization’s datasets and can
+create, edit, and delete any dataset.</p>
+<p>Admins can also invite or remove users from the organization and change any
+other user’s roles, including promoting/demoting users to admins.</p>
+</div>
+<div class="section" id="member">
+<span id="teams-member"></span><h3>Member<a class="headerlink" href="#member" title="Permalink to this headline">¶</a></h3>
+<p>Members can create new datasets and can be granted any desired level of
+permission on existing datasets. Members may also have a
+<a class="reference internal" href="#teams-default-access"><span class="std std-ref">default access level</span></a> to datasets that use this
+feature.</p>
+<p>Members do not have the ability to see or manage an organization’s users.</p>
+</div>
+<div class="section" id="collaborator">
+<span id="teams-collaborator"></span><h3>Collaborator<a class="headerlink" href="#collaborator" title="Permalink to this headline">¶</a></h3>
+<p>Collaborators only have access to datasets to which they have been specifically
+granted access (a dataset’s
+<a class="reference internal" href="#teams-default-access"><span class="std std-ref">default access level</span></a> does not apply to
+Collaborators), and they may only be granted <strong>Can view</strong>,  <strong>Can tag</strong>
+or <strong>Can edit</strong> access to datasets.</p>
+<p>Collaborators cannot create new datasets, clone existing datasets, or view
+other users of the deployment. Collaborators may export datasets to which
+they’ve been granted access.</p>
+</div>
+<div class="section" id="guest">
+<span id="teams-guest"></span><h3>Guest<a class="headerlink" href="#guest" title="Permalink to this headline">¶</a></h3>
+<p>Guests only have access to datasets to which they have been specifically
+granted access (a dataset’s
+<a class="reference internal" href="#teams-default-access"><span class="std std-ref">default access level</span></a> does not apply to Guests),
+and they may only be granted <strong>Can view</strong> access to datasets.</p>
+<p>Guests cannot create new datasets, clone existing datasets, export datasets, or
+view other users of the deployment.</p>
+</div>
+<div class="section" id="groups">
+<span id="teams-groups"></span><h3>Groups<a class="headerlink" href="#groups" title="Permalink to this headline">¶</a></h3>
+<p>User groups in FiftyOne Teams allow organization admins to manage a collection
+of users as a single entity. This simplifies the process of assigning
+permissions to multiple users, making it more efficient to control access to
+datasets.</p>
+<p>Admins can manage groups through the “Settings &gt; Team &gt; Groups” page.
+Each group can be given specific dataset access permissions, which apply to
+all users within the group. Collaborators’ and guests’ access to the dataset is
+limited by the maximum dataset access level of the role.</p>
+<img alt="admin-team-groups-page" class="align-center" src="../_images/admin_team_groups_page.png" />
+<p>Admins can create a new group by clicking on “Create group” and then adding
+existing users to the group by clicking on “Add users”.</p>
+<img alt="admin-create-group" class="align-center" src="../_images/admin_create_group.png" />
+<img alt="admin-team-add-users-to-team" class="align-center" src="../_images/admin_add_users_to_team.png" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Non-existing users cannot be directly added to a group. Users must be
+invited and accept the invitation before they can be added to a group.</p>
+</div>
+</div>
+</div>
+<div class="section" id="permissions">
+<span id="teams-permissions"></span><h2>Permissions<a class="headerlink" href="#permissions" title="Permalink to this headline">¶</a></h2>
+<p>Admins and users with the <strong>Can manage</strong> permission on a dataset can configure
+a dataset’s permissions under the dataset’s
+<a class="reference internal" href="teams_app.html#teams-managing-datasets"><span class="std std-ref">Manage tab</span></a> in the FiftyOne Teams App.</p>
+<p>In FiftyOne Teams, dataset permissions for a user are determined by both the
+access they receive from their groups’ permissions and individual permissions
+assigned to them.</p>
+<p>A user’s permissions on a dataset is the maximum of their permissions from the
+following sources:</p>
+<ul class="simple">
+<li><p>Admins implicitly have full access to all datasets</p></li>
+<li><p>Members have the dataset’s
+<a class="reference internal" href="#teams-default-access"><span class="std std-ref">default access level</span></a></p></li>
+<li><p>Users may be granted <a class="reference internal" href="#teams-specific-access"><span class="std std-ref">specific access</span></a> to the
+dataset</p></li>
+<li><p>Users may be members of one or more groups, each of which may have
+<a class="reference internal" href="#teams-specific-access"><span class="std std-ref">specific access</span></a> to the dataset</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>User role determines the highest level of access that a user can be granted
+to a dataset. For example, a user with Guest role can be added to a group
+with <strong>Can edit</strong> permission to a dataset, but this user will have
+<strong>Can view</strong> permission instead of <strong>Can edit</strong> permission of the dataset,
+because Guest role only allows <strong>Can view</strong> permission to datasets.</p>
+</div>
+<div class="section" id="default-access">
+<span id="teams-default-access"></span><h3>Default access<a class="headerlink" href="#default-access" title="Permalink to this headline">¶</a></h3>
+<p>All datasets have a default access level, which defines a minimum permission
+level that all Members have on the dataset.</p>
+<p>A dataset’s default access level can be set to <strong>No access</strong>, <strong>Can view</strong>,
+<strong>Can tag</strong>, <strong>Can edit</strong>, or <strong>Can manage</strong> as shown below:</p>
+<img alt="default-access" class="align-center" src="../_images/dataset_default_access.png" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Default access level only applies to Members. Guests and Collaborators must
+be granted <a class="reference internal" href="#teams-specific-access"><span class="std std-ref">specific access</span></a> to datasets.</p>
+</div>
+</div>
+<div class="section" id="specific-access">
+<span id="teams-specific-access"></span><h3>Specific access<a class="headerlink" href="#specific-access" title="Permalink to this headline">¶</a></h3>
+<p>Authorized users can grant specific access to a dataset using the “People and
+groups with access” section shown below.</p>
+<p>To give access to an existing user or group, simply click “Share” button on
+the top right. A list of users with access to the dataset is shown. Click
+“Add User” or “Add Group” to grant access to a new user or group.</p>
+<img alt="specific-access" class="align-center" src="../_images/share_dataset.png" />
+<img alt="specific-access" class="align-center" src="../_images/dataset_specific_access.png" />
+<p>The following permissions are available to each user role:</p>
+<ul class="simple">
+<li><p>Groups may be granted <strong>Can view</strong>, <strong>Can tag</strong>, <strong>Can edit</strong>,
+or <strong>Can manage</strong> permissions</p></li>
+<li><p>Members may be granted <strong>Can view</strong>, <strong>Can tag</strong>, <strong>Can edit</strong>,
+or <strong>Can manage</strong> permissions</p></li>
+<li><p>Collaborators may be granted <strong>Can view</strong>, <strong>Can tag</strong>,
+or <strong>Can edit</strong> permissions</p></li>
+<li><p>Guests may be granted <strong>Can view</strong> permissions</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Authorized users can use the “Grant access” workflow to give <strong>Can view</strong>
+, <strong>Can tag</strong>, or <strong>Can edit</strong> access to a dataset to an email address that
+is not yet user of a FiftyOne Teams deployment.</p>
+<p>When the invitation is accepted, the user will become a Guest if the
+<strong>Can view</strong> permission is chosen or a Collaborator if a higher permission
+is chosen, and an Admin can upgrade this user to another role if desired via
+the Team Settings page.</p>
+</div>
+</div>
+<div class="section" id="no-access">
+<span id="teams-no-access"></span><h3>No access<a class="headerlink" href="#no-access" title="Permalink to this headline">¶</a></h3>
+<p>If a user has no access to a dataset, the dataset will not appear in the user’s
+search results or show on their dataset listing page. Any direct links to this
+dataset that the user attempts to open will show a 404 page.</p>
+</div>
+<div class="section" id="can-view">
+<span id="teams-can-view"></span><h3>Can view<a class="headerlink" href="#can-view" title="Permalink to this headline">¶</a></h3>
+<p>A user with <strong>Can view</strong> permissions on a dataset can find the dataset from
+their dataset listing page.</p>
+<p>Users with <strong>Can view</strong> permissions cannot modify the dataset in any way, for
+example by adding or removing samples, tags, annotation runs, brain runs, etc.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Members (but not Guests or Collaborators) with <strong>Can view</strong> access to a
+dataset may clone the dataset.</p>
+</div>
+</div>
+<div class="section" id="can-tag">
+<span id="teams-can-tag"></span><h3>Can tag<a class="headerlink" href="#can-tag" title="Permalink to this headline">¶</a></h3>
+<p>A user with <strong>Can tag</strong> permissions on a dataset can find the dataset from
+their dataset listing page.</p>
+<p>Users with <strong>Can tag</strong> permissions can modify sample/label tags but cannot
+modify the dataset in any other way.</p>
+</div>
+<div class="section" id="can-edit">
+<span id="teams-can-edit"></span><h3>Can edit<a class="headerlink" href="#can-edit" title="Permalink to this headline">¶</a></h3>
+<p>A user with <strong>Can edit</strong> permissions on a dataset has all permissions from
+<strong>Can view</strong> and, in addition, can modify the dataset, including:</p>
+<ul class="simple">
+<li><p>Adding, editing, and deleting samples</p></li>
+<li><p>Adding, editing, and deleting tags</p></li>
+<li><p>Adding and deleting annotation runs, brain runs, etc.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Deleting a dataset requires the <strong>Can manage</strong> permission.</p>
+</div>
+</div>
+<div class="section" id="can-manage">
+<span id="teams-can-manage"></span><h3>Can manage<a class="headerlink" href="#can-manage" title="Permalink to this headline">¶</a></h3>
+<p>A user with <strong>Can manage</strong> permissions on a dataset has all permissions from
+<strong>Can view</strong>, <strong>Can tag</strong>  and <strong>Can edit</strong> and, in addition, can delete the
+dataset and configure the permissions on the dataset of other users.</p>
+<p>Remember that all admins can implicitly access and manage all datasets created
+on your team’s deployment.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Any member who creates a dataset (including cloning an existing dataset or
+view) will be granted <strong>Can manage</strong> permissions on the new dataset.</p>
+</div>
+</div>
+</div>
+<div class="section" id="roles-page">
+<span id="teams-roles-page"></span><h2>Roles page<a class="headerlink" href="#roles-page" title="Permalink to this headline">¶</a></h2>
+<p>Admins can review the actions and permissions available to each user role by
+navigating to the “Settings &gt; Security &gt; Roles” page:</p>
+<img alt="admin-roles-page" class="align-center" src="../_images/admin_roles_page.png" />
+</div>
+</div>
+
+
+             </article>
+             
+            </div>
+            <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="dataset_versioning.html" class="btn btn-neutral float-right" title="Dataset Versioning" accesskey="n" rel="next">Next <img src="../_static/images/chevron-right-orange.svg" class="next-page"></a>
+      
+      
+        <a href="cloud_media.html" class="btn btn-neutral" title="Cloud-Backed Media" accesskey="p" rel="prev"><img src="../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
+      
+    </div>
+  
+</footer>
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              <ul>
+<li><a class="reference internal" href="#">Roles and permissions</a><ul>
+<li><a class="reference internal" href="#roles">Roles</a><ul>
+<li><a class="reference internal" href="#admin">Admin</a></li>
+<li><a class="reference internal" href="#member">Member</a></li>
+<li><a class="reference internal" href="#collaborator">Collaborator</a></li>
+<li><a class="reference internal" href="#guest">Guest</a></li>
+<li><a class="reference internal" href="#groups">Groups</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#permissions">Permissions</a><ul>
+<li><a class="reference internal" href="#default-access">Default access</a></li>
+<li><a class="reference internal" href="#specific-access">Specific access</a></li>
+<li><a class="reference internal" href="#no-access">No access</a></li>
+<li><a class="reference internal" href="#can-view">Can view</a></li>
+<li><a class="reference internal" href="#can-tag">Can tag</a></li>
+<li><a class="reference internal" href="#can-edit">Can edit</a></li>
+<li><a class="reference internal" href="#can-manage">Can manage</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#roles-page">Roles page</a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  
+
+
+  
+
+     
+       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+         <script src="../_static/jquery.js"></script>
+         <script src="../_static/underscore.js"></script>
+         <script src="../_static/doctools.js"></script>
+         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+         <script src="../_static/js/voxel51-website.js"></script>
+         <script src="../_static/js/custom.js"></script>
+     
+
+  
+
+  <script type="text/javascript" src="../_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="../_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+  <!-- Begin Footer -->
+
+
+<footer class="footer-wrapper" id="docs-tutorials-resources">
+  <div class="footer pytorch-container">
+    <div class="footer__logo">
+      <a href="https://voxel51.com/"
+        ><img
+          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
+      /></a>
+    </div>
+
+    <div class="footer__address">
+      330 E Liberty St<br />
+      Ann Arbor, MI 48104<br />
+      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
+    </div>
+
+    <!--
+    <div class="footer__contact">
+      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
+    </div>
+    -->
+
+    <div class="footer__links">
+      <div class="footer__links--col2">
+        <p class="nav__item--brand">Products</p>
+        <a href="https://voxel51.com/fiftyone/">FiftyOne</a>
+        <a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a>
+        <a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a>
+        <a href="https://voxel51.com/success-stories/">Success Stories</a>
+      </div>
+      <div class="footer__links--col3">
+        <p class="nav__item--brand">Resources</p>
+        <a href="https://voxel51.com/blog/">Blog</a>
+        <a href="https://docs.voxel51.com/">Docs</a>
+        <a href="https://github.com/voxel51/">GitHub</a>
+        <a href="https://community.voxel51.com">Discord</a>
+        <a href="https://voxel51.com/ourstory/">About Us</a>
+        <a href="https://voxel51.com/computer-vision-events/">Events</a>
+        <a href="https://voxel51.com/jobs/">Careers</a>
+        <a href="https://voxel51.com/press/">Press</a>
+      </div>
+    </div>
+
+    <div class="footer__icons">
+      <ul class="list-inline">
+        <li>
+          <a href="https://www.linkedin.com/company/voxel51/">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/voxel51/">
+            <i class="fa-brands fa-github"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/voxel51">
+            <i class="fa-brands fa-twitter"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/voxel51/">
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="footer__copyright">
+      <ul class="list-inline">
+        <li>&copy; 2024 Voxel51 Inc.</li>
+        <li>
+          <a href="https://voxel51.com/privacy/">Privacy Policy</a>
+        </li>
+        <li>
+          <a href="https://voxel51.com/terms/">Terms of Service</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<!-- https://buttons.github.io -->
+<script async defer src="https://buttons.github.io/buttons.js" ></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XD15NFRY3M" ></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+  gtag("config", "G-XD15NFRY3M");
+</script>
+
+<script>
+  function open_modal(modal_id, modal_closer_id) {
+    // Get the modal
+    let the_modal = document.getElementById(modal_id);
+
+    the_modal.style.display = "flex";
+    document.body.style.overflow = "hidden";
+
+    let the_modal_closer = document.getElementById(modal_closer_id);
+
+    // When the user clicks on <span> (x), close the modal
+    the_modal_closer &&
+      (the_modal_closer.onclick = function () {
+        the_modal.style.display = "none";
+      });
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+      if (event.target == the_modal) {
+        the_modal.style.display = "none";
+        document.body.style.overflow = "unset";
+        window.onclick = undefined;
+      }
+    };
+  }
+</script>
+
+<!-- bigpicture.io -->
+<script>
+  !(function (e, t, i) {
+    var r = (e.bigPicture = e.bigPicture || []);
+    if (!r.initialized)
+      if (r.invoked)
+        e.console &&
+          console.error &&
+          console.error("BigPicture.io snippet included twice.");
+      else {
+        (r.invoked = !0),
+          (r.SNIPPET_VERSION = 1.5),
+          (r.handler = function (e) {
+            if (void 0 !== r.callback)
+              try {
+                return r.callback(e);
+              } catch (e) {}
+          }),
+          (r.eventList = ["mousedown", "mouseup", "click", "submit"]),
+          (r.methods = [
+            "track",
+            "identify",
+            "page",
+            "group",
+            "alias",
+            "integration",
+            "ready",
+            "intelReady",
+            "consentReady",
+            "on",
+            "off",
+          ]),
+          (r.factory = function (e) {
+            return function () {
+              var t = Array.prototype.slice.call(arguments);
+              return t.unshift(e), r.push(t), r;
+            };
+          });
+        for (var n = 0; n < r.methods.length; n++) {
+          var o = r.methods[n];
+          r[o] = r.factory(o);
+        }
+        r.getCookie = function (e) {
+          var i = ("; " + t.cookie).split("; " + e + "=");
+          return 2 == i.length && i.pop().split(";").shift();
+        };
+        var c = (r.isEditor = (function () {
+          try {
+            return (
+              e.self !== e.top &&
+              (new RegExp("app" + i, "ig").test(t.referrer) ||
+                "edit" == r.getCookie("_bpr_edit"))
+            );
+          } catch (e) {
+            return !1;
+          }
+        })());
+        r.init = function (n, o) {
+          if (((r.projectId = n), (r._config = o), !c))
+            for (var a = 0; a < r.eventList.length; a++)
+              e.addEventListener(r.eventList[a], r.handler, !0);
+          var s = t.createElement("script");
+          s.async = !0;
+          var d = c ? "/editor/editor" : "/public-" + n;
+          (s.src = "//cdn" + i + d + ".js"),
+            t.getElementsByTagName("head")[0].appendChild(s);
+        };
+      }
+  })(window, document, ".bigpicture.io");
+  bigPicture.init("1646");
+</script>
+
+
+  
+
+  <!-- End Footer -->
+
+  <!-- Begin Mobile Menu -->
+
+  
+
+  <!-- End Mobile Menu -->
+
+  <script type="text/javascript" src="../_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function(e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+</body>
+</html>

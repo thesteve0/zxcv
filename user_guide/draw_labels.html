@@ -1,0 +1,846 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Drawing Labels on Samples &mdash; FiftyOne 1.3.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <link rel="stylesheet" href="../_static/css/voxel51-website.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Configuring FiftyOne" href="config.html" />
+    <link rel="prev" title="Exporting FiftyOne Datasets" href="export_datasets.html" />
+<meta property="og:image" content="https://voxel51.com/wp-content/uploads/2024/03/3.24_webpages_Home_AV.png" />
+
+<link
+  href="https://fonts.googleapis.com/css?family=Palanquin:400,600,700,800"
+  rel="stylesheet"
+/>
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+  rel="stylesheet"
+/>
+<script src="https://tag.clearbitscripts.com/v1/pk_b9ed71c8234edd4f77326bcbfab5a4ca/tags.js"></script>
+
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+  
+</head>
+
+
+<div class="container-fluid header-holder tutorials-header" id="header-holder">
+  <nav id="nav__main" class="nav__main">
+    <div class="nav__main__logo">
+      <a href="https://voxel51.com/">
+        <img
+          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
+        />
+      </a>
+    </div>
+
+    <div class="nav__spacer desktop_only"></div>
+
+    <div id="nav__main__mobilebutton--on">
+      <a href="javascript:void(0);" onclick="navMobileButton()">
+        <i class="fa-solid fa-bars"></i>
+      </a>
+    </div>
+
+    <div id="nav__main__mobilebutton--off">
+      <a href="javascript:void(0);" onclick="navMobileButton()">
+        <i class="fa-solid fa-times"></i>
+      </a>
+    </div>
+
+    <div id="nav__main__items">
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Products</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://voxel51.com/fiftyone/">Open Source</a></li>
+            <li><a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a></li>
+            <li><a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a></li>
+            <li><a href="https://voxel51.com/success-stories/">Success Stories</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Learn</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://community.voxel51.com">Community Discord</a></li>
+            <li><a href="https://voxel51.com/blog/">Blog</a></li>
+            <li><a href="https://voxel51.com/computer-vision-events/">Events</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item">
+        <a href="https://docs.voxel51.com/">Docs</a>
+      </div>
+
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Company</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://voxel51.com/ourstory/">About Us</a></li>
+            <li><a href="https://voxel51.com/jobs/">Careers</a></li>
+            <li><a href="https://voxel51.com/talk-to-sales/">Talk to Sales</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item mobile_only">
+        <a href="https://github.com/voxel51/fiftyone">GitHub</a>
+      </div>
+
+      <div class="nav__item desktop_only" id="octocat">
+        <!-- https://buttons.github.io -->
+        <a
+          class="github-button"
+          href="https://github.com/voxel51/fiftyone"
+          data-color-scheme="no-preference: dark_high_contrast; light: dark_high_contrast; dark: dark_high_contrast;"
+          data-size="large"
+          data-show-count="true"
+          aria-label="Star voxel51/fiftyone on GitHub"
+          >Star</a
+        >
+      </div>
+
+      <div class="nav__item full_nav_only">
+        <a class="button-primary" href="https://voxel51.com/schedule-teams-workshop/" target="_blank"
+          >Schedule a workshop</a
+        >
+      </div>
+    </div>
+  </nav>
+</div>
+
+
+
+<body class="pytorch-body">
+
+   
+
+    
+
+    <div class="table-of-contents-link-wrapper">
+      <span>Table of Contents</span>
+      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+    </div>
+
+    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+      <div class="pytorch-side-scroll">
+        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          <div class="pytorch-left-menu-search">
+            
+
+            
+              
+              
+            
+
+            
+
+
+  
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+            
+          </div>
+
+           <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../teams/index.html">FiftyOne Teams 🚀</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../environments/index.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../recipes/index.html">Recipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheat_sheets/index.html">Cheat Sheets</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">User Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="basics.html">FiftyOne basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dataset_creation/index.html">Loading datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="using_datasets.html">Using datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="using_views.html">Dataset views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app.html">Using the App</a></li>
+<li class="toctree-l2"><a class="reference internal" href="groups.html">Grouped datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="annotation.html">Annotating datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="evaluation.html">Evaluating models <strong style="color: hsl(25, 100%, 51%); font-size: 0.85em; vertical-align: top">NEW</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="using_aggregations.html">Using aggregations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plots.html">Interactive plots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="export_datasets.html">Exporting datasets</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Drawing labels on samples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config.html">Configuring FiftyOne</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config.html#configuring-the-app">Configuring the App</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../dataset_zoo/index.html">Dataset Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_zoo/index.html">Model Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brain.html">FiftyOne Brain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/index.html">Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plugins/index.html">Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli/index.html">CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/fiftyone.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deprecation.html">Deprecation Notices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a></li>
+</ul>
+ 
+        </div>
+      </div>
+    </nav>
+
+    <div class="pytorch-container">
+      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+        <div class="pytorch-breadcrumbs-wrapper">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="../index.html">
+          
+            Docs
+          
+        </a> &gt;
+      </li>
+
+        
+          <li><a href="index.html">FiftyOne User Guide</a> &gt;</li>
+        
+      <li>Drawing Labels on Samples</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+        </div>
+
+        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+          Contents
+        </div>
+      </div>
+
+      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+        <div class="pytorch-content-left">
+
+        
+          
+          <div class="rst-content style-external-links">
+          
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+              
+  <div class="section" id="drawing-labels-on-samples">
+<span id="drawing-labels"></span><h1>Drawing Labels on Samples<a class="headerlink" href="#drawing-labels-on-samples" title="Permalink to this headline">¶</a></h1>
+<p>FiftyOne provides native support for rendering annotated versions of image and
+video samples with <a class="reference internal" href="using_datasets.html#using-labels"><span class="std std-ref">label fields</span></a> overlaid on the source
+media.</p>
+<div class="section" id="basic-recipe">
+<h2>Basic recipe<a class="headerlink" href="#basic-recipe" title="Permalink to this headline">¶</a></h2>
+<p>The interface for drawing labels on samples is exposed via the Python library
+and the CLI. You can easily annotate one or more
+<a class="reference internal" href="using_datasets.html#using-labels"><span class="std std-ref">label fields</span></a> on entire datasets or arbitrary subsets of
+your datasets that you have identified by constructing a <a class="reference internal" href="../api/fiftyone.core.view.html#fiftyone.core.view.DatasetView" title="fiftyone.core.view.DatasetView"><code class="xref py py-class docutils literal notranslate"><span class="pre">DatasetView</span></code></a>.</p>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="drawing-labels-on-images">
+<h3>Drawing labels on images<a class="headerlink" href="#drawing-labels-on-images" title="Permalink to this headline">¶</a></h3>
+<p>The following snippet renders the ground truth and predicted labels on a few
+samples from the <a class="reference internal" href="../dataset_zoo/datasets.html#dataset-zoo-quickstart"><span class="std std-ref">quickstart dataset</span></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">,</span> <span class="n">max_samples</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">anno_image_paths</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">draw_labels</span><span class="p">(</span>
+    <span class="s2">&quot;/tmp/quickstart/draw-labels&quot;</span><span class="p">,</span>
+    <span class="n">label_fields</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>                  <span class="c1"># all label fields</span>
+    <span class="c1"># label_fields=[&quot;predictions&quot;],     # only predictions</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">anno_image_paths</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+</div>
+<div class="section" id="drawing-labels-on-videos">
+<h3>Drawing labels on videos<a class="headerlink" href="#drawing-labels-on-videos" title="Permalink to this headline">¶</a></h3>
+<p>The following snippet renders both sample-level and frame-level labels on a
+few videos from the
+<a class="reference internal" href="../dataset_zoo/datasets.html#dataset-zoo-quickstart-video"><span class="std std-ref">quickstart-video dataset</span></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart-video&quot;</span><span class="p">,</span> <span class="n">max_samples</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+
+<span class="c1"># Add some temporal detections</span>
+<span class="n">sample1</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+<span class="n">sample1</span><span class="p">[</span><span class="s2">&quot;events&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">TemporalDetections</span><span class="p">(</span>
+    <span class="n">detections</span><span class="o">=</span><span class="p">[</span>
+        <span class="n">fo</span><span class="o">.</span><span class="n">TemporalDetection</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;first&quot;</span><span class="p">,</span> <span class="n">support</span><span class="o">=</span><span class="p">[</span><span class="mi">31</span><span class="p">,</span> <span class="mi">60</span><span class="p">]),</span>
+        <span class="n">fo</span><span class="o">.</span><span class="n">TemporalDetection</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;second&quot;</span><span class="p">,</span> <span class="n">support</span><span class="o">=</span><span class="p">[</span><span class="mi">90</span><span class="p">,</span> <span class="mi">120</span><span class="p">]),</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+<span class="n">sample1</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+<span class="n">sample2</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">last</span><span class="p">()</span>
+<span class="n">sample2</span><span class="p">[</span><span class="s2">&quot;events&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">TemporalDetections</span><span class="p">(</span>
+    <span class="n">detections</span><span class="o">=</span><span class="p">[</span>
+        <span class="n">fo</span><span class="o">.</span><span class="n">TemporalDetection</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;first&quot;</span><span class="p">,</span> <span class="n">support</span><span class="o">=</span><span class="p">[</span><span class="mi">16</span><span class="p">,</span> <span class="mi">45</span><span class="p">]),</span>
+        <span class="n">fo</span><span class="o">.</span><span class="n">TemporalDetection</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;second&quot;</span><span class="p">,</span> <span class="n">support</span><span class="o">=</span><span class="p">[</span><span class="mi">75</span><span class="p">,</span> <span class="mi">104</span><span class="p">]),</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+<span class="n">sample2</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+<span class="n">anno_video_paths</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">draw_labels</span><span class="p">(</span>
+    <span class="s2">&quot;/tmp/quickstart-video/draw-labels&quot;</span><span class="p">,</span>
+    <span class="n">label_fields</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>                      <span class="c1"># all sample and frame labels</span>
+    <span class="c1"># label_fields=[&quot;events&quot;],              # only sample-level labels</span>
+    <span class="c1"># label_fields=[&quot;frames.detections&quot;],   # only frame-level labels</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">anno_video_paths</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
+<div class="section" id="individual-samples">
+<h2>Individual samples<a class="headerlink" href="#individual-samples" title="Permalink to this headline">¶</a></h2>
+<p>You can also render annotated versions of individual samples directly by using
+the various methods exposed in the <a class="reference internal" href="../api/fiftyone.utils.annotations.html#module-fiftyone.utils.annotations" title="fiftyone.utils.annotations"><code class="xref py py-mod docutils literal notranslate"><span class="pre">fiftyone.utils.annotations</span></code></a> module.</p>
+<p>For example, you can render an annotated version of an image sample with
+<a class="reference internal" href="../api/fiftyone.core.labels.html#fiftyone.core.labels.Classification" title="fiftyone.core.labels.Classification"><code class="xref py py-class docutils literal notranslate"><span class="pre">Classification</span></code></a> and <a class="reference internal" href="../api/fiftyone.core.labels.html#fiftyone.core.labels.Detections" title="fiftyone.core.labels.Detections"><code class="xref py py-class docutils literal notranslate"><span class="pre">Detections</span></code></a> labels overlaid via
+<a class="reference internal" href="../api/fiftyone.utils.annotations.html#fiftyone.utils.annotations.draw_labeled_image" title="fiftyone.utils.annotations.draw_labeled_image"><code class="xref py py-func docutils literal notranslate"><span class="pre">draw_labeled_image()</span></code></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.utils.annotations</span> <span class="k">as</span> <span class="nn">foua</span>
+
+<span class="c1"># Example data</span>
+<span class="n">sample</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Sample</span><span class="p">(</span>
+    <span class="n">filepath</span><span class="o">=</span><span class="s2">&quot;~/fiftyone/coco-2017/validation/data/000000000632.jpg&quot;</span><span class="p">,</span>
+    <span class="n">gt_label</span><span class="o">=</span><span class="n">fo</span><span class="o">.</span><span class="n">Classification</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;bedroom&quot;</span><span class="p">),</span>
+    <span class="n">pred_label</span><span class="o">=</span><span class="n">fo</span><span class="o">.</span><span class="n">Classification</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;house&quot;</span><span class="p">,</span> <span class="n">confidence</span><span class="o">=</span><span class="mf">0.95</span><span class="p">),</span>
+    <span class="n">gt_objects</span><span class="o">=</span><span class="n">fo</span><span class="o">.</span><span class="n">Detections</span><span class="p">(</span>
+        <span class="n">detections</span><span class="o">=</span><span class="p">[</span>
+            <span class="n">fo</span><span class="o">.</span><span class="n">Detection</span><span class="p">(</span>
+                <span class="n">label</span><span class="o">=</span><span class="s2">&quot;bed&quot;</span><span class="p">,</span>
+                <span class="n">bounding_box</span><span class="o">=</span><span class="p">[</span><span class="mf">0.00510938</span><span class="p">,</span> <span class="mf">0.55248447</span><span class="p">,</span> <span class="mf">0.62692188</span><span class="p">,</span> <span class="mf">0.43115942</span><span class="p">],</span>
+            <span class="p">),</span>
+            <span class="n">fo</span><span class="o">.</span><span class="n">Detection</span><span class="p">(</span>
+                <span class="n">label</span><span class="o">=</span><span class="s2">&quot;chair&quot;</span><span class="p">,</span>
+                <span class="n">bounding_box</span><span class="o">=</span><span class="p">[</span><span class="mf">0.38253125</span><span class="p">,</span> <span class="mf">0.47712215</span><span class="p">,</span> <span class="mf">0.16362500</span><span class="p">,</span> <span class="mf">0.18155280</span><span class="p">],</span>
+            <span class="p">),</span>
+        <span class="p">]</span>
+    <span class="p">),</span>
+    <span class="n">pred_objects</span><span class="o">=</span><span class="n">fo</span><span class="o">.</span><span class="n">Detections</span><span class="p">(</span>
+        <span class="n">detections</span><span class="o">=</span><span class="p">[</span>
+            <span class="n">fo</span><span class="o">.</span><span class="n">Detection</span><span class="p">(</span>
+                <span class="n">label</span><span class="o">=</span><span class="s2">&quot;bed&quot;</span><span class="p">,</span>
+                <span class="n">bounding_box</span><span class="o">=</span><span class="p">[</span><span class="mf">0.10</span><span class="p">,</span> <span class="mf">0.63</span><span class="p">,</span> <span class="mf">0.50</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">],</span>
+                <span class="n">confidence</span><span class="o">=</span><span class="mf">0.74</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">fo</span><span class="o">.</span><span class="n">Detection</span><span class="p">(</span>
+                <span class="n">label</span><span class="o">=</span><span class="s2">&quot;chair&quot;</span><span class="p">,</span>
+                <span class="n">bounding_box</span><span class="o">=</span><span class="p">[</span><span class="mf">0.39</span><span class="p">,</span> <span class="mf">0.53</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.13</span><span class="p">],</span>
+                <span class="n">confidence</span><span class="o">=</span><span class="mf">0.92</span><span class="p">,</span>
+            <span class="p">),</span>
+        <span class="p">]</span>
+    <span class="p">),</span>
+<span class="p">)</span>
+
+<span class="c1"># The path to write the annotated image</span>
+<span class="n">outpath</span> <span class="o">=</span> <span class="s2">&quot;/path/for/image-annotated.jpg&quot;</span>
+
+<span class="c1"># Render the annotated image</span>
+<span class="n">foua</span><span class="o">.</span><span class="n">draw_labeled_image</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="n">outpath</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<img alt="image-annotated.jpg" class="align-center" src="../_images/example1.jpg" />
+<p><br />
+Similarly, you can draw an annotated version of a video sample with its frame
+labels overlaid via
+<a class="reference internal" href="../api/fiftyone.utils.annotations.html#fiftyone.utils.annotations.draw_labeled_video" title="fiftyone.utils.annotations.draw_labeled_video"><code class="xref py py-func docutils literal notranslate"><span class="pre">draw_labeled_video()</span></code></a>.</p>
+</div>
+<div class="section" id="customizing-label-rendering">
+<h2>Customizing label rendering<a class="headerlink" href="#customizing-label-rendering" title="Permalink to this headline">¶</a></h2>
+<p>You can customize the look-and-feel of the labels rendered by FiftyOne by
+providing a custom <a class="reference internal" href="../api/fiftyone.utils.annotations.html#fiftyone.utils.annotations.DrawConfig" title="fiftyone.utils.annotations.DrawConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">DrawConfig</span></code></a>
+to the relevant drawing method, such as
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.draw_labels" title="fiftyone.core.collections.SampleCollection.draw_labels"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SampleCollection.draw_labels()</span></code></a>
+or the underlying methods in the <a class="reference internal" href="../api/fiftyone.utils.annotations.html#module-fiftyone.utils.annotations" title="fiftyone.utils.annotations"><code class="xref py py-mod docutils literal notranslate"><span class="pre">fiftyone.utils.annotations</span></code></a> module.</p>
+<p>Consult the <a class="reference internal" href="../api/fiftyone.utils.annotations.html#fiftyone.utils.annotations.DrawConfig" title="fiftyone.utils.annotations.DrawConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">DrawConfig</span></code></a> docs
+for a complete description of the available parameters.</p>
+<p>For example, the snippet below increases the font size and line thickness of
+the labels in the example above and includes the confidence of the predictions:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># Continuing from example above...</span>
+
+<span class="c1"># Customize annotation rendering</span>
+<span class="n">config</span> <span class="o">=</span> <span class="n">foua</span><span class="o">.</span><span class="n">DrawConfig</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;font_size&quot;</span><span class="p">:</span> <span class="mi">24</span><span class="p">,</span>
+        <span class="s2">&quot;bbox_linewidth&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+        <span class="s2">&quot;show_all_confidences&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="s2">&quot;per_object_label_colors&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+
+<span class="c1"># Render the annotated image</span>
+<span class="n">foua</span><span class="o">.</span><span class="n">draw_labeled_image</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="n">outpath</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<img alt="image-annotated.jpg" class="align-center" src="../_images/example2.jpg" />
+</div>
+</div>
+
+
+             </article>
+             
+            </div>
+            <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="config.html" class="btn btn-neutral float-right" title="Configuring FiftyOne" accesskey="n" rel="next">Next <img src="../_static/images/chevron-right-orange.svg" class="next-page"></a>
+      
+      
+        <a href="export_datasets.html" class="btn btn-neutral" title="Exporting FiftyOne Datasets" accesskey="p" rel="prev"><img src="../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
+      
+    </div>
+  
+</footer>
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              <ul>
+<li><a class="reference internal" href="#">Drawing Labels on Samples</a><ul>
+<li><a class="reference internal" href="#basic-recipe">Basic recipe</a></li>
+<li><a class="reference internal" href="#examples">Examples</a><ul>
+<li><a class="reference internal" href="#drawing-labels-on-images">Drawing labels on images</a></li>
+<li><a class="reference internal" href="#drawing-labels-on-videos">Drawing labels on videos</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#individual-samples">Individual samples</a></li>
+<li><a class="reference internal" href="#customizing-label-rendering">Customizing label rendering</a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  
+
+
+  
+
+     
+       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+         <script src="../_static/jquery.js"></script>
+         <script src="../_static/underscore.js"></script>
+         <script src="../_static/doctools.js"></script>
+         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+         <script src="../_static/js/voxel51-website.js"></script>
+         <script src="../_static/js/custom.js"></script>
+     
+
+  
+
+  <script type="text/javascript" src="../_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="../_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+  <!-- Begin Footer -->
+
+
+<footer class="footer-wrapper" id="docs-tutorials-resources">
+  <div class="footer pytorch-container">
+    <div class="footer__logo">
+      <a href="https://voxel51.com/"
+        ><img
+          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
+      /></a>
+    </div>
+
+    <div class="footer__address">
+      330 E Liberty St<br />
+      Ann Arbor, MI 48104<br />
+      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
+    </div>
+
+    <!--
+    <div class="footer__contact">
+      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
+    </div>
+    -->
+
+    <div class="footer__links">
+      <div class="footer__links--col2">
+        <p class="nav__item--brand">Products</p>
+        <a href="https://voxel51.com/fiftyone/">FiftyOne</a>
+        <a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a>
+        <a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a>
+        <a href="https://voxel51.com/success-stories/">Success Stories</a>
+      </div>
+      <div class="footer__links--col3">
+        <p class="nav__item--brand">Resources</p>
+        <a href="https://voxel51.com/blog/">Blog</a>
+        <a href="https://docs.voxel51.com/">Docs</a>
+        <a href="https://github.com/voxel51/">GitHub</a>
+        <a href="https://community.voxel51.com">Discord</a>
+        <a href="https://voxel51.com/ourstory/">About Us</a>
+        <a href="https://voxel51.com/computer-vision-events/">Events</a>
+        <a href="https://voxel51.com/jobs/">Careers</a>
+        <a href="https://voxel51.com/press/">Press</a>
+      </div>
+    </div>
+
+    <div class="footer__icons">
+      <ul class="list-inline">
+        <li>
+          <a href="https://www.linkedin.com/company/voxel51/">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/voxel51/">
+            <i class="fa-brands fa-github"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/voxel51">
+            <i class="fa-brands fa-twitter"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/voxel51/">
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="footer__copyright">
+      <ul class="list-inline">
+        <li>&copy; 2024 Voxel51 Inc.</li>
+        <li>
+          <a href="https://voxel51.com/privacy/">Privacy Policy</a>
+        </li>
+        <li>
+          <a href="https://voxel51.com/terms/">Terms of Service</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<!-- https://buttons.github.io -->
+<script async defer src="https://buttons.github.io/buttons.js" ></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XD15NFRY3M" ></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+  gtag("config", "G-XD15NFRY3M");
+</script>
+
+<script>
+  function open_modal(modal_id, modal_closer_id) {
+    // Get the modal
+    let the_modal = document.getElementById(modal_id);
+
+    the_modal.style.display = "flex";
+    document.body.style.overflow = "hidden";
+
+    let the_modal_closer = document.getElementById(modal_closer_id);
+
+    // When the user clicks on <span> (x), close the modal
+    the_modal_closer &&
+      (the_modal_closer.onclick = function () {
+        the_modal.style.display = "none";
+      });
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+      if (event.target == the_modal) {
+        the_modal.style.display = "none";
+        document.body.style.overflow = "unset";
+        window.onclick = undefined;
+      }
+    };
+  }
+</script>
+
+<!-- bigpicture.io -->
+<script>
+  !(function (e, t, i) {
+    var r = (e.bigPicture = e.bigPicture || []);
+    if (!r.initialized)
+      if (r.invoked)
+        e.console &&
+          console.error &&
+          console.error("BigPicture.io snippet included twice.");
+      else {
+        (r.invoked = !0),
+          (r.SNIPPET_VERSION = 1.5),
+          (r.handler = function (e) {
+            if (void 0 !== r.callback)
+              try {
+                return r.callback(e);
+              } catch (e) {}
+          }),
+          (r.eventList = ["mousedown", "mouseup", "click", "submit"]),
+          (r.methods = [
+            "track",
+            "identify",
+            "page",
+            "group",
+            "alias",
+            "integration",
+            "ready",
+            "intelReady",
+            "consentReady",
+            "on",
+            "off",
+          ]),
+          (r.factory = function (e) {
+            return function () {
+              var t = Array.prototype.slice.call(arguments);
+              return t.unshift(e), r.push(t), r;
+            };
+          });
+        for (var n = 0; n < r.methods.length; n++) {
+          var o = r.methods[n];
+          r[o] = r.factory(o);
+        }
+        r.getCookie = function (e) {
+          var i = ("; " + t.cookie).split("; " + e + "=");
+          return 2 == i.length && i.pop().split(";").shift();
+        };
+        var c = (r.isEditor = (function () {
+          try {
+            return (
+              e.self !== e.top &&
+              (new RegExp("app" + i, "ig").test(t.referrer) ||
+                "edit" == r.getCookie("_bpr_edit"))
+            );
+          } catch (e) {
+            return !1;
+          }
+        })());
+        r.init = function (n, o) {
+          if (((r.projectId = n), (r._config = o), !c))
+            for (var a = 0; a < r.eventList.length; a++)
+              e.addEventListener(r.eventList[a], r.handler, !0);
+          var s = t.createElement("script");
+          s.async = !0;
+          var d = c ? "/editor/editor" : "/public-" + n;
+          (s.src = "//cdn" + i + d + ".js"),
+            t.getElementsByTagName("head")[0].appendChild(s);
+        };
+      }
+  })(window, document, ".bigpicture.io");
+  bigPicture.init("1646");
+</script>
+
+
+  
+
+  <!-- End Footer -->
+
+  <!-- Begin Mobile Menu -->
+
+  
+
+  <!-- End Mobile Menu -->
+
+  <script type="text/javascript" src="../_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function(e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+</body>
+</html>

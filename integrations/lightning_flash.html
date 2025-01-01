@@ -1,0 +1,1071 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Lightning Flash Integration &mdash; FiftyOne 1.3.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <link rel="stylesheet" href="../_static/css/voxel51-website.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Plugins Overview" href="../plugins/index.html" />
+    <link rel="prev" title="PyTorch Hub Integration" href="pytorch_hub.html" />
+<meta property="og:image" content="https://voxel51.com/wp-content/uploads/2024/03/3.24_webpages_Home_AV.png" />
+
+<link
+  href="https://fonts.googleapis.com/css?family=Palanquin:400,600,700,800"
+  rel="stylesheet"
+/>
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+  rel="stylesheet"
+/>
+<script src="https://tag.clearbitscripts.com/v1/pk_b9ed71c8234edd4f77326bcbfab5a4ca/tags.js"></script>
+
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+  
+</head>
+
+
+<div class="container-fluid header-holder tutorials-header" id="header-holder">
+  <nav id="nav__main" class="nav__main">
+    <div class="nav__main__logo">
+      <a href="https://voxel51.com/">
+        <img
+          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
+        />
+      </a>
+    </div>
+
+    <div class="nav__spacer desktop_only"></div>
+
+    <div id="nav__main__mobilebutton--on">
+      <a href="javascript:void(0);" onclick="navMobileButton()">
+        <i class="fa-solid fa-bars"></i>
+      </a>
+    </div>
+
+    <div id="nav__main__mobilebutton--off">
+      <a href="javascript:void(0);" onclick="navMobileButton()">
+        <i class="fa-solid fa-times"></i>
+      </a>
+    </div>
+
+    <div id="nav__main__items">
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Products</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://voxel51.com/fiftyone/">Open Source</a></li>
+            <li><a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a></li>
+            <li><a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a></li>
+            <li><a href="https://voxel51.com/success-stories/">Success Stories</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Learn</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://community.voxel51.com">Community Discord</a></li>
+            <li><a href="https://voxel51.com/blog/">Blog</a></li>
+            <li><a href="https://voxel51.com/computer-vision-events/">Events</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item">
+        <a href="https://docs.voxel51.com/">Docs</a>
+      </div>
+
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Company</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://voxel51.com/ourstory/">About Us</a></li>
+            <li><a href="https://voxel51.com/jobs/">Careers</a></li>
+            <li><a href="https://voxel51.com/talk-to-sales/">Talk to Sales</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item mobile_only">
+        <a href="https://github.com/voxel51/fiftyone">GitHub</a>
+      </div>
+
+      <div class="nav__item desktop_only" id="octocat">
+        <!-- https://buttons.github.io -->
+        <a
+          class="github-button"
+          href="https://github.com/voxel51/fiftyone"
+          data-color-scheme="no-preference: dark_high_contrast; light: dark_high_contrast; dark: dark_high_contrast;"
+          data-size="large"
+          data-show-count="true"
+          aria-label="Star voxel51/fiftyone on GitHub"
+          >Star</a
+        >
+      </div>
+
+      <div class="nav__item full_nav_only">
+        <a class="button-primary" href="https://voxel51.com/schedule-teams-workshop/" target="_blank"
+          >Schedule a workshop</a
+        >
+      </div>
+    </div>
+  </nav>
+</div>
+
+
+
+<body class="pytorch-body">
+
+   
+
+    
+
+    <div class="table-of-contents-link-wrapper">
+      <span>Table of Contents</span>
+      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+    </div>
+
+    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+      <div class="pytorch-side-scroll">
+        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          <div class="pytorch-left-menu-search">
+            
+
+            
+              
+              
+            
+
+            
+
+
+  
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+            
+          </div>
+
+           <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../teams/index.html">FiftyOne Teams 🚀</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../environments/index.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../recipes/index.html">Recipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheat_sheets/index.html">Cheat Sheets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dataset_zoo/index.html">Dataset Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_zoo/index.html">Model Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brain.html">FiftyOne Brain</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Integrations</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="coco.html"> COCO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open_images.html"> Open Images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="activitynet.html"> ActivityNet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cvat.html"> CVAT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="labelstudio.html"> Label Studio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="v7.html"> V7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="labelbox.html"> Labelbox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qdrant.html"> Qdrant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="redis.html"> Redis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pinecone.html"> Pinecone</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mongodb.html"> MongoDB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="elasticsearch.html"> Elasticsearch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="milvus.html"> Milvus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lancedb.html"> LanceDB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="huggingface.html"> Hugging Face</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ultralytics.html"> Ultralytics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="albumentations.html"> Albumentations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="super_gradients.html"> SuperGradients</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openclip.html"> OpenCLIP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pytorch_hub.html"> PyTorch Hub</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#"> Lightning Flash</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../plugins/index.html">Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli/index.html">CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/fiftyone.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deprecation.html">Deprecation Notices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a></li>
+</ul>
+ 
+        </div>
+      </div>
+    </nav>
+
+    <div class="pytorch-container">
+      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+        <div class="pytorch-breadcrumbs-wrapper">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="../index.html">
+          
+            Docs
+          
+        </a> &gt;
+      </li>
+
+        
+          <li><a href="index.html">FiftyOne Integrations</a> &gt;</li>
+        
+      <li>Lightning Flash Integration</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+        </div>
+
+        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+          Contents
+        </div>
+      </div>
+
+      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+        <div class="pytorch-content-left">
+
+        
+          
+          <div class="rst-content style-external-links">
+          
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+              
+  <div class="section" id="lightning-flash-integration">
+<span id="lightning-flash"></span><h1>Lightning Flash Integration<a class="headerlink" href="#lightning-flash-integration" title="Permalink to this headline">¶</a></h1>
+<p>We’ve collaborated with the
+<a class="reference external" href="https://github.com/PyTorchLightning/pytorch-lightning">PyTorch Lightning</a>
+team to make it easy to train
+<a class="reference external" href="https://github.com/PyTorchLightning/lightning-flash">Lightning Flash</a> tasks
+on your <a class="reference internal" href="../user_guide/using_datasets.html#using-datasets"><span class="std std-ref">FiftyOne datasets</span></a> and add predictions from your
+Flash models to your FiftyOne datasets for visualization and analysis, all in
+just a few lines of code!</p>
+<p>The following Flash tasks are supported natively by FiftyOne:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://lightning-flash.readthedocs.io/en/latest/reference/image_classification.html#image-classification" title="(in Flash)"><span class="xref std std-ref">Image classification</span></a></p></li>
+<li><p><a class="reference external" href="https://lightning-flash.readthedocs.io/en/latest/reference/object_detection.html#object-detection" title="(in Flash)"><span class="xref std std-ref">Object detection</span></a></p></li>
+<li><p><a class="reference external" href="https://lightning-flash.readthedocs.io/en/latest/reference/semantic_segmentation.html#semantic-segmentation" title="(in Flash)"><span class="xref std std-ref">Semantic segmentation</span></a></p></li>
+<li><p><a class="reference external" href="https://lightning-flash.readthedocs.io/en/latest/reference/video_classification.html#video-classification" title="(in Flash)"><span class="xref std std-ref">Video classification</span></a></p></li>
+<li><p><a class="reference external" href="https://lightning-flash.readthedocs.io/en/latest/reference/image_embedder.html#image-embedder" title="(in Flash)"><span class="xref std std-ref">Image embeddings</span></a></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As Lightning Flash adds support for additional computer vision tasks, we’ll
+roll out native support for them in FiftyOne via this integration!</p>
+</div>
+<div class="section" id="setup">
+<span id="flash-install"></span><h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
+<p>In order to use the Lightning Flash integration, you’ll need to
+<a class="reference external" href="https://lightning-flash.readthedocs.io/en/latest/installation.html">install Flash</a>:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># This integration currently requires these versions explicitly</span>
+pip<span class="w"> </span>install<span class="w"> </span>lightning-flash&gt;<span class="o">=</span><span class="m">0</span>.7.0dev
+pip<span class="w"> </span>install<span class="w"> </span>pytorch-lightning
+</pre></div>
+</div>
+<p>Depending on the type of Flash tasks that you intend to use, you will also need
+to install some package extras:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Required to use image tasks</span>
+pip<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;lightning-flash[image]&#39;</span>
+
+<span class="c1"># Required to use video tasks</span>
+pip<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;lightning-flash[video]&#39;</span>
+</pre></div>
+</div>
+<p>You can always proceed without these initially, as you’ll be prompted to
+install the appropriate extras when you use a feature that requires them.</p>
+</div>
+<div class="section" id="model-training">
+<span id="flash-model-training"></span><h2>Model training<a class="headerlink" href="#model-training" title="Permalink to this headline">¶</a></h2>
+<p>You can easily train or finetune a Flash
+<a class="reference external" href="https://lightning-flash.readthedocs.io/en/latest/api/generated/flash.core.model.Task.html#flash.core.model.Task" title="(in Flash)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Task</span></code></a> on your
+<a class="reference internal" href="../user_guide/using_datasets.html#using-datasets"><span class="std std-ref">FiftyOne datasets</span></a> with just a few lines of code using
+Flash’s builtin
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">DataModule.from_fiftyone()</span></code>
+method, which is implemented for each of the Flash tasks shown below.</p>
+</div>
+<div class="section" id="model-predictions">
+<span id="flash-model-predictions"></span><h2>Model predictions<a class="headerlink" href="#model-predictions" title="Permalink to this headline">¶</a></h2>
+<p>Once you have a trained Flash task, you can add model predictions to a FiftyOne
+<a class="reference internal" href="../api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset" title="fiftyone.core.dataset.Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dataset</span></code></a> or <a class="reference internal" href="../api/fiftyone.core.view.html#fiftyone.core.view.DatasetView" title="fiftyone.core.view.DatasetView"><code class="xref py py-class docutils literal notranslate"><span class="pre">DatasetView</span></code></a> in just a few lines of code using either of the
+patterns below.</p>
+<div class="section" id="applying-flash-models-to-fiftyone-datasets">
+<h3>Applying Flash models to FiftyOne datasets<a class="headerlink" href="#applying-flash-models-to-fiftyone-datasets" title="Permalink to this headline">¶</a></h3>
+<p>The easiest way to generate predictions on a FiftyOne <a class="reference internal" href="../api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset" title="fiftyone.core.dataset.Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dataset</span></code></a> or
+<a class="reference internal" href="../api/fiftyone.core.view.html#fiftyone.core.view.DatasetView" title="fiftyone.core.view.DatasetView"><code class="xref py py-class docutils literal notranslate"><span class="pre">DatasetView</span></code></a> with a Flash model is to use the
+builtin <a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.apply_model" title="fiftyone.core.collections.SampleCollection.apply_model"><code class="xref py py-meth docutils literal notranslate"><span class="pre">apply_model()</span></code></a>
+function, which natively accepts Flash models of any
+<a class="reference internal" href="#lightning-flash"><span class="std std-ref">supported type</span></a>.</p>
+<p>Behind the scenes, FiftyOne will construct the appropriate Flash
+<code class="xref py py-mod docutils literal notranslate"><span class="pre">Trainer</span></code> and FiftyOne-style
+<a class="reference external" href="https://lightning-flash.readthedocs.io/en/latest/api/generated/flash.core.data.io.output.Output.html#flash.core.data.io.output.Output" title="(in Flash)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Output</span></code></a> to perform the
+inference and output the predictions as <a class="reference internal" href="../api/fiftyone.core.labels.html#fiftyone.core.labels.Label" title="fiftyone.core.labels.Label"><code class="xref py py-class docutils literal notranslate"><span class="pre">Label</span></code></a> instances that are added to
+your dataset.</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">from</span> <span class="nn">flash.core.classification</span> <span class="kn">import</span> <span class="n">FiftyOneLabelsOutput</span>
+<span class="kn">from</span> <span class="nn">flash.image</span> <span class="kn">import</span> <span class="n">ImageClassifier</span><span class="p">,</span> <span class="n">ObjectDetector</span>
+
+<span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="c1"># Load your dataset</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">,</span> <span class="n">max_samples</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">num_classes</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">distinct</span><span class="p">(</span><span class="s2">&quot;ground_truth.detections.label&quot;</span><span class="p">))</span>
+
+<span class="c1"># Load your Flash model</span>
+<span class="n">cls_model</span> <span class="o">=</span> <span class="n">ImageClassifier</span><span class="p">(</span>
+    <span class="n">backbone</span><span class="o">=</span><span class="s2">&quot;resnet18&quot;</span><span class="p">,</span> <span class="n">num_classes</span><span class="o">=</span><span class="n">num_classes</span>
+<span class="p">)</span>
+
+<span class="n">det_model</span> <span class="o">=</span> <span class="n">ObjectDetector</span><span class="p">(</span>
+    <span class="n">head</span><span class="o">=</span><span class="s2">&quot;efficientdet&quot;</span><span class="p">,</span>
+    <span class="n">backbone</span><span class="o">=</span><span class="s2">&quot;d0&quot;</span><span class="p">,</span>
+    <span class="n">num_classes</span><span class="o">=</span><span class="mi">91</span><span class="p">,</span>
+    <span class="n">image_size</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># Predict!</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">apply_model</span><span class="p">(</span>
+    <span class="n">cls_model</span><span class="p">,</span> <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;flash_classifications&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># Some models require transform kwargs that can be pass in</span>
+<span class="n">transform_kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;image_size&quot;</span><span class="p">:</span> <span class="mi">512</span><span class="p">}</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">apply_model</span><span class="p">(</span>
+    <span class="n">det_model</span><span class="p">,</span>
+    <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;flash_detections&quot;</span><span class="p">,</span>
+    <span class="n">transform_kwargs</span><span class="o">=</span><span class="n">transform_kwargs</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When performing inference with Flash models, you can pass additional
+<code class="docutils literal notranslate"><span class="pre">trainer_kwargs</span></code> in a dictionary like <code class="docutils literal notranslate"><span class="pre">trainer_kwargs={&quot;gpus&quot;:</span> <span class="pre">8}</span></code> to
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.apply_model" title="fiftyone.core.collections.SampleCollection.apply_model"><code class="xref py py-meth docutils literal notranslate"><span class="pre">apply_model()</span></code></a>,
+which are used to initialize the Flash
+<code class="xref py py-mod docutils literal notranslate"><span class="pre">Trainer</span></code> to configure distributed and/or
+parallelized inference! See
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">apply_flash_model()</span></code>
+for more details about supported keyword arguments.</p>
+</div>
+</div>
+<div class="section" id="manually-adding-predictions">
+<h3>Manually adding predictions<a class="headerlink" href="#manually-adding-predictions" title="Permalink to this headline">¶</a></h3>
+<p>If you’ve already loaded your datasets into Flash
+<a class="reference external" href="https://lightning-flash.readthedocs.io/en/latest/api/generated/flash.core.data.data_module.DataModule.html#flash.core.data.data_module.DataModule" title="(in Flash)"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataModules</span></code></a> without
+using FiftyOne, you can still easily use FiftyOne to analyze your model’s
+predictions by providing the
+<a class="reference external" href="https://lightning-flash.readthedocs.io/en/latest/api/generated/flash.core.data.io.output.Output.html#flash.core.data.io.output.Output" title="(in Flash)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Output</span></code></a> for the
+<span class="xref std std-ref">FiftyOne-style output</span> of the appropriate
+type when generating predictions.</p>
+<p>Specifying FiftyOne outputs will result in predictions returned as
+<a class="reference internal" href="../api/fiftyone.core.labels.html#fiftyone.core.labels.Label" title="fiftyone.core.labels.Label"><code class="xref py py-class docutils literal notranslate"><span class="pre">Label</span></code></a> objects that you can easily add to your FiftyOne datasets via
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.set_values" title="fiftyone.core.collections.SampleCollection.set_values"><code class="xref py py-meth docutils literal notranslate"><span class="pre">set_values()</span></code></a>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">chain</span>
+
+<span class="kn">from</span> <span class="nn">flash</span> <span class="kn">import</span> <span class="n">Trainer</span>
+<span class="kn">from</span> <span class="nn">flash.core.classification</span> <span class="kn">import</span> <span class="n">FiftyOneLabelsOutput</span>
+<span class="kn">from</span> <span class="nn">flash.image</span> <span class="kn">import</span> <span class="n">ImageClassificationData</span><span class="p">,</span> <span class="n">ImageClassifier</span>
+
+<span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="c1"># Load your dataset</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">,</span> <span class="n">max_samples</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">distinct</span><span class="p">(</span><span class="s2">&quot;ground_truth.detections.label&quot;</span><span class="p">)</span>
+
+<span class="c1"># Load your Flash model</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">ImageClassifier</span><span class="p">(</span><span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">)</span>
+
+<span class="c1"># Create prediction datamodule</span>
+<span class="n">datamodule</span> <span class="o">=</span> <span class="n">ImageClassificationData</span><span class="o">.</span><span class="n">from_fiftyone</span><span class="p">(</span>
+    <span class="n">predict_dataset</span><span class="o">=</span><span class="n">dataset</span><span class="p">,</span>
+    <span class="n">batch_size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># Output FiftyOne format</span>
+<span class="n">output</span> <span class="o">=</span> <span class="n">FiftyOneLabelsOutput</span><span class="p">(</span>
+    <span class="n">return_filepath</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span>
+<span class="p">)</span>
+<span class="c1"># Predict with trainer</span>
+<span class="n">predictions</span> <span class="o">=</span> <span class="n">Trainer</span><span class="p">()</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">datamodule</span><span class="o">=</span><span class="n">datamodule</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="n">output</span><span class="p">)</span>
+
+<span class="n">predictions</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">chain</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">(</span><span class="n">predictions</span><span class="p">))</span>  <span class="c1"># flatten batches</span>
+
+<span class="c1"># Predictions is a list of Label objects since ``return_filepath=False``</span>
+<span class="c1"># Order corresponds to order of the ``predict_dataset``</span>
+
+<span class="c1"># Add predictions to dataset</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">set_values</span><span class="p">(</span><span class="s2">&quot;flash_predictions&quot;</span><span class="p">,</span> <span class="n">predictions</span><span class="p">)</span>
+
+<span class="c1"># Visualize in the App</span>
+<span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>FiftyOne outputs have an optional
+<a class="reference external" href="https://lightning-flash.readthedocs.io/en/latest/api/generated/flash.core.classification.FiftyOneLabelsOutput.html#flash.core.classification.FiftyOneLabelsOutput" title="(in Flash)"><code class="xref py py-class docutils literal notranslate"><span class="pre">return_filepath=False</span></code></a>
+flag that supports returning a list of <a class="reference internal" href="../api/fiftyone.core.labels.html#fiftyone.core.labels.Label" title="fiftyone.core.labels.Label"><code class="xref py py-class docutils literal notranslate"><span class="pre">Label</span></code></a> objects corresponding to the
+sample ordering of the <code class="docutils literal notranslate"><span class="pre">predict_dataset</span></code> rather than the default dicts
+that contain both the <a class="reference internal" href="../api/fiftyone.core.labels.html#fiftyone.core.labels.Label" title="fiftyone.core.labels.Label"><code class="xref py py-class docutils literal notranslate"><span class="pre">Label</span></code></a> objects and the <code class="docutils literal notranslate"><span class="pre">filepath</span></code> of the
+associated media.</p>
+</div>
+</div>
+<div class="section" id="specifying-class-names">
+<h3>Specifying class names<a class="headerlink" href="#specifying-class-names" title="Permalink to this headline">¶</a></h3>
+<p>Generally, Flash model checkpoints will contain the class label strings for the
+model. However, if necessary, you can also explicitly pass the labels to most
+<a class="reference external" href="https://lightning-flash.readthedocs.io/en/latest/api/generated/flash.core.data.io.output.Output.html#flash.core.data.io.output.Output" title="(in Flash)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Output</span></code></a> instances,
+FiftyOne-style outputs included:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="kn">from</span> <span class="nn">flash</span> <span class="kn">import</span> <span class="n">Trainer</span>
+<span class="kn">from</span> <span class="nn">flash.image</span> <span class="kn">import</span> <span class="n">ImageClassificationData</span><span class="p">,</span> <span class="n">ImageClassifier</span>
+<span class="kn">from</span> <span class="nn">flash.core.classification</span> <span class="kn">import</span> <span class="n">FiftyOneLabelsOutput</span>
+
+<span class="c1"># Load your dataset</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">,</span> <span class="n">max_samples</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="n">datamodule</span> <span class="o">=</span> <span class="n">ImageClassificationData</span><span class="o">.</span><span class="n">from_fiftyone</span><span class="p">(</span>
+    <span class="n">predict_dataset</span><span class="o">=</span><span class="n">dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">1</span>
+<span class="p">)</span>
+
+<span class="c1"># Load your Flash model</span>
+<span class="n">num_classes</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">ImageClassifier</span><span class="p">(</span><span class="n">backbone</span><span class="o">=</span><span class="s2">&quot;resnet18&quot;</span><span class="p">,</span> <span class="n">num_classes</span><span class="o">=</span><span class="n">num_classes</span><span class="p">)</span>
+
+<span class="c1"># Configure output with class labels</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;label_&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_classes</span><span class="p">)</span>
+<span class="p">]</span>  <span class="c1"># example class labels</span>
+<span class="n">output</span> <span class="o">=</span> <span class="n">FiftyOneLabelsOutput</span><span class="p">(</span>
+    <span class="n">labels</span><span class="o">=</span><span class="n">labels</span>
+<span class="p">)</span>  <span class="c1"># output FiftyOne format</span>
+
+<span class="c1"># Predict with model</span>
+<span class="n">trainer</span> <span class="o">=</span> <span class="n">Trainer</span><span class="p">()</span>
+<span class="n">predictions</span> <span class="o">=</span> <span class="n">trainer</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span>
+    <span class="n">model</span><span class="p">,</span> <span class="n">datamodule</span><span class="o">=</span><span class="n">datamodule</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="n">output</span>
+<span class="p">)</span>
+
+<span class="n">predictions</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">chain</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">(</span><span class="n">predictions</span><span class="p">))</span>  <span class="c1"># flatten batches</span>
+
+<span class="c1"># Map filepaths to predictions</span>
+<span class="n">predictions</span> <span class="o">=</span> <span class="p">{</span><span class="n">p</span><span class="p">[</span><span class="s2">&quot;filepath&quot;</span><span class="p">]:</span> <span class="n">p</span><span class="p">[</span><span class="s2">&quot;predictions&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">predictions</span><span class="p">}</span>
+
+<span class="c1"># Add predictions to dataset</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">set_values</span><span class="p">(</span>
+    <span class="s2">&quot;flash_predictions&quot;</span><span class="p">,</span> <span class="n">predictions</span><span class="p">,</span> <span class="n">key_field</span><span class="o">=</span><span class="s2">&quot;filepath&quot;</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">distinct</span><span class="p">(</span><span class="s2">&quot;flash_predictions.label&quot;</span><span class="p">))</span>
+<span class="c1"># [&#39;label_57&#39;, &#39;label_60&#39;]</span>
+
+<span class="c1"># Visualize in the App</span>
+<span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
+<div class="section" id="image-embeddings">
+<span id="flash-image-embeddings"></span><h2>Image embeddings<a class="headerlink" href="#image-embeddings" title="Permalink to this headline">¶</a></h2>
+<p>If you use Lightning Flash’s
+<a class="reference external" href="https://lightning-flash.readthedocs.io/en/latest/reference/image_embedder.html#image-embedder" title="(in Flash)"><span class="xref std std-ref">image embeddings tasks</span></a> to generate feature
+vectors for your image datasets, then use can easily leverage FiftyOne’s
+<a class="reference internal" href="../brain.html#brain-embeddings-visualization"><span class="std std-ref">dimensionality reduction</span></a> and
+<a class="reference internal" href="../user_guide/plots.html#embeddings-plots"><span class="std std-ref">interactive plotting</span></a> capabilities to visualize your
+Flash model’s embeddings and execute powerful workflows like
+<a class="reference internal" href="../tutorials/image_embeddings.html"><span class="doc">cluster analysis</span></a> and
+<a class="reference internal" href="../user_guide/app.html#app-similarity"><span class="std std-ref">similarity search</span></a>, all in only a few lines of code!</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">flash.core.data.utils</span> <span class="kn">import</span> <span class="n">download_data</span>
+<span class="kn">from</span> <span class="nn">flash.image</span> <span class="kn">import</span> <span class="n">ImageClassificationData</span><span class="p">,</span> <span class="n">ImageEmbedder</span>
+<span class="kn">from</span> <span class="nn">flash</span> <span class="kn">import</span> <span class="n">Trainer</span>
+
+<span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.brain</span> <span class="k">as</span> <span class="nn">fob</span>
+
+<span class="c1"># 1 Download data</span>
+<span class="n">download_data</span><span class="p">(</span>
+    <span class="s2">&quot;https://pl-flash-data.s3.amazonaws.com/hymenoptera_data.zip&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;/tmp&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># 2 Load data into FiftyOne</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Dataset</span><span class="o">.</span><span class="n">from_dir</span><span class="p">(</span>
+    <span class="s2">&quot;/tmp/hymenoptera_data/test/&quot;</span><span class="p">,</span>
+    <span class="n">fo</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">ImageClassificationDirectoryTree</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">datamodule</span> <span class="o">=</span> <span class="n">ImageClassificationData</span><span class="o">.</span><span class="n">from_fiftyone</span><span class="p">(</span>
+    <span class="n">predict_dataset</span><span class="o">=</span><span class="n">dataset</span><span class="p">,</span>
+    <span class="n">batch_size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># 3 Load model</span>
+<span class="n">embedder</span> <span class="o">=</span> <span class="n">ImageEmbedder</span><span class="p">(</span>
+    <span class="n">backbone</span><span class="o">=</span><span class="s2">&quot;vision_transformer&quot;</span><span class="p">,</span>
+    <span class="n">training_strategy</span><span class="o">=</span><span class="s2">&quot;barlow_twins&quot;</span><span class="p">,</span>
+    <span class="n">head</span><span class="o">=</span><span class="s2">&quot;barlow_twins_head&quot;</span><span class="p">,</span>
+    <span class="n">pretraining_transform</span><span class="o">=</span><span class="s2">&quot;barlow_twins_transform&quot;</span><span class="p">,</span>
+    <span class="n">training_strategy_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;latent_embedding_dim&quot;</span><span class="p">:</span> <span class="mi">128</span><span class="p">},</span>
+    <span class="n">pretraining_transform_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;size_crops&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">32</span><span class="p">]},</span>
+<span class="p">)</span>
+
+<span class="c1"># 4 Generate embeddings</span>
+<span class="n">trainer</span> <span class="o">=</span> <span class="n">Trainer</span><span class="p">()</span>
+<span class="n">embeddings</span> <span class="o">=</span> <span class="n">trainer</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">embedder</span><span class="p">,</span> <span class="n">datamodule</span><span class="o">=</span><span class="n">datamodule</span><span class="p">)</span>
+<span class="n">embeddings</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">embedding_batches</span><span class="p">,</span> <span class="p">[]))</span>
+
+<span class="c1"># 5 Visualize images</span>
+<span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+
+<span class="c1"># 6 Visualize image embeddings</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">fob</span><span class="o">.</span><span class="n">compute_visualization</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">embeddings</span><span class="o">=</span><span class="n">embeddings</span><span class="p">)</span>
+<span class="n">plot</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">visualize</span><span class="p">(</span><span class="n">labels</span><span class="o">=</span><span class="s2">&quot;ground_truth.label&quot;</span><span class="p">)</span>
+<span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can also directly pass your Flash embedding model to
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.compute_embeddings" title="fiftyone.core.collections.SampleCollection.compute_embeddings"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_embeddings()</span></code></a>
+and let FiftyOne handle performing the inference!</p>
+</div>
+<img alt="embeddings_example" class="align-center" src="../_images/flash_embeddings.png" />
+</div>
+</div>
+
+
+             </article>
+             
+            </div>
+            <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../plugins/index.html" class="btn btn-neutral float-right" title="Plugins Overview" accesskey="n" rel="next">Next <img src="../_static/images/chevron-right-orange.svg" class="next-page"></a>
+      
+      
+        <a href="pytorch_hub.html" class="btn btn-neutral" title="PyTorch Hub Integration" accesskey="p" rel="prev"><img src="../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
+      
+    </div>
+  
+</footer>
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              <ul>
+<li><a class="reference internal" href="#">Lightning Flash Integration</a><ul>
+<li><a class="reference internal" href="#setup">Setup</a></li>
+<li><a class="reference internal" href="#model-training">Model training</a></li>
+<li><a class="reference internal" href="#model-predictions">Model predictions</a><ul>
+<li><a class="reference internal" href="#applying-flash-models-to-fiftyone-datasets">Applying Flash models to FiftyOne datasets</a></li>
+<li><a class="reference internal" href="#manually-adding-predictions">Manually adding predictions</a></li>
+<li><a class="reference internal" href="#specifying-class-names">Specifying class names</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#image-embeddings">Image embeddings</a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  
+
+
+  
+
+     
+       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+         <script src="../_static/jquery.js"></script>
+         <script src="../_static/underscore.js"></script>
+         <script src="../_static/doctools.js"></script>
+         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+         <script src="../_static/js/voxel51-website.js"></script>
+         <script src="../_static/js/custom.js"></script>
+     
+
+  
+
+  <script type="text/javascript" src="../_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="../_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+  <!-- Begin Footer -->
+
+
+<footer class="footer-wrapper" id="docs-tutorials-resources">
+  <div class="footer pytorch-container">
+    <div class="footer__logo">
+      <a href="https://voxel51.com/"
+        ><img
+          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
+      /></a>
+    </div>
+
+    <div class="footer__address">
+      330 E Liberty St<br />
+      Ann Arbor, MI 48104<br />
+      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
+    </div>
+
+    <!--
+    <div class="footer__contact">
+      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
+    </div>
+    -->
+
+    <div class="footer__links">
+      <div class="footer__links--col2">
+        <p class="nav__item--brand">Products</p>
+        <a href="https://voxel51.com/fiftyone/">FiftyOne</a>
+        <a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a>
+        <a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a>
+        <a href="https://voxel51.com/success-stories/">Success Stories</a>
+      </div>
+      <div class="footer__links--col3">
+        <p class="nav__item--brand">Resources</p>
+        <a href="https://voxel51.com/blog/">Blog</a>
+        <a href="https://docs.voxel51.com/">Docs</a>
+        <a href="https://github.com/voxel51/">GitHub</a>
+        <a href="https://community.voxel51.com">Discord</a>
+        <a href="https://voxel51.com/ourstory/">About Us</a>
+        <a href="https://voxel51.com/computer-vision-events/">Events</a>
+        <a href="https://voxel51.com/jobs/">Careers</a>
+        <a href="https://voxel51.com/press/">Press</a>
+      </div>
+    </div>
+
+    <div class="footer__icons">
+      <ul class="list-inline">
+        <li>
+          <a href="https://www.linkedin.com/company/voxel51/">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/voxel51/">
+            <i class="fa-brands fa-github"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/voxel51">
+            <i class="fa-brands fa-twitter"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/voxel51/">
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="footer__copyright">
+      <ul class="list-inline">
+        <li>&copy; 2024 Voxel51 Inc.</li>
+        <li>
+          <a href="https://voxel51.com/privacy/">Privacy Policy</a>
+        </li>
+        <li>
+          <a href="https://voxel51.com/terms/">Terms of Service</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<!-- https://buttons.github.io -->
+<script async defer src="https://buttons.github.io/buttons.js" ></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XD15NFRY3M" ></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+  gtag("config", "G-XD15NFRY3M");
+</script>
+
+<script>
+  function open_modal(modal_id, modal_closer_id) {
+    // Get the modal
+    let the_modal = document.getElementById(modal_id);
+
+    the_modal.style.display = "flex";
+    document.body.style.overflow = "hidden";
+
+    let the_modal_closer = document.getElementById(modal_closer_id);
+
+    // When the user clicks on <span> (x), close the modal
+    the_modal_closer &&
+      (the_modal_closer.onclick = function () {
+        the_modal.style.display = "none";
+      });
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+      if (event.target == the_modal) {
+        the_modal.style.display = "none";
+        document.body.style.overflow = "unset";
+        window.onclick = undefined;
+      }
+    };
+  }
+</script>
+
+<!-- bigpicture.io -->
+<script>
+  !(function (e, t, i) {
+    var r = (e.bigPicture = e.bigPicture || []);
+    if (!r.initialized)
+      if (r.invoked)
+        e.console &&
+          console.error &&
+          console.error("BigPicture.io snippet included twice.");
+      else {
+        (r.invoked = !0),
+          (r.SNIPPET_VERSION = 1.5),
+          (r.handler = function (e) {
+            if (void 0 !== r.callback)
+              try {
+                return r.callback(e);
+              } catch (e) {}
+          }),
+          (r.eventList = ["mousedown", "mouseup", "click", "submit"]),
+          (r.methods = [
+            "track",
+            "identify",
+            "page",
+            "group",
+            "alias",
+            "integration",
+            "ready",
+            "intelReady",
+            "consentReady",
+            "on",
+            "off",
+          ]),
+          (r.factory = function (e) {
+            return function () {
+              var t = Array.prototype.slice.call(arguments);
+              return t.unshift(e), r.push(t), r;
+            };
+          });
+        for (var n = 0; n < r.methods.length; n++) {
+          var o = r.methods[n];
+          r[o] = r.factory(o);
+        }
+        r.getCookie = function (e) {
+          var i = ("; " + t.cookie).split("; " + e + "=");
+          return 2 == i.length && i.pop().split(";").shift();
+        };
+        var c = (r.isEditor = (function () {
+          try {
+            return (
+              e.self !== e.top &&
+              (new RegExp("app" + i, "ig").test(t.referrer) ||
+                "edit" == r.getCookie("_bpr_edit"))
+            );
+          } catch (e) {
+            return !1;
+          }
+        })());
+        r.init = function (n, o) {
+          if (((r.projectId = n), (r._config = o), !c))
+            for (var a = 0; a < r.eventList.length; a++)
+              e.addEventListener(r.eventList[a], r.handler, !0);
+          var s = t.createElement("script");
+          s.async = !0;
+          var d = c ? "/editor/editor" : "/public-" + n;
+          (s.src = "//cdn" + i + d + ".js"),
+            t.getElementsByTagName("head")[0].appendChild(s);
+        };
+      }
+  })(window, document, ".bigpicture.io");
+  bigPicture.init("1646");
+</script>
+
+
+  
+
+  <!-- End Footer -->
+
+  <!-- Begin Mobile Menu -->
+
+  
+
+  <!-- End Mobile Menu -->
+
+  <script type="text/javascript" src="../_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function(e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+</body>
+</html>

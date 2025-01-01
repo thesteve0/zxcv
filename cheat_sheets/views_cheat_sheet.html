@@ -1,0 +1,1371 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Views Cheat Sheet &mdash; FiftyOne 1.3.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <link rel="stylesheet" href="../_static/css/voxel51-website.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="pandas vs FiftyOne" href="pandas_vs_fiftyone.html" />
+    <link rel="prev" title="Filtering Cheat Sheet" href="filtering_cheat_sheet.html" />
+<meta property="og:image" content="https://voxel51.com/wp-content/uploads/2024/03/3.24_webpages_Home_AV.png" />
+
+<link
+  href="https://fonts.googleapis.com/css?family=Palanquin:400,600,700,800"
+  rel="stylesheet"
+/>
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+  rel="stylesheet"
+/>
+<script src="https://tag.clearbitscripts.com/v1/pk_b9ed71c8234edd4f77326bcbfab5a4ca/tags.js"></script>
+
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+  
+</head>
+
+
+<div class="container-fluid header-holder tutorials-header" id="header-holder">
+  <nav id="nav__main" class="nav__main">
+    <div class="nav__main__logo">
+      <a href="https://voxel51.com/">
+        <img
+          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
+        />
+      </a>
+    </div>
+
+    <div class="nav__spacer desktop_only"></div>
+
+    <div id="nav__main__mobilebutton--on">
+      <a href="javascript:void(0);" onclick="navMobileButton()">
+        <i class="fa-solid fa-bars"></i>
+      </a>
+    </div>
+
+    <div id="nav__main__mobilebutton--off">
+      <a href="javascript:void(0);" onclick="navMobileButton()">
+        <i class="fa-solid fa-times"></i>
+      </a>
+    </div>
+
+    <div id="nav__main__items">
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Products</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://voxel51.com/fiftyone/">Open Source</a></li>
+            <li><a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a></li>
+            <li><a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a></li>
+            <li><a href="https://voxel51.com/success-stories/">Success Stories</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Learn</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://community.voxel51.com">Community Discord</a></li>
+            <li><a href="https://voxel51.com/blog/">Blog</a></li>
+            <li><a href="https://voxel51.com/computer-vision-events/">Events</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item">
+        <a href="https://docs.voxel51.com/">Docs</a>
+      </div>
+
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Company</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://voxel51.com/ourstory/">About Us</a></li>
+            <li><a href="https://voxel51.com/jobs/">Careers</a></li>
+            <li><a href="https://voxel51.com/talk-to-sales/">Talk to Sales</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item mobile_only">
+        <a href="https://github.com/voxel51/fiftyone">GitHub</a>
+      </div>
+
+      <div class="nav__item desktop_only" id="octocat">
+        <!-- https://buttons.github.io -->
+        <a
+          class="github-button"
+          href="https://github.com/voxel51/fiftyone"
+          data-color-scheme="no-preference: dark_high_contrast; light: dark_high_contrast; dark: dark_high_contrast;"
+          data-size="large"
+          data-show-count="true"
+          aria-label="Star voxel51/fiftyone on GitHub"
+          >Star</a
+        >
+      </div>
+
+      <div class="nav__item full_nav_only">
+        <a class="button-primary" href="https://voxel51.com/schedule-teams-workshop/" target="_blank"
+          >Schedule a workshop</a
+        >
+      </div>
+    </div>
+  </nav>
+</div>
+
+
+
+<body class="pytorch-body">
+
+   
+
+    
+
+    <div class="table-of-contents-link-wrapper">
+      <span>Table of Contents</span>
+      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+    </div>
+
+    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+      <div class="pytorch-side-scroll">
+        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          <div class="pytorch-left-menu-search">
+            
+
+            
+              
+              
+            
+
+            
+
+
+  
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+            
+          </div>
+
+           <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../teams/index.html">FiftyOne Teams 🚀</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../environments/index.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../recipes/index.html">Recipes</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Cheat Sheets</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="fiftyone_terminology.html">FiftyOne terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filtering_cheat_sheet.html">Filtering cheat sheet</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Views cheat sheet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pandas_vs_fiftyone.html">pandas vs FiftyOne</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dataset_zoo/index.html">Dataset Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_zoo/index.html">Model Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brain.html">FiftyOne Brain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/index.html">Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plugins/index.html">Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli/index.html">CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/fiftyone.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deprecation.html">Deprecation Notices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a></li>
+</ul>
+ 
+        </div>
+      </div>
+    </nav>
+
+    <div class="pytorch-container">
+      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+        <div class="pytorch-breadcrumbs-wrapper">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="../index.html">
+          
+            Docs
+          
+        </a> &gt;
+      </li>
+
+        
+          <li><a href="index.html">FiftyOne Cheat Sheets</a> &gt;</li>
+        
+      <li>Views Cheat Sheet</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+        </div>
+
+        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+          Contents
+        </div>
+      </div>
+
+      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+        <div class="pytorch-content-left">
+
+        
+          
+          <div class="rst-content style-external-links">
+          
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+              
+  <div class="section" id="views-cheat-sheet">
+<span id="id1"></span><h1>Views Cheat Sheet<a class="headerlink" href="#views-cheat-sheet" title="Permalink to this headline">¶</a></h1>
+<p>This cheat sheet shows how to use <a class="reference internal" href="../user_guide/using_views.html#using-views"><span class="std std-ref">dataset views</span></a> to
+retrieve the specific subset of data you’re looking for.</p>
+<div class="section" id="the-six-basic-operations">
+<h2>The six basic operations<a class="headerlink" href="#the-six-basic-operations" title="Permalink to this headline">¶</a></h2>
+<p>If you run:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Dataset</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">list_view_stages</span><span class="p">())</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>you’ll see a list of all <a class="reference internal" href="../api/fiftyone.core.stages.html#fiftyone.core.stages.ViewStage" title="fiftyone.core.stages.ViewStage"><code class="xref py py-class docutils literal notranslate"><span class="pre">ViewStage</span></code></a> methods that you can use to construct
+views into your datasets.</p>
+<p>With a few exceptions (which we’ll cover later), these methods can be organized
+into six categories: matching, filtering, selection, exclusion, indexing, and
+conversion.</p>
+<div class="section" id="matching">
+<h3>Matching<a class="headerlink" href="#matching" title="Permalink to this headline">¶</a></h3>
+<p>These stages select certain subsets of the input collection that match a given
+condition, without modifying the contents of the samples.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.match" title="fiftyone.core.collections.SampleCollection.match"><code class="xref py py-meth docutils literal notranslate"><span class="pre">match()</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.match_frames" title="fiftyone.core.collections.SampleCollection.match_frames"><code class="xref py py-meth docutils literal notranslate"><span class="pre">match_frames()</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.match_labels" title="fiftyone.core.collections.SampleCollection.match_labels"><code class="xref py py-meth docutils literal notranslate"><span class="pre">match_labels()</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.match_tags" title="fiftyone.core.collections.SampleCollection.match_tags"><code class="xref py py-meth docutils literal notranslate"><span class="pre">match_tags()</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="filtering">
+<h3>Filtering<a class="headerlink" href="#filtering" title="Permalink to this headline">¶</a></h3>
+<p>These stages filter the contents of the samples in the input collection based
+on a given condition.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.filter_field" title="fiftyone.core.collections.SampleCollection.filter_field"><code class="xref py py-meth docutils literal notranslate"><span class="pre">filter_field()</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.filter_labels" title="fiftyone.core.collections.SampleCollection.filter_labels"><code class="xref py py-meth docutils literal notranslate"><span class="pre">filter_labels()</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.filter_keypoints" title="fiftyone.core.collections.SampleCollection.filter_keypoints"><code class="xref py py-meth docutils literal notranslate"><span class="pre">filter_keypoints()</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="selection">
+<h3>Selection<a class="headerlink" href="#selection" title="Permalink to this headline">¶</a></h3>
+<p>These stages select certain subsets of the input collection that contain a
+given identifier.</p>
+<p>Selection is similar to matching/filtering, but with a simpler syntax that
+supports specific selection criteria (common identifiers like IDs and tags)
+rather than arbitrary <a class="reference internal" href="../user_guide/using_views.html#querying-samples"><span class="std std-ref">expressions</span></a>.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.select" title="fiftyone.core.collections.SampleCollection.select"><code class="xref py py-meth docutils literal notranslate"><span class="pre">select()</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.select_by" title="fiftyone.core.collections.SampleCollection.select_by"><code class="xref py py-meth docutils literal notranslate"><span class="pre">select_by()</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.select_fields" title="fiftyone.core.collections.SampleCollection.select_fields"><code class="xref py py-meth docutils literal notranslate"><span class="pre">select_fields()</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.select_frames" title="fiftyone.core.collections.SampleCollection.select_frames"><code class="xref py py-meth docutils literal notranslate"><span class="pre">select_frames()</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.select_groups" title="fiftyone.core.collections.SampleCollection.select_groups"><code class="xref py py-meth docutils literal notranslate"><span class="pre">select_groups()</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.select_group_slices" title="fiftyone.core.collections.SampleCollection.select_group_slices"><code class="xref py py-meth docutils literal notranslate"><span class="pre">select_group_slices()</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.select_labels" title="fiftyone.core.collections.SampleCollection.select_labels"><code class="xref py py-meth docutils literal notranslate"><span class="pre">select_labels()</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="exclusion">
+<h3>Exclusion<a class="headerlink" href="#exclusion" title="Permalink to this headline">¶</a></h3>
+<p>These stages exclude data from the input collection based on the given
+criteria.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.exclude" title="fiftyone.core.collections.SampleCollection.exclude"><code class="xref py py-meth docutils literal notranslate"><span class="pre">exclude()</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.exclude_by" title="fiftyone.core.collections.SampleCollection.exclude_by"><code class="xref py py-meth docutils literal notranslate"><span class="pre">exclude_by()</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.exclude_fields" title="fiftyone.core.collections.SampleCollection.exclude_fields"><code class="xref py py-meth docutils literal notranslate"><span class="pre">exclude_fields()</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.exclude_frames" title="fiftyone.core.collections.SampleCollection.exclude_frames"><code class="xref py py-meth docutils literal notranslate"><span class="pre">exclude_frames()</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.exclude_groups" title="fiftyone.core.collections.SampleCollection.exclude_groups"><code class="xref py py-meth docutils literal notranslate"><span class="pre">exclude_groups()</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.exclude_labels" title="fiftyone.core.collections.SampleCollection.exclude_labels"><code class="xref py py-meth docutils literal notranslate"><span class="pre">exclude_labels()</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="sorting">
+<h3>Sorting<a class="headerlink" href="#sorting" title="Permalink to this headline">¶</a></h3>
+<p>These stages sort the samples in the input collection based on a given condition.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.sort_by" title="fiftyone.core.collections.SampleCollection.sort_by"><code class="xref py py-meth docutils literal notranslate"><span class="pre">sort_by()</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.sort_by_similarity" title="fiftyone.core.collections.SampleCollection.sort_by_similarity"><code class="xref py py-meth docutils literal notranslate"><span class="pre">sort_by_similarity()</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="indexing">
+<h3>Indexing<a class="headerlink" href="#indexing" title="Permalink to this headline">¶</a></h3>
+<p>These stages slice and reorder the samples in the input collection.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.limit" title="fiftyone.core.collections.SampleCollection.limit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">limit()</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.shuffle" title="fiftyone.core.collections.SampleCollection.shuffle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">shuffle()</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.skip" title="fiftyone.core.collections.SampleCollection.skip"><code class="xref py py-meth docutils literal notranslate"><span class="pre">skip()</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.take" title="fiftyone.core.collections.SampleCollection.take"><code class="xref py py-meth docutils literal notranslate"><span class="pre">take()</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="conversion">
+<h3>Conversion<a class="headerlink" href="#conversion" title="Permalink to this headline">¶</a></h3>
+<p>These stages create views that transform the contents of the input collection
+into a different shape.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.to_patches" title="fiftyone.core.collections.SampleCollection.to_patches"><code class="xref py py-meth docutils literal notranslate"><span class="pre">to_patches()</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.to_evaluation_patches" title="fiftyone.core.collections.SampleCollection.to_evaluation_patches"><code class="xref py py-meth docutils literal notranslate"><span class="pre">to_evaluation_patches()</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.to_clips" title="fiftyone.core.collections.SampleCollection.to_clips"><code class="xref py py-meth docutils literal notranslate"><span class="pre">to_clips()</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.to_frames" title="fiftyone.core.collections.SampleCollection.to_frames"><code class="xref py py-meth docutils literal notranslate"><span class="pre">to_frames()</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="miscellaneous">
+<h3>Miscellaneous<a class="headerlink" href="#miscellaneous" title="Permalink to this headline">¶</a></h3>
+<p>Other stages that do not fit into the six buckets above include:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.concat" title="fiftyone.core.collections.SampleCollection.concat"><code class="xref py py-meth docutils literal notranslate"><span class="pre">concat()</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.exists" title="fiftyone.core.collections.SampleCollection.exists"><code class="xref py py-meth docutils literal notranslate"><span class="pre">exists()</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.geo_near" title="fiftyone.core.collections.SampleCollection.geo_near"><code class="xref py py-meth docutils literal notranslate"><span class="pre">geo_near()</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.geo_within" title="fiftyone.core.collections.SampleCollection.geo_within"><code class="xref py py-meth docutils literal notranslate"><span class="pre">geo_within()</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.group_by" title="fiftyone.core.collections.SampleCollection.group_by"><code class="xref py py-meth docutils literal notranslate"><span class="pre">group_by()</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.map_labels" title="fiftyone.core.collections.SampleCollection.map_labels"><code class="xref py py-meth docutils literal notranslate"><span class="pre">map_labels()</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.mongo" title="fiftyone.core.collections.SampleCollection.mongo"><code class="xref py py-meth docutils literal notranslate"><span class="pre">mongo()</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.set_field" title="fiftyone.core.collections.SampleCollection.set_field"><code class="xref py py-meth docutils literal notranslate"><span class="pre">set_field()</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="filtering-matching-selecting-and-excluding">
+<h2>Filtering, matching, selecting, and excluding<a class="headerlink" href="#filtering-matching-selecting-and-excluding" title="Permalink to this headline">¶</a></h2>
+<p>FiftyOne’s goal is to help you perform your computer vision workflows as
+simply and efficiently as possible, without the need to manually iterate
+through all the samples in your dataset.</p>
+<p>To achieve this, FiftyOne provides builtin view stages tailored for each
+primitive data type (samples, labels, fields, tags, frames, and groups) that
+provide concise syntaxes for performing the desired operation against that
+primitive’s attributes.</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head stub"></th>
+<th class="head"><p>Match</p></th>
+<th class="head"><p>Filter</p></th>
+<th class="head"><p>Select</p></th>
+<th class="head"><p>Exclude</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>Samples</p></th>
+<td><p><a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.match" title="fiftyone.core.collections.SampleCollection.match"><code class="xref py py-meth docutils literal notranslate"><span class="pre">match()</span></code></a></p></td>
+<td></td>
+<td><p><a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.select" title="fiftyone.core.collections.SampleCollection.select"><code class="xref py py-meth docutils literal notranslate"><span class="pre">select()</span></code></a></p></td>
+<td><p><a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.exclude" title="fiftyone.core.collections.SampleCollection.exclude"><code class="xref py py-meth docutils literal notranslate"><span class="pre">exclude()</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Labels</p></th>
+<td><p><a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.match_labels" title="fiftyone.core.collections.SampleCollection.match_labels"><code class="xref py py-meth docutils literal notranslate"><span class="pre">match_labels()</span></code></a></p></td>
+<td><p><a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.filter_labels" title="fiftyone.core.collections.SampleCollection.filter_labels"><code class="xref py py-meth docutils literal notranslate"><span class="pre">filter_labels()</span></code></a></p></td>
+<td><p><a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.select_labels" title="fiftyone.core.collections.SampleCollection.select_labels"><code class="xref py py-meth docutils literal notranslate"><span class="pre">select_labels()</span></code></a></p></td>
+<td><p><a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.exclude_labels" title="fiftyone.core.collections.SampleCollection.exclude_labels"><code class="xref py py-meth docutils literal notranslate"><span class="pre">exclude_labels()</span></code></a></p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Fields</p></th>
+<td></td>
+<td><p><a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.filter_field" title="fiftyone.core.collections.SampleCollection.filter_field"><code class="xref py py-meth docutils literal notranslate"><span class="pre">filter_field()</span></code></a></p></td>
+<td><p><a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.select_fields" title="fiftyone.core.collections.SampleCollection.select_fields"><code class="xref py py-meth docutils literal notranslate"><span class="pre">select_fields()</span></code></a></p></td>
+<td><p><a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.exclude_fields" title="fiftyone.core.collections.SampleCollection.exclude_fields"><code class="xref py py-meth docutils literal notranslate"><span class="pre">exclude_fields()</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Tags</p></th>
+<td><p><a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.match_tags" title="fiftyone.core.collections.SampleCollection.match_tags"><code class="xref py py-meth docutils literal notranslate"><span class="pre">match_tags()</span></code></a></p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Frames</p></th>
+<td><p><a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.match_frames" title="fiftyone.core.collections.SampleCollection.match_frames"><code class="xref py py-meth docutils literal notranslate"><span class="pre">match_frames()</span></code></a></p></td>
+<td></td>
+<td><p><a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.select_frames" title="fiftyone.core.collections.SampleCollection.select_frames"><code class="xref py py-meth docutils literal notranslate"><span class="pre">select_frames()</span></code></a></p></td>
+<td><p><a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.exclude_frames" title="fiftyone.core.collections.SampleCollection.exclude_frames"><code class="xref py py-meth docutils literal notranslate"><span class="pre">exclude_frames()</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Groups</p></th>
+<td></td>
+<td></td>
+<td><p><a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.select_groups" title="fiftyone.core.collections.SampleCollection.select_groups"><code class="xref py py-meth docutils literal notranslate"><span class="pre">select_groups()</span></code></a></p></td>
+<td><p><a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.exclude_groups" title="fiftyone.core.collections.SampleCollection.exclude_groups"><code class="xref py py-meth docutils literal notranslate"><span class="pre">exclude_groups()</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<p>From the table above, we see that most operations on each primitive type are
+directly supported via tailored methods. The empty cells in the table fall into
+two categories:</p>
+<ul class="simple">
+<li><p>the operation does not make sense on the primitive</p></li>
+<li><p>the operation can easily achieved on the primitive via another base method</p></li>
+</ul>
+<p>In the following sections, we’ll fill in the gaps in the table.</p>
+<div class="section" id="samples">
+<h3>Samples<a class="headerlink" href="#samples" title="Permalink to this headline">¶</a></h3>
+<p>The only method missing from the <code class="code docutils literal notranslate"><span class="pre">Samples</span></code> row of the table is a “filter”
+method. This is because filtering operations create a view with contents of the
+primitive to which they are applied. However, as samples are comprised of
+fields, the
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.filter_field" title="fiftyone.core.collections.SampleCollection.filter_field"><code class="xref py py-meth docutils literal notranslate"><span class="pre">filter_field()</span></code></a>
+method provides all of the desired functionality.</p>
+</div>
+<div class="section" id="labels">
+<h3>Labels<a class="headerlink" href="#labels" title="Permalink to this headline">¶</a></h3>
+<p>While all of the methods in the <code class="code docutils literal notranslate"><span class="pre">Labels</span></code> row are filled in, there is one
+subtlety: filtering by <code class="docutils literal notranslate"><span class="pre">id</span></code>.</p>
+<p>The
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.match_labels" title="fiftyone.core.collections.SampleCollection.match_labels"><code class="xref py py-meth docutils literal notranslate"><span class="pre">match_labels()</span></code></a>,
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.select_labels" title="fiftyone.core.collections.SampleCollection.select_labels"><code class="xref py py-meth docutils literal notranslate"><span class="pre">select_labels()</span></code></a>,
+and
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.exclude_labels" title="fiftyone.core.collections.SampleCollection.exclude_labels"><code class="xref py py-meth docutils literal notranslate"><span class="pre">exclude_labels()</span></code></a>
+methods all allow you to pass in a list of IDs to define a view. However, in
+order to filter by ID using
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.filter_labels" title="fiftyone.core.collections.SampleCollection.filter_labels"><code class="xref py py-meth docutils literal notranslate"><span class="pre">filter_labels()</span></code></a>,
+you’ll need to make two changes when creating your filter expression:</p>
+<ul class="simple">
+<li><p>use <code class="docutils literal notranslate"><span class="pre">&quot;_id&quot;</span></code> rather than <code class="docutils literal notranslate"><span class="pre">&quot;id&quot;</span></code> when referencing ID fields</p></li>
+<li><p>cast ID strings to <code class="docutils literal notranslate"><span class="pre">ObjectId()</span></code></p></li>
+</ul>
+<p>The following example demonstrates how to correctly filter by label IDs:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">from</span> <span class="nn">bson</span> <span class="kn">import</span> <span class="n">ObjectId</span>
+
+<span class="kn">import</span> <span class="nn">fiftone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+<span class="kn">from</span> <span class="nn">fiftyone</span> <span class="kn">import</span> <span class="n">ViewField</span> <span class="k">as</span> <span class="n">F</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+
+<span class="n">label_id</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">predictions</span><span class="o">.</span><span class="n">detections</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">id</span>
+
+<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span><span class="s2">&quot;predictions&quot;</span><span class="p">,</span> <span class="n">F</span><span class="p">(</span><span class="s2">&quot;_id&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="n">ObjectId</span><span class="p">(</span><span class="n">label_id</span><span class="p">))</span>
+</pre></div></td></tr></table></div>
+</div>
+</div>
+<div class="section" id="fields">
+<h3>Fields<a class="headerlink" href="#fields" title="Permalink to this headline">¶</a></h3>
+<p>The only missing entry in the <code class="code docutils literal notranslate"><span class="pre">Fields</span></code> row is a “match” stage. Such a method
+would absolutely make sense: matches on fields are common. However, a dedicated
+method is not necessary because you can easily achieve this using the existing
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.match" title="fiftyone.core.collections.SampleCollection.match"><code class="xref py py-meth docutils literal notranslate"><span class="pre">match()</span></code></a> method.</p>
+<p>A hypothetical match fields method would take as input a <code class="docutils literal notranslate"><span class="pre">field</span></code> and a
+<code class="docutils literal notranslate"><span class="pre">filter</span></code> to apply to it, but we can achieve this in multiple ways via simple
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.match" title="fiftyone.core.collections.SampleCollection.match"><code class="xref py py-meth docutils literal notranslate"><span class="pre">match()</span></code></a> expressions:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+<span class="kn">from</span> <span class="nn">fiftyone</span> <span class="kn">import</span> <span class="n">ViewField</span> <span class="k">as</span> <span class="n">F</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+
+<span class="n">field</span> <span class="o">=</span> <span class="s2">&quot;ground_truth.detections&quot;</span>
+<span class="nb">filter</span> <span class="o">=</span> <span class="n">F</span><span class="p">()</span><span class="o">.</span><span class="n">length</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span>
+
+<span class="c1"># What a `match_fields()` method would look like</span>
+<span class="c1"># view = dataset.match_fields(field, filter)</span>
+
+<span class="c1"># Option 1: directly apply the filter to the field</span>
+<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="n">field</span><span class="p">)</span><span class="o">.</span><span class="n">length</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Option 2: apply() the filter to the field</span>
+<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="n">field</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">filter</span><span class="p">))</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>Note that <a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.exists" title="fiftyone.core.collections.SampleCollection.exists"><code class="xref py py-meth docutils literal notranslate"><span class="pre">exists()</span></code></a>
+is also a special case of field matching:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">set_field</span><span class="p">(</span><span class="s2">&quot;uniqueness&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+<span class="c1"># Concise syntax via `exists()`</span>
+<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s2">&quot;uniqueness&quot;</span><span class="p">)</span>
+
+<span class="c1"># Equivalent syntax via `match()`</span>
+<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s2">&quot;uniqueness&quot;</span><span class="p">)</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+</div>
+<div class="section" id="tags">
+<h3>Tags<a class="headerlink" href="#tags" title="Permalink to this headline">¶</a></h3>
+<p>All three of the missing <code class="code docutils literal notranslate"><span class="pre">Tag</span></code> methods can be created with relative ease.</p>
+<p>Here’s how selecting tags can be achieved:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">from</span> <span class="nn">fiftyone</span> <span class="kn">import</span> <span class="n">ViewField</span> <span class="k">as</span> <span class="n">F</span>
+
+<span class="c1"># What a select_tags() method would look like</span>
+<span class="c1"># view = dataset.select_tags(tags)</span>
+
+<span class="c1"># How to achieve this with existing methods</span>
+<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">set_field</span><span class="p">(</span><span class="s2">&quot;tags&quot;</span><span class="p">,</span> <span class="n">F</span><span class="p">(</span><span class="s2">&quot;tags&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">tags</span><span class="p">))</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>Here’s how excluding tags can be achieved:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">from</span> <span class="nn">fiftyone</span> <span class="kn">import</span> <span class="n">ViewField</span> <span class="k">as</span> <span class="n">F</span>
+
+<span class="c1"># What an exclude_tags() method would look like</span>
+<span class="c1"># view = dataset.exclude_tags(tags)</span>
+
+<span class="c1"># How to achieve this with existing methods</span>
+<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">set_field</span><span class="p">(</span><span class="s2">&quot;tags&quot;</span><span class="p">,</span> <span class="n">F</span><span class="p">(</span><span class="s2">&quot;tags&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">tags</span><span class="p">))</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>And here’s how filtering tags can be achieved:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">from</span> <span class="nn">fiftyone</span> <span class="kn">import</span> <span class="n">ViewField</span> <span class="k">as</span> <span class="n">F</span>
+
+<span class="c1"># What a filter_tags() method would look like</span>
+<span class="c1"># view = dataset.filter_tags(expr)</span>
+
+<span class="c1"># How to achieve this with existing methods</span>
+<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">set_field</span><span class="p">(</span><span class="s2">&quot;tags&quot;</span><span class="p">,</span> <span class="n">F</span><span class="p">(</span><span class="s2">&quot;tags&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">expr</span><span class="p">))</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The above examples use the set
+<a class="reference internal" href="../api/fiftyone.core.expressions.html#fiftyone.core.expressions.ViewExpression.intersection" title="fiftyone.core.expressions.ViewExpression.intersection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">intersection()</span></code></a>
+and
+<a class="reference internal" href="../api/fiftyone.core.expressions.html#fiftyone.core.expressions.ViewExpression.difference" title="fiftyone.core.expressions.ViewExpression.difference"><code class="xref py py-meth docutils literal notranslate"><span class="pre">difference()</span></code></a>
+view expressions.</p>
+</div>
+</div>
+<div class="section" id="frames-and-groups">
+<h3>Frames and groups<a class="headerlink" href="#frames-and-groups" title="Permalink to this headline">¶</a></h3>
+<p>When working with <a class="reference internal" href="../user_guide/using_views.html#video-views"><span class="std std-ref">frame-level</span></a> and
+<a class="reference internal" href="../user_guide/groups.html#groups-filtering"><span class="std std-ref">group-level</span></a> data in FiftyOne, all applicable view
+stages naturally support querying against frame- or group-level fields by
+prepending <code class="docutils literal notranslate"><span class="pre">&quot;frames.&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;groups.&quot;</span></code> to field paths, respectively.</p>
+<p>For example, you can retrieve the frame-level object detections in the
+“detections” field of the
+<a class="reference internal" href="../dataset_zoo/datasets.html#dataset-zoo-quickstart-video"><span class="std std-ref">quickstart-video</span></a> dataset:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+<span class="kn">from</span> <span class="nn">fiftyone</span> <span class="kn">import</span> <span class="n">ViewField</span> <span class="k">as</span> <span class="n">F</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart-video&quot;</span><span class="p">)</span>
+
+<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span><span class="s2">&quot;frames.detections&quot;</span><span class="p">,</span> <span class="n">F</span><span class="p">(</span><span class="s2">&quot;label&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;vehicle&quot;</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>Or when working with grouped datasets, you can match groups based on whether
+they contain a given group slice:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+<span class="kn">from</span> <span class="nn">fiftyone</span> <span class="kn">import</span> <span class="n">ViewField</span> <span class="k">as</span> <span class="n">F</span>
+
+<span class="c1"># Load a dataset with 200 groups, each with &quot;left&quot;, &quot;right&quot;, &quot;pcd&quot; elements</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart-groups&quot;</span><span class="p">)</span>
+
+<span class="c1"># Add 50 new groups with only &quot;left&quot; slice samples</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">add_samples</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="n">fo</span><span class="o">.</span><span class="n">Sample</span><span class="p">(</span>
+            <span class="n">filepath</span><span class="o">=</span><span class="s2">&quot;image</span><span class="si">%d</span><span class="s2">.png&quot;</span> <span class="o">%</span> <span class="n">i</span><span class="p">,</span>
+            <span class="n">group</span><span class="o">=</span><span class="n">fo</span><span class="o">.</span><span class="n">Group</span><span class="p">()</span><span class="o">.</span><span class="n">element</span><span class="p">(</span><span class="s2">&quot;left&quot;</span><span class="p">),</span>
+        <span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+
+<span class="c1"># Match groups that have &quot;pcd&quot; elements</span>
+<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s2">&quot;groups.pcd&quot;</span><span class="p">)</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>Conversion<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>FiftyOne provides a variety of convenient methods for converting your data
+from one format to another. Some of these conversions are accomplished as view
+stages that return <em>generated views</em>, which are views that contain a different
+shape of data than the original <a class="reference internal" href="../api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset" title="fiftyone.core.dataset.Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dataset</span></code></a> or <a class="reference internal" href="../api/fiftyone.core.view.html#fiftyone.core.view.DatasetView" title="fiftyone.core.view.DatasetView"><code class="xref py py-class docutils literal notranslate"><span class="pre">DatasetView</span></code></a> to which the view
+stage was applied.</p>
+<p>Let’s briefly cover the transformation that each generated view performs.</p>
+<div class="section" id="images-to-object-patches">
+<h3>Images to object patches<a class="headerlink" href="#images-to-object-patches" title="Permalink to this headline">¶</a></h3>
+<p>If your dataset contains label list fields like <a class="reference internal" href="../api/fiftyone.core.labels.html#fiftyone.core.labels.Detections" title="fiftyone.core.labels.Detections"><code class="xref py py-class docutils literal notranslate"><span class="pre">Detections</span></code></a> or <a class="reference internal" href="../api/fiftyone.core.labels.html#fiftyone.core.labels.Polylines" title="fiftyone.core.labels.Polylines"><code class="xref py py-class docutils literal notranslate"><span class="pre">Polylines</span></code></a>,
+then you can use
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.to_patches" title="fiftyone.core.collections.SampleCollection.to_patches"><code class="xref py py-meth docutils literal notranslate"><span class="pre">to_patches()</span></code></a> to
+create views that contain one sample per object patch in a specified label
+field of your dataset.</p>
+<p>For example, you can extract patches for all ground truth objects in a
+detection dataset:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+
+<span class="n">gt_patches</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">to_patches</span><span class="p">(</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">gt_patches</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Dataset:     quickstart
+Media type:  image
+Num patches: 1232
+Patch fields:
+    id:               fiftyone.core.fields.ObjectIdField
+    sample_id:        fiftyone.core.fields.ObjectIdField
+    filepath:         fiftyone.core.fields.StringField
+    tags:             fiftyone.core.fields.ListField(fiftyone.core.fields.StringField)
+    metadata:         fiftyone.core.fields.EmbeddedDocumentField(fiftyone.core.metadata.ImageMetadata)
+    created_at:       fiftyone.core.fields.DateTimeField
+    last_modified_at: fiftyone.core.fields.DateTimeField
+    ground_truth:     fiftyone.core.fields.EmbeddedDocumentField(fiftyone.core.labels.Detection)
+View stages:
+    1. ToPatches(field=&#39;ground_truth&#39;, config=None)
+</pre></div>
+</div>
+</div>
+<div class="section" id="images-to-evaluation-patches">
+<h3>Images to evaluation patches<a class="headerlink" href="#images-to-evaluation-patches" title="Permalink to this headline">¶</a></h3>
+<p>If you have <a class="reference internal" href="../user_guide/evaluation.html#evaluating-detections"><span class="std std-ref">run evaluation</span></a> on predictions from
+an object detection model, then you can use
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.to_evaluation_patches" title="fiftyone.core.collections.SampleCollection.to_evaluation_patches"><code class="xref py py-meth docutils literal notranslate"><span class="pre">to_evaluation_patches()</span></code></a>
+to transform the dataset (or a view into it) into a new view that contains one
+sample for each true positive, false positive, and false negative example.</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+
+<span class="c1"># Evaluate `predictions` w.r.t. labels in `ground_truth` field</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">evaluate_detections</span><span class="p">(</span>
+ <span class="s2">&quot;predictions&quot;</span><span class="p">,</span> <span class="n">gt_field</span><span class="o">=</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span> <span class="n">eval_key</span><span class="o">=</span><span class="s2">&quot;eval&quot;</span>
+<span class="p">)</span>
+
+<span class="c1"># Convert to evaluation patches</span>
+<span class="n">eval_patches</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">to_evaluation_patches</span><span class="p">(</span><span class="s2">&quot;eval&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">eval_patches</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">eval_patches</span><span class="o">.</span><span class="n">count_values</span><span class="p">(</span><span class="s2">&quot;type&quot;</span><span class="p">))</span>
+<span class="c1"># {&#39;fn&#39;: 246, &#39;fp&#39;: 4131, &#39;tp&#39;: 986}</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Dataset:     quickstart
+Media type:  image
+Num patches: 5363
+Patch fields:
+    id:               fiftyone.core.fields.ObjectIdField
+    sample_id:        fiftyone.core.fields.ObjectIdField
+    filepath:         fiftyone.core.fields.StringField
+    tags:             fiftyone.core.fields.ListField(fiftyone.core.fields.StringField)
+    metadata:         fiftyone.core.fields.EmbeddedDocumentField(fiftyone.core.metadata.ImageMetadata)
+    created_at:       fiftyone.core.fields.DateTimeField
+    last_modified_at: fiftyone.core.fields.DateTimeField
+    predictions:      fiftyone.core.fields.EmbeddedDocumentField(fiftyone.core.labels.Detections)
+    ground_truth:     fiftyone.core.fields.EmbeddedDocumentField(fiftyone.core.labels.Detections)
+    type:             fiftyone.core.fields.StringField
+    iou:              fiftyone.core.fields.FloatField
+    crowd:            fiftyone.core.fields.BooleanField
+View stages:
+    1. ToEvaluationPatches(eval_key=&#39;eval&#39;, config=None)
+</pre></div>
+</div>
+</div>
+<div class="section" id="videos-to-clips">
+<h3>Videos to clips<a class="headerlink" href="#videos-to-clips" title="Permalink to this headline">¶</a></h3>
+<p>You can use
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.to_clips" title="fiftyone.core.collections.SampleCollection.to_clips"><code class="xref py py-meth docutils literal notranslate"><span class="pre">to_clips()</span></code></a> to
+create views into your video datasets that contain one sample per clip defined
+by a specific field or expression in a video collection.</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+<span class="kn">from</span> <span class="nn">fiftyone</span> <span class="kn">import</span> <span class="n">ViewField</span> <span class="k">as</span> <span class="n">F</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart-video&quot;</span><span class="p">)</span>
+
+<span class="c1"># Create a clips view that contains one clip for each contiguous segment</span>
+<span class="c1"># that contains at least one road sign in every frame</span>
+<span class="n">clips</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">dataset</span>
+    <span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span><span class="s2">&quot;frames.detections&quot;</span><span class="p">,</span> <span class="n">F</span><span class="p">(</span><span class="s2">&quot;label&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;road sign&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">to_clips</span><span class="p">(</span><span class="s2">&quot;frames.detections&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">clips</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Dataset:    quickstart-video
+Media type: video
+Num clips:  11
+Clip fields:
+    id:               fiftyone.core.fields.ObjectIdField
+    sample_id:        fiftyone.core.fields.ObjectIdField
+    filepath:         fiftyone.core.fields.StringField
+    support:          fiftyone.core.fields.FrameSupportField
+    tags:             fiftyone.core.fields.ListField(fiftyone.core.fields.StringField)
+    metadata:         fiftyone.core.fields.EmbeddedDocumentField(fiftyone.core.metadata.VideoMetadata)
+    created_at:       fiftyone.core.fields.DateTimeField
+    last_modified_at: fiftyone.core.fields.DateTimeField
+Frame fields:
+    id:               fiftyone.core.fields.ObjectIdField
+    frame_number:     fiftyone.core.fields.FrameNumberField
+    created_at:       fiftyone.core.fields.DateTimeField
+    last_modified_at: fiftyone.core.fields.DateTimeField
+    detections:       fiftyone.core.fields.EmbeddedDocumentField(fiftyone.core.labels.Detections)
+View stages:
+    1. FilterLabels(field=&#39;frames.detections&#39;, ...)
+    2. ToClips(field_or_expr=&#39;frames.detections&#39;, config=None)
+</pre></div>
+</div>
+</div>
+<div class="section" id="videos-to-images">
+<h3>Videos to images<a class="headerlink" href="#videos-to-images" title="Permalink to this headline">¶</a></h3>
+<p>You can use
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.to_frames" title="fiftyone.core.collections.SampleCollection.to_frames"><code class="xref py py-meth docutils literal notranslate"><span class="pre">to_frames()</span></code></a>
+to create image views into your video datasets that contain one sample per
+frame in the input collection.</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart-video&quot;</span><span class="p">)</span>
+
+<span class="c1"># Create a view with one sample per frame</span>
+<span class="n">frames</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">to_frames</span><span class="p">(</span><span class="n">sample_frames</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">frames</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Dataset:     quickstart-video
+Media type:  image
+Num samples: 1279
+Sample fields:
+   id:               fiftyone.core.fields.ObjectIdField
+   sample_id:        fiftyone.core.fields.ObjectIdField
+   frame_number:     fiftyone.core.fields.FrameNumberField
+   filepath:         fiftyone.core.fields.StringField
+   tags:             fiftyone.core.fields.ListField(fiftyone.core.fields.StringField)
+   metadata:         fiftyone.core.fields.EmbeddedDocumentField(fiftyone.core.metadata.ImageMetadata)
+   created_at:       fiftyone.core.fields.DateTimeField
+   last_modified_at: fiftyone.core.fields.DateTimeField
+   detections:       fiftyone.core.fields.EmbeddedDocumentField(fiftyone.core.labels.Detections)
+View stages:
+  1. ToFrames(config=None)
+</pre></div>
+</div>
+</div>
+<div class="section" id="grouped-to-non-grouped">
+<h3>Grouped to non-grouped<a class="headerlink" href="#grouped-to-non-grouped" title="Permalink to this headline">¶</a></h3>
+<p>You can use the
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.select_group_slices" title="fiftyone.core.collections.SampleCollection.select_group_slices"><code class="xref py py-meth docutils literal notranslate"><span class="pre">select_group_slices()</span></code></a>
+to generate a <a class="reference internal" href="../api/fiftyone.core.view.html#fiftyone.core.view.DatasetView" title="fiftyone.core.view.DatasetView"><code class="xref py py-class docutils literal notranslate"><span class="pre">DatasetView</span></code></a> that contains a flattened collection of samples
+from specific slice(s) of a grouped dataset.</p>
+<p>For example, the following code creates an image collection from the “left” and
+“right” group slices of the
+<a class="reference internal" href="../dataset_zoo/datasets.html#dataset-zoo-quickstart-groups"><span class="std std-ref">quickstart-groups</span></a> dataset:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart-groups&quot;</span><span class="p">)</span>
+
+<span class="n">image_view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">select_group_slices</span><span class="p">([</span><span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="s2">&quot;right&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">image_view</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Dataset:     groups-overview
+Media type:  image
+Num samples: 400
+Sample fields:
+    id:               fiftyone.core.fields.ObjectIdField
+    filepath:         fiftyone.core.fields.StringField
+    tags:             fiftyone.core.fields.ListField(fiftyone.core.fields.StringField)
+    metadata:         fiftyone.core.fields.EmbeddedDocumentField(fiftyone.core.metadata.Metadata)
+    created_at:       fiftyone.core.fields.DateTimeField
+    last_modified_at: fiftyone.core.fields.DateTimeField
+    group:            fiftyone.core.fields.EmbeddedDocumentField(fiftyone.core.groups.Group)
+    ground_truth:     fiftyone.core.fields.EmbeddedDocumentField(fiftyone.core.labels.Detections)
+View stages:
+    1. SelectGroupSlices(slices=[&#39;left&#39;, &#39;right&#39;])
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>All group slice(s) you select must have the same media type, since the
+<code class="docutils literal notranslate"><span class="pre">media_type</span></code> of the returned collection is the media type of the slices
+you select.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+             </article>
+             
+            </div>
+            <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="pandas_vs_fiftyone.html" class="btn btn-neutral float-right" title="pandas vs FiftyOne" accesskey="n" rel="next">Next <img src="../_static/images/chevron-right-orange.svg" class="next-page"></a>
+      
+      
+        <a href="filtering_cheat_sheet.html" class="btn btn-neutral" title="Filtering Cheat Sheet" accesskey="p" rel="prev"><img src="../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
+      
+    </div>
+  
+</footer>
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              <ul>
+<li><a class="reference internal" href="#">Views Cheat Sheet</a><ul>
+<li><a class="reference internal" href="#the-six-basic-operations">The six basic operations</a><ul>
+<li><a class="reference internal" href="#matching">Matching</a></li>
+<li><a class="reference internal" href="#filtering">Filtering</a></li>
+<li><a class="reference internal" href="#selection">Selection</a></li>
+<li><a class="reference internal" href="#exclusion">Exclusion</a></li>
+<li><a class="reference internal" href="#sorting">Sorting</a></li>
+<li><a class="reference internal" href="#indexing">Indexing</a></li>
+<li><a class="reference internal" href="#conversion">Conversion</a></li>
+<li><a class="reference internal" href="#miscellaneous">Miscellaneous</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#filtering-matching-selecting-and-excluding">Filtering, matching, selecting, and excluding</a><ul>
+<li><a class="reference internal" href="#samples">Samples</a></li>
+<li><a class="reference internal" href="#labels">Labels</a></li>
+<li><a class="reference internal" href="#fields">Fields</a></li>
+<li><a class="reference internal" href="#tags">Tags</a></li>
+<li><a class="reference internal" href="#frames-and-groups">Frames and groups</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id2">Conversion</a><ul>
+<li><a class="reference internal" href="#images-to-object-patches">Images to object patches</a></li>
+<li><a class="reference internal" href="#images-to-evaluation-patches">Images to evaluation patches</a></li>
+<li><a class="reference internal" href="#videos-to-clips">Videos to clips</a></li>
+<li><a class="reference internal" href="#videos-to-images">Videos to images</a></li>
+<li><a class="reference internal" href="#grouped-to-non-grouped">Grouped to non-grouped</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  
+
+
+  
+
+     
+       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+         <script src="../_static/jquery.js"></script>
+         <script src="../_static/underscore.js"></script>
+         <script src="../_static/doctools.js"></script>
+         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+         <script src="../_static/js/voxel51-website.js"></script>
+         <script src="../_static/js/custom.js"></script>
+     
+
+  
+
+  <script type="text/javascript" src="../_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="../_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+  <!-- Begin Footer -->
+
+
+<footer class="footer-wrapper" id="docs-tutorials-resources">
+  <div class="footer pytorch-container">
+    <div class="footer__logo">
+      <a href="https://voxel51.com/"
+        ><img
+          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
+      /></a>
+    </div>
+
+    <div class="footer__address">
+      330 E Liberty St<br />
+      Ann Arbor, MI 48104<br />
+      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
+    </div>
+
+    <!--
+    <div class="footer__contact">
+      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
+    </div>
+    -->
+
+    <div class="footer__links">
+      <div class="footer__links--col2">
+        <p class="nav__item--brand">Products</p>
+        <a href="https://voxel51.com/fiftyone/">FiftyOne</a>
+        <a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a>
+        <a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a>
+        <a href="https://voxel51.com/success-stories/">Success Stories</a>
+      </div>
+      <div class="footer__links--col3">
+        <p class="nav__item--brand">Resources</p>
+        <a href="https://voxel51.com/blog/">Blog</a>
+        <a href="https://docs.voxel51.com/">Docs</a>
+        <a href="https://github.com/voxel51/">GitHub</a>
+        <a href="https://community.voxel51.com">Discord</a>
+        <a href="https://voxel51.com/ourstory/">About Us</a>
+        <a href="https://voxel51.com/computer-vision-events/">Events</a>
+        <a href="https://voxel51.com/jobs/">Careers</a>
+        <a href="https://voxel51.com/press/">Press</a>
+      </div>
+    </div>
+
+    <div class="footer__icons">
+      <ul class="list-inline">
+        <li>
+          <a href="https://www.linkedin.com/company/voxel51/">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/voxel51/">
+            <i class="fa-brands fa-github"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/voxel51">
+            <i class="fa-brands fa-twitter"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/voxel51/">
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="footer__copyright">
+      <ul class="list-inline">
+        <li>&copy; 2024 Voxel51 Inc.</li>
+        <li>
+          <a href="https://voxel51.com/privacy/">Privacy Policy</a>
+        </li>
+        <li>
+          <a href="https://voxel51.com/terms/">Terms of Service</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<!-- https://buttons.github.io -->
+<script async defer src="https://buttons.github.io/buttons.js" ></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XD15NFRY3M" ></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+  gtag("config", "G-XD15NFRY3M");
+</script>
+
+<script>
+  function open_modal(modal_id, modal_closer_id) {
+    // Get the modal
+    let the_modal = document.getElementById(modal_id);
+
+    the_modal.style.display = "flex";
+    document.body.style.overflow = "hidden";
+
+    let the_modal_closer = document.getElementById(modal_closer_id);
+
+    // When the user clicks on <span> (x), close the modal
+    the_modal_closer &&
+      (the_modal_closer.onclick = function () {
+        the_modal.style.display = "none";
+      });
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+      if (event.target == the_modal) {
+        the_modal.style.display = "none";
+        document.body.style.overflow = "unset";
+        window.onclick = undefined;
+      }
+    };
+  }
+</script>
+
+<!-- bigpicture.io -->
+<script>
+  !(function (e, t, i) {
+    var r = (e.bigPicture = e.bigPicture || []);
+    if (!r.initialized)
+      if (r.invoked)
+        e.console &&
+          console.error &&
+          console.error("BigPicture.io snippet included twice.");
+      else {
+        (r.invoked = !0),
+          (r.SNIPPET_VERSION = 1.5),
+          (r.handler = function (e) {
+            if (void 0 !== r.callback)
+              try {
+                return r.callback(e);
+              } catch (e) {}
+          }),
+          (r.eventList = ["mousedown", "mouseup", "click", "submit"]),
+          (r.methods = [
+            "track",
+            "identify",
+            "page",
+            "group",
+            "alias",
+            "integration",
+            "ready",
+            "intelReady",
+            "consentReady",
+            "on",
+            "off",
+          ]),
+          (r.factory = function (e) {
+            return function () {
+              var t = Array.prototype.slice.call(arguments);
+              return t.unshift(e), r.push(t), r;
+            };
+          });
+        for (var n = 0; n < r.methods.length; n++) {
+          var o = r.methods[n];
+          r[o] = r.factory(o);
+        }
+        r.getCookie = function (e) {
+          var i = ("; " + t.cookie).split("; " + e + "=");
+          return 2 == i.length && i.pop().split(";").shift();
+        };
+        var c = (r.isEditor = (function () {
+          try {
+            return (
+              e.self !== e.top &&
+              (new RegExp("app" + i, "ig").test(t.referrer) ||
+                "edit" == r.getCookie("_bpr_edit"))
+            );
+          } catch (e) {
+            return !1;
+          }
+        })());
+        r.init = function (n, o) {
+          if (((r.projectId = n), (r._config = o), !c))
+            for (var a = 0; a < r.eventList.length; a++)
+              e.addEventListener(r.eventList[a], r.handler, !0);
+          var s = t.createElement("script");
+          s.async = !0;
+          var d = c ? "/editor/editor" : "/public-" + n;
+          (s.src = "//cdn" + i + d + ".js"),
+            t.getElementsByTagName("head")[0].appendChild(s);
+        };
+      }
+  })(window, document, ".bigpicture.io");
+  bigPicture.init("1646");
+</script>
+
+
+  
+
+  <!-- End Footer -->
+
+  <!-- Begin Mobile Menu -->
+
+  
+
+  <!-- End Mobile Menu -->
+
+  <script type="text/javascript" src="../_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function(e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,2540 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Built-In Zoo Datasets &mdash; FiftyOne 1.3.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <link rel="stylesheet" href="../_static/css/voxel51-website.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Remotely-Sourced Zoo Datasets" href="remote.html" />
+    <link rel="prev" title="FiftyOne Dataset Zoo" href="index.html" />
+<meta property="og:image" content="https://voxel51.com/wp-content/uploads/2024/03/3.24_webpages_Home_AV.png" />
+
+<link
+  href="https://fonts.googleapis.com/css?family=Palanquin:400,600,700,800"
+  rel="stylesheet"
+/>
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+  rel="stylesheet"
+/>
+<script src="https://tag.clearbitscripts.com/v1/pk_b9ed71c8234edd4f77326bcbfab5a4ca/tags.js"></script>
+
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+  
+</head>
+
+
+<div class="container-fluid header-holder tutorials-header" id="header-holder">
+  <nav id="nav__main" class="nav__main">
+    <div class="nav__main__logo">
+      <a href="https://voxel51.com/">
+        <img
+          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
+        />
+      </a>
+    </div>
+
+    <div class="nav__spacer desktop_only"></div>
+
+    <div id="nav__main__mobilebutton--on">
+      <a href="javascript:void(0);" onclick="navMobileButton()">
+        <i class="fa-solid fa-bars"></i>
+      </a>
+    </div>
+
+    <div id="nav__main__mobilebutton--off">
+      <a href="javascript:void(0);" onclick="navMobileButton()">
+        <i class="fa-solid fa-times"></i>
+      </a>
+    </div>
+
+    <div id="nav__main__items">
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Products</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://voxel51.com/fiftyone/">Open Source</a></li>
+            <li><a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a></li>
+            <li><a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a></li>
+            <li><a href="https://voxel51.com/success-stories/">Success Stories</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Learn</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://community.voxel51.com">Community Discord</a></li>
+            <li><a href="https://voxel51.com/blog/">Blog</a></li>
+            <li><a href="https://voxel51.com/computer-vision-events/">Events</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item">
+        <a href="https://docs.voxel51.com/">Docs</a>
+      </div>
+
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Company</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://voxel51.com/ourstory/">About Us</a></li>
+            <li><a href="https://voxel51.com/jobs/">Careers</a></li>
+            <li><a href="https://voxel51.com/talk-to-sales/">Talk to Sales</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item mobile_only">
+        <a href="https://github.com/voxel51/fiftyone">GitHub</a>
+      </div>
+
+      <div class="nav__item desktop_only" id="octocat">
+        <!-- https://buttons.github.io -->
+        <a
+          class="github-button"
+          href="https://github.com/voxel51/fiftyone"
+          data-color-scheme="no-preference: dark_high_contrast; light: dark_high_contrast; dark: dark_high_contrast;"
+          data-size="large"
+          data-show-count="true"
+          aria-label="Star voxel51/fiftyone on GitHub"
+          >Star</a
+        >
+      </div>
+
+      <div class="nav__item full_nav_only">
+        <a class="button-primary" href="https://voxel51.com/schedule-teams-workshop/" target="_blank"
+          >Schedule a workshop</a
+        >
+      </div>
+    </div>
+  </nav>
+</div>
+
+
+
+<body class="pytorch-body">
+
+   
+
+    
+
+    <div class="table-of-contents-link-wrapper">
+      <span>Table of Contents</span>
+      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+    </div>
+
+    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+      <div class="pytorch-side-scroll">
+        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          <div class="pytorch-left-menu-search">
+            
+
+            
+              
+              
+            
+
+            
+
+
+  
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+            
+          </div>
+
+           <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../teams/index.html">FiftyOne Teams 🚀</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../environments/index.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../recipes/index.html">Recipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheat_sheets/index.html">Cheat Sheets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/index.html">User Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Dataset Zoo</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Built-in datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="remote.html">Remote datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html">API reference</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../model_zoo/index.html">Model Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brain.html">FiftyOne Brain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/index.html">Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plugins/index.html">Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli/index.html">CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/fiftyone.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deprecation.html">Deprecation Notices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a></li>
+</ul>
+ 
+        </div>
+      </div>
+    </nav>
+
+    <div class="pytorch-container">
+      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+        <div class="pytorch-breadcrumbs-wrapper">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="../index.html">
+          
+            Docs
+          
+        </a> &gt;
+      </li>
+
+        
+          <li><a href="index.html">FiftyOne Dataset Zoo</a> &gt;</li>
+        
+      <li>Built-In Zoo Datasets</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+        </div>
+
+        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+          Contents
+        </div>
+      </div>
+
+      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+        <div class="pytorch-content-left">
+
+        
+          
+          <div class="rst-content style-external-links">
+          
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+              
+  <div class="section" id="built-in-zoo-datasets">
+<span id="dataset-zoo-datasets"></span><h1>Built-In Zoo Datasets<a class="headerlink" href="#built-in-zoo-datasets" title="Permalink to this headline">¶</a></h1>
+<p>This page lists all of the natively available datasets in the FiftyOne Dataset
+Zoo.</p>
+<p>Check out the <a class="reference internal" href="api.html#dataset-zoo-api"><span class="std std-ref">API reference</span></a> for complete instructions
+for using the Dataset Zoo.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Some datasets are loaded via the
+<a class="reference external" href="https://pytorch.org/vision/stable/datasets.html">TorchVision Datasets</a>
+or <a class="reference external" href="https://www.tensorflow.org/datasets">TensorFlow Datasets</a> packages
+under the hood.</p>
+<p>If you do not have a <a class="reference internal" href="api.html#dataset-zoo-ml-backend"><span class="std std-ref">suitable package</span></a>
+installed when attempting to download a zoo dataset, you’ll see an error
+message that will help you install one.</p>
+</div>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 40%" />
+<col style="width: 60%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset name</p></th>
+<th class="head"><p>Tags</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#dataset-zoo-activitynet-100"><span class="std std-ref">ActivityNet 100</span></a></p></td>
+<td><p>video, classification, action-recognition, temporal-detection</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#dataset-zoo-activitynet-200"><span class="std std-ref">ActivityNet 200</span></a></p></td>
+<td><p>video, classification, action-recognition, temporal-detection</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#dataset-zoo-bdd100k"><span class="std std-ref">BDD100K</span></a></p></td>
+<td><p>image, multilabel, automotive, manual</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#dataset-zoo-caltech101"><span class="std std-ref">Caltech-101</span></a></p></td>
+<td><p>image, classification</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#dataset-zoo-caltech256"><span class="std std-ref">Caltech-256</span></a></p></td>
+<td><p>image, classification</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#dataset-zoo-cifar10"><span class="std std-ref">CIFAR-10</span></a></p></td>
+<td><p>image, classification</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#dataset-zoo-cifar100"><span class="std std-ref">CIFAR-100</span></a></p></td>
+<td><p>image, classification</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#dataset-zoo-cityscapes"><span class="std std-ref">Cityscapes</span></a></p></td>
+<td><p>image, multilabel, automotive, manual</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#dataset-zoo-coco-2014"><span class="std std-ref">COCO-2014</span></a></p></td>
+<td><p>image, detection, segmentation</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#dataset-zoo-coco-2017"><span class="std std-ref">COCO-2017</span></a></p></td>
+<td><p>image, detection, segmentation</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#dataset-zoo-fashion-mnist"><span class="std std-ref">Fashion MNIST</span></a></p></td>
+<td><p>image, classification</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#dataset-zoo-fiw"><span class="std std-ref">Families in the Wild</span></a></p></td>
+<td><p>image, classification</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#dataset-zoo-hmdb51"><span class="std std-ref">HMDB51</span></a></p></td>
+<td><p>video, action-recognition</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#dataset-zoo-imagenet-2012"><span class="std std-ref">ImageNet 2012</span></a></p></td>
+<td><p>image, classification, manual</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#dataset-zoo-imagenet-sample"><span class="std std-ref">ImageNet Sample</span></a></p></td>
+<td><p>image, classification</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#dataset-zoo-kinetics-400"><span class="std std-ref">Kinetics 400</span></a></p></td>
+<td><p>video, classification, action-recognition</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#dataset-zoo-kinetics-600"><span class="std std-ref">Kinetics 600</span></a></p></td>
+<td><p>video, classification, action-recognition</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#dataset-zoo-kinetics-700"><span class="std std-ref">Kinetics 700</span></a></p></td>
+<td><p>video, classification, action-recognition</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#dataset-zoo-kinetics-700-2020"><span class="std std-ref">Kinetics 700-2020</span></a></p></td>
+<td><p>video, classification, action-recognition</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#dataset-zoo-kitti"><span class="std std-ref">KITTI</span></a></p></td>
+<td><p>image, detection</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#dataset-zoo-kitti-multiview"><span class="std std-ref">KITTI Multiview</span></a></p></td>
+<td><p>image, point-cloud, detection</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#dataset-zoo-lfw"><span class="std std-ref">Labeled Faces in the Wild</span></a></p></td>
+<td><p>image, classification, facial-recognition</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#dataset-zoo-mnist"><span class="std std-ref">MNIST</span></a></p></td>
+<td><p>image, classification</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#dataset-zoo-open-images-v6"><span class="std std-ref">Open Images V6</span></a></p></td>
+<td><p>image, classification, detection, segmentation, relationships</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#dataset-zoo-open-images-v7"><span class="std std-ref">Open Images V7</span></a></p></td>
+<td><p>image, classification, detection, segmentation, keypoints, relationships</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#dataset-zoo-places"><span class="std std-ref">Places</span></a></p></td>
+<td><p>image, classification</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#dataset-zoo-quickstart"><span class="std std-ref">Quickstart</span></a></p></td>
+<td><p>image, quickstart</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#dataset-zoo-quickstart-geo"><span class="std std-ref">Quickstart Geo</span></a></p></td>
+<td><p>image, location, quickstart</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#dataset-zoo-quickstart-video"><span class="std std-ref">Quickstart Video</span></a></p></td>
+<td><p>video, quickstart</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#dataset-zoo-quickstart-groups"><span class="std std-ref">Quickstart Groups</span></a></p></td>
+<td><p>image, point-cloud, quickstart</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#dataset-zoo-quickstart-3d"><span class="std std-ref">Quickstart 3D</span></a></p></td>
+<td><p>3d, point-cloud, mesh, quickstart</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#dataset-zoo-sama-coco"><span class="std std-ref">Sama-COCO</span></a></p></td>
+<td><p>image, detection, segmentation</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#dataset-zoo-ucf101"><span class="std std-ref">UCF101</span></a></p></td>
+<td><p>video, action-recognition</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#dataset-zoo-voc-2007"><span class="std std-ref">VOC-2007</span></a></p></td>
+<td><p>image, detection</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#dataset-zoo-voc-2012"><span class="std std-ref">VOC-2012</span></a></p></td>
+<td><p>image, detection</p></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="activitynet-100">
+<span id="dataset-zoo-activitynet-100"></span><h2>ActivityNet 100<a class="headerlink" href="#activitynet-100" title="Permalink to this headline">¶</a></h2>
+<p>ActivityNet is a large-scale video dataset for human activity understanding
+supporting the tasks of global video classification, trimmed activity
+classification, and temporal activity detection.</p>
+<p>This version contains videos and temporal activity detections for the 100 class
+version of the dataset.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Check out <a class="reference internal" href="../integrations/activitynet.html#activitynet"><span class="std std-ref">this guide</span></a> for more details on using
+FiftyOne to work with ActivityNet.</p>
+</div>
+<p><strong>Notes</strong></p>
+<ul class="simple">
+<li><p>ActivityNet 100 and 200 differ in the number of activity classes and
+videos per split</p></li>
+<li><p>Partial downloads will download videos (if still available) from YouTube</p></li>
+<li><p>Full splits can be loaded by first downloading the official source files
+from the
+<a class="reference external" href="https://docs.google.com/forms/d/e/1FAIpQLSeKaFq9ZfcmZ7W0B0PbEhfbTHY41GeEgwsa7WobJgGUhn4DTQ/viewform">ActivityNet maintainers</a></p></li>
+<li><p>The test set does not have annotations</p></li>
+</ul>
+<p><strong>Details</strong></p>
+<ul class="simple">
+<li><p>Dataset name: <code class="docutils literal notranslate"><span class="pre">activitynet-100</span></code></p></li>
+<li><p>Dataset source: <a class="reference external" href="http://activity-net.org/index.html">http://activity-net.org/index.html</a></p></li>
+<li><p>Dataset size: 223 GB</p></li>
+<li><p>Tags: <code class="docutils literal notranslate"><span class="pre">video,</span> <span class="pre">classification,</span> <span class="pre">action-recognition,</span> <span class="pre">temporal-detection</span></code></p></li>
+<li><p>Supported splits: <code class="docutils literal notranslate"><span class="pre">train,</span> <span class="pre">validation,</span> <span class="pre">test</span></code></p></li>
+<li><p>ZooDataset class:
+<a class="reference internal" href="../api/fiftyone.zoo.datasets.base.html#fiftyone.zoo.datasets.base.ActivityNet100Dataset" title="fiftyone.zoo.datasets.base.ActivityNet100Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">ActivityNet100Dataset</span></code></a></p></li>
+</ul>
+<p><strong>Full split stats</strong></p>
+<ul class="simple">
+<li><p>Train split: 4,819 videos (7,151 instances)</p></li>
+<li><p>Test split: 2,480 videos (labels withheld)</p></li>
+<li><p>Validation split: 2,383 videos (3,582 instances)</p></li>
+</ul>
+<p><strong>Partial downloads</strong></p>
+<p>FiftyOne provides parameters that can be used to efficiently download specific
+subsets of the ActivityNet dataset to suit your needs. When new subsets are
+specified, FiftyOne will use existing downloaded data first if possible before
+resorting to downloading additional data from YouTube.</p>
+<p>The following parameters are available to configure a partial download of
+ActivityNet 100 by passing them to
+<a class="reference internal" href="../api/fiftyone.zoo.datasets.html#fiftyone.zoo.datasets.load_zoo_dataset" title="fiftyone.zoo.datasets.load_zoo_dataset"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_zoo_dataset()</span></code></a>:</p>
+<ul class="simple">
+<li><p><strong>split</strong> (<em>None</em>) and <strong>splits</strong> (<em>None</em>): a string or list of strings,
+respectively, specifying the splits to load. Supported values are
+<code class="docutils literal notranslate"><span class="pre">(&quot;train&quot;,</span> <span class="pre">&quot;test&quot;,</span> <span class="pre">&quot;validation&quot;)</span></code>. If none are provided, all available
+splits are loaded</p></li>
+<li><p><strong>source_dir</strong> (<em>None</em>): the directory containing the manually downloaded
+ActivityNet files used to avoid downloading videos from YouTube</p></li>
+<li><p><strong>classes</strong> (<em>None</em>): a string or list of strings specifying required
+classes to load. If provided, only samples containing at least one instance
+of a specified class will be loaded</p></li>
+<li><p><strong>max_duration</strong> (<em>None</em>): only videos with a duration in seconds that is
+less than or equal to the <code class="code docutils literal notranslate"><span class="pre">max_duration</span></code> will be downloaded. By default,
+all videos are downloaded</p></li>
+<li><p><strong>copy_files</strong> (<em>True</em>): whether to move (False) or create copies (True) of
+the source files when populating <code class="docutils literal notranslate"><span class="pre">dataset_dir</span></code>. This is only relevant
+when a <code class="docutils literal notranslate"><span class="pre">source_dir</span></code> is provided</p></li>
+<li><p><strong>num_workers</strong> (<em>None</em>): the number of processes to use when downloading
+individual videos. By default, <code class="docutils literal notranslate"><span class="pre">multiprocessing.cpu_count()</span></code> is used</p></li>
+<li><p><strong>shuffle</strong> (<em>False</em>): whether to randomly shuffle the order in which
+samples are chosen for partial downloads</p></li>
+<li><p><strong>seed</strong> (<em>None</em>): a random seed to use when shuffling</p></li>
+<li><p><strong>max_samples</strong> (<em>None</em>): a maximum number of samples to load per split. If
+<code class="docutils literal notranslate"><span class="pre">classes</span></code> are also specified, only up to the number of samples that
+contain at least one specified class will be loaded. By default, all
+matching samples are loaded</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>See
+<a class="reference internal" href="../api/fiftyone.zoo.datasets.base.html#fiftyone.zoo.datasets.base.ActivityNet100Dataset" title="fiftyone.zoo.datasets.base.ActivityNet100Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">ActivityNet100Dataset</span></code></a> and
+<a class="reference internal" href="../api/fiftyone.utils.activitynet.html#fiftyone.utils.activitynet.ActivityNetDatasetImporter" title="fiftyone.utils.activitynet.ActivityNetDatasetImporter"><code class="xref py py-class docutils literal notranslate"><span class="pre">ActivityNetDatasetImporter</span></code></a>
+for complete descriptions of the optional keyword arguments that you can
+pass to <a class="reference internal" href="../api/fiftyone.zoo.datasets.html#fiftyone.zoo.datasets.load_zoo_dataset" title="fiftyone.zoo.datasets.load_zoo_dataset"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_zoo_dataset()</span></code></a>.</p>
+</div>
+<p><strong>Full split downloads</strong></p>
+<p>Many videos have been removed from YouTube since the creation of ActivityNet.
+As a result, if you do not specify any partial download parameters defined in
+the previous section, you must first download the official source files from
+the ActivityNet maintainers in order to load a full split into FiftyOne.</p>
+<p>To download the source files, you must fill out
+<a class="reference external" href="https://docs.google.com/forms/d/e/1FAIpQLSeKaFq9ZfcmZ7W0B0PbEhfbTHY41GeEgwsa7WobJgGUhn4DTQ/viewform">this form</a>.</p>
+<p>Refer to <a class="reference internal" href="../integrations/activitynet.html#activitynet-full-split-downloads"><span class="std std-ref">this page</span></a> to see how to load
+full splits by passing the <code class="code docutils literal notranslate"><span class="pre">source_dir</span></code> parameter to
+<a class="reference internal" href="../api/fiftyone.zoo.datasets.html#fiftyone.zoo.datasets.load_zoo_dataset" title="fiftyone.zoo.datasets.load_zoo_dataset"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_zoo_dataset()</span></code></a>.</p>
+<p><strong>Example usage</strong></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In order to work with video datasets, you’ll need to have
+<a class="reference internal" href="../getting_started/troubleshooting.html#troubleshooting-video"><span class="std std-ref">ffmpeg installed</span></a>.</p>
+</div>
+<img alt="activitynet-100-validation" class="align-center" src="../_images/activitynet-100-validation.png" />
+</div>
+<div class="section" id="activitynet-200">
+<span id="dataset-zoo-activitynet-200"></span><h2>ActivityNet 200<a class="headerlink" href="#activitynet-200" title="Permalink to this headline">¶</a></h2>
+<p>ActivityNet is a large-scale video dataset for human activity understanding
+supporting the tasks of global video classification, trimmed activity
+classification, and temporal activity detection.</p>
+<p>This version contains videos and temporal activity detections for the 200 class
+version of the dataset.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Check out <a class="reference internal" href="../integrations/activitynet.html#activitynet"><span class="std std-ref">this guide</span></a> for more details on using
+FiftyOne to work with ActivityNet.</p>
+</div>
+<p><strong>Notes</strong></p>
+<ul class="simple">
+<li><p>ActivityNet 200 is a superset of ActivityNet 100</p></li>
+<li><p>ActivityNet 100 and 200 differ in the number of activity classes and videos
+per split</p></li>
+<li><p>Partial downloads will download videos (if still available) from YouTube</p></li>
+<li><p>Full splits can be loaded by first downloading the official source files
+from the
+<a class="reference external" href="https://docs.google.com/forms/d/e/1FAIpQLSeKaFq9ZfcmZ7W0B0PbEhfbTHY41GeEgwsa7WobJgGUhn4DTQ/viewform">ActivityNet maintainers</a></p></li>
+<li><p>The test set does not have annotations</p></li>
+</ul>
+<p><strong>Details</strong></p>
+<ul class="simple">
+<li><p>Dataset name: <code class="docutils literal notranslate"><span class="pre">activitynet-200</span></code></p></li>
+<li><p>Dataset source: <a class="reference external" href="http://activity-net.org/index.html">http://activity-net.org/index.html</a></p></li>
+<li><p>Dataset size: 500 GB</p></li>
+<li><p>Tags: <code class="docutils literal notranslate"><span class="pre">video,</span> <span class="pre">classification,</span> <span class="pre">action-recognition,</span> <span class="pre">temporal-detection</span></code></p></li>
+<li><p>Supported splits: <code class="docutils literal notranslate"><span class="pre">train,</span> <span class="pre">validation,</span> <span class="pre">test</span></code></p></li>
+<li><p>ZooDataset class:
+<a class="reference internal" href="../api/fiftyone.zoo.datasets.base.html#fiftyone.zoo.datasets.base.ActivityNet200Dataset" title="fiftyone.zoo.datasets.base.ActivityNet200Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">ActivityNet200Dataset</span></code></a></p></li>
+</ul>
+<p><strong>Full split stats</strong></p>
+<ul class="simple">
+<li><p>Train split: 10,024 videos (15,410 instances)</p></li>
+<li><p>Test split: 5,044 videos (labels withheld)</p></li>
+<li><p>Validation split: 4,926 videos (7,654 instances)</p></li>
+</ul>
+<p><strong>Partial downloads</strong></p>
+<p>FiftyOne provides parameters that can be used to efficiently download specific
+subsets of the ActivityNet dataset to suit your needs. When new subsets are
+specified, FiftyOne will use existing downloaded data first if possible before
+resorting to downloading additional data from YouTube.</p>
+<p>The following parameters are available to configure a partial download of
+ActivityNet 200 by passing them to
+<a class="reference internal" href="../api/fiftyone.zoo.datasets.html#fiftyone.zoo.datasets.load_zoo_dataset" title="fiftyone.zoo.datasets.load_zoo_dataset"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_zoo_dataset()</span></code></a>:</p>
+<ul class="simple">
+<li><p><strong>split</strong> (<em>None</em>) and <strong>splits</strong> (<em>None</em>): a string or list of strings,
+respectively, specifying the splits to load. Supported values are
+<code class="docutils literal notranslate"><span class="pre">(&quot;train&quot;,</span> <span class="pre">&quot;test&quot;,</span> <span class="pre">&quot;validation&quot;)</span></code>. If none are provided, all available
+splits are loaded</p></li>
+<li><p><strong>source_dir</strong> (<em>None</em>): the directory containing the manually downloaded
+ActivityNet files used to avoid downloading videos from YouTube</p></li>
+<li><p><strong>classes</strong> (<em>None</em>): a string or list of strings specifying required
+classes to load. If provided, only samples containing at least one instance
+of a specified class will be loaded</p></li>
+<li><p><strong>max_duration</strong> (<em>None</em>): only videos with a duration in seconds that is
+less than or equal to the <code class="code docutils literal notranslate"><span class="pre">max_duration</span></code> will be downloaded. By default,
+all videos are downloaded</p></li>
+<li><p><strong>copy_files</strong> (<em>True</em>): whether to move (False) or create copies (True) of
+the source files when populating <code class="docutils literal notranslate"><span class="pre">dataset_dir</span></code>. This is only relevant
+when a <code class="docutils literal notranslate"><span class="pre">source_dir</span></code> is provided</p></li>
+<li><p><strong>num_workers</strong> (<em>None</em>): the number of processes to use when downloading
+individual videos. By default, <code class="docutils literal notranslate"><span class="pre">multiprocessing.cpu_count()</span></code> is used</p></li>
+<li><p><strong>shuffle</strong> (<em>False</em>): whether to randomly shuffle the order in which
+samples are chosen for partial downloads</p></li>
+<li><p><strong>seed</strong> (<em>None</em>): a random seed to use when shuffling</p></li>
+<li><p><strong>max_samples</strong> (<em>None</em>): a maximum number of samples to load per split. If
+<code class="docutils literal notranslate"><span class="pre">classes</span></code> are also specified, only up to the number of samples that
+contain at least one specified class will be loaded. By default, all
+matching samples are loaded</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>See
+<a class="reference internal" href="../api/fiftyone.zoo.datasets.base.html#fiftyone.zoo.datasets.base.ActivityNet200Dataset" title="fiftyone.zoo.datasets.base.ActivityNet200Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">ActivityNet200Dataset</span></code></a> and
+<a class="reference internal" href="../api/fiftyone.utils.activitynet.html#fiftyone.utils.activitynet.ActivityNetDatasetImporter" title="fiftyone.utils.activitynet.ActivityNetDatasetImporter"><code class="xref py py-class docutils literal notranslate"><span class="pre">ActivityNetDatasetImporter</span></code></a>
+for complete descriptions of the optional keyword arguments that you can
+pass to <a class="reference internal" href="../api/fiftyone.zoo.datasets.html#fiftyone.zoo.datasets.load_zoo_dataset" title="fiftyone.zoo.datasets.load_zoo_dataset"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_zoo_dataset()</span></code></a>.</p>
+</div>
+<p><strong>Full split downloads</strong></p>
+<p>Many videos have been removed from YouTube since the creation of ActivityNet.
+As a result, if you do not specify any partial download parameters defined in
+the previous section, you must first download the official source files from
+the ActivityNet maintainers in order to load a full split into FiftyOne.</p>
+<p>To download the source files, you must fill out
+<a class="reference external" href="https://docs.google.com/forms/d/e/1FAIpQLSeKaFq9ZfcmZ7W0B0PbEhfbTHY41GeEgwsa7WobJgGUhn4DTQ/viewform">this form</a>.</p>
+<p>Refer to <a class="reference internal" href="../integrations/activitynet.html#activitynet-full-split-downloads"><span class="std std-ref">this page</span></a> to see how to load
+full splits by passing the <code class="code docutils literal notranslate"><span class="pre">source_dir</span></code> parameter to
+<a class="reference internal" href="../api/fiftyone.zoo.datasets.html#fiftyone.zoo.datasets.load_zoo_dataset" title="fiftyone.zoo.datasets.load_zoo_dataset"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_zoo_dataset()</span></code></a>.</p>
+<p><strong>Example usage</strong></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In order to work with video datasets, you’ll need to have
+<a class="reference internal" href="../getting_started/troubleshooting.html#troubleshooting-video"><span class="std std-ref">ffmpeg installed</span></a>.</p>
+</div>
+<img alt="activitynet-200-validation" class="align-center" src="../_images/activitynet-200-validation.png" />
+</div>
+<div class="section" id="bdd100k">
+<span id="dataset-zoo-bdd100k"></span><h2>BDD100K<a class="headerlink" href="#bdd100k" title="Permalink to this headline">¶</a></h2>
+<p>The Berkeley Deep Drive (BDD) dataset is one of the largest and most diverse
+video datasets for autonomous vehicles.</p>
+<p>The BDD100K dataset contains 100,000 video clips collected from more than
+50,000 rides covering New York, San Francisco Bay Area, and other regions.
+The dataset contains diverse scene types such as city streets, residential
+areas, and highways. Furthermore, the videos were recorded in diverse
+weather conditions at different times of the day.</p>
+<p>The videos are split into training (70K), validation (10K) and testing
+(20K) sets. Each video is 40 seconds long with 720p resolution and a frame
+rate of 30fps. The frame at the 10th second of each video is annotated for
+image classification, detection, and segmentation tasks.</p>
+<p>This version of the dataset contains only the 100K images extracted from
+the videos as described above, together with the image classification,
+detection, and segmentation labels.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In order to load the BDD100K dataset, you must download the source data
+manually. The directory should be organized in the following format:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>source_dir/
+    labels/
+        bdd100k_labels_images_train.json
+        bdd100k_labels_images_val.json
+    images/
+        100k/
+            train/
+            test/
+            val/
+</pre></div>
+</div>
+<p>You can register at <a class="reference external" href="https://bdd-data.berkeley.edu">https://bdd-data.berkeley.edu</a> in order to get links
+to download the data.</p>
+</div>
+<p><strong>Details</strong></p>
+<ul class="simple">
+<li><p>Dataset name: <code class="docutils literal notranslate"><span class="pre">bdd100k</span></code></p></li>
+<li><p>Dataset source: <a class="reference external" href="https://bdd-data.berkeley.edu">https://bdd-data.berkeley.edu</a></p></li>
+<li><p>Dataset size: 7.10 GB</p></li>
+<li><p>Tags: <code class="docutils literal notranslate"><span class="pre">image,</span> <span class="pre">multilabel,</span> <span class="pre">automotive,</span> <span class="pre">manual</span></code></p></li>
+<li><p>Supported splits: <code class="docutils literal notranslate"><span class="pre">train,</span> <span class="pre">validation,</span> <span class="pre">test</span></code></p></li>
+<li><p>ZooDataset class:
+<a class="reference internal" href="../api/fiftyone.zoo.datasets.base.html#fiftyone.zoo.datasets.base.BDD100KDataset" title="fiftyone.zoo.datasets.base.BDD100KDataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">BDD100KDataset</span></code></a></p></li>
+</ul>
+<p><strong>Example usage</strong></p>
+<img alt="bdd100k-validation" class="align-center" src="../_images/bdd100k-validation.png" />
+</div>
+<div class="section" id="caltech-101">
+<span id="dataset-zoo-caltech101"></span><h2>Caltech-101<a class="headerlink" href="#caltech-101" title="Permalink to this headline">¶</a></h2>
+<p>The Caltech-101 dataset of images.</p>
+<p>The dataset consists of pictures of objects belonging to 101 classes, plus
+one background clutter class (<code class="docutils literal notranslate"><span class="pre">BACKGROUND_Google</span></code>). Each image is labelled
+with a single object.</p>
+<p>Each class contains roughly 40 to 800 images, totalling around 9,000
+images. Images are of variable sizes, with typical edge lengths of 200-300
+pixels. This version contains image-level labels only.</p>
+<p><strong>Details</strong></p>
+<ul class="simple">
+<li><p>Dataset name: <code class="docutils literal notranslate"><span class="pre">caltech101</span></code></p></li>
+<li><p>Dataset source: <a class="reference external" href="https://data.caltech.edu/records/mzrjq-6wc02">https://data.caltech.edu/records/mzrjq-6wc02</a></p></li>
+<li><p>Dataset size: 138.60 MB</p></li>
+<li><p>Tags: <code class="docutils literal notranslate"><span class="pre">image,</span> <span class="pre">classification</span></code></p></li>
+<li><p>Supported splits: <code class="docutils literal notranslate"><span class="pre">N/A</span></code></p></li>
+<li><p>ZooDataset class:
+<a class="reference internal" href="../api/fiftyone.zoo.datasets.base.html#fiftyone.zoo.datasets.base.Caltech101Dataset" title="fiftyone.zoo.datasets.base.Caltech101Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">Caltech101Dataset</span></code></a></p></li>
+</ul>
+<p><strong>Example usage</strong></p>
+<img alt="caltech101" class="align-center" src="../_images/caltech101.png" />
+</div>
+<div class="section" id="caltech-256">
+<span id="dataset-zoo-caltech256"></span><h2>Caltech-256<a class="headerlink" href="#caltech-256" title="Permalink to this headline">¶</a></h2>
+<p>The Caltech-256 dataset of images.</p>
+<p>The dataset consists of pictures of objects belonging to 256 classes, plus
+one background clutter class (<code class="docutils literal notranslate"><span class="pre">clutter</span></code>). Each image is labelled with a
+single object.</p>
+<p>Each class contains between 80 and 827 images, totalling 30,607 images.
+Images are of variable sizes, with typical edge lengths of 80-800 pixels.</p>
+<p><strong>Details</strong></p>
+<ul class="simple">
+<li><p>Dataset name: <code class="docutils literal notranslate"><span class="pre">caltech256</span></code></p></li>
+<li><p>Dataset source: <a class="reference external" href="https://data.caltech.edu/records/nyy15-4j048">https://data.caltech.edu/records/nyy15-4j048</a></p></li>
+<li><p>Dataset size: 1.16 GB</p></li>
+<li><p>Tags: <code class="docutils literal notranslate"><span class="pre">image,</span> <span class="pre">classification</span></code></p></li>
+<li><p>Supported splits: <code class="docutils literal notranslate"><span class="pre">N/A</span></code></p></li>
+<li><p>ZooDataset class:
+<a class="reference internal" href="../api/fiftyone.zoo.datasets.base.html#fiftyone.zoo.datasets.base.Caltech256Dataset" title="fiftyone.zoo.datasets.base.Caltech256Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">Caltech256Dataset</span></code></a></p></li>
+</ul>
+<p><strong>Example usage</strong></p>
+<img alt="caltech256" class="align-center" src="../_images/caltech256.png" />
+</div>
+<div class="section" id="cifar-10">
+<span id="dataset-zoo-cifar10"></span><h2>CIFAR-10<a class="headerlink" href="#cifar-10" title="Permalink to this headline">¶</a></h2>
+<p>The CIFAR-10 dataset of images.</p>
+<p>The dataset consists of 60,000 32 x 32 color images in 10 classes, with 6,000
+images per class. There are 50,000 training images and 10,000 test images.</p>
+<p><strong>Details</strong></p>
+<ul class="simple">
+<li><p>Dataset name: <code class="docutils literal notranslate"><span class="pre">cifar10</span></code></p></li>
+<li><p>Dataset source: <a class="reference external" href="https://www.cs.toronto.edu/~kriz/cifar.html">https://www.cs.toronto.edu/~kriz/cifar.html</a></p></li>
+<li><p>Dataset size: 132.40 MB</p></li>
+<li><p>Tags: <code class="docutils literal notranslate"><span class="pre">image,</span> <span class="pre">classification</span></code></p></li>
+<li><p>Supported splits: <code class="docutils literal notranslate"><span class="pre">train,</span> <span class="pre">test</span></code></p></li>
+<li><p>ZooDataset classes:</p>
+<ul>
+<li><p><a class="reference internal" href="../api/fiftyone.zoo.datasets.tf.html#fiftyone.zoo.datasets.tf.CIFAR10Dataset" title="fiftyone.zoo.datasets.tf.CIFAR10Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">CIFAR10Dataset</span></code></a> (TF backend)</p></li>
+<li><p><a class="reference internal" href="../api/fiftyone.zoo.datasets.torch.html#fiftyone.zoo.datasets.torch.CIFAR10Dataset" title="fiftyone.zoo.datasets.torch.CIFAR10Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">CIFAR10Dataset</span></code></a> (Torch backend)</p></li>
+</ul>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You must have the
+<a class="reference internal" href="api.html#dataset-zoo-ml-backend"><span class="std std-ref">Torch or TensorFlow backend(s)</span></a> installed to
+load this dataset.</p>
+</div>
+<p><strong>Example usage</strong></p>
+<img alt="cifar10-test" class="align-center" src="../_images/cifar10-test.png" />
+</div>
+<div class="section" id="cifar-100">
+<span id="dataset-zoo-cifar100"></span><h2>CIFAR-100<a class="headerlink" href="#cifar-100" title="Permalink to this headline">¶</a></h2>
+<p>The CIFAR-100 dataset of images.</p>
+<p>The dataset consists of 60,000 32 x 32 color images in 100 classes, with
+600 images per class. There are 50,000 training images and 10,000 test
+images.</p>
+<p><strong>Details</strong></p>
+<ul class="simple">
+<li><p>Dataset name: <code class="docutils literal notranslate"><span class="pre">cifar100</span></code></p></li>
+<li><p>Dataset source: <a class="reference external" href="https://www.cs.toronto.edu/~kriz/cifar.html">https://www.cs.toronto.edu/~kriz/cifar.html</a></p></li>
+<li><p>Dataset size: 132.03 MB</p></li>
+<li><p>Tags: <code class="docutils literal notranslate"><span class="pre">image,</span> <span class="pre">classification</span></code></p></li>
+<li><p>Supported splits: <code class="docutils literal notranslate"><span class="pre">train,</span> <span class="pre">test</span></code></p></li>
+<li><p>ZooDataset classes:</p>
+<ul>
+<li><p><a class="reference internal" href="../api/fiftyone.zoo.datasets.tf.html#fiftyone.zoo.datasets.tf.CIFAR100Dataset" title="fiftyone.zoo.datasets.tf.CIFAR100Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">CIFAR100Dataset</span></code></a> (TF backend)</p></li>
+<li><p><a class="reference internal" href="../api/fiftyone.zoo.datasets.torch.html#fiftyone.zoo.datasets.torch.CIFAR100Dataset" title="fiftyone.zoo.datasets.torch.CIFAR100Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">CIFAR100Dataset</span></code></a> (Torch backend)</p></li>
+</ul>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You must have the
+<a class="reference internal" href="api.html#dataset-zoo-ml-backend"><span class="std std-ref">Torch or TensorFlow backend(s)</span></a> installed to
+load this dataset.</p>
+</div>
+<p><strong>Example usage</strong></p>
+<img alt="cifar100-test" class="align-center" src="../_images/cifar100-test.png" />
+</div>
+<div class="section" id="cityscapes">
+<span id="dataset-zoo-cityscapes"></span><h2>Cityscapes<a class="headerlink" href="#cityscapes" title="Permalink to this headline">¶</a></h2>
+<p>Cityscapes is a large-scale dataset that contains a diverse set of
+stereo video sequences recorded in street scenes from 50 different cities,
+with high quality pixel-level annotations of 5,000 frames in addition to a
+larger set of 20,000 weakly annotated frames.</p>
+<p>The dataset is intended for:</p>
+<ul class="simple">
+<li><p>Assessing the performance of vision algorithms for major tasks of
+semantic urban scene understanding: pixel-level, instance-level, and
+panoptic semantic labeling</p></li>
+<li><p>Supporting research that aims to exploit large volumes of (weakly)
+annotated data, e.g. for training deep neural networks</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In order to load the Cityscapes dataset, you must download the source data
+manually. The directory should be organized in the following format:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>source_dir/
+    leftImg8bit_trainvaltest.zip
+    gtFine_trainvaltest.zip             # optional
+    gtCoarse.zip                        # optional
+    gtBbox_cityPersons_trainval.zip     # optional
+</pre></div>
+</div>
+<p>You can register at <a class="reference external" href="https://www.cityscapes-dataset.com/register">https://www.cityscapes-dataset.com/register</a> in order
+to get links to download the data.</p>
+</div>
+<p><strong>Details</strong></p>
+<ul class="simple">
+<li><p>Dataset name: <code class="docutils literal notranslate"><span class="pre">cityscapes</span></code></p></li>
+<li><p>Dataset source: <a class="reference external" href="https://www.cityscapes-dataset.com">https://www.cityscapes-dataset.com</a></p></li>
+<li><p>Dataset size: 11.80 GB</p></li>
+<li><p>Tags: <code class="docutils literal notranslate"><span class="pre">image,</span> <span class="pre">multilabel,</span> <span class="pre">automotive,</span> <span class="pre">manual</span></code></p></li>
+<li><p>Supported splits: <code class="docutils literal notranslate"><span class="pre">train,</span> <span class="pre">validation,</span> <span class="pre">test</span></code></p></li>
+<li><p>ZooDataset class:
+<a class="reference internal" href="../api/fiftyone.zoo.datasets.base.html#fiftyone.zoo.datasets.base.CityscapesDataset" title="fiftyone.zoo.datasets.base.CityscapesDataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">CityscapesDataset</span></code></a></p></li>
+</ul>
+<p><strong>Example usage</strong></p>
+<img alt="cityscapes-validation" class="align-center" src="../_images/cityscapes-validation.png" />
+</div>
+<div class="section" id="coco-2014">
+<span id="dataset-zoo-coco-2014"></span><h2>COCO-2014<a class="headerlink" href="#coco-2014" title="Permalink to this headline">¶</a></h2>
+<p>COCO is a large-scale object detection, segmentation, and captioning
+dataset.</p>
+<p>This version contains images, bounding boxes, and segmentations for the 2014
+version of the dataset.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>With support from the <a class="reference external" href="https://cocodataset.org/#download">COCO team</a>,
+FiftyOne is a recommended tool for downloading, visualizing, and evaluating
+on the COCO dataset!</p>
+<p>Check out <a class="reference internal" href="../integrations/coco.html#coco"><span class="std std-ref">this guide</span></a> for more details on using FiftyOne to
+work with COCO.</p>
+</div>
+<p><strong>Notes</strong></p>
+<ul class="simple">
+<li><p>COCO defines 91 classes but the data only uses 80 classes</p></li>
+<li><p>Some images from the train and validation sets don’t have annotations</p></li>
+<li><p>The test set does not have annotations</p></li>
+<li><p>COCO 2014 and 2017 use the same images, but the splits are different</p></li>
+</ul>
+<p><strong>Details</strong></p>
+<ul class="simple">
+<li><p>Dataset name: <code class="docutils literal notranslate"><span class="pre">coco-2014</span></code></p></li>
+<li><p>Dataset source: <a class="reference external" href="http://cocodataset.org/#home">http://cocodataset.org/#home</a></p></li>
+<li><p>Dataset size: 37.57 GB</p></li>
+<li><p>Tags: <code class="docutils literal notranslate"><span class="pre">image,</span> <span class="pre">detection,</span> <span class="pre">segmentation</span></code></p></li>
+<li><p>Supported splits: <code class="docutils literal notranslate"><span class="pre">train,</span> <span class="pre">validation,</span> <span class="pre">test</span></code></p></li>
+<li><p>ZooDataset class:
+<a class="reference internal" href="../api/fiftyone.zoo.datasets.base.html#fiftyone.zoo.datasets.base.COCO2014Dataset" title="fiftyone.zoo.datasets.base.COCO2014Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">COCO2014Dataset</span></code></a></p></li>
+</ul>
+<p><strong>Full split stats</strong></p>
+<ul class="simple">
+<li><p>Train split: 82,783 images</p></li>
+<li><p>Test split: 40,775 images</p></li>
+<li><p>Validation split: 40,504 images</p></li>
+</ul>
+<p><strong>Partial downloads</strong></p>
+<p>FiftyOne provides parameters that can be used to efficiently download specific
+subsets of the COCO dataset to suit your needs. When new subsets are specified,
+FiftyOne will use existing downloaded data first if possible before resorting
+to downloading additional data from the web.</p>
+<p>The following parameters are available to configure a partial download of
+COCO-2014 by passing them to
+<a class="reference internal" href="../api/fiftyone.zoo.datasets.html#fiftyone.zoo.datasets.load_zoo_dataset" title="fiftyone.zoo.datasets.load_zoo_dataset"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_zoo_dataset()</span></code></a>:</p>
+<ul class="simple">
+<li><p><strong>split</strong> (<em>None</em>) and <strong>splits</strong> (<em>None</em>): a string or list of strings,
+respectively, specifying the splits to load. Supported values are
+<code class="docutils literal notranslate"><span class="pre">(&quot;train&quot;,</span> <span class="pre">&quot;test&quot;,</span> <span class="pre">&quot;validation&quot;)</span></code>. If neither is provided, all available
+splits are loaded</p></li>
+<li><p><strong>label_types</strong> (<em>None</em>): a label type or list of label types to load.
+Supported values are <code class="docutils literal notranslate"><span class="pre">(&quot;detections&quot;,</span> <span class="pre">&quot;segmentations&quot;)</span></code>. By default, only
+detections are loaded</p></li>
+<li><p><strong>classes</strong> (<em>None</em>): a string or list of strings specifying required
+classes to load. If provided, only samples containing at least one instance
+of a specified class will be loaded</p></li>
+<li><p><strong>image_ids</strong> (<em>None</em>): a list of specific image IDs to load. The IDs can
+be specified either as <code class="docutils literal notranslate"><span class="pre">&lt;split&gt;/&lt;image-id&gt;</span></code> strings or <code class="docutils literal notranslate"><span class="pre">&lt;image-id&gt;</span></code>
+ints of strings. Alternatively, you can provide the path to a TXT
+(newline-separated), JSON, or CSV file containing the list of image IDs to
+load in either of the first two formats</p></li>
+<li><p><strong>include_id</strong> (<em>False</em>): whether to include the COCO ID of each sample in
+the loaded labels</p></li>
+<li><p><strong>include_license</strong> (<em>False</em>): whether to include the COCO license of each
+sample in the loaded labels, if available. The supported values are:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;False&quot;</span></code> (default): don’t load the license</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">True</span></code>/<code class="docutils literal notranslate"><span class="pre">&quot;name&quot;</span></code>: store the string license name</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;id&quot;</span></code>: store the integer license ID</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;url&quot;</span></code>: store the license URL</p></li>
+</ul>
+</li>
+<li><p><strong>only_matching</strong> (<em>False</em>): whether to only load labels that match the
+<code class="docutils literal notranslate"><span class="pre">classes</span></code> or <code class="docutils literal notranslate"><span class="pre">attrs</span></code> requirements that you provide (True), or to load
+all labels for samples that match the requirements (False)</p></li>
+<li><p><strong>num_workers</strong> (<em>None</em>): the number of processes to use when downloading
+individual images. By default, <code class="code docutils literal notranslate"><span class="pre">multiprocessing.cpu_count()</span></code> is used</p></li>
+<li><p><strong>shuffle</strong> (<em>False</em>): whether to randomly shuffle the order in which
+samples are chosen for partial downloads</p></li>
+<li><p><strong>seed</strong> (<em>None</em>): a random seed to use when shuffling</p></li>
+<li><p><strong>max_samples</strong> (<em>None</em>): a maximum number of samples to load per split. If
+<code class="docutils literal notranslate"><span class="pre">label_types</span></code> and/or <code class="docutils literal notranslate"><span class="pre">classes</span></code> are also specified, first priority will
+be given to samples that contain all of the specified label types and/or
+classes, followed by samples that contain at least one of the specified
+labels types or classes. The actual number of samples loaded may be less
+than this maximum value if the dataset does not contain sufficient samples
+matching your requirements</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>See
+<a class="reference internal" href="../api/fiftyone.zoo.datasets.base.html#fiftyone.zoo.datasets.base.COCO2014Dataset" title="fiftyone.zoo.datasets.base.COCO2014Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">COCO2014Dataset</span></code></a> and
+<a class="reference internal" href="../api/fiftyone.utils.coco.html#fiftyone.utils.coco.COCODetectionDatasetImporter" title="fiftyone.utils.coco.COCODetectionDatasetImporter"><code class="xref py py-class docutils literal notranslate"><span class="pre">COCODetectionDatasetImporter</span></code></a>
+for complete descriptions of the optional keyword arguments that you can
+pass to <a class="reference internal" href="../api/fiftyone.zoo.datasets.html#fiftyone.zoo.datasets.load_zoo_dataset" title="fiftyone.zoo.datasets.load_zoo_dataset"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_zoo_dataset()</span></code></a>.</p>
+</div>
+<p><strong>Example usage</strong></p>
+<img alt="coco-2014-validation" class="align-center" src="../_images/coco-2014-validation.png" />
+</div>
+<div class="section" id="coco-2017">
+<span id="dataset-zoo-coco-2017"></span><h2>COCO-2017<a class="headerlink" href="#coco-2017" title="Permalink to this headline">¶</a></h2>
+<p>COCO is a large-scale object detection, segmentation, and captioning
+dataset.</p>
+<p>This version contains images, bounding boxes, and segmentations for the 2017
+version of the dataset.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>With support from the <a class="reference external" href="https://cocodataset.org/#download">COCO team</a>,
+FiftyOne is a recommended tool for downloading, visualizing, and evaluating
+on the COCO dataset!</p>
+<p>Check out <a class="reference internal" href="../integrations/coco.html#coco"><span class="std std-ref">this guide</span></a> for more details on using FiftyOne to
+work with COCO.</p>
+</div>
+<p><strong>Notes</strong></p>
+<ul class="simple">
+<li><p>COCO defines 91 classes but the data only uses 80 classes</p></li>
+<li><p>Some images from the train and validation sets don’t have annotations</p></li>
+<li><p>The test set does not have annotations</p></li>
+<li><p>COCO 2014 and 2017 use the same images, but the splits are different</p></li>
+</ul>
+<p><strong>Details</strong></p>
+<ul class="simple">
+<li><p>Dataset name: <code class="docutils literal notranslate"><span class="pre">coco-2017</span></code></p></li>
+<li><p>Dataset source: <a class="reference external" href="http://cocodataset.org/#home">http://cocodataset.org/#home</a></p></li>
+<li><p>Dataset size: 25.20 GB</p></li>
+<li><p>Tags: <code class="docutils literal notranslate"><span class="pre">image,</span> <span class="pre">detection,</span> <span class="pre">segmentation</span></code></p></li>
+<li><p>Supported splits: <code class="docutils literal notranslate"><span class="pre">train,</span> <span class="pre">validation,</span> <span class="pre">test</span></code></p></li>
+<li><p>ZooDataset class:
+<a class="reference internal" href="../api/fiftyone.zoo.datasets.base.html#fiftyone.zoo.datasets.base.COCO2017Dataset" title="fiftyone.zoo.datasets.base.COCO2017Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">COCO2017Dataset</span></code></a></p></li>
+</ul>
+<p><strong>Full split stats</strong></p>
+<ul class="simple">
+<li><p>Train split: 118,287 images</p></li>
+<li><p>Test split: 40,670 images</p></li>
+<li><p>Validation split: 5,000 images</p></li>
+</ul>
+<p><strong>Partial downloads</strong></p>
+<p>FiftyOne provides parameters that can be used to efficiently download specific
+subsets of the COCO dataset to suit your needs. When new subsets are specified,
+FiftyOne will use existing downloaded data first if possible before resorting
+to downloading additional data from the web.</p>
+<p>The following parameters are available to configure a partial download of
+COCO-2017 by passing them to
+<a class="reference internal" href="../api/fiftyone.zoo.datasets.html#fiftyone.zoo.datasets.load_zoo_dataset" title="fiftyone.zoo.datasets.load_zoo_dataset"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_zoo_dataset()</span></code></a>:</p>
+<ul class="simple">
+<li><p><strong>split</strong> (<em>None</em>) and <strong>splits</strong> (<em>None</em>): a string or list of strings,
+respectively, specifying the splits to load. Supported values are
+<code class="docutils literal notranslate"><span class="pre">(&quot;train&quot;,</span> <span class="pre">&quot;test&quot;,</span> <span class="pre">&quot;validation&quot;)</span></code>. If neither is provided, all available
+splits are loaded</p></li>
+<li><p><strong>label_types</strong> (<em>None</em>): a label type or list of label types to load.
+Supported values are <code class="docutils literal notranslate"><span class="pre">(&quot;detections&quot;,</span> <span class="pre">&quot;segmentations&quot;)</span></code>. By default, only
+detections are loaded</p></li>
+<li><p><strong>classes</strong> (<em>None</em>): a string or list of strings specifying required
+classes to load. If provided, only samples containing at least one instance
+of a specified class will be loaded</p></li>
+<li><p><strong>image_ids</strong> (<em>None</em>): a list of specific image IDs to load. The IDs can
+be specified either as <code class="docutils literal notranslate"><span class="pre">&lt;split&gt;/&lt;image-id&gt;</span></code> strings or <code class="docutils literal notranslate"><span class="pre">&lt;image-id&gt;</span></code>
+ints of strings. Alternatively, you can provide the path to a TXT
+(newline-separated), JSON, or CSV file containing the list of image IDs to
+load in either of the first two formats</p></li>
+<li><p><strong>include_id</strong> (<em>False</em>): whether to include the COCO ID of each sample in
+the loaded labels</p></li>
+<li><p><strong>include_license</strong> (<em>False</em>): whether to include the COCO license of each
+sample in the loaded labels, if available. The supported values are:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;False&quot;</span></code> (default): don’t load the license</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">True</span></code>/<code class="docutils literal notranslate"><span class="pre">&quot;name&quot;</span></code>: store the string license name</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;id&quot;</span></code>: store the integer license ID</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;url&quot;</span></code>: store the license URL</p></li>
+</ul>
+</li>
+<li><p><strong>only_matching</strong> (<em>False</em>): whether to only load labels that match the
+<code class="docutils literal notranslate"><span class="pre">classes</span></code> or <code class="docutils literal notranslate"><span class="pre">attrs</span></code> requirements that you provide (True), or to load
+all labels for samples that match the requirements (False)</p></li>
+<li><p><strong>num_workers</strong> (<em>None</em>): the number of processes to use when downloading
+individual images. By default, <code class="code docutils literal notranslate"><span class="pre">multiprocessing.cpu_count()</span></code> is used</p></li>
+<li><p><strong>shuffle</strong> (<em>False</em>): whether to randomly shuffle the order in which
+samples are chosen for partial downloads</p></li>
+<li><p><strong>seed</strong> (<em>None</em>): a random seed to use when shuffling</p></li>
+<li><p><strong>max_samples</strong> (<em>None</em>): a maximum number of samples to load per split. If
+<code class="docutils literal notranslate"><span class="pre">label_types</span></code> and/or <code class="docutils literal notranslate"><span class="pre">classes</span></code> are also specified, first priority will
+be given to samples that contain all of the specified label types and/or
+classes, followed by samples that contain at least one of the specified
+labels types or classes. The actual number of samples loaded may be less
+than this maximum value if the dataset does not contain sufficient samples
+matching your requirements</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>See
+<a class="reference internal" href="../api/fiftyone.zoo.datasets.base.html#fiftyone.zoo.datasets.base.COCO2017Dataset" title="fiftyone.zoo.datasets.base.COCO2017Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">COCO2017Dataset</span></code></a> and
+<a class="reference internal" href="../api/fiftyone.utils.coco.html#fiftyone.utils.coco.COCODetectionDatasetImporter" title="fiftyone.utils.coco.COCODetectionDatasetImporter"><code class="xref py py-class docutils literal notranslate"><span class="pre">COCODetectionDatasetImporter</span></code></a>
+for complete descriptions of the optional keyword arguments that you can
+pass to <a class="reference internal" href="../api/fiftyone.zoo.datasets.html#fiftyone.zoo.datasets.load_zoo_dataset" title="fiftyone.zoo.datasets.load_zoo_dataset"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_zoo_dataset()</span></code></a>.</p>
+</div>
+<p><strong>Example usage</strong></p>
+<img alt="coco-2017-validation" class="align-center" src="../_images/coco-2017-validation.png" />
+</div>
+<div class="section" id="fashion-mnist">
+<span id="dataset-zoo-fashion-mnist"></span><h2>Fashion MNIST<a class="headerlink" href="#fashion-mnist" title="Permalink to this headline">¶</a></h2>
+<p>The Fashion-MNIST database of Zalando’s fashion article images.</p>
+<p>The dataset consists of 70,000 28 x 28 grayscale images in 10 classes.
+There are 60,000 training images and 10,000 test images.</p>
+<p><strong>Details</strong></p>
+<ul class="simple">
+<li><p>Dataset name: <code class="docutils literal notranslate"><span class="pre">fashion-mnist</span></code></p></li>
+<li><p>Dataset source: <a class="reference external" href="https://github.com/zalandoresearch/fashion-mnist">https://github.com/zalandoresearch/fashion-mnist</a></p></li>
+<li><p>Dataset size: 36.42 MB</p></li>
+<li><p>Tags: <code class="docutils literal notranslate"><span class="pre">image,</span> <span class="pre">classification</span></code></p></li>
+<li><p>Supported splits: <code class="docutils literal notranslate"><span class="pre">train,</span> <span class="pre">test</span></code></p></li>
+<li><p>ZooDataset classes:</p>
+<ul>
+<li><p><a class="reference internal" href="../api/fiftyone.zoo.datasets.tf.html#fiftyone.zoo.datasets.tf.FashionMNISTDataset" title="fiftyone.zoo.datasets.tf.FashionMNISTDataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">FashionMNISTDataset</span></code></a> (TF backend)</p></li>
+<li><p><a class="reference internal" href="../api/fiftyone.zoo.datasets.torch.html#fiftyone.zoo.datasets.torch.FashionMNISTDataset" title="fiftyone.zoo.datasets.torch.FashionMNISTDataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">FashionMNISTDataset</span></code></a> (Torch backend)</p></li>
+</ul>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You must have the
+<a class="reference internal" href="api.html#dataset-zoo-ml-backend"><span class="std std-ref">Torch or TensorFlow backend(s)</span></a> installed to
+load this dataset.</p>
+</div>
+<p><strong>Example usage</strong></p>
+<img alt="fashion-mnist-test" class="align-center" src="../_images/fashion-mnist-test.png" />
+</div>
+<div class="section" id="families-in-the-wild">
+<span id="dataset-zoo-fiw"></span><h2>Families in the Wild<a class="headerlink" href="#families-in-the-wild" title="Permalink to this headline">¶</a></h2>
+<p>Families in the Wild is a public benchmark for recognizing families via facial
+images. The dataset contains over 26,642 images of 5,037 faces collected from
+978 families. A unique Family ID (FID) is assigned per family, ranging from
+F0001-F1018 (i.e., some families were merged or removed since its first release
+in 2016). The dataset is a continued work in progress. Any contributions are
+both welcome and appreciated!</p>
+<p>Faces were cropped from imagery using the five-point face detector MTCNN from
+various phototypes (i.e., mostly family photos, along with several profile pics
+of individuals (facial shots). The number of members per family varies from
+3-to-26, with the number of faces per subject ranging from 1 to &gt;10.</p>
+<p>Various levels and types of labels are associated with samples in this dataset.
+Family-level labels contain a list of members, each assigned a member ID (MID)
+unique to that respective family (e.g., F0011.MID2 refers to member 2 of family
+11). Each member has annotations specifying gender and relationship to all
+other members in that respective family.</p>
+<p>The relationships in FIW are:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>=====  =====
+  ID    Type
+=====  =====
+    0  not related or self
+    1  child
+    2  sibling
+    3  grandchild
+    4  parent
+    5  spouse
+    6  grandparent
+    7  great grandchild
+    8  great grandparent
+    9  TBD
+=====  =====
+</pre></div>
+</div>
+<p>Within FiftyOne, each sample corresponds to a single face image and contains
+primitive labels of the Family ID, Member ID, etc. The relationship labels are
+stored as <a class="reference internal" href="../user_guide/using_datasets.html#multilabel-classification"><span class="std std-ref">multi-label classifications</span></a>,
+where each classification represents one relationship that the member has with
+another member in the family. The number of relationships will differ from one
+person to the next, but all faces of one person will have the same relationship
+labels.</p>
+<p>Additionally, the labels for the
+<a class="reference external" href="https://competitions.codalab.org/competitions/21843">Kinship Verification task</a>
+are also loaded into this dataset through FiftyOne. These labels are stored
+as classifications just like relationships, but the labels of kinship differ
+from those defined above. For example, rather than Parent, the label might be
+<code class="code docutils literal notranslate"><span class="pre">fd</span></code> representing a Father-Daughter kinship or <code class="code docutils literal notranslate"><span class="pre">md</span></code> for Mother-Daughter.</p>
+<p>In order to make it easier to browse the dataset in the FiftyOne App, each
+sample also contains a <code class="code docutils literal notranslate"><span class="pre">face_id</span></code> field containing a unique integer for each
+face of a member, always starting at 0. This allows you to filter the <code class="code docutils literal notranslate"><span class="pre">face_id</span></code>
+field to 0 in the App to show only a single image of each person.</p>
+<p>For your reference, the relationship labels are stored in disk in a matrix that
+provides the relationship of each member with other members of the family as
+well as names and genders. The i-th rows represent the i-th family member’s
+relationship to the j-th other members.</p>
+<p>For example, <code class="code docutils literal notranslate"><span class="pre">FID0001.csv</span></code> contains:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>MID     1     2     3     Name    Gender
+ 1      0     4     5     name1     f
+ 2      1     0     1     name2     f
+ 3      5     4     0     name3     m
+</pre></div>
+</div>
+<p>Here we have three family members, as listed under the MID column (far-left).
+Each MID reads across its row. We can see that MID1 is related to MID2 by
+4 -&gt; 1 (Parent -&gt; Child), which of course can be viewed as the inverse, i.e.,
+MID2 -&gt; MID1 is 1 -&gt; 4. It can also be seen that MID1 and MID3 are spouses of
+one another, i.e., 5 -&gt; 5.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The spouse label will likely be removed in future version of this
+dataset. It serves no value to the problem of kinship.</p>
+</div>
+<p>For more information on the data (e.g., statistics, task evaluations,
+benchmarks, and more), see the recent journal:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Robinson, JP, M. Shao, and Y. Fu. &quot;Survey on the Analysis and Modeling of
+Visual Kinship: A Decade in the Making.&quot; IEEE Transactions on Pattern
+Analysis and Machine Intelligence (PAMI), 2021.
+</pre></div>
+</div>
+<p><strong>Details</strong></p>
+<ul class="simple">
+<li><p>Dataset name: <code class="docutils literal notranslate"><span class="pre">fiw</span></code></p></li>
+<li><p>Dataset source: <a class="reference external" href="https://web.northeastern.edu/smilelab/fiw/">https://web.northeastern.edu/smilelab/fiw/</a></p></li>
+<li><p>Dataset size: 173.00 MB</p></li>
+<li><p>Tags: <code class="docutils literal notranslate"><span class="pre">image,</span> <span class="pre">kinship,</span> <span class="pre">verification,</span> <span class="pre">classification,</span> <span class="pre">search-and-retrieval,</span> <span class="pre">facial-recognition</span></code></p></li>
+<li><p>Supported splits: <code class="docutils literal notranslate"><span class="pre">test,</span> <span class="pre">val,</span> <span class="pre">train</span></code></p></li>
+<li><p>ZooDataset class:
+<a class="reference internal" href="../api/fiftyone.zoo.datasets.base.html#fiftyone.zoo.datasets.base.FIWDataset" title="fiftyone.zoo.datasets.base.FIWDataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">FIWDataset</span></code></a></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For your convenience, FiftyOne provides
+<a class="reference internal" href="../api/fiftyone.utils.fiw.html#fiftyone.utils.fiw.get_pairwise_labels" title="fiftyone.utils.fiw.get_pairwise_labels"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_pairwise_labels()</span></code></a>
+and
+<a class="reference internal" href="../api/fiftyone.utils.fiw.html#fiftyone.utils.fiw.get_identifier_filepaths_map" title="fiftyone.utils.fiw.get_identifier_filepaths_map"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_identifier_filepaths_map()</span></code></a>
+utilities for FIW.</p>
+</div>
+<p><strong>Example usage</strong></p>
+<img alt="fiw" class="align-center" src="../_images/fiw.png" />
+</div>
+<div class="section" id="hmbd51">
+<span id="dataset-zoo-hmdb51"></span><h2>HMBD51<a class="headerlink" href="#hmbd51" title="Permalink to this headline">¶</a></h2>
+<p>HMDB51 is an action recognition dataset containing a total of 6,766
+clips distributed across 51 action classes.</p>
+<p><strong>Details</strong></p>
+<ul class="simple">
+<li><p>Dataset name: <code class="docutils literal notranslate"><span class="pre">hmdb51</span></code></p></li>
+<li><p>Dataset source: <a class="reference external" href="https://serre-lab.clps.brown.edu/resource/hmdb-a-large-human-motion-database">https://serre-lab.clps.brown.edu/resource/hmdb-a-large-human-motion-database</a></p></li>
+<li><p>Dataset size: 2.16 GB</p></li>
+<li><p>Tags: <code class="docutils literal notranslate"><span class="pre">video,</span> <span class="pre">action-recognition</span></code></p></li>
+<li><p>Supported splits: <code class="docutils literal notranslate"><span class="pre">train,</span> <span class="pre">test,</span> <span class="pre">other</span></code></p></li>
+<li><p>ZooDataset class:
+<a class="reference internal" href="../api/fiftyone.zoo.datasets.base.html#fiftyone.zoo.datasets.base.HMDB51Dataset" title="fiftyone.zoo.datasets.base.HMDB51Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">HMDB51Dataset</span></code></a></p></li>
+</ul>
+<p><strong>Example usage</strong></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In order to work with video datasets, you’ll need to have
+<a class="reference internal" href="../getting_started/troubleshooting.html#troubleshooting-video"><span class="std std-ref">ffmpeg installed</span></a>.</p>
+</div>
+<img alt="hmdb51-test" class="align-center" src="../_images/hmdb51-test.png" />
+</div>
+<div class="section" id="imagenet-2012">
+<span id="dataset-zoo-imagenet-2012"></span><h2>ImageNet 2012<a class="headerlink" href="#imagenet-2012" title="Permalink to this headline">¶</a></h2>
+<p>The ImageNet 2012 dataset.</p>
+<p>ImageNet, as known as ILSVRC 2012, is an image dataset organized according
+to the WordNet hierarchy. Each meaningful concept in WordNet, possibly
+described by multiple words or word phrases, is called a “synonym set” or
+“synset”. There are more than 100,000 synsets in WordNet, majority of them
+are nouns (80,000+). ImageNet provides on average 1,000 images to
+illustrate each synset. Images of each concept are quality-controlled and
+human-annotated. In its completion, we hope ImageNet will offer tens of
+millions of cleanly sorted images for most of the concepts in the WordNet
+hierarchy.</p>
+<p>Note that labels were never publicly released for the test set, so only the
+training and validation sets are provided.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In order to load the ImageNet dataset, you must download the source data
+manually. The directory should be organized in the following format:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>source_dir/
+    ILSVRC2012_devkit_t12.tar.gz    # both splits
+    ILSVRC2012_img_train.tar        # train split
+    ILSVRC2012_img_val.tar          # validation split
+</pre></div>
+</div>
+<p>You can register at <a class="reference external" href="http://www.image-net.org/download-images">http://www.image-net.org/download-images</a> in order to
+get links to download the data.</p>
+</div>
+<p><strong>Details</strong></p>
+<ul class="simple">
+<li><p>Dataset name: <code class="docutils literal notranslate"><span class="pre">imagenet-2012</span></code></p></li>
+<li><p>Dataset source: <a class="reference external" href="http://image-net.org">http://image-net.org</a></p></li>
+<li><p>Dataset size: 144.02 GB</p></li>
+<li><p>Tags: <code class="docutils literal notranslate"><span class="pre">image,</span> <span class="pre">classification,</span> <span class="pre">manual</span></code></p></li>
+<li><p>Supported splits: <code class="docutils literal notranslate"><span class="pre">train,</span> <span class="pre">validation</span></code></p></li>
+<li><p>ZooDataset classes:</p>
+<ul>
+<li><p><a class="reference internal" href="../api/fiftyone.zoo.datasets.tf.html#fiftyone.zoo.datasets.tf.ImageNet2012Dataset" title="fiftyone.zoo.datasets.tf.ImageNet2012Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">ImageNet2012Dataset</span></code></a> (TF backend)</p></li>
+<li><p><a class="reference internal" href="../api/fiftyone.zoo.datasets.torch.html#fiftyone.zoo.datasets.torch.ImageNet2012Dataset" title="fiftyone.zoo.datasets.torch.ImageNet2012Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">ImageNet2012Dataset</span></code></a> (Torch backend)</p></li>
+</ul>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You must have the
+<a class="reference internal" href="api.html#dataset-zoo-ml-backend"><span class="std std-ref">Torch or TensorFlow backend(s)</span></a> installed to
+load this dataset.</p>
+</div>
+<p><strong>Example usage</strong></p>
+<img alt="imagenet-2012-validation" class="align-center" src="../_images/imagenet-2012-validation.png" />
+</div>
+<div class="section" id="imagenet-sample">
+<span id="dataset-zoo-imagenet-sample"></span><h2>ImageNet Sample<a class="headerlink" href="#imagenet-sample" title="Permalink to this headline">¶</a></h2>
+<p>A small sample of images from the ImageNet 2012 dataset.</p>
+<p>The dataset contains 1,000 images, one randomly chosen from each class of
+the validation split of the ImageNet 2012 dataset.</p>
+<p>These images are provided according to the terms below.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>You have been granted access for non-commercial research/educational
+use. By accessing the data, you have agreed to the following terms.
+
+You (the &quot;Researcher&quot;) have requested permission to use the ImageNet
+database (the &quot;Database&quot;) at Princeton University and Stanford
+University. In exchange for such permission, Researcher hereby agrees
+to the following terms and conditions:
+
+1.  Researcher shall use the Database only for non-commercial research
+    and educational purposes.
+2.  Princeton University and Stanford University make no
+    representations or warranties regarding the Database, including but
+    not limited to warranties of non-infringement or fitness for a
+    particular purpose.
+3.  Researcher accepts full responsibility for his or her use of the
+    Database and shall defend and indemnify Princeton University and
+    Stanford University, including their employees, Trustees, officers
+    and agents, against any and all claims arising from Researcher&#39;s
+    use of the Database, including but not limited to Researcher&#39;s use
+    of any copies of copyrighted images that he or she may create from
+    the Database.
+4.  Researcher may provide research associates and colleagues with
+    access to the Database provided that they first agree to be bound
+    by these terms and conditions.
+5.  Princeton University and Stanford University reserve the right to
+    terminate Researcher&#39;s access to the Database at any time.
+6.  If Researcher is employed by a for-profit, commercial entity,
+    Researcher&#39;s employer shall also be bound by these terms and
+    conditions, and Researcher hereby represents that he or she is
+    fully authorized to enter into this agreement on behalf of such
+    employer.
+7.  The law of the State of New Jersey shall apply to all disputes
+    under this agreement.
+</pre></div>
+</div>
+<p><strong>Details</strong></p>
+<ul class="simple">
+<li><p>Dataset name: <code class="docutils literal notranslate"><span class="pre">imagenet-sample</span></code></p></li>
+<li><p>Dataset source: <a class="reference external" href="http://image-net.org">http://image-net.org</a></p></li>
+<li><p>Dataset size: 98.26 MB</p></li>
+<li><p>Tags: <code class="docutils literal notranslate"><span class="pre">image,</span> <span class="pre">classification</span></code></p></li>
+<li><p>Supported splits: <code class="docutils literal notranslate"><span class="pre">N/A</span></code></p></li>
+<li><p>ZooDataset class:
+<a class="reference internal" href="../api/fiftyone.zoo.datasets.base.html#fiftyone.zoo.datasets.base.ImageNetSampleDataset" title="fiftyone.zoo.datasets.base.ImageNetSampleDataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">ImageNetSampleDataset</span></code></a></p></li>
+</ul>
+<p><strong>Example usage</strong></p>
+<img alt="imagenet-sample" class="align-center" src="../_images/imagenet-sample.png" />
+</div>
+<div class="section" id="kinetics-400">
+<span id="dataset-zoo-kinetics-400"></span><h2>Kinetics 400<a class="headerlink" href="#kinetics-400" title="Permalink to this headline">¶</a></h2>
+<p>Kinetics is a collection of large-scale, high-quality datasets of URL links of
+up to 650,000 video clips that cover 400/600/700 human action classes,
+depending on the dataset version. The videos include human-object interactions
+such as playing instruments, as well as human-human interactions such as
+shaking hands and hugging. Each action class has at least 400/600/700 video
+clips. Each clip is human annotated with a single action class and lasts around
+10 seconds.</p>
+<p>This dataset contains videos and action classifications for the 400 class
+version of the dataset.</p>
+<p><strong>Details</strong></p>
+<ul class="simple">
+<li><p>Dataset name: <code class="docutils literal notranslate"><span class="pre">kinetics-400</span></code></p></li>
+<li><p>Dataset source: <a class="reference external" href="https://deepmind.com/research/open-source/kinetics">https://deepmind.com/research/open-source/kinetics</a></p></li>
+<li><p>Dataset size: 456 GB</p></li>
+<li><p>Tags: <code class="docutils literal notranslate"><span class="pre">video,</span> <span class="pre">classification,</span> <span class="pre">action-recognition</span></code></p></li>
+<li><p>Supported splits: <code class="docutils literal notranslate"><span class="pre">train,</span> <span class="pre">test,</span> <span class="pre">validation</span></code></p></li>
+<li><p>ZooDataset class:
+<a class="reference internal" href="../api/fiftyone.zoo.datasets.base.html#fiftyone.zoo.datasets.base.Kinetics400Dataset" title="fiftyone.zoo.datasets.base.Kinetics400Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">Kinetics400Dataset</span></code></a></p></li>
+</ul>
+<p>Original split stats:</p>
+<ul class="simple">
+<li><p>Train split: 219,782 videos</p></li>
+<li><p>Test split: 35,357 videos</p></li>
+<li><p>Validation split: 18,035 videos</p></li>
+</ul>
+<p>CVDF split stats:</p>
+<ul class="simple">
+<li><p>Train split: 246,534 videos</p></li>
+<li><p>Test split: 39,805 videos</p></li>
+<li><p>Validation split: 19,906 videos</p></li>
+</ul>
+<p>Dataset size:</p>
+<ul class="simple">
+<li><p>Train split: 370 GB</p></li>
+<li><p>Test split: 56 GB</p></li>
+<li><p>Validation split: 30 GB</p></li>
+</ul>
+<p><strong>Partial downloads</strong></p>
+<p>Kinetics is a massive dataset, so FiftyOne provides parameters that can be used
+to efficiently download specific subsets of the dataset to suit your needs.
+When new subsets are specified, FiftyOne will use existing downloaded data
+first if possible before resorting to downloading additional data from the web.</p>
+<p>Kinetics videos were originally only accessible from YouTube. Over time, some
+videos have become unavailable so the
+<a class="reference external" href="https://github.com/cvdfoundation">CVDF</a> have hosted the Kinetics dataset on
+AWS.</p>
+<p>If you are partially downloading the dataset through FiftyOne, the specific
+videos of interest will be downloaded from YouTube, if necessary. However,
+when you load an entire split, the CVDF-provided files will be downloaded from
+AWS.</p>
+<p>The following parameters are available to configure a partial download of
+Kinetics by passing them to
+<a class="reference internal" href="../api/fiftyone.zoo.datasets.html#fiftyone.zoo.datasets.load_zoo_dataset" title="fiftyone.zoo.datasets.load_zoo_dataset"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_zoo_dataset()</span></code></a>:</p>
+<ul class="simple">
+<li><p><strong>split</strong> (<em>None</em>) and <strong>splits</strong> (<em>None</em>): a string or list of strings,
+respectively, specifying the splits to load. Supported values are
+<code class="docutils literal notranslate"><span class="pre">(&quot;train&quot;,</span> <span class="pre">&quot;test&quot;,</span> <span class="pre">&quot;validation&quot;)</span></code>. If neither is provided, all available
+splits are loaded</p></li>
+<li><p><strong>classes</strong> (<em>None</em>): a string or list of strings specifying required
+classes to load. If provided, only samples containing at least one instance
+of a specified class will be loaded</p></li>
+<li><p><strong>num_workers</strong> (<em>None</em>): the number of processes to use when downloading
+individual videos. By default, <code class="code docutils literal notranslate"><span class="pre">multiprocessing.cpu_count()</span></code> is used</p></li>
+<li><p><strong>shuffle</strong> (<em>False</em>): whether to randomly shuffle the order in which
+samples are chosen for partial downloads</p></li>
+<li><p><strong>seed</strong> (<em>None</em>): a random seed to use when shuffling</p></li>
+<li><p><strong>max_samples</strong> (<em>None</em>): a maximum number of samples to load per split. If
+<code class="docutils literal notranslate"><span class="pre">classes</span></code> are also specified, only up to the number of samples that
+contain at least one specified class will be loaded. By default, all
+matching samples are loaded</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Unlike other versions, Kinteics 400 does not have zips available by class
+so whenever either <code class="code docutils literal notranslate"><span class="pre">classes</span></code> or <code class="code docutils literal notranslate"><span class="pre">max_samples</span></code> is provided, videos will be
+downloaded from YouTube.</p>
+</div>
+<p><strong>Example usage</strong></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In order to work with video datasets, you’ll need to have
+<a class="reference internal" href="../getting_started/troubleshooting.html#troubleshooting-video"><span class="std std-ref">ffmpeg installed</span></a>.</p>
+</div>
+<img alt="kinetics" class="align-center" src="../_images/kinetics.png" />
+</div>
+<div class="section" id="kinetics-600">
+<span id="dataset-zoo-kinetics-600"></span><h2>Kinetics 600<a class="headerlink" href="#kinetics-600" title="Permalink to this headline">¶</a></h2>
+<p>Kinetics is a collection of large-scale, high-quality datasets of URL links of
+up to 650,000 video clips that cover 400/600/700 human action classes,
+depending on the dataset version. The videos include human-object interactions
+such as playing instruments, as well as human-human interactions such as
+shaking hands and hugging. Each action class has at least 400/600/700 video
+clips. Each clip is human annotated with a single action class and lasts around
+10 seconds.</p>
+<p>This dataset contains videos and action classifications for the 600 class
+version of the dataset.</p>
+<p><strong>Details</strong></p>
+<ul class="simple">
+<li><p>Dataset name: <code class="docutils literal notranslate"><span class="pre">kinetics-600</span></code></p></li>
+<li><p>Dataset source: <a class="reference external" href="https://deepmind.com/research/open-source/kinetics">https://deepmind.com/research/open-source/kinetics</a></p></li>
+<li><p>Dataset size: 779 GB</p></li>
+<li><p>Tags: <code class="docutils literal notranslate"><span class="pre">video,</span> <span class="pre">classification,</span> <span class="pre">action-recognition</span></code></p></li>
+<li><p>Supported splits: <code class="docutils literal notranslate"><span class="pre">train,</span> <span class="pre">test,</span> <span class="pre">validation</span></code></p></li>
+<li><p>ZooDataset class:
+<a class="reference internal" href="../api/fiftyone.zoo.datasets.base.html#fiftyone.zoo.datasets.base.Kinetics600Dataset" title="fiftyone.zoo.datasets.base.Kinetics600Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">Kinetics600Dataset</span></code></a></p></li>
+</ul>
+<p>Original split stats:</p>
+<ul class="simple">
+<li><p>Train split: 370,582 videos</p></li>
+<li><p>Test split: 56,618 videos</p></li>
+<li><p>Validation split: 28,313 videos</p></li>
+</ul>
+<p>CVDF split stats:</p>
+<ul class="simple">
+<li><p>Train split: 427,549 videos</p></li>
+<li><p>Test split: 72,924 videos</p></li>
+<li><p>Validation split: 29,793 videos</p></li>
+</ul>
+<p>Dataset size:</p>
+<ul class="simple">
+<li><p>Train split: 648 GB</p></li>
+<li><p>Test split: 88 GB</p></li>
+<li><p>Validation split: 43 GB</p></li>
+</ul>
+<p><strong>Partial downloads</strong></p>
+<p>Kinetics is a massive dataset, so FiftyOne provides parameters that can be used
+to efficiently download specific subsets of the dataset to suit your needs.
+When new subsets are specified, FiftyOne will use existing downloaded data
+first if possible before resorting to downloading additional data from the web.</p>
+<p>Kinetics videos were originally only accessible from YouTube. Over time, some
+videos have become unavailable so the
+<a class="reference external" href="https://github.com/cvdfoundation">CVDF</a> have hosted the Kinetics dataset on
+AWS.</p>
+<p>If you are partially downloading the dataset through FiftyOne, the specific
+videos of interest will be downloaded from YouTube, if necessary. However,
+when you load an entire split, the CVDF-provided files will be downloaded from
+AWS.</p>
+<p>The following parameters are available to configure a partial download of
+Kinetics by passing them to
+<a class="reference internal" href="../api/fiftyone.zoo.datasets.html#fiftyone.zoo.datasets.load_zoo_dataset" title="fiftyone.zoo.datasets.load_zoo_dataset"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_zoo_dataset()</span></code></a>:</p>
+<ul class="simple">
+<li><p><strong>split</strong> (<em>None</em>) and <strong>splits</strong> (<em>None</em>): a string or list of strings,
+respectively, specifying the splits to load. Supported values are
+<code class="docutils literal notranslate"><span class="pre">(&quot;train&quot;,</span> <span class="pre">&quot;test&quot;,</span> <span class="pre">&quot;validation&quot;)</span></code>. If neither is provided, all available
+splits are loaded</p></li>
+<li><p><strong>classes</strong> (<em>None</em>): a string or list of strings specifying required
+classes to load. If provided, only samples containing at least one instance
+of a specified class will be loaded</p></li>
+<li><p><strong>num_workers</strong> (<em>None</em>): the number of processes to use when downloading
+individual videos. By default, <code class="code docutils literal notranslate"><span class="pre">multiprocessing.cpu_count()</span></code> is used</p></li>
+<li><p><strong>shuffle</strong> (<em>False</em>): whether to randomly shuffle the order in which
+samples are chosen for partial downloads</p></li>
+<li><p><strong>seed</strong> (<em>None</em>): a random seed to use when shuffling</p></li>
+<li><p><strong>max_samples</strong> (<em>None</em>): a maximum number of samples to load per split. If
+<code class="docutils literal notranslate"><span class="pre">classes</span></code> are also specified, only up to the number of samples that
+contain at least one specified class will be loaded. By default, all
+matching samples are loaded</p></li>
+</ul>
+<p><strong>Example usage</strong></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In order to work with video datasets, you’ll need to have
+<a class="reference internal" href="../getting_started/troubleshooting.html#troubleshooting-video"><span class="std std-ref">ffmpeg installed</span></a>.</p>
+</div>
+<img alt="kinetics" class="align-center" src="../_images/kinetics.png" />
+</div>
+<div class="section" id="kinetics-700">
+<span id="dataset-zoo-kinetics-700"></span><h2>Kinetics 700<a class="headerlink" href="#kinetics-700" title="Permalink to this headline">¶</a></h2>
+<p>Kinetics is a collection of large-scale, high-quality datasets of URL links of
+up to 650,000 video clips that cover 400/600/700 human action classes,
+depending on the dataset version. The videos include human-object interactions
+such as playing instruments, as well as human-human interactions such as
+shaking hands and hugging. Each action class has at least 400/600/700 video
+clips. Each clip is human annotated with a single action class and lasts around
+10 seconds.</p>
+<p>This dataset contains videos and action classifications for the 700 class
+version of the dataset.</p>
+<p><strong>Details</strong></p>
+<ul class="simple">
+<li><p>Dataset name: <code class="docutils literal notranslate"><span class="pre">kinetics-700</span></code></p></li>
+<li><p>Dataset source: <a class="reference external" href="https://deepmind.com/research/open-source/kinetics">https://deepmind.com/research/open-source/kinetics</a></p></li>
+<li><p>Dataset size: 710 GB</p></li>
+<li><p>Tags: <code class="docutils literal notranslate"><span class="pre">video,</span> <span class="pre">classification,</span> <span class="pre">action-recognition</span></code></p></li>
+<li><p>Supported splits: <code class="docutils literal notranslate"><span class="pre">train,</span> <span class="pre">test,</span> <span class="pre">validation</span></code></p></li>
+<li><p>ZooDataset class:
+<a class="reference internal" href="../api/fiftyone.zoo.datasets.base.html#fiftyone.zoo.datasets.base.Kinetics700Dataset" title="fiftyone.zoo.datasets.base.Kinetics700Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">Kinetics700Dataset</span></code></a></p></li>
+</ul>
+<p>Split stats:</p>
+<ul class="simple">
+<li><p>Train split: 529,046 videos</p></li>
+<li><p>Test split: 67,446 videos</p></li>
+<li><p>Validation split: 33,925 videos</p></li>
+</ul>
+<p>Dataset size</p>
+<ul class="simple">
+<li><p>Train split: 603 GB</p></li>
+<li><p>Test split: 59 GB</p></li>
+<li><p>Validation split: 48 GB</p></li>
+</ul>
+<p><strong>Partial downloads</strong></p>
+<p>Kinetics is a massive dataset, so FiftyOne provides parameters that can be used
+to efficiently download specific subsets of the dataset to suit your needs.
+When new subsets are specified, FiftyOne will use existing downloaded data
+first if possible before resorting to downloading additional data from the web.</p>
+<p>Kinetics videos were originally only accessible from YouTube. Over time, some
+videos have become unavailable so the
+<a class="reference external" href="https://github.com/cvdfoundation">CVDF</a> have hosted the Kinetics dataset on
+AWS.</p>
+<p>If you are partially downloading the dataset through FiftyOne, the specific
+videos of interest will be downloaded from YouTube, if necessary. However,
+when you load an entire split, the CVDF-provided files will be downloaded from
+AWS.</p>
+<p>The following parameters are available to configure a partial download of
+Kinetics by passing them to
+<a class="reference internal" href="../api/fiftyone.zoo.datasets.html#fiftyone.zoo.datasets.load_zoo_dataset" title="fiftyone.zoo.datasets.load_zoo_dataset"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_zoo_dataset()</span></code></a>:</p>
+<ul class="simple">
+<li><p><strong>split</strong> (<em>None</em>) and <strong>splits</strong> (<em>None</em>): a string or list of strings,
+respectively, specifying the splits to load. Supported values are
+<code class="docutils literal notranslate"><span class="pre">(&quot;train&quot;,</span> <span class="pre">&quot;test&quot;,</span> <span class="pre">&quot;validation&quot;)</span></code>. If neither is provided, all available
+splits are loaded</p></li>
+<li><p><strong>classes</strong> (<em>None</em>): a string or list of strings specifying required
+classes to load. If provided, only samples containing at least one instance
+of a specified class will be loaded</p></li>
+<li><p><strong>num_workers</strong> (<em>None</em>): the number of processes to use when downloading
+individual videos. By default, <code class="code docutils literal notranslate"><span class="pre">multiprocessing.cpu_count()</span></code> is used</p></li>
+<li><p><strong>shuffle</strong> (<em>False</em>): whether to randomly shuffle the order in which
+samples are chosen for partial downloads</p></li>
+<li><p><strong>seed</strong> (<em>None</em>): a random seed to use when shuffling</p></li>
+<li><p><strong>max_samples</strong> (<em>None</em>): a maximum number of samples to load per split. If
+<code class="docutils literal notranslate"><span class="pre">classes</span></code> are also specified, only up to the number of samples that
+contain at least one specified class will be loaded. By default, all
+matching samples are loaded</p></li>
+</ul>
+<p><strong>Example usage</strong></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In order to work with video datasets, you’ll need to have
+<a class="reference internal" href="../getting_started/troubleshooting.html#troubleshooting-video"><span class="std std-ref">ffmpeg installed</span></a>.</p>
+</div>
+<img alt="kinetics" class="align-center" src="../_images/kinetics.png" />
+</div>
+<div class="section" id="kinetics-700-2020">
+<span id="dataset-zoo-kinetics-700-2020"></span><h2>Kinetics 700-2020<a class="headerlink" href="#kinetics-700-2020" title="Permalink to this headline">¶</a></h2>
+<p>Kinetics is a collection of large-scale, high-quality datasets of URL links of
+up to 650,000 video clips that cover 400/600/700 human action classes,
+depending on the dataset version. The videos include human-object interactions
+such as playing instruments, as well as human-human interactions such as
+shaking hands and hugging. Each action class has at least 400/600/700 video
+clips. Each clip is human annotated with a single action class and lasts around
+10 seconds.</p>
+<p>This version contains videos and action classifications for the 700 class
+version of the dataset that was updated with new videos in 2020. This dataset
+is a superset of Kinetics 700.</p>
+<p><strong>Details</strong></p>
+<ul class="simple">
+<li><p>Dataset name: <code class="docutils literal notranslate"><span class="pre">kinetics-700-2020</span></code></p></li>
+<li><p>Dataset source: <a class="reference external" href="https://deepmind.com/research/open-source/kinetics">https://deepmind.com/research/open-source/kinetics</a></p></li>
+<li><p>Dataset size: 710 GB</p></li>
+<li><p>Tags: <code class="docutils literal notranslate"><span class="pre">video,</span> <span class="pre">classification,</span> <span class="pre">action-recognition</span></code></p></li>
+<li><p>Supported splits: <code class="docutils literal notranslate"><span class="pre">train,</span> <span class="pre">test,</span> <span class="pre">validation</span></code></p></li>
+<li><p>ZooDataset class:
+<a class="reference internal" href="../api/fiftyone.zoo.datasets.base.html#fiftyone.zoo.datasets.base.Kinetics7002020Dataset" title="fiftyone.zoo.datasets.base.Kinetics7002020Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">Kinetics7002020Dataset</span></code></a></p></li>
+</ul>
+<p>Original split stats:</p>
+<ul class="simple">
+<li><p>Train split: 542,352 videos</p></li>
+<li><p>Test split: 67,433 videos</p></li>
+<li><p>Validation split: 34,125 videos</p></li>
+</ul>
+<p>CVDF split stats:</p>
+<ul class="simple">
+<li><p>Train split: 534,073 videos</p></li>
+<li><p>Test split: 64,260 videos</p></li>
+<li><p>Validation split: 33,914 videos</p></li>
+</ul>
+<p>Dataset size</p>
+<ul class="simple">
+<li><p>Train split: 603 GB</p></li>
+<li><p>Test split: 59 GB</p></li>
+<li><p>Validation split: 48 GB</p></li>
+</ul>
+<p><strong>Partial downloads</strong></p>
+<p>Kinetics is a massive dataset, so FiftyOne provides parameters that can be used
+to efficiently download specific subsets of the dataset to suit your needs.
+When new subsets are specified, FiftyOne will use existing downloaded data
+first if possible before resorting to downloading additional data from the web.</p>
+<p>Kinetics videos were originally only accessible from YouTube. Over time, some
+videos have become unavailable so the
+<a class="reference external" href="https://github.com/cvdfoundation">CVDF</a> have hosted the Kinetics dataset on
+AWS.</p>
+<p>If you are partially downloading the dataset through FiftyOne, the specific
+videos of interest will be downloaded from YouTube, if necessary. However,
+when you load an entire split, the CVDF-provided files will be downloaded from
+AWS.</p>
+<p>The following parameters are available to configure a partial download of
+Kinetics by passing them to
+<a class="reference internal" href="../api/fiftyone.zoo.datasets.html#fiftyone.zoo.datasets.load_zoo_dataset" title="fiftyone.zoo.datasets.load_zoo_dataset"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_zoo_dataset()</span></code></a>:</p>
+<ul class="simple">
+<li><p><strong>split</strong> (<em>None</em>) and <strong>splits</strong> (<em>None</em>): a string or list of strings,
+respectively, specifying the splits to load. Supported values are
+<code class="docutils literal notranslate"><span class="pre">(&quot;train&quot;,</span> <span class="pre">&quot;test&quot;,</span> <span class="pre">&quot;validation&quot;)</span></code>. If neither is provided, all available
+splits are loaded</p></li>
+<li><p><strong>classes</strong> (<em>None</em>): a string or list of strings specifying required
+classes to load. If provided, only samples containing at least one instance
+of a specified class will be loaded</p></li>
+<li><p><strong>num_workers</strong> (<em>None</em>): the number of processes to use when downloading
+individual videos. By default, <code class="code docutils literal notranslate"><span class="pre">multiprocessing.cpu_count()</span></code> is used</p></li>
+<li><p><strong>shuffle</strong> (<em>False</em>): whether to randomly shuffle the order in which
+samples are chosen for partial downloads</p></li>
+<li><p><strong>seed</strong> (<em>None</em>): a random seed to use when shuffling</p></li>
+<li><p><strong>max_samples</strong> (<em>None</em>): a maximum number of samples to load per split. If
+<code class="docutils literal notranslate"><span class="pre">classes</span></code> are also specified, only up to the number of samples that
+contain at least one specified class will be loaded. By default, all
+matching samples are loaded</p></li>
+</ul>
+<p><strong>Example usage</strong></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In order to work with video datasets, you’ll need to have
+<a class="reference internal" href="../getting_started/troubleshooting.html#troubleshooting-video"><span class="std std-ref">ffmpeg installed</span></a>.</p>
+</div>
+<img alt="kinetics" class="align-center" src="../_images/kinetics.png" />
+</div>
+<div class="section" id="kitti">
+<span id="dataset-zoo-kitti"></span><h2>KITTI<a class="headerlink" href="#kitti" title="Permalink to this headline">¶</a></h2>
+<p>KITTI contains a suite of vision tasks built using an autonomous
+driving platform.</p>
+<p>This dataset contains the left camera images and the associated 2D object
+detections.</p>
+<p>The training split contains 7,481 annotated images, and the test split contains
+7,518 unlabeled images.</p>
+<p>A full description of the annotations can be found in the README of the
+object development kit on the KITTI homepage.</p>
+<p><strong>Details</strong></p>
+<ul class="simple">
+<li><p>Dataset name: <code class="docutils literal notranslate"><span class="pre">kitti</span></code></p></li>
+<li><p>Dataset source: <a class="reference external" href="http://www.cvlibs.net/datasets/kitti">http://www.cvlibs.net/datasets/kitti</a></p></li>
+<li><p>Dataset size: 12.57 GB</p></li>
+<li><p>Tags: <code class="docutils literal notranslate"><span class="pre">image,</span> <span class="pre">detection</span></code></p></li>
+<li><p>Supported splits: <code class="docutils literal notranslate"><span class="pre">train,</span> <span class="pre">test</span></code></p></li>
+<li><p>ZooDataset class:
+<a class="reference internal" href="../api/fiftyone.zoo.datasets.base.html#fiftyone.zoo.datasets.base.KITTIDataset" title="fiftyone.zoo.datasets.base.KITTIDataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">KITTIDataset</span></code></a></p></li>
+</ul>
+<p><strong>Example usage</strong></p>
+<img alt="kitti-train" class="align-center" src="../_images/kitti-train.png" />
+</div>
+<div class="section" id="kitti-multiview">
+<span id="dataset-zoo-kitti-multiview"></span><h2>KITTI Multiview<a class="headerlink" href="#kitti-multiview" title="Permalink to this headline">¶</a></h2>
+<p>KITTI contains a suite of vision tasks built using an autonomous
+driving platform.</p>
+<p>This dataset contains the following multiview data for each scene:</p>
+<ul class="simple">
+<li><p>Left camera images annotated with 2D object detections</p></li>
+<li><p>Right camera images annotated with 2D object detections</p></li>
+<li><p>Velodyne LIDAR point clouds annotated with 3D object detections</p></li>
+</ul>
+<p>The training split contains 7,481 annotated scenes, and the test split contains
+7,518 unlabeled scenes.</p>
+<p>A full description of the annotations can be found in the README of the
+object development kit on the KITTI homepage.</p>
+<p><strong>Details</strong></p>
+<ul class="simple">
+<li><p>Dataset name: <code class="docutils literal notranslate"><span class="pre">kitti-multiview</span></code></p></li>
+<li><p>Dataset source: <a class="reference external" href="http://www.cvlibs.net/datasets/kitti">http://www.cvlibs.net/datasets/kitti</a></p></li>
+<li><p>Dataset size: 53.34 GB</p></li>
+<li><p>Tags: <code class="docutils literal notranslate"><span class="pre">image,</span> <span class="pre">point-cloud,</span> <span class="pre">detection</span></code></p></li>
+<li><p>Supported splits: <code class="docutils literal notranslate"><span class="pre">train,</span> <span class="pre">test</span></code></p></li>
+<li><p>ZooDataset class:
+<a class="reference internal" href="../api/fiftyone.zoo.datasets.base.html#fiftyone.zoo.datasets.base.KITTIMultiviewDataset" title="fiftyone.zoo.datasets.base.KITTIMultiviewDataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">KITTIMultiviewDataset</span></code></a></p></li>
+</ul>
+<p><strong>Example usage</strong></p>
+<img alt="kitti-multiview-train" class="align-center" src="../_images/kitti-multiview-train.png" />
+</div>
+<div class="section" id="labeled-faces-in-the-wild">
+<span id="dataset-zoo-lfw"></span><h2>Labeled Faces in the Wild<a class="headerlink" href="#labeled-faces-in-the-wild" title="Permalink to this headline">¶</a></h2>
+<p>Labeled Faces in the Wild is a public benchmark for face verification,
+also known as pair matching.</p>
+<p>The dataset contains 13,233 images of 5,749 people’s faces collected from
+the web. Each face has been labeled with the name of the person pictured.
+1,680 of the people pictured have two or more distinct photos in the data
+set. The only constraint on these faces is that they were detected by the
+Viola-Jones face detector.</p>
+<p><strong>Details</strong></p>
+<ul class="simple">
+<li><p>Dataset name: <code class="docutils literal notranslate"><span class="pre">lfw</span></code></p></li>
+<li><p>Dataset source: <a class="reference external" href="http://vis-www.cs.umass.edu/lfw">http://vis-www.cs.umass.edu/lfw</a></p></li>
+<li><p>Dataset size: 173.00 MB</p></li>
+<li><p>Tags: <code class="docutils literal notranslate"><span class="pre">image,</span> <span class="pre">classification,</span> <span class="pre">facial-recognition</span></code></p></li>
+<li><p>Supported splits: <code class="docutils literal notranslate"><span class="pre">test,</span> <span class="pre">train</span></code></p></li>
+<li><p>ZooDataset class:
+<a class="reference internal" href="../api/fiftyone.zoo.datasets.base.html#fiftyone.zoo.datasets.base.LabeledFacesInTheWildDataset" title="fiftyone.zoo.datasets.base.LabeledFacesInTheWildDataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">LabeledFacesInTheWildDataset</span></code></a></p></li>
+</ul>
+<p><strong>Example usage</strong></p>
+<img alt="lfw-test" class="align-center" src="../_images/lfw-test.png" />
+</div>
+<div class="section" id="mnist">
+<span id="dataset-zoo-mnist"></span><h2>MNIST<a class="headerlink" href="#mnist" title="Permalink to this headline">¶</a></h2>
+<p>The MNIST database of handwritten digits.</p>
+<p>The dataset consists of 70,000 28 x 28 grayscale images in 10 classes.
+There are 60,000 training images and 10,000 test images.</p>
+<p><strong>Details</strong></p>
+<ul class="simple">
+<li><p>Dataset name: <code class="docutils literal notranslate"><span class="pre">mnist</span></code></p></li>
+<li><p>Dataset source: <a class="reference external" href="http://yann.lecun.com/exdb/mnist">http://yann.lecun.com/exdb/mnist</a></p></li>
+<li><p>Dataset size: 21.00 MB</p></li>
+<li><p>Tags: <code class="docutils literal notranslate"><span class="pre">image,</span> <span class="pre">classification</span></code></p></li>
+<li><p>Supported splits: <code class="docutils literal notranslate"><span class="pre">train,</span> <span class="pre">test</span></code></p></li>
+<li><p>ZooDataset classes:</p>
+<ul>
+<li><p><a class="reference internal" href="../api/fiftyone.zoo.datasets.tf.html#fiftyone.zoo.datasets.tf.MNISTDataset" title="fiftyone.zoo.datasets.tf.MNISTDataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">MNISTDataset</span></code></a> (TF backend)</p></li>
+<li><p><a class="reference internal" href="../api/fiftyone.zoo.datasets.torch.html#fiftyone.zoo.datasets.torch.MNISTDataset" title="fiftyone.zoo.datasets.torch.MNISTDataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">MNISTDataset</span></code></a> (Torch backend)</p></li>
+</ul>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You must have the
+<a class="reference internal" href="api.html#dataset-zoo-ml-backend"><span class="std std-ref">Torch or TensorFlow backend(s)</span></a> installed to
+load this dataset.</p>
+</div>
+<p><strong>Example usage</strong></p>
+<img alt="mnist-test" class="align-center" src="../_images/mnist-test.png" />
+</div>
+<div class="section" id="open-images-v6">
+<span id="dataset-zoo-open-images-v6"></span><h2>Open Images V6<a class="headerlink" href="#open-images-v6" title="Permalink to this headline">¶</a></h2>
+<p>Open Images V6 is a dataset of ~9 million images, roughly 2 million of which
+are annotated and available via this zoo dataset.</p>
+<p>The dataset contains annotations for classification, detection, segmentation,
+and visual relationship tasks for the 600 boxable classes.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We’ve collaborated with the
+<a class="reference external" href="https://storage.googleapis.com/openimages/web/download.html">Open Images Team at Google</a>
+to make FiftyOne a recommended tool for downloading, visualizing, and
+evaluating on the Open Images Dataset!</p>
+<p>Check out <a class="reference internal" href="../integrations/open_images.html#open-images"><span class="std std-ref">this guide</span></a> for more details on using
+FiftyOne to work with Open Images.</p>
+</div>
+<p><strong>Details</strong></p>
+<ul class="simple">
+<li><p>Dataset name: <code class="docutils literal notranslate"><span class="pre">open-images-v6</span></code></p></li>
+<li><p>Dataset source: <a class="reference external" href="https://storage.googleapis.com/openimages/web/index.html">https://storage.googleapis.com/openimages/web/index.html</a></p></li>
+<li><p>Dataset size: 561 GB</p></li>
+<li><p>Tags: <code class="docutils literal notranslate"><span class="pre">image,</span> <span class="pre">detection,</span> <span class="pre">segmentation,</span> <span class="pre">classification</span></code></p></li>
+<li><p>Supported splits: <code class="docutils literal notranslate"><span class="pre">train,</span> <span class="pre">test,</span> <span class="pre">validation</span></code></p></li>
+<li><p>ZooDataset class:
+<a class="reference internal" href="../api/fiftyone.zoo.datasets.base.html#fiftyone.zoo.datasets.base.OpenImagesV6Dataset" title="fiftyone.zoo.datasets.base.OpenImagesV6Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">OpenImagesV6Dataset</span></code></a></p></li>
+</ul>
+<p><strong>Notes</strong></p>
+<ul class="simple">
+<li><p>Not all images contain all types of labels</p></li>
+<li><p>All images have been rescaled so that their largest side is at most
+1024 pixels</p></li>
+</ul>
+<p><strong>Full split stats</strong></p>
+<ul class="simple">
+<li><p>Train split: 1,743,042 images (513 GB)</p></li>
+<li><p>Test split: 125,436 images (36 GB)</p></li>
+<li><p>Validation split: 41,620 images (12 GB)</p></li>
+</ul>
+<p><strong>Partial downloads</strong></p>
+<p>Open Images is a massive dataset, so FiftyOne provides parameters that can be
+used to efficiently download specific subsets of the dataset to suit your
+needs. When new subsets are specified, FiftyOne will use existing downloaded
+data first if possible before resorting to downloading additional data from the
+web.</p>
+<p>The following parameters are available to configure a partial download of Open
+Images V6 by passing them to
+<a class="reference internal" href="../api/fiftyone.zoo.datasets.html#fiftyone.zoo.datasets.load_zoo_dataset" title="fiftyone.zoo.datasets.load_zoo_dataset"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_zoo_dataset()</span></code></a>:</p>
+<ul class="simple">
+<li><p><strong>split</strong> (<em>None</em>) and <strong>splits</strong> (<em>None</em>): a string or list of strings,
+respectively, specifying the splits to load. Supported values are
+<code class="docutils literal notranslate"><span class="pre">(&quot;train&quot;,</span> <span class="pre">&quot;test&quot;,</span> <span class="pre">&quot;validation&quot;)</span></code>. If neither is provided, all available
+splits are loaded</p></li>
+<li><p><strong>label_types</strong> (<em>None</em>): a label type or list of label types to load.
+Supported values are
+<code class="docutils literal notranslate"><span class="pre">(&quot;detections&quot;,</span> <span class="pre">&quot;classifications&quot;,</span> <span class="pre">&quot;relationships&quot;,</span> <span class="pre">&quot;segmentations&quot;)</span></code>.
+By default, all labels types are loaded</p></li>
+<li><p><strong>classes</strong> (<em>None</em>): a string or list of strings specifying required
+classes to load. If provided, only samples containing at least one instance
+of a specified class will be loaded. You can use
+<a class="reference internal" href="../api/fiftyone.utils.openimages.html#fiftyone.utils.openimages.get_classes" title="fiftyone.utils.openimages.get_classes"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_classes()</span></code></a> and
+<a class="reference internal" href="../api/fiftyone.utils.openimages.html#fiftyone.utils.openimages.get_segmentation_classes" title="fiftyone.utils.openimages.get_segmentation_classes"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_segmentation_classes()</span></code></a>
+to see the available classes and segmentation classes, respectively</p></li>
+<li><p><strong>attrs</strong> (<em>None</em>): a string or list of strings specifying required
+relationship attributes to load. This parameter is only applicable if
+<code class="docutils literal notranslate"><span class="pre">label_types</span></code> contains <code class="docutils literal notranslate"><span class="pre">&quot;relationships&quot;</span></code>. If provided, only samples
+containing at least one instance of a specified attribute will be loaded.
+You can use
+<a class="reference internal" href="../api/fiftyone.utils.openimages.html#fiftyone.utils.openimages.get_attributes" title="fiftyone.utils.openimages.get_attributes"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_attributes()</span></code></a>
+to see the available attributes</p></li>
+<li><p><strong>image_ids</strong> (<em>None</em>): a list of specific image IDs to load. The IDs can
+be specified either as <code class="docutils literal notranslate"><span class="pre">&lt;split&gt;/&lt;image-id&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">&lt;image-id&gt;</span></code> strings.
+Alternatively, you can provide the path to a TXT (newline-separated), JSON,
+or CSV file containing the list of image IDs to load in either of the first
+two formats</p></li>
+<li><p><strong>include_id</strong> (<em>True</em>): whether to include the Open Images ID of each
+sample in the loaded labels</p></li>
+<li><p><strong>only_matching</strong> (<em>False</em>): whether to only load labels that match the
+<code class="docutils literal notranslate"><span class="pre">classes</span></code> or <code class="docutils literal notranslate"><span class="pre">attrs</span></code> requirements that you provide (True), or to load
+all labels for samples that match the requirements (False)</p></li>
+<li><p><strong>num_workers</strong> (<em>None</em>): the number of processes to use when downloading
+individual images. By default, <code class="code docutils literal notranslate"><span class="pre">multiprocessing.cpu_count()</span></code> is used</p></li>
+<li><p><strong>shuffle</strong> (<em>False</em>): whether to randomly shuffle the order in which
+samples are chosen for partial downloads</p></li>
+<li><p><strong>seed</strong> (<em>None</em>): a random seed to use when shuffling</p></li>
+<li><p><strong>max_samples</strong> (<em>None</em>): a maximum number of samples to load per split. If
+<code class="docutils literal notranslate"><span class="pre">label_types</span></code>, <code class="docutils literal notranslate"><span class="pre">classes</span></code>, and/or <code class="docutils literal notranslate"><span class="pre">attrs</span></code> are also specified, first
+priority will be given to samples that contain all of the specified label
+types, classes, and/or attributes, followed by samples that contain at
+least one of the specified labels types or classes. The actual number of
+samples loaded may be less than this maximum value if the dataset does not
+contain sufficient samples matching your requirements</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>See
+<a class="reference internal" href="../api/fiftyone.zoo.datasets.base.html#fiftyone.zoo.datasets.base.OpenImagesV6Dataset" title="fiftyone.zoo.datasets.base.OpenImagesV6Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">OpenImagesV6Dataset</span></code></a>
+and <a class="reference internal" href="../api/fiftyone.utils.openimages.html#fiftyone.utils.openimages.OpenImagesV6DatasetImporter" title="fiftyone.utils.openimages.OpenImagesV6DatasetImporter"><code class="xref py py-class docutils literal notranslate"><span class="pre">OpenImagesV6DatasetImporter</span></code></a>
+for complete descriptions of the optional keyword arguments that you can
+pass to <a class="reference internal" href="../api/fiftyone.zoo.datasets.html#fiftyone.zoo.datasets.load_zoo_dataset" title="fiftyone.zoo.datasets.load_zoo_dataset"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_zoo_dataset()</span></code></a>.</p>
+</div>
+<p><strong>Example usage</strong></p>
+<img alt="open-images-v6" class="align-center" src="../_images/open-images-v6.png" />
+</div>
+<div class="section" id="open-images-v7">
+<span id="dataset-zoo-open-images-v7"></span><h2>Open Images V7<a class="headerlink" href="#open-images-v7" title="Permalink to this headline">¶</a></h2>
+<p>Open Images V7 is a dataset of ~9 million images, roughly 2 million of which
+are annotated and available via this zoo dataset.</p>
+<p>The dataset contains annotations for classification, detection, segmentation,
+keypoints, and visual relationship tasks for the 600 boxable classes.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We’ve collaborated with the
+<a class="reference external" href="https://storage.googleapis.com/openimages/web/download.html">Open Images Team at Google</a>
+to make FiftyOne a recommended tool for downloading, visualizing, and
+evaluating on the Open Images Dataset!</p>
+<p>Check out <a class="reference internal" href="../integrations/open_images.html#open-images"><span class="std std-ref">this guide</span></a> for more details on using
+FiftyOne to work with Open Images.</p>
+</div>
+<p><strong>Details</strong></p>
+<ul class="simple">
+<li><p>Dataset name: <code class="docutils literal notranslate"><span class="pre">open-images-v7</span></code></p></li>
+<li><p>Dataset source: <a class="reference external" href="https://storage.googleapis.com/openimages/web/index.html">https://storage.googleapis.com/openimages/web/index.html</a></p></li>
+<li><p>Dataset size: 561 GB</p></li>
+<li><p>Tags: <code class="docutils literal notranslate"><span class="pre">image,</span> <span class="pre">detection,</span> <span class="pre">segmentation,</span> <span class="pre">classification,</span> <span class="pre">keypoint</span></code></p></li>
+<li><p>Supported splits: <code class="docutils literal notranslate"><span class="pre">train,</span> <span class="pre">test,</span> <span class="pre">validation</span></code></p></li>
+<li><p>ZooDataset class:
+<a class="reference internal" href="../api/fiftyone.zoo.datasets.base.html#fiftyone.zoo.datasets.base.OpenImagesV7Dataset" title="fiftyone.zoo.datasets.base.OpenImagesV7Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">OpenImagesV7Dataset</span></code></a></p></li>
+</ul>
+<p><strong>Notes</strong></p>
+<ul class="simple">
+<li><p>Not all images contain all types of labels</p></li>
+<li><p>All images have been rescaled so that their largest side is at most
+1024 pixels</p></li>
+</ul>
+<p><strong>Full split stats</strong></p>
+<ul class="simple">
+<li><p>Train split: 1,743,042 images (513 GB)</p></li>
+<li><p>Test split: 125,436 images (36 GB)</p></li>
+<li><p>Validation split: 41,620 images (12 GB)</p></li>
+</ul>
+<p><strong>Partial downloads</strong></p>
+<p>Open Images is a massive dataset, so FiftyOne provides parameters that can be
+used to efficiently download specific subsets of the dataset to suit your
+needs. When new subsets are specified, FiftyOne will use existing downloaded
+data first if possible before resorting to downloading additional data from the
+web.</p>
+<p>The following parameters are available to configure a partial download of Open
+Images V7 by passing them to
+<a class="reference internal" href="../api/fiftyone.zoo.datasets.html#fiftyone.zoo.datasets.load_zoo_dataset" title="fiftyone.zoo.datasets.load_zoo_dataset"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_zoo_dataset()</span></code></a>:</p>
+<ul class="simple">
+<li><p><strong>split</strong> (<em>None</em>) and <strong>splits</strong> (<em>None</em>): a string or list of strings,
+respectively, specifying the splits to load. Supported values are
+<code class="docutils literal notranslate"><span class="pre">(&quot;train&quot;,</span> <span class="pre">&quot;test&quot;,</span> <span class="pre">&quot;validation&quot;)</span></code>. If neither is provided, all available
+splits are loaded</p></li>
+<li><p><strong>label_types</strong> (<em>None</em>): a label type or list of label types to load.
+Supported values are
+<code class="docutils literal notranslate"><span class="pre">(&quot;detections&quot;,</span> <span class="pre">&quot;classifications&quot;,</span> <span class="pre">&quot;relationships&quot;,</span> <span class="pre">&quot;points&quot;,</span> <span class="pre">segmentations&quot;)</span></code>.
+By default, all labels types are loaded</p></li>
+<li><p><strong>classes</strong> (<em>None</em>): a string or list of strings specifying required
+classes to load. If provided, only samples containing at least one instance
+of a specified class will be loaded. You can use
+<a class="reference internal" href="../api/fiftyone.utils.openimages.html#fiftyone.utils.openimages.get_classes" title="fiftyone.utils.openimages.get_classes"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_classes()</span></code></a> and
+<a class="reference internal" href="../api/fiftyone.utils.openimages.html#fiftyone.utils.openimages.get_segmentation_classes" title="fiftyone.utils.openimages.get_segmentation_classes"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_segmentation_classes()</span></code></a>
+to see the available classes and segmentation classes, respectively</p></li>
+<li><p><strong>attrs</strong> (<em>None</em>): a string or list of strings specifying required
+relationship attributes to load. This parameter is only applicable if
+<code class="docutils literal notranslate"><span class="pre">label_types</span></code> contains <code class="docutils literal notranslate"><span class="pre">&quot;relationships&quot;</span></code>. If provided, only samples
+containing at least one instance of a specified attribute will be loaded.
+You can use
+<a class="reference internal" href="../api/fiftyone.utils.openimages.html#fiftyone.utils.openimages.get_attributes" title="fiftyone.utils.openimages.get_attributes"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_attributes()</span></code></a>
+to see the available attributes</p></li>
+<li><p><strong>image_ids</strong> (<em>None</em>): a list of specific image IDs to load. The IDs can
+be specified either as <code class="docutils literal notranslate"><span class="pre">&lt;split&gt;/&lt;image-id&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">&lt;image-id&gt;</span></code> strings.
+Alternatively, you can provide the path to a TXT (newline-separated), JSON,
+or CSV file containing the list of image IDs to load in either of the first
+two formats</p></li>
+<li><p><strong>include_id</strong> (<em>True</em>): whether to include the Open Images ID of each
+sample in the loaded labels</p></li>
+<li><p><strong>only_matching</strong> (<em>False</em>): whether to only load labels that match the
+<code class="docutils literal notranslate"><span class="pre">classes</span></code> or <code class="docutils literal notranslate"><span class="pre">attrs</span></code> requirements that you provide (True), or to load
+all labels for samples that match the requirements (False)</p></li>
+<li><p><strong>num_workers</strong> (<em>None</em>): the number of processes to use when downloading
+individual images. By default, <code class="code docutils literal notranslate"><span class="pre">multiprocessing.cpu_count()</span></code> is used</p></li>
+<li><p><strong>shuffle</strong> (<em>False</em>): whether to randomly shuffle the order in which
+samples are chosen for partial downloads</p></li>
+<li><p><strong>seed</strong> (<em>None</em>): a random seed to use when shuffling</p></li>
+<li><p><strong>max_samples</strong> (<em>None</em>): a maximum number of samples to load per split. If
+<code class="docutils literal notranslate"><span class="pre">label_types</span></code>, <code class="docutils literal notranslate"><span class="pre">classes</span></code>, and/or <code class="docutils literal notranslate"><span class="pre">attrs</span></code> are also specified, first
+priority will be given to samples that contain all of the specified label
+types, classes, and/or attributes, followed by samples that contain at
+least one of the specified labels types or classes. The actual number of
+samples loaded may be less than this maximum value if the dataset does not
+contain sufficient samples matching your requirements</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>See
+<a class="reference internal" href="../api/fiftyone.zoo.datasets.base.html#fiftyone.zoo.datasets.base.OpenImagesV7Dataset" title="fiftyone.zoo.datasets.base.OpenImagesV7Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">OpenImagesV7Dataset</span></code></a>
+and <a class="reference internal" href="../api/fiftyone.utils.openimages.html#fiftyone.utils.openimages.OpenImagesV7DatasetImporter" title="fiftyone.utils.openimages.OpenImagesV7DatasetImporter"><code class="xref py py-class docutils literal notranslate"><span class="pre">OpenImagesV7DatasetImporter</span></code></a>
+for complete descriptions of the optional keyword arguments that you can
+pass to <a class="reference internal" href="../api/fiftyone.zoo.datasets.html#fiftyone.zoo.datasets.load_zoo_dataset" title="fiftyone.zoo.datasets.load_zoo_dataset"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_zoo_dataset()</span></code></a>.</p>
+</div>
+<p><strong>Example usage</strong></p>
+<img alt="open-images-v7" class="align-center" src="../_images/open-images-v7.png" />
+</div>
+<div class="section" id="places">
+<span id="dataset-zoo-places"></span><h2>Places<a class="headerlink" href="#places" title="Permalink to this headline">¶</a></h2>
+<p>Places is a scene recognition dataset of 10 million images comprising ~400
+unique scene categories.</p>
+<p>The images are labeled with scene semantic categories, comprising a large
+and diverse list of the types of environments encountered in the world.</p>
+<p><strong>Details</strong></p>
+<ul class="simple">
+<li><p>Dataset name: <code class="docutils literal notranslate"><span class="pre">places</span></code></p></li>
+<li><p>Dataset source: <a class="reference external" href="http://places2.csail.mit.edu/download-private.html">http://places2.csail.mit.edu/download-private.html</a></p></li>
+<li><p>Dataset size: 29 GB</p></li>
+<li><p>Tags: <code class="docutils literal notranslate"><span class="pre">image,</span> <span class="pre">classification</span></code></p></li>
+<li><p>Supported splits: <code class="docutils literal notranslate"><span class="pre">train,</span> <span class="pre">validation,</span> <span class="pre">test</span></code></p></li>
+<li><p>ZooDataset classes:
+<a class="reference internal" href="../api/fiftyone.zoo.datasets.base.html#fiftyone.zoo.datasets.base.PlacesDataset" title="fiftyone.zoo.datasets.base.PlacesDataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">PlacesDataset</span></code></a></p></li>
+</ul>
+<p><strong>Full split stats</strong></p>
+<ul class="simple">
+<li><p>Train split: 1,803,460 images, with between 3,068 and 5,000 per category</p></li>
+<li><p>Test split: 328,500 images, with 900 images per category</p></li>
+<li><p>Validation split: 36,500 images, with 100 images per category</p></li>
+</ul>
+<p><strong>Example usage</strong></p>
+<img alt="places-validation" class="align-center" src="../_images/places-validation.png" />
+</div>
+<div class="section" id="quickstart">
+<span id="dataset-zoo-quickstart"></span><h2>Quickstart<a class="headerlink" href="#quickstart" title="Permalink to this headline">¶</a></h2>
+<p>A small dataset with ground truth bounding boxes and predictions.</p>
+<p>The dataset consists of 200 images from the validation split of COCO-2017,
+with model predictions generated by an out-of-the-box Faster R-CNN model
+from
+<a class="reference external" href="https://pytorch.org/docs/stable/torchvision/models.html">torchvision.models</a>.</p>
+<p><strong>Details</strong></p>
+<ul class="simple">
+<li><p>Dataset name: <code class="docutils literal notranslate"><span class="pre">quickstart</span></code></p></li>
+<li><p>Dataset size: 23.40 MB</p></li>
+<li><p>Tags: <code class="docutils literal notranslate"><span class="pre">image,</span> <span class="pre">quickstart</span></code></p></li>
+<li><p>Supported splits: <code class="docutils literal notranslate"><span class="pre">N/A</span></code></p></li>
+<li><p>ZooDataset class:
+<a class="reference internal" href="../api/fiftyone.zoo.datasets.base.html#fiftyone.zoo.datasets.base.QuickstartDataset" title="fiftyone.zoo.datasets.base.QuickstartDataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuickstartDataset</span></code></a></p></li>
+</ul>
+<p><strong>Example usage</strong></p>
+<img alt="quickstart" class="align-center" src="../_images/quickstart.png" />
+</div>
+<div class="section" id="quickstart-geo">
+<span id="dataset-zoo-quickstart-geo"></span><h2>Quickstart Geo<a class="headerlink" href="#quickstart-geo" title="Permalink to this headline">¶</a></h2>
+<p>A small dataset with geolocation data.</p>
+<p>The dataset consists of 500 images from the validation split of the BDD100K
+dataset in the New York City area with object detections and GPS timestamps.</p>
+<p><strong>Details</strong></p>
+<ul class="simple">
+<li><p>Dataset name: <code class="docutils literal notranslate"><span class="pre">quickstart-geo</span></code></p></li>
+<li><p>Dataset size: 33.50 MB</p></li>
+<li><p>Tags: <code class="docutils literal notranslate"><span class="pre">image,</span> <span class="pre">location,</span> <span class="pre">quickstart</span></code></p></li>
+<li><p>Supported splits: <code class="docutils literal notranslate"><span class="pre">N/A</span></code></p></li>
+<li><p>ZooDataset class:
+<a class="reference internal" href="../api/fiftyone.zoo.datasets.base.html#fiftyone.zoo.datasets.base.QuickstartGeoDataset" title="fiftyone.zoo.datasets.base.QuickstartGeoDataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuickstartGeoDataset</span></code></a></p></li>
+</ul>
+<p><strong>Example usage</strong></p>
+<img alt="quickstart-geo" class="align-center" src="../_images/quickstart-geo.png" />
+</div>
+<div class="section" id="quickstart-video">
+<span id="dataset-zoo-quickstart-video"></span><h2>Quickstart Video<a class="headerlink" href="#quickstart-video" title="Permalink to this headline">¶</a></h2>
+<p>A small video dataset with dense annotations.</p>
+<p>The dataset consists of 10 video segments with dense object detections
+generated by human annotators.</p>
+<p><strong>Details</strong></p>
+<ul class="simple">
+<li><p>Dataset name: <code class="docutils literal notranslate"><span class="pre">quickstart-video</span></code></p></li>
+<li><p>Dataset size: 35.20 MB</p></li>
+<li><p>Tags: <code class="docutils literal notranslate"><span class="pre">video,</span> <span class="pre">quickstart</span></code></p></li>
+<li><p>Supported splits: <code class="docutils literal notranslate"><span class="pre">N/A</span></code></p></li>
+<li><p>ZooDataset class:
+<a class="reference internal" href="../api/fiftyone.zoo.datasets.base.html#fiftyone.zoo.datasets.base.QuickstartVideoDataset" title="fiftyone.zoo.datasets.base.QuickstartVideoDataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuickstartVideoDataset</span></code></a></p></li>
+</ul>
+<p><strong>Example usage</strong></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In order to work with video datasets, you’ll need to have
+<a class="reference internal" href="../getting_started/troubleshooting.html#troubleshooting-video"><span class="std std-ref">ffmpeg installed</span></a>.</p>
+</div>
+<img alt="quickstart-video" class="align-center" src="../_images/quickstart-video.png" />
+</div>
+<div class="section" id="quickstart-groups">
+<span id="dataset-zoo-quickstart-groups"></span><h2>Quickstart Groups<a class="headerlink" href="#quickstart-groups" title="Permalink to this headline">¶</a></h2>
+<p>A small dataset with grouped image and point cloud data.</p>
+<p>The dataset consists of 200 scenes from the train split of the KITTI dataset,
+each containing left camera, right camera, point cloud, and 2D/3D object
+annotation data.</p>
+<p><strong>Details</strong></p>
+<ul class="simple">
+<li><p>Dataset name: <code class="docutils literal notranslate"><span class="pre">quickstart-groups</span></code></p></li>
+<li><p>Dataset size: 516.3 MB</p></li>
+<li><p>Tags: <code class="docutils literal notranslate"><span class="pre">image,</span> <span class="pre">point-cloud,</span> <span class="pre">quickstart</span></code></p></li>
+<li><p>Supported splits: <code class="docutils literal notranslate"><span class="pre">N/A</span></code></p></li>
+<li><p>ZooDataset class:
+<a class="reference internal" href="../api/fiftyone.zoo.datasets.base.html#fiftyone.zoo.datasets.base.QuickstartGroupsDataset" title="fiftyone.zoo.datasets.base.QuickstartGroupsDataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuickstartGroupsDataset</span></code></a></p></li>
+</ul>
+<p><strong>Example usage</strong></p>
+<img alt="quickstart-groups" class="align-center" src="../_images/quickstart-groups.png" />
+</div>
+<div class="section" id="quickstart-3d">
+<span id="dataset-zoo-quickstart-3d"></span><h2>Quickstart 3D<a class="headerlink" href="#quickstart-3d" title="Permalink to this headline">¶</a></h2>
+<p>A small 3D dataset with meshes, point clouds, and oriented bounding boxes.</p>
+<p>The dataset consists of 200 3D mesh samples from the test split of the
+<a class="reference external" href="https://modelnet.cs.princeton.edu">ModelNet40</a> dataset, with point
+clouds generated using a Poisson disk sampling method, and oriented
+bounding boxes generated based on the convex hull.</p>
+<p>Objects have been rescaled and recentered from the original dataset.</p>
+<p><strong>Details</strong></p>
+<ul class="simple">
+<li><p>Dataset name: <code class="docutils literal notranslate"><span class="pre">quickstart-3d</span></code></p></li>
+<li><p>Dataset size: 215.7 MB</p></li>
+<li><p>Tags: <code class="docutils literal notranslate"><span class="pre">3d,</span> <span class="pre">point-cloud,</span> <span class="pre">mesh,</span> <span class="pre">quickstart</span></code></p></li>
+<li><p>Supported splits: <code class="docutils literal notranslate"><span class="pre">N/A</span></code></p></li>
+<li><p>ZooDataset class:
+<a class="reference internal" href="../api/fiftyone.zoo.datasets.base.html#fiftyone.zoo.datasets.base.Quickstart3DDataset" title="fiftyone.zoo.datasets.base.Quickstart3DDataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quickstart3DDataset</span></code></a></p></li>
+</ul>
+<p><strong>Example usage</strong></p>
+<img alt="quickstart-3d" class="align-center" src="../_images/quickstart-3d.png" />
+</div>
+<div class="section" id="sama-coco">
+<span id="dataset-zoo-sama-coco"></span><h2>Sama-COCO<a class="headerlink" href="#sama-coco" title="Permalink to this headline">¶</a></h2>
+<p>Sama-COCO is a relabeling of COCO-2017 and is a large-scale object detection
+and segmentation dataset. Masks in Sama-COCO are tighter and many crowd
+instances have been decomposed into their components.</p>
+<p>This version contains images from the COCO-2017 version of the dataset, as well
+as annotations in the form of bounding boxes, and segmentation masks provided
+by Sama.</p>
+<p><strong>Notes</strong></p>
+<ul class="simple">
+<li><p>Sama-COCO defines 91 classes but the data only uses 80 classes (like COCO-2017)</p></li>
+<li><p>Some images from the train and validation sets don’t have annotations</p></li>
+<li><p>The test set does not have annotations</p></li>
+<li><p>Sama-COCO has identical splits to COCO-2017</p></li>
+</ul>
+<p><strong>Details</strong></p>
+<ul class="simple">
+<li><p>Dataset name: <code class="docutils literal notranslate"><span class="pre">sama-coco</span></code></p></li>
+<li><p>Dataset source: <a class="reference external" href="https://www.sama.com/sama-coco-dataset/">https://www.sama.com/sama-coco-dataset/</a></p></li>
+<li><p>Dataset size: 25.67 GB</p></li>
+<li><p>Tags: <code class="docutils literal notranslate"><span class="pre">image,</span> <span class="pre">detection,</span> <span class="pre">segmentation</span></code></p></li>
+<li><p>Supported splits: <code class="docutils literal notranslate"><span class="pre">train,</span> <span class="pre">validation,</span> <span class="pre">test</span></code></p></li>
+<li><p>ZooDataset class:
+<a class="reference internal" href="../api/fiftyone.zoo.datasets.base.html#fiftyone.zoo.datasets.base.SamaCOCODataset" title="fiftyone.zoo.datasets.base.SamaCOCODataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">SamaCOCODataset</span></code></a></p></li>
+</ul>
+<p><strong>Full split stats</strong></p>
+<ul class="simple">
+<li><p>Train split: 118,287 images</p></li>
+<li><p>Test split: 40,670 images</p></li>
+<li><p>Validation split: 5,000 images</p></li>
+</ul>
+<p><strong>Partial downloads</strong></p>
+<p>FiftyOne provides parameters that can be used to efficiently download specific
+subsets of the Sama-COCO dataset to suit your needs. When new subsets are
+specified, FiftyOne will use existing downloaded data first if possible before
+resorting to downloading additional data from the web.</p>
+<p>The following parameters are available to configure a partial download of
+Sama-COCO by passing them to
+<a class="reference internal" href="../api/fiftyone.zoo.datasets.html#fiftyone.zoo.datasets.load_zoo_dataset" title="fiftyone.zoo.datasets.load_zoo_dataset"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_zoo_dataset()</span></code></a>:</p>
+<ul class="simple">
+<li><p><strong>split</strong> (<em>None</em>) and <strong>splits</strong> (<em>None</em>): a string or list of strings,
+respectively, specifying the splits to load. Supported values are
+<code class="docutils literal notranslate"><span class="pre">(&quot;train&quot;,</span> <span class="pre">&quot;test&quot;,</span> <span class="pre">&quot;validation&quot;)</span></code>. If neither is provided, all available
+splits are loaded</p></li>
+<li><p><strong>label_types</strong> (<em>None</em>): a label type or list of label types to load.
+Supported values are <code class="docutils literal notranslate"><span class="pre">(&quot;detections&quot;,</span> <span class="pre">&quot;segmentations&quot;)</span></code>. By default, only
+detections are loaded</p></li>
+<li><p><strong>classes</strong> (<em>None</em>): a string or list of strings specifying required
+classes to load. If provided, only samples containing at least one instance
+of a specified class will be loaded</p></li>
+<li><p><strong>image_ids</strong> (<em>None</em>): a list of specific image IDs to load. The IDs can
+be specified either as <code class="docutils literal notranslate"><span class="pre">&lt;split&gt;/&lt;image-id&gt;</span></code> strings or <code class="docutils literal notranslate"><span class="pre">&lt;image-id&gt;</span></code>
+ints of strings. Alternatively, you can provide the path to a TXT
+(newline-separated), JSON, or CSV file containing the list of image IDs to
+load in either of the first two formats</p></li>
+<li><p><strong>include_id</strong> (<em>False</em>): whether to include the COCO ID of each sample in
+the loaded labels</p></li>
+<li><p><strong>include_license</strong> (<em>False</em>): whether to include the COCO license of each
+sample in the loaded labels, if available. The supported values are:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;False&quot;</span></code> (default): don’t load the license</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">True</span></code>/<code class="docutils literal notranslate"><span class="pre">&quot;name&quot;</span></code>: store the string license name</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;id&quot;</span></code>: store the integer license ID</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;url&quot;</span></code>: store the license URL</p></li>
+</ul>
+</li>
+<li><p><strong>only_matching</strong> (<em>False</em>): whether to only load labels that match the
+<code class="docutils literal notranslate"><span class="pre">classes</span></code> or <code class="docutils literal notranslate"><span class="pre">attrs</span></code> requirements that you provide (True), or to load
+all labels for samples that match the requirements (False)</p></li>
+<li><p><strong>num_workers</strong> (<em>None</em>): the number of processes to use when downloading
+individual images. By default, <code class="code docutils literal notranslate"><span class="pre">multiprocessing.cpu_count()</span></code> is used</p></li>
+<li><p><strong>shuffle</strong> (<em>False</em>): whether to randomly shuffle the order in which
+samples are chosen for partial downloads</p></li>
+<li><p><strong>seed</strong> (<em>None</em>): a random seed to use when shuffling</p></li>
+<li><p><strong>max_samples</strong> (<em>None</em>): a maximum number of samples to load per split. If
+<code class="docutils literal notranslate"><span class="pre">label_types</span></code> and/or <code class="docutils literal notranslate"><span class="pre">classes</span></code> are also specified, first priority will
+be given to samples that contain all of the specified label types and/or
+classes, followed by samples that contain at least one of the specified
+labels types or classes. The actual number of samples loaded may be less
+than this maximum value if the dataset does not contain sufficient samples
+matching your requirements</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>See
+<a class="reference internal" href="../api/fiftyone.zoo.datasets.base.html#fiftyone.zoo.datasets.base.SamaCOCODataset" title="fiftyone.zoo.datasets.base.SamaCOCODataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">SamaCOCODataset</span></code></a> and
+<a class="reference internal" href="../api/fiftyone.utils.coco.html#fiftyone.utils.coco.COCODetectionDatasetImporter" title="fiftyone.utils.coco.COCODetectionDatasetImporter"><code class="xref py py-class docutils literal notranslate"><span class="pre">COCODetectionDatasetImporter</span></code></a>
+for complete descriptions of the optional keyword arguments that you can
+pass to <a class="reference internal" href="../api/fiftyone.zoo.datasets.html#fiftyone.zoo.datasets.load_zoo_dataset" title="fiftyone.zoo.datasets.load_zoo_dataset"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_zoo_dataset()</span></code></a>.</p>
+</div>
+<p><strong>Example usage</strong></p>
+<img alt="sama-coco-validation" class="align-center" src="../_images/sama-coco-validation.png" />
+</div>
+<div class="section" id="ucf101">
+<span id="dataset-zoo-ucf101"></span><h2>UCF101<a class="headerlink" href="#ucf101" title="Permalink to this headline">¶</a></h2>
+<p>UCF101 is an action recognition data set of realistic action videos,
+collected from YouTube, having 101 action categories. This data set is an
+extension of UCF50 data set which has 50 action categories.</p>
+<p>With 13,320 videos from 101 action categories, UCF101 gives the largest
+diversity in terms of actions and with the presence of large variations in
+camera motion, object appearance and pose, object scale, viewpoint,
+cluttered background, illumination conditions, etc, it is the most
+challenging data set to date. As most of the available action recognition
+data sets are not realistic and are staged by actors, UCF101 aims to
+encourage further research into action recognition by learning and
+exploring new realistic action categories.</p>
+<p>The videos in 101 action categories are grouped into 25 groups, where each
+group can consist of 4-7 videos of an action. The videos from the same
+group may share some common features, such as similar background, similar
+viewpoint, etc.</p>
+<p><strong>Details</strong></p>
+<ul class="simple">
+<li><p>Dataset name: <code class="docutils literal notranslate"><span class="pre">ucf101</span></code></p></li>
+<li><p>Dataset source: <a class="reference external" href="https://www.crcv.ucf.edu/research/data-sets/ucf101">https://www.crcv.ucf.edu/research/data-sets/ucf101</a></p></li>
+<li><p>Dataset size: 6.48 GB</p></li>
+<li><p>Tags: <code class="docutils literal notranslate"><span class="pre">video,</span> <span class="pre">action-recognition</span></code></p></li>
+<li><p>Supported splits: <code class="docutils literal notranslate"><span class="pre">train,</span> <span class="pre">test</span></code></p></li>
+<li><p>ZooDataset class:
+<a class="reference internal" href="../api/fiftyone.zoo.datasets.base.html#fiftyone.zoo.datasets.base.UCF101Dataset" title="fiftyone.zoo.datasets.base.UCF101Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">UCF101Dataset</span></code></a></p></li>
+</ul>
+<p><strong>Example usage</strong></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In order to work with video datasets, you’ll need to have
+<a class="reference internal" href="../getting_started/troubleshooting.html#troubleshooting-video"><span class="std std-ref">ffmpeg installed</span></a>.</p>
+<p>Also, if you don’t already have a utility to uncompress <code class="docutils literal notranslate"><span class="pre">.rar</span></code> archives,
+you may need to install one. For example, on macOS:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>brew<span class="w"> </span>install<span class="w"> </span>rar
+</pre></div>
+</div>
+</div>
+<img alt="ucf101-test" class="align-center" src="../_images/ucf101-test.png" />
+</div>
+<div class="section" id="voc-2007">
+<span id="dataset-zoo-voc-2007"></span><h2>VOC-2007<a class="headerlink" href="#voc-2007" title="Permalink to this headline">¶</a></h2>
+<p>The dataset for the PASCAL Visual Object Classes Challenge 2007
+(VOC2007) for the detection competition.</p>
+<p>A total of 9,963 images are included in this dataset, where each image
+contains a set of objects, out of 20 different classes, making a total of
+24,640 annotated objects.</p>
+<p>Note that, as per the official dataset, the test set of VOC2007 does not
+contain annotations.</p>
+<p><strong>Details</strong></p>
+<ul class="simple">
+<li><p>Dataset name: <code class="docutils literal notranslate"><span class="pre">voc-2007</span></code></p></li>
+<li><p>Dataset source: <a class="reference external" href="http://host.robots.ox.ac.uk/pascal/VOC/voc2007">http://host.robots.ox.ac.uk/pascal/VOC/voc2007</a></p></li>
+<li><p>Dataset size: 868.85 MB</p></li>
+<li><p>Tags: <code class="docutils literal notranslate"><span class="pre">image,</span> <span class="pre">detection</span></code></p></li>
+<li><p>Supported splits: <code class="docutils literal notranslate"><span class="pre">train,</span> <span class="pre">validation,</span> <span class="pre">test</span></code></p></li>
+<li><p>ZooDataset classes:</p>
+<ul>
+<li><p><a class="reference internal" href="../api/fiftyone.zoo.datasets.tf.html#fiftyone.zoo.datasets.tf.VOC2007Dataset" title="fiftyone.zoo.datasets.tf.VOC2007Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">VOC2007Dataset</span></code></a> (TF backend)</p></li>
+<li><p><a class="reference internal" href="../api/fiftyone.zoo.datasets.torch.html#fiftyone.zoo.datasets.torch.VOC2007Dataset" title="fiftyone.zoo.datasets.torch.VOC2007Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">VOC2007Dataset</span></code></a> (Torch backend)</p></li>
+</ul>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">test</span></code> split is only available via the
+<a class="reference internal" href="api.html#dataset-zoo-ml-backend"><span class="std std-ref">TensorFlow backend</span></a>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You must have the
+<a class="reference internal" href="api.html#dataset-zoo-ml-backend"><span class="std std-ref">Torch or TensorFlow backend(s)</span></a> installed to
+load this dataset.</p>
+</div>
+<p><strong>Example usage</strong></p>
+<img alt="voc-2007-validation" class="align-center" src="../_images/voc-2007-validation.png" />
+</div>
+<div class="section" id="voc-2012">
+<span id="dataset-zoo-voc-2012"></span><h2>VOC-2012<a class="headerlink" href="#voc-2012" title="Permalink to this headline">¶</a></h2>
+<p>The dataset for the PASCAL Visual Object Classes Challenge 2012
+(VOC2012) for the detection competition.</p>
+<p>A total of 11540 images are included in this dataset, where each image
+contains a set of objects, out of 20 different classes, making a total of
+27450 annotated objects.</p>
+<p>Note that, as per the official dataset, the test set of VOC2012 does not
+contain annotations.</p>
+<p><strong>Details</strong></p>
+<ul class="simple">
+<li><p>Dataset name: <code class="docutils literal notranslate"><span class="pre">voc-2012</span></code></p></li>
+<li><p>Dataset source: <a class="reference external" href="http://host.robots.ox.ac.uk/pascal/VOC/voc2012">http://host.robots.ox.ac.uk/pascal/VOC/voc2012</a></p></li>
+<li><p>Dataset size: 3.59 GB</p></li>
+<li><p>Tags: <code class="docutils literal notranslate"><span class="pre">image,</span> <span class="pre">detection</span></code></p></li>
+<li><p>Supported splits: <code class="docutils literal notranslate"><span class="pre">train,</span> <span class="pre">validation,</span> <span class="pre">test</span></code></p></li>
+<li><p>ZooDataset classes:</p>
+<ul>
+<li><p><a class="reference internal" href="../api/fiftyone.zoo.datasets.tf.html#fiftyone.zoo.datasets.tf.VOC2012Dataset" title="fiftyone.zoo.datasets.tf.VOC2012Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">VOC2012Dataset</span></code></a> (TF backend)</p></li>
+<li><p><a class="reference internal" href="../api/fiftyone.zoo.datasets.torch.html#fiftyone.zoo.datasets.torch.VOC2012Dataset" title="fiftyone.zoo.datasets.torch.VOC2012Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">VOC2012Dataset</span></code></a> (Torch backend)</p></li>
+</ul>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">test</span></code> split is only available via the
+<a class="reference internal" href="api.html#dataset-zoo-ml-backend"><span class="std std-ref">TensorFlow backend</span></a>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You must have the
+<a class="reference internal" href="api.html#dataset-zoo-ml-backend"><span class="std std-ref">Torch or TensorFlow backend(s)</span></a> installed to
+load this dataset.</p>
+</div>
+<p><strong>Example usage</strong></p>
+<img alt="voc-2012-validation" class="align-center" src="../_images/voc-2012-validation.png" />
+</div>
+</div>
+
+
+             </article>
+             
+            </div>
+            <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="remote.html" class="btn btn-neutral float-right" title="Remotely-Sourced Zoo Datasets" accesskey="n" rel="next">Next <img src="../_static/images/chevron-right-orange.svg" class="next-page"></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="FiftyOne Dataset Zoo" accesskey="p" rel="prev"><img src="../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
+      
+    </div>
+  
+</footer>
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              <ul>
+<li><a class="reference internal" href="#">Built-In Zoo Datasets</a><ul>
+<li><a class="reference internal" href="#activitynet-100">ActivityNet 100</a></li>
+<li><a class="reference internal" href="#activitynet-200">ActivityNet 200</a></li>
+<li><a class="reference internal" href="#bdd100k">BDD100K</a></li>
+<li><a class="reference internal" href="#caltech-101">Caltech-101</a></li>
+<li><a class="reference internal" href="#caltech-256">Caltech-256</a></li>
+<li><a class="reference internal" href="#cifar-10">CIFAR-10</a></li>
+<li><a class="reference internal" href="#cifar-100">CIFAR-100</a></li>
+<li><a class="reference internal" href="#cityscapes">Cityscapes</a></li>
+<li><a class="reference internal" href="#coco-2014">COCO-2014</a></li>
+<li><a class="reference internal" href="#coco-2017">COCO-2017</a></li>
+<li><a class="reference internal" href="#fashion-mnist">Fashion MNIST</a></li>
+<li><a class="reference internal" href="#families-in-the-wild">Families in the Wild</a></li>
+<li><a class="reference internal" href="#hmbd51">HMBD51</a></li>
+<li><a class="reference internal" href="#imagenet-2012">ImageNet 2012</a></li>
+<li><a class="reference internal" href="#imagenet-sample">ImageNet Sample</a></li>
+<li><a class="reference internal" href="#kinetics-400">Kinetics 400</a></li>
+<li><a class="reference internal" href="#kinetics-600">Kinetics 600</a></li>
+<li><a class="reference internal" href="#kinetics-700">Kinetics 700</a></li>
+<li><a class="reference internal" href="#kinetics-700-2020">Kinetics 700-2020</a></li>
+<li><a class="reference internal" href="#kitti">KITTI</a></li>
+<li><a class="reference internal" href="#kitti-multiview">KITTI Multiview</a></li>
+<li><a class="reference internal" href="#labeled-faces-in-the-wild">Labeled Faces in the Wild</a></li>
+<li><a class="reference internal" href="#mnist">MNIST</a></li>
+<li><a class="reference internal" href="#open-images-v6">Open Images V6</a></li>
+<li><a class="reference internal" href="#open-images-v7">Open Images V7</a></li>
+<li><a class="reference internal" href="#places">Places</a></li>
+<li><a class="reference internal" href="#quickstart">Quickstart</a></li>
+<li><a class="reference internal" href="#quickstart-geo">Quickstart Geo</a></li>
+<li><a class="reference internal" href="#quickstart-video">Quickstart Video</a></li>
+<li><a class="reference internal" href="#quickstart-groups">Quickstart Groups</a></li>
+<li><a class="reference internal" href="#quickstart-3d">Quickstart 3D</a></li>
+<li><a class="reference internal" href="#sama-coco">Sama-COCO</a></li>
+<li><a class="reference internal" href="#ucf101">UCF101</a></li>
+<li><a class="reference internal" href="#voc-2007">VOC-2007</a></li>
+<li><a class="reference internal" href="#voc-2012">VOC-2012</a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  
+
+
+  
+
+     
+       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+         <script src="../_static/jquery.js"></script>
+         <script src="../_static/underscore.js"></script>
+         <script src="../_static/doctools.js"></script>
+         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+         <script src="../_static/js/voxel51-website.js"></script>
+         <script src="../_static/js/custom.js"></script>
+     
+
+  
+
+  <script type="text/javascript" src="../_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="../_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+  <!-- Begin Footer -->
+
+
+<footer class="footer-wrapper" id="docs-tutorials-resources">
+  <div class="footer pytorch-container">
+    <div class="footer__logo">
+      <a href="https://voxel51.com/"
+        ><img
+          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
+      /></a>
+    </div>
+
+    <div class="footer__address">
+      330 E Liberty St<br />
+      Ann Arbor, MI 48104<br />
+      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
+    </div>
+
+    <!--
+    <div class="footer__contact">
+      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
+    </div>
+    -->
+
+    <div class="footer__links">
+      <div class="footer__links--col2">
+        <p class="nav__item--brand">Products</p>
+        <a href="https://voxel51.com/fiftyone/">FiftyOne</a>
+        <a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a>
+        <a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a>
+        <a href="https://voxel51.com/success-stories/">Success Stories</a>
+      </div>
+      <div class="footer__links--col3">
+        <p class="nav__item--brand">Resources</p>
+        <a href="https://voxel51.com/blog/">Blog</a>
+        <a href="https://docs.voxel51.com/">Docs</a>
+        <a href="https://github.com/voxel51/">GitHub</a>
+        <a href="https://community.voxel51.com">Discord</a>
+        <a href="https://voxel51.com/ourstory/">About Us</a>
+        <a href="https://voxel51.com/computer-vision-events/">Events</a>
+        <a href="https://voxel51.com/jobs/">Careers</a>
+        <a href="https://voxel51.com/press/">Press</a>
+      </div>
+    </div>
+
+    <div class="footer__icons">
+      <ul class="list-inline">
+        <li>
+          <a href="https://www.linkedin.com/company/voxel51/">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/voxel51/">
+            <i class="fa-brands fa-github"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/voxel51">
+            <i class="fa-brands fa-twitter"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/voxel51/">
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="footer__copyright">
+      <ul class="list-inline">
+        <li>&copy; 2024 Voxel51 Inc.</li>
+        <li>
+          <a href="https://voxel51.com/privacy/">Privacy Policy</a>
+        </li>
+        <li>
+          <a href="https://voxel51.com/terms/">Terms of Service</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<!-- https://buttons.github.io -->
+<script async defer src="https://buttons.github.io/buttons.js" ></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XD15NFRY3M" ></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+  gtag("config", "G-XD15NFRY3M");
+</script>
+
+<script>
+  function open_modal(modal_id, modal_closer_id) {
+    // Get the modal
+    let the_modal = document.getElementById(modal_id);
+
+    the_modal.style.display = "flex";
+    document.body.style.overflow = "hidden";
+
+    let the_modal_closer = document.getElementById(modal_closer_id);
+
+    // When the user clicks on <span> (x), close the modal
+    the_modal_closer &&
+      (the_modal_closer.onclick = function () {
+        the_modal.style.display = "none";
+      });
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+      if (event.target == the_modal) {
+        the_modal.style.display = "none";
+        document.body.style.overflow = "unset";
+        window.onclick = undefined;
+      }
+    };
+  }
+</script>
+
+<!-- bigpicture.io -->
+<script>
+  !(function (e, t, i) {
+    var r = (e.bigPicture = e.bigPicture || []);
+    if (!r.initialized)
+      if (r.invoked)
+        e.console &&
+          console.error &&
+          console.error("BigPicture.io snippet included twice.");
+      else {
+        (r.invoked = !0),
+          (r.SNIPPET_VERSION = 1.5),
+          (r.handler = function (e) {
+            if (void 0 !== r.callback)
+              try {
+                return r.callback(e);
+              } catch (e) {}
+          }),
+          (r.eventList = ["mousedown", "mouseup", "click", "submit"]),
+          (r.methods = [
+            "track",
+            "identify",
+            "page",
+            "group",
+            "alias",
+            "integration",
+            "ready",
+            "intelReady",
+            "consentReady",
+            "on",
+            "off",
+          ]),
+          (r.factory = function (e) {
+            return function () {
+              var t = Array.prototype.slice.call(arguments);
+              return t.unshift(e), r.push(t), r;
+            };
+          });
+        for (var n = 0; n < r.methods.length; n++) {
+          var o = r.methods[n];
+          r[o] = r.factory(o);
+        }
+        r.getCookie = function (e) {
+          var i = ("; " + t.cookie).split("; " + e + "=");
+          return 2 == i.length && i.pop().split(";").shift();
+        };
+        var c = (r.isEditor = (function () {
+          try {
+            return (
+              e.self !== e.top &&
+              (new RegExp("app" + i, "ig").test(t.referrer) ||
+                "edit" == r.getCookie("_bpr_edit"))
+            );
+          } catch (e) {
+            return !1;
+          }
+        })());
+        r.init = function (n, o) {
+          if (((r.projectId = n), (r._config = o), !c))
+            for (var a = 0; a < r.eventList.length; a++)
+              e.addEventListener(r.eventList[a], r.handler, !0);
+          var s = t.createElement("script");
+          s.async = !0;
+          var d = c ? "/editor/editor" : "/public-" + n;
+          (s.src = "//cdn" + i + d + ".js"),
+            t.getElementsByTagName("head")[0].appendChild(s);
+        };
+      }
+  })(window, document, ".bigpicture.io");
+  bigPicture.init("1646");
+</script>
+
+
+  
+
+  <!-- End Footer -->
+
+  <!-- Begin Mobile Menu -->
+
+  
+
+  <!-- End Mobile Menu -->
+
+  <script type="text/javascript" src="../_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function(e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+</body>
+</html>

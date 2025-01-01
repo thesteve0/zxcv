@@ -1,0 +1,1812 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Detecting Small Objects with SAHI &mdash; FiftyOne 1.3.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <link rel="stylesheet" href="../_static/css/voxel51-website.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Anomaly Detection with FiftyOne and Anomalib" href="anomaly_detection.html" />
+    <link rel="prev" title="Clustering Images with Embeddings" href="clustering.html" />
+<meta property="og:image" content="https://voxel51.com/wp-content/uploads/2024/03/3.24_webpages_Home_AV.png" />
+
+<link
+  href="https://fonts.googleapis.com/css?family=Palanquin:400,600,700,800"
+  rel="stylesheet"
+/>
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+  rel="stylesheet"
+/>
+<script src="https://tag.clearbitscripts.com/v1/pk_b9ed71c8234edd4f77326bcbfab5a4ca/tags.js"></script>
+
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+  
+</head>
+
+
+<div class="container-fluid header-holder tutorials-header" id="header-holder">
+  <nav id="nav__main" class="nav__main">
+    <div class="nav__main__logo">
+      <a href="https://voxel51.com/">
+        <img
+          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
+        />
+      </a>
+    </div>
+
+    <div class="nav__spacer desktop_only"></div>
+
+    <div id="nav__main__mobilebutton--on">
+      <a href="javascript:void(0);" onclick="navMobileButton()">
+        <i class="fa-solid fa-bars"></i>
+      </a>
+    </div>
+
+    <div id="nav__main__mobilebutton--off">
+      <a href="javascript:void(0);" onclick="navMobileButton()">
+        <i class="fa-solid fa-times"></i>
+      </a>
+    </div>
+
+    <div id="nav__main__items">
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Products</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://voxel51.com/fiftyone/">Open Source</a></li>
+            <li><a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a></li>
+            <li><a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a></li>
+            <li><a href="https://voxel51.com/success-stories/">Success Stories</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Learn</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://community.voxel51.com">Community Discord</a></li>
+            <li><a href="https://voxel51.com/blog/">Blog</a></li>
+            <li><a href="https://voxel51.com/computer-vision-events/">Events</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item">
+        <a href="https://docs.voxel51.com/">Docs</a>
+      </div>
+
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Company</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://voxel51.com/ourstory/">About Us</a></li>
+            <li><a href="https://voxel51.com/jobs/">Careers</a></li>
+            <li><a href="https://voxel51.com/talk-to-sales/">Talk to Sales</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item mobile_only">
+        <a href="https://github.com/voxel51/fiftyone">GitHub</a>
+      </div>
+
+      <div class="nav__item desktop_only" id="octocat">
+        <!-- https://buttons.github.io -->
+        <a
+          class="github-button"
+          href="https://github.com/voxel51/fiftyone"
+          data-color-scheme="no-preference: dark_high_contrast; light: dark_high_contrast; dark: dark_high_contrast;"
+          data-size="large"
+          data-show-count="true"
+          aria-label="Star voxel51/fiftyone on GitHub"
+          >Star</a
+        >
+      </div>
+
+      <div class="nav__item full_nav_only">
+        <a class="button-primary" href="https://voxel51.com/schedule-teams-workshop/" target="_blank"
+          >Schedule a workshop</a
+        >
+      </div>
+    </div>
+  </nav>
+</div>
+
+
+
+<body class="pytorch-body">
+
+   
+
+    
+
+    <div class="table-of-contents-link-wrapper">
+      <span>Table of Contents</span>
+      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+    </div>
+
+    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+      <div class="pytorch-side-scroll">
+        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          <div class="pytorch-left-menu-search">
+            
+
+            
+              
+              
+            
+
+            
+
+
+  
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+            
+          </div>
+
+           <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../teams/index.html">FiftyOne Teams 🚀</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../environments/index.html">Environments</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="pandas_comparison.html">pandas and FiftyOne</a></li>
+<li class="toctree-l2"><a class="reference internal" href="evaluate_detections.html">Evaluating object detections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="evaluate_classifications.html">Evaluating a classifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="image_embeddings.html">Using image embeddings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cvat_annotation.html">Annotating with CVAT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="labelbox_annotation.html">Annotating with Labelbox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open_images.html">Working with Open Images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="detectron2.html">Training with Detectron2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uniqueness.html">Exploring image uniqueness</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classification_mistakes.html">Finding class mistakes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="detection_mistakes.html">Finding detection mistakes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qdrant.html">Embeddings with Qdrant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="yolov8.html">Fine-tuning YOLOv8 models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pointe.html">3D point clouds with Point-E</a></li>
+<li class="toctree-l2"><a class="reference internal" href="monocular_depth_estimation.html">Monocular depth estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dimension_reduction.html">Dimensionality reduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="zero_shot_classification.html">Zero-shot classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_augmentation.html">Data augmentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clustering.html">Clustering images</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Detecting small objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="anomaly_detection.html">Anomaly detection</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../recipes/index.html">Recipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheat_sheets/index.html">Cheat Sheets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dataset_zoo/index.html">Dataset Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_zoo/index.html">Model Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brain.html">FiftyOne Brain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/index.html">Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plugins/index.html">Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli/index.html">CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/fiftyone.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deprecation.html">Deprecation Notices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a></li>
+</ul>
+ 
+        </div>
+      </div>
+    </nav>
+
+    <div class="pytorch-container">
+      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+        <div class="pytorch-breadcrumbs-wrapper">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="../index.html">
+          
+            Docs
+          
+        </a> &gt;
+      </li>
+
+        
+          <li><a href="index.html">FiftyOne Tutorials</a> &gt;</li>
+        
+      <li>Detecting Small Objects with SAHI</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+        </div>
+
+        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+          Contents
+        </div>
+      </div>
+
+      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+        <div class="pytorch-content-left">
+
+        
+          
+          <div class="rst-content style-external-links">
+          
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+              
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    /*background: #f5f5f5;*/
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+    margin: 0;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt .copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+</style>
+<table class="fo-notebook-links" align="left">
+    <td>
+        <a target="_blank" href="https://colab.research.google.com/github/voxel51/fiftyone/blob/v1.3.0/docs/source/tutorials/small_object_detection.ipynb">
+            <img src="../_static/images/icons/colab-logo-256px.png"> &nbsp; Run in Google Colab
+        </a>
+    </td>
+    <td>
+        <a target="_blank" href="https://github.com/voxel51/fiftyone/blob/v1.3.0/docs/source/tutorials/small_object_detection.ipynb">
+            <img src="../_static/images/icons/github-logo-256px.png"> &nbsp; View source on GitHub
+        </a>
+    </td>
+    <td>
+        <a target="_blank" href="https://raw.githubusercontent.com/voxel51/fiftyone/v1.3.0/docs/source/tutorials/small_object_detection.ipynb" download>
+            <img src="../_static/images/icons/cloud-icon-256px.png"> &nbsp; Download notebook
+        </a>
+    </td>
+</table><div class="section" id="Detecting-Small-Objects-with-SAHI">
+<h1>Detecting Small Objects with SAHI<a class="headerlink" href="#Detecting-Small-Objects-with-SAHI" title="Permalink to this headline">¶</a></h1>
+<p><img alt="Teaser" src="../_images/small_object_detection.jpg" /></p>
+<p>Object detection is one of the fundamental tasks in computer vision, but detecting small objects can be particularly challenging.</p>
+<p>In this walkthrough, you’ll learn how to use a technique called <a class="reference external" href="https://ieeexplore.ieee.org/document/9897990">SAHI (Slicing Aided Hyper Inference)</a> in conjunction with state-of-the-art object detection models to improve the detection of small objects. We’ll apply SAHI with Ultralytics’ YOLOv8 model to detect small objects in the VisDrone dataset, and then evaluate these predictions to better understand how slicing impacts detection performance.</p>
+<p>It covers the following:</p>
+<ul class="simple">
+<li><p>Loading the VisDrone dataset from the Hugging Face Hub</p></li>
+<li><p>Applying Ultralytics’ YOLOv8 model to the dataset</p></li>
+<li><p>Using SAHI to run inference on slices of the images</p></li>
+<li><p>Evaluating model performance with and without SAHI</p></li>
+</ul>
+<div class="section" id="Setup-and-Installation">
+<h2>Setup and Installation<a class="headerlink" href="#Setup-and-Installation" title="Permalink to this headline">¶</a></h2>
+<p>For this walkthrough, we’ll be using the following libraries:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fiftyone</span></code> for dataset exploration and manipulation</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">huggingface_hub</span></code> for loading the VisDrone dataset</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ultralytics</span></code> for running object detection with YOLOv8</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sahi</span></code> for slicing aided hyper inference</p></li>
+</ul>
+<p>If you haven’t already, install the latest versions of these libraries:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[62]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">U</span> <span class="n">fiftyone</span> <span class="n">sahi</span> <span class="n">ultralytics</span> <span class="n">huggingface_hub</span> <span class="o">--</span><span class="n">quiet</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Note: you may need to restart the kernel to use updated packages.
+</pre></div></div>
+</div>
+<p>Let’s get started! 🚀</p>
+<p>First, import the necessary modules from FiftyOne:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+<span class="kn">import</span> <span class="nn">fiftyone.utils.huggingface</span> <span class="k">as</span> <span class="nn">fouh</span>
+<span class="kn">from</span> <span class="nn">fiftyone</span> <span class="kn">import</span> <span class="n">ViewField</span> <span class="k">as</span> <span class="n">F</span>
+</pre></div>
+</div>
+</div>
+<p>Now, let’s download some data. We’ll be taking advantage of FiftyOne’s <a class="reference external" href="https://docs.voxel51.com/integrations/huggingface.html#huggingface-hub">Hugging Face Hub integration</a> to load a subset of the <a class="reference external" href="https://github.com/VisDrone/VisDrone-Dataset">VisDrone dataset</a> directly from the <a class="reference external" href="https://huggingface.co/docs/hub/en/index">Hugging Face Hub</a>:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">fouh</span><span class="o">.</span><span class="n">load_from_hub</span><span class="p">(</span><span class="s2">&quot;Voxel51/VisDrone2019-DET&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;sahi-test&quot;</span><span class="p">,</span> <span class="n">max_samples</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Downloading config file fiftyone.yml from Voxel51/VisDrone2019-DET
+Loading dataset
+Importing samples...
+ 100% |█████████████████| 100/100 [33.1ms elapsed, 0s remaining, 3.0K samples/s]
+</pre></div></div>
+</div>
+<p>Before adding any predictions, let’s take a look at the dataset:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Session launched. Run `session.show()` to open the App in a cell output.
+</pre></div></div>
+</div>
+<p><img alt="VisDrone" src="../_images/sahi_dataset.jpg" /></p>
+</div>
+<div class="section" id="Standard-Inference-with-YOLOv8">
+<h2>Standard Inference with YOLOv8<a class="headerlink" href="#Standard-Inference-with-YOLOv8" title="Permalink to this headline">¶</a></h2>
+<p>Now that we know what our data looks like, let’s run our standard inference pipeline with a YOLOv8 (large-variant) model. We can load the model from Ultralytics and then apply this directly to our FiftyOne dataset using <code class="docutils literal notranslate"><span class="pre">apply_model()</span></code>, thanks to <a class="reference external" href="https://docs.voxel51.com/integrations/ultralytics.html">FiftyOne’s Ultralytics integration</a>:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ultralytics</span> <span class="kn">import</span> <span class="n">YOLO</span>
+
+<span class="n">ckpt_path</span> <span class="o">=</span> <span class="s2">&quot;yolov8l.pt&quot;</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">YOLO</span><span class="p">(</span><span class="n">ckpt_path</span><span class="p">)</span>
+<span class="c1">## fiftyone will work directly with the Ultralytics.YOLO model</span>
+
+<span class="n">dataset</span><span class="o">.</span><span class="n">apply_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;base_model&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ 100% |█████████████████| 100/100 [25.0s elapsed, 0s remaining, 4.0 samples/s]
+</pre></div></div>
+</div>
+<p>Alternatively, if we want FiftyOne to handle the model downloading and location management for us, we can load the same model directly from the <a class="reference external" href="https://docs.voxel51.com/user_guide/model_zoo/index.html">FiftyOne Model Zoo</a>:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## comment this out if you want to use the model from the zoo</span>
+<span class="c1"># model = foz.load_zoo_model(&quot;yolov8l-coco-torch&quot;)</span>
+<span class="c1"># ckpt_path = model.config.model_path</span>
+<span class="c1"># dataset.apply_model(model, label_field=&quot;base_model&quot;)</span>
+</pre></div>
+</div>
+</div>
+<p>Now that we have predictions, we can visualize them in the App:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p><img alt="Base Model Predictions" src="../_images/sahi_base_model.gif" /></p>
+<p>Looking at the model’s predictions next to the ground truth, we can see a few things.</p>
+<p>First and foremost, the classes detected by our <em>YOLOv8l</em> model are different from the ground truth classes in the VisDrone dataset. Our YOLO model was trained on the <a class="reference external" href="https://docs.voxel51.com/user_guide/dataset_zoo/datasets.html#coco-2017">COCO dataset</a>, which has 80 classes, while the VisDrone dataset has 12 classes, including an <code class="docutils literal notranslate"><span class="pre">ignore_regions</span></code> class. To simplify the comparison, we’ll focus on just the few most common classes in the dataset, and will map the VisDrone classes to the COCO
+classes as follows:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mapping</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;pedestrians&quot;</span><span class="p">:</span> <span class="s2">&quot;person&quot;</span><span class="p">,</span> <span class="s2">&quot;people&quot;</span><span class="p">:</span> <span class="s2">&quot;person&quot;</span><span class="p">,</span> <span class="s2">&quot;van&quot;</span><span class="p">:</span> <span class="s2">&quot;car&quot;</span><span class="p">}</span>
+<span class="n">mapped_view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">map_labels</span><span class="p">(</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span> <span class="n">mapping</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>And then filter our labels to only include the classes we’re interested in:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_label_fields</span><span class="p">(</span><span class="n">sample_collection</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get the (detection) label fields of a Dataset or DatasetView.&quot;&quot;&quot;</span>
+    <span class="n">label_fields</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span>
+        <span class="n">sample_collection</span><span class="o">.</span><span class="n">get_field_schema</span><span class="p">(</span><span class="n">embedded_doc_type</span><span class="o">=</span><span class="n">fo</span><span class="o">.</span><span class="n">Detections</span><span class="p">)</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">label_fields</span>
+
+<span class="k">def</span> <span class="nf">filter_all_labels</span><span class="p">(</span><span class="n">sample_collection</span><span class="p">):</span>
+    <span class="n">label_fields</span> <span class="o">=</span> <span class="n">get_label_fields</span><span class="p">(</span><span class="n">sample_collection</span><span class="p">)</span>
+
+    <span class="n">filtered_view</span> <span class="o">=</span> <span class="n">sample_collection</span>
+
+    <span class="k">for</span> <span class="n">lf</span> <span class="ow">in</span> <span class="n">label_fields</span><span class="p">:</span>
+        <span class="n">filtered_view</span> <span class="o">=</span> <span class="n">filtered_view</span><span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span>
+            <span class="n">lf</span><span class="p">,</span> <span class="n">F</span><span class="p">(</span><span class="s2">&quot;label&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">is_in</span><span class="p">([</span><span class="s2">&quot;person&quot;</span><span class="p">,</span> <span class="s2">&quot;car&quot;</span><span class="p">,</span> <span class="s2">&quot;truck&quot;</span><span class="p">]),</span> <span class="n">only_matches</span><span class="o">=</span><span class="kc">False</span>
+        <span class="p">)</span>
+    <span class="k">return</span> <span class="n">filtered_view</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[51]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filtered_view</span> <span class="o">=</span> <span class="n">filter_all_labels</span><span class="p">(</span><span class="n">mapped_view</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[52]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">session</span><span class="o">.</span><span class="n">view</span> <span class="o">=</span> <span class="n">filtered_view</span><span class="o">.</span><span class="n">view</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<p><img alt="Filtered View" src="../_images/sahi_base_model_predictions_filtered.jpg" /></p>
+<p>Now that the classes are aligned and we’ve reduced the crowding in our images, we can see that while the model does a pretty good job of detecting objects, it struggles with the small objects, especially people in the distance. This can happen with large images, as most detection models are trained on fixed-size images. As an example, YOLOv8 is trained on images with maximum side length <span class="math notranslate nohighlight">\(640\)</span>. When we feed it an image of size <span class="math notranslate nohighlight">\(1920\)</span> x <span class="math notranslate nohighlight">\(1080\)</span>, the model will downsample the image
+to <span class="math notranslate nohighlight">\(640\)</span> x <span class="math notranslate nohighlight">\(360\)</span> before making predictions. This downsampling can cause small objects to be missed, as the model may not have enough information to detect them.</p>
+</div>
+<div class="section" id="id1">
+<h2>Detecting Small Objects with SAHI<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>Theoretically, one could train a model on larger images to improve detection of small objects, but this would require more memory and computational power. Another option is to introduce a sliding window approach, where we split the image into smaller patches, run the model on each patch, and then combine the results. This is the idea behind <a class="reference external" href="https://github.com/obss/sahi">Slicing Aided Hyper Inference</a> (SAHI), which we’ll use to improve the detection of small objects in the VisDrone dataset!</p>
+<figure><p><img alt="Alt text" src="https://raw.githubusercontent.com/obss/sahi/main/resources/sliced_inference.gif" /></p>
+<figcaption style="text-align:center; color:gray;"><p>Illustration of Slicing Aided Hyper Inference. Image courtesy of SAHI Github Repo.</p>
+</figcaption></figure><div class="line-block">
+<div class="line">The SAHI technique is implemented in the <code class="docutils literal notranslate"><span class="pre">sahi</span></code> Python package that we installed earlier. SAHI is a framework which is compatible with many object detection models, including YOLOv8. We can choose the detection model we want to use and create an instance of any of the classes that subclass <code class="docutils literal notranslate"><span class="pre">sahi.models.DetectionModel</span></code>, including YOLOv8, YOLOv5, and even Hugging Face Transformers models. We will create our model object using SAHI’s <code class="docutils literal notranslate"><span class="pre">AutoDetectionModel</span></code> class, specifying the model type and
+the path to the checkpoint file:</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sahi</span> <span class="kn">import</span> <span class="n">AutoDetectionModel</span>
+<span class="kn">from</span> <span class="nn">sahi.predict</span> <span class="kn">import</span> <span class="n">get_prediction</span><span class="p">,</span> <span class="n">get_sliced_prediction</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">detection_model</span> <span class="o">=</span> <span class="n">AutoDetectionModel</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span>
+    <span class="n">model_type</span><span class="o">=</span><span class="s1">&#39;yolov8&#39;</span><span class="p">,</span>
+    <span class="n">model_path</span><span class="o">=</span><span class="n">ckpt_path</span><span class="p">,</span>
+    <span class="n">confidence_threshold</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="c1">## same as the default value for our base model</span>
+    <span class="n">image_size</span><span class="o">=</span><span class="mi">640</span><span class="p">,</span>
+    <span class="n">device</span><span class="o">=</span><span class="s2">&quot;cpu&quot;</span><span class="p">,</span> <span class="c1"># or &#39;cuda&#39;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Before we generate sliced predictions, let’s inspect the model’s predictions on a trial image, using SAHI’s <code class="docutils literal notranslate"><span class="pre">get_prediction()</span></code> function:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[60]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">get_prediction</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">filepath</span><span class="p">,</span> <span class="n">detection_model</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;sahi.prediction.PredictionResult object at 0x2b0e9c250&gt;
+</pre></div></div>
+</div>
+<p>Fortunately, SAHI results objects have a <code class="docutils literal notranslate"><span class="pre">to_fiftyone_detections()</span></code> method, which converts the results to FiftyOne detections:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[61]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">to_fiftyone_detections</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&lt;Detection: {
+    &#39;id&#39;: &#39;661858c20ae3edf77139db7a&#39;,
+    &#39;attributes&#39;: {},
+    &#39;tags&#39;: [],
+    &#39;label&#39;: &#39;car&#39;,
+    &#39;bounding_box&#39;: [
+        0.6646394729614258,
+        0.7850866247106482,
+        0.06464214324951172,
+        0.09088355170355902,
+    ],
+    &#39;mask&#39;: None,
+    &#39;confidence&#39;: 0.8933132290840149,
+    &#39;index&#39;: None,
+}&gt;, &lt;Detection: {
+    &#39;id&#39;: &#39;661858c20ae3edf77139db7b&#39;,
+    &#39;attributes&#39;: {},
+    &#39;tags&#39;: [],
+    &#39;label&#39;: &#39;car&#39;,
+    &#39;bounding_box&#39;: [
+        0.6196376800537109,
+        0.7399617513020833,
+        0.06670347849527995,
+        0.09494832356770834,
+    ],
+    &#39;mask&#39;: None,
+    &#39;confidence&#39;: 0.8731599450111389,
+    &#39;index&#39;: None,
+}&gt;, &lt;Detection: {
+    &#39;id&#39;: &#39;661858c20ae3edf77139db7c&#39;,
+    &#39;attributes&#39;: {},
+    &#39;tags&#39;: [],
+    &#39;label&#39;: &#39;car&#39;,
+    &#39;bounding_box&#39;: [
+        0.5853352228800456,
+        0.7193766276041667,
+        0.06686935424804688,
+        0.07682359483506944,
+    ],
+    &#39;mask&#39;: None,
+    &#39;confidence&#39;: 0.8595829606056213,
+    &#39;index&#39;: None,
+}&gt;, &lt;Detection: {
+    &#39;id&#39;: &#39;661858c20ae3edf77139db7d&#39;,
+    &#39;attributes&#39;: {},
+    &#39;tags&#39;: [],
+    &#39;label&#39;: &#39;car&#39;,
+    &#39;bounding_box&#39;: [
+        0.5635160446166992,
+        0.686444091796875,
+        0.06365642547607422,
+        0.06523607042100694,
+    ],
+    &#39;mask&#39;: None,
+    &#39;confidence&#39;: 0.854781448841095,
+    &#39;index&#39;: None,
+}&gt;, &lt;Detection: {
+    &#39;id&#39;: &#39;661858c20ae3edf77139db7e&#39;,
+    &#39;attributes&#39;: {},
+    &#39;tags&#39;: [],
+    &#39;label&#39;: &#39;car&#39;,
+    &#39;bounding_box&#39;: [
+        0.7365047454833984,
+        0.8709894816080729,
+        0.07815799713134766,
+        0.06583930121527778,
+    ],
+    &#39;mask&#39;: None,
+    &#39;confidence&#39;: 0.8482972383499146,
+    &#39;index&#39;: None,
+}&gt;, &lt;Detection: {
+    &#39;id&#39;: &#39;661858c20ae3edf77139db7f&#39;,
+    &#39;attributes&#39;: {},
+    &#39;tags&#39;: [],
+    &#39;label&#39;: &#39;car&#39;,
+    &#39;bounding_box&#39;: [
+        0.4387975692749023,
+        0.7973368326822917,
+        0.07478656768798828,
+        0.08685709635416666,
+    ],
+    &#39;mask&#39;: None,
+    &#39;confidence&#39;: 0.8482537865638733,
+    &#39;index&#39;: None,
+}&gt;, &lt;Detection: {
+    &#39;id&#39;: &#39;661858c20ae3edf77139db80&#39;,
+    &#39;attributes&#39;: {},
+    &#39;tags&#39;: [],
+    &#39;label&#39;: &#39;car&#39;,
+    &#39;bounding_box&#39;: [
+        0.41441831588745115,
+        0.7553463971173322,
+        0.07797966003417969,
+        0.09232432047526042,
+    ],
+    &#39;mask&#39;: None,
+    &#39;confidence&#39;: 0.8444766402244568,
+    &#39;index&#39;: None,
+}&gt;, &lt;Detection: {
+    &#39;id&#39;: &#39;661858c20ae3edf77139db81&#39;,
+    &#39;attributes&#39;: {},
+    &#39;tags&#39;: [],
+    &#39;label&#39;: &#39;car&#39;,
+    &#39;bounding_box&#39;: [
+        0.4094355583190918,
+        0.7256359524197049,
+        0.07238206863403321,
+        0.07048272026909722,
+    ],
+    &#39;mask&#39;: None,
+    &#39;confidence&#39;: 0.798665463924408,
+    &#39;index&#39;: None,
+}&gt;, &lt;Detection: {
+    &#39;id&#39;: &#39;661858c20ae3edf77139db82&#39;,
+    &#39;attributes&#39;: {},
+    &#39;tags&#39;: [],
+    &#39;label&#39;: &#39;car&#39;,
+    &#39;bounding_box&#39;: [
+        0.5339123407999674,
+        0.6121687712492766,
+        0.07190316518147787,
+        0.07292734781901042,
+    ],
+    &#39;mask&#39;: None,
+    &#39;confidence&#39;: 0.7936845421791077,
+    &#39;index&#39;: None,
+}&gt;, &lt;Detection: {
+    &#39;id&#39;: &#39;661858c20ae3edf77139db83&#39;,
+    &#39;attributes&#39;: {},
+    &#39;tags&#39;: [],
+    &#39;label&#39;: &#39;car&#39;,
+    &#39;bounding_box&#39;: [
+        0.03444666067759196,
+        0.5164913601345487,
+        0.03219949007034302,
+        0.06044175889756945,
+    ],
+    &#39;mask&#39;: None,
+    &#39;confidence&#39;: 0.740483820438385,
+    &#39;index&#39;: None,
+}&gt;, &lt;Detection: {
+    &#39;id&#39;: &#39;661858c20ae3edf77139db84&#39;,
+    &#39;attributes&#39;: {},
+    &#39;tags&#39;: [],
+    &#39;label&#39;: &#39;car&#39;,
+    &#39;bounding_box&#39;: [
+        0.3923538525899251,
+        0.6745626378942419,
+        0.06798810958862304,
+        0.07528584798177083,
+    ],
+    &#39;mask&#39;: None,
+    &#39;confidence&#39;: 0.6714914441108704,
+    &#39;index&#39;: None,
+}&gt;, &lt;Detection: {
+    &#39;id&#39;: &#39;661858c20ae3edf77139db85&#39;,
+    &#39;attributes&#39;: {},
+    &#39;tags&#39;: [],
+    &#39;label&#39;: &#39;car&#39;,
+    &#39;bounding_box&#39;: [
+        0.5216399192810058,
+        0.5886645846896701,
+        0.06560036341349283,
+        0.059334818522135416,
+    ],
+    &#39;mask&#39;: None,
+    &#39;confidence&#39;: 0.6649367809295654,
+    &#39;index&#39;: None,
+}&gt;, &lt;Detection: {
+    &#39;id&#39;: &#39;661858c20ae3edf77139db86&#39;,
+    &#39;attributes&#39;: {},
+    &#39;tags&#39;: [],
+    &#39;label&#39;: &#39;car&#39;,
+    &#39;bounding_box&#39;: [
+        0.5096873283386231,
+        0.5273054334852431,
+        0.0551149050394694,
+        0.07670672381365741,
+    ],
+    &#39;mask&#39;: None,
+    &#39;confidence&#39;: 0.6273276805877686,
+    &#39;index&#39;: None,
+}&gt;, &lt;Detection: {
+    &#39;id&#39;: &#39;661858c20ae3edf77139db87&#39;,
+    &#39;attributes&#39;: {},
+    &#39;tags&#39;: [],
+    &#39;label&#39;: &#39;car&#39;,
+    &#39;bounding_box&#39;: [
+        0.37222995758056643,
+        0.5739804303204572,
+        0.06103067398071289,
+        0.06263699001736112,
+    ],
+    &#39;mask&#39;: None,
+    &#39;confidence&#39;: 0.5973840355873108,
+    &#39;index&#39;: None,
+}&gt;, &lt;Detection: {
+    &#39;id&#39;: &#39;661858c20ae3edf77139db88&#39;,
+    &#39;attributes&#39;: {},
+    &#39;tags&#39;: [],
+    &#39;label&#39;: &#39;car&#39;,
+    &#39;bounding_box&#39;: [
+        0.05044105052947998,
+        0.44830712212456597,
+        0.02773451805114746,
+        0.054146491156684025,
+    ],
+    &#39;mask&#39;: None,
+    &#39;confidence&#39;: 0.5668562054634094,
+    &#39;index&#39;: None,
+}&gt;, &lt;Detection: {
+    &#39;id&#39;: &#39;661858c20ae3edf77139db89&#39;,
+    &#39;attributes&#39;: {},
+    &#39;tags&#39;: [],
+    &#39;label&#39;: &#39;car&#39;,
+    &#39;bounding_box&#39;: [
+        0.38649218877156577,
+        0.6419422290943287,
+        0.0629791259765625,
+        0.05787251790364583,
+    ],
+    &#39;mask&#39;: None,
+    &#39;confidence&#39;: 0.525834858417511,
+    &#39;index&#39;: None,
+}&gt;, &lt;Detection: {
+    &#39;id&#39;: &#39;661858c20ae3edf77139db8a&#39;,
+    &#39;attributes&#39;: {},
+    &#39;tags&#39;: [],
+    &#39;label&#39;: &#39;car&#39;,
+    &#39;bounding_box&#39;: [
+        3.7088990211486816e-05,
+        0.5483550460250289,
+        0.027724572022755942,
+        0.06541680230034722,
+    ],
+    &#39;mask&#39;: None,
+    &#39;confidence&#39;: 0.5090425610542297,
+    &#39;index&#39;: None,
+}&gt;]
+</pre></div></div>
+</div>
+<p>This makes our lives easy, so we can focus on the data and not the nitty gritty details of format conversions.</p>
+<p>SAHI’s <code class="docutils literal notranslate"><span class="pre">get_sliced_prediction()</span></code> function works in the same way as <code class="docutils literal notranslate"><span class="pre">get_prediction()</span></code>, with a few additional hyperparameters that let us configure how the image is sliced. In particular, we can specify the slice height and width, and the overlap between slices. Here’s an example:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sliced_result</span> <span class="o">=</span> <span class="n">get_sliced_prediction</span><span class="p">(</span>
+    <span class="n">dataset</span><span class="o">.</span><span class="n">skip</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">filepath</span><span class="p">,</span>
+    <span class="n">detection_model</span><span class="p">,</span>
+    <span class="n">slice_height</span> <span class="o">=</span> <span class="mi">320</span><span class="p">,</span>
+    <span class="n">slice_width</span> <span class="o">=</span> <span class="mi">320</span><span class="p">,</span>
+    <span class="n">overlap_height_ratio</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span>
+    <span class="n">overlap_width_ratio</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>As a sanity check, we can compare the number of detections in the sliced predictions to the number of detections in the original predictions:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[91]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_sliced_dets</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">sliced_result</span><span class="o">.</span><span class="n">to_fiftyone_detections</span><span class="p">())</span>
+<span class="n">num_orig_dets</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">to_fiftyone_detections</span><span class="p">())</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Detections predicted without slicing: </span><span class="si">{</span><span class="n">num_orig_dets</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Detections predicted with slicing: </span><span class="si">{</span><span class="n">num_sliced_dets</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Detections predicted without slicing: 17
+Detections predicted with slicing: 73
+</pre></div></div>
+</div>
+<p>We can see that the number of predictions increased substantially! We have yet to determine if the additional predictions are valid, or if we just have more false positives. We’ll do this using <a class="reference external" href="https://docs.voxel51.com/user_guide/evaluation.html">FiftyOne’s Evaluation API</a> shortly. We also want to find a good set of hyperparameters for our slicing. To do all of these things, we’re going to need to apply SAHI to the entire dataset. Let’s do that now!</p>
+<p>To simplify the process, we’ll define a function that adds predictions to a sample in a specified label field, and then we will iterate over the dataset, applying the function to each sample. This function will pass the sample’s filepath and slicing hyperparameters to <code class="docutils literal notranslate"><span class="pre">get_sliced_prediction()</span></code>, and then add the predictions to the sample in the specified label field:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[70]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">predict_with_slicing</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="n">label_field</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">get_sliced_prediction</span><span class="p">(</span>
+        <span class="n">sample</span><span class="o">.</span><span class="n">filepath</span><span class="p">,</span> <span class="n">detection_model</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+    <span class="p">)</span>
+    <span class="n">sample</span><span class="p">[</span><span class="n">label_field</span><span class="p">]</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Detections</span><span class="p">(</span><span class="n">detections</span><span class="o">=</span><span class="n">result</span><span class="o">.</span><span class="n">to_fiftyone_detections</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<p>We’ll keep the slice overlap fixed at <span class="math notranslate nohighlight">\(0.2\)</span>, and see how the slice height and width affect the quality of the predictions:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[92]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;overlap_height_ratio&quot;</span><span class="p">:</span> <span class="mf">0.2</span><span class="p">,</span> <span class="s2">&quot;overlap_width_ratio&quot;</span><span class="p">:</span> <span class="mf">0.2</span><span class="p">}</span>
+
+<span class="k">for</span> <span class="n">sample</span> <span class="ow">in</span> <span class="n">dataset</span><span class="o">.</span><span class="n">iter_samples</span><span class="p">(</span><span class="n">progress</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">autosave</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="n">predict_with_slicing</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;small_slices&quot;</span><span class="p">,</span> <span class="n">slice_height</span><span class="o">=</span><span class="mi">320</span><span class="p">,</span> <span class="n">slice_width</span><span class="o">=</span><span class="mi">320</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="n">predict_with_slicing</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;large_slices&quot;</span><span class="p">,</span> <span class="n">slice_height</span><span class="o">=</span><span class="mi">480</span><span class="p">,</span> <span class="n">slice_width</span><span class="o">=</span><span class="mi">480</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ 100% |█████████████████| 100/100 [13.6m elapsed, 0s remaining, 0.1 samples/s]
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+04/12/2024 10:06:59 - INFO - eta.core.utils -    100% |█████████████████| 100/100 [13.6m elapsed, 0s remaining, 0.1 samples/s]
+</pre></div></div>
+</div>
+<p>Note how these inference times are much longer than the original inference time. This is because we’re running the model on multiple slices <em>per</em> image, which increases the number of forward passes the model has to make. This is a trade-off we’re making to improve the detection of small objects.</p>
+<p>Now let’s once again filter our labels to only include the classes we’re interested in, and visualize the results in the FiftyOne App:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filtered_view</span> <span class="o">=</span> <span class="n">filter_all_labels</span><span class="p">(</span><span class="n">mapped_view</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[98]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">filtered_view</span><span class="p">,</span> <span class="n">auto</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Session launched. Run `session.show()` to open the App in a cell output.
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+04/12/2024 10:18:33 - INFO - fiftyone.core.session.session -   Session launched. Run `session.show()` to open the App in a cell output.
+</pre></div></div>
+</div>
+<p><img alt="Sliced Model Predictions" src="../_images/sahi_slices.gif" /></p>
+<p>The results certainly look promising! From a few visual examples, slicing seems to improve the coverage of ground truth detections, and smaller slices in particular seem to lead to more of the <code class="docutils literal notranslate"><span class="pre">person</span></code> detections being captured. But how can we know for sure? Let’s run an evaluation routine to mark the detections as true positives, false positives, or false negatives, so that we can compare the sliced predictions to the ground truth. We’ll use our filtered view’s <code class="docutils literal notranslate"><span class="pre">evaluate_detections()</span></code>
+method to do this:</p>
+</div>
+<div class="section" id="Evaluating-SAHI-Predictions">
+<h2>Evaluating SAHI Predictions<a class="headerlink" href="#Evaluating-SAHI-Predictions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Using-FiftyOne’s-Evaluation-API">
+<h3>Using FiftyOne’s Evaluation API<a class="headerlink" href="#Using-FiftyOne’s-Evaluation-API" title="Permalink to this headline">¶</a></h3>
+<p>Sticking with our filtered view of the dataset, let’s run an evaluation routine comparing our predictions from each of the prediction label fields to the ground truth labels. We will use the <code class="docutils literal notranslate"><span class="pre">evaluate_detections()</span></code> method, which will mark each detection as a true positive, false positive, or false negative. Here we use the default IoU threshold of <span class="math notranslate nohighlight">\(0.5\)</span>, but you can adjust this as needed:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">base_results</span> <span class="o">=</span> <span class="n">filtered_view</span><span class="o">.</span><span class="n">evaluate_detections</span><span class="p">(</span><span class="s2">&quot;base_model&quot;</span><span class="p">,</span> <span class="n">gt_field</span><span class="o">=</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span> <span class="n">eval_key</span><span class="o">=</span><span class="s2">&quot;eval_base_model&quot;</span><span class="p">)</span>
+<span class="n">large_slice_results</span> <span class="o">=</span> <span class="n">filtered_view</span><span class="o">.</span><span class="n">evaluate_detections</span><span class="p">(</span><span class="s2">&quot;large_slices&quot;</span><span class="p">,</span> <span class="n">gt_field</span><span class="o">=</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span> <span class="n">eval_key</span><span class="o">=</span><span class="s2">&quot;eval_large_slices&quot;</span><span class="p">)</span>
+<span class="n">small_slice_results</span> <span class="o">=</span> <span class="n">filtered_view</span><span class="o">.</span><span class="n">evaluate_detections</span><span class="p">(</span><span class="s2">&quot;small_slices&quot;</span><span class="p">,</span> <span class="n">gt_field</span><span class="o">=</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span> <span class="n">eval_key</span><span class="o">=</span><span class="s2">&quot;eval_small_slices&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Let’s print a report for each:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[107]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Base model results:&quot;</span><span class="p">)</span>
+<span class="n">base_results</span><span class="o">.</span><span class="n">print_report</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">50</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Large slice results:&quot;</span><span class="p">)</span>
+<span class="n">large_slice_results</span><span class="o">.</span><span class="n">print_report</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">50</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Small slice results:&quot;</span><span class="p">)</span>
+<span class="n">small_slice_results</span><span class="o">.</span><span class="n">print_report</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Base model results:
+              precision    recall  f1-score   support
+
+         car       0.81      0.55      0.66       692
+      person       0.94      0.16      0.28      7475
+       truck       0.66      0.34      0.45       265
+
+   micro avg       0.89      0.20      0.33      8432
+   macro avg       0.80      0.35      0.46      8432
+weighted avg       0.92      0.20      0.31      8432
+
+--------------------------------------------------
+Large slice results:
+              precision    recall  f1-score   support
+
+         car       0.67      0.71      0.69       692
+      person       0.89      0.34      0.49      7475
+       truck       0.55      0.45      0.49       265
+
+   micro avg       0.83      0.37      0.51      8432
+   macro avg       0.70      0.50      0.56      8432
+weighted avg       0.86      0.37      0.51      8432
+
+--------------------------------------------------
+Small slice results:
+              precision    recall  f1-score   support
+
+         car       0.66      0.75      0.70       692
+      person       0.84      0.42      0.56      7475
+       truck       0.49      0.46      0.47       265
+
+   micro avg       0.80      0.45      0.57      8432
+   macro avg       0.67      0.54      0.58      8432
+weighted avg       0.82      0.45      0.57      8432
+
+</pre></div></div>
+</div>
+<p>We can see that as we introduce more slices, the number of false positives increases, while the number of false negatives decreases. This is expected, as the model is able to detect more objects with more slices, but also makes more mistakes! You could apply more agressive confidence thresholding to combat this increase in false positives, but even without doing this the <span class="math notranslate nohighlight">\(F_1\)</span>-score has significantly improved.</p>
+</div>
+<div class="section" id="Evaluating-Performance-on-Small-Objects">
+<h3>Evaluating Performance on Small Objects<a class="headerlink" href="#Evaluating-Performance-on-Small-Objects" title="Permalink to this headline">¶</a></h3>
+<p>Let’s dive a little bit deeper into these results. We noted earlier that the model struggles with small objects, so let’s see how these three approaches fare on objects smaller than <span class="math notranslate nohighlight">\(32 \times 32\)</span> pixels. We can perform this filtering using FiftyOne’s <a class="reference external" href="https://docs.voxel51.com/recipes/creating_views.html#View-expressions">ViewField</a>:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[110]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Filtering for only small boxes</span>
+
+<span class="n">box_width</span><span class="p">,</span> <span class="n">box_height</span> <span class="o">=</span> <span class="n">F</span><span class="p">(</span><span class="s2">&quot;bounding_box&quot;</span><span class="p">)[</span><span class="mi">2</span><span class="p">],</span> <span class="n">F</span><span class="p">(</span><span class="s2">&quot;bounding_box&quot;</span><span class="p">)[</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">rel_bbox_area</span> <span class="o">=</span> <span class="n">box_width</span> <span class="o">*</span> <span class="n">box_height</span>
+
+<span class="n">im_width</span><span class="p">,</span> <span class="n">im_height</span> <span class="o">=</span> <span class="n">F</span><span class="p">(</span><span class="s2">&quot;$metadata.width&quot;</span><span class="p">),</span> <span class="n">F</span><span class="p">(</span><span class="s2">&quot;$metadata.height&quot;</span><span class="p">)</span>
+<span class="n">abs_area</span> <span class="o">=</span> <span class="n">rel_bbox_area</span> <span class="o">*</span> <span class="n">im_width</span> <span class="o">*</span> <span class="n">im_height</span>
+
+<span class="n">small_boxes_view</span> <span class="o">=</span> <span class="n">filtered_view</span>
+<span class="k">for</span> <span class="n">lf</span> <span class="ow">in</span> <span class="n">get_label_fields</span><span class="p">(</span><span class="n">filtered_view</span><span class="p">):</span>
+    <span class="n">small_boxes_view</span> <span class="o">=</span> <span class="n">small_boxes_view</span><span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span><span class="n">lf</span><span class="p">,</span> <span class="n">abs_area</span> <span class="o">&lt;</span> <span class="mi">32</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">only_matches</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[111]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">session</span><span class="o">.</span><span class="n">view</span> <span class="o">=</span> <span class="n">small_boxes_view</span><span class="o">.</span><span class="n">view</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<p><img alt="Small Box View" src="../_images/sahi_small_boxes_view.gif" /></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[112]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">small_boxes_base_results</span> <span class="o">=</span> <span class="n">small_boxes_view</span><span class="o">.</span><span class="n">evaluate_detections</span><span class="p">(</span><span class="s2">&quot;base_model&quot;</span><span class="p">,</span> <span class="n">gt_field</span><span class="o">=</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span> <span class="n">eval_key</span><span class="o">=</span><span class="s2">&quot;eval_small_boxes_base_model&quot;</span><span class="p">)</span>
+<span class="n">small_boxes_large_slice_results</span> <span class="o">=</span> <span class="n">small_boxes_view</span><span class="o">.</span><span class="n">evaluate_detections</span><span class="p">(</span><span class="s2">&quot;large_slices&quot;</span><span class="p">,</span> <span class="n">gt_field</span><span class="o">=</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span> <span class="n">eval_key</span><span class="o">=</span><span class="s2">&quot;eval_small_boxes_large_slices&quot;</span><span class="p">)</span>
+<span class="n">small_boxes_small_slice_results</span> <span class="o">=</span> <span class="n">small_boxes_view</span><span class="o">.</span><span class="n">evaluate_detections</span><span class="p">(</span><span class="s2">&quot;small_slices&quot;</span><span class="p">,</span> <span class="n">gt_field</span><span class="o">=</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span> <span class="n">eval_key</span><span class="o">=</span><span class="s2">&quot;eval_small_boxes_small_slices&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Evaluating detections...
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+04/12/2024 10:54:36 - INFO - fiftyone.utils.eval.detection -   Evaluating detections...
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ 100% |█████████████████| 100/100 [1.1m elapsed, 0s remaining, 7.8 samples/s]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+04/12/2024 10:55:44 - INFO - eta.core.utils -    100% |█████████████████| 100/100 [1.1m elapsed, 0s remaining, 7.8 samples/s]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Evaluating detections...
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+04/12/2024 10:55:44 - INFO - fiftyone.utils.eval.detection -   Evaluating detections...
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ 100% |█████████████████| 100/100 [1.2m elapsed, 0s remaining, 6.2 samples/s]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+04/12/2024 10:56:59 - INFO - eta.core.utils -    100% |█████████████████| 100/100 [1.2m elapsed, 0s remaining, 6.2 samples/s]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Evaluating detections...
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+04/12/2024 10:56:59 - INFO - fiftyone.utils.eval.detection -   Evaluating detections...
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ 100% |█████████████████| 100/100 [1.4m elapsed, 0s remaining, 5.7 samples/s]
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+04/12/2024 10:58:23 - INFO - eta.core.utils -    100% |█████████████████| 100/100 [1.4m elapsed, 0s remaining, 5.7 samples/s]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[113]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Small Box — Base model results:&quot;</span><span class="p">)</span>
+<span class="n">small_boxes_base_results</span><span class="o">.</span><span class="n">print_report</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">50</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Small Box — Large slice results:&quot;</span><span class="p">)</span>
+<span class="n">small_boxes_large_slice_results</span><span class="o">.</span><span class="n">print_report</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">50</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Small Box — Small slice results:&quot;</span><span class="p">)</span>
+<span class="n">small_boxes_small_slice_results</span><span class="o">.</span><span class="n">print_report</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Small Box — Base model results:
+              precision    recall  f1-score   support
+
+         car       0.71      0.25      0.37       147
+      person       0.83      0.08      0.15      5710
+       truck       0.00      0.00      0.00        28
+
+   micro avg       0.82      0.08      0.15      5885
+   macro avg       0.51      0.11      0.17      5885
+weighted avg       0.82      0.08      0.15      5885
+
+--------------------------------------------------
+Small Box — Large slice results:
+              precision    recall  f1-score   support
+
+         car       0.46      0.48      0.47       147
+      person       0.82      0.23      0.35      5710
+       truck       0.20      0.07      0.11        28
+
+   micro avg       0.78      0.23      0.36      5885
+   macro avg       0.49      0.26      0.31      5885
+weighted avg       0.80      0.23      0.36      5885
+
+--------------------------------------------------
+Small Box — Small slice results:
+              precision    recall  f1-score   support
+
+         car       0.42      0.53      0.47       147
+      person       0.79      0.31      0.45      5710
+       truck       0.21      0.18      0.19        28
+
+   micro avg       0.75      0.32      0.45      5885
+   macro avg       0.47      0.34      0.37      5885
+weighted avg       0.77      0.32      0.45      5885
+
+</pre></div></div>
+</div>
+<p>This makes the value of SAHI crystal clear! The recall when using SAHI is much higher for small objects without significant dropoff in precision, leading to improved F1-score. This is especially pronounced for <code class="docutils literal notranslate"><span class="pre">person</span></code> detections, where the <span class="math notranslate nohighlight">\(F_1\)</span> score is tripled!</p>
+</div>
+<div class="section" id="Identifying-Edge-Cases">
+<h3>Identifying Edge Cases<a class="headerlink" href="#Identifying-Edge-Cases" title="Permalink to this headline">¶</a></h3>
+<p>Now that we know SAHI is effective at detecting small objects, let’s look at the places where our predictions are most confident but do not align with the ground truth labels. We can do this by creating an evaluation patches view, filtering for predictions tagged as false positives and sorting by confidence:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">high_conf_fp_view</span> <span class="o">=</span> <span class="n">filtered_view</span><span class="o">.</span><span class="n">to_evaluation_patches</span><span class="p">(</span><span class="n">eval_key</span><span class="o">=</span><span class="s2">&quot;eval_small_slices&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s2">&quot;type&quot;</span><span class="p">)</span><span class="o">==</span><span class="s2">&quot;fp&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">sort_by</span><span class="p">(</span><span class="s2">&quot;small_slices.detection.confidence&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">session</span><span class="o">.</span><span class="n">view</span> <span class="o">=</span> <span class="n">high_conf_fp_view</span><span class="o">.</span><span class="n">view</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<p><img alt="False Positives View" src="../_images/sahi_high_conf_fp_view.jpg" /></p>
+<p>Looking at these results, we can see that in many cases, our predictions look quite reasonable, and it seems that the ground truth labels are missing! This is certainly not the case for every prediction, but there are definitely enough to motivate a relabeling of the ground truth data. This is where human-in-the-loop (HITL) workflows can be very useful, as they allow human annotators to review and correct the labels. After this process, we can reevaluate our trained models (with or without SAHI)
+on the updated dataset, and then train new models on the updated data.</p>
+</div>
+</div>
+<div class="section" id="Summary">
+<h2>Summary<a class="headerlink" href="#Summary" title="Permalink to this headline">¶</a></h2>
+<p>In this walkthrough, we’ve covered how to add SAHI predictions to your data, and then rigorously evaluate the impacts of slicing on prediction quality. We’ve seen how slicing-aided hyper-inference (SAHI) can improve the recall and <span class="math notranslate nohighlight">\(F_1\)</span>-score for detection, especially for small objects, without needing to train a model on larger images.</p>
+<p>To maximize the effectiveness of SAHI, you may want to experiment with the following:</p>
+<ul class="simple">
+<li><p>Slicing hyperparameters, such as slice height and width, and overlap.</p></li>
+<li><p>Base object detection models, as SAHI is compatible with many models, including YOLOv5, and Hugging Face Transformers models.</p></li>
+<li><p>Confidence thresholding (potentially on a class-by-class basis), to reduce the number of false positives.</p></li>
+<li><p>Post-processing techniques, such as <a class="reference external" href="https://docs.voxel51.com/api/fiftyone.utils.labels.html#fiftyone.utils.labels.perform_nms">non-maximum suppression (NMS)</a>, to reduce the number of overlapping detections.</p></li>
+<li><p>Human-in-the-loop (HITL) workflows, to correct ground truth labels.</p></li>
+</ul>
+<p>You will also want to determine which evaluation metrics make the most sense for your use case!</p>
+</div>
+<div class="section" id="Additional-Resources">
+<h2>Additional Resources<a class="headerlink" href="#Additional-Resources" title="Permalink to this headline">¶</a></h2>
+<p>If you found this tutorial helpful, you may also be interested in the following resources:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.voxel51.com/tutorials/evaluate_detections.html">Tutorial on Evaluating Object Detections</a></p></li>
+<li><p><a class="reference external" href="https://docs.voxel51.com/tutorials/detection_mistakes.html">Tutorial on Finding Object Detection Mistakes</a></p></li>
+<li><p><a class="reference external" href="https://docs.voxel51.com/tutorials/yolov8.html">Tutorial on Fine-tuning YOLOv8 on Custom Data</a></p></li>
+<li><p><a class="reference external" href="https://github.com/allenleetc/model-comparison">FiftyOne Plugin for Comparing Models on Specific Detections</a></p></li>
+</ul>
+</div>
+</div>
+
+
+             </article>
+             
+            </div>
+            <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="anomaly_detection.html" class="btn btn-neutral float-right" title="Anomaly Detection with FiftyOne and Anomalib" accesskey="n" rel="next">Next <img src="../_static/images/chevron-right-orange.svg" class="next-page"></a>
+      
+      
+        <a href="clustering.html" class="btn btn-neutral" title="Clustering Images with Embeddings" accesskey="p" rel="prev"><img src="../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
+      
+    </div>
+  
+</footer>
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              <ul>
+<li><a class="reference internal" href="#">Detecting Small Objects with SAHI</a><ul>
+<li><a class="reference internal" href="#Setup-and-Installation">Setup and Installation</a></li>
+<li><a class="reference internal" href="#Standard-Inference-with-YOLOv8">Standard Inference with YOLOv8</a></li>
+<li><a class="reference internal" href="#id1">Detecting Small Objects with SAHI</a></li>
+<li><a class="reference internal" href="#Evaluating-SAHI-Predictions">Evaluating SAHI Predictions</a><ul>
+<li><a class="reference internal" href="#Using-FiftyOne’s-Evaluation-API">Using FiftyOne’s Evaluation API</a></li>
+<li><a class="reference internal" href="#Evaluating-Performance-on-Small-Objects">Evaluating Performance on Small Objects</a></li>
+<li><a class="reference internal" href="#Identifying-Edge-Cases">Identifying Edge Cases</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#Summary">Summary</a></li>
+<li><a class="reference internal" href="#Additional-Resources">Additional Resources</a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  
+
+
+  
+
+     
+       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+         <script src="../_static/jquery.js"></script>
+         <script src="../_static/underscore.js"></script>
+         <script src="../_static/doctools.js"></script>
+         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+         <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+         <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+         <script src="../_static/js/voxel51-website.js"></script>
+         <script src="../_static/js/custom.js"></script>
+     
+
+  
+
+  <script type="text/javascript" src="../_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="../_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+  <!-- Begin Footer -->
+
+
+<footer class="footer-wrapper" id="docs-tutorials-resources">
+  <div class="footer pytorch-container">
+    <div class="footer__logo">
+      <a href="https://voxel51.com/"
+        ><img
+          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
+      /></a>
+    </div>
+
+    <div class="footer__address">
+      330 E Liberty St<br />
+      Ann Arbor, MI 48104<br />
+      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
+    </div>
+
+    <!--
+    <div class="footer__contact">
+      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
+    </div>
+    -->
+
+    <div class="footer__links">
+      <div class="footer__links--col2">
+        <p class="nav__item--brand">Products</p>
+        <a href="https://voxel51.com/fiftyone/">FiftyOne</a>
+        <a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a>
+        <a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a>
+        <a href="https://voxel51.com/success-stories/">Success Stories</a>
+      </div>
+      <div class="footer__links--col3">
+        <p class="nav__item--brand">Resources</p>
+        <a href="https://voxel51.com/blog/">Blog</a>
+        <a href="https://docs.voxel51.com/">Docs</a>
+        <a href="https://github.com/voxel51/">GitHub</a>
+        <a href="https://community.voxel51.com">Discord</a>
+        <a href="https://voxel51.com/ourstory/">About Us</a>
+        <a href="https://voxel51.com/computer-vision-events/">Events</a>
+        <a href="https://voxel51.com/jobs/">Careers</a>
+        <a href="https://voxel51.com/press/">Press</a>
+      </div>
+    </div>
+
+    <div class="footer__icons">
+      <ul class="list-inline">
+        <li>
+          <a href="https://www.linkedin.com/company/voxel51/">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/voxel51/">
+            <i class="fa-brands fa-github"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/voxel51">
+            <i class="fa-brands fa-twitter"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/voxel51/">
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="footer__copyright">
+      <ul class="list-inline">
+        <li>&copy; 2024 Voxel51 Inc.</li>
+        <li>
+          <a href="https://voxel51.com/privacy/">Privacy Policy</a>
+        </li>
+        <li>
+          <a href="https://voxel51.com/terms/">Terms of Service</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<!-- https://buttons.github.io -->
+<script async defer src="https://buttons.github.io/buttons.js" ></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XD15NFRY3M" ></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+  gtag("config", "G-XD15NFRY3M");
+</script>
+
+<script>
+  function open_modal(modal_id, modal_closer_id) {
+    // Get the modal
+    let the_modal = document.getElementById(modal_id);
+
+    the_modal.style.display = "flex";
+    document.body.style.overflow = "hidden";
+
+    let the_modal_closer = document.getElementById(modal_closer_id);
+
+    // When the user clicks on <span> (x), close the modal
+    the_modal_closer &&
+      (the_modal_closer.onclick = function () {
+        the_modal.style.display = "none";
+      });
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+      if (event.target == the_modal) {
+        the_modal.style.display = "none";
+        document.body.style.overflow = "unset";
+        window.onclick = undefined;
+      }
+    };
+  }
+</script>
+
+<!-- bigpicture.io -->
+<script>
+  !(function (e, t, i) {
+    var r = (e.bigPicture = e.bigPicture || []);
+    if (!r.initialized)
+      if (r.invoked)
+        e.console &&
+          console.error &&
+          console.error("BigPicture.io snippet included twice.");
+      else {
+        (r.invoked = !0),
+          (r.SNIPPET_VERSION = 1.5),
+          (r.handler = function (e) {
+            if (void 0 !== r.callback)
+              try {
+                return r.callback(e);
+              } catch (e) {}
+          }),
+          (r.eventList = ["mousedown", "mouseup", "click", "submit"]),
+          (r.methods = [
+            "track",
+            "identify",
+            "page",
+            "group",
+            "alias",
+            "integration",
+            "ready",
+            "intelReady",
+            "consentReady",
+            "on",
+            "off",
+          ]),
+          (r.factory = function (e) {
+            return function () {
+              var t = Array.prototype.slice.call(arguments);
+              return t.unshift(e), r.push(t), r;
+            };
+          });
+        for (var n = 0; n < r.methods.length; n++) {
+          var o = r.methods[n];
+          r[o] = r.factory(o);
+        }
+        r.getCookie = function (e) {
+          var i = ("; " + t.cookie).split("; " + e + "=");
+          return 2 == i.length && i.pop().split(";").shift();
+        };
+        var c = (r.isEditor = (function () {
+          try {
+            return (
+              e.self !== e.top &&
+              (new RegExp("app" + i, "ig").test(t.referrer) ||
+                "edit" == r.getCookie("_bpr_edit"))
+            );
+          } catch (e) {
+            return !1;
+          }
+        })());
+        r.init = function (n, o) {
+          if (((r.projectId = n), (r._config = o), !c))
+            for (var a = 0; a < r.eventList.length; a++)
+              e.addEventListener(r.eventList[a], r.handler, !0);
+          var s = t.createElement("script");
+          s.async = !0;
+          var d = c ? "/editor/editor" : "/public-" + n;
+          (s.src = "//cdn" + i + d + ".js"),
+            t.getElementsByTagName("head")[0].appendChild(s);
+        };
+      }
+  })(window, document, ".bigpicture.io");
+  bigPicture.init("1646");
+</script>
+
+
+  
+
+  <!-- End Footer -->
+
+  <!-- Begin Mobile Menu -->
+
+  
+
+  <!-- End Mobile Menu -->
+
+  <script type="text/javascript" src="../_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function(e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+</body>
+</html>

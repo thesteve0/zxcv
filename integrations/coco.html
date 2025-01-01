@@ -1,0 +1,1316 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>COCO Integration &mdash; FiftyOne 1.3.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <link rel="stylesheet" href="../_static/css/voxel51-website.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Open Images Integration" href="open_images.html" />
+    <link rel="prev" title="FiftyOne Integrations" href="index.html" />
+<meta property="og:image" content="https://voxel51.com/wp-content/uploads/2024/03/3.24_webpages_Home_AV.png" />
+
+<link
+  href="https://fonts.googleapis.com/css?family=Palanquin:400,600,700,800"
+  rel="stylesheet"
+/>
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+  rel="stylesheet"
+/>
+<script src="https://tag.clearbitscripts.com/v1/pk_b9ed71c8234edd4f77326bcbfab5a4ca/tags.js"></script>
+
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+  
+</head>
+
+
+<div class="container-fluid header-holder tutorials-header" id="header-holder">
+  <nav id="nav__main" class="nav__main">
+    <div class="nav__main__logo">
+      <a href="https://voxel51.com/">
+        <img
+          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
+        />
+      </a>
+    </div>
+
+    <div class="nav__spacer desktop_only"></div>
+
+    <div id="nav__main__mobilebutton--on">
+      <a href="javascript:void(0);" onclick="navMobileButton()">
+        <i class="fa-solid fa-bars"></i>
+      </a>
+    </div>
+
+    <div id="nav__main__mobilebutton--off">
+      <a href="javascript:void(0);" onclick="navMobileButton()">
+        <i class="fa-solid fa-times"></i>
+      </a>
+    </div>
+
+    <div id="nav__main__items">
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Products</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://voxel51.com/fiftyone/">Open Source</a></li>
+            <li><a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a></li>
+            <li><a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a></li>
+            <li><a href="https://voxel51.com/success-stories/">Success Stories</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Learn</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://community.voxel51.com">Community Discord</a></li>
+            <li><a href="https://voxel51.com/blog/">Blog</a></li>
+            <li><a href="https://voxel51.com/computer-vision-events/">Events</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item">
+        <a href="https://docs.voxel51.com/">Docs</a>
+      </div>
+
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Company</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://voxel51.com/ourstory/">About Us</a></li>
+            <li><a href="https://voxel51.com/jobs/">Careers</a></li>
+            <li><a href="https://voxel51.com/talk-to-sales/">Talk to Sales</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item mobile_only">
+        <a href="https://github.com/voxel51/fiftyone">GitHub</a>
+      </div>
+
+      <div class="nav__item desktop_only" id="octocat">
+        <!-- https://buttons.github.io -->
+        <a
+          class="github-button"
+          href="https://github.com/voxel51/fiftyone"
+          data-color-scheme="no-preference: dark_high_contrast; light: dark_high_contrast; dark: dark_high_contrast;"
+          data-size="large"
+          data-show-count="true"
+          aria-label="Star voxel51/fiftyone on GitHub"
+          >Star</a
+        >
+      </div>
+
+      <div class="nav__item full_nav_only">
+        <a class="button-primary" href="https://voxel51.com/schedule-teams-workshop/" target="_blank"
+          >Schedule a workshop</a
+        >
+      </div>
+    </div>
+  </nav>
+</div>
+
+
+
+<body class="pytorch-body">
+
+   
+
+    
+
+    <div class="table-of-contents-link-wrapper">
+      <span>Table of Contents</span>
+      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+    </div>
+
+    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+      <div class="pytorch-side-scroll">
+        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          <div class="pytorch-left-menu-search">
+            
+
+            
+              
+              
+            
+
+            
+
+
+  
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+            
+          </div>
+
+           <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../teams/index.html">FiftyOne Teams 🚀</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../environments/index.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../recipes/index.html">Recipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheat_sheets/index.html">Cheat Sheets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dataset_zoo/index.html">Dataset Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_zoo/index.html">Model Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brain.html">FiftyOne Brain</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Integrations</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#"> COCO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open_images.html"> Open Images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="activitynet.html"> ActivityNet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cvat.html"> CVAT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="labelstudio.html"> Label Studio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="v7.html"> V7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="labelbox.html"> Labelbox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qdrant.html"> Qdrant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="redis.html"> Redis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pinecone.html"> Pinecone</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mongodb.html"> MongoDB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="elasticsearch.html"> Elasticsearch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="milvus.html"> Milvus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lancedb.html"> LanceDB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="huggingface.html"> Hugging Face</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ultralytics.html"> Ultralytics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="albumentations.html"> Albumentations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="super_gradients.html"> SuperGradients</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openclip.html"> OpenCLIP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pytorch_hub.html"> PyTorch Hub</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lightning_flash.html"> Lightning Flash</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../plugins/index.html">Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli/index.html">CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/fiftyone.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deprecation.html">Deprecation Notices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a></li>
+</ul>
+ 
+        </div>
+      </div>
+    </nav>
+
+    <div class="pytorch-container">
+      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+        <div class="pytorch-breadcrumbs-wrapper">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="../index.html">
+          
+            Docs
+          
+        </a> &gt;
+      </li>
+
+        
+          <li><a href="index.html">FiftyOne Integrations</a> &gt;</li>
+        
+      <li>COCO Integration</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+        </div>
+
+        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+          Contents
+        </div>
+      </div>
+
+      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+        <div class="pytorch-content-left">
+
+        
+          
+          <div class="rst-content style-external-links">
+          
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+              
+  <div class="section" id="coco-integration">
+<span id="coco"></span><h1>COCO Integration<a class="headerlink" href="#coco-integration" title="Permalink to this headline">¶</a></h1>
+<p>With support from the team behind the <a class="reference external" href="https://cocodataset.org">COCO dataset</a>,
+we’ve made it easy to download, visualize, and evaluate on the COCO dataset
+natively in FiftyOne!</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Check out <a class="reference internal" href="../tutorials/evaluate_detections.html"><span class="doc">this tutorial</span></a> to see how
+you can use FiftyOne to evaluate a model on COCO.</p>
+</div>
+<img alt="coco-2017-validation" class="align-center" src="../_images/coco-2017-validation.png" />
+<div class="section" id="loading-the-coco-dataset">
+<span id="id1"></span><h2>Loading the COCO dataset<a class="headerlink" href="#loading-the-coco-dataset" title="Permalink to this headline">¶</a></h2>
+<p>The FiftyOne Dataset Zoo provides support for loading both the
+<a class="reference internal" href="../dataset_zoo/datasets.html#dataset-zoo-coco-2014"><span class="std std-ref">COCO-2014</span></a> and
+<a class="reference internal" href="../dataset_zoo/datasets.html#dataset-zoo-coco-2017"><span class="std std-ref">COCO-2017</span></a> datasets.</p>
+<p>Like all other zoo datasets, you can use
+<a class="reference internal" href="../api/fiftyone.zoo.datasets.html#fiftyone.zoo.datasets.load_zoo_dataset" title="fiftyone.zoo.datasets.load_zoo_dataset"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_zoo_dataset()</span></code></a> to download
+and load a COCO split into FiftyOne:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="c1"># Download and load the validation split of COCO-2017</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;coco-2017&quot;</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="s2">&quot;validation&quot;</span><span class="p">)</span>
+
+<span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>FiftyOne supports loading annotations for the
+<a class="reference external" href="https://cocodataset.org/#detection-2020">detection task</a>, including
+bounding boxes and segmentations.</p>
+<p>By default, only the bounding boxes are loaded, but you can customize which
+label types are loaded via the optional <code class="docutils literal notranslate"><span class="pre">label_types</span></code> argument (see below
+for details).</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We will soon support loading labels for the keypoints, captions, and
+panoptic segmentation tasks as well. Stay tuned!</p>
+</div>
+<p>In addition, FiftyOne provides parameters that can be used to efficiently
+download specific subsets of the COCO dataset, allowing you to quickly explore
+different slices of the dataset without downloading the entire split.</p>
+<p>When performing partial downloads, FiftyOne will use existing downloaded data
+first if possible before resorting to downloading additional data from the web.</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="c1">#</span>
+<span class="c1"># Load 50 random samples from the validation split</span>
+<span class="c1">#</span>
+<span class="c1"># Only the required images will be downloaded (if necessary).</span>
+<span class="c1"># By default, only detections are loaded</span>
+<span class="c1">#</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span>
+    <span class="s2">&quot;coco-2017&quot;</span><span class="p">,</span>
+    <span class="n">split</span><span class="o">=</span><span class="s2">&quot;validation&quot;</span><span class="p">,</span>
+    <span class="n">max_samples</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+    <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+
+<span class="c1">#</span>
+<span class="c1"># Load segmentations for 25 samples from the validation split that</span>
+<span class="c1"># contain cats and dogs</span>
+<span class="c1">#</span>
+<span class="c1"># Images that contain all `classes` will be prioritized first, followed</span>
+<span class="c1"># by images that contain at least one of the required `classes`. If</span>
+<span class="c1"># there are not enough images matching `classes` in the split to meet</span>
+<span class="c1"># `max_samples`, only the available images will be loaded.</span>
+<span class="c1">#</span>
+<span class="c1"># Images will only be downloaded if necessary</span>
+<span class="c1">#</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span>
+    <span class="s2">&quot;coco-2017&quot;</span><span class="p">,</span>
+    <span class="n">split</span><span class="o">=</span><span class="s2">&quot;validation&quot;</span><span class="p">,</span>
+    <span class="n">label_types</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;segmentations&quot;</span><span class="p">],</span>
+    <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;cat&quot;</span><span class="p">,</span> <span class="s2">&quot;dog&quot;</span><span class="p">],</span>
+    <span class="n">max_samples</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">session</span><span class="o">.</span><span class="n">dataset</span> <span class="o">=</span> <span class="n">dataset</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>The following parameters are available to configure partial downloads of both
+COCO-2014 and COCO-2017 by passing them to
+<a class="reference internal" href="../api/fiftyone.zoo.datasets.html#fiftyone.zoo.datasets.load_zoo_dataset" title="fiftyone.zoo.datasets.load_zoo_dataset"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_zoo_dataset()</span></code></a>:</p>
+<ul class="simple">
+<li><p><strong>split</strong> (<em>None</em>) and <strong>splits</strong> (<em>None</em>): a string or list of strings,
+respectively, specifying the splits to load. Supported values are
+<code class="docutils literal notranslate"><span class="pre">(&quot;train&quot;,</span> <span class="pre">&quot;test&quot;,</span> <span class="pre">&quot;validation&quot;)</span></code>. If neither is provided, all available
+splits are loaded</p></li>
+<li><p><strong>label_types</strong> (<em>None</em>): a label type or list of label types to load.
+Supported values are <code class="docutils literal notranslate"><span class="pre">(&quot;detections&quot;,</span> <span class="pre">&quot;segmentations&quot;)</span></code>. By default, only
+detections are loaded</p></li>
+<li><p><strong>classes</strong> (<em>None</em>): a string or list of strings specifying required
+classes to load. If provided, only samples containing at least one instance
+of a specified class will be loaded</p></li>
+<li><p><strong>image_ids</strong> (<em>None</em>): a list of specific image IDs to load. The IDs can
+be specified either as <code class="docutils literal notranslate"><span class="pre">&lt;split&gt;/&lt;image-id&gt;</span></code> strings or <code class="docutils literal notranslate"><span class="pre">&lt;image-id&gt;</span></code>
+ints of strings. Alternatively, you can provide the path to a TXT
+(newline-separated), JSON, or CSV file containing the list of image IDs to
+load in either of the first two formats</p></li>
+<li><p><strong>include_id</strong> (<em>False</em>): whether to include the COCO ID of each sample in
+the loaded labels</p></li>
+<li><p><strong>include_license</strong> (<em>False</em>): whether to include the COCO license of each
+sample in the loaded labels, if available. The supported values are:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;False&quot;</span></code> (default): don’t load the license</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">True</span></code>/<code class="docutils literal notranslate"><span class="pre">&quot;name&quot;</span></code>: store the string license name</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;id&quot;</span></code>: store the integer license ID</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;url&quot;</span></code>: store the license URL</p></li>
+</ul>
+</li>
+<li><p><strong>only_matching</strong> (<em>False</em>): whether to only load labels that match the
+<code class="docutils literal notranslate"><span class="pre">classes</span></code> or <code class="docutils literal notranslate"><span class="pre">attrs</span></code> requirements that you provide (True), or to load
+all labels for samples that match the requirements (False)</p></li>
+<li><p><strong>num_workers</strong> (<em>None</em>): the number of processes to use when downloading
+individual images. By default, <code class="code docutils literal notranslate"><span class="pre">multiprocessing.cpu_count()</span></code> is used</p></li>
+<li><p><strong>shuffle</strong> (<em>False</em>): whether to randomly shuffle the order in which
+samples are chosen for partial downloads</p></li>
+<li><p><strong>seed</strong> (<em>None</em>): a random seed to use when shuffling</p></li>
+<li><p><strong>max_samples</strong> (<em>None</em>): a maximum number of samples to load per split. If
+<code class="docutils literal notranslate"><span class="pre">label_types</span></code> and/or <code class="docutils literal notranslate"><span class="pre">classes</span></code> are also specified, first priority will
+be given to samples that contain all of the specified label types and/or
+classes, followed by samples that contain at least one of the specified
+labels types or classes. The actual number of samples loaded may be less
+than this maximum value if the dataset does not contain sufficient samples
+matching your requirements</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>See
+<a class="reference internal" href="../api/fiftyone.zoo.datasets.base.html#fiftyone.zoo.datasets.base.COCO2017Dataset" title="fiftyone.zoo.datasets.base.COCO2017Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">COCO2017Dataset</span></code></a> and
+<a class="reference internal" href="../api/fiftyone.utils.coco.html#fiftyone.utils.coco.COCODetectionDatasetImporter" title="fiftyone.utils.coco.COCODetectionDatasetImporter"><code class="xref py py-class docutils literal notranslate"><span class="pre">COCODetectionDatasetImporter</span></code></a>
+for complete descriptions of the optional keyword arguments that you can
+pass to <a class="reference internal" href="../api/fiftyone.zoo.datasets.html#fiftyone.zoo.datasets.load_zoo_dataset" title="fiftyone.zoo.datasets.load_zoo_dataset"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_zoo_dataset()</span></code></a>.</p>
+</div>
+</div>
+<div class="section" id="loading-coco-formatted-data">
+<span id="coco-format"></span><h2>Loading COCO-formatted data<a class="headerlink" href="#loading-coco-formatted-data" title="Permalink to this headline">¶</a></h2>
+<p>In addition to loading the COCO datasets themselves, FiftyOne also makes it
+easy to load your own datasets and model predictions stored in
+<a class="reference external" href="https://cocodataset.org/#format-data">COCO format</a>.</p>
+<p>The example code below demonstrates this workflow. First, we generate a JSON
+file containing COCO-formatted labels to work with:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+
+<span class="c1"># The directory in which the dataset&#39;s images are stored</span>
+<span class="n">IMAGES_DIR</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">filepath</span><span class="p">)</span>
+
+<span class="c1"># Export some labels in COCO format</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">51</span><span class="p">)</span><span class="o">.</span><span class="n">export</span><span class="p">(</span>
+    <span class="n">dataset_type</span><span class="o">=</span><span class="n">fo</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">COCODetectionDataset</span><span class="p">,</span>
+    <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span>
+    <span class="n">labels_path</span><span class="o">=</span><span class="s2">&quot;/tmp/coco.json&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>Now we have a <code class="docutils literal notranslate"><span class="pre">/tmp/coco.json</span></code> file on disk containing COCO labels
+corresponding to the images in <code class="docutils literal notranslate"><span class="pre">IMAGES_DIR</span></code>:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>json.tool<span class="w"> </span>/tmp/coco.json
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
+    &quot;info&quot;: {...},
+    &quot;licenses&quot;: [],
+    &quot;categories&quot;: [
+        {
+            &quot;id&quot;: 1,
+            &quot;name&quot;: &quot;airplane&quot;,
+            &quot;supercategory&quot;: null
+        },
+        ...
+    ],
+    &quot;images&quot;: [
+        {
+            &quot;id&quot;: 1,
+            &quot;file_name&quot;: &quot;003486.jpg&quot;,
+            &quot;height&quot;: 427,
+            &quot;width&quot;: 640,
+            &quot;license&quot;: null,
+            &quot;coco_url&quot;: null
+        },
+        ...
+    ],
+    &quot;annotations&quot;: [
+        {
+            &quot;id&quot;: 1,
+            &quot;image_id&quot;: 1,
+            &quot;category_id&quot;: 1,
+            &quot;bbox&quot;: [
+                34.34,
+                147.46,
+                492.69,
+                192.36
+            ],
+            &quot;area&quot;: 94773.8484,
+            &quot;iscrowd&quot;: 0
+        },
+        ...
+    ]
+}
+</pre></div>
+</div>
+<p>We can now use
+<a class="reference internal" href="../api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset.from_dir" title="fiftyone.core.dataset.Dataset.from_dir"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Dataset.from_dir()</span></code></a> to load the
+<a class="reference internal" href="../user_guide/dataset_creation/datasets.html#cocodetectiondataset-import"><span class="std std-ref">COCO-formatted labels</span></a> into a new FiftyOne
+dataset:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># Load COCO formatted dataset</span>
+<span class="n">coco_dataset</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Dataset</span><span class="o">.</span><span class="n">from_dir</span><span class="p">(</span>
+    <span class="n">dataset_type</span><span class="o">=</span><span class="n">fo</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">COCODetectionDataset</span><span class="p">,</span>
+    <span class="n">data_path</span><span class="o">=</span><span class="n">IMAGES_DIR</span><span class="p">,</span>
+    <span class="n">labels_path</span><span class="o">=</span><span class="s2">&quot;/tmp/coco.json&quot;</span><span class="p">,</span>
+    <span class="n">include_id</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># COCO categories are also imported</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">coco_dataset</span><span class="o">.</span><span class="n">info</span><span class="p">[</span><span class="s2">&quot;categories&quot;</span><span class="p">])</span>
+<span class="c1"># [{&#39;id&#39;: 1, &#39;name&#39;: &#39;airplane&#39;, &#39;supercategory&#39;: None}, ...]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">coco_dataset</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Name:        2021.06.28.15.14.38
+Media type:  image
+Num samples: 5
+Persistent:  False
+Tags:        []
+Sample fields:
+    id:               fiftyone.core.fields.ObjectIdField
+    filepath:         fiftyone.core.fields.StringField
+    tags:             fiftyone.core.fields.ListField(fiftyone.core.fields.StringField)
+    metadata:         fiftyone.core.fields.EmbeddedDocumentField(fiftyone.core.metadata.ImageMetadata)
+    created_at:       fiftyone.core.fields.DateTimeField
+    last_modified_at: fiftyone.core.fields.DateTimeField
+    detections:       fiftyone.core.fields.EmbeddedDocumentField(fiftyone.core.labels.Detections)
+    coco_id:          fiftyone.core.fields.IntField
+</pre></div>
+</div>
+<p>In the above call to
+<a class="reference internal" href="../api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset.from_dir" title="fiftyone.core.dataset.Dataset.from_dir"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Dataset.from_dir()</span></code></a>, we provide
+the <code class="docutils literal notranslate"><span class="pre">data_path</span></code> and <code class="docutils literal notranslate"><span class="pre">labels_path</span></code> parameters to specify the
+location of the source images and their COCO labels, respectively, and we set
+<code class="docutils literal notranslate"><span class="pre">include_id=True</span></code> so that the COCO ID for each image from our JSON labels
+will be added to each imported sample.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>See
+<a class="reference internal" href="../api/fiftyone.utils.coco.html#fiftyone.utils.coco.COCODetectionDatasetImporter" title="fiftyone.utils.coco.COCODetectionDatasetImporter"><code class="xref py py-class docutils literal notranslate"><span class="pre">COCODetectionDatasetImporter</span></code></a>
+for complete descriptions of the optional keyword arguments that you can
+pass to <a class="reference internal" href="../api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset.from_dir" title="fiftyone.core.dataset.Dataset.from_dir"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Dataset.from_dir()</span></code></a>.</p>
+</div>
+<p>If your workflow generates model predictions in COCO format, you can use the
+<a class="reference internal" href="../api/fiftyone.utils.coco.html#fiftyone.utils.coco.add_coco_labels" title="fiftyone.utils.coco.add_coco_labels"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_coco_labels()</span></code></a> utility method
+to add them to your dataset as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone.utils.coco</span> <span class="k">as</span> <span class="nn">fouc</span>
+
+<span class="c1">#</span>
+<span class="c1"># Mock COCO predictions, where:</span>
+<span class="c1"># - `image_id` corresponds to the `coco_id` field of `coco_dataset`</span>
+<span class="c1"># - `category_id` corresponds to `coco_dataset.info[&quot;categories&quot;]`</span>
+<span class="c1">#</span>
+<span class="n">predictions</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;image_id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;category_id&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;bbox&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">258</span><span class="p">,</span> <span class="mi">41</span><span class="p">,</span> <span class="mi">348</span><span class="p">,</span> <span class="mi">243</span><span class="p">],</span> <span class="s2">&quot;score&quot;</span><span class="p">:</span> <span class="mf">0.87</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;image_id&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;category_id&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s2">&quot;bbox&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">61</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">504</span><span class="p">,</span> <span class="mi">609</span><span class="p">],</span> <span class="s2">&quot;score&quot;</span><span class="p">:</span> <span class="mf">0.95</span><span class="p">},</span>
+<span class="p">]</span>
+<span class="n">categories</span> <span class="o">=</span> <span class="n">coco_dataset</span><span class="o">.</span><span class="n">info</span><span class="p">[</span><span class="s2">&quot;categories&quot;</span><span class="p">]</span>
+
+<span class="c1"># Add COCO predictions to `predictions` field of dataset</span>
+<span class="n">fouc</span><span class="o">.</span><span class="n">add_coco_labels</span><span class="p">(</span><span class="n">coco_dataset</span><span class="p">,</span> <span class="s2">&quot;predictions&quot;</span><span class="p">,</span> <span class="n">predictions</span><span class="p">,</span> <span class="n">categories</span><span class="p">)</span>
+
+<span class="c1"># Verify that predictions were added to two images</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">coco_dataset</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;predictions&quot;</span><span class="p">))</span>  <span class="c1"># 2</span>
+</pre></div></td></tr></table></div>
+</div>
+</div>
+<div class="section" id="coco-style-evaluation">
+<span id="coco-evaluation"></span><h2>COCO-style evaluation<a class="headerlink" href="#coco-style-evaluation" title="Permalink to this headline">¶</a></h2>
+<p>By default,
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.evaluate_detections" title="fiftyone.core.collections.SampleCollection.evaluate_detections"><code class="xref py py-meth docutils literal notranslate"><span class="pre">evaluate_detections()</span></code></a>
+will use <a class="reference external" href="https://cocodataset.org/#detection-eval">COCO-style evaluation</a> to
+analyze predictions.</p>
+<p>You can also explicitly request that COCO-style evaluation be used by setting
+the <code class="docutils literal notranslate"><span class="pre">method</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">&quot;coco&quot;</span></code>.</p>
+<p>See <a class="reference internal" href="../user_guide/evaluation.html#evaluating-detections"><span class="std std-ref">this page</span></a> for more information about using
+FiftyOne to analyze object detection models.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>FiftyOne’s implementation of COCO-style evaluation matches the reference
+implementation available via
+<a class="reference external" href="https://github.com/cocodataset/cocoapi">pycocotools</a>.</p>
+</div>
+<div class="section" id="overview">
+<h3>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h3>
+<p>When running COCO-style evaluation using
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.evaluate_detections" title="fiftyone.core.collections.SampleCollection.evaluate_detections"><code class="xref py py-meth docutils literal notranslate"><span class="pre">evaluate_detections()</span></code></a>:</p>
+<ul class="simple">
+<li><p>Predicted and ground truth objects are matched using a specified IoU
+threshold (default = 0.50). This threshold can be customized via the
+<code class="docutils literal notranslate"><span class="pre">iou</span></code> parameter</p></li>
+<li><p>By default, only objects with the same <code class="docutils literal notranslate"><span class="pre">label</span></code> will be matched. Classwise
+matching can be disabled via the <code class="docutils literal notranslate"><span class="pre">classwise</span></code> parameter</p></li>
+<li><p>Ground truth objects can have an <code class="docutils literal notranslate"><span class="pre">iscrowd</span></code> attribute that indicates
+whether the annotation contains a crowd of objects. Multiple predictions
+can be matched to crowd ground truth objects. The name of this attribute
+can be customized by passing the optional <code class="docutils literal notranslate"><span class="pre">iscrowd</span></code> attribute of
+<a class="reference internal" href="../api/fiftyone.utils.eval.coco.html#fiftyone.utils.eval.coco.COCOEvaluationConfig" title="fiftyone.utils.eval.coco.COCOEvaluationConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">COCOEvaluationConfig</span></code></a> to
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.evaluate_detections" title="fiftyone.core.collections.SampleCollection.evaluate_detections"><code class="xref py py-meth docutils literal notranslate"><span class="pre">evaluate_detections()</span></code></a></p></li>
+</ul>
+<p>When you specify an <code class="docutils literal notranslate"><span class="pre">eval_key</span></code> parameter, a number of helpful fields will be
+populated on each sample and its predicted/ground truth objects:</p>
+<ul>
+<li><p>True positive (TP), false positive (FP), and false negative (FN) counts
+for the each sample are saved in top-level fields of each sample:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">TP</span><span class="p">:</span> <span class="n">sample</span><span class="o">.&lt;</span><span class="n">eval_key</span><span class="o">&gt;</span><span class="n">_tp</span>
+<span class="n">FP</span><span class="p">:</span> <span class="n">sample</span><span class="o">.&lt;</span><span class="n">eval_key</span><span class="o">&gt;</span><span class="n">_fp</span>
+<span class="n">FN</span><span class="p">:</span> <span class="n">sample</span><span class="o">.&lt;</span><span class="n">eval_key</span><span class="o">&gt;</span><span class="n">_fn</span>
+</pre></div>
+</div>
+</li>
+<li><p>The fields listed below are populated on each individual object instance;
+these fields tabulate the TP/FP/FN status of the object, the ID of the
+matching object (if any), and the matching IoU:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">TP</span><span class="o">/</span><span class="n">FP</span><span class="o">/</span><span class="n">FN</span><span class="p">:</span> <span class="nb">object</span><span class="o">.&lt;</span><span class="n">eval_key</span><span class="o">&gt;</span>
+      <span class="n">ID</span><span class="p">:</span> <span class="nb">object</span><span class="o">.&lt;</span><span class="n">eval_key</span><span class="o">&gt;</span><span class="n">_id</span>
+     <span class="n">IoU</span><span class="p">:</span> <span class="nb">object</span><span class="o">.&lt;</span><span class="n">eval_key</span><span class="o">&gt;</span><span class="n">_iou</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>See <a class="reference internal" href="../api/fiftyone.utils.eval.coco.html#fiftyone.utils.eval.coco.COCOEvaluationConfig" title="fiftyone.utils.eval.coco.COCOEvaluationConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">COCOEvaluationConfig</span></code></a> for complete descriptions of the optional
+keyword arguments that you can pass to
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.evaluate_detections" title="fiftyone.core.collections.SampleCollection.evaluate_detections"><code class="xref py py-meth docutils literal notranslate"><span class="pre">evaluate_detections()</span></code></a>
+when running COCO-style evaluation.</p>
+</div>
+</div>
+<div class="section" id="example-evaluation">
+<h3>Example evaluation<a class="headerlink" href="#example-evaluation" title="Permalink to this headline">¶</a></h3>
+<p>The example below demonstrates COCO-style detection evaluation on the
+<a class="reference internal" href="../dataset_zoo/datasets.html#dataset-zoo-quickstart"><span class="std std-ref">quickstart dataset</span></a> from the Dataset Zoo:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+<span class="kn">from</span> <span class="nn">fiftyone</span> <span class="kn">import</span> <span class="n">ViewField</span> <span class="k">as</span> <span class="n">F</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+
+<span class="c1"># Evaluate the objects in the `predictions` field with respect to the</span>
+<span class="c1"># objects in the `ground_truth` field</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">evaluate_detections</span><span class="p">(</span>
+    <span class="s2">&quot;predictions&quot;</span><span class="p">,</span>
+    <span class="n">gt_field</span><span class="o">=</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span>
+    <span class="n">method</span><span class="o">=</span><span class="s2">&quot;coco&quot;</span><span class="p">,</span>
+    <span class="n">eval_key</span><span class="o">=</span><span class="s2">&quot;eval&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># Get the 10 most common classes in the dataset</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">count_values</span><span class="p">(</span><span class="s2">&quot;ground_truth.detections.label&quot;</span><span class="p">)</span>
+<span class="n">classes</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">counts</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">counts</span><span class="o">.</span><span class="n">get</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)[:</span><span class="mi">10</span><span class="p">]</span>
+
+<span class="c1"># Print a classification report for the top-10 classes</span>
+<span class="n">results</span><span class="o">.</span><span class="n">print_report</span><span class="p">(</span><span class="n">classes</span><span class="o">=</span><span class="n">classes</span><span class="p">)</span>
+
+<span class="c1"># Print some statistics about the total TP/FP/FN counts</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;TP: </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">dataset</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s2">&quot;eval_tp&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;FP: </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">dataset</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s2">&quot;eval_fp&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;FN: </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">dataset</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s2">&quot;eval_fn&quot;</span><span class="p">))</span>
+
+<span class="c1"># Create a view that has samples with the most false positives first, and</span>
+<span class="c1"># only includes false positive boxes in the `predictions` field</span>
+<span class="n">view</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">dataset</span>
+    <span class="o">.</span><span class="n">sort_by</span><span class="p">(</span><span class="s2">&quot;eval_fp&quot;</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span><span class="s2">&quot;predictions&quot;</span><span class="p">,</span> <span class="n">F</span><span class="p">(</span><span class="s2">&quot;eval&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;fp&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="c1"># Visualize results in the App</span>
+<span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">view</span><span class="o">=</span><span class="n">view</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>               precision    recall  f1-score   support
+
+       person       0.45      0.74      0.56       783
+         kite       0.55      0.72      0.62       156
+          car       0.12      0.54      0.20        61
+         bird       0.63      0.67      0.65       126
+       carrot       0.06      0.49      0.11        47
+         boat       0.05      0.24      0.08        37
+    surfboard       0.10      0.43      0.17        30
+     airplane       0.29      0.67      0.40        24
+traffic light       0.22      0.54      0.31        24
+        bench       0.10      0.30      0.15        23
+
+    micro avg       0.32      0.68      0.43      1311
+    macro avg       0.26      0.54      0.32      1311
+ weighted avg       0.42      0.68      0.50      1311
+</pre></div>
+</div>
+<img alt="quickstart-evaluate-detections" class="align-center" src="../_images/quickstart_evaluate_detections.png" />
+</div>
+<div class="section" id="map-and-pr-curves">
+<h3>mAP and PR curves<a class="headerlink" href="#map-and-pr-curves" title="Permalink to this headline">¶</a></h3>
+<p>You can compute mean average precision (mAP), mean average recall (mAR), and
+precision-recall (PR) curves for your predictions by passing the
+<code class="docutils literal notranslate"><span class="pre">compute_mAP=True</span></code> flag to
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.evaluate_detections" title="fiftyone.core.collections.SampleCollection.evaluate_detections"><code class="xref py py-meth docutils literal notranslate"><span class="pre">evaluate_detections()</span></code></a>:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>All mAP and mAR calculations are performed according to the
+<a class="reference external" href="https://cocodataset.org/#detection-eval">COCO evaluation protocol</a>.</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+
+<span class="c1"># Performs an IoU sweep so that mAP, mAR, and PR curves can be computed</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">evaluate_detections</span><span class="p">(</span>
+    <span class="s2">&quot;predictions&quot;</span><span class="p">,</span>
+    <span class="n">gt_field</span><span class="o">=</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span>
+    <span class="n">method</span><span class="o">=</span><span class="s2">&quot;coco&quot;</span><span class="p">,</span>
+    <span class="n">compute_mAP</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">mAP</span><span class="p">())</span>
+<span class="c1"># 0.3957</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">mAR</span><span class="p">())</span>
+<span class="c1"># 0.5210</span>
+
+<span class="n">plot</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">plot_pr_curves</span><span class="p">(</span><span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;person&quot;</span><span class="p">,</span> <span class="s2">&quot;kite&quot;</span><span class="p">,</span> <span class="s2">&quot;car&quot;</span><span class="p">])</span>
+<span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div></td></tr></table></div>
+</div>
+<img alt="coco-pr-curves" class="align-center" src="../_images/coco_pr_curves.png" />
+</div>
+<div class="section" id="confusion-matrices">
+<h3>Confusion matrices<a class="headerlink" href="#confusion-matrices" title="Permalink to this headline">¶</a></h3>
+<p>You can also easily generate <a class="reference internal" href="../user_guide/evaluation.html#confusion-matrices"><span class="std std-ref">confusion matrices</span></a> for
+the results of COCO-style evaluations.</p>
+<p>In order for the confusion matrix to capture anything other than false
+positive/negative counts, you will likely want to set the
+<a class="reference internal" href="../api/fiftyone.utils.eval.coco.html#fiftyone.utils.eval.coco.COCOEvaluationConfig" title="fiftyone.utils.eval.coco.COCOEvaluationConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">classwise</span></code></a> parameter
+to <code class="docutils literal notranslate"><span class="pre">False</span></code> during evaluation so that predicted objects can be matched with
+ground truth objects of different classes.</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+
+<span class="c1"># Perform evaluation, allowing objects to be matched between classes</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">evaluate_detections</span><span class="p">(</span>
+    <span class="s2">&quot;predictions&quot;</span><span class="p">,</span>
+    <span class="n">gt_field</span><span class="o">=</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span>
+    <span class="n">method</span><span class="o">=</span><span class="s2">&quot;coco&quot;</span><span class="p">,</span>
+    <span class="n">classwise</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># Generate a confusion matrix for the specified classes</span>
+<span class="n">plot</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">plot_confusion_matrix</span><span class="p">(</span><span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;car&quot;</span><span class="p">,</span> <span class="s2">&quot;truck&quot;</span><span class="p">,</span> <span class="s2">&quot;motorcycle&quot;</span><span class="p">])</span>
+<span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div></td></tr></table></div>
+</div>
+<img alt="coco-confusion-matrix" class="align-center" src="../_images/coco_confusion_matrix.png" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Did you know? <a class="reference internal" href="../user_guide/evaluation.html#confusion-matrices"><span class="std std-ref">Confusion matrices</span></a> can be
+attached to your <a class="reference internal" href="../api/fiftyone.core.session.html#fiftyone.core.session.Session" title="fiftyone.core.session.Session"><code class="xref py py-class docutils literal notranslate"><span class="pre">Session</span></code></a> object and dynamically explored using FiftyOne’s
+<a class="reference internal" href="../user_guide/plots.html#interactive-plots"><span class="std std-ref">interactive plotting features</span></a>!</p>
+</div>
+</div>
+</div>
+<div class="section" id="map-protocol">
+<span id="coco-map"></span><h2>mAP protocol<a class="headerlink" href="#map-protocol" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference external" href="https://cocodataset.org/#detection-eval">COCO evaluation protocol</a> is a
+popular evaluation protocol used by many works in the computer vision
+community.</p>
+<p>COCO-style mAP is derived from
+<a class="reference external" href="http://host.robots.ox.ac.uk/pascal/VOC/voc2010/devkit_doc_08-May-2010.pdf">VOC-style evaluation</a>
+with the addition of a crowd attribute and an IoU sweep.</p>
+<p>The steps to compute COCO-style mAP are detailed below.</p>
+<p><strong>Preprocessing</strong></p>
+<ul class="simple">
+<li><p>Filter ground truth and predicted objects by class
+(unless <code class="docutils literal notranslate"><span class="pre">classwise=False</span></code>)</p></li>
+<li><p>Sort predicted objects by confidence score so high confidence objects are
+matched first. Only the top 100 predictions are factored into evaluation
+(configurable with <code class="code docutils literal notranslate"><span class="pre">max_preds</span></code>)</p></li>
+<li><p>Sort ground truth objects so <code class="code docutils literal notranslate"><span class="pre">iscrowd</span></code> objects are matched last</p></li>
+<li><p>Compute IoU between every ground truth and predicted object within the same
+class (and between classes if <code class="code docutils literal notranslate"><span class="pre">classwise=False</span></code>) in each image</p></li>
+<li><p>IoU between predictions and crowd objects is calculated as the intersection
+of both boxes divided by the area of the prediction only. A prediction fully
+inside the crowd box has an IoU of 1</p></li>
+</ul>
+<p><strong>Matching</strong></p>
+<p>Once IoUs have been computed, predictions and ground truth objects are matched
+to compute true positives, false positives, and false negatives:</p>
+<ul class="simple">
+<li><p>For each class, start with the highest confidence prediction, match it to
+the ground truth object that it overlaps with the highest IoU. A prediction
+only matches if the IoU is above the specified <code class="docutils literal notranslate"><span class="pre">iou</span></code> threshold</p></li>
+<li><p>If a prediction matched to a non-crowd object, it will not match to a crowd
+even if the IoU is higher</p></li>
+<li><p>Multiple predictions can match to the same crowd ground truth object, each
+counting as a true positive</p></li>
+<li><p>If a prediction maximally overlaps with a ground truth object that has
+already been matched (by a higher confidence prediction), the prediction is
+matched with the next highest IoU ground truth object</p></li>
+<li><p>(Only relevant if <code class="docutils literal notranslate"><span class="pre">classwise=False</span></code>) predictions can only match to crowds
+if they are of the same class</p></li>
+</ul>
+<p><strong>Computing mAP</strong></p>
+<ul class="simple">
+<li><p>Compute matches for 10 IoU thresholds from 0.5 to 0.95 in increments of
+0.05</p></li>
+<li><p>The next 6 steps are computed separately for each
+class and IoU threshold:</p></li>
+<li><p>Construct a boolean array of true positives and false positives, sorted
+(<a class="reference external" href="https://github.com/cocodataset/cocoapi/blob/8c9bcc3cf640524c4c20a9c40e89cb6a2f2fa0e9/PythonAPI/pycocotools/cocoeval.py#L366">via mergesort</a>)
+by confidence</p></li>
+<li><p>Compute the cumulative sum of the true positive and false positive array</p></li>
+<li><p>Compute precision by elementwise dividing the TP-FP-sum array by the total
+number of predictions up to that point</p></li>
+<li><p>Compute recall by elementwise dividing TP-FP-sum array by the number of
+ground truth objects for the class</p></li>
+<li><p>Ensure that precision is a non-increasing array</p></li>
+<li><p>Interpolate precision values so that they can be plotted with an array of
+101 evenly spaced recall values</p></li>
+<li><p>For every class that contains at least one ground truth object, compute the
+average precision (AP) by averaging the precision values over all 10 IoU
+thresholds. Then compute mAP by averaging the per-class AP values over all
+classes</p></li>
+</ul>
+</div>
+</div>
+
+
+             </article>
+             
+            </div>
+            <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="open_images.html" class="btn btn-neutral float-right" title="Open Images Integration" accesskey="n" rel="next">Next <img src="../_static/images/chevron-right-orange.svg" class="next-page"></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="FiftyOne Integrations" accesskey="p" rel="prev"><img src="../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
+      
+    </div>
+  
+</footer>
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              <ul>
+<li><a class="reference internal" href="#">COCO Integration</a><ul>
+<li><a class="reference internal" href="#loading-the-coco-dataset">Loading the COCO dataset</a></li>
+<li><a class="reference internal" href="#loading-coco-formatted-data">Loading COCO-formatted data</a></li>
+<li><a class="reference internal" href="#coco-style-evaluation">COCO-style evaluation</a><ul>
+<li><a class="reference internal" href="#overview">Overview</a></li>
+<li><a class="reference internal" href="#example-evaluation">Example evaluation</a></li>
+<li><a class="reference internal" href="#map-and-pr-curves">mAP and PR curves</a></li>
+<li><a class="reference internal" href="#confusion-matrices">Confusion matrices</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#map-protocol">mAP protocol</a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  
+
+
+  
+
+     
+       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+         <script src="../_static/jquery.js"></script>
+         <script src="../_static/underscore.js"></script>
+         <script src="../_static/doctools.js"></script>
+         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+         <script src="../_static/js/voxel51-website.js"></script>
+         <script src="../_static/js/custom.js"></script>
+     
+
+  
+
+  <script type="text/javascript" src="../_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="../_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+  <!-- Begin Footer -->
+
+
+<footer class="footer-wrapper" id="docs-tutorials-resources">
+  <div class="footer pytorch-container">
+    <div class="footer__logo">
+      <a href="https://voxel51.com/"
+        ><img
+          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
+      /></a>
+    </div>
+
+    <div class="footer__address">
+      330 E Liberty St<br />
+      Ann Arbor, MI 48104<br />
+      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
+    </div>
+
+    <!--
+    <div class="footer__contact">
+      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
+    </div>
+    -->
+
+    <div class="footer__links">
+      <div class="footer__links--col2">
+        <p class="nav__item--brand">Products</p>
+        <a href="https://voxel51.com/fiftyone/">FiftyOne</a>
+        <a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a>
+        <a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a>
+        <a href="https://voxel51.com/success-stories/">Success Stories</a>
+      </div>
+      <div class="footer__links--col3">
+        <p class="nav__item--brand">Resources</p>
+        <a href="https://voxel51.com/blog/">Blog</a>
+        <a href="https://docs.voxel51.com/">Docs</a>
+        <a href="https://github.com/voxel51/">GitHub</a>
+        <a href="https://community.voxel51.com">Discord</a>
+        <a href="https://voxel51.com/ourstory/">About Us</a>
+        <a href="https://voxel51.com/computer-vision-events/">Events</a>
+        <a href="https://voxel51.com/jobs/">Careers</a>
+        <a href="https://voxel51.com/press/">Press</a>
+      </div>
+    </div>
+
+    <div class="footer__icons">
+      <ul class="list-inline">
+        <li>
+          <a href="https://www.linkedin.com/company/voxel51/">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/voxel51/">
+            <i class="fa-brands fa-github"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/voxel51">
+            <i class="fa-brands fa-twitter"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/voxel51/">
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="footer__copyright">
+      <ul class="list-inline">
+        <li>&copy; 2024 Voxel51 Inc.</li>
+        <li>
+          <a href="https://voxel51.com/privacy/">Privacy Policy</a>
+        </li>
+        <li>
+          <a href="https://voxel51.com/terms/">Terms of Service</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<!-- https://buttons.github.io -->
+<script async defer src="https://buttons.github.io/buttons.js" ></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XD15NFRY3M" ></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+  gtag("config", "G-XD15NFRY3M");
+</script>
+
+<script>
+  function open_modal(modal_id, modal_closer_id) {
+    // Get the modal
+    let the_modal = document.getElementById(modal_id);
+
+    the_modal.style.display = "flex";
+    document.body.style.overflow = "hidden";
+
+    let the_modal_closer = document.getElementById(modal_closer_id);
+
+    // When the user clicks on <span> (x), close the modal
+    the_modal_closer &&
+      (the_modal_closer.onclick = function () {
+        the_modal.style.display = "none";
+      });
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+      if (event.target == the_modal) {
+        the_modal.style.display = "none";
+        document.body.style.overflow = "unset";
+        window.onclick = undefined;
+      }
+    };
+  }
+</script>
+
+<!-- bigpicture.io -->
+<script>
+  !(function (e, t, i) {
+    var r = (e.bigPicture = e.bigPicture || []);
+    if (!r.initialized)
+      if (r.invoked)
+        e.console &&
+          console.error &&
+          console.error("BigPicture.io snippet included twice.");
+      else {
+        (r.invoked = !0),
+          (r.SNIPPET_VERSION = 1.5),
+          (r.handler = function (e) {
+            if (void 0 !== r.callback)
+              try {
+                return r.callback(e);
+              } catch (e) {}
+          }),
+          (r.eventList = ["mousedown", "mouseup", "click", "submit"]),
+          (r.methods = [
+            "track",
+            "identify",
+            "page",
+            "group",
+            "alias",
+            "integration",
+            "ready",
+            "intelReady",
+            "consentReady",
+            "on",
+            "off",
+          ]),
+          (r.factory = function (e) {
+            return function () {
+              var t = Array.prototype.slice.call(arguments);
+              return t.unshift(e), r.push(t), r;
+            };
+          });
+        for (var n = 0; n < r.methods.length; n++) {
+          var o = r.methods[n];
+          r[o] = r.factory(o);
+        }
+        r.getCookie = function (e) {
+          var i = ("; " + t.cookie).split("; " + e + "=");
+          return 2 == i.length && i.pop().split(";").shift();
+        };
+        var c = (r.isEditor = (function () {
+          try {
+            return (
+              e.self !== e.top &&
+              (new RegExp("app" + i, "ig").test(t.referrer) ||
+                "edit" == r.getCookie("_bpr_edit"))
+            );
+          } catch (e) {
+            return !1;
+          }
+        })());
+        r.init = function (n, o) {
+          if (((r.projectId = n), (r._config = o), !c))
+            for (var a = 0; a < r.eventList.length; a++)
+              e.addEventListener(r.eventList[a], r.handler, !0);
+          var s = t.createElement("script");
+          s.async = !0;
+          var d = c ? "/editor/editor" : "/public-" + n;
+          (s.src = "//cdn" + i + d + ".js"),
+            t.getElementsByTagName("head")[0].appendChild(s);
+        };
+      }
+  })(window, document, ".bigpicture.io");
+  bigPicture.init("1646");
+</script>
+
+
+  
+
+  <!-- End Footer -->
+
+  <!-- Begin Mobile Menu -->
+
+  
+
+  <!-- End Mobile Menu -->
+
+  <script type="text/javascript" src="../_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function(e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+</body>
+</html>

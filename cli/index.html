@@ -1,0 +1,3062 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>FiftyOne Command-Line Interface (CLI) &mdash; FiftyOne 1.3.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <link rel="stylesheet" href="../_static/css/voxel51-website.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="fiftyone" href="../api/fiftyone.html" />
+    <link rel="prev" title="@fiftyone/utilities" href="../plugins/api/plugins.fiftyone.utilities.html" />
+<meta property="og:image" content="https://voxel51.com/wp-content/uploads/2024/03/3.24_webpages_Home_AV.png" />
+
+<link
+  href="https://fonts.googleapis.com/css?family=Palanquin:400,600,700,800"
+  rel="stylesheet"
+/>
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+  rel="stylesheet"
+/>
+<script src="https://tag.clearbitscripts.com/v1/pk_b9ed71c8234edd4f77326bcbfab5a4ca/tags.js"></script>
+
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+  
+</head>
+
+
+<div class="container-fluid header-holder tutorials-header" id="header-holder">
+  <nav id="nav__main" class="nav__main">
+    <div class="nav__main__logo">
+      <a href="https://voxel51.com/">
+        <img
+          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
+        />
+      </a>
+    </div>
+
+    <div class="nav__spacer desktop_only"></div>
+
+    <div id="nav__main__mobilebutton--on">
+      <a href="javascript:void(0);" onclick="navMobileButton()">
+        <i class="fa-solid fa-bars"></i>
+      </a>
+    </div>
+
+    <div id="nav__main__mobilebutton--off">
+      <a href="javascript:void(0);" onclick="navMobileButton()">
+        <i class="fa-solid fa-times"></i>
+      </a>
+    </div>
+
+    <div id="nav__main__items">
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Products</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://voxel51.com/fiftyone/">Open Source</a></li>
+            <li><a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a></li>
+            <li><a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a></li>
+            <li><a href="https://voxel51.com/success-stories/">Success Stories</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Learn</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://community.voxel51.com">Community Discord</a></li>
+            <li><a href="https://voxel51.com/blog/">Blog</a></li>
+            <li><a href="https://voxel51.com/computer-vision-events/">Events</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item">
+        <a href="https://docs.voxel51.com/">Docs</a>
+      </div>
+
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Company</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://voxel51.com/ourstory/">About Us</a></li>
+            <li><a href="https://voxel51.com/jobs/">Careers</a></li>
+            <li><a href="https://voxel51.com/talk-to-sales/">Talk to Sales</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item mobile_only">
+        <a href="https://github.com/voxel51/fiftyone">GitHub</a>
+      </div>
+
+      <div class="nav__item desktop_only" id="octocat">
+        <!-- https://buttons.github.io -->
+        <a
+          class="github-button"
+          href="https://github.com/voxel51/fiftyone"
+          data-color-scheme="no-preference: dark_high_contrast; light: dark_high_contrast; dark: dark_high_contrast;"
+          data-size="large"
+          data-show-count="true"
+          aria-label="Star voxel51/fiftyone on GitHub"
+          >Star</a
+        >
+      </div>
+
+      <div class="nav__item full_nav_only">
+        <a class="button-primary" href="https://voxel51.com/schedule-teams-workshop/" target="_blank"
+          >Schedule a workshop</a
+        >
+      </div>
+    </div>
+  </nav>
+</div>
+
+
+
+<body class="pytorch-body">
+
+   
+
+    
+
+    <div class="table-of-contents-link-wrapper">
+      <span>Table of Contents</span>
+      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+    </div>
+
+    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+      <div class="pytorch-side-scroll">
+        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          <div class="pytorch-left-menu-search">
+            
+
+            
+              
+              
+            
+
+            
+
+
+  
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+            
+          </div>
+
+           <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../teams/index.html">FiftyOne Teams 🚀</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../environments/index.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../recipes/index.html">Recipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheat_sheets/index.html">Cheat Sheets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dataset_zoo/index.html">Dataset Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_zoo/index.html">Model Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brain.html">FiftyOne Brain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/index.html">Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plugins/index.html">Plugins</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/fiftyone.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deprecation.html">Deprecation Notices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a></li>
+</ul>
+ 
+        </div>
+      </div>
+    </nav>
+
+    <div class="pytorch-container">
+      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+        <div class="pytorch-breadcrumbs-wrapper">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="../index.html">
+          
+            Docs
+          
+        </a> &gt;
+      </li>
+
+        
+      <li>FiftyOne Command-Line Interface (CLI)</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+        </div>
+
+        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+          Contents
+        </div>
+      </div>
+
+      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+        <div class="pytorch-content-left">
+
+        
+          
+          <div class="rst-content style-external-links">
+          
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+              
+  <div class="section" id="fiftyone-command-line-interface-cli">
+<span id="fiftyone-cli"></span><h1>FiftyOne Command-Line Interface (CLI)<a class="headerlink" href="#fiftyone-command-line-interface-cli" title="Permalink to this headline">¶</a></h1>
+<p>Installing FiftyOne automatically installs <code class="code docutils literal notranslate"><span class="pre">fiftyone</span></code>, a command-line interface
+(CLI) for interacting with FiftyOne. This utility provides access to many
+useful features, including creating and inspecting datasets, visualizing
+datasets in the App, exporting datasets and converting dataset formats,
+and downloading datasets from the FiftyOne Dataset Zoo.</p>
+<div class="section" id="quickstart">
+<span id="cli-quickstart"></span><h2>Quickstart<a class="headerlink" href="#quickstart" title="Permalink to this headline">¶</a></h2>
+<p>To see the available top-level commands, type:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fiftyone --help
+</pre></div>
+</div>
+<p>You can learn more about any available subcommand via:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fiftyone &lt;command&gt; --help
+</pre></div>
+</div>
+<p>For example, to see your current FiftyOne config, you can execute
+<code class="code docutils literal notranslate"><span class="pre">fiftyone</span> <span class="pre">config</span></code>.</p>
+<div class="section" id="tab-completion">
+<h3>Tab completion<a class="headerlink" href="#tab-completion" title="Permalink to this headline">¶</a></h3>
+<p>To enable tab completion in <code class="code docutils literal notranslate"><span class="pre">bash</span></code>, add the following line to your <code class="code docutils literal notranslate"><span class="pre">~/.bashrc</span></code>:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">eval</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>register-python-argcomplete<span class="w"> </span>fiftyone<span class="k">)</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+<p>To enable tab completion in <code class="code docutils literal notranslate"><span class="pre">zsh</span></code>, add these lines to your <code class="code docutils literal notranslate"><span class="pre">~/.zshrc</span></code>:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>autoload<span class="w"> </span>bashcompinit
+bashcompinit
+<span class="nb">eval</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>register-python-argcomplete<span class="w"> </span>fiftyone<span class="k">)</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+<p>To enable tab completion in <code class="code docutils literal notranslate"><span class="pre">tcsh</span></code>, add these lines to your <code class="code docutils literal notranslate"><span class="pre">~/.tcshrc</span></code>:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">eval</span><span class="w"> </span><span class="sb">`</span>register-python-argcomplete<span class="w"> </span>--shell<span class="w"> </span>tcsh<span class="w"> </span>fiftyone<span class="sb">`</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="cli-fiftyone-main">
+<span id="id1"></span><h2>FiftyOne CLI<a class="headerlink" href="#cli-fiftyone-main" title="Permalink to this headline">¶</a></h2>
+<p>The FiftyOne command-line interface.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fiftyone [-h] [-v] [--all-help]
+         {quickstart,annotation,brain,evaluation,app,config,constants,convert,datasets,migrate,operators,delegated,plugins,utils,zoo}
+         ...
+</pre></div>
+</div>
+<p><strong>Arguments</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>optional arguments:
+  -h, --help            show this help message and exit
+  -v, --version         show version info
+  --all-help            show help recursively and exit
+
+available commands:
+  {quickstart,annotation,brain,evaluation,app,config,constants,convert,datasets,migrate,operators,delegated,plugins,utils,zoo}
+    quickstart          Launch a FiftyOne quickstart.
+    annotation          Tools for working with the FiftyOne annotation API.
+    brain               Tools for working with the FiftyOne Brain.
+    evaluation          Tools for working with the FiftyOne evaluation API.
+    app                 Tools for working with the FiftyOne App.
+    config              Tools for working with your FiftyOne config.
+    constants           Print constants from `fiftyone.constants`.
+    convert             Convert datasets on disk between supported formats.
+    datasets            Tools for working with FiftyOne datasets.
+    migrate             Tools for migrating the FiftyOne database.
+    operators           Tools for working with FiftyOne operators.
+    delegated           Tools for working with FiftyOne delegated operations.
+    plugins             Tools for working with FiftyOne plugins.
+    utils               FiftyOne utilities.
+    zoo                 Tools for working with the FiftyOne Zoo.
+</pre></div>
+</div>
+</div>
+<div class="section" id="fiftyone-quickstart">
+<span id="cli-fiftyone-quickstart"></span><h2>FiftyOne quickstart<a class="headerlink" href="#fiftyone-quickstart" title="Permalink to this headline">¶</a></h2>
+<p>Launch a FiftyOne quickstart.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fiftyone quickstart [-h] [-v] [-p PORT] [-A ADDRESS] [-r] [-a] [-w WAIT]
+</pre></div>
+</div>
+<p><strong>Arguments</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>optional arguments:
+  -h, --help            show this help message and exit
+  -v, --video           launch the quickstart with a video dataset
+  -p PORT, --port PORT  the port number to use
+  -A ADDRESS, --address ADDRESS
+                        the address (server name) to use
+  -r, --remote          whether to launch a remote App session
+  -w WAIT, --wait WAIT  the number of seconds to wait for a new App
+                        connection before returning if all connections are
+                        lost. If negative, the process will wait forever,
+                        regardless of connections
+</pre></div>
+</div>
+<p><strong>Examples</strong></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Launch the quickstart</span>
+fiftyone<span class="w"> </span>quickstart
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Launch the quickstart with a video dataset</span>
+fiftyone<span class="w"> </span>quickstart<span class="w"> </span>--video
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Launch the quickstart as a remote session</span>
+fiftyone<span class="w"> </span>quickstart<span class="w"> </span>--remote
+</pre></div>
+</div>
+</div>
+<div class="section" id="fiftyone-config">
+<span id="cli-fiftyone-config"></span><h2>FiftyOne config<a class="headerlink" href="#fiftyone-config" title="Permalink to this headline">¶</a></h2>
+<p>Tools for working with your FiftyOne config.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fiftyone config [-h] [-l] [FIELD]
+</pre></div>
+</div>
+<p><strong>Arguments</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>positional arguments:
+  FIELD         a config field to print
+
+optional arguments:
+  -h, --help    show this help message and exit
+  -l, --locate  print the location of your config on disk
+</pre></div>
+</div>
+<p><strong>Examples</strong></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print your entire config</span>
+fiftyone<span class="w"> </span>config
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print a specific config field</span>
+fiftyone<span class="w"> </span>config<span class="w"> </span>&lt;field&gt;
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print the location of your config on disk (if one exists)</span>
+fiftyone<span class="w"> </span>config<span class="w"> </span>--locate
+</pre></div>
+</div>
+</div>
+<div class="section" id="print-constants">
+<span id="cli-fiftyone-constants"></span><h2>Print constants<a class="headerlink" href="#print-constants" title="Permalink to this headline">¶</a></h2>
+<p>Print constants from <code class="code docutils literal notranslate"><span class="pre">fiftyone.constants</span></code>.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fiftyone constants [-h] [CONSTANT]
+</pre></div>
+</div>
+<p><strong>Arguments</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>positional arguments:
+  CONSTANT    the constant to print
+
+optional arguments:
+  -h, --help  show this help message and exit
+</pre></div>
+</div>
+<p><strong>Examples</strong></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print all constants</span>
+fiftyone<span class="w"> </span>constants
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print a specific constant</span>
+fiftyone<span class="w"> </span>constants<span class="w"> </span>&lt;CONSTANT&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="convert-dataset-formats">
+<span id="cli-fiftyone-convert"></span><h2>Convert dataset formats<a class="headerlink" href="#convert-dataset-formats" title="Permalink to this headline">¶</a></h2>
+<p>Convert datasets on disk between supported formats.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fiftyone convert [-h] --input-type INPUT_TYPE --output-type OUTPUT_TYPE
+                 [--input-dir INPUT_DIR]
+                 [--input-kwargs KEY=VAL [KEY=VAL ...]]
+                 [--output-dir OUTPUT_DIR]
+                 [--output-kwargs KEY=VAL [KEY=VAL ...]] [-o]
+</pre></div>
+</div>
+<p><strong>Arguments</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>optional arguments:
+  -h, --help            show this help message and exit
+  --input-dir INPUT_DIR
+                        the directory containing the dataset
+  --input-kwargs KEY=VAL [KEY=VAL ...]
+                        additional keyword arguments for
+                        `fiftyone.utils.data.convert_dataset(..., input_kwargs=)`
+  --output-dir OUTPUT_DIR
+                        the directory to which to write the output dataset
+  --output-kwargs KEY=VAL [KEY=VAL ...]
+                        additional keyword arguments for
+                        `fiftyone.utils.data.convert_dataset(..., output_kwargs=)`
+  -o, --overwrite       whether to overwrite an existing output directory
+
+required arguments:
+  --input-type INPUT_TYPE
+                        the fiftyone.types.Dataset type of the input dataset
+  --output-type OUTPUT_TYPE
+                        the fiftyone.types.Dataset type to output
+</pre></div>
+</div>
+<p><strong>Examples</strong></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Convert an image classification directory tree to TFRecords format</span>
+fiftyone<span class="w"> </span>convert<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--input-dir<span class="w"> </span>/path/to/image-classification-directory-tree<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--input-type<span class="w"> </span>fiftyone.types.ImageClassificationDirectoryTree<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--output-dir<span class="w"> </span>/path/for/tf-image-classification-dataset<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--output-type<span class="w"> </span>fiftyone.types.TFImageClassificationDataset
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Convert a COCO detection dataset to CVAT image format</span>
+fiftyone<span class="w"> </span>convert<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--input-dir<span class="w"> </span>/path/to/coco-detection-dataset<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--input-type<span class="w"> </span>fiftyone.types.COCODetectionDataset<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--output-dir<span class="w"> </span>/path/for/cvat-image-dataset<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--output-type<span class="w"> </span>fiftyone.types.CVATImageDataset
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Perform a customized conversion via optional kwargs</span>
+fiftyone<span class="w"> </span>convert<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--input-dir<span class="w"> </span>/path/to/coco-detection-dataset<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--input-type<span class="w"> </span>fiftyone.types.COCODetectionDataset<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--input-kwargs<span class="w"> </span><span class="nv">max_samples</span><span class="o">=</span><span class="m">100</span><span class="w"> </span><span class="nv">shuffle</span><span class="o">=</span>True<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--output-dir<span class="w"> </span>/path/for/cvat-image-dataset<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--output-type<span class="w"> </span>fiftyone.types.TFObjectDetectionDataset<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--output-kwargs<span class="w"> </span><span class="nv">force_rgb</span><span class="o">=</span>True<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--overwrite
+</pre></div>
+</div>
+</div>
+<div class="section" id="fiftyone-datasets">
+<span id="cli-fiftyone-datasets"></span><h2>FiftyOne datasets<a class="headerlink" href="#fiftyone-datasets" title="Permalink to this headline">¶</a></h2>
+<p>Tools for working with FiftyOne datasets.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fiftyone datasets [-h] [--all-help]
+                  {list,info,create,head,tail,stream,export,delete} ...
+</pre></div>
+</div>
+<p><strong>Arguments</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>optional arguments:
+  -h, --help            show this help message and exit
+  --all-help            show help recursively and exit
+
+available commands:
+  {list,info,create,head,tail,stream,export,delete}
+    list                List FiftyOne datasets.
+    info                Print information about FiftyOne datasets.
+    stats               Print stats about FiftyOne datasets on disk.
+    create              Tools for creating FiftyOne datasets.
+    head                Prints the first few samples in a FiftyOne dataset.
+    tail                Prints the last few samples in a FiftyOne dataset.
+    stream              Streams the samples in a FiftyOne dataset.
+    export              Export FiftyOne datasets to disk in supported formats.
+    draw                Writes annotated versions of samples in FiftyOne datasets to disk.
+    rename              Rename FiftyOne datasets.
+    delete              Delete FiftyOne datasets.
+</pre></div>
+</div>
+<div class="section" id="list-datasets">
+<span id="cli-fiftyone-datasets-list"></span><h3>List datasets<a class="headerlink" href="#list-datasets" title="Permalink to this headline">¶</a></h3>
+<p>List FiftyOne datasets.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fiftyone datasets list [-h] [-p PATT] [-t TAG [TAG ...]]
+</pre></div>
+</div>
+<p><strong>Arguments</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>optional arguments:
+  -h, --help        show this help message and exit
+  -p PATT, --glob-patt PATT
+                    an optional glob pattern of dataset names to include
+  -t TAG [TAG ...], --tags TAG [TAG ...]
+                    only show datasets with the given tag(s)
+</pre></div>
+</div>
+<p><strong>Examples</strong></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># List available datasets</span>
+fiftyone<span class="w"> </span>datasets<span class="w"> </span>list
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># List datasets matching a given pattern</span>
+fiftyone<span class="w"> </span>datasets<span class="w"> </span>list<span class="w"> </span>--glob-patt<span class="w"> </span><span class="s1">&#39;quickstart-*&#39;</span>
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># List datasets with the given tag(s)</span>
+fiftyone<span class="w"> </span>datasets<span class="w"> </span>list<span class="w"> </span>--tags<span class="w"> </span>automotive<span class="w"> </span>healthcare
+</pre></div>
+</div>
+</div>
+<div class="section" id="print-dataset-information">
+<span id="cli-fiftyone-datasets-info"></span><h3>Print dataset information<a class="headerlink" href="#print-dataset-information" title="Permalink to this headline">¶</a></h3>
+<p>Print information about FiftyOne datasets.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fiftyone datasets info [-h] [-p PATT] [-t TAG [TAG ...]] [-s FIELD] [-r] [NAME]
+</pre></div>
+</div>
+<p><strong>Arguments</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>positional arguments:
+  NAME                  the name of a dataset
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -p PATT, --glob-patt PATT
+                        an optional glob pattern of dataset names to include
+  -t TAG [TAG ...], --tags TAG [TAG ...]
+                        only show datasets with the given tag(s)
+  -s FIELD, --sort-by FIELD
+                        a field to sort the dataset rows by
+  -r, --reverse         whether to print the results in reverse order
+</pre></div>
+</div>
+<p><strong>Examples</strong></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print basic information about multiple datasets</span>
+fiftyone<span class="w"> </span>datasets<span class="w"> </span>info
+fiftyone<span class="w"> </span>datasets<span class="w"> </span>info<span class="w"> </span>--glob-patt<span class="w"> </span><span class="s1">&#39;quickstart-*&#39;</span>
+fiftyone<span class="w"> </span>datasets<span class="w"> </span>info<span class="w"> </span>--tags<span class="w"> </span>automotive<span class="w"> </span>healthcare
+fiftyone<span class="w"> </span>datasets<span class="w"> </span>info<span class="w"> </span>--sort-by<span class="w"> </span>created_at
+fiftyone<span class="w"> </span>datasets<span class="w"> </span>info<span class="w"> </span>--sort-by<span class="w"> </span>name<span class="w"> </span>--reverse
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print information about a specific dataset</span>
+fiftyone<span class="w"> </span>datasets<span class="w"> </span>info<span class="w"> </span>&lt;name&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="print-dataset-stats">
+<span id="cli-fiftyone-datasets-stats"></span><h3>Print dataset stats<a class="headerlink" href="#print-dataset-stats" title="Permalink to this headline">¶</a></h3>
+<p>Print stats about FiftyOne datasets on disk.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fiftyone datasets stats [-h] [-m] [-c] NAME
+</pre></div>
+</div>
+<p><strong>Arguments</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>positional arguments:
+  NAME                 the name of the dataset
+
+optional arguments:
+  -h, --help           show this help message and exit
+  -m, --include-media  whether to include stats about the size of the raw
+                       media in the dataset
+  -c, --compressed     whether to return the sizes of collections in their
+                       compressed form on disk
+</pre></div>
+</div>
+<p><strong>Examples</strong></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print stats about the given dataset on disk</span>
+fiftyone<span class="w"> </span>datasets<span class="w"> </span>stats<span class="w"> </span>&lt;name&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="create-datasets">
+<span id="cli-fiftyone-datasets-create"></span><h3>Create datasets<a class="headerlink" href="#create-datasets" title="Permalink to this headline">¶</a></h3>
+<p>Tools for creating FiftyOne datasets.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fiftyone datasets create [-h] [-n NAME] [-d DATASET_DIR] [-j JSON_PATH]
+                         [-t TYPE] [-k KEY=VAL [KEY=VAL ...]]
+</pre></div>
+</div>
+<p><strong>Arguments</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>optional arguments:
+  -h, --help            show this help message and exit
+  -n NAME, --name NAME  a name for the dataset
+  -d DATASET_DIR, --dataset-dir DATASET_DIR
+                        the directory containing the dataset
+  -j JSON_PATH, --json-path JSON_PATH
+                        the path to a samples JSON file to load
+  -t TYPE, --type TYPE  the fiftyone.types.Dataset type of the dataset
+  -k KEY=VAL [KEY=VAL ...], --kwargs KEY=VAL [KEY=VAL ...]
+                        additional type-specific keyword arguments for
+                        `fiftyone.core.dataset.Dataset.from_dir()`
+</pre></div>
+</div>
+<p><strong>Examples</strong></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a dataset from the given data on disk</span>
+fiftyone<span class="w"> </span>datasets<span class="w"> </span>create<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--name<span class="w"> </span>&lt;name&gt;<span class="w"> </span>--dataset-dir<span class="w"> </span>&lt;dataset-dir&gt;<span class="w"> </span>--type<span class="w"> </span>&lt;type&gt;
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a dataset from a random subset of the data on disk</span>
+fiftyone<span class="w"> </span>datasets<span class="w"> </span>create<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--name<span class="w"> </span>&lt;name&gt;<span class="w"> </span>--dataset-dir<span class="w"> </span>&lt;dataset-dir&gt;<span class="w"> </span>--type<span class="w"> </span>&lt;type&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--kwargs<span class="w"> </span><span class="nv">max_samples</span><span class="o">=</span><span class="m">50</span><span class="w"> </span><span class="nv">shuffle</span><span class="o">=</span>True
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a dataset from the given samples JSON file</span>
+fiftyone<span class="w"> </span>datasets<span class="w"> </span>create<span class="w"> </span>--json-path<span class="w"> </span>&lt;json-path&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="print-dataset-head">
+<span id="cli-fiftyone-datasets-head"></span><h3>Print dataset head<a class="headerlink" href="#print-dataset-head" title="Permalink to this headline">¶</a></h3>
+<p>Prints the first few samples in a FiftyOne dataset.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fiftyone datasets head [-h] [-n NUM_SAMPLES] NAME
+</pre></div>
+</div>
+<p><strong>Arguments</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>positional arguments:
+  NAME                  the name of the dataset
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -n NUM_SAMPLES, --num-samples NUM_SAMPLES
+                        the number of samples to print
+</pre></div>
+</div>
+<p><strong>Examples</strong></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Prints the first few samples in a dataset</span>
+fiftyone<span class="w"> </span>datasets<span class="w"> </span>head<span class="w"> </span>&lt;name&gt;
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Prints the given number of samples from the head of a dataset</span>
+fiftyone<span class="w"> </span>datasets<span class="w"> </span>head<span class="w"> </span>&lt;name&gt;<span class="w"> </span>--num-samples<span class="w"> </span>&lt;num-samples&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="print-dataset-tail">
+<span id="cli-fiftyone-datasets-tail"></span><h3>Print dataset tail<a class="headerlink" href="#print-dataset-tail" title="Permalink to this headline">¶</a></h3>
+<p>Prints the last few samples in a FiftyOne dataset.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fiftyone datasets tail [-h] [-n NUM_SAMPLES] NAME
+</pre></div>
+</div>
+<p><strong>Arguments</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>positional arguments:
+  NAME                  the name of the dataset
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -n NUM_SAMPLES, --num-samples NUM_SAMPLES
+                        the number of samples to print
+</pre></div>
+</div>
+<p><strong>Examples</strong></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print the last few samples in a dataset</span>
+fiftyone<span class="w"> </span>datasets<span class="w"> </span>tail<span class="w"> </span>&lt;name&gt;
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print the given number of samples from the tail of a dataset</span>
+fiftyone<span class="w"> </span>datasets<span class="w"> </span>tail<span class="w"> </span>&lt;name&gt;<span class="w"> </span>--num-samples<span class="w"> </span>&lt;num-samples&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="stream-samples-to-the-terminal">
+<span id="cli-fiftyone-datasets-stream"></span><h3>Stream samples to the terminal<a class="headerlink" href="#stream-samples-to-the-terminal" title="Permalink to this headline">¶</a></h3>
+<p>Stream samples in a FiftyOne dataset to the terminal.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fiftyone datasets stream [-h] NAME
+</pre></div>
+</div>
+<p><strong>Arguments</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>positional arguments:
+  NAME        the name of the dataset
+
+optional arguments:
+  -h, --help  show this help message and exit
+</pre></div>
+</div>
+<p><strong>Examples</strong></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Stream the samples of the dataset to the terminal</span>
+fiftyone<span class="w"> </span>datasets<span class="w"> </span>stream<span class="w"> </span>&lt;name&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="export-datasets">
+<span id="cli-fiftyone-datasets-export"></span><h3>Export datasets<a class="headerlink" href="#export-datasets" title="Permalink to this headline">¶</a></h3>
+<p>Export FiftyOne datasets to disk in supported formats.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fiftyone datasets export [-h] [-d EXPORT_DIR] [-j JSON_PATH]
+                         [-f LABEL_FIELD] [-t TYPE]
+                         [--filters KEY=VAL [KEY=VAL ...]]
+                         [-k KEY=VAL [KEY=VAL ...]]
+                         NAME
+</pre></div>
+</div>
+<p><strong>Arguments</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>positional arguments:
+  NAME                  the name of the dataset to export
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -d EXPORT_DIR, --export-dir EXPORT_DIR
+                        the directory in which to export the dataset
+  -j JSON_PATH, --json-path JSON_PATH
+                        the path to export the dataset in JSON format
+  -f LABEL_FIELD, --label-field LABEL_FIELD
+                        the name of the label field to export
+  -t TYPE, --type TYPE  the fiftyone.types.Dataset type in which to export
+  --filters KEY=VAL [KEY=VAL ...]
+                        specific sample tags or class labels to export. To
+                        use sample tags, pass tags as `tags=train,val` and
+                        to use label filters, pass label field and values
+                        as in ground_truth=car,person,dog
+  -k KEY=VAL [KEY=VAL ...], --kwargs KEY=VAL [KEY=VAL ...]
+                        additional type-specific keyword arguments for
+                        `fiftyone.core.collections.SampleCollection.export()`
+</pre></div>
+</div>
+<p><strong>Examples</strong></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Export the dataset to disk in the specified format</span>
+fiftyone<span class="w"> </span>datasets<span class="w"> </span><span class="nb">export</span><span class="w"> </span>&lt;name&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--export-dir<span class="w"> </span>&lt;export-dir&gt;<span class="w"> </span>--type<span class="w"> </span>&lt;type&gt;<span class="w"> </span>--label-field<span class="w"> </span>&lt;label-field&gt;
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Export the dataset to disk in JSON format</span>
+fiftyone<span class="w"> </span>datasets<span class="w"> </span><span class="nb">export</span><span class="w"> </span>&lt;name&gt;<span class="w"> </span>--json-path<span class="w"> </span>&lt;json-path&gt;
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Only export cats and dogs from the validation split</span>
+fiftyone<span class="w"> </span>datasets<span class="w"> </span><span class="nb">export</span><span class="w"> </span>&lt;name&gt;<span class="w"> </span><span class="se">\\</span>
+<span class="w">    </span>--filters<span class="w"> </span><span class="nv">tags</span><span class="o">=</span>validation<span class="w"> </span><span class="nv">ground_truth</span><span class="o">=</span>cat,dog<span class="w"> </span><span class="se">\\</span>
+<span class="w">    </span>--export-dir<span class="w"> </span>&lt;export-dir&gt;<span class="w"> </span>--type<span class="w"> </span>&lt;type&gt;<span class="w"> </span>--label-field<span class="w"> </span>ground_truth
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Perform a customized export of a dataset</span>
+fiftyone<span class="w"> </span>datasets<span class="w"> </span><span class="nb">export</span><span class="w"> </span>&lt;name&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--type<span class="w"> </span>&lt;type&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--kwargs<span class="w"> </span><span class="nv">labels_path</span><span class="o">=</span>/path/for/labels.json
+</pre></div>
+</div>
+</div>
+<div class="section" id="drawing-labels-on-samples">
+<span id="cli-fiftyone-datasets-draw"></span><h3>Drawing labels on samples<a class="headerlink" href="#drawing-labels-on-samples" title="Permalink to this headline">¶</a></h3>
+<p>Renders annotated versions of samples in FiftyOne datasets to disk.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fiftyone datasets draw [-h] [-d OUTPUT_DIR] [-f LABEL_FIELDS] NAME
+</pre></div>
+</div>
+<p><strong>Arguments</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>positional arguments:
+  NAME                  the name of the dataset
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -d OUTPUT_DIR, --output-dir OUTPUT_DIR
+                        the directory to write the annotated media
+  -f LABEL_FIELDS, --label-fields LABEL_FIELDS
+                        a comma-separated list of label fields to export
+</pre></div>
+</div>
+<p><strong>Examples</strong></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write annotated versions of the media in the dataset with the</span>
+<span class="c1"># specified label field(s) overlaid to disk</span>
+fiftyone<span class="w"> </span>datasets<span class="w"> </span>draw<span class="w"> </span>&lt;name&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--output-dir<span class="w"> </span>&lt;output-dir&gt;<span class="w"> </span>--label-fields<span class="w"> </span>&lt;list&gt;,&lt;of&gt;,&lt;fields&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="rename-datasets">
+<span id="cli-fiftyone-datasets-rename"></span><h3>Rename datasets<a class="headerlink" href="#rename-datasets" title="Permalink to this headline">¶</a></h3>
+<p>Rename FiftyOne datasets.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fiftyone datasets rename [-h] NAME NEW_NAME
+</pre></div>
+</div>
+<p><strong>Arguments</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>positional arguments:
+  NAME        the name of the dataset
+  NEW_NAME    a new name for the dataset
+
+optional arguments:
+  -h, --help  show this help message and exit
+</pre></div>
+</div>
+<p><strong>Examples</strong></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Rename the dataset</span>
+fiftyone<span class="w"> </span>datasets<span class="w"> </span>rename<span class="w"> </span>&lt;old-name&gt;<span class="w"> </span>&lt;new-name&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="delete-datasets">
+<span id="cli-fiftyone-datasets-delete"></span><h3>Delete datasets<a class="headerlink" href="#delete-datasets" title="Permalink to this headline">¶</a></h3>
+<p>Delete FiftyOne datasets.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fiftyone datasets delete [-h] [-g GLOB_PATT] [--non-persistent]
+                         [NAME [NAME ...]]
+</pre></div>
+</div>
+<p><strong>Arguments</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>positional arguments:
+  NAME                  the dataset name(s) to delete
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -g GLOB_PATT, --glob-patt GLOB_PATT
+                        a glob pattern of datasets to delete
+  --non-persistent      delete all non-persistent datasets
+</pre></div>
+</div>
+<p><strong>Examples</strong></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Delete the datasets with the given name(s)</span>
+fiftyone<span class="w"> </span>datasets<span class="w"> </span>delete<span class="w"> </span>&lt;name1&gt;<span class="w"> </span>&lt;name2&gt;<span class="w"> </span>...
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Delete the datasets whose names match the given glob pattern</span>
+fiftyone<span class="w"> </span>datasets<span class="w"> </span>delete<span class="w"> </span>--glob-patt<span class="w"> </span>&lt;glob-patt&gt;
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Delete all non-persistent datasets</span>
+fiftyone<span class="w"> </span>datasets<span class="w"> </span>delete<span class="w"> </span>--non-persistent
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="fiftyone-migrations">
+<span id="cli-fiftyone-migrate"></span><h2>FiftyOne migrations<a class="headerlink" href="#fiftyone-migrations" title="Permalink to this headline">¶</a></h2>
+<p>Tools for migrating the FiftyOne database.</p>
+<p>See <a class="reference internal" href="../user_guide/config.html#database-migrations"><span class="std std-ref">this page</span></a> for more information about migrating
+FiftyOne deployments.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fiftyone migrate [-h] [-i] [-a]
+                 [-v VERSION]
+                 [-n DATASET_NAME [DATASET_NAME ...]]
+                 [--error-level LEVEL]
+                 [--verbose]
+</pre></div>
+</div>
+<p><strong>Arguments</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>optional arguments:
+  -h, --help            show this help message and exit
+  -i, --info            whether to print info about the current revisions
+  -a, --all             whether to migrate the database and all datasets
+  -v VERSION, --version VERSION
+                        the revision to migrate to
+  -n DATASET_NAME [DATASET_NAME ...], --dataset-name DATASET_NAME [DATASET_NAME ...]
+                        the name of a specific dataset to migrate
+  --error-level LEVEL   the error level (0=error, 1=warn, 2=ignore) to use
+                        when migrating individual datasets
+  --verbose             whether to log incremental migrations that are performed
+</pre></div>
+</div>
+<p><strong>Examples</strong></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print information about the current revisions of all datasets</span>
+fiftyone<span class="w"> </span>migrate<span class="w"> </span>--info
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Migrate the database and all datasets to the current client version</span>
+fiftyone<span class="w"> </span>migrate<span class="w"> </span>--all
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Migrate to a specific revision</span>
+fiftyone<span class="w"> </span>migrate<span class="w"> </span>--all<span class="w"> </span>--version<span class="w"> </span>&lt;VERSION&gt;
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Migrate a specific dataset</span>
+fiftyone<span class="w"> </span>migrate<span class="w"> </span>...<span class="w"> </span>--dataset-name<span class="w"> </span>&lt;DATASET_NAME&gt;
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Update the database version without migrating any existing datasets</span>
+fiftyone<span class="w"> </span>migrate
+</pre></div>
+</div>
+</div>
+<div class="section" id="fiftyone-operators">
+<span id="cli-fiftyone-operators"></span><h2>FiftyOne operators<a class="headerlink" href="#fiftyone-operators" title="Permalink to this headline">¶</a></h2>
+<p>Tools for working with FiftyOne operators and panels.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fiftyone operators [-h] [--all-help] {list,info} ...
+</pre></div>
+</div>
+<p><strong>Arguments</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>optional arguments:
+  -h, --help   show this help message and exit
+  --all-help   show help recursively and exit
+
+available commands:
+  {list,info}
+    list       List operators and panels that you&#39;ve installed locally.
+    info       Prints information about operators and panels that you&#39;ve installed locally.
+</pre></div>
+</div>
+<div class="section" id="list-operators">
+<span id="cli-fiftyone-operators-list"></span><h3>List operators<a class="headerlink" href="#list-operators" title="Permalink to this headline">¶</a></h3>
+<p>List operators and panels that you’ve installed locally.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fiftyone operators list [-h] [-e] [-d] [-o] [-p] [-n]
+</pre></div>
+</div>
+<p><strong>Arguments</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>optional arguments:
+  -h, --help            show this help message and exit
+  -e, --enabled         only show enabled operators and panels
+  -d, --disabled        only show disabled operators and panels
+  -o, --operators-only  only show operators
+  -p, --panels-only     only show panels
+  -n, --names-only      only show names
+</pre></div>
+</div>
+<p><strong>Examples</strong></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># List all available operators and panels</span>
+fiftyone<span class="w"> </span>operators<span class="w"> </span>list
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># List enabled operators and panels</span>
+fiftyone<span class="w"> </span>operators<span class="w"> </span>list<span class="w"> </span>--enabled
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># List disabled operators and panels</span>
+fiftyone<span class="w"> </span>operators<span class="w"> </span>list<span class="w"> </span>--disabled
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Only list panels</span>
+fiftyone<span class="w"> </span>operators<span class="w"> </span>list<span class="w"> </span>--panels-only
+</pre></div>
+</div>
+</div>
+<div class="section" id="operator-info">
+<span id="cli-fiftyone-operators-info"></span><h3>Operator info<a class="headerlink" href="#operator-info" title="Permalink to this headline">¶</a></h3>
+<p>Prints information about operators and panels that you’ve installed locally.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fiftyone operators info [-h] URI
+</pre></div>
+</div>
+<p><strong>Arguments</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>positional arguments:
+  URI         the operator or panel URI
+
+optional arguments:
+  -h, --help  show this help message and exit
+</pre></div>
+</div>
+<p><strong>Examples</strong></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Prints information about an operator or panel</span>
+fiftyone<span class="w"> </span>operators<span class="w"> </span>info<span class="w"> </span>&lt;uri&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="fiftyone-delegated-operations">
+<span id="cli-fiftyone-delegated"></span><h2>FiftyOne delegated operations<a class="headerlink" href="#fiftyone-delegated-operations" title="Permalink to this headline">¶</a></h2>
+<p>Tools for working with FiftyOne delegated operations.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fiftyone delegated [-h] [--all-help] {launch,list,info,fail,delete,cleanup} ...
+</pre></div>
+</div>
+<p><strong>Arguments</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>optional arguments:
+  -h, --help   show this help message and exit
+  --all-help   show help recursively and exit
+
+available commands:
+  {launch,list,info,fail,delete,cleanup}
+    launch              Launches a service for running delegated operations.
+    list                List delegated operations.
+    info                Prints information about a delegated operation.
+    fail                Manually mark delegated as failed.
+    delete              Delete delegated operations.
+    cleanup             Cleanup delegated operations.
+</pre></div>
+</div>
+<div class="section" id="launch-delegated-service">
+<span id="cli-fiftyone-delegated-launch"></span><h3>Launch delegated service<a class="headerlink" href="#launch-delegated-service" title="Permalink to this headline">¶</a></h3>
+<p>Launches a service for running delegated operations.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fiftyone delegated launch [-h] [-t TYPE]
+</pre></div>
+</div>
+<p><strong>Arguments</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>optional arguments:
+  -h, --help            show this help message and exit
+  -t TYPE, --type TYPE  the type of service to launch. The default is &#39;local&#39;
+</pre></div>
+</div>
+<p><strong>Examples</strong></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Launch a local service</span>
+fiftyone<span class="w"> </span>delegated<span class="w"> </span>launch
+</pre></div>
+</div>
+</div>
+<div class="section" id="list-delegated-operations">
+<span id="cli-fiftyone-delegated-list"></span><h3>List delegated operations<a class="headerlink" href="#list-delegated-operations" title="Permalink to this headline">¶</a></h3>
+<p>List delegated operations.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fiftyone delegated list [-h]
+                        [-o OPERATOR]
+                        [-d DATASET]
+                        [-s STATE]
+                        [--sort-by SORT_BY]
+                        [--reverse]
+                        [-l LIMIT]
+</pre></div>
+</div>
+<p><strong>Arguments</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>optional arguments:
+  -h, --help            show this help message and exit
+  -o OPERATOR, --operator OPERATOR
+                        only list operations for this operator
+  -d DATASET, --dataset DATASET
+                        only list operations for this dataset
+  -s STATE, --state STATE
+                        only list operations with this state. Supported
+                        values are (&#39;SCHEDULED&#39;, &#39;QUEUED&#39;, &#39;RUNNING&#39;, &#39;COMPLETED&#39;, &#39;FAILED&#39;)
+  --sort-by SORT_BY     how to sort the operations. Supported values are
+                        (&#39;SCHEDULED_AT&#39;, &#39;QUEUED_AT&#39;, &#39;STARTED_AT&#39;, COMPLETED_AT&#39;, &#39;FAILED_AT&#39;, &#39;OPERATOR&#39;)
+  --reverse             whether to sort in reverse order
+  -l LIMIT, --limit LIMIT
+                        a maximum number of operations to show
+</pre></div>
+</div>
+<p><strong>Examples</strong></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># List all delegated operations</span>
+fiftyone<span class="w"> </span>delegated<span class="w"> </span>list
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># List some specific delegated operations</span>
+fiftyone<span class="w"> </span>delegated<span class="w"> </span>list<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--dataset<span class="w"> </span>quickstart<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--operator<span class="w"> </span>@voxel51/io/export_samples<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--state<span class="w"> </span>COMPLETED<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--sort-by<span class="w"> </span>COMPLETED_AT<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--limit<span class="w"> </span><span class="m">10</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="delegated-operation-info">
+<span id="cli-fiftyone-delegated-info"></span><h3>Delegated operation info<a class="headerlink" href="#delegated-operation-info" title="Permalink to this headline">¶</a></h3>
+<p>Prints information about a delegated operation.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fiftyone delegated info [-h] ID
+</pre></div>
+</div>
+<p><strong>Arguments</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>positional arguments:
+  ID          the operation ID
+
+optional arguments:
+  -h, --help  show this help message and exit
+</pre></div>
+</div>
+<p><strong>Examples</strong></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print information about a delegated operation</span>
+fiftyone<span class="w"> </span>delegated<span class="w"> </span>info<span class="w"> </span>&lt;id&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="mark-delegated-operations-as-failed">
+<span id="cli-fiftyone-delegated-fail"></span><h3>Mark delegated operations as failed<a class="headerlink" href="#mark-delegated-operations-as-failed" title="Permalink to this headline">¶</a></h3>
+<p>Manually mark delegated operations as failed.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fiftyone delegated fail [-h] [IDS ...]
+</pre></div>
+</div>
+<p><strong>Arguments</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>positional arguments:
+  IDS         an operation ID or list of operation IDs
+
+optional arguments:
+  -h, --help  show this help message and exit
+</pre></div>
+</div>
+<p><strong>Examples</strong></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Manually mark the specified operation(s) as FAILED</span>
+fiftyone<span class="w"> </span>delegated<span class="w"> </span>fail<span class="w"> </span>&lt;id1&gt;<span class="w"> </span>&lt;id2&gt;<span class="w"> </span>...
+</pre></div>
+</div>
+</div>
+<div class="section" id="delete-delegated-operations">
+<span id="cli-fiftyone-delegated-delete"></span><h3>Delete delegated operations<a class="headerlink" href="#delete-delegated-operations" title="Permalink to this headline">¶</a></h3>
+<p>Delete delegated operations.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fiftyone delegated delete [-h] [IDS ...]
+</pre></div>
+</div>
+<p><strong>Arguments</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>positional arguments:
+  IDS         an operation ID or list of operation IDs
+
+optional arguments:
+  -h, --help  show this help message and exit
+</pre></div>
+</div>
+<p><strong>Examples</strong></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Delete the specified operation(s)</span>
+fiftyone<span class="w"> </span>delegated<span class="w"> </span>delete<span class="w"> </span>&lt;id1&gt;<span class="w"> </span>&lt;id2&gt;<span class="w"> </span>...
+</pre></div>
+</div>
+</div>
+<div class="section" id="cleanup-delegated-operations">
+<span id="cli-fiftyone-delegated-cleanup"></span><h3>Cleanup delegated operations<a class="headerlink" href="#cleanup-delegated-operations" title="Permalink to this headline">¶</a></h3>
+<p>Cleanup delegated operations.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fiftyone delegated cleanup [-h]
+                           [-o OPERATOR]
+                           [-d DATASET]
+                           [-s STATE]
+                           [--orphan]
+                           [--dry-run]
+</pre></div>
+</div>
+<p><strong>Arguments</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>optional arguments:
+  -h, --help            show this help message and exit
+  -o OPERATOR, --operator OPERATOR
+                        cleanup operations for this operator
+  -d DATASET, --dataset DATASET
+                        cleanup operations for this dataset
+  -s STATE, --state STATE
+                        delete operations in this state. Supported values
+                        are (&#39;QUEUED&#39;, &#39;COMPLETED&#39;, &#39;FAILED&#39;)
+  --orphan              delete all operations associated with non-existent
+                        datasets
+  --dry-run             whether to print information rather than actually
+                        deleting operations
+</pre></div>
+</div>
+<p><strong>Examples</strong></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Delete all failed operations associated with a given dataset</span>
+fiftyone<span class="w"> </span>delegated<span class="w"> </span>cleanup<span class="w"> </span>--dataset<span class="w"> </span>quickstart<span class="w"> </span>--state<span class="w"> </span>FAILED
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Delete all delegated operations associated with non-existent datasets</span>
+fiftyone<span class="w"> </span>delegated<span class="w"> </span>cleanup<span class="w"> </span>--orphan
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print information about operations rather than actually deleting them</span>
+fiftyone<span class="w"> </span>delegated<span class="w"> </span>cleanup<span class="w"> </span>--orphan<span class="w"> </span>--dry-run
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="fiftyone-plugins">
+<span id="cli-fiftyone-plugins"></span><h2>FiftyOne plugins<a class="headerlink" href="#fiftyone-plugins" title="Permalink to this headline">¶</a></h2>
+<p>Tools for working with FiftyOne plugins.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fiftyone plugins [-h] [--all-help] {list,info,download,requirements,create,enable,disable,delete} ...
+</pre></div>
+</div>
+<p><strong>Arguments</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>optional arguments:
+  -h, --help            show this help message and exit
+  --all-help            show help recursively and exit
+
+available commands:
+  {list,info,download,requirements,create,enable,disable,delete}
+    list                List plugins that you&#39;ve downloaded or created locally.
+    info                Prints information about plugins that you&#39;ve downloaded or created
+    download            Download plugins from the web.
+    requirements        Handles package requirements for plugins.
+    create              Creates or initializes a plugin.
+    enable              Enables the given plugin(s).
+    disable             Disables the given plugin(s).
+    delete              Delete plugins from your local machine.
+</pre></div>
+</div>
+<div class="section" id="list-plugins">
+<span id="cli-fiftyone-plugins-list"></span><h3>List plugins<a class="headerlink" href="#list-plugins" title="Permalink to this headline">¶</a></h3>
+<p>List plugins that you’ve downloaded or created locally.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fiftyone plugins list [-h] [-e] [-d] [-n]
+</pre></div>
+</div>
+<p><strong>Arguments</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>optional arguments:
+  -h, --help        show this help message and exit
+  -e, --enabled     only show enabled plugins
+  -d, --disabled    only show disabled plugins
+  -n, --names-only  only show plugin names
+</pre></div>
+</div>
+<p><strong>Examples</strong></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># List all locally available plugins</span>
+fiftyone<span class="w"> </span>plugins<span class="w"> </span>list
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># List enabled plugins</span>
+fiftyone<span class="w"> </span>plugins<span class="w"> </span>list<span class="w"> </span>--enabled
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># List disabled plugins</span>
+fiftyone<span class="w"> </span>plugins<span class="w"> </span>list<span class="w"> </span>--disabled
+</pre></div>
+</div>
+</div>
+<div class="section" id="plugin-info">
+<span id="cli-fiftyone-plugins-info"></span><h3>Plugin info<a class="headerlink" href="#plugin-info" title="Permalink to this headline">¶</a></h3>
+<p>List plugins that you’ve downloaded or created locally.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fiftyone plugins info [-h] NAME
+</pre></div>
+</div>
+<p><strong>Arguments</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>positional arguments:
+  NAME        the plugin name
+
+optional arguments:
+  -h, --help  show this help message and exit
+</pre></div>
+</div>
+<p><strong>Examples</strong></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Prints information about a plugin</span>
+fiftyone<span class="w"> </span>plugins<span class="w"> </span>info<span class="w"> </span>&lt;name&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="download-plugins">
+<span id="cli-fiftyone-plugins-download"></span><h3>Download plugins<a class="headerlink" href="#download-plugins" title="Permalink to this headline">¶</a></h3>
+<p>Download plugins from the web.</p>
+<p>When downloading plugins from GitHub, you can provide any of the following
+formats:</p>
+<ul class="simple">
+<li><p>a GitHub repo URL like <code class="docutils literal notranslate"><span class="pre">https://github.com/&lt;user&gt;/&lt;repo&gt;</span></code></p></li>
+<li><p>a GitHub ref like <code class="docutils literal notranslate"><span class="pre">https://github.com/&lt;user&gt;/&lt;repo&gt;/tree/&lt;branch&gt;</span></code> or
+<code class="docutils literal notranslate"><span class="pre">https://github.com/&lt;user&gt;/&lt;repo&gt;/commit/&lt;commit&gt;</span></code></p></li>
+<li><p>a GitHub ref string like <code class="docutils literal notranslate"><span class="pre">&lt;user&gt;/&lt;repo&gt;[/&lt;ref&gt;]</span></code></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To download from a private GitHub repository that you have access to,
+provide your GitHub personal access token by setting the <code class="docutils literal notranslate"><span class="pre">GITHUB_TOKEN</span></code>
+environment variable.</p>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fiftyone plugins download [-h] [-n [PLUGIN_NAMES ...]] [-o] URL_OR_GH_REPO
+</pre></div>
+</div>
+<p><strong>Arguments</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>positional arguments:
+  URL_OR_GH_REPO        A URL or &lt;user&gt;/&lt;repo&gt;[/&lt;ref&gt;] of a GitHub repository
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -n [PLUGIN_NAMES ...], --plugin-names [PLUGIN_NAMES ...]
+                        a plugin name or list of plugin names to download
+  -o, --overwrite       whether to overwrite existing plugins
+</pre></div>
+</div>
+<p><strong>Examples</strong></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Download plugins from a GitHub repository URL</span>
+fiftyone<span class="w"> </span>plugins<span class="w"> </span>download<span class="w"> </span>&lt;github-repo-url&gt;
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Download plugins by specifying the GitHub repository details</span>
+fiftyone<span class="w"> </span>plugins<span class="w"> </span>download<span class="w"> </span>&lt;user&gt;/&lt;repo&gt;<span class="o">[</span>/&lt;ref&gt;<span class="o">]</span>
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Download specific plugins from a URL</span>
+fiftyone<span class="w"> </span>plugins<span class="w"> </span>download<span class="w"> </span>&lt;url&gt;<span class="w"> </span>--plugin-names<span class="w"> </span>&lt;name1&gt;<span class="w"> </span>&lt;name2&gt;<span class="w"> </span>&lt;name3&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="plugin-requirements">
+<span id="cli-fiftyone-plugins-requirements"></span><h3>Plugin requirements<a class="headerlink" href="#plugin-requirements" title="Permalink to this headline">¶</a></h3>
+<p>Handles package requirements for plugins.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fiftyone plugins requirements [-h] [-p] [-i] [-e] [--error-level LEVEL] NAME
+</pre></div>
+</div>
+<p><strong>Arguments</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>positional arguments:
+  NAME                 the plugin name
+
+optional arguments:
+  -h, --help           show this help message and exit
+  -p, --print          print the requirements for the plugin
+  -i, --install        install any requirements for the plugin
+  -e, --ensure         ensure the requirements for the plugin are satisfied
+  --error-level LEVEL  the error level (0=error, 1=warn, 2=ignore) to use when installing or ensuring plugin requirements
+</pre></div>
+</div>
+<p><strong>Examples</strong></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print requirements for a plugin</span>
+fiftyone<span class="w"> </span>plugins<span class="w"> </span>requirements<span class="w"> </span>&lt;name&gt;<span class="w"> </span>--print
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install any requirements for the plugin</span>
+fiftyone<span class="w"> </span>plugins<span class="w"> </span>requirements<span class="w"> </span>&lt;name&gt;<span class="w"> </span>--install
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ensures that the requirements for the plugin are satisfied</span>
+fiftyone<span class="w"> </span>plugins<span class="w"> </span>requirements<span class="w"> </span>&lt;name&gt;<span class="w"> </span>--ensure
+</pre></div>
+</div>
+</div>
+<div class="section" id="create-plugins">
+<span id="cli-fiftyone-plugins-create"></span><h3>Create plugins<a class="headerlink" href="#create-plugins" title="Permalink to this headline">¶</a></h3>
+<p>Creates or initializes a plugin.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fiftyone plugins create [-h]
+                        [-f [FILES ...]]
+                        [-d OUTDIR]
+                        [--label LABEL]
+                        [--description DESCRIPTION]
+                        [--version VERSION]
+                        [-o]
+                        [--kwargs KEY=VAL [KEY=VAL ...]]
+                        [NAME ...]
+</pre></div>
+</div>
+<p><strong>Arguments</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>positional arguments:
+  NAME                  the plugin name(s)
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -f [FILES ...], --from-files [FILES ...]
+                        a directory or list of explicit filepaths to include in the plugin
+  -d OUTDIR, --outdir OUTDIR
+                        a directory in which to create the plugin
+  --label LABEL         a display name for the plugin
+  --description DESCRIPTION
+                        a description for the plugin
+  --version VERSION     an optional FiftyOne version requirement for the plugin
+  -o, --overwrite       whether to overwrite existing plugins
+  --kwargs KEY=VAL [KEY=VAL ...]
+                        additional keyword arguments to include in the plugin definition
+</pre></div>
+</div>
+<p><strong>Examples</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span># Initialize a new plugin
+fiftyone plugins create &lt;name&gt;
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a plugin from existing files</span>
+fiftyone<span class="w"> </span>plugins<span class="w"> </span>create<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>&lt;name&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--from-files<span class="w"> </span>/path/to/dir<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--label<span class="w"> </span>&lt;label&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--description<span class="w"> </span>&lt;description&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="enable-plugins">
+<span id="cli-fiftyone-plugins-enable"></span><h3>Enable plugins<a class="headerlink" href="#enable-plugins" title="Permalink to this headline">¶</a></h3>
+<p>Enables the given plugin(s).</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fiftyone plugins enable [-h] [-a] [NAME ...]
+</pre></div>
+</div>
+<p><strong>Arguments</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>positional arguments:
+  NAME        the plugin name(s)
+
+optional arguments:
+  -h, --help  show this help message and exit
+  -a, --all   whether to enable all plugins
+</pre></div>
+</div>
+<p><strong>Examples</strong></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Enable a plugin</span>
+fiftyone<span class="w"> </span>plugins<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>&lt;name&gt;
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Enable multiple plugins</span>
+fiftyone<span class="w"> </span>plugins<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>&lt;name1&gt;<span class="w"> </span>&lt;name2&gt;<span class="w"> </span>...
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Enable all plugins</span>
+fiftyone<span class="w"> </span>plugins<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--all
+</pre></div>
+</div>
+</div>
+<div class="section" id="disable-plugins">
+<span id="cli-fiftyone-plugins-disable"></span><h3>Disable plugins<a class="headerlink" href="#disable-plugins" title="Permalink to this headline">¶</a></h3>
+<p>Disables the given plugin(s).</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fiftyone plugins disable [-h] [-a] [NAME ...]
+</pre></div>
+</div>
+<p><strong>Arguments</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>positional arguments:
+  NAME        the plugin name(s)
+
+optional arguments:
+  -h, --help  show this help message and exit
+  -a, --all   whether to disable all plugins
+</pre></div>
+</div>
+<p><strong>Examples</strong></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Disable a plugin</span>
+fiftyone<span class="w"> </span>plugins<span class="w"> </span>disable<span class="w"> </span>&lt;name&gt;
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Disable multiple plugins</span>
+fiftyone<span class="w"> </span>plugins<span class="w"> </span>disable<span class="w"> </span>&lt;name1&gt;<span class="w"> </span>&lt;name2&gt;<span class="w"> </span>...
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Disable all plugins</span>
+fiftyone<span class="w"> </span>plugins<span class="w"> </span>disable<span class="w"> </span>--all
+</pre></div>
+</div>
+</div>
+<div class="section" id="delete-plugins">
+<span id="cli-fiftyone-plugins-delete"></span><h3>Delete plugins<a class="headerlink" href="#delete-plugins" title="Permalink to this headline">¶</a></h3>
+<p>Delete plugins from your local machine.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fiftyone plugins delete [-h] [-a] [NAME ...]
+</pre></div>
+</div>
+<p><strong>Arguments</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>positional arguments:
+  NAME        the plugin name(s)
+
+optional arguments:
+  -h, --help  show this help message and exit
+  -a, --all   whether to delete all plugins
+</pre></div>
+</div>
+<p><strong>Examples</strong></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Delete a plugin from local disk</span>
+fiftyone<span class="w"> </span>plugins<span class="w"> </span>delete<span class="w"> </span>&lt;name&gt;
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Delete multiple plugins from local disk</span>
+fiftyone<span class="w"> </span>plugins<span class="w"> </span>delete<span class="w"> </span>&lt;name1&gt;<span class="w"> </span>&lt;name2&gt;<span class="w"> </span>...
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Delete all plugins from local disk</span>
+fiftyone<span class="w"> </span>plugins<span class="w"> </span>delete<span class="w"> </span>--all
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="fiftyone-utilities">
+<span id="cli-fiftyone-utils"></span><h2>FiftyOne utilities<a class="headerlink" href="#fiftyone-utilities" title="Permalink to this headline">¶</a></h2>
+<p>FiftyOne utilities.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fiftyone utils [-h] [--all-help]
+               {compute-metadata,transform-images,transform-videos} ...
+</pre></div>
+</div>
+<p><strong>Arguments</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>optional arguments:
+  -h, --help            show this help message and exit
+  --all-help            show help recursively and exit
+
+available commands:
+  {compute-metadata,transform-images,transform-videos}
+    compute-metadata    Populates the `metadata` field of all samples in the dataset.
+    transform-images    Transforms the images in a dataset per the specified parameters.
+    transform-videos    Transforms the videos in a dataset per the specified parameters.
+</pre></div>
+</div>
+<div class="section" id="compute-metadata">
+<span id="cli-fiftyone-utils-compute-metadata"></span><h3>Compute metadata<a class="headerlink" href="#compute-metadata" title="Permalink to this headline">¶</a></h3>
+<p>Populates the <code class="code docutils literal notranslate"><span class="pre">metadata</span></code> field of all samples in the dataset.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fiftyone utils compute-metadata [-h] [-o] [-n NUM_WORKERS] [-s] DATASET_NAME
+</pre></div>
+</div>
+<p><strong>Arguments</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>positional arguments:
+  NAME                  the name of the dataset
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -o, --overwrite       whether to overwrite existing metadata
+  -n NUM_WORKERS, --num-workers NUM_WORKERS
+                        a suggested number of worker processes to use
+  -s, --skip-failures   whether to gracefully continue without raising an
+                        error if metadata cannot be computed for a sample
+</pre></div>
+</div>
+<p><strong>Examples</strong></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Populate all missing `metadata` sample fields</span>
+fiftyone<span class="w"> </span>utils<span class="w"> </span>compute-metadata<span class="w"> </span>&lt;dataset-name&gt;
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># (Re)-populate the `metadata` field for all samples</span>
+fiftyone<span class="w"> </span>utils<span class="w"> </span>compute-metadata<span class="w"> </span>&lt;dataset-name&gt;<span class="w"> </span>--overwrite
+</pre></div>
+</div>
+</div>
+<div class="section" id="transform-images">
+<span id="cli-fiftyone-utils-transform-images"></span><h3>Transform images<a class="headerlink" href="#transform-images" title="Permalink to this headline">¶</a></h3>
+<p>Transforms the images in a dataset per the specified parameters.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fiftyone utils transform-images [-h] [--size SIZE] [--min-size MIN_SIZE]
+                                [--max-size MAX_SIZE] [-i INTERPOLATION]
+                                [-e EXT] [-f] [--media-field MEDIA_FIELD]
+                                [--output-field OUTPUT_FIELD]
+                                [-o OUTPUT_DIR] [-r REL_DIR]
+                                [--no-update-filepaths]
+                                [-d] [-n NUM_WORKERS] [-s]
+                                DATASET_NAME
+</pre></div>
+</div>
+<p><strong>Arguments</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>positional arguments:
+  DATASET_NAME          the name of the dataset
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --size SIZE           a `width,height` for each image. A dimension can be
+                        -1 if no constraint should be applied
+  --min-size MIN_SIZE   a minimum `width,height` for each image. A dimension
+                        can be -1 if no constraint should be applied
+  --max-size MAX_SIZE   a maximum `width,height` for each image. A dimension
+                        can be -1 if no constraint should be applied
+  -i INTERPOLATION, --interpolation INTERPOLATION
+                        an optional `interpolation` argument for `cv2.resize()`
+  -e EXT, --ext EXT     an image format to convert to (e.g., &#39;.png&#39; or &#39;.jpg&#39;)
+  -f, --force-reencode  whether to re-encode images whose parameters already
+                        meet the specified values
+  --media-field MEDIA_FIELD
+                        the input field containing the image paths to
+                        transform
+  --output-field OUTPUT_FIELD
+                        an optional field in which to store the paths to
+                        the transformed images. By default, `media_field`
+                        is updated in-place
+  -o OUTPUT_DIR, --output-dir OUTPUT_DIR
+                        an optional output directory in which to write the
+                        transformed images. If none is provided, the images
+                        are updated in-place
+  -r REL_DIR, --rel-dir REL_DIR
+                        an optional relative directory to strip from each
+                        input filepath to generate a unique identifier that
+                        is joined with `output_dir` to generate an output
+                        path for each image
+  --no-update-filepaths
+                        whether to store the output filepaths on the sample
+                        collection
+  -d, --delete-originals
+                        whether to delete the original images after transforming
+  -n NUM_WORKERS, --num-workers NUM_WORKERS
+                        a suggested number of worker processes to use
+  -s, --skip-failures   whether to gracefully continue without raising an
+                        error if an image cannot be transformed
+</pre></div>
+</div>
+<p><strong>Examples</strong></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Convert the images in the dataset to PNGs</span>
+fiftyone<span class="w"> </span>utils<span class="w"> </span>transform-images<span class="w"> </span>&lt;dataset-name&gt;<span class="w"> </span>--ext<span class="w"> </span>.png<span class="w"> </span>--delete-originals
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ensure that no images in the dataset exceed 1920 x 1080</span>
+fiftyone<span class="w"> </span>utils<span class="w"> </span>transform-images<span class="w"> </span>&lt;dataset-name&gt;<span class="w"> </span>--max-size<span class="w"> </span><span class="m">1920</span>,1080
+</pre></div>
+</div>
+</div>
+<div class="section" id="transform-videos">
+<span id="cli-fiftyone-utils-transform-videos"></span><h3>Transform videos<a class="headerlink" href="#transform-videos" title="Permalink to this headline">¶</a></h3>
+<p>Transforms the videos in a dataset per the specified parameters.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fiftyone utils transform-videos [-h] [--fps FPS] [--min-fps MIN_FPS]
+                                [--max-fps MAX_FPS] [--size SIZE]
+                                [--min-size MIN_SIZE] [--max-size MAX_SIZE]
+                                [-r] [-f]
+                                [--media-field MEDIA_FIELD]
+                                [--output-field OUTPUT_FIELD]
+                                [--output-dir OUTPUT_DIR]
+                                [--rel-dir REL_DIR]
+                                [--no-update-filepaths]
+                                [-d] [-s] [-v]
+                                DATASET_NAME
+</pre></div>
+</div>
+<p><strong>Arguments</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>positional arguments:
+  DATASET_NAME          the name of the dataset
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --fps FPS             a frame rate at which to resample the videos
+  --min-fps MIN_FPS     a minimum frame rate. Videos with frame rate below
+                        this value are upsampled
+  --max-fps MAX_FPS     a maximum frame rate. Videos with frame rate exceeding
+                        this value are downsampled
+  --size SIZE           a `width,height` for each frame. A dimension can be -1
+                        if no constraint should be applied
+  --min-size MIN_SIZE   a minimum `width,height` for each frame. A dimension
+                        can be -1 if no constraint should be applied
+  --max-size MAX_SIZE   a maximum `width,height` for each frame. A dimension
+                        can be -1 if no constraint should be applied
+  -r, --reencode        whether to re-encode the videos as H.264 MP4s
+  -f, --force-reencode  whether to re-encode videos whose parameters already
+                        meet the specified values
+  --media-field MEDIA_FIELD
+                        the input field containing the video paths to
+                        transform
+  --output-field OUTPUT_FIELD
+                        an optional field in which to store the paths to
+                        the transformed videos. By default, `media_field`
+                        is updated in-place
+  --output-dir OUTPUT_DIR
+                        an optional output directory in which to write the
+                        transformed videos. If none is provided, the videos
+                        are updated in-place
+  --rel-dir REL_DIR     an optional relative directory to strip from each
+                        input filepath to generate a unique identifier that
+                        is joined with `output_dir` to generate an output
+                        path for each video
+  --no-update-filepaths
+                        whether to store the output filepaths on the sample
+                        collection
+  -d, --delete-originals
+                        whether to delete the original videos after transforming
+  -s, --skip-failures   whether to gracefully continue without raising an
+                        error if a video cannot be transformed
+  -v, --verbose         whether to log the `ffmpeg` commands that are executed
+</pre></div>
+</div>
+<p><strong>Examples</strong></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Re-encode the videos in the dataset as H.264 MP4s</span>
+fiftyone<span class="w"> </span>utils<span class="w"> </span>transform-videos<span class="w"> </span>&lt;dataset-name&gt;<span class="w"> </span>--reencode
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ensure that no videos in the dataset exceed 1920 x 1080 and 30fps</span>
+fiftyone<span class="w"> </span>utils<span class="w"> </span>transform-videos<span class="w"> </span>&lt;dataset-name&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--max-size<span class="w"> </span><span class="m">1920</span>,1080<span class="w"> </span>--max-fps<span class="w"> </span><span class="m">30</span>.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="fiftyone-annotation">
+<span id="cli-fiftyone-annotation"></span><h2>FiftyOne Annotation<a class="headerlink" href="#fiftyone-annotation" title="Permalink to this headline">¶</a></h2>
+<p>Tools for working with the FiftyOne annotation API.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fiftyone annotation [-h] [--all-help] {config} ...
+</pre></div>
+</div>
+<p><strong>Arguments</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>optional arguments:
+  -h, --help            show this help message and exit
+  --all-help            show help recursively and exit
+
+available commands:
+  {config}
+    config              Tools for working with your FiftyOne annotation config.
+</pre></div>
+</div>
+<div class="section" id="annotation-config">
+<span id="cli-fiftyone-annotation-config"></span><h3>Annotation Config<a class="headerlink" href="#annotation-config" title="Permalink to this headline">¶</a></h3>
+<p>Tools for working with your FiftyOne annotation config.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fiftyone annotation config [-h] [-l] [FIELD]
+</pre></div>
+</div>
+<p><strong>Arguments</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>positional arguments:
+  FIELD         an annotation config field to print
+
+optional arguments:
+  -h, --help    show this help message and exit
+  -l, --locate  print the location of your annotation config on disk
+</pre></div>
+</div>
+<p><strong>Examples</strong></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print your entire annotation config</span>
+fiftyone<span class="w"> </span>annotation<span class="w"> </span>config
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print a specific annotation config field</span>
+fiftyone<span class="w"> </span>annotation<span class="w"> </span>config<span class="w"> </span>&lt;field&gt;
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print the location of your annotation config on disk (if one exists)</span>
+fiftyone<span class="w"> </span>annotation<span class="w"> </span>config<span class="w"> </span>--locate
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="fiftyone-app">
+<span id="cli-fiftyone-app"></span><h2>FiftyOne App<a class="headerlink" href="#fiftyone-app" title="Permalink to this headline">¶</a></h2>
+<p>Tools for working with the FiftyOne App.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fiftyone app [-h] [--all-help] {config,launch,view,connect} ...
+</pre></div>
+</div>
+<p><strong>Arguments</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>optional arguments:
+  -h, --help            show this help message and exit
+  --all-help            show help recursively and exit
+
+available commands:
+  {config,launch,view,connect}
+    config              Tools for working with your App config.
+    launch              Launch the FiftyOne App.
+    view                View datasets in the App without persisting them to the database.
+    connect             Connect to a remote FiftyOne App.
+</pre></div>
+</div>
+<div class="section" id="app-config">
+<span id="cli-fiftyone-app-config"></span><h3>App Config<a class="headerlink" href="#app-config" title="Permalink to this headline">¶</a></h3>
+<p>Tools for working with your FiftyOne App config.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fiftyone app config [-h] [-l] [FIELD]
+</pre></div>
+</div>
+<p><strong>Arguments</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>positional arguments:
+  FIELD         an App config field to print
+
+optional arguments:
+  -h, --help    show this help message and exit
+  -l, --locate  print the location of your App config on disk
+</pre></div>
+</div>
+<p><strong>Examples</strong></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print your entire App config</span>
+fiftyone<span class="w"> </span>app<span class="w"> </span>config
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print a specific App config field</span>
+fiftyone<span class="w"> </span>app<span class="w"> </span>config<span class="w"> </span>&lt;field&gt;
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print the location of your App config on disk (if one exists)</span>
+fiftyone<span class="w"> </span>app<span class="w"> </span>config<span class="w"> </span>--locate
+</pre></div>
+</div>
+</div>
+<div class="section" id="launch-the-app">
+<span id="cli-fiftyone-app-launch"></span><h3>Launch the App<a class="headerlink" href="#launch-the-app" title="Permalink to this headline">¶</a></h3>
+<p>Launch the FiftyOne App.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fiftyone app launch [-h] [-p PORT] [-A ADDRESS] [-b BROWSER] [-r] [-a] [-w WAIT] [NAME]
+</pre></div>
+</div>
+<p><strong>Arguments</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>positional arguments:
+  NAME                  the name of a dataset to open
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -p PORT, --port PORT  the port number to use
+  -A ADDRESS, --address ADDRESS
+                        the address (server name) to use
+  -r, --remote          whether to launch a remote App session
+  -b BROWSER, --browser BROWSER
+                        the browser to use to open the App
+  -w WAIT, --wait WAIT  the number of seconds to wait for a new App
+                        connection before returning if all connections are
+                        lost. If negative, the process will wait forever,
+                        regardless of connections
+</pre></div>
+</div>
+<p><strong>Examples</strong></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Launch the App</span>
+fiftyone<span class="w"> </span>app<span class="w"> </span>launch
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Launch the App with the given dataset loaded</span>
+fiftyone<span class="w"> </span>app<span class="w"> </span>launch<span class="w"> </span>&lt;name&gt;
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Launch a remote App session</span>
+fiftyone<span class="w"> </span>app<span class="w"> </span>launch<span class="w"> </span>...<span class="w"> </span>--remote
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Launch an App session with a specific browser</span>
+fiftyone<span class="w"> </span>app<span class="w"> </span>launch<span class="w"> </span>...<span class="w"> </span>--browser<span class="w"> </span>&lt;name&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="view-datasets-in-app">
+<span id="cli-fiftyone-app-view"></span><h3>View datasets in App<a class="headerlink" href="#view-datasets-in-app" title="Permalink to this headline">¶</a></h3>
+<p>View datasets in the FiftyOne App without persisting them to the database.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fiftyone app view [-h] [-n NAME] [-d DATASET_DIR] [-t TYPE] [-z NAME]
+                  [-s SPLITS [SPLITS ...]] [--images-dir IMAGES_DIR]
+                  [--images-patt IMAGES_PATT] [--videos-dir VIDEOS_DIR]
+                  [--videos-patt VIDEOS_PATT] [-j JSON_PATH] [-p PORT]
+                  [-A ADDRESS] [-r] [-a] [-w WAIT]
+                  [-k KEY=VAL [KEY=VAL ...]]
+</pre></div>
+</div>
+<p><strong>Arguments</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>optional arguments:
+  -h, --help            show this help message and exit
+  -n NAME, --name NAME  a name for the dataset
+  -d DATASET_DIR, --dataset-dir DATASET_DIR
+                        the directory containing the dataset to view
+  -t TYPE, --type TYPE  the fiftyone.types.Dataset type of the dataset
+  -z NAME, --zoo-dataset NAME
+                        the name of a zoo dataset to view
+  -s SPLITS [SPLITS ...], --splits SPLITS [SPLITS ...]
+                        the dataset splits to load
+  --images-dir IMAGES_DIR
+                        the path to a directory of images
+  --images-patt IMAGES_PATT
+                        a glob pattern of images
+  --videos-dir VIDEOS_DIR
+                        the path to a directory of videos
+  --videos-patt VIDEOS_PATT
+                        a glob pattern of videos
+  -j JSON_PATH, --json-path JSON_PATH
+                        the path to a samples JSON file to view
+  -p PORT, --port PORT  the port number to use
+  -A ADDRESS, --address ADDRESS
+                        the address (server name) to use
+  -r, --remote          whether to launch a remote App session
+  -w WAIT, --wait WAIT  the number of seconds to wait for a new App
+                        connection before returning if all connections are
+                        lost. If negative, the process will wait forever,
+                        regardless of connections
+  -k KEY=VAL [KEY=VAL ...], --kwargs KEY=VAL [KEY=VAL ...]
+                        additional type-specific keyword arguments for
+                        `fiftyone.core.dataset.Dataset.from_dir()`
+</pre></div>
+</div>
+<p><strong>Examples</strong></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># View a dataset stored on disk in the App</span>
+fiftyone<span class="w"> </span>app<span class="w"> </span>view<span class="w"> </span>--dataset-dir<span class="w"> </span>&lt;dataset-dir&gt;<span class="w"> </span>--type<span class="w"> </span>&lt;type&gt;
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># View a zoo dataset in the App</span>
+fiftyone<span class="w"> </span>app<span class="w"> </span>view<span class="w"> </span>--zoo-dataset<span class="w"> </span>&lt;name&gt;<span class="w"> </span>--splits<span class="w"> </span>&lt;split1&gt;<span class="w"> </span>...
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># View a directory of images in the App</span>
+fiftyone<span class="w"> </span>app<span class="w"> </span>view<span class="w"> </span>--images-dir<span class="w"> </span>&lt;images-dir&gt;
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># View a glob pattern of images in the App</span>
+fiftyone<span class="w"> </span>app<span class="w"> </span>view<span class="w"> </span>--images-patt<span class="w"> </span>&lt;images-patt&gt;
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># View a directory of videos in the App</span>
+fiftyone<span class="w"> </span>app<span class="w"> </span>view<span class="w"> </span>--videos-dir<span class="w"> </span>&lt;videos-dir&gt;
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># View a glob pattern of videos in the App</span>
+fiftyone<span class="w"> </span>app<span class="w"> </span>view<span class="w"> </span>--videos-patt<span class="w"> </span>&lt;videos-patt&gt;
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># View a dataset stored in JSON format on disk in the App</span>
+fiftyone<span class="w"> </span>app<span class="w"> </span>view<span class="w"> </span>--json-path<span class="w"> </span>&lt;json-path&gt;
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># View the dataset in a remote App session</span>
+fiftyone<span class="w"> </span>app<span class="w"> </span>view<span class="w"> </span>...<span class="w"> </span>--remote
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># View a random subset of the data stored on disk in the App</span>
+fiftyone<span class="w"> </span>app<span class="w"> </span>view<span class="w"> </span>...<span class="w"> </span>--kwargs<span class="w"> </span><span class="nv">max_samples</span><span class="o">=</span><span class="m">50</span><span class="w"> </span><span class="nv">shuffle</span><span class="o">=</span>True
+</pre></div>
+</div>
+</div>
+<div class="section" id="connect-to-remote-app">
+<span id="cli-fiftyone-app-connect"></span><h3>Connect to remote App<a class="headerlink" href="#connect-to-remote-app" title="Permalink to this headline">¶</a></h3>
+<p>Connect to a remote FiftyOne App in your web browser.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fiftyone app connect [-h] [-d DESTINATION] [-p PORT] [-A ADDRESS] [-l PORT]
+                     [-i KEY]
+</pre></div>
+</div>
+<p><strong>Arguments</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>optional arguments:
+  -h, --help            show this help message and exit
+  -d DESTINATION, --destination DESTINATION
+                        the destination to connect to, e.g., [username@]hostname
+  -p PORT, --port PORT  the remote port to connect to
+  -l PORT, --local-port PORT
+                        the local port to use to serve the App
+  -i KEY, --ssh-key KEY
+                        optional ssh key to use to login
+</pre></div>
+</div>
+<p><strong>Examples</strong></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Connect to a remote App with port forwarding already configured</span>
+fiftyone<span class="w"> </span>app<span class="w"> </span>connect
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Connect to a remote App session</span>
+fiftyone<span class="w"> </span>app<span class="w"> </span>connect<span class="w"> </span>--destination<span class="w"> </span>&lt;destination&gt;<span class="w"> </span>--port<span class="w"> </span>&lt;port&gt;
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Connect to a remote App session using an ssh key</span>
+fiftyone<span class="w"> </span>app<span class="w"> </span>connect<span class="w"> </span>...<span class="w"> </span>--ssh-key<span class="w"> </span>&lt;path/to/key&gt;
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Connect to a remote App using a custom local port</span>
+fiftyone<span class="w"> </span>app<span class="w"> </span>connect<span class="w"> </span>...<span class="w"> </span>--local-port<span class="w"> </span>&lt;port&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="fiftyone-brain">
+<span id="cli-fiftyone-brain"></span><h2>FiftyOne Brain<a class="headerlink" href="#fiftyone-brain" title="Permalink to this headline">¶</a></h2>
+<p>Tools for working with the FiftyOne Brain.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fiftyone brain [-h] [--all-help] {config} ...
+</pre></div>
+</div>
+<p><strong>Arguments</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>optional arguments:
+  -h, --help            show this help message and exit
+  --all-help            show help recursively and exit
+
+available commands:
+  {config}
+    config              Tools for working with your FiftyOne Brain config.
+</pre></div>
+</div>
+<div class="section" id="brain-config">
+<span id="cli-fiftyone-brain-config"></span><h3>Brain Config<a class="headerlink" href="#brain-config" title="Permalink to this headline">¶</a></h3>
+<p>Tools for working with your FiftyOne Brain config.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fiftyone brain config [-h] [-l] [FIELD]
+</pre></div>
+</div>
+<p><strong>Arguments</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>positional arguments:
+  FIELD         a brain config field to print
+
+optional arguments:
+  -h, --help    show this help message and exit
+  -l, --locate  print the location of your brain config on disk
+</pre></div>
+</div>
+<p><strong>Examples</strong></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print your entire brain config</span>
+fiftyone<span class="w"> </span>brain<span class="w"> </span>config
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print a specific brain config field</span>
+fiftyone<span class="w"> </span>brain<span class="w"> </span>config<span class="w"> </span>&lt;field&gt;
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print the location of your brain config on disk (if one exists)</span>
+fiftyone<span class="w"> </span>brain<span class="w"> </span>config<span class="w"> </span>--locate
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="fiftyone-evaluation">
+<span id="cli-fiftyone-evaluation"></span><h2>FiftyOne Evaluation<a class="headerlink" href="#fiftyone-evaluation" title="Permalink to this headline">¶</a></h2>
+<p>Tools for working with the FiftyOne evaluation API.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fiftyone evaluation [-h] [--all-help] {config} ...
+</pre></div>
+</div>
+<p><strong>Arguments</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>optional arguments:
+  -h, --help            show this help message and exit
+  --all-help            show help recursively and exit
+
+available commands:
+  {config}
+    config              Tools for working with your FiftyOne evaluation config.
+</pre></div>
+</div>
+<div class="section" id="evaluation-config">
+<span id="cli-fiftyone-evaluation-config"></span><h3>Evaluation Config<a class="headerlink" href="#evaluation-config" title="Permalink to this headline">¶</a></h3>
+<p>Tools for working with your FiftyOne evaluation config.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fiftyone evaluation config [-h] [-l] [FIELD]
+</pre></div>
+</div>
+<p><strong>Arguments</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>positional arguments:
+  FIELD         an evaluation config field to print
+
+optional arguments:
+  -h, --help    show this help message and exit
+  -l, --locate  print the location of your evaluation config on disk
+</pre></div>
+</div>
+<p><strong>Examples</strong></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print your entire evaluation config</span>
+fiftyone<span class="w"> </span>evaluation<span class="w"> </span>config
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print a specific evaluation config field</span>
+fiftyone<span class="w"> </span>evaluation<span class="w"> </span>config<span class="w"> </span>&lt;field&gt;
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print the location of your evaluation config on disk (if one exists)</span>
+fiftyone<span class="w"> </span>evaluation<span class="w"> </span>config<span class="w"> </span>--locate
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="fiftyone-zoo">
+<span id="cli-fiftyone-zoo"></span><h2>FiftyOne Zoo<a class="headerlink" href="#fiftyone-zoo" title="Permalink to this headline">¶</a></h2>
+<p>Tools for working with the FiftyOne Zoo.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fiftyone zoo [-h] [--all-help] {datasets,models} ...
+</pre></div>
+</div>
+<p><strong>Arguments</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>optional arguments:
+  -h, --help         show this help message and exit
+  --all-help         show help recursively and exit
+
+available commands:
+  {datasets,models}
+    datasets         Tools for working with the FiftyOne Dataset Zoo.
+    models           Tools for working with the FiftyOne Model Zoo.
+</pre></div>
+</div>
+</div>
+<div class="section" id="fiftyone-dataset-zoo">
+<span id="cli-fiftyone-zoo-datasets"></span><h2>FiftyOne Dataset Zoo<a class="headerlink" href="#fiftyone-dataset-zoo" title="Permalink to this headline">¶</a></h2>
+<p>Tools for working with the FiftyOne Dataset Zoo.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fiftyone zoo datasets [-h] [--all-help]
+                      {list,find,info,download,load,delete} ...
+</pre></div>
+</div>
+<p><strong>Arguments</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>optional arguments:
+  -h, --help            show this help message and exit
+  --all-help            show help recursively and exit
+
+available commands:
+  {list,find,info,download,load,delete}
+    list                List datasets in the FiftyOne Dataset Zoo.
+    find                Locate a downloaded zoo dataset on disk.
+    info                Print information about datasets in the FiftyOne Dataset Zoo.
+    download            Download zoo datasets.
+    load                Load zoo datasets as persistent FiftyOne datasets.
+    delete              Deletes the local copy of the zoo dataset on disk.
+</pre></div>
+</div>
+<div class="section" id="list-datasets-in-zoo">
+<span id="cli-fiftyone-zoo-datasets-list"></span><h3>List datasets in zoo<a class="headerlink" href="#list-datasets-in-zoo" title="Permalink to this headline">¶</a></h3>
+<p>List datasets in the FiftyOne Dataset Zoo.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fiftyone zoo datasets list [-h] [-n] [-d] [-s SOURCE] [-t TAGS]
+</pre></div>
+</div>
+<p><strong>Arguments</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>optional arguments:
+  -h, --help            show this help message and exit
+  -n, --names-only      only show dataset names
+  -d, --downloaded-only
+                        only show datasets that have been downloaded
+  -s SOURCE, --source SOURCE
+                        only show datasets available from the specified source
+  -t TAGS, --tags TAGS  only show datasets with the specified tag or list,of,tags
+</pre></div>
+</div>
+<p><strong>Examples</strong></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># List available datasets</span>
+fiftyone<span class="w"> </span>zoo<span class="w"> </span>datasets<span class="w"> </span>list
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># List available dataset names</span>
+fiftyone<span class="w"> </span>zoo<span class="w"> </span>datasets<span class="w"> </span>list<span class="w"> </span>--names-only
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># List downloaded datasets</span>
+fiftyone<span class="w"> </span>zoo<span class="w"> </span>datasets<span class="w"> </span>list<span class="w"> </span>--downloaded-only
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># List available datasets from the given source</span>
+fiftyone<span class="w"> </span>zoo<span class="w"> </span>datasets<span class="w"> </span>list<span class="w"> </span>--source<span class="w"> </span>&lt;source&gt;
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># List available datasets with the given tag</span>
+fiftyone<span class="w"> </span>zoo<span class="w"> </span>datasets<span class="w"> </span>list<span class="w"> </span>--tags<span class="w"> </span>&lt;tag&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="find-zoo-datasets-on-disk">
+<span id="cli-fiftyone-zoo-datasets-find"></span><h3>Find zoo datasets on disk<a class="headerlink" href="#find-zoo-datasets-on-disk" title="Permalink to this headline">¶</a></h3>
+<p>Locate a downloaded zoo dataset on disk.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fiftyone zoo datasets find [-h] [-s SPLIT] NAME_OR_URL
+</pre></div>
+</div>
+<p><strong>Arguments</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>positional arguments:
+  NAME_OR_URL           the name or remote location of the dataset
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -s SPLIT, --split SPLIT
+</pre></div>
+</div>
+<p><strong>Examples</strong></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print the location of a downloaded zoo dataset on disk</span>
+fiftyone<span class="w"> </span>zoo<span class="w"> </span>datasets<span class="w"> </span>find<span class="w"> </span>&lt;name&gt;
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print the location of a remotely-sourced zoo dataset on disk</span>
+fiftyone<span class="w"> </span>zoo<span class="w"> </span>datasets<span class="w"> </span>find<span class="w"> </span>https://github.com/&lt;user&gt;/&lt;repo&gt;
+fiftyone<span class="w"> </span>zoo<span class="w"> </span>datasets<span class="w"> </span>find<span class="w"> </span>&lt;url&gt;
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print the location of a specific split of a dataset</span>
+fiftyone<span class="w"> </span>zoo<span class="w"> </span>datasets<span class="w"> </span>find<span class="w"> </span>&lt;name&gt;<span class="w"> </span>--split<span class="w"> </span>&lt;split&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="show-zoo-dataset-info">
+<span id="cli-fiftyone-zoo-datasets-info"></span><h3>Show zoo dataset info<a class="headerlink" href="#show-zoo-dataset-info" title="Permalink to this headline">¶</a></h3>
+<p>Print information about datasets in the FiftyOne Dataset Zoo.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fiftyone zoo datasets info [-h] NAME_OR_URL
+</pre></div>
+</div>
+<p><strong>Arguments</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>positional arguments:
+  NAME_OR_URL           the name or remote location of the dataset
+
+optional arguments:
+  -h, --help            show this help message and exit
+</pre></div>
+</div>
+<p><strong>Examples</strong></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print information about a zoo dataset</span>
+fiftyone<span class="w"> </span>zoo<span class="w"> </span>datasets<span class="w"> </span>info<span class="w"> </span>&lt;name&gt;
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print information about a remote zoo dataset</span>
+fiftyone<span class="w"> </span>zoo<span class="w"> </span>datasets<span class="w"> </span>info<span class="w"> </span>https://github.com/&lt;user&gt;/&lt;repo&gt;
+fiftyone<span class="w"> </span>zoo<span class="w"> </span>datasets<span class="w"> </span>info<span class="w"> </span>&lt;url&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="download-zoo-datasets">
+<span id="cli-fiftyone-zoo-datasets-download"></span><h3>Download zoo datasets<a class="headerlink" href="#download-zoo-datasets" title="Permalink to this headline">¶</a></h3>
+<p>Download zoo datasets.</p>
+<p>When downloading remotely-sourced zoo datasets, you can provide any of the
+following formats:</p>
+<ul class="simple">
+<li><p>a GitHub repo URL like <code class="docutils literal notranslate"><span class="pre">https://github.com/&lt;user&gt;/&lt;repo&gt;</span></code></p></li>
+<li><p>a GitHub ref like <code class="docutils literal notranslate"><span class="pre">https://github.com/&lt;user&gt;/&lt;repo&gt;/tree/&lt;branch&gt;</span></code> or
+<code class="docutils literal notranslate"><span class="pre">https://github.com/&lt;user&gt;/&lt;repo&gt;/commit/&lt;commit&gt;</span></code></p></li>
+<li><p>a GitHub ref string like <code class="docutils literal notranslate"><span class="pre">&lt;user&gt;/&lt;repo&gt;[/&lt;ref&gt;]</span></code></p></li>
+<li><p>a publicly accessible URL of an archive (eg zip or tar) file</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To download from a private GitHub repository that you have access to,
+provide your GitHub personal access token by setting the <code class="docutils literal notranslate"><span class="pre">GITHUB_TOKEN</span></code>
+environment variable.</p>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fiftyone zoo datasets download [-h] [-s SPLITS [SPLITS ...]]
+                               [-k KEY=VAL [KEY=VAL ...]]
+                               NAME_OR_URL
+</pre></div>
+</div>
+<p><strong>Arguments</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>positional arguments:
+  NAME_OR_URL           the name or remote location of the dataset
+
+optional arguments:
+
+  -h, --help            show this help message and exit
+  -s SPLITS [SPLITS ...], --splits SPLITS [SPLITS ...]
+                        the dataset splits to download
+  -k KEY=VAL [KEY=VAL ...], --kwargs KEY=VAL [KEY=VAL ...]
+                        optional dataset-specific keyword arguments for
+                        `fiftyone.zoo.download_zoo_dataset()`
+</pre></div>
+</div>
+<p><strong>Examples</strong></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Download a zoo dataset</span>
+fiftyone<span class="w"> </span>zoo<span class="w"> </span>datasets<span class="w"> </span>download<span class="w"> </span>&lt;name&gt;
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Download a remotely-sourced zoo dataset</span>
+fiftyone<span class="w"> </span>zoo<span class="w"> </span>datasets<span class="w"> </span>download<span class="w"> </span>https://github.com/&lt;user&gt;/&lt;repo&gt;
+fiftyone<span class="w"> </span>zoo<span class="w"> </span>datasets<span class="w"> </span>download<span class="w"> </span>&lt;url&gt;
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Download the specified split(s) of a zoo dataset</span>
+fiftyone<span class="w"> </span>zoo<span class="w"> </span>datasets<span class="w"> </span>download<span class="w"> </span>&lt;name&gt;<span class="w"> </span>--splits<span class="w"> </span>&lt;split1&gt;<span class="w"> </span>...
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Download a zoo dataset that requires extra keyword arguments</span>
+fiftyone<span class="w"> </span>zoo<span class="w"> </span>datasets<span class="w"> </span>download<span class="w"> </span>&lt;name&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--kwargs<span class="w"> </span><span class="nv">source_dir</span><span class="o">=</span>/path/to/source/files
+</pre></div>
+</div>
+</div>
+<div class="section" id="load-zoo-datasets">
+<span id="cli-fiftyone-zoo-datasets-load"></span><h3>Load zoo datasets<a class="headerlink" href="#load-zoo-datasets" title="Permalink to this headline">¶</a></h3>
+<p>Load zoo datasets as persistent FiftyOne datasets.</p>
+<p>When loading remotely-sourced zoo datasets, you can provide any of the
+following formats:</p>
+<ul class="simple">
+<li><p>a GitHub repo URL like <code class="docutils literal notranslate"><span class="pre">https://github.com/&lt;user&gt;/&lt;repo&gt;</span></code></p></li>
+<li><p>a GitHub ref like <code class="docutils literal notranslate"><span class="pre">https://github.com/&lt;user&gt;/&lt;repo&gt;/tree/&lt;branch&gt;</span></code> or
+<code class="docutils literal notranslate"><span class="pre">https://github.com/&lt;user&gt;/&lt;repo&gt;/commit/&lt;commit&gt;</span></code></p></li>
+<li><p>a GitHub ref string like <code class="docutils literal notranslate"><span class="pre">&lt;user&gt;/&lt;repo&gt;[/&lt;ref&gt;]</span></code></p></li>
+<li><p>a publicly accessible URL of an archive (eg zip or tar) file</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To download from a private GitHub repository that you have access to,
+provide your GitHub personal access token by setting the <code class="docutils literal notranslate"><span class="pre">GITHUB_TOKEN</span></code>
+environment variable.</p>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fiftyone zoo datasets load [-h] [-s SPLITS [SPLITS ...]]
+                           [-n DATASET_NAME] [-k KEY=VAL [KEY=VAL ...]]
+                           NAME_OR_URL
+</pre></div>
+</div>
+<p><strong>Arguments</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>positional arguments:
+  NAME_OR_URL           the name or remote location of the dataset
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -s SPLITS [SPLITS ...], --splits SPLITS [SPLITS ...]
+                        the dataset splits to load
+  -n DATASET_NAME, --dataset-name DATASET_NAME
+                        a custom name to give the FiftyOne dataset
+  -k KEY=VAL [KEY=VAL ...], --kwargs KEY=VAL [KEY=VAL ...]
+                        additional dataset-specific keyword arguments for
+                        `fiftyone.zoo.load_zoo_dataset()`
+</pre></div>
+</div>
+<p><strong>Examples</strong></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load the zoo dataset with the given name</span>
+fiftyone<span class="w"> </span>zoo<span class="w"> </span>datasets<span class="w"> </span>load<span class="w"> </span>&lt;name&gt;
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load a remotely-sourced zoo dataset</span>
+fiftyone<span class="w"> </span>zoo<span class="w"> </span>datasets<span class="w"> </span>load<span class="w"> </span>https://github.com/&lt;user&gt;/&lt;repo&gt;
+fiftyone<span class="w"> </span>zoo<span class="w"> </span>datasets<span class="w"> </span>load<span class="w"> </span>&lt;url&gt;
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load the specified split(s) of a zoo dataset</span>
+fiftyone<span class="w"> </span>zoo<span class="w"> </span>datasets<span class="w"> </span>load<span class="w"> </span>&lt;name&gt;<span class="w"> </span>--splits<span class="w"> </span>&lt;split1&gt;<span class="w"> </span>...
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load a zoo dataset with a custom name</span>
+fiftyone<span class="w"> </span>zoo<span class="w"> </span>datasets<span class="w"> </span>load<span class="w"> </span>&lt;name&gt;<span class="w"> </span>--dataset-name<span class="w"> </span>&lt;dataset-name&gt;
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load a zoo dataset that requires custom keyword arguments</span>
+fiftyone<span class="w"> </span>zoo<span class="w"> </span>datasets<span class="w"> </span>load<span class="w"> </span>&lt;name&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--kwargs<span class="w"> </span><span class="nv">source_dir</span><span class="o">=</span>/path/to/source_files
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load a random subset of a zoo dataset</span>
+fiftyone<span class="w"> </span>zoo<span class="w"> </span>datasets<span class="w"> </span>load<span class="w"> </span>&lt;name&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--kwargs<span class="w"> </span><span class="nv">max_samples</span><span class="o">=</span><span class="m">50</span><span class="w"> </span><span class="nv">shuffle</span><span class="o">=</span>True
+</pre></div>
+</div>
+</div>
+<div class="section" id="delete-zoo-datasets">
+<span id="cli-fiftyone-zoo-datasets-delete"></span><h3>Delete zoo datasets<a class="headerlink" href="#delete-zoo-datasets" title="Permalink to this headline">¶</a></h3>
+<p>Deletes the local copy of the zoo dataset on disk.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fiftyone zoo datasets delete [-h] [-s SPLIT] NAME
+</pre></div>
+</div>
+<p><strong>Arguments</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>positional arguments:
+  NAME                  the name of the dataset
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -s SPLIT, --split SPLIT
+                        a dataset split
+</pre></div>
+</div>
+<p><strong>Examples</strong></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Delete an entire zoo dataset from disk</span>
+fiftyone<span class="w"> </span>zoo<span class="w"> </span>datasets<span class="w"> </span>delete<span class="w"> </span>&lt;name&gt;
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Delete a specific split of a zoo dataset from disk</span>
+fiftyone<span class="w"> </span>zoo<span class="w"> </span>datasets<span class="w"> </span>delete<span class="w"> </span>&lt;name&gt;<span class="w"> </span>--split<span class="w"> </span>&lt;split&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="fiftyone-model-zoo">
+<span id="cli-fiftyone-zoo-models"></span><h2>FiftyOne Model Zoo<a class="headerlink" href="#fiftyone-model-zoo" title="Permalink to this headline">¶</a></h2>
+<p>Tools for working with the FiftyOne Model Zoo.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fiftyone zoo models [-h] [--all-help]
+                    {list,find,info,requirements,download,apply,embed,delete,list-sources,register-source,delete-source}
+                    ...
+</pre></div>
+</div>
+<p><strong>Arguments</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>optional arguments:
+  -h, --help            show this help message and exit
+  --all-help            show help recursively and exit
+
+available commands:
+  {list,find,info,requirements,download,apply,embed,delete,register-source,delete-source}
+    list                List models in the FiftyOne Model Zoo.
+    find                Locate the downloaded zoo model on disk.
+    info                Print information about models in the FiftyOne Model Zoo.
+    requirements        Handles package requirements for zoo models.
+    download            Download zoo models.
+    apply               Apply zoo models to datasets.
+    embed               Generate embeddings for datasets with zoo models.
+    delete              Deletes the local copy of the zoo model on disk.
+    list-sources        Lists remote zoo model sources that are registered locally.
+    register-source     Registers a remote source of zoo models.
+    delete-source       Deletes the remote source and all downloaded models associated with it.
+</pre></div>
+</div>
+<div class="section" id="list-models-in-zoo">
+<span id="cli-fiftyone-zoo-models-list"></span><h3>List models in zoo<a class="headerlink" href="#list-models-in-zoo" title="Permalink to this headline">¶</a></h3>
+<p>List models in the FiftyOne Model Zoo.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fiftyone zoo models list [-h] [-n] [-d] [-t TAGS] [-s SOURCE]
+</pre></div>
+</div>
+<p><strong>Arguments</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>optional arguments:
+  -h, --help            show this help message and exit
+  -n, --names-only      only show model names
+  -d, --downloaded-only
+                        only show models that have been downloaded
+  -t TAGS, --tags TAGS  only show models with the specified tag or list,of,tags
+  -s SOURCE, --source SOURCE
+                        only show models available from the specified remote source
+</pre></div>
+</div>
+<p><strong>Examples</strong></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># List available models</span>
+fiftyone<span class="w"> </span>zoo<span class="w"> </span>models<span class="w"> </span>list
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># List available models (names only)</span>
+fiftyone<span class="w"> </span>zoo<span class="w"> </span>models<span class="w"> </span>list<span class="w"> </span>--names-only
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># List downloaded models</span>
+fiftyone<span class="w"> </span>zoo<span class="w"> </span>models<span class="w"> </span>list<span class="w"> </span>--downloaded-only
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># List available models with the given tag</span>
+fiftyone<span class="w"> </span>zoo<span class="w"> </span>models<span class="w"> </span>list<span class="w"> </span>--tags<span class="w"> </span>&lt;tag&gt;
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># List available models from the given remote source</span>
+fiftyone<span class="w"> </span>zoo<span class="w"> </span>models<span class="w"> </span>list<span class="w"> </span>--source<span class="w"> </span>&lt;source&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="find-zoo-models-on-disk">
+<span id="cli-fiftyone-zoo-models-find"></span><h3>Find zoo models on disk<a class="headerlink" href="#find-zoo-models-on-disk" title="Permalink to this headline">¶</a></h3>
+<p>Locate the downloaded zoo model on disk.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fiftyone zoo models find [-h] NAME
+</pre></div>
+</div>
+<p><strong>Arguments</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>positional arguments:
+  NAME                  the name of the model
+
+optional arguments:
+  -h, --help            show this help message and exit
+</pre></div>
+</div>
+<p><strong>Examples</strong></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print the location of the downloaded zoo model on disk</span>
+fiftyone<span class="w"> </span>zoo<span class="w"> </span>models<span class="w"> </span>find<span class="w"> </span>&lt;name&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="show-zoo-model-info">
+<span id="cli-fiftyone-zoo-models-info"></span><h3>Show zoo model info<a class="headerlink" href="#show-zoo-model-info" title="Permalink to this headline">¶</a></h3>
+<p>Print information about models in the FiftyOne Model Zoo.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fiftyone zoo models info [-h] NAME
+</pre></div>
+</div>
+<p><strong>Arguments</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>positional arguments:
+  NAME                  the name of the model
+
+optional arguments:
+  -h, --help            show this help message and exit
+</pre></div>
+</div>
+<p><strong>Examples</strong></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print information about a zoo model</span>
+fiftyone<span class="w"> </span>zoo<span class="w"> </span>models<span class="w"> </span>info<span class="w"> </span>&lt;name&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="zoo-model-requirements">
+<span id="cli-fiftyone-zoo-models-requirements"></span><h3>Zoo model requirements<a class="headerlink" href="#zoo-model-requirements" title="Permalink to this headline">¶</a></h3>
+<p>Handles package requirements for zoo models.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fiftyone zoo models requirements [-h] [-p] [-i] [-e]
+                                 [--error-level LEVEL]
+                                 NAME
+</pre></div>
+</div>
+<p><strong>Arguments</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>positional arguments:
+  NAME                 the name of the model
+
+optional arguments:
+  -h, --help           show this help message and exit
+  -p, --print          print the requirements for the zoo model
+  -i, --install        install any requirements for the zoo model
+  -e, --ensure         ensure the requirements for the zoo model are satisfied
+  --error-level LEVEL  the error level (0=error, 1=warn, 2=ignore) to use
+                       when installing or ensuring model requirements
+</pre></div>
+</div>
+<p><strong>Examples</strong></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print requirements for a zoo model</span>
+fiftyone<span class="w"> </span>zoo<span class="w"> </span>models<span class="w"> </span>requirements<span class="w"> </span>&lt;name&gt;<span class="w"> </span>--print
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install any requirements for the zoo model</span>
+fiftyone<span class="w"> </span>zoo<span class="w"> </span>models<span class="w"> </span>requirements<span class="w"> </span>&lt;name&gt;<span class="w"> </span>--install
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ensures that the requirements for the zoo model are satisfied</span>
+fiftyone<span class="w"> </span>zoo<span class="w"> </span>models<span class="w"> </span>requirements<span class="w"> </span>&lt;name&gt;<span class="w"> </span>--ensure
+</pre></div>
+</div>
+</div>
+<div class="section" id="download-zoo-models">
+<span id="cli-fiftyone-zoo-models-download"></span><h3>Download zoo models<a class="headerlink" href="#download-zoo-models" title="Permalink to this headline">¶</a></h3>
+<p>Download zoo models.</p>
+<p>When downloading remotely-sourced zoo models, you can provide any of the
+following:</p>
+<ul class="simple">
+<li><p>a GitHub repo URL like <code class="docutils literal notranslate"><span class="pre">https://github.com/&lt;user&gt;/&lt;repo&gt;</span></code></p></li>
+<li><p>a GitHub ref like <code class="docutils literal notranslate"><span class="pre">https://github.com/&lt;user&gt;/&lt;repo&gt;/tree/&lt;branch&gt;</span></code> or
+<code class="docutils literal notranslate"><span class="pre">https://github.com/&lt;user&gt;/&lt;repo&gt;/commit/&lt;commit&gt;</span></code></p></li>
+<li><p>a GitHub ref string like <code class="docutils literal notranslate"><span class="pre">&lt;user&gt;/&lt;repo&gt;[/&lt;ref&gt;]</span></code></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To download from a private GitHub repository that you have access to,
+provide your GitHub personal access token by setting the <code class="docutils literal notranslate"><span class="pre">GITHUB_TOKEN</span></code>
+environment variable.</p>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fiftyone zoo models download [-h] [-n MODEL_NAME] [-o] NAME_OR_URL
+</pre></div>
+</div>
+<p><strong>Arguments</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>positional arguments:
+  NAME_OR_URL           the name or remote location of the model
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -n MODEL_NAME, --model-name MODEL_NAME
+                        the specific model to download, if `name_or_url` is
+                        a remote source
+  -o, --overwrite       whether to overwrite any existing model files
+</pre></div>
+</div>
+<p><strong>Examples</strong></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Download a zoo model</span>
+fiftyone<span class="w"> </span>zoo<span class="w"> </span>models<span class="w"> </span>download<span class="w"> </span>&lt;name&gt;
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Download a remotely-sourced zoo model</span>
+fiftyone<span class="w"> </span>zoo<span class="w"> </span>models<span class="w"> </span>download<span class="w"> </span>https://github.com/&lt;user&gt;/&lt;repo&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--model-name<span class="w"> </span>&lt;name&gt;
+fiftyone<span class="w"> </span>zoo<span class="w"> </span>models<span class="w"> </span>download<span class="w"> </span>&lt;url&gt;<span class="w"> </span>--model-name<span class="w"> </span>&lt;name&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="apply-zoo-models-to-datasets">
+<span id="cli-fiftyone-zoo-models-apply"></span><h3>Apply zoo models to datasets<a class="headerlink" href="#apply-zoo-models-to-datasets" title="Permalink to this headline">¶</a></h3>
+<p>Apply zoo models to datasets.</p>
+<p>When applying remotely-sourced zoo models, you can provide any of the following
+formats:</p>
+<ul class="simple">
+<li><p>a GitHub repo URL like <code class="docutils literal notranslate"><span class="pre">https://github.com/&lt;user&gt;/&lt;repo&gt;</span></code></p></li>
+<li><p>a GitHub ref like <code class="docutils literal notranslate"><span class="pre">https://github.com/&lt;user&gt;/&lt;repo&gt;/tree/&lt;branch&gt;</span></code> or
+<code class="docutils literal notranslate"><span class="pre">https://github.com/&lt;user&gt;/&lt;repo&gt;/commit/&lt;commit&gt;</span></code></p></li>
+<li><p>a GitHub ref string like <code class="docutils literal notranslate"><span class="pre">&lt;user&gt;/&lt;repo&gt;[/&lt;ref&gt;]</span></code></p></li>
+<li><p>a publicly accessible URL of an archive (eg zip or tar) file</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To download from a private GitHub repository that you have access to,
+provide your GitHub personal access token by setting the <code class="docutils literal notranslate"><span class="pre">GITHUB_TOKEN</span></code>
+environment variable.</p>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fiftyone zoo models apply [-h] [-n MODEL_NAME] [-b BATCH_SIZE] [-t THRESH]
+                          [-l] [-i] [--error-level LEVEL]
+                          NAME_OR_URL DATASET_NAME LABEL_FIELD
+</pre></div>
+</div>
+<p><strong>Arguments</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>positional arguments:
+  NAME_OR_URL           the name or remote location of the zoo model
+  DATASET_NAME          the name of the FiftyOne dataset to process
+  LABEL_FIELD           the name of the field in which to store the predictions
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -n MODEL_NAME, --model-name MODEL_NAME
+                        the specific model to apply, if `name_or_url` is a
+                        remote source
+  -b BATCH_SIZE, --batch-size BATCH_SIZE
+                        an optional batch size to use during inference
+  -t THRESH, --confidence-thresh THRESH
+                        an optional confidence threshold to apply to any
+                        applicable labels generated by the model
+  -l, --store-logits    store logits for the predictions
+  -i, --install         install any requirements for the zoo model
+  --error-level LEVEL   the error level (0=error, 1=warn, 2=ignore) to use
+                        when installing or ensuring model requirements
+</pre></div>
+</div>
+<p><strong>Examples</strong></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Apply a zoo model to a dataset</span>
+fiftyone<span class="w"> </span>zoo<span class="w"> </span>models<span class="w"> </span>apply<span class="w"> </span>&lt;model-name&gt;<span class="w"> </span>&lt;dataset-name&gt;<span class="w"> </span>&lt;label-field&gt;
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Apply a remotely-sourced zoo model to a dataset</span>
+fiftyone<span class="w"> </span>zoo<span class="w"> </span>models<span class="w"> </span>apply<span class="w"> </span>https://github.com/&lt;user&gt;/&lt;repo&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>&lt;dataset-name&gt;<span class="w"> </span>&lt;label-field&gt;<span class="w"> </span>--model-name<span class="w"> </span>&lt;model-name&gt;
+fiftyone<span class="w"> </span>zoo<span class="w"> </span>models<span class="w"> </span>apply<span class="w"> </span>&lt;url&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>&lt;dataset-name&gt;<span class="w"> </span>&lt;label-field&gt;<span class="w"> </span>--model-name<span class="w"> </span>&lt;model-name&gt;
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Apply a zoo classifier with some customized parameters</span>
+fiftyone<span class="w"> </span>zoo<span class="w"> </span>models<span class="w"> </span>apply<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>&lt;model-name&gt;<span class="w"> </span>&lt;dataset-name&gt;<span class="w"> </span>&lt;label-field&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--confidence-thresh<span class="w"> </span><span class="m">0</span>.7<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--store-logits<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--batch-size<span class="w"> </span><span class="m">32</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="generate-embeddings-with-zoo-models">
+<span id="cli-fiftyone-zoo-models-embed"></span><h3>Generate embeddings with zoo models<a class="headerlink" href="#generate-embeddings-with-zoo-models" title="Permalink to this headline">¶</a></h3>
+<p>Generate embeddings for datasets with zoo models.</p>
+<p>When applying remotely-sourced zoo models, you can provide any of the following
+formats:</p>
+<ul class="simple">
+<li><p>a GitHub repo URL like <code class="docutils literal notranslate"><span class="pre">https://github.com/&lt;user&gt;/&lt;repo&gt;</span></code></p></li>
+<li><p>a GitHub ref like <code class="docutils literal notranslate"><span class="pre">https://github.com/&lt;user&gt;/&lt;repo&gt;/tree/&lt;branch&gt;</span></code> or
+<code class="docutils literal notranslate"><span class="pre">https://github.com/&lt;user&gt;/&lt;repo&gt;/commit/&lt;commit&gt;</span></code></p></li>
+<li><p>a GitHub ref string like <code class="docutils literal notranslate"><span class="pre">&lt;user&gt;/&lt;repo&gt;[/&lt;ref&gt;]</span></code></p></li>
+<li><p>a publicly accessible URL of an archive (eg zip or tar) file</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To download from a private GitHub repository that you have access to,
+provide your GitHub personal access token by setting the <code class="docutils literal notranslate"><span class="pre">GITHUB_TOKEN</span></code>
+environment variable.</p>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fiftyone zoo models embed [-h] [-n MODEL_NAME] [-b BATCH_SIZE] [-i]
+                          [--error-level LEVEL]
+                          NAME_OR_URL DATASET_NAME EMBEDDINGS_FIELD
+</pre></div>
+</div>
+<p><strong>Arguments</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>positional arguments:
+  NAME_OR_URL           the name or remote location of the zoo model
+  DATASET_NAME          the name of the FiftyOne dataset to process
+  EMBEDDINGS_FIELD      the name of the field in which to store the embeddings
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -n MODEL_NAME, --model-name MODEL_NAME
+                        the specific model to apply, if `name_or_url` is a
+                        remote source
+  -b BATCH_SIZE, --batch-size BATCH_SIZE
+                        an optional batch size to use during inference
+  -i, --install         install any requirements for the zoo model
+  --error-level LEVEL   the error level (0=error, 1=warn, 2=ignore) to use
+                        when installing or ensuring model requirements
+</pre></div>
+</div>
+<p><strong>Examples</strong></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generate embeddings for a dataset with a zoo model</span>
+fiftyone<span class="w"> </span>zoo<span class="w"> </span>models<span class="w"> </span>embed<span class="w"> </span>&lt;model-name&gt;<span class="w"> </span>&lt;dataset-name&gt;<span class="w"> </span>&lt;embeddings-field&gt;
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generate embeddings for a dataset with a remotely-sourced zoo model</span>
+fiftyone<span class="w"> </span>zoo<span class="w"> </span>models<span class="w"> </span>embed<span class="w"> </span>https://github.com/&lt;user&gt;/&lt;repo&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>&lt;dataset-name&gt;<span class="w"> </span>&lt;embeddings-field&gt;<span class="w"> </span>--model-name<span class="w"> </span>&lt;model-name&gt;
+fiftyone<span class="w"> </span>zoo<span class="w"> </span>models<span class="w"> </span>embed<span class="w"> </span>&lt;url&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>&lt;dataset-name&gt;<span class="w"> </span>&lt;embeddings-field&gt;<span class="w"> </span>--model-name<span class="w"> </span>&lt;model-name&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="delete-zoo-models">
+<span id="cli-fiftyone-zoo-models-delete"></span><h3>Delete zoo models<a class="headerlink" href="#delete-zoo-models" title="Permalink to this headline">¶</a></h3>
+<p>Deletes the local copy of the zoo model on disk.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fiftyone zoo models delete [-h] NAME
+</pre></div>
+</div>
+<p><strong>Arguments</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>positional arguments:
+  NAME        the name of the model
+
+optional arguments:
+  -h, --help  show this help message and exit
+</pre></div>
+</div>
+<p><strong>Examples</strong></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Delete the zoo model from disk</span>
+fiftyone<span class="w"> </span>zoo<span class="w"> </span>models<span class="w"> </span>delete<span class="w"> </span>&lt;name&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="list-zoo-model-sources">
+<span id="cli-fiftyone-zoo-models-list-sources"></span><h3>List zoo model sources<a class="headerlink" href="#list-zoo-model-sources" title="Permalink to this headline">¶</a></h3>
+<p>Lists remote zoo model sources that are registered locally.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fiftyone zoo models list-sources [-h]
+</pre></div>
+</div>
+<p><strong>Examples</strong></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Lists the registered remote zoo model sources</span>
+fiftyone<span class="w"> </span>zoo<span class="w"> </span>models<span class="w"> </span>list-sources
+</pre></div>
+</div>
+</div>
+<div class="section" id="register-zoo-model-sources">
+<span id="cli-fiftyone-zoo-models-register-source"></span><h3>Register zoo model sources<a class="headerlink" href="#register-zoo-model-sources" title="Permalink to this headline">¶</a></h3>
+<p>Registers a remote source of zoo models.</p>
+<p>You can provide any of the following formats:</p>
+<ul class="simple">
+<li><p>a GitHub repo URL like <code class="docutils literal notranslate"><span class="pre">https://github.com/&lt;user&gt;/&lt;repo&gt;</span></code></p></li>
+<li><p>a GitHub ref like <code class="docutils literal notranslate"><span class="pre">https://github.com/&lt;user&gt;/&lt;repo&gt;/tree/&lt;branch&gt;</span></code> or
+<code class="docutils literal notranslate"><span class="pre">https://github.com/&lt;user&gt;/&lt;repo&gt;/commit/&lt;commit&gt;</span></code></p></li>
+<li><p>a GitHub ref string like <code class="docutils literal notranslate"><span class="pre">&lt;user&gt;/&lt;repo&gt;[/&lt;ref&gt;]</span></code></p></li>
+<li><p>a publicly accessible URL of an archive (eg zip or tar) file</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To download from a private GitHub repository that you have access to,
+provide your GitHub personal access token by setting the <code class="docutils literal notranslate"><span class="pre">GITHUB_TOKEN</span></code>
+environment variable.</p>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fiftyone zoo models register-source [-h] [-o] URL_OR_GH_REPO
+</pre></div>
+</div>
+<p><strong>Arguments</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>positional arguments:
+  URL_OR_GH_REPO   the remote source to register
+
+optional arguments:
+  -h, --help       show this help message and exit
+  -o, --overwrite  whether to overwrite any existing files
+</pre></div>
+</div>
+<p><strong>Examples</strong></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Register a remote zoo model source</span>
+fiftyone<span class="w"> </span>zoo<span class="w"> </span>models<span class="w"> </span>register-source<span class="w"> </span>https://github.com/&lt;user&gt;/&lt;repo&gt;
+fiftyone<span class="w"> </span>zoo<span class="w"> </span>models<span class="w"> </span>register-source<span class="w"> </span>&lt;url&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="delete-zoo-model-sources">
+<span id="cli-fiftyone-zoo-models-delete-source"></span><h3>Delete zoo model sources<a class="headerlink" href="#delete-zoo-model-sources" title="Permalink to this headline">¶</a></h3>
+<p>Deletes the remote source and all downloaded models associated with it.</p>
+<p>You can provide any of the following formats:</p>
+<ul class="simple">
+<li><p>a GitHub repo URL like <code class="docutils literal notranslate"><span class="pre">https://github.com/&lt;user&gt;/&lt;repo&gt;</span></code></p></li>
+<li><p>a GitHub ref like <code class="docutils literal notranslate"><span class="pre">https://github.com/&lt;user&gt;/&lt;repo&gt;/tree/&lt;branch&gt;</span></code> or
+<code class="docutils literal notranslate"><span class="pre">https://github.com/&lt;user&gt;/&lt;repo&gt;/commit/&lt;commit&gt;</span></code></p></li>
+<li><p>a GitHub ref string like <code class="docutils literal notranslate"><span class="pre">&lt;user&gt;/&lt;repo&gt;[/&lt;ref&gt;]</span></code></p></li>
+<li><p>a publicly accessible URL of an archive (eg zip or tar) file</p></li>
+</ul>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fiftyone zoo models delete-source [-h] URL_OR_GH_REPO
+</pre></div>
+</div>
+<p><strong>Arguments</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>positional arguments:
+  URL_OR_GH_REPO   the remote source to delete
+
+optional arguments:
+  -h, --help       show this help message and exit
+</pre></div>
+</div>
+<p><strong>Examples</strong></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Delete a remote zoo model source</span>
+fiftyone<span class="w"> </span>zoo<span class="w"> </span>models<span class="w"> </span>delete-source<span class="w"> </span>https://github.com/&lt;user&gt;/&lt;repo&gt;
+fiftyone<span class="w"> </span>zoo<span class="w"> </span>models<span class="w"> </span>delete-source<span class="w"> </span>&lt;url&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+             </article>
+             
+            </div>
+            <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../api/fiftyone.html" class="btn btn-neutral float-right" title="fiftyone" accesskey="n" rel="next">Next <img src="../_static/images/chevron-right-orange.svg" class="next-page"></a>
+      
+      
+        <a href="../plugins/api/plugins.fiftyone.utilities.html" class="btn btn-neutral" title="@fiftyone/utilities" accesskey="p" rel="prev"><img src="../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
+      
+    </div>
+  
+</footer>
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              <ul>
+<li><a class="reference internal" href="#">FiftyOne Command-Line Interface (CLI)</a><ul>
+<li><a class="reference internal" href="#quickstart">Quickstart</a><ul>
+<li><a class="reference internal" href="#tab-completion">Tab completion</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cli-fiftyone-main">FiftyOne CLI</a></li>
+<li><a class="reference internal" href="#fiftyone-quickstart">FiftyOne quickstart</a></li>
+<li><a class="reference internal" href="#fiftyone-config">FiftyOne config</a></li>
+<li><a class="reference internal" href="#print-constants">Print constants</a></li>
+<li><a class="reference internal" href="#convert-dataset-formats">Convert dataset formats</a></li>
+<li><a class="reference internal" href="#fiftyone-datasets">FiftyOne datasets</a><ul>
+<li><a class="reference internal" href="#list-datasets">List datasets</a></li>
+<li><a class="reference internal" href="#print-dataset-information">Print dataset information</a></li>
+<li><a class="reference internal" href="#print-dataset-stats">Print dataset stats</a></li>
+<li><a class="reference internal" href="#create-datasets">Create datasets</a></li>
+<li><a class="reference internal" href="#print-dataset-head">Print dataset head</a></li>
+<li><a class="reference internal" href="#print-dataset-tail">Print dataset tail</a></li>
+<li><a class="reference internal" href="#stream-samples-to-the-terminal">Stream samples to the terminal</a></li>
+<li><a class="reference internal" href="#export-datasets">Export datasets</a></li>
+<li><a class="reference internal" href="#drawing-labels-on-samples">Drawing labels on samples</a></li>
+<li><a class="reference internal" href="#rename-datasets">Rename datasets</a></li>
+<li><a class="reference internal" href="#delete-datasets">Delete datasets</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#fiftyone-migrations">FiftyOne migrations</a></li>
+<li><a class="reference internal" href="#fiftyone-operators">FiftyOne operators</a><ul>
+<li><a class="reference internal" href="#list-operators">List operators</a></li>
+<li><a class="reference internal" href="#operator-info">Operator info</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#fiftyone-delegated-operations">FiftyOne delegated operations</a><ul>
+<li><a class="reference internal" href="#launch-delegated-service">Launch delegated service</a></li>
+<li><a class="reference internal" href="#list-delegated-operations">List delegated operations</a></li>
+<li><a class="reference internal" href="#delegated-operation-info">Delegated operation info</a></li>
+<li><a class="reference internal" href="#mark-delegated-operations-as-failed">Mark delegated operations as failed</a></li>
+<li><a class="reference internal" href="#delete-delegated-operations">Delete delegated operations</a></li>
+<li><a class="reference internal" href="#cleanup-delegated-operations">Cleanup delegated operations</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#fiftyone-plugins">FiftyOne plugins</a><ul>
+<li><a class="reference internal" href="#list-plugins">List plugins</a></li>
+<li><a class="reference internal" href="#plugin-info">Plugin info</a></li>
+<li><a class="reference internal" href="#download-plugins">Download plugins</a></li>
+<li><a class="reference internal" href="#plugin-requirements">Plugin requirements</a></li>
+<li><a class="reference internal" href="#create-plugins">Create plugins</a></li>
+<li><a class="reference internal" href="#enable-plugins">Enable plugins</a></li>
+<li><a class="reference internal" href="#disable-plugins">Disable plugins</a></li>
+<li><a class="reference internal" href="#delete-plugins">Delete plugins</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#fiftyone-utilities">FiftyOne utilities</a><ul>
+<li><a class="reference internal" href="#compute-metadata">Compute metadata</a></li>
+<li><a class="reference internal" href="#transform-images">Transform images</a></li>
+<li><a class="reference internal" href="#transform-videos">Transform videos</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#fiftyone-annotation">FiftyOne Annotation</a><ul>
+<li><a class="reference internal" href="#annotation-config">Annotation Config</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#fiftyone-app">FiftyOne App</a><ul>
+<li><a class="reference internal" href="#app-config">App Config</a></li>
+<li><a class="reference internal" href="#launch-the-app">Launch the App</a></li>
+<li><a class="reference internal" href="#view-datasets-in-app">View datasets in App</a></li>
+<li><a class="reference internal" href="#connect-to-remote-app">Connect to remote App</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#fiftyone-brain">FiftyOne Brain</a><ul>
+<li><a class="reference internal" href="#brain-config">Brain Config</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#fiftyone-evaluation">FiftyOne Evaluation</a><ul>
+<li><a class="reference internal" href="#evaluation-config">Evaluation Config</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#fiftyone-zoo">FiftyOne Zoo</a></li>
+<li><a class="reference internal" href="#fiftyone-dataset-zoo">FiftyOne Dataset Zoo</a><ul>
+<li><a class="reference internal" href="#list-datasets-in-zoo">List datasets in zoo</a></li>
+<li><a class="reference internal" href="#find-zoo-datasets-on-disk">Find zoo datasets on disk</a></li>
+<li><a class="reference internal" href="#show-zoo-dataset-info">Show zoo dataset info</a></li>
+<li><a class="reference internal" href="#download-zoo-datasets">Download zoo datasets</a></li>
+<li><a class="reference internal" href="#load-zoo-datasets">Load zoo datasets</a></li>
+<li><a class="reference internal" href="#delete-zoo-datasets">Delete zoo datasets</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#fiftyone-model-zoo">FiftyOne Model Zoo</a><ul>
+<li><a class="reference internal" href="#list-models-in-zoo">List models in zoo</a></li>
+<li><a class="reference internal" href="#find-zoo-models-on-disk">Find zoo models on disk</a></li>
+<li><a class="reference internal" href="#show-zoo-model-info">Show zoo model info</a></li>
+<li><a class="reference internal" href="#zoo-model-requirements">Zoo model requirements</a></li>
+<li><a class="reference internal" href="#download-zoo-models">Download zoo models</a></li>
+<li><a class="reference internal" href="#apply-zoo-models-to-datasets">Apply zoo models to datasets</a></li>
+<li><a class="reference internal" href="#generate-embeddings-with-zoo-models">Generate embeddings with zoo models</a></li>
+<li><a class="reference internal" href="#delete-zoo-models">Delete zoo models</a></li>
+<li><a class="reference internal" href="#list-zoo-model-sources">List zoo model sources</a></li>
+<li><a class="reference internal" href="#register-zoo-model-sources">Register zoo model sources</a></li>
+<li><a class="reference internal" href="#delete-zoo-model-sources">Delete zoo model sources</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  
+
+
+  
+
+     
+       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+         <script src="../_static/jquery.js"></script>
+         <script src="../_static/underscore.js"></script>
+         <script src="../_static/doctools.js"></script>
+         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+         <script src="../_static/js/voxel51-website.js"></script>
+         <script src="../_static/js/custom.js"></script>
+     
+
+  
+
+  <script type="text/javascript" src="../_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="../_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+  <!-- Begin Footer -->
+
+
+<footer class="footer-wrapper" id="docs-tutorials-resources">
+  <div class="footer pytorch-container">
+    <div class="footer__logo">
+      <a href="https://voxel51.com/"
+        ><img
+          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
+      /></a>
+    </div>
+
+    <div class="footer__address">
+      330 E Liberty St<br />
+      Ann Arbor, MI 48104<br />
+      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
+    </div>
+
+    <!--
+    <div class="footer__contact">
+      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
+    </div>
+    -->
+
+    <div class="footer__links">
+      <div class="footer__links--col2">
+        <p class="nav__item--brand">Products</p>
+        <a href="https://voxel51.com/fiftyone/">FiftyOne</a>
+        <a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a>
+        <a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a>
+        <a href="https://voxel51.com/success-stories/">Success Stories</a>
+      </div>
+      <div class="footer__links--col3">
+        <p class="nav__item--brand">Resources</p>
+        <a href="https://voxel51.com/blog/">Blog</a>
+        <a href="https://docs.voxel51.com/">Docs</a>
+        <a href="https://github.com/voxel51/">GitHub</a>
+        <a href="https://community.voxel51.com">Discord</a>
+        <a href="https://voxel51.com/ourstory/">About Us</a>
+        <a href="https://voxel51.com/computer-vision-events/">Events</a>
+        <a href="https://voxel51.com/jobs/">Careers</a>
+        <a href="https://voxel51.com/press/">Press</a>
+      </div>
+    </div>
+
+    <div class="footer__icons">
+      <ul class="list-inline">
+        <li>
+          <a href="https://www.linkedin.com/company/voxel51/">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/voxel51/">
+            <i class="fa-brands fa-github"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/voxel51">
+            <i class="fa-brands fa-twitter"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/voxel51/">
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="footer__copyright">
+      <ul class="list-inline">
+        <li>&copy; 2024 Voxel51 Inc.</li>
+        <li>
+          <a href="https://voxel51.com/privacy/">Privacy Policy</a>
+        </li>
+        <li>
+          <a href="https://voxel51.com/terms/">Terms of Service</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<!-- https://buttons.github.io -->
+<script async defer src="https://buttons.github.io/buttons.js" ></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XD15NFRY3M" ></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+  gtag("config", "G-XD15NFRY3M");
+</script>
+
+<script>
+  function open_modal(modal_id, modal_closer_id) {
+    // Get the modal
+    let the_modal = document.getElementById(modal_id);
+
+    the_modal.style.display = "flex";
+    document.body.style.overflow = "hidden";
+
+    let the_modal_closer = document.getElementById(modal_closer_id);
+
+    // When the user clicks on <span> (x), close the modal
+    the_modal_closer &&
+      (the_modal_closer.onclick = function () {
+        the_modal.style.display = "none";
+      });
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+      if (event.target == the_modal) {
+        the_modal.style.display = "none";
+        document.body.style.overflow = "unset";
+        window.onclick = undefined;
+      }
+    };
+  }
+</script>
+
+<!-- bigpicture.io -->
+<script>
+  !(function (e, t, i) {
+    var r = (e.bigPicture = e.bigPicture || []);
+    if (!r.initialized)
+      if (r.invoked)
+        e.console &&
+          console.error &&
+          console.error("BigPicture.io snippet included twice.");
+      else {
+        (r.invoked = !0),
+          (r.SNIPPET_VERSION = 1.5),
+          (r.handler = function (e) {
+            if (void 0 !== r.callback)
+              try {
+                return r.callback(e);
+              } catch (e) {}
+          }),
+          (r.eventList = ["mousedown", "mouseup", "click", "submit"]),
+          (r.methods = [
+            "track",
+            "identify",
+            "page",
+            "group",
+            "alias",
+            "integration",
+            "ready",
+            "intelReady",
+            "consentReady",
+            "on",
+            "off",
+          ]),
+          (r.factory = function (e) {
+            return function () {
+              var t = Array.prototype.slice.call(arguments);
+              return t.unshift(e), r.push(t), r;
+            };
+          });
+        for (var n = 0; n < r.methods.length; n++) {
+          var o = r.methods[n];
+          r[o] = r.factory(o);
+        }
+        r.getCookie = function (e) {
+          var i = ("; " + t.cookie).split("; " + e + "=");
+          return 2 == i.length && i.pop().split(";").shift();
+        };
+        var c = (r.isEditor = (function () {
+          try {
+            return (
+              e.self !== e.top &&
+              (new RegExp("app" + i, "ig").test(t.referrer) ||
+                "edit" == r.getCookie("_bpr_edit"))
+            );
+          } catch (e) {
+            return !1;
+          }
+        })());
+        r.init = function (n, o) {
+          if (((r.projectId = n), (r._config = o), !c))
+            for (var a = 0; a < r.eventList.length; a++)
+              e.addEventListener(r.eventList[a], r.handler, !0);
+          var s = t.createElement("script");
+          s.async = !0;
+          var d = c ? "/editor/editor" : "/public-" + n;
+          (s.src = "//cdn" + i + d + ".js"),
+            t.getElementsByTagName("head")[0].appendChild(s);
+        };
+      }
+  })(window, document, ".bigpicture.io");
+  bigPicture.init("1646");
+</script>
+
+
+  
+
+  <!-- End Footer -->
+
+  <!-- Begin Mobile Menu -->
+
+  
+
+  <!-- End Mobile Menu -->
+
+  <script type="text/javascript" src="../_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function(e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+</body>
+</html>

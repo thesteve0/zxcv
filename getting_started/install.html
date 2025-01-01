@@ -1,0 +1,782 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>FiftyOne Installation &mdash; FiftyOne 1.3.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <link rel="stylesheet" href="../_static/css/voxel51-website.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Virtual Environment Setup" href="virtualenv.html" />
+    <link rel="prev" title="Pluggable Authentication" href="../teams/pluggable_auth.html" />
+<meta property="og:image" content="https://voxel51.com/wp-content/uploads/2024/03/3.24_webpages_Home_AV.png" />
+
+<link
+  href="https://fonts.googleapis.com/css?family=Palanquin:400,600,700,800"
+  rel="stylesheet"
+/>
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+  rel="stylesheet"
+/>
+<script src="https://tag.clearbitscripts.com/v1/pk_b9ed71c8234edd4f77326bcbfab5a4ca/tags.js"></script>
+
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+  
+</head>
+
+
+<div class="container-fluid header-holder tutorials-header" id="header-holder">
+  <nav id="nav__main" class="nav__main">
+    <div class="nav__main__logo">
+      <a href="https://voxel51.com/">
+        <img
+          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
+        />
+      </a>
+    </div>
+
+    <div class="nav__spacer desktop_only"></div>
+
+    <div id="nav__main__mobilebutton--on">
+      <a href="javascript:void(0);" onclick="navMobileButton()">
+        <i class="fa-solid fa-bars"></i>
+      </a>
+    </div>
+
+    <div id="nav__main__mobilebutton--off">
+      <a href="javascript:void(0);" onclick="navMobileButton()">
+        <i class="fa-solid fa-times"></i>
+      </a>
+    </div>
+
+    <div id="nav__main__items">
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Products</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://voxel51.com/fiftyone/">Open Source</a></li>
+            <li><a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a></li>
+            <li><a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a></li>
+            <li><a href="https://voxel51.com/success-stories/">Success Stories</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Learn</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://community.voxel51.com">Community Discord</a></li>
+            <li><a href="https://voxel51.com/blog/">Blog</a></li>
+            <li><a href="https://voxel51.com/computer-vision-events/">Events</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item">
+        <a href="https://docs.voxel51.com/">Docs</a>
+      </div>
+
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Company</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://voxel51.com/ourstory/">About Us</a></li>
+            <li><a href="https://voxel51.com/jobs/">Careers</a></li>
+            <li><a href="https://voxel51.com/talk-to-sales/">Talk to Sales</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item mobile_only">
+        <a href="https://github.com/voxel51/fiftyone">GitHub</a>
+      </div>
+
+      <div class="nav__item desktop_only" id="octocat">
+        <!-- https://buttons.github.io -->
+        <a
+          class="github-button"
+          href="https://github.com/voxel51/fiftyone"
+          data-color-scheme="no-preference: dark_high_contrast; light: dark_high_contrast; dark: dark_high_contrast;"
+          data-size="large"
+          data-show-count="true"
+          aria-label="Star voxel51/fiftyone on GitHub"
+          >Star</a
+        >
+      </div>
+
+      <div class="nav__item full_nav_only">
+        <a class="button-primary" href="https://voxel51.com/schedule-teams-workshop/" target="_blank"
+          >Schedule a workshop</a
+        >
+      </div>
+    </div>
+  </nav>
+</div>
+
+
+
+<body class="pytorch-body">
+
+   
+
+    
+
+    <div class="table-of-contents-link-wrapper">
+      <span>Table of Contents</span>
+      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+    </div>
+
+    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+      <div class="pytorch-side-scroll">
+        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          <div class="pytorch-left-menu-search">
+            
+
+            
+              
+              
+            
+
+            
+
+
+  
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+            
+          </div>
+
+           <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../teams/index.html">FiftyOne Teams 🚀</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="virtualenv.html">Virtual environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../environments/index.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../recipes/index.html">Recipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheat_sheets/index.html">Cheat Sheets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dataset_zoo/index.html">Dataset Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_zoo/index.html">Model Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brain.html">FiftyOne Brain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/index.html">Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plugins/index.html">Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli/index.html">CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/fiftyone.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deprecation.html">Deprecation Notices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a></li>
+</ul>
+ 
+        </div>
+      </div>
+    </nav>
+
+    <div class="pytorch-container">
+      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+        <div class="pytorch-breadcrumbs-wrapper">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="../index.html">
+          
+            Docs
+          
+        </a> &gt;
+      </li>
+
+        
+      <li>FiftyOne Installation</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+        </div>
+
+        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+          Contents
+        </div>
+      </div>
+
+      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+        <div class="pytorch-content-left">
+
+        
+          
+          <div class="rst-content style-external-links">
+          
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+              
+  <div class="section" id="fiftyone-installation">
+<h1>FiftyOne Installation<a class="headerlink" href="#fiftyone-installation" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Need to collaborate on your datasets? Check out
+<a class="reference internal" href="../teams/index.html#fiftyone-teams"><span class="std std-ref">FiftyOne Teams</span></a>!</p>
+</div>
+<div class="section" id="prerequisites">
+<span id="install-prereqs"></span><h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
+<p>You will need a working Python installation. FiftyOne currently requires
+<strong>Python 3.9 - 3.11</strong></p>
+<p>On Linux, we recommend installing Python through your system package manager
+(APT, YUM, etc.) if it is available. On other platforms, Python can be
+downloaded <a class="reference external" href="https://www.python.org/downloads">from python.org</a>. To verify that
+a suitable Python version is installed and accessible, run <code class="code docutils literal notranslate"><span class="pre">python</span> <span class="pre">--version</span></code>.</p>
+<p>We encourage installing FiftyOne in a virtual environment. See
+<a class="reference internal" href="virtualenv.html"><span class="doc">setting up a virtual environment</span></a> for more details.</p>
+</div>
+<div class="section" id="installing-fiftyone">
+<span id="id1"></span><h2>Installing FiftyOne<a class="headerlink" href="#installing-fiftyone" title="Permalink to this headline">¶</a></h2>
+<p>To install FiftyOne, ensure you have activated any virtual environment that you
+are using, then run:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>fiftyone
+</pre></div>
+</div>
+<p>This will install FiftyOne and all of its dependencies. Once this has
+completed, you can verify that FiftyOne is installed in your virtual
+environment by importing the <code class="code docutils literal notranslate"><span class="pre">fiftyone</span></code> package:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ python
+&gt;&gt;&gt;
+&gt;&gt;&gt; import fiftyone as fo
+&gt;&gt;&gt;
+</pre></div>
+</div>
+<p>A successful installation of FiftyOne should result in no output when
+<code class="code docutils literal notranslate"><span class="pre">fiftyone</span></code> is imported. See <a class="reference internal" href="#install-troubleshooting"><span class="std std-ref">this section</span></a> for
+install troubleshooting tips.</p>
+<p>If you want to work with video datasets, you’ll also need to install
+<a class="reference external" href="https://ffmpeg.org">FFmpeg</a>:</p>
+</div>
+<div class="section" id="quickstart">
+<span id="fiftyone-quickstart"></span><h2>Quickstart<a class="headerlink" href="#quickstart" title="Permalink to this headline">¶</a></h2>
+<p>Dive right into FiftyOne by opening a Python shell and running the snippet
+below, which downloads a <a class="reference internal" href="../dataset_zoo/datasets.html#dataset-zoo-quickstart"><span class="std std-ref">small dataset</span></a> and
+launches the <a class="reference internal" href="../user_guide/app.html#fiftyone-app"><span class="std std-ref">FiftyOne App</span></a> so you can explore it!</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+<span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>Note that if you are running this code in a script, you must include
+<a class="reference internal" href="../api/fiftyone.core.session.html#fiftyone.core.session.Session.wait" title="fiftyone.core.session.Session.wait"><code class="xref py py-meth docutils literal notranslate"><span class="pre">session.wait()</span></code></a> to block execution
+until you close the App. See <a class="reference internal" href="../user_guide/app.html#creating-an-app-session"><span class="std std-ref">this page</span></a> for
+more information.</p>
+</div>
+<div class="section" id="troubleshooting">
+<span id="install-troubleshooting"></span><h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h2>
+<p>If you run into any installation issues, review the suggestions below or check
+the <a class="reference internal" href="troubleshooting.html#troubleshooting"><span class="std std-ref">troubleshooting page</span></a> for more details.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Most installation issues can be fixed by upgrading some packages and then
+rerunning the FiftyOne install:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>pip<span class="w"> </span>setuptools<span class="w"> </span>wheel<span class="w"> </span>build
+pip<span class="w"> </span>install<span class="w"> </span>fiftyone
+</pre></div>
+</div>
+</div>
+<p><strong>Mac users:</strong></p>
+<ul class="simple">
+<li><p>You must have the
+<a class="reference external" href="https://developer.apple.com/library/archive/technotes/tn2339/_index.html">XCode Command Line Tools</a>
+package installed on your machine. You likely already have it, but if you
+encounter an error message like
+<code class="code docutils literal notranslate"><span class="pre">error:</span> <span class="pre">command</span> <span class="pre">'clang'</span> <span class="pre">failed</span> <span class="pre">with</span> <span class="pre">exit</span> <span class="pre">status</span> <span class="pre">1</span></code>, then you may need to
+install it via <code class="code docutils literal notranslate"><span class="pre">xcode-select</span> <span class="pre">--install</span></code>, or see
+<a class="reference external" href="https://stackoverflow.com/q/9329243">this page</a> for other options.</p></li>
+</ul>
+<p><strong>Linux users:</strong></p>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">psutil</span></code> package may require Python headers to be installed on your
+system. On Debian-based distributions, these are available in the
+<code class="docutils literal notranslate"><span class="pre">python3-dev</span></code> package.</p></li>
+<li><p>If you encounter an error related to MongoDB failing to start, such as <code class="code docutils literal notranslate"><span class="pre">Could</span>
+<span class="pre">not</span> <span class="pre">find</span> <span class="pre">mongod</span></code>, you may need to install additional packages. See the
+<a class="reference internal" href="troubleshooting.html#troubleshooting-mongodb"><span class="std std-ref">alternative Linux builds</span></a> for details.</p></li>
+</ul>
+<p><strong>Windows users:</strong></p>
+<ul class="simple">
+<li><p>If you encounter a <code class="code docutils literal notranslate"><span class="pre">psutil.NoSuchProcessExists</span></code> when importing <code class="code docutils literal notranslate"><span class="pre">fiftyone</span></code>,
+you will need to install the 64-bit Visual Studio 2015 C++ redistributable
+library. See <a class="reference internal" href="troubleshooting.html#troubleshooting-mongodb-windows"><span class="std std-ref">here</span></a> for
+instructions.</p></li>
+</ul>
+</div>
+<div class="section" id="installing-extras">
+<span id="id2"></span><h2>Installing extras<a class="headerlink" href="#installing-extras" title="Permalink to this headline">¶</a></h2>
+<p>Various tutorials and guides that we provide on this site require additional
+packages in order to run. If you encounter a missing package, you will see
+helpful instructions on what you need to install. Alternatively, you can
+preemptively install what you’ll need by installing the following additional
+packages via <code class="code docutils literal notranslate"><span class="pre">pip</span></code> in your virtual environment:</p>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">ipython</span></code> to follow along with interactive examples more easily (note that
+a system-wide IPython installation will <em>not</em> work in a virtual environment,
+even if it is accessible)</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">torch</span></code> and <code class="code docutils literal notranslate"><span class="pre">torchvision</span></code> for examples requiring PyTorch. The installation
+process can vary depending on your system, so consult the
+<a class="reference external" href="https://pytorch.org/get-started/locally/">PyTorch documentation</a> for
+specific instructions.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">tensorflow</span></code> for examples requiring TensorFlow. The installation process
+can vary depending on your system, so consult the
+<a class="reference external" href="https://www.tensorflow.org/install">Tensorflow documentation</a> for specific
+instructions.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">tensorflow-datasets</span></code> for examples that rely on loading
+<a class="reference external" href="https://www.tensorflow.org/datasets">TensorFlow datasets</a></p></li>
+<li><p><a class="reference external" href="https://ffmpeg.org">FFmpeg</a>, in order to work with video datasets in
+FiftyOne. See <a class="reference internal" href="troubleshooting.html#troubleshooting-video"><span class="std std-ref">this page</span></a> for installation
+instructions.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>FiftyOne does not strictly require any of these packages, so you can install
+only what you need. If you run something that requires an additional package,
+you will see a helpful message telling you what to install.</p>
+</div>
+</div>
+<div class="section" id="upgrading-fiftyone">
+<span id="id4"></span><h2>Upgrading FiftyOne<a class="headerlink" href="#upgrading-fiftyone" title="Permalink to this headline">¶</a></h2>
+<p>You can upgrade an existing FiftyOne installation by passing the <code class="docutils literal notranslate"><span class="pre">--upgrade</span></code>
+option to <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span></code>:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>fiftyone
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>New versions of FiftyOne occasionally introduce data model changes that
+require database migrations after you upgrade. Rest assured, these migrations
+will be <strong>automatically</strong> performed on a per-dataset basis whenever you load
+a dataset for the first time in a newer version of FiftyOne.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you are working with a
+<a class="reference internal" href="../user_guide/config.html#configuring-mongodb-connection"><span class="std std-ref">custom/shared MongoDB database</span></a>, you
+can use <a class="reference internal" href="../user_guide/config.html#database-migrations"><span class="std std-ref">database admin privileges</span></a> to control
+which clients are allowed to upgrade your FiftyOne deployment.</p>
+</div>
+</div>
+<div class="section" id="downgrading-fiftyone">
+<span id="id5"></span><h2>Downgrading FiftyOne<a class="headerlink" href="#downgrading-fiftyone" title="Permalink to this headline">¶</a></h2>
+<p>If you need to downgrade to an older version of FiftyOne for any reason, you
+can do so.</p>
+<p>Since new releases occasionally introduce backwards-incompatible changes to the
+data model, you must use the <a class="reference internal" href="../cli/index.html#cli-fiftyone-migrate"><span class="std std-ref">fiftyone migrate</span></a>
+command to perform any necessary downward database migrations
+<strong>before installing the older version of FiftyOne</strong>.</p>
+<p>Here’s the workflow for downgrading to an older version of FiftyOne:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># The version that you wish to downgrade to</span>
+<span class="nv">VERSION</span><span class="o">=</span><span class="m">0</span>.15.1
+
+<span class="c1"># Migrate the database</span>
+fiftyone<span class="w"> </span>migrate<span class="w"> </span>--all<span class="w"> </span>-v<span class="w"> </span><span class="nv">$VERSION</span>
+
+<span class="c1"># Now install the older version of `fiftyone`</span>
+pip<span class="w"> </span>install<span class="w"> </span><span class="nv">fiftyone</span><span class="o">==</span><span class="nv">$VERSION</span>
+
+<span class="c1"># Optional: verify that your datasets were migrated</span>
+fiftyone<span class="w"> </span>migrate<span class="w"> </span>--info
+</pre></div>
+</div>
+<p>If you are reading this after encountering an error resulting from downgrading
+your <code class="docutils literal notranslate"><span class="pre">fiftyone</span></code> package without first running
+<a class="reference internal" href="../cli/index.html#cli-fiftyone-migrate"><span class="std std-ref">fiftyone migrate</span></a>, don’t worry, you simply need to
+reinstall the newer version of FiftyOne and then follow these instructions.</p>
+<p>See <a class="reference internal" href="troubleshooting.html#troubleshooting-downgrades"><span class="std std-ref">this page</span></a> if you need to install
+FiftyOne v0.7.3 or earlier.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you are working with a
+<a class="reference internal" href="../user_guide/config.html#configuring-mongodb-connection"><span class="std std-ref">custom/shared MongoDB database</span></a>, you
+can use <a class="reference internal" href="../user_guide/config.html#database-migrations"><span class="std std-ref">database admin privileges</span></a> to control
+which clients are allowed to downgrade your FiftyOne deployment.</p>
+</div>
+</div>
+<div class="section" id="uninstalling-fiftyone">
+<span id="id6"></span><h2>Uninstalling FiftyOne<a class="headerlink" href="#uninstalling-fiftyone" title="Permalink to this headline">¶</a></h2>
+<p>FiftyOne and all of its subpackages can be uninstalled with:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>uninstall<span class="w"> </span>fiftyone<span class="w"> </span>fiftyone-brain<span class="w"> </span>fiftyone-db
+</pre></div>
+</div>
+</div>
+</div>
+
+
+             </article>
+             
+            </div>
+            <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="virtualenv.html" class="btn btn-neutral float-right" title="Virtual Environment Setup" accesskey="n" rel="next">Next <img src="../_static/images/chevron-right-orange.svg" class="next-page"></a>
+      
+      
+        <a href="../teams/pluggable_auth.html" class="btn btn-neutral" title="Pluggable Authentication" accesskey="p" rel="prev"><img src="../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
+      
+    </div>
+  
+</footer>
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              <ul>
+<li><a class="reference internal" href="#">FiftyOne Installation</a><ul>
+<li><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li><a class="reference internal" href="#installing-fiftyone">Installing FiftyOne</a></li>
+<li><a class="reference internal" href="#quickstart">Quickstart</a></li>
+<li><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
+<li><a class="reference internal" href="#installing-extras">Installing extras</a></li>
+<li><a class="reference internal" href="#upgrading-fiftyone">Upgrading FiftyOne</a></li>
+<li><a class="reference internal" href="#downgrading-fiftyone">Downgrading FiftyOne</a></li>
+<li><a class="reference internal" href="#uninstalling-fiftyone">Uninstalling FiftyOne</a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  
+
+
+  
+
+     
+       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+         <script src="../_static/jquery.js"></script>
+         <script src="../_static/underscore.js"></script>
+         <script src="../_static/doctools.js"></script>
+         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+         <script src="../_static/js/voxel51-website.js"></script>
+         <script src="../_static/js/custom.js"></script>
+     
+
+  
+
+  <script type="text/javascript" src="../_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="../_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+  <!-- Begin Footer -->
+
+
+<footer class="footer-wrapper" id="docs-tutorials-resources">
+  <div class="footer pytorch-container">
+    <div class="footer__logo">
+      <a href="https://voxel51.com/"
+        ><img
+          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
+      /></a>
+    </div>
+
+    <div class="footer__address">
+      330 E Liberty St<br />
+      Ann Arbor, MI 48104<br />
+      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
+    </div>
+
+    <!--
+    <div class="footer__contact">
+      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
+    </div>
+    -->
+
+    <div class="footer__links">
+      <div class="footer__links--col2">
+        <p class="nav__item--brand">Products</p>
+        <a href="https://voxel51.com/fiftyone/">FiftyOne</a>
+        <a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a>
+        <a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a>
+        <a href="https://voxel51.com/success-stories/">Success Stories</a>
+      </div>
+      <div class="footer__links--col3">
+        <p class="nav__item--brand">Resources</p>
+        <a href="https://voxel51.com/blog/">Blog</a>
+        <a href="https://docs.voxel51.com/">Docs</a>
+        <a href="https://github.com/voxel51/">GitHub</a>
+        <a href="https://community.voxel51.com">Discord</a>
+        <a href="https://voxel51.com/ourstory/">About Us</a>
+        <a href="https://voxel51.com/computer-vision-events/">Events</a>
+        <a href="https://voxel51.com/jobs/">Careers</a>
+        <a href="https://voxel51.com/press/">Press</a>
+      </div>
+    </div>
+
+    <div class="footer__icons">
+      <ul class="list-inline">
+        <li>
+          <a href="https://www.linkedin.com/company/voxel51/">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/voxel51/">
+            <i class="fa-brands fa-github"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/voxel51">
+            <i class="fa-brands fa-twitter"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/voxel51/">
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="footer__copyright">
+      <ul class="list-inline">
+        <li>&copy; 2024 Voxel51 Inc.</li>
+        <li>
+          <a href="https://voxel51.com/privacy/">Privacy Policy</a>
+        </li>
+        <li>
+          <a href="https://voxel51.com/terms/">Terms of Service</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<!-- https://buttons.github.io -->
+<script async defer src="https://buttons.github.io/buttons.js" ></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XD15NFRY3M" ></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+  gtag("config", "G-XD15NFRY3M");
+</script>
+
+<script>
+  function open_modal(modal_id, modal_closer_id) {
+    // Get the modal
+    let the_modal = document.getElementById(modal_id);
+
+    the_modal.style.display = "flex";
+    document.body.style.overflow = "hidden";
+
+    let the_modal_closer = document.getElementById(modal_closer_id);
+
+    // When the user clicks on <span> (x), close the modal
+    the_modal_closer &&
+      (the_modal_closer.onclick = function () {
+        the_modal.style.display = "none";
+      });
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+      if (event.target == the_modal) {
+        the_modal.style.display = "none";
+        document.body.style.overflow = "unset";
+        window.onclick = undefined;
+      }
+    };
+  }
+</script>
+
+<!-- bigpicture.io -->
+<script>
+  !(function (e, t, i) {
+    var r = (e.bigPicture = e.bigPicture || []);
+    if (!r.initialized)
+      if (r.invoked)
+        e.console &&
+          console.error &&
+          console.error("BigPicture.io snippet included twice.");
+      else {
+        (r.invoked = !0),
+          (r.SNIPPET_VERSION = 1.5),
+          (r.handler = function (e) {
+            if (void 0 !== r.callback)
+              try {
+                return r.callback(e);
+              } catch (e) {}
+          }),
+          (r.eventList = ["mousedown", "mouseup", "click", "submit"]),
+          (r.methods = [
+            "track",
+            "identify",
+            "page",
+            "group",
+            "alias",
+            "integration",
+            "ready",
+            "intelReady",
+            "consentReady",
+            "on",
+            "off",
+          ]),
+          (r.factory = function (e) {
+            return function () {
+              var t = Array.prototype.slice.call(arguments);
+              return t.unshift(e), r.push(t), r;
+            };
+          });
+        for (var n = 0; n < r.methods.length; n++) {
+          var o = r.methods[n];
+          r[o] = r.factory(o);
+        }
+        r.getCookie = function (e) {
+          var i = ("; " + t.cookie).split("; " + e + "=");
+          return 2 == i.length && i.pop().split(";").shift();
+        };
+        var c = (r.isEditor = (function () {
+          try {
+            return (
+              e.self !== e.top &&
+              (new RegExp("app" + i, "ig").test(t.referrer) ||
+                "edit" == r.getCookie("_bpr_edit"))
+            );
+          } catch (e) {
+            return !1;
+          }
+        })());
+        r.init = function (n, o) {
+          if (((r.projectId = n), (r._config = o), !c))
+            for (var a = 0; a < r.eventList.length; a++)
+              e.addEventListener(r.eventList[a], r.handler, !0);
+          var s = t.createElement("script");
+          s.async = !0;
+          var d = c ? "/editor/editor" : "/public-" + n;
+          (s.src = "//cdn" + i + d + ".js"),
+            t.getElementsByTagName("head")[0].appendChild(s);
+        };
+      }
+  })(window, document, ".bigpicture.io");
+  bigPicture.init("1646");
+</script>
+
+
+  
+
+  <!-- End Footer -->
+
+  <!-- Begin Mobile Menu -->
+
+  
+
+  <!-- End Mobile Menu -->
+
+  <script type="text/javascript" src="../_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function(e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+</body>
+</html>

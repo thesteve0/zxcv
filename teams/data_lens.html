@@ -1,0 +1,2278 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Data Lens &mdash; FiftyOne 1.3.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <link rel="stylesheet" href="../_static/css/voxel51-website.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Data Quality" href="data_quality.html" />
+    <link rel="prev" title="FiftyOne Teams App" href="teams_app.html" />
+<meta property="og:image" content="https://voxel51.com/wp-content/uploads/2024/03/3.24_webpages_Home_AV.png" />
+
+<link
+  href="https://fonts.googleapis.com/css?family=Palanquin:400,600,700,800"
+  rel="stylesheet"
+/>
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+  rel="stylesheet"
+/>
+<script src="https://tag.clearbitscripts.com/v1/pk_b9ed71c8234edd4f77326bcbfab5a4ca/tags.js"></script>
+
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+  
+</head>
+
+
+<div class="container-fluid header-holder tutorials-header" id="header-holder">
+  <nav id="nav__main" class="nav__main">
+    <div class="nav__main__logo">
+      <a href="https://voxel51.com/">
+        <img
+          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
+        />
+      </a>
+    </div>
+
+    <div class="nav__spacer desktop_only"></div>
+
+    <div id="nav__main__mobilebutton--on">
+      <a href="javascript:void(0);" onclick="navMobileButton()">
+        <i class="fa-solid fa-bars"></i>
+      </a>
+    </div>
+
+    <div id="nav__main__mobilebutton--off">
+      <a href="javascript:void(0);" onclick="navMobileButton()">
+        <i class="fa-solid fa-times"></i>
+      </a>
+    </div>
+
+    <div id="nav__main__items">
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Products</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://voxel51.com/fiftyone/">Open Source</a></li>
+            <li><a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a></li>
+            <li><a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a></li>
+            <li><a href="https://voxel51.com/success-stories/">Success Stories</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Learn</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://community.voxel51.com">Community Discord</a></li>
+            <li><a href="https://voxel51.com/blog/">Blog</a></li>
+            <li><a href="https://voxel51.com/computer-vision-events/">Events</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item">
+        <a href="https://docs.voxel51.com/">Docs</a>
+      </div>
+
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Company</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://voxel51.com/ourstory/">About Us</a></li>
+            <li><a href="https://voxel51.com/jobs/">Careers</a></li>
+            <li><a href="https://voxel51.com/talk-to-sales/">Talk to Sales</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item mobile_only">
+        <a href="https://github.com/voxel51/fiftyone">GitHub</a>
+      </div>
+
+      <div class="nav__item desktop_only" id="octocat">
+        <!-- https://buttons.github.io -->
+        <a
+          class="github-button"
+          href="https://github.com/voxel51/fiftyone"
+          data-color-scheme="no-preference: dark_high_contrast; light: dark_high_contrast; dark: dark_high_contrast;"
+          data-size="large"
+          data-show-count="true"
+          aria-label="Star voxel51/fiftyone on GitHub"
+          >Star</a
+        >
+      </div>
+
+      <div class="nav__item full_nav_only">
+        <a class="button-primary" href="https://voxel51.com/schedule-teams-workshop/" target="_blank"
+          >Schedule a workshop</a
+        >
+      </div>
+    </div>
+  </nav>
+</div>
+
+
+
+<body class="pytorch-body">
+
+   
+
+    
+
+    <div class="table-of-contents-link-wrapper">
+      <span>Table of Contents</span>
+      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+    </div>
+
+    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+      <div class="pytorch-side-scroll">
+        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          <div class="pytorch-left-menu-search">
+            
+
+            
+              
+              
+            
+
+            
+
+
+  
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+            
+          </div>
+
+           <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Overview</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">FiftyOne Teams 🚀</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_connection.html">API connection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloud_media.html">Cloud-backed media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="roles_and_permissions.html">Roles and permissions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dataset_versioning.html">Dataset Versioning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="teams_app.html">FiftyOne Teams App</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Data Lens <strong style="color: hsl(25, 100%, 51%); font-size: 0.85em; vertical-align: top">NEW</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_quality.html">Data Quality <strong style="color: hsl(25, 100%, 51%); font-size: 0.85em; vertical-align: top">NEW</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="query_performance.html">Query Performance <strong style="color: hsl(25, 100%, 51%); font-size: 0.85em; vertical-align: top">NEW</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="teams_plugins.html">Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="secrets.html">Secrets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="management_sdk.html">Management SDK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migrations.html">Migrations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pluggable_auth.html">Pluggable Auth</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../environments/index.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../recipes/index.html">Recipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheat_sheets/index.html">Cheat Sheets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dataset_zoo/index.html">Dataset Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_zoo/index.html">Model Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brain.html">FiftyOne Brain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/index.html">Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plugins/index.html">Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli/index.html">CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/fiftyone.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deprecation.html">Deprecation Notices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a></li>
+</ul>
+ 
+        </div>
+      </div>
+    </nav>
+
+    <div class="pytorch-container">
+      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+        <div class="pytorch-breadcrumbs-wrapper">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="../index.html">
+          
+            Docs
+          
+        </a> &gt;
+      </li>
+
+        
+          <li><a href="index.html">FiftyOne Teams</a> &gt;</li>
+        
+      <li>Data Lens</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+        </div>
+
+        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+          Contents
+        </div>
+      </div>
+
+      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+        <div class="pytorch-content-left">
+
+        
+          
+          <div class="rst-content style-external-links">
+          
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+              
+  <div class="section" id="data-lens">
+<span id="id1"></span><h1>Data Lens<a class="headerlink" href="#data-lens" title="Permalink to this headline">¶</a></h1>
+<p><strong>Available in FiftyOne Teams v2.2+</strong></p>
+<p>Data Lens is a feature built into the <a class="reference internal" href="teams_app.html#teams-app"><span class="std std-ref">FiftyOne Teams App</span></a>
+which allows you to use FiftyOne to explore and import samples from external
+data sources.</p>
+<p>Whether your data resides in a database like PostgreSQL or a data lake like
+<a class="reference internal" href="#data-lens-databricks"><span class="std std-ref">Databricks</span></a> or
+<a class="reference internal" href="#data-lens-bigquery"><span class="std std-ref">BigQuery</span></a>, Data Lens provides a way to search your
+data sources, visualize sample data, and import into FiftyOne for further
+analysis.</p>
+<img alt="data-lens-home-tab" class="align-center" src="../_images/data_lens_home.png" />
+<div class="section" id="how-it-works">
+<span id="data-lens-how-it-works"></span><h2>How it works<a class="headerlink" href="#how-it-works" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><dl class="simple">
+<dt><strong>Define your search experience</strong></dt><dd><p>Tailor the interactions with your data source to exactly what you need.
+Data Lens provides a flexible framework which allows for extensive
+customization, allowing you to hone in on the questions that are most
+critical to your workflow. See
+<a class="reference internal" href="#data-lens-integration"><span class="std std-ref">Integrating with Data Lens</span></a> to learn more.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Connect your data source</strong></dt><dd><p>Provide configuration to Data Lens to connect to your data source. Once
+connected, you can start searching for samples directly from FiftyOne.
+See <a class="reference internal" href="#data-lens-connecting-a-data-source"><span class="std std-ref">Connecting a data source</span></a>
+to learn more.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Interact with your data</strong></dt><dd><p>View your samples using Data Lens’ rich preview capabilities. Refine your
+search criteria to find samples of interest, then import your samples
+into a FiftyOne dataset for further analysis. See
+<a class="reference internal" href="#data-lens-querying-data"><span class="std std-ref">Exploring samples</span></a> to learn more.</p>
+</dd>
+</dl>
+</li>
+</ol>
+<div class="section" id="connecting-a-data-source">
+<span id="data-lens-connecting-a-data-source"></span><h3>Connecting a data source<a class="headerlink" href="#connecting-a-data-source" title="Permalink to this headline">¶</a></h3>
+<p>A data source represents anywhere that you store your data outside of FiftyOne.
+This could be a local SQL database, a hosted data lake, or an internal data
+platform. To connect to your data source, you’ll first implement a simple
+operator which FiftyOne can use to communicate with your data source.</p>
+<p>Once your operator is defined, you can navigate to the “Data sources” tab by
+clicking on the tab header or by clicking on “Connect to a data source” from
+the “Home” tab.</p>
+<img alt="data-lens-data-sources-empty" class="align-center" src="../_images/data_lens_data_sources_empty.png" />
+<p>Add a new data source by clicking on “Add data source”.</p>
+<p>Enter a useful name for your data source and provide the URI for your operator.
+The URI should have the format <code class="code docutils literal notranslate"><span class="pre">&lt;your-plugin-name&gt;/&lt;your-operator-name&gt;</span></code>.</p>
+<img alt="data-lens-add-data-source" class="align-center" src="../_images/data_lens_add_data_source.png" />
+<p>Click “Connect” once you’re finished to save your configuration.</p>
+<img alt="data-lens-data-sources" class="align-center" src="../_images/data_lens_data_sources.png" />
+<p>If you need to update your Data Lens configuration, simply click the action
+menu icon and select “Edit”. Similarly, you can delete a Data Lens
+configuration by clicking the action menu icon and selecting “Delete”.</p>
+<p>That’s it. Now you’re ready to explore your data source. You can head over to
+the “Query data” tab and start interacting with your data.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Don’t have a Data Lens operator yet? When you’re ready to get started, you
+can follow our detailed <a class="reference internal" href="#data-lens-integration"><span class="std std-ref">integration guide</span></a>.</p>
+</div>
+</div>
+<div class="section" id="exploring-samples">
+<span id="data-lens-querying-data"></span><h3>Exploring samples<a class="headerlink" href="#exploring-samples" title="Permalink to this headline">¶</a></h3>
+<p>Once you’ve connected to a data source, you can open the “Query data” tab to
+start working with your data.</p>
+<p>In this tab, you can select from your connected data sources using the
+“Select a data source” dropdown.</p>
+<p>Below this dropdown, you can parameterize your search using the available
+query parameters. These parameters are unique to each connected data source,
+allowing you to tailor your search experience to exactly what you need.
+Selecting a new data source will automatically update the query parameters to
+match those expected by your data source.</p>
+<img alt="data-lens-query" class="align-center" src="../_images/data_lens_query.png" />
+<p>After you enter your query parameters, you can click the “Preview data” button
+at the bottom of the page to fetch samples which match your query parameters.
+These samples will be displayed in the preview panel, along with any features
+associated with the sample like labels or bounding boxes.</p>
+<img alt="data-lens-preview" class="align-center" src="../_images/data_lens_preview.png" />
+<p>You can use the zoom slider to control the size of the samples, and you can
+modify the number of preview samples shown by changing the “Number of preview
+samples” input value and clicking “Preview data” again.</p>
+<p>If you want to change your search, simply reopen the query parameters panel
+and modify your inputs. Clicking “Preview data” will fetch new samples matching
+the current query parameters.</p>
+<p>If you want to import your samples into FiftyOne for further analysis, you can
+import your samples to a dataset.</p>
+</div>
+<div class="section" id="importing-samples-to-fiftyone">
+<span id="data-lens-importing-to-fiftyone"></span><h3>Importing samples to FiftyOne<a class="headerlink" href="#importing-samples-to-fiftyone" title="Permalink to this headline">¶</a></h3>
+<p>After generating a preview in Data Lens, you can click on the “Import data”
+button to open the import dialog.</p>
+<img alt="data-lens-import-dialog" class="align-center" src="../_images/data_lens_import_dialog.png" />
+<p>Imports can be limited to a specific number of samples, or you can import all
+samples matching your query parameters.</p>
+<p>The “Skip existing samples” checkbox allows you to configure the behavior for
+merging samples into a dataset. If checked, samples with a <code class="code docutils literal notranslate"><span class="pre">filepath</span></code> which is
+already present in the dataset will be skipped. If left unchecked, all samples
+will be added to the dataset.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you elect to skip existing samples, this will also deduplicate samples
+within the data being imported.</p>
+</div>
+<p>After configuring the size/behavior of your import, select a destination
+dataset for the samples. This can be an existing dataset, or you can choose to
+create a new dataset.</p>
+<p>You can optionally specify tags to append to the <code class="code docutils literal notranslate"><span class="pre">tags</span></code> field of each imported
+sample.</p>
+<p>When you click import, you will have the option to either execute immediately
+or to schedule this import for asynchronous execution.</p>
+<img alt="data-lens-import-options" class="align-center" src="../_images/data_lens_import_options.png" />
+<p>If you are importing a small number of samples, then immediate execution may
+be appropriate. However, for most cases it is recommended to schedule the
+import, as this will result in more consistent and performant execution.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Scheduled imports use the
+<a class="reference internal" href="teams_plugins.html#teams-delegated-operations"><span class="std std-ref">delegated operations</span></a> framework to
+execute asynchronously on your connected compute cluster!</p>
+</div>
+<p>After selecting your execution preference, you will be able to monitor the
+status of your import through the information provided by the import panel.</p>
+<p>In the case of immediate execution, you will be presented with an option to
+view your samples once the import is complete. Clicking on this button will
+open your destination dataset containing your imported samples.</p>
+<img alt="data-lens-immediate-import" class="align-center" src="../_images/data_lens_immediate_import.png" />
+<p>In the case of scheduled execution, you will be presented with an option to
+visit the <a class="reference internal" href="teams_plugins.html#teams-runs-page"><span class="std std-ref">Runs page</span></a>.</p>
+<img alt="data-lens-scheduled-import" class="align-center" src="../_images/data_lens_scheduled_import.png" />
+<p>From the Runs page, you can track the status of your import.</p>
+<img alt="data-lens-runs-page" class="align-center" src="../_images/data_lens_runs_page.png" />
+<p>Once your samples are imported, you will be able to leverage the full
+capabilities of FiftyOne to analyze and curate your data, and you can continue
+to use Data Lens to augment your datasets.</p>
+<img alt="data-lens-imported-samples" class="align-center" src="../_images/data_lens_imported_samples.png" />
+</div>
+</div>
+<div class="section" id="integrating-with-data-lens">
+<span id="data-lens-integration"></span><h2>Integrating with Data Lens<a class="headerlink" href="#integrating-with-data-lens" title="Permalink to this headline">¶</a></h2>
+<p>Data Lens makes use of FiftyOne’s powerful
+<a class="reference internal" href="../plugins/index.html#fiftyone-plugins"><span class="std std-ref">plugins framework</span></a> to allow you to tailor your
+experience to meet the needs of your data. As part of the plugin framework,
+you are able to create custom <a class="reference internal" href="../plugins/developing_plugins.html#plugins-design-operators"><span class="std std-ref">operators</span></a>,
+which are self-contained Python classes that provide custom functionality to
+FiftyOne.</p>
+<p>Data Lens defines an operator interface which makes it easy to connect to your
+data sources. We’ll walk through an example of creating your first Data Lens
+operator.</p>
+<div class="section" id="setting-up-your-operator">
+<span id="data-lens-setup"></span><h3>Setting up your operator<a class="headerlink" href="#setting-up-your-operator" title="Permalink to this headline">¶</a></h3>
+<p>To assist with Data Lens integration, we can use the
+<code class="xref py py-class docutils literal notranslate"><span class="pre">DataLensOperator</span></code>
+base class provided with the Teams SDK. This base class handles the
+implementation for the operator’s <code class="code docutils literal notranslate"><span class="pre">execute()</span></code> method, and defines a single
+abstract method that we’ll implement.</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># my_plugin/__init__.py</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Generator</span>
+
+<span class="kn">import</span> <span class="nn">fiftyone.operators</span> <span class="k">as</span> <span class="nn">foo</span>
+<span class="kn">from</span> <span class="nn">fiftyone.operators.data_lens</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">DataLensOperator</span><span class="p">,</span>
+    <span class="n">DataLensSearchRequest</span><span class="p">,</span>
+    <span class="n">DataLensSearchResponse</span>
+<span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">MyCustomDataLensOperator</span><span class="p">(</span><span class="n">DataLensOperator</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Custom operator which integrates with Data Lens.&quot;&quot;&quot;</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">config</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">foo</span><span class="o">.</span><span class="n">OperatorConfig</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">foo</span><span class="o">.</span><span class="n">OperatorConfig</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="s2">&quot;my_custom_data_lens_operator&quot;</span><span class="p">,</span>
+            <span class="n">label</span><span class="o">=</span><span class="s2">&quot;My custom Data Lens operator&quot;</span><span class="p">,</span>
+            <span class="n">unlisted</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">execute_as_generator</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">handle_lens_search_request</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">request</span><span class="p">:</span> <span class="n">DataLensSearchRequest</span><span class="p">,</span>
+        <span class="n">ctx</span><span class="p">:</span> <span class="n">foo</span><span class="o">.</span><span class="n">ExecutionContext</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="n">DataLensSearchResponse</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span>
+        <span class="c1"># We&#39;ll implement our logic here</span>
+        <span class="k">pass</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>Let’s take a look at what we have so far.</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><span class="k">class</span> <span class="nc">MyCustomDataLensOperator</span><span class="p">(</span><span class="n">DataLensOperator</span><span class="p">):</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>Our operator extends the
+<code class="xref py py-class docutils literal notranslate"><span class="pre">DataLensOperator</span></code>
+provided by the Teams SDK. This base class defines the abstract
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">handle_lens_search_request()</span></code>
+method, which we will need to implement.</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><span class="nd">@property</span>
+<span class="k">def</span> <span class="nf">config</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">foo</span><span class="o">.</span><span class="n">OperatorConfig</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">foo</span><span class="o">.</span><span class="n">OperatorConfig</span><span class="p">(</span>
+        <span class="c1"># This is the name of your operator. FiftyOne will canonically</span>
+        <span class="c1"># refer to your operator as &lt;your-plugin&gt;/&lt;your-operator&gt;.</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;my_custom_data_lens_operator&quot;</span><span class="p">,</span>
+
+        <span class="c1"># This is a human-friendly label for your operator.</span>
+        <span class="n">label</span><span class="o">=</span><span class="s2">&quot;My custom Data Lens operator&quot;</span><span class="p">,</span>
+
+        <span class="c1"># Setting unlisted to True prevents your operator from appearing</span>
+        <span class="c1"># in lists of general-purpose operators, as this operator is not</span>
+        <span class="c1"># intended to be directly executed.</span>
+        <span class="n">unlisted</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+
+        <span class="c1"># For compatibility with the DataLensOperator base class, we</span>
+        <span class="c1"># instruct FiftyOne to execute our operator as a generator.</span>
+        <span class="n">execute_as_generator</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>The <a class="reference internal" href="../api/fiftyone.operators.operator.html#fiftyone.operators.operator.Operator.config" title="fiftyone.operators.operator.Operator.config"><code class="xref py py-meth docutils literal notranslate"><span class="pre">config</span></code></a> property
+is part of the standard <a class="reference internal" href="../plugins/developing_plugins.html#operator-interface"><span class="std std-ref">operator interface</span></a> and
+provides configuration options for your operator.</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><span class="k">def</span> <span class="nf">handle_lens_search_request</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">request</span><span class="p">:</span> <span class="n">DataLensSearchRequest</span><span class="p">,</span>
+    <span class="n">ctx</span><span class="p">:</span> <span class="n">foo</span><span class="o">.</span><span class="n">ExecutionContext</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="n">DataLensSearchResponse</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span>
+    <span class="k">pass</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>The
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">handle_lens_search_request()</span></code>
+method provides us with two arguments: a
+<code class="xref py py-class docutils literal notranslate"><span class="pre">DataLensSearchRequest</span></code>
+instance, and the current operator execution context.</p>
+<p>The
+<code class="xref py py-class docutils literal notranslate"><span class="pre">DataLensSearchRequest</span></code>
+is generated by the Data Lens framework and provides information about the
+Data Lens user’s query. The request object has
+the following properties:</p>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">request.search_params</span></code>: a dict containing the search parameters provided
+by the Data Lens user.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">request.batch_size</span></code>: a number indicating the maximum number of samples to
+return in a single batch.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">request.max_results</span></code>: a number indicating the maximum number of
+samples to return across all batches.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Data Lens framework will automatically truncate responses to adhere
+to <code class="code docutils literal notranslate"><span class="pre">request.max_results</span></code>. Any sample data beyond this limit will be
+discarded.</p>
+</div>
+<p>The <code class="code docutils literal notranslate"><span class="pre">ctx</span></code> argument provides access to a
+<a class="reference internal" href="../plugins/developing_plugins.html#operator-execution-context"><span class="std std-ref">range of useful capabilities</span></a> which you can
+leverage in your operator, including things like
+<a class="reference internal" href="secrets.html#teams-secrets"><span class="std std-ref">providing secrets to your operator</span></a>.</p>
+<p>Using these inputs, we are expected to return a generator which yields
+<code class="xref py py-class docutils literal notranslate"><span class="pre">DataLensSearchResponse</span></code>
+objects. To start, we’ll create some synthetic data to better understand the
+interaction between Data Lens and our operator. We’ll look at a
+<a class="reference internal" href="#data-lens-databricks"><span class="std std-ref">more realistic example</span></a> later on.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Why a generator? Generators provide a convenient approach for long-lived,
+lazy-fetching connections that are common in databases and data lakes.
+While Data Lens does support operators which do not execute as generators,
+we recommend using a generator for ease of integration.</p>
+</div>
+</div>
+<div class="section" id="generating-search-responses">
+<span id="data-lens-generating-responses"></span><h3>Generating search responses<a class="headerlink" href="#generating-search-responses" title="Permalink to this headline">¶</a></h3>
+<p>To adhere to the Data Lens interface, we need to yield
+<code class="xref py py-class docutils literal notranslate"><span class="pre">DataLensSearchResponse</span></code>
+objects from our operator. A
+<code class="xref py py-class docutils literal notranslate"><span class="pre">DataLensSearchResponse</span></code>
+is comprised of the following fields:</p>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">response.result_count</span></code>: a number indicating the number of samples being
+returned in this response.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">response.query_result</span></code>: a list of dicts containing serialized
+<a class="reference internal" href="../api/fiftyone.core.sample.html#fiftyone.core.sample.Sample" title="fiftyone.core.sample.Sample"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sample</span></code></a> data, e.g. obtained via
+<a class="reference internal" href="../api/fiftyone.core.sample.html#fiftyone.core.sample.Sample.to_dict" title="fiftyone.core.sample.Sample.to_dict"><code class="xref py py-meth docutils literal notranslate"><span class="pre">to_dict()</span></code></a>.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Data Lens expects sample data to adhere to the
+<a class="reference internal" href="../api/fiftyone.core.sample.html#fiftyone.core.sample.Sample" title="fiftyone.core.sample.Sample"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sample</span></code></a> format, which is easy to
+achieve by using the FiftyOne SDK to create your sample data, as shown
+below.</p>
+</div>
+<p>To see how Data Lens works, let’s yield a response with a single synthetic
+sample.</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><span class="k">def</span> <span class="nf">handle_lens_search_request</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">request</span><span class="p">:</span> <span class="n">DataLensSearchRequest</span><span class="p">,</span>
+    <span class="n">ctx</span><span class="p">:</span> <span class="n">foo</span><span class="o">.</span><span class="n">ExecutionContext</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="n">DataLensSearchResponse</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span>
+    <span class="c1"># We&#39;ll use a placeholder image for our synthetic data</span>
+    <span class="n">image_url</span> <span class="o">=</span> <span class="s2">&quot;https://placehold.co/150x150&quot;</span>
+
+    <span class="c1"># Create a sample using the SDK</span>
+    <span class="n">synthetic_sample</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Sample</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="n">image_url</span><span class="p">)</span>
+
+    <span class="c1"># Convert our samples to dicts</span>
+    <span class="n">samples</span> <span class="o">=</span> <span class="p">[</span><span class="n">synthetic_sample</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()]</span>
+
+    <span class="c1"># We&#39;ll ignore any inputs for now and yield a single response</span>
+    <span class="k">yield</span> <span class="n">DataLensSearchResponse</span><span class="p">(</span>
+        <span class="n">result_count</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">samples</span><span class="p">),</span>
+        <span class="n">query_result</span><span class="o">=</span><span class="n">samples</span>
+    <span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>Let’s see what this looks like in Data Lens.</p>
+<p>After adding the operator as a data source, we can navigate to the “Query data”
+tab to interact with the operator. When we click the preview button, the Data
+Lens framework invokes our operator to retrieve sample data. Our operator
+yields a single sample, and we see that sample shown in the preview.</p>
+<img alt="data-lens-synthetic-sample" class="align-center" src="../_images/data_lens_synthetic_sample.png" />
+<p>Let’s modify our operator to incorporate the <code class="code docutils literal notranslate"><span class="pre">request.batch_size</span></code> property.</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span></pre></div></td><td class="code"><div><pre><span></span><span class="k">def</span> <span class="nf">handle_lens_search_request</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">request</span><span class="p">:</span> <span class="n">DataLensSearchRequest</span><span class="p">,</span>
+    <span class="n">ctx</span><span class="p">:</span> <span class="n">foo</span><span class="o">.</span><span class="n">ExecutionContext</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="n">DataLensSearchResponse</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span>
+    <span class="n">samples</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># Generate number of samples equal to request.batch_size</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">batch_size</span><span class="p">):</span>
+        <span class="n">samples</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+            <span class="n">fo</span><span class="o">.</span><span class="n">Sample</span><span class="p">(</span>
+                <span class="c1"># We&#39;ll modify our synthetic data to include the</span>
+                <span class="c1"># sample&#39;s index as the image text.</span>
+                <span class="n">filepath</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;https://placehold.co/150x150?text=</span><span class="si">{</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">)</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+        <span class="p">)</span>
+
+    <span class="c1"># Still yielding a single response</span>
+    <span class="k">yield</span> <span class="n">DataLensSearchResponse</span><span class="p">(</span>
+        <span class="n">result_count</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">samples</span><span class="p">),</span>
+        <span class="n">query_result</span><span class="o">=</span><span class="n">samples</span>
+    <span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>Now if we re-run our preview, we see that we get a number of samples equal to
+the “Number of preview samples” input.</p>
+<img alt="data-lens-synthetic-batch" class="align-center" src="../_images/data_lens_synthetic_batch.png" />
+<p>If we modify that number and regenerate the preview, we can see that the number
+of samples remains in sync. For preview functionality, Data Lens fetches
+sample data in a single batch, so we can expect these values to be the same.</p>
+</div>
+<div class="section" id="working-with-user-provided-data">
+<span id="data-lens-working-with-user-data"></span><h3>Working with user-provided data<a class="headerlink" href="#working-with-user-provided-data" title="Permalink to this headline">¶</a></h3>
+<p>Let’s now look at how Data Lens users are able to interact with our operator.
+Data Lens is designed to enable users to quickly explore samples of interest,
+and a key component is providing users a way to control the behavior of our
+operator.</p>
+<p>To achieve this, we simply need to define the possible inputs to our operator
+in the
+<a class="reference internal" href="../api/fiftyone.operators.operator.html#fiftyone.operators.operator.Operator.resolve_input" title="fiftyone.operators.operator.Operator.resolve_input"><code class="xref py py-meth docutils literal notranslate"><span class="pre">resolve_input()</span></code></a>
+method.</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><span class="k">def</span> <span class="nf">resolve_input</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="c1"># We define our inputs as an object.</span>
+    <span class="c1"># We&#39;ll add specific fields to this object which represent a single input.</span>
+    <span class="n">inputs</span> <span class="o">=</span> <span class="n">types</span><span class="o">.</span><span class="n">Object</span><span class="p">()</span>
+
+    <span class="c1"># Add a string field named &quot;sample_text&quot;</span>
+    <span class="n">inputs</span><span class="o">.</span><span class="n">str</span><span class="p">(</span><span class="s2">&quot;sample_text&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Sample text&quot;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Text to render in samples&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">types</span><span class="o">.</span><span class="n">Property</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For more information on operator inputs, see
+<a class="reference internal" href="../plugins/developing_plugins.html#operator-inputs"><span class="std std-ref">the plugin documentation</span></a>.</p>
+</div>
+<p>With this method implemented, Data Lens will construct a form allowing users
+to define any or all of these inputs.</p>
+<img alt="data-lens-synthetic-query" class="align-center" src="../_images/data_lens_synthetic_query.png" />
+<p>We can then use this data to change the behavior of our operator. Let’s add
+logic to integrate <code class="code docutils literal notranslate"><span class="pre">sample_text</span></code> into our operator.</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span></pre></div></td><td class="code"><div><pre><span></span><span class="k">def</span> <span class="nf">handle_lens_search_request</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">request</span><span class="p">:</span> <span class="n">DataLensSearchRequest</span><span class="p">,</span>
+    <span class="n">ctx</span><span class="p">:</span> <span class="n">foo</span><span class="o">.</span><span class="n">ExecutionContext</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="n">DataLensSearchResponse</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span>
+    <span class="c1"># Retrieve our &quot;sample_text&quot; input from request.search_params.</span>
+    <span class="c1"># These parameter names should match those used in resolve_input().</span>
+    <span class="n">sample_text</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">search_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;sample_text&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+    <span class="n">samples</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># Create a sample for each character in our input text</span>
+    <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">sample_text</span><span class="p">:</span>
+        <span class="n">samples</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+            <span class="n">fo</span><span class="o">.</span><span class="n">Sample</span><span class="p">(</span>
+                <span class="n">filepath</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;https://placehold.co/150x150?text=</span><span class="si">{</span><span class="n">char</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">)</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Yield batches when we have enough samples</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span> <span class="o">==</span> <span class="n">request</span><span class="o">.</span><span class="n">batch_size</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="n">DataLensSearchResponse</span><span class="p">(</span>
+                <span class="n">result_count</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">samples</span><span class="p">),</span>
+                <span class="n">query_result</span><span class="o">=</span><span class="n">samples</span>
+            <span class="p">)</span>
+
+            <span class="c1"># Reset our batch</span>
+            <span class="n">samples</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># We&#39;ve generated all our samples, but might be in the middle of a batch</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">yield</span> <span class="n">DataLensSearchResponse</span><span class="p">(</span>
+            <span class="n">result_count</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">samples</span><span class="p">),</span>
+            <span class="n">query_result</span><span class="o">=</span><span class="n">samples</span>
+        <span class="p">)</span>
+
+    <span class="c1"># Now we&#39;re done :)</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>Now when we run our preview, we can see that the text we provide as input is
+reflected in the samples returned by our operator. Modifying the text and
+regenerating the preview yields the expected result.</p>
+<img alt="data-lens-synthetic-text" class="align-center" src="../_images/data_lens_synthetic_text.png" />
+<p>There are a couple things to note about the changes we made here.</p>
+<ul class="simple">
+<li><p>Inputs can be specified with <code class="code docutils literal notranslate"><span class="pre">required=True</span></code>, in which case Data Lens will
+ensure that the user provides a value for that input. If an input is not
+explicitly required, then we should be sure to handle the case where it is
+not present.</p></li>
+<li><p>In most real scenarios, our operator will be processing more samples than
+fit in a single batch. (This is even true here, where there is no upper
+bound on our input length). As such, our operator should respect the
+<code class="code docutils literal notranslate"><span class="pre">request.batch_size</span></code> parameter and yield batches of samples as they are
+available.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This example is meant to illustrate how users can interact with our
+operator. For a more realistic view into how inputs can tailor our search
+experience, see our example
+<a class="reference internal" href="#data-lens-databricks"><span class="std std-ref">integration with Databricks</span></a>.</p>
+</div>
+</div>
+<div class="section" id="differences-in-preview-and-import">
+<span id="data-lens-preview-vs-import"></span><h3>Differences in preview and import<a class="headerlink" href="#differences-in-preview-and-import" title="Permalink to this headline">¶</a></h3>
+<p>While the examples here are focused on preview functionality, the Data Lens
+framework invokes your operator in the same way to achieve both preview and
+import functionality. The <code class="code docutils literal notranslate"><span class="pre">request.batch_size</span></code> and <code class="code docutils literal notranslate"><span class="pre">request.max_results</span></code>
+parameters can be used to optimize your data retrieval, but preview and import
+should otherwise be treated as functionally equivalent.</p>
+</div>
+</div>
+<div class="section" id="example-data-source-connectors">
+<span id="data-lens-example-connectors"></span><h2>Example data source connectors<a class="headerlink" href="#example-data-source-connectors" title="Permalink to this headline">¶</a></h2>
+<p>This section provides example Data Lens connectors for various popular data
+sources.</p>
+<div class="section" id="databricks">
+<span id="data-lens-databricks"></span><h3>Databricks<a class="headerlink" href="#databricks" title="Permalink to this headline">¶</a></h3>
+<p>Below is an example of a Data Lens connector for Databricks. This example uses
+a schema consistent with the Berkeley DeepDrive dataset format.</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">  1</span>
+<span class="normal">  2</span>
+<span class="normal">  3</span>
+<span class="normal">  4</span>
+<span class="normal">  5</span>
+<span class="normal">  6</span>
+<span class="normal">  7</span>
+<span class="normal">  8</span>
+<span class="normal">  9</span>
+<span class="normal"> 10</span>
+<span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span>
+<span class="normal">235</span>
+<span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span>
+<span class="normal">243</span>
+<span class="normal">244</span>
+<span class="normal">245</span>
+<span class="normal">246</span>
+<span class="normal">247</span>
+<span class="normal">248</span>
+<span class="normal">249</span>
+<span class="normal">250</span>
+<span class="normal">251</span>
+<span class="normal">252</span>
+<span class="normal">253</span>
+<span class="normal">254</span>
+<span class="normal">255</span>
+<span class="normal">256</span>
+<span class="normal">257</span>
+<span class="normal">258</span>
+<span class="normal">259</span>
+<span class="normal">260</span>
+<span class="normal">261</span>
+<span class="normal">262</span>
+<span class="normal">263</span>
+<span class="normal">264</span>
+<span class="normal">265</span>
+<span class="normal">266</span>
+<span class="normal">267</span>
+<span class="normal">268</span>
+<span class="normal">269</span>
+<span class="normal">270</span>
+<span class="normal">271</span>
+<span class="normal">272</span>
+<span class="normal">273</span>
+<span class="normal">274</span>
+<span class="normal">275</span>
+<span class="normal">276</span>
+<span class="normal">277</span>
+<span class="normal">278</span>
+<span class="normal">279</span>
+<span class="normal">280</span>
+<span class="normal">281</span>
+<span class="normal">282</span>
+<span class="normal">283</span>
+<span class="normal">284</span>
+<span class="normal">285</span>
+<span class="normal">286</span>
+<span class="normal">287</span>
+<span class="normal">288</span>
+<span class="normal">289</span>
+<span class="normal">290</span>
+<span class="normal">291</span>
+<span class="normal">292</span>
+<span class="normal">293</span>
+<span class="normal">294</span>
+<span class="normal">295</span>
+<span class="normal">296</span>
+<span class="normal">297</span>
+<span class="normal">298</span>
+<span class="normal">299</span>
+<span class="normal">300</span>
+<span class="normal">301</span>
+<span class="normal">302</span>
+<span class="normal">303</span>
+<span class="normal">304</span>
+<span class="normal">305</span>
+<span class="normal">306</span>
+<span class="normal">307</span>
+<span class="normal">308</span>
+<span class="normal">309</span>
+<span class="normal">310</span>
+<span class="normal">311</span>
+<span class="normal">312</span>
+<span class="normal">313</span>
+<span class="normal">314</span>
+<span class="normal">315</span>
+<span class="normal">316</span>
+<span class="normal">317</span>
+<span class="normal">318</span>
+<span class="normal">319</span>
+<span class="normal">320</span>
+<span class="normal">321</span>
+<span class="normal">322</span>
+<span class="normal">323</span>
+<span class="normal">324</span>
+<span class="normal">325</span>
+<span class="normal">326</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Generator</span>
+
+<span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">from</span> <span class="nn">databricks.sdk</span> <span class="kn">import</span> <span class="n">WorkspaceClient</span>
+<span class="kn">from</span> <span class="nn">databricks.sdk.service.sql</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">StatementResponse</span><span class="p">,</span> <span class="n">StatementState</span><span class="p">,</span> <span class="n">StatementParameterListItem</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">fiftyone</span> <span class="kn">import</span> <span class="n">operators</span> <span class="k">as</span> <span class="n">foo</span>
+<span class="kn">from</span> <span class="nn">fiftyone.operators</span> <span class="kn">import</span> <span class="n">types</span>
+<span class="kn">from</span> <span class="nn">fiftyone.operators.data_lens</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">DataLensOperator</span><span class="p">,</span> <span class="n">DataLensSearchRequest</span><span class="p">,</span> <span class="n">DataLensSearchResponse</span>
+<span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">DatabricksConnector</span><span class="p">(</span><span class="n">DataLensOperator</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Data Lens operator which retrieves samples from Databricks.&quot;&quot;&quot;</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">config</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">foo</span><span class="o">.</span><span class="n">OperatorConfig</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">foo</span><span class="o">.</span><span class="n">OperatorConfig</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="s2">&quot;databricks_connector&quot;</span><span class="p">,</span>
+            <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Databricks Connector&quot;</span><span class="p">,</span>
+            <span class="n">unlisted</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">execute_as_generator</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">resolve_input</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ctx</span><span class="p">:</span> <span class="n">foo</span><span class="o">.</span><span class="n">ExecutionContext</span><span class="p">):</span>
+        <span class="n">inputs</span> <span class="o">=</span> <span class="n">types</span><span class="o">.</span><span class="n">Object</span><span class="p">()</span>
+
+        <span class="c1"># Times of day</span>
+        <span class="n">inputs</span><span class="o">.</span><span class="n">bool</span><span class="p">(</span>
+            <span class="s2">&quot;daytime&quot;</span><span class="p">,</span>
+            <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Day&quot;</span><span class="p">,</span>
+            <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Show daytime samples&quot;</span><span class="p">,</span>
+            <span class="n">default</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">inputs</span><span class="o">.</span><span class="n">bool</span><span class="p">(</span>
+            <span class="s2">&quot;night&quot;</span><span class="p">,</span>
+            <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Night&quot;</span><span class="p">,</span>
+            <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Show night samples&quot;</span><span class="p">,</span>
+            <span class="n">default</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">inputs</span><span class="o">.</span><span class="n">bool</span><span class="p">(</span>
+            <span class="s2">&quot;dawn/dusk&quot;</span><span class="p">,</span>
+            <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Dawn / Dusk&quot;</span><span class="p">,</span>
+            <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Show dawn/dusk samples&quot;</span><span class="p">,</span>
+            <span class="n">default</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Weather</span>
+        <span class="n">inputs</span><span class="o">.</span><span class="n">bool</span><span class="p">(</span>
+            <span class="s2">&quot;clear&quot;</span><span class="p">,</span>
+            <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Clear weather&quot;</span><span class="p">,</span>
+            <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Show samples with clear weather&quot;</span><span class="p">,</span>
+            <span class="n">default</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">inputs</span><span class="o">.</span><span class="n">bool</span><span class="p">(</span>
+            <span class="s2">&quot;rainy&quot;</span><span class="p">,</span>
+            <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Rainy weather&quot;</span><span class="p">,</span>
+            <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Show samples with rainy weather&quot;</span><span class="p">,</span>
+            <span class="n">default</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Detection label</span>
+        <span class="n">inputs</span><span class="o">.</span><span class="n">str</span><span class="p">(</span>
+            <span class="s2">&quot;detection_label&quot;</span><span class="p">,</span>
+            <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Detection label&quot;</span><span class="p">,</span>
+            <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Filter samples by detection label&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">types</span><span class="o">.</span><span class="n">Property</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">handle_lens_search_request</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="n">request</span><span class="p">:</span> <span class="n">DataLensSearchRequest</span><span class="p">,</span>
+            <span class="n">ctx</span><span class="p">:</span> <span class="n">foo</span><span class="o">.</span><span class="n">ExecutionContext</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="n">DataLensSearchResponse</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
+        <span class="n">handler</span> <span class="o">=</span> <span class="n">DatabricksHandler</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">response</span> <span class="ow">in</span> <span class="n">handler</span><span class="o">.</span><span class="n">handle_request</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">ctx</span><span class="p">):</span>
+            <span class="k">yield</span> <span class="n">response</span>
+
+
+<span class="k">class</span> <span class="nc">DatabricksHandler</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Handler for interacting with Databricks tables.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">warehouse_id</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">handle_request</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="n">request</span><span class="p">:</span> <span class="n">DataLensSearchRequest</span><span class="p">,</span>
+            <span class="n">ctx</span><span class="p">:</span> <span class="n">foo</span><span class="o">.</span><span class="n">ExecutionContext</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="n">DataLensSearchResponse</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
+
+        <span class="c1"># Initialize the client</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_init_client</span><span class="p">(</span><span class="n">ctx</span><span class="p">)</span>
+
+        <span class="c1"># Iterate over samples</span>
+        <span class="n">sample_buffer</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">sample</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_iter_data</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+            <span class="n">sample_buffer</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_transform_sample</span><span class="p">(</span><span class="n">sample</span><span class="p">))</span>
+
+            <span class="c1"># Yield batches of data as they are available</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sample_buffer</span><span class="p">)</span> <span class="o">==</span> <span class="n">request</span><span class="o">.</span><span class="n">batch_size</span><span class="p">:</span>
+                <span class="k">yield</span> <span class="n">DataLensSearchResponse</span><span class="p">(</span>
+                    <span class="n">result_count</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">sample_buffer</span><span class="p">),</span>
+                    <span class="n">query_result</span><span class="o">=</span><span class="n">sample_buffer</span><span class="p">,</span>
+                <span class="p">)</span>
+
+                <span class="n">sample_buffer</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="c1"># Yield final batch if it&#39;s non-empty</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sample_buffer</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="n">DataLensSearchResponse</span><span class="p">(</span>
+                <span class="n">result_count</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">sample_buffer</span><span class="p">),</span>
+                <span class="n">query_result</span><span class="o">=</span><span class="n">sample_buffer</span><span class="p">,</span>
+            <span class="p">)</span>
+
+        <span class="c1"># No more samples.</span>
+
+    <span class="k">def</span> <span class="nf">_init_client</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ctx</span><span class="p">:</span> <span class="n">foo</span><span class="o">.</span><span class="n">ExecutionContext</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Prepare the Databricks client for query execution.&quot;&quot;&quot;</span>
+
+        <span class="c1"># Initialize the Databricks client using credentials provided via `ctx.secret`</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span> <span class="o">=</span> <span class="n">WorkspaceClient</span><span class="p">(</span>
+            <span class="n">host</span><span class="o">=</span><span class="n">ctx</span><span class="o">.</span><span class="n">secret</span><span class="p">(</span><span class="s2">&quot;DATABRICKS_HOST&quot;</span><span class="p">),</span>
+            <span class="n">account_id</span><span class="o">=</span><span class="n">ctx</span><span class="o">.</span><span class="n">secret</span><span class="p">(</span><span class="s2">&quot;DATABRICKS_ACCOUNT_ID&quot;</span><span class="p">),</span>
+            <span class="n">client_id</span><span class="o">=</span><span class="n">ctx</span><span class="o">.</span><span class="n">secret</span><span class="p">(</span><span class="s2">&quot;DATABRICKS_CLIENT_ID&quot;</span><span class="p">),</span>
+            <span class="n">client_secret</span><span class="o">=</span><span class="n">ctx</span><span class="o">.</span><span class="n">secret</span><span class="p">(</span><span class="s2">&quot;DATABRICKS_CLIENT_SECRET&quot;</span><span class="p">),</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Start a SQL warehouse instance to execute our query</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">warehouse_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_start_warehouse</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">warehouse_id</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;No available warehouse&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_start_warehouse</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Start a SQL warehouse and return its ID.&quot;&quot;&quot;</span>
+
+        <span class="n">last_warehouse_id</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1"># If any warehouses are already running, use the first available</span>
+        <span class="k">for</span> <span class="n">warehouse</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">warehouses</span><span class="o">.</span><span class="n">list</span><span class="p">():</span>
+            <span class="n">last_warehouse_id</span> <span class="o">=</span> <span class="n">warehouse</span><span class="o">.</span><span class="n">id</span>
+            <span class="k">if</span> <span class="n">warehouse</span><span class="o">.</span><span class="n">health</span><span class="o">.</span><span class="n">status</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">warehouse</span><span class="o">.</span><span class="n">id</span>
+
+        <span class="c1"># Otherwise, manually start the last available warehouse</span>
+        <span class="k">if</span> <span class="n">last_warehouse_id</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">warehouses</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">last_warehouse_id</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">last_warehouse_id</span>
+
+    <span class="k">def</span> <span class="nf">_iter_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">:</span> <span class="n">DataLensSearchRequest</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="nb">dict</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Iterate over sample data retrieved from Databricks.&quot;&quot;&quot;</span>
+
+        <span class="c1"># Filter samples based on selected times of day</span>
+        <span class="n">enabled_times_of_day</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">([</span>
+            <span class="sa">f</span><span class="s1">&#39;&quot;</span><span class="si">{</span><span class="n">tod</span><span class="si">}</span><span class="s1">&quot;&#39;</span>
+            <span class="k">for</span> <span class="n">tod</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;daytime&quot;</span><span class="p">,</span> <span class="s2">&quot;night&quot;</span><span class="p">,</span> <span class="s2">&quot;dawn/dusk&quot;</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">search_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">tod</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+        <span class="p">])</span>
+
+        <span class="c1"># Filter samples based on selected weather</span>
+        <span class="n">enabled_weather</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">([</span>
+            <span class="sa">f</span><span class="s1">&#39;&quot;</span><span class="si">{</span><span class="n">weather</span><span class="si">}</span><span class="s1">&quot;&#39;</span>
+            <span class="k">for</span> <span class="n">weather</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;clear&quot;</span><span class="p">,</span> <span class="s2">&quot;rainy&quot;</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">search_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">weather</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+        <span class="p">])</span>
+
+        <span class="c1"># Build Databricks query</span>
+        <span class="n">query</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">            SELECT * FROM datasets.bdd.det_train samples</span>
+<span class="s2">            WHERE</span>
+<span class="s2">                samples.attributes.timeofday IN (</span><span class="si">{</span><span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">enabled_times_of_day</span><span class="p">)</span><span class="si">}</span><span class="s2">)</span>
+<span class="s2">            AND samples.attributes.weather IN (</span><span class="si">{</span><span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">enabled_weather</span><span class="p">)</span><span class="si">}</span><span class="s2">)</span>
+<span class="s2">        &quot;&quot;&quot;</span>
+
+        <span class="n">query_parameters</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="c1"># Filter samples based on detection label if provided</span>
+        <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">search_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;detection_label&quot;</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">):</span>
+            <span class="n">query</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">            AND samples.name IN (</span>
+<span class="s2">                SELECT DISTINCT(labels.name)</span>
+<span class="s2">                FROM datasets.bdd.det_train_labels labels</span>
+<span class="s2">                WHERE labels.category = :detection_label</span>
+<span class="s2">            )</span>
+<span class="s2">            &quot;&quot;&quot;</span>
+
+            <span class="n">query_parameters</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="n">StatementParameterListItem</span><span class="p">(</span>
+                    <span class="s2">&quot;detection_label&quot;</span><span class="p">,</span>
+                    <span class="n">value</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">search_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;detection_label&quot;</span><span class="p">)</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+
+        <span class="c1"># Execute query asynchronously;</span>
+        <span class="c1">#   we&#39;ll get a statement_id that we can use to poll for results</span>
+        <span class="n">statement_response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">statement_execution</span><span class="o">.</span><span class="n">execute_statement</span><span class="p">(</span>
+            <span class="n">query</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">warehouse_id</span><span class="p">,</span>
+            <span class="n">catalog</span><span class="o">=</span><span class="s2">&quot;datasets&quot;</span><span class="p">,</span>
+            <span class="n">parameters</span><span class="o">=</span><span class="n">query_parameters</span><span class="p">,</span>
+            <span class="n">row_limit</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">max_results</span><span class="p">,</span>
+            <span class="n">wait_timeout</span><span class="o">=</span><span class="s2">&quot;0s&quot;</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Poll on our statement until it&#39;s no longer in an active state</span>
+        <span class="k">while</span> <span class="p">(</span>
+                <span class="n">statement_response</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">state</span> <span class="ow">in</span>
+                <span class="p">(</span><span class="n">StatementState</span><span class="o">.</span><span class="n">PENDING</span><span class="p">,</span> <span class="n">StatementState</span><span class="o">.</span><span class="n">RUNNING</span><span class="p">)</span>
+        <span class="p">):</span>
+            <span class="n">statement_response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">statement_execution</span><span class="o">.</span><span class="n">get_statement</span><span class="p">(</span>
+                <span class="n">statement_response</span><span class="o">.</span><span class="n">statement_id</span>
+            <span class="p">)</span>
+
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">2.5</span><span class="p">)</span>
+
+        <span class="c1"># Process the first batch of data</span>
+        <span class="n">json_result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_response_to_dicts</span><span class="p">(</span><span class="n">statement_response</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">json_result</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="n">element</span>
+
+        <span class="c1"># Databricks paginates samples using &quot;chunks&quot;; iterate over chunks until next is None</span>
+        <span class="k">while</span> <span class="n">statement_response</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">next_chunk_index</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">statement_response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">statement_execution</span><span class="o">.</span><span class="n">get_statement_result_chunk_n</span><span class="p">(</span>
+                <span class="n">statement_response</span><span class="o">.</span><span class="n">statement_id</span><span class="p">,</span>
+                <span class="n">statement_response</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">next_chunk_index</span>
+            <span class="p">)</span>
+
+            <span class="c1"># Process the next batch of data</span>
+            <span class="n">json_result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_response_to_dicts</span><span class="p">(</span><span class="n">statement_response</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">json_result</span><span class="p">:</span>
+                <span class="k">yield</span> <span class="n">element</span>
+
+    <span class="k">def</span> <span class="nf">_transform_sample</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sample</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Transform a dict of raw Databricks data into a FiftyOne Sample dict.&quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="n">fo</span><span class="o">.</span><span class="n">Sample</span><span class="p">(</span>
+            <span class="n">filepath</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;cloud://bucket/</span><span class="si">{</span><span class="n">sample</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="n">detections</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_build_detections</span><span class="p">(</span><span class="n">sample</span><span class="p">),</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_build_detections</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sample</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">fo</span><span class="o">.</span><span class="n">Detections</span><span class="p">:</span>
+        <span class="c1"># Images are a known, static size</span>
+        <span class="n">image_width</span> <span class="o">=</span> <span class="mi">1280</span>
+        <span class="n">image_height</span> <span class="o">=</span> <span class="mi">720</span>
+
+        <span class="c1"># Extract detection labels and pre-process bounding boxes</span>
+        <span class="n">labels_list</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">sample</span><span class="p">[</span><span class="s2">&quot;labels&quot;</span><span class="p">])</span>
+        <span class="k">for</span> <span class="n">label_data</span> <span class="ow">in</span> <span class="n">labels_list</span><span class="p">:</span>
+            <span class="k">if</span> <span class="s2">&quot;box2d&quot;</span> <span class="ow">in</span> <span class="n">label_data</span><span class="p">:</span>
+                <span class="n">label_data</span><span class="p">[</span><span class="s2">&quot;box2d&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+                    <span class="n">k</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+                    <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">label_data</span><span class="p">[</span><span class="s2">&quot;box2d&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+                <span class="p">}</span>
+
+        <span class="k">return</span> <span class="n">fo</span><span class="o">.</span><span class="n">Detections</span><span class="p">(</span>
+            <span class="n">detections</span><span class="o">=</span><span class="p">[</span>
+                <span class="n">fo</span><span class="o">.</span><span class="n">Detection</span><span class="p">(</span>
+                    <span class="n">label</span><span class="o">=</span><span class="n">label_data</span><span class="p">[</span><span class="s2">&quot;category&quot;</span><span class="p">],</span>
+                    <span class="c1"># FiftyOne expects bounding boxes to be of the form</span>
+                    <span class="c1">#   [x, y, width, height]</span>
+                    <span class="c1"># where values are normalized to the image&#39;s dimensions.</span>
+                    <span class="c1">#</span>
+                    <span class="c1"># Our source data is of the form</span>
+                    <span class="c1">#   {x1, y1, x2, y2}</span>
+                    <span class="c1"># where values are in absolute pixels.</span>
+                    <span class="n">bounding_box</span><span class="o">=</span><span class="p">[</span>
+                        <span class="n">label_data</span><span class="p">[</span><span class="s2">&quot;box2d&quot;</span><span class="p">][</span><span class="s2">&quot;x1&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">image_width</span><span class="p">,</span>
+                        <span class="n">label_data</span><span class="p">[</span><span class="s2">&quot;box2d&quot;</span><span class="p">][</span><span class="s2">&quot;y1&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">image_height</span><span class="p">,</span>
+                        <span class="p">(</span><span class="n">label_data</span><span class="p">[</span><span class="s2">&quot;box2d&quot;</span><span class="p">][</span><span class="s2">&quot;x2&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">label_data</span><span class="p">[</span><span class="s2">&quot;box2d&quot;</span><span class="p">][</span><span class="s2">&quot;x1&quot;</span><span class="p">])</span> <span class="o">/</span> <span class="n">image_width</span><span class="p">,</span>
+                        <span class="p">(</span><span class="n">label_data</span><span class="p">[</span><span class="s2">&quot;box2d&quot;</span><span class="p">][</span><span class="s2">&quot;y2&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">label_data</span><span class="p">[</span><span class="s2">&quot;box2d&quot;</span><span class="p">][</span><span class="s2">&quot;y1&quot;</span><span class="p">])</span> <span class="o">/</span> <span class="n">image_height</span>
+                    <span class="p">]</span>
+                <span class="p">)</span>
+                <span class="k">for</span> <span class="n">label_data</span> <span class="ow">in</span> <span class="n">labels_list</span>
+                <span class="k">if</span> <span class="s2">&quot;box2d&quot;</span> <span class="ow">in</span> <span class="n">label_data</span>
+            <span class="p">]</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_response_to_dicts</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">:</span> <span class="n">StatementResponse</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">]:</span>
+        <span class="c1"># Check for response errors before processing</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check_for_error</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+
+        <span class="c1"># Extract column names from response</span>
+        <span class="n">columns</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">manifest</span><span class="o">.</span><span class="n">schema</span><span class="o">.</span><span class="n">columns</span>
+        <span class="n">column_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">column</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">columns</span><span class="p">]</span>
+
+        <span class="c1"># Extract data from response</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">data_array</span> <span class="ow">or</span> <span class="p">[]</span>
+
+        <span class="c1"># Each element in data is a list of raw column values.</span>
+        <span class="c1"># Remap ([col1, col2, ..., colN], [val1, val2, ..., valN]) tuples</span>
+        <span class="c1">#   to {col1: val1, col2: val2, ..., colN: valN} dicts</span>
+        <span class="k">return</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="n">key</span><span class="p">:</span> <span class="n">value</span>
+                <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">column_names</span><span class="p">,</span> <span class="n">datum</span><span class="p">)</span>
+            <span class="p">}</span>
+            <span class="k">for</span> <span class="n">datum</span> <span class="ow">in</span> <span class="n">data</span>
+        <span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">_check_for_error</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">:</span> <span class="n">StatementResponse</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">response</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;received null response from databricks&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">error</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;databricks error: (</span><span class="si">{0}</span><span class="s2">) </span><span class="si">{1}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="n">response</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">error</span><span class="o">.</span><span class="n">error_code</span><span class="p">,</span>
+                    <span class="n">response</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">error</span><span class="o">.</span><span class="n">message</span>
+                <span class="p">))</span>
+
+            <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">state</span> <span class="ow">in</span> <span class="p">(</span>
+                    <span class="n">StatementState</span><span class="o">.</span><span class="n">CLOSED</span><span class="p">,</span>
+                    <span class="n">StatementState</span><span class="o">.</span><span class="n">FAILED</span><span class="p">,</span>
+                    <span class="n">StatementState</span><span class="o">.</span><span class="n">CANCELED</span><span class="p">,</span>
+            <span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;databricks error: response state = </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">state</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+</div>
+<div class="section" id="google-bigquery">
+<span id="data-lens-bigquery"></span><h3>Google BigQuery<a class="headerlink" href="#google-bigquery" title="Permalink to this headline">¶</a></h3>
+<p>Below is an example of a Data Lens connector for BigQuery:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">  1</span>
+<span class="normal">  2</span>
+<span class="normal">  3</span>
+<span class="normal">  4</span>
+<span class="normal">  5</span>
+<span class="normal">  6</span>
+<span class="normal">  7</span>
+<span class="normal">  8</span>
+<span class="normal">  9</span>
+<span class="normal"> 10</span>
+<span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone.operators</span> <span class="k">as</span> <span class="nn">foo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.operators.types</span> <span class="k">as</span> <span class="nn">types</span>
+<span class="kn">from</span> <span class="nn">fiftyone.operators.data_lens</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">DataLensOperator</span><span class="p">,</span>
+    <span class="n">DataLensSearchRequest</span><span class="p">,</span>
+    <span class="n">DataLensSearchResponse</span>
+<span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">google.cloud</span> <span class="kn">import</span> <span class="n">bigquery</span>
+
+
+<span class="k">class</span> <span class="nc">BigQueryConnector</span><span class="p">(</span><span class="n">DataLensOperator</span><span class="p">):</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">config</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">foo</span><span class="o">.</span><span class="n">OperatorConfig</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="s2">&quot;bq_connector&quot;</span><span class="p">,</span>
+            <span class="n">label</span><span class="o">=</span><span class="s2">&quot;BigQuery Connector&quot;</span><span class="p">,</span>
+            <span class="n">unlisted</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">execute_as_generator</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">resolve_input</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ctx</span><span class="p">):</span>
+        <span class="n">inputs</span> <span class="o">=</span> <span class="n">types</span><span class="o">.</span><span class="n">Object</span><span class="p">()</span>
+
+        <span class="c1"># We&#39;ll enable searching on detection labels</span>
+        <span class="n">inputs</span><span class="o">.</span><span class="n">str</span><span class="p">(</span>
+            <span class="s2">&quot;detection_label&quot;</span><span class="p">,</span>
+            <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Detection label&quot;</span><span class="p">,</span>
+            <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Enter a label to find samples with a matching detection&quot;</span><span class="p">,</span>
+            <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">types</span><span class="o">.</span><span class="n">Property</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">handle_lens_search_request</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">request</span><span class="p">:</span> <span class="n">DataLensSearchRequest</span><span class="p">,</span>
+        <span class="n">ctx</span><span class="p">:</span> <span class="n">foo</span><span class="o">.</span><span class="n">ExecutionContext</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="n">DataLensSearchResponse</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
+        <span class="n">handler</span> <span class="o">=</span> <span class="n">BigQueryHandler</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">batch</span> <span class="ow">in</span> <span class="n">handler</span><span class="o">.</span><span class="n">handle_request</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">ctx</span><span class="p">):</span>
+            <span class="k">yield</span> <span class="n">batch</span>
+
+
+<span class="k">class</span> <span class="nc">BigQueryHandler</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">handle_request</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">request</span><span class="p">:</span> <span class="n">DataLensSearchRequest</span><span class="p">,</span>
+        <span class="n">ctx</span><span class="p">:</span> <span class="n">foo</span><span class="o">.</span><span class="n">ExecutionContext</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="n">DataLensSearchResponse</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
+        <span class="c1"># Create our client.</span>
+        <span class="c1"># If needed, we can use secrets from `ctx.secrets` to provide credentials</span>
+        <span class="c1">#  or other secure configuration required to interact with our data source.</span>
+        <span class="n">client</span> <span class="o">=</span> <span class="n">bigquery</span><span class="o">.</span><span class="n">Client</span><span class="p">()</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># Retrieve our Data Lens search parameters</span>
+            <span class="n">detection_label</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">search_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;detection_label&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+            <span class="c1"># Construct our query</span>
+            <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">                    SELECT</span>
+<span class="s2">                        media_path, tags, detections, keypoints</span>
+<span class="s2">                    FROM `my_dataset.samples_json`,</span>
+<span class="s2">                    UNNEST(JSON_QUERY_ARRAY(detections)) as detection</span>
+<span class="s2">                    WHERE JSON_VALUE(detection.label) = @detection_label</span>
+<span class="s2">                &quot;&quot;&quot;</span>
+
+            <span class="c1"># Submit our query to BigQuery</span>
+            <span class="n">job_config</span> <span class="o">=</span> <span class="n">bigquery</span><span class="o">.</span><span class="n">QueryJobConfig</span><span class="p">(</span>
+                <span class="n">query_parameters</span><span class="o">=</span><span class="p">[</span>
+                    <span class="n">bigquery</span><span class="o">.</span><span class="n">ScalarQueryParameter</span><span class="p">(</span>
+                        <span class="s2">&quot;detection_label&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;STRING&quot;</span><span class="p">,</span>
+                        <span class="n">detection_label</span>
+                    <span class="p">)</span>
+                <span class="p">]</span>
+            <span class="p">)</span>
+            <span class="n">query_job</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">job_config</span><span class="o">=</span><span class="n">job_config</span><span class="p">)</span>
+
+            <span class="c1"># Wait for results</span>
+            <span class="n">rows</span> <span class="o">=</span> <span class="n">query_job</span><span class="o">.</span><span class="n">result</span><span class="p">(</span>
+                <span class="c1"># BigQuery will handle pagination automatically, but</span>
+                <span class="c1"># we can optimize its behavior by synchronizing with</span>
+                <span class="c1"># the parameters provided by Data Lens</span>
+                <span class="n">page_size</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">batch_size</span><span class="p">,</span>
+                <span class="n">max_results</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">max_results</span>
+            <span class="p">)</span>
+
+            <span class="n">samples</span> <span class="o">=</span> <span class="p">[]</span>
+
+            <span class="c1"># Iterate over data from BigQuery</span>
+            <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">:</span>
+
+                <span class="c1"># Transform sample data from BigQuery format to FiftyOne</span>
+                <span class="n">samples</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">convert_to_sample</span><span class="p">(</span><span class="n">row</span><span class="p">))</span>
+
+                <span class="c1"># Yield next batch when we have enough samples</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span> <span class="o">==</span> <span class="n">request</span><span class="o">.</span><span class="n">batch_size</span><span class="p">:</span>
+                    <span class="k">yield</span> <span class="n">DataLensSearchResponse</span><span class="p">(</span>
+                        <span class="n">result_count</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">samples</span><span class="p">),</span>
+                        <span class="n">query_result</span><span class="o">=</span><span class="n">samples</span>
+                    <span class="p">)</span>
+
+                    <span class="c1"># Reset our batch</span>
+                    <span class="n">samples</span> <span class="o">=</span> <span class="p">[]</span>
+
+            <span class="c1"># We&#39;ve run out of rows, but might have a partial batch</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">yield</span> <span class="n">DataLensSearchResponse</span><span class="p">(</span>
+                    <span class="n">result_count</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">samples</span><span class="p">),</span>
+                    <span class="n">query_result</span><span class="o">=</span><span class="n">samples</span>
+                <span class="p">)</span>
+
+            <span class="c1"># Our generator is now exhausted</span>
+
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="c1"># Clean up our client on exit</span>
+            <span class="n">client</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>Let’s take a look at a few parts in detail.</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># Create our client</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">bigquery</span><span class="o">.</span><span class="n">Client</span><span class="p">()</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>In practice, you’ll likely need to use <a class="reference internal" href="secrets.html#teams-secrets"><span class="std std-ref">secrets</span></a> to
+securely provide credentials to connect to your data source.</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># Retrieve our Data Lens search parameters</span>
+<span class="n">detection_label</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">search_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;detection_label&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+<span class="c1"># Construct our query</span>
+<span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        SELECT</span>
+<span class="s2">            media_path, tags, detections, keypoints</span>
+<span class="s2">        FROM `my_dataset.samples_json`,</span>
+<span class="s2">        UNNEST(JSON_QUERY_ARRAY(detections)) as detection</span>
+<span class="s2">        WHERE JSON_VALUE(detection.label) = @detection_label</span>
+<span class="s2">    &quot;&quot;&quot;</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>Here we’re using our user-provided input parameters to tailor our query to only
+the samples of interest. This logic can be as simple or complex as needed to
+match our use case.</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># Wait for results</span>
+<span class="n">rows</span> <span class="o">=</span> <span class="n">query_job</span><span class="o">.</span><span class="n">result</span><span class="p">(</span>
+    <span class="c1"># BigQuery will handle pagination automatically, but</span>
+    <span class="c1"># we can optimize its behavior by synchronizing with</span>
+    <span class="c1"># the parameters provided by Data Lens</span>
+    <span class="n">page_size</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">batch_size</span><span class="p">,</span>
+    <span class="n">max_results</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">max_results</span>
+<span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>Here we’re using <code class="code docutils literal notranslate"><span class="pre">request.batch_size</span></code> and <code class="code docutils literal notranslate"><span class="pre">request.max_results</span></code> to help
+BigQuery align its performance with our use case. In cases where
+<code class="code docutils literal notranslate"><span class="pre">request.max_results</span></code> is smaller than our universe of samples (such as during
+preview or small imports), we can prevent fetching more data than we need,
+improving both query performance and operational cost.</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># Transform sample data from BigQuery format to FiftyOne</span>
+<span class="n">samples</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">convert_to_sample</span><span class="p">(</span><span class="n">row</span><span class="p">))</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>Here we are converting our sample data from its storage format to a FiftyOne
+<a class="reference internal" href="../api/fiftyone.core.sample.html#fiftyone.core.sample.Sample" title="fiftyone.core.sample.Sample"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sample</span></code></a>. This is where we’ll add features
+to our samples, such as <a class="reference internal" href="../user_guide/using_datasets.html#using-labels"><span class="std std-ref">labels</span></a>.</p>
+<p>As we can see from this example, we can make our Data Lens search experience
+as powerful as it needs to be. We can leverage internal libraries and services,
+hosted solutions, and tooling that meets the specific needs of our data. We
+can expose flexible but precise controls to users to allow them to find exactly
+the data that’s needed.</p>
+</div>
+<div class="section" id="snippet-dynamic-user-inputs">
+<span id="data-lens-snippet-remap-fields"></span><h3>Snippet: Dynamic user inputs<a class="headerlink" href="#snippet-dynamic-user-inputs" title="Permalink to this headline">¶</a></h3>
+<p>As the volume and complexity of your data grows, you may want to expose many
+options to Data Lens users, but doing so all at once can be overwhelming for
+the user. In this example, we’ll look at how we can use
+<a class="reference internal" href="../plugins/developing_plugins.html#operator-inputs"><span class="std std-ref">dynamic operators</span></a> to conditionally expose
+configuration options to Data Lens users.</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><span class="k">class</span> <span class="nc">MyOperator</span><span class="p">(</span><span class="n">DataLensOperator</span><span class="p">):</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">config</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">foo</span><span class="o">.</span><span class="n">OperatorConfig</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">OperatorConfig</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="s2">&quot;my_operator&quot;</span><span class="p">,</span>
+            <span class="n">label</span><span class="o">=</span><span class="s2">&quot;My operator&quot;</span><span class="p">,</span>
+            <span class="n">dynamic</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>By setting <code class="code docutils literal notranslate"><span class="pre">dynamic=True</span></code> in our operator config, our operator will be able to
+customize the options shown to a Data Lens user based on the current state.
+Let’s use this to optionally show an “advanced options” section in our query
+parameters.</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><span class="k">def</span> <span class="nf">resolve_input</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ctx</span><span class="p">:</span> <span class="n">foo</span><span class="o">.</span><span class="n">ExecutionContext</span><span class="p">):</span>
+    <span class="n">inputs</span> <span class="o">=</span> <span class="n">types</span><span class="o">.</span><span class="n">Object</span><span class="p">()</span>
+
+    <span class="n">inputs</span><span class="o">.</span><span class="n">str</span><span class="p">(</span><span class="s2">&quot;some_param&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Parameter value&quot;</span><span class="p">)</span>
+    <span class="n">inputs</span><span class="o">.</span><span class="n">str</span><span class="p">(</span><span class="s2">&quot;other_param&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Other value&quot;</span><span class="p">)</span>
+
+    <span class="n">inputs</span><span class="o">.</span><span class="n">bool</span><span class="p">(</span><span class="s2">&quot;show_advanced&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Show advanced options&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="c1"># Since this is a dynamic operator,</span>
+    <span class="c1">#   we can use `ctx.params` to conditionally show options</span>
+    <span class="k">if</span> <span class="n">ctx</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;show_advanced&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="c1"># In this example, we&#39;ll optionally show configuration which allows a user</span>
+        <span class="c1">#   to remap selected sample fields to another name.</span>
+        <span class="c1"># This could be used to enable users to import samples into datasets with</span>
+        <span class="c1">#   varying schemas.</span>
+        <span class="n">remappable_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;field_a&quot;</span><span class="p">,</span> <span class="s2">&quot;field_b&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">field_name</span> <span class="ow">in</span> <span class="n">remappable_fields</span><span class="p">:</span>
+            <span class="n">inputs</span><span class="o">.</span><span class="n">str</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">field_name</span><span class="si">}</span><span class="s2">_remap&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Remap </span><span class="si">{</span><span class="n">field_name</span><span class="si">}</span><span class="s2"> to another name&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">types</span><span class="o">.</span><span class="n">Property</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>Our operator’s <code class="code docutils literal notranslate"><span class="pre">resolve_input</span></code> method will be called each time <code class="code docutils literal notranslate"><span class="pre">ctx.params</span></code>
+changes, which allows us to create an experience that is tailored to the Data
+Lens user’s behavior. In this example, we’re optionally displaying advanced
+configuration that allows a user to remap sample fields. Applying this
+remapping might look something like this.</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><span class="k">def</span> <span class="nf">_remap_sample_fields</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sample</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">request</span><span class="p">:</span> <span class="n">DataLensSearchRequest</span><span class="p">):</span>
+    <span class="n">remappable_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;field_a&quot;</span><span class="p">,</span> <span class="s2">&quot;field_b&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">field_name</span> <span class="ow">in</span> <span class="n">remappable_fields</span><span class="p">:</span>
+        <span class="n">remapped_field_name</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">search_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">field_name</span><span class="si">}</span><span class="s2">_remap&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">remapped_field_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">):</span>
+            <span class="n">sample</span><span class="p">[</span><span class="n">remapped_field_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">sample</span><span class="p">[</span><span class="n">field_name</span><span class="p">]</span>
+            <span class="k">del</span> <span class="n">sample</span><span class="p">[</span><span class="n">field_name</span><span class="p">]</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>Of course, dynamic operators can be used for much more than this. Search
+experiences can be broadened or narrowed to allow for both breadth and depth
+within your connected data sources.</p>
+<p>As an example, suppose a user is searching for detections of “traffic light”
+in an autonomous driving dataset. A dynamic operator can be used to expose
+additional search options that are specific to traffic lights, such as being
+able to select samples with only red, yellow, or green lights. In this way,
+dynamic operators provide a simple mechanism for developing intuitive and
+context-sensitive search experiences for Data Lens users.</p>
+</div>
+</div>
+</div>
+
+
+             </article>
+             
+            </div>
+            <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="data_quality.html" class="btn btn-neutral float-right" title="Data Quality" accesskey="n" rel="next">Next <img src="../_static/images/chevron-right-orange.svg" class="next-page"></a>
+      
+      
+        <a href="teams_app.html" class="btn btn-neutral" title="FiftyOne Teams App" accesskey="p" rel="prev"><img src="../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
+      
+    </div>
+  
+</footer>
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              <ul>
+<li><a class="reference internal" href="#">Data Lens</a><ul>
+<li><a class="reference internal" href="#how-it-works">How it works</a><ul>
+<li><a class="reference internal" href="#connecting-a-data-source">Connecting a data source</a></li>
+<li><a class="reference internal" href="#exploring-samples">Exploring samples</a></li>
+<li><a class="reference internal" href="#importing-samples-to-fiftyone">Importing samples to FiftyOne</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#integrating-with-data-lens">Integrating with Data Lens</a><ul>
+<li><a class="reference internal" href="#setting-up-your-operator">Setting up your operator</a></li>
+<li><a class="reference internal" href="#generating-search-responses">Generating search responses</a></li>
+<li><a class="reference internal" href="#working-with-user-provided-data">Working with user-provided data</a></li>
+<li><a class="reference internal" href="#differences-in-preview-and-import">Differences in preview and import</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#example-data-source-connectors">Example data source connectors</a><ul>
+<li><a class="reference internal" href="#databricks">Databricks</a></li>
+<li><a class="reference internal" href="#google-bigquery">Google BigQuery</a></li>
+<li><a class="reference internal" href="#snippet-dynamic-user-inputs">Snippet: Dynamic user inputs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  
+
+
+  
+
+     
+       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+         <script src="../_static/jquery.js"></script>
+         <script src="../_static/underscore.js"></script>
+         <script src="../_static/doctools.js"></script>
+         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+         <script src="../_static/js/voxel51-website.js"></script>
+         <script src="../_static/js/custom.js"></script>
+     
+
+  
+
+  <script type="text/javascript" src="../_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="../_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+  <!-- Begin Footer -->
+
+
+<footer class="footer-wrapper" id="docs-tutorials-resources">
+  <div class="footer pytorch-container">
+    <div class="footer__logo">
+      <a href="https://voxel51.com/"
+        ><img
+          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
+      /></a>
+    </div>
+
+    <div class="footer__address">
+      330 E Liberty St<br />
+      Ann Arbor, MI 48104<br />
+      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
+    </div>
+
+    <!--
+    <div class="footer__contact">
+      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
+    </div>
+    -->
+
+    <div class="footer__links">
+      <div class="footer__links--col2">
+        <p class="nav__item--brand">Products</p>
+        <a href="https://voxel51.com/fiftyone/">FiftyOne</a>
+        <a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a>
+        <a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a>
+        <a href="https://voxel51.com/success-stories/">Success Stories</a>
+      </div>
+      <div class="footer__links--col3">
+        <p class="nav__item--brand">Resources</p>
+        <a href="https://voxel51.com/blog/">Blog</a>
+        <a href="https://docs.voxel51.com/">Docs</a>
+        <a href="https://github.com/voxel51/">GitHub</a>
+        <a href="https://community.voxel51.com">Discord</a>
+        <a href="https://voxel51.com/ourstory/">About Us</a>
+        <a href="https://voxel51.com/computer-vision-events/">Events</a>
+        <a href="https://voxel51.com/jobs/">Careers</a>
+        <a href="https://voxel51.com/press/">Press</a>
+      </div>
+    </div>
+
+    <div class="footer__icons">
+      <ul class="list-inline">
+        <li>
+          <a href="https://www.linkedin.com/company/voxel51/">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/voxel51/">
+            <i class="fa-brands fa-github"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/voxel51">
+            <i class="fa-brands fa-twitter"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/voxel51/">
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="footer__copyright">
+      <ul class="list-inline">
+        <li>&copy; 2024 Voxel51 Inc.</li>
+        <li>
+          <a href="https://voxel51.com/privacy/">Privacy Policy</a>
+        </li>
+        <li>
+          <a href="https://voxel51.com/terms/">Terms of Service</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<!-- https://buttons.github.io -->
+<script async defer src="https://buttons.github.io/buttons.js" ></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XD15NFRY3M" ></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+  gtag("config", "G-XD15NFRY3M");
+</script>
+
+<script>
+  function open_modal(modal_id, modal_closer_id) {
+    // Get the modal
+    let the_modal = document.getElementById(modal_id);
+
+    the_modal.style.display = "flex";
+    document.body.style.overflow = "hidden";
+
+    let the_modal_closer = document.getElementById(modal_closer_id);
+
+    // When the user clicks on <span> (x), close the modal
+    the_modal_closer &&
+      (the_modal_closer.onclick = function () {
+        the_modal.style.display = "none";
+      });
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+      if (event.target == the_modal) {
+        the_modal.style.display = "none";
+        document.body.style.overflow = "unset";
+        window.onclick = undefined;
+      }
+    };
+  }
+</script>
+
+<!-- bigpicture.io -->
+<script>
+  !(function (e, t, i) {
+    var r = (e.bigPicture = e.bigPicture || []);
+    if (!r.initialized)
+      if (r.invoked)
+        e.console &&
+          console.error &&
+          console.error("BigPicture.io snippet included twice.");
+      else {
+        (r.invoked = !0),
+          (r.SNIPPET_VERSION = 1.5),
+          (r.handler = function (e) {
+            if (void 0 !== r.callback)
+              try {
+                return r.callback(e);
+              } catch (e) {}
+          }),
+          (r.eventList = ["mousedown", "mouseup", "click", "submit"]),
+          (r.methods = [
+            "track",
+            "identify",
+            "page",
+            "group",
+            "alias",
+            "integration",
+            "ready",
+            "intelReady",
+            "consentReady",
+            "on",
+            "off",
+          ]),
+          (r.factory = function (e) {
+            return function () {
+              var t = Array.prototype.slice.call(arguments);
+              return t.unshift(e), r.push(t), r;
+            };
+          });
+        for (var n = 0; n < r.methods.length; n++) {
+          var o = r.methods[n];
+          r[o] = r.factory(o);
+        }
+        r.getCookie = function (e) {
+          var i = ("; " + t.cookie).split("; " + e + "=");
+          return 2 == i.length && i.pop().split(";").shift();
+        };
+        var c = (r.isEditor = (function () {
+          try {
+            return (
+              e.self !== e.top &&
+              (new RegExp("app" + i, "ig").test(t.referrer) ||
+                "edit" == r.getCookie("_bpr_edit"))
+            );
+          } catch (e) {
+            return !1;
+          }
+        })());
+        r.init = function (n, o) {
+          if (((r.projectId = n), (r._config = o), !c))
+            for (var a = 0; a < r.eventList.length; a++)
+              e.addEventListener(r.eventList[a], r.handler, !0);
+          var s = t.createElement("script");
+          s.async = !0;
+          var d = c ? "/editor/editor" : "/public-" + n;
+          (s.src = "//cdn" + i + d + ".js"),
+            t.getElementsByTagName("head")[0].appendChild(s);
+        };
+      }
+  })(window, document, ".bigpicture.io");
+  bigPicture.init("1646");
+</script>
+
+
+  
+
+  <!-- End Footer -->
+
+  <!-- Begin Mobile Menu -->
+
+  
+
+  <!-- End Mobile Menu -->
+
+  <script type="text/javascript" src="../_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function(e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+</body>
+</html>

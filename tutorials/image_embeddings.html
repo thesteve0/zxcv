@@ -1,0 +1,1569 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Using Image Embeddings &mdash; FiftyOne 1.3.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <link rel="stylesheet" href="../_static/css/voxel51-website.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Annotating Datasets with CVAT" href="cvat_annotation.html" />
+    <link rel="prev" title="Evaluating a Classifier with FiftyOne" href="evaluate_classifications.html" />
+<meta property="og:image" content="https://voxel51.com/wp-content/uploads/2024/03/3.24_webpages_Home_AV.png" />
+
+<link
+  href="https://fonts.googleapis.com/css?family=Palanquin:400,600,700,800"
+  rel="stylesheet"
+/>
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+  rel="stylesheet"
+/>
+<script src="https://tag.clearbitscripts.com/v1/pk_b9ed71c8234edd4f77326bcbfab5a4ca/tags.js"></script>
+
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+  
+</head>
+
+
+<div class="container-fluid header-holder tutorials-header" id="header-holder">
+  <nav id="nav__main" class="nav__main">
+    <div class="nav__main__logo">
+      <a href="https://voxel51.com/">
+        <img
+          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
+        />
+      </a>
+    </div>
+
+    <div class="nav__spacer desktop_only"></div>
+
+    <div id="nav__main__mobilebutton--on">
+      <a href="javascript:void(0);" onclick="navMobileButton()">
+        <i class="fa-solid fa-bars"></i>
+      </a>
+    </div>
+
+    <div id="nav__main__mobilebutton--off">
+      <a href="javascript:void(0);" onclick="navMobileButton()">
+        <i class="fa-solid fa-times"></i>
+      </a>
+    </div>
+
+    <div id="nav__main__items">
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Products</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://voxel51.com/fiftyone/">Open Source</a></li>
+            <li><a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a></li>
+            <li><a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a></li>
+            <li><a href="https://voxel51.com/success-stories/">Success Stories</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Learn</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://community.voxel51.com">Community Discord</a></li>
+            <li><a href="https://voxel51.com/blog/">Blog</a></li>
+            <li><a href="https://voxel51.com/computer-vision-events/">Events</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item">
+        <a href="https://docs.voxel51.com/">Docs</a>
+      </div>
+
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Company</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://voxel51.com/ourstory/">About Us</a></li>
+            <li><a href="https://voxel51.com/jobs/">Careers</a></li>
+            <li><a href="https://voxel51.com/talk-to-sales/">Talk to Sales</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item mobile_only">
+        <a href="https://github.com/voxel51/fiftyone">GitHub</a>
+      </div>
+
+      <div class="nav__item desktop_only" id="octocat">
+        <!-- https://buttons.github.io -->
+        <a
+          class="github-button"
+          href="https://github.com/voxel51/fiftyone"
+          data-color-scheme="no-preference: dark_high_contrast; light: dark_high_contrast; dark: dark_high_contrast;"
+          data-size="large"
+          data-show-count="true"
+          aria-label="Star voxel51/fiftyone on GitHub"
+          >Star</a
+        >
+      </div>
+
+      <div class="nav__item full_nav_only">
+        <a class="button-primary" href="https://voxel51.com/schedule-teams-workshop/" target="_blank"
+          >Schedule a workshop</a
+        >
+      </div>
+    </div>
+  </nav>
+</div>
+
+
+
+<body class="pytorch-body">
+
+   
+
+    
+
+    <div class="table-of-contents-link-wrapper">
+      <span>Table of Contents</span>
+      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+    </div>
+
+    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+      <div class="pytorch-side-scroll">
+        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          <div class="pytorch-left-menu-search">
+            
+
+            
+              
+              
+            
+
+            
+
+
+  
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+            
+          </div>
+
+           <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../teams/index.html">FiftyOne Teams 🚀</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../environments/index.html">Environments</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="pandas_comparison.html">pandas and FiftyOne</a></li>
+<li class="toctree-l2"><a class="reference internal" href="evaluate_detections.html">Evaluating object detections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="evaluate_classifications.html">Evaluating a classifier</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Using image embeddings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cvat_annotation.html">Annotating with CVAT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="labelbox_annotation.html">Annotating with Labelbox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open_images.html">Working with Open Images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="detectron2.html">Training with Detectron2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uniqueness.html">Exploring image uniqueness</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classification_mistakes.html">Finding class mistakes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="detection_mistakes.html">Finding detection mistakes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qdrant.html">Embeddings with Qdrant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="yolov8.html">Fine-tuning YOLOv8 models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pointe.html">3D point clouds with Point-E</a></li>
+<li class="toctree-l2"><a class="reference internal" href="monocular_depth_estimation.html">Monocular depth estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dimension_reduction.html">Dimensionality reduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="zero_shot_classification.html">Zero-shot classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_augmentation.html">Data augmentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clustering.html">Clustering images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="small_object_detection.html">Detecting small objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="anomaly_detection.html">Anomaly detection</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../recipes/index.html">Recipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheat_sheets/index.html">Cheat Sheets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dataset_zoo/index.html">Dataset Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_zoo/index.html">Model Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brain.html">FiftyOne Brain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/index.html">Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plugins/index.html">Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli/index.html">CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/fiftyone.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deprecation.html">Deprecation Notices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a></li>
+</ul>
+ 
+        </div>
+      </div>
+    </nav>
+
+    <div class="pytorch-container">
+      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+        <div class="pytorch-breadcrumbs-wrapper">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="../index.html">
+          
+            Docs
+          
+        </a> &gt;
+      </li>
+
+        
+          <li><a href="index.html">FiftyOne Tutorials</a> &gt;</li>
+        
+      <li>Using Image Embeddings</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+        </div>
+
+        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+          Contents
+        </div>
+      </div>
+
+      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+        <div class="pytorch-content-left">
+
+        
+          
+          <div class="rst-content style-external-links">
+          
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+              
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    /*background: #f5f5f5;*/
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+    margin: 0;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt .copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+</style>
+<table class="fo-notebook-links" align="left">
+    <td>
+        <a target="_blank" href="https://colab.research.google.com/github/voxel51/fiftyone/blob/v1.3.0/docs/source/tutorials/image_embeddings.ipynb">
+            <img src="../_static/images/icons/colab-logo-256px.png"> &nbsp; Run in Google Colab
+        </a>
+    </td>
+    <td>
+        <a target="_blank" href="https://github.com/voxel51/fiftyone/blob/v1.3.0/docs/source/tutorials/image_embeddings.ipynb">
+            <img src="../_static/images/icons/github-logo-256px.png"> &nbsp; View source on GitHub
+        </a>
+    </td>
+    <td>
+        <a target="_blank" href="https://raw.githubusercontent.com/voxel51/fiftyone/v1.3.0/docs/source/tutorials/image_embeddings.ipynb" download>
+            <img src="../_static/images/icons/cloud-icon-256px.png"> &nbsp; Download notebook
+        </a>
+    </td>
+</table><div class="section" id="Using-Image-Embeddings">
+<h1>Using Image Embeddings<a class="headerlink" href="#Using-Image-Embeddings" title="Permalink to this headline">¶</a></h1>
+<p>FiftyOne provides a powerful <a class="reference external" href="https://voxel51.com/docs/fiftyone/user_guide/brain.html#visualizing-embeddings">embeddings visualization</a> capability that you can use to generate low-dimensional representations of the samples and objects in your datasets.</p>
+<p>This notebook highlights several applications of visualizing image embeddings, with the goal of motivating some of the many possible workflows that you can perform.</p>
+<p>Specifically, we’ll cover the following concepts:</p>
+<ul class="simple">
+<li><p>Loading datasets from the <a class="reference external" href="https://voxel51.com/docs/fiftyone/user_guide/dataset_zoo_datasets.html">FiftyOne Dataset Zoo</a></p></li>
+<li><p>Using <a class="reference external" href="https://voxel51.com/docs/fiftyone/api/fiftyone.brain.html#fiftyone.brain.compute_visualization">compute_visualization()</a> to generate 2D representations of images</p></li>
+<li><p>Providing custom embeddings to <a class="reference external" href="https://voxel51.com/docs/fiftyone/api/fiftyone.brain.html#fiftyone.brain.compute_visualization">compute_visualization()</a></p></li>
+<li><p>Visualizing embeddings via <a class="reference external" href="https://voxel51.com/docs/fiftyone/user_guide/plots.html">interactive plots</a> connected to the <a class="reference external" href="https://voxel51.com/docs/fiftyone/user_guide/app.html">FiftyOne App</a></p></li>
+</ul>
+<p>And we’ll demonstrate how to use embeddings to:</p>
+<ul class="simple">
+<li><p>Identify anomolous/incorrect image labels</p></li>
+<li><p>Find examples of scenarios of interest</p></li>
+<li><p>Pre-annotate unlabeled data for training</p></li>
+</ul>
+<p><strong>So, what’s the takeaway?</strong></p>
+<p>Combing through individual images in a dataset and staring at aggregate performance metrics trying to figure out how to improve the performance of a model is an ineffective and time-consuming process. Visualizing your dataset in a low-dimensional embedding space is a powerful workflow that can reveal patterns and clusters in your data that can answer important questions about the critical failure modes of your model and how to augment your dataset to address these failures.</p>
+<p>Using the FiftyOne Brain’s <a class="reference external" href="https://voxel51.com/docs/fiftyone/user_guide/brain.html#visualizing-embeddings">embeddings visualization</a> capability on your ML projects can help you uncover hidden patterns in your data and take action to improve the quality of your datasets and models.</p>
+<p><img alt="embeddings-sizzle" src="../_images/image_embeddings_zero_cluster.gif" /></p>
+<div class="section" id="Setup">
+<h2>Setup<a class="headerlink" href="#Setup" title="Permalink to this headline">¶</a></h2>
+<p>If you haven’t already, install FiftyOne:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>fiftyone
+</pre></div>
+</div>
+</div>
+<p>In this tutorial, we’ll use some PyTorch models to generate embeddings, and we’ll use the (default) <a class="reference external" href="https://github.com/lmcinnes/umap">UMAP method</a> to generate embeddings, so we’ll need to install the corresponding packages:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>torch<span class="w"> </span>torchvision<span class="w"> </span>umap-learn
+</pre></div>
+</div>
+</div>
+<p>This tutorial will demonstrate the powerful <a class="reference external" href="https://voxel51.com/docs/fiftyone/user_guide/plots.html">interactive plotting</a> capabilities of FiftyOne. In the FiftyOne App, you can bidirectionally interact with plots to identify interesting subsets of your data and take action on them!</p>
+</div>
+<div class="section" id="Part-I:-MNIST">
+<h2>Part I: MNIST<a class="headerlink" href="#Part-I:-MNIST" title="Permalink to this headline">¶</a></h2>
+<p>In this section, we’ll be working with the <a class="reference external" href="https://voxel51.com/docs/fiftyone/user_guide/dataset_zoo/datasets.html?highlight=mnist#dataset-zoo-mnist">MNIST dataset</a> from the FiftyOne Dataset Zoo.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;mnist&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Split &#39;train&#39; already downloaded
+Split &#39;test&#39; already downloaded
+Loading existing dataset &#39;mnist&#39;. To reload from disk, either delete the existing dataset or provide a custom `dataset_name` to use
+</pre></div></div>
+</div>
+<p>To start, we’ll just use the <span class="math notranslate nohighlight">\(10,000\)</span> test images from the dataset.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_split</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">match_tags</span><span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">test_split</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Dataset:     mnist
+Media type:  image
+Num samples: 10000
+Sample fields:
+    id:           fiftyone.core.fields.ObjectIdField
+    filepath:     fiftyone.core.fields.StringField
+    tags:         fiftyone.core.fields.ListField(fiftyone.core.fields.StringField)
+    metadata:     fiftyone.core.fields.EmbeddedDocumentField(fiftyone.core.metadata.ImageMetadata)
+    ground_truth: fiftyone.core.fields.EmbeddedDocumentField(fiftyone.core.labels.Classification)
+View stages:
+    1. MatchTags(tags=[&#39;test&#39;], bool=True, all=False)
+</pre></div></div>
+</div>
+<div class="section" id="Computing-image-embeddings">
+<h3>Computing image embeddings<a class="headerlink" href="#Computing-image-embeddings" title="Permalink to this headline">¶</a></h3>
+<p>Typically when generating low-dimensional representations of image datasets, one will use a deep model to generate embeddings for each image, say 1024 or 2028 dimensional, that are then passed to a dimensionality reduction method like <a class="reference external" href="https://github.com/lmcinnes/umap">UMAP</a> or <a class="reference external" href="https://lvdmaaten.github.io/tsne">t-SNE</a> to generate the 2D or 3D representation that is visualized.</p>
+<p>Such an intermediate embedding step is necessary when the images in the dataset have different sizes, or are too large for <a class="reference external" href="https://github.com/lmcinnes/umap">UMAP</a> or <a class="reference external" href="https://lvdmaaten.github.io/tsne">t-SNE</a> to directly process, or the dataset is too complex and a model trained to recognize the concepts of interest is required in order to produce interpretable embeddings.</p>
+<p>However, for a relatively small and fixed size dataset such as MNIST, we can pass the images themselves to the dimensionality reduction method.</p>
+<p>Let’s use the <a class="reference external" href="https://voxel51.com/docs/fiftyone/api/fiftyone.brain.html#fiftyone.brain.compute_visualization">compute_visualization()</a> method to generate our first representation:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cv2</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">import</span> <span class="nn">fiftyone.brain</span> <span class="k">as</span> <span class="nn">fob</span>
+
+<span class="c1"># Construct a ``num_samples x num_pixels`` array of images</span>
+<span class="n">embeddings</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">IMREAD_UNCHANGED</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">test_split</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;filepath&quot;</span><span class="p">)</span>
+<span class="p">])</span>
+
+<span class="c1"># Compute 2D representation</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">fob</span><span class="o">.</span><span class="n">compute_visualization</span><span class="p">(</span>
+    <span class="n">test_split</span><span class="p">,</span>
+    <span class="n">embeddings</span><span class="o">=</span><span class="n">embeddings</span><span class="p">,</span>
+    <span class="n">num_dims</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">method</span><span class="o">=</span><span class="s2">&quot;umap&quot;</span><span class="p">,</span>
+    <span class="n">brain_key</span><span class="o">=</span><span class="s2">&quot;mnist_test&quot;</span><span class="p">,</span>
+    <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">seed</span><span class="o">=</span><span class="mi">51</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Generating visualization...
+UMAP(random_state=51, verbose=True)
+Wed Mar 27 11:27:43 2024 Construct fuzzy simplicial set
+Wed Mar 27 11:27:43 2024 Finding Nearest Neighbors
+Wed Mar 27 11:27:43 2024 Building RP forest with 10 trees
+Wed Mar 27 11:27:43 2024 NN descent for 13 iterations
+         1  /  13
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/opt/homebrew/Caskroom/miniforge/base/envs/fo-dev/lib/python3.9/site-packages/umap/umap_.py:1943: UserWarning: n_jobs value -1 overridden to 1 by setting random_state. Use no seed for parallelism.
+  warn(f&#34;n_jobs value {self.n_jobs} overridden to 1 by setting random_state. Use no seed for parallelism.&#34;)
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+         2  /  13
+         3  /  13
+         4  /  13
+        Stopping threshold met -- exiting after 4 iterations
+Wed Mar 27 11:27:43 2024 Finished Nearest Neighbor Search
+Wed Mar 27 11:27:43 2024 Construct embedding
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "22824118c9514d918cb3811b311a7be1", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+        completed  0  /  500 epochs
+        completed  50  /  500 epochs
+        completed  100  /  500 epochs
+        completed  150  /  500 epochs
+        completed  200  /  500 epochs
+        completed  250  /  500 epochs
+        completed  300  /  500 epochs
+        completed  350  /  500 epochs
+        completed  400  /  500 epochs
+        completed  450  /  500 epochs
+Wed Mar 27 11:27:56 2024 Finished embedding
+</pre></div></div>
+</div>
+<p>The method returned a <code class="docutils literal notranslate"><span class="pre">results</span></code> object with a <code class="docutils literal notranslate"><span class="pre">points</span></code> attribute that contains a <code class="docutils literal notranslate"><span class="pre">10000</span> <span class="pre">x</span> <span class="pre">2</span></code> array of 2D embeddings for our samples that we’ll visualize next.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">results</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">points</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;class &#39;fiftyone.brain.visualization.VisualizationResults&#39;&gt;
+(10000, 2)
+</pre></div></div>
+</div>
+<p>If you ever want to access this results object again from the dataset, you can do so with the dataset’s <code class="docutils literal notranslate"><span class="pre">load_brain_results()</span></code> method, passing the <code class="docutils literal notranslate"><span class="pre">brain_key</span></code> that you used to store the results:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">load_brain_results</span><span class="p">(</span><span class="s2">&quot;mnist_test&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;fiftyone.brain.visualization.VisualizationResults at 0x2c8918c40&gt;
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Visualization-parameters">
+<h3>Visualization parameters<a class="headerlink" href="#Visualization-parameters" title="Permalink to this headline">¶</a></h3>
+<p>There are two primary components to an embedding visualization: the method used to generate the embeddings, and the dimensionality reduction method used to compute a low-dimensional representation of the embeddings.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">embeddings</span></code> and <code class="docutils literal notranslate"><span class="pre">model</span></code> parameters of <a class="reference external" href="https://voxel51.com/docs/fiftyone/api/fiftyone.brain.html#fiftyone.brain.compute_visualization">compute_visualization()</a> support a variety of ways to generate embeddings for your data:</p>
+<ul class="simple">
+<li><p>Provide nothing, in which case a default general-purpose model is used to embed your data</p></li>
+<li><p>Provide a <a class="reference external" href="https://voxel51.com/docs/fiftyone/api/fiftyone.core.models.html#fiftyone.core.models.Model">Model instance</a> or the name of any model from the <a class="reference external" href="https://voxel51.com/docs/fiftyone/user_guide/model_zoo/index.html">FiftyOne Model Zoo</a> that supports embeddings</p></li>
+<li><p>Compute your own embeddings and provide them as an array</p></li>
+<li><p>Specify the name of a field of your dataset in which embeddings are stored</p></li>
+</ul>
+<p>The <code class="docutils literal notranslate"><span class="pre">method</span></code> parameter of <a class="reference external" href="https://voxel51.com/docs/fiftyone/api/fiftyone.brain.html#fiftyone.brain.compute_visualization">compute_visualization()</a> allows you to specify the dimensionality reduction method to use. The supported methods are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;umap&quot;</span></code> <strong>(default)</strong>: Uniform Manifold Approximation and Projection (<a class="reference external" href="https://github.com/lmcinnes/umap">UMAP</a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;t-sne&quot;</span></code>: t-distributed Stochastic Neighbor Embedding (<a class="reference external" href="https://lvdmaaten.github.io/tsne">t-SNE</a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;pca&quot;</span></code>: Principal Component Analysis (<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html">PCA</a>)</p></li>
+</ul>
+</div>
+<div class="section" id="Visualizing-embeddings">
+<h3>Visualizing embeddings<a class="headerlink" href="#Visualizing-embeddings" title="Permalink to this headline">¶</a></h3>
+<p>Now we’re ready to use <a class="reference external" href="https://voxel51.com/docs/fiftyone/api/fiftyone.brain.visualization.html#fiftyone.brain.visualization.VisualizationResults.visualize">results.visualize()</a> to visualize our representation.</p>
+<p>Although we could use this method in isolation, the real power of FiftyOne comes when you <a class="reference external" href="https://voxel51.com/docs/fiftyone/user_guide/plots.html#attaching-plots">attach plots to the FiftyOne App</a>, so that when points of interest are selected in the plot, the corresponding samples are automatically selected in the App, and vice versa.</p>
+<p>So, let’s open the test split in the App:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Launch App instance</span>
+<span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">test_split</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p><img alt="MNIST test split" src="../_images/image_embeddings_test_split.png" /></p>
+<p>Now let’s visualize the results in the <a class="reference external" href="https://docs.voxel51.com/user_guide/app.html#embeddings-panel">Embeddings Panel</a> in the FiftyOne App, and color by ground truth label:</p>
+<p><img alt="MNIST embeddings" src="../_images/image_embeddings_panel.gif" /></p>
+<p>Notice that the scatterpoints are naturally clustered by color (ground truth label), which means that <a class="reference external" href="https://github.com/lmcinnes/umap">UMAP</a> was able to capture the visual differences between the digits!</p>
+</div>
+<div class="section" id="Scatterplot-controls">
+<h3>Scatterplot controls<a class="headerlink" href="#Scatterplot-controls" title="Permalink to this headline">¶</a></h3>
+<p>Now it’s time to explore the scatterplot interactively. In the top of the panel, you will see controls that allow you to do the following: - The <code class="docutils literal notranslate"><span class="pre">Zoom</span></code>, <code class="docutils literal notranslate"><span class="pre">Pan</span></code>, <code class="docutils literal notranslate"><span class="pre">Zoom</span> <span class="pre">In</span></code>, <code class="docutils literal notranslate"><span class="pre">Zoom</span> <span class="pre">Out</span></code>, <code class="docutils literal notranslate"><span class="pre">Autoscale</span></code>, and <code class="docutils literal notranslate"><span class="pre">Reset</span> <span class="pre">axes</span></code> modes can be used to manipulate your current view - The <code class="docutils literal notranslate"><span class="pre">Box</span> <span class="pre">Select</span></code> and <code class="docutils literal notranslate"><span class="pre">Lasso</span> <span class="pre">Select</span></code> modes enable you to select points in the plot</p>
+<p>In <code class="docutils literal notranslate"><span class="pre">Box</span> <span class="pre">Select</span></code> or <code class="docutils literal notranslate"><span class="pre">Lasso</span> <span class="pre">Select</span></code> mode, drawing on the plot will select the points within the region you define. In addition, note that you can: - Hold shift to add a region to your selection - Double-click anywhere on the plot to deselect all points</p>
+<p>Since we chose a categorical label for the points, each ground truth label is given its own trace in the legend on the righthand side. You can interact with this legend to show/hide data: - Single-click on a trace to show/hide all points in that trace - Double-click on a trace to show/hide all <em>other</em> traces</p>
+</div>
+<div class="section" id="Exploring-the-embeddings">
+<h3>Exploring the embeddings<a class="headerlink" href="#Exploring-the-embeddings" title="Permalink to this headline">¶</a></h3>
+<p>Here’s a couple suggestions for exploring the data:</p>
+<ul class="simple">
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">Lasso</span> <span class="pre">Select</span></code> to select the cluster of points corresponding to the <code class="docutils literal notranslate"><span class="pre">0</span></code> label. Note that the corresponding images loaded in the App are all images of zeros, as expected</p></li>
+<li><p>Try selecting other clusters and viewing the images in the App</p></li>
+<li><p>Click on the <code class="docutils literal notranslate"><span class="pre">0</span></code> label in the legend to hide the zeros. Now lasso the points from other traces that are in the <code class="docutils literal notranslate"><span class="pre">0</span></code> cluster. These are non-zero images in the dataset that are likley to be confused as zeros!</p></li>
+</ul>
+<p><img alt="likely zero confusions" src="../_images/image_embeddings_zero_cluster.gif" /></p>
+<p>Now try double-clicking on the <code class="docutils literal notranslate"><span class="pre">0</span></code> legend entry so that only the <code class="docutils literal notranslate"><span class="pre">0</span></code> points are visible in the plot. Then use the <code class="docutils literal notranslate"><span class="pre">Lasso</span> <span class="pre">Select</span></code> to select the <code class="docutils literal notranslate"><span class="pre">0</span></code> points that are far away from the main <code class="docutils literal notranslate"><span class="pre">0</span></code> cluster. These are zero images in the dataset that are likely to be confused as non-zeroes by a model!</p>
+<p><img alt="likely nonzero confusions" src="../_images/image_embeddings_nonzero_cluster.gif" /></p>
+<p>Cool, right? It is clear that <a class="reference external" href="https://voxel51.com/docs/fiftyone/api/fiftyone.brain.html#fiftyone.brain.compute_visualization">compute_visualization()</a> has picked up on some interesting structure in the test split of the dataset.</p>
+</div>
+<div class="section" id="Pre-annotation-of-samples">
+<h3>Pre-annotation of samples<a class="headerlink" href="#Pre-annotation-of-samples" title="Permalink to this headline">¶</a></h3>
+<p>Now let’s put the insights from the previous section to work.</p>
+<p>Imagine that you are <a class="reference external" href="http://yann.lecun.com">Yann LeCun</a> or <a class="reference external" href="https://research.google/people/author121/">Corinna Cortes</a>, the creators of the MNIST dataset, and you have just invested the time to annotate the test split of the dataset by hand. Now, you have collected an additional 60K images of unlabeled digits that you want to use as a training split that you need to annotate.</p>
+<p>Let’s see how <a class="reference external" href="https://voxel51.com/docs/fiftyone/api/fiftyone.brain.html#fiftyone.brain.compute_visualization">compute_visualization()</a> can be used to efficiently pre-annotate the train split with minimal effort.</p>
+<p>First, let’s regenerate embeddings for all 70,000 images in the combined test and train splits:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Construct a ``num_samples x num_pixels`` array of images</span>
+<span class="n">embeddings</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">IMREAD_UNCHANGED</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">dataset</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;filepath&quot;</span><span class="p">)</span>
+<span class="p">])</span>
+
+<span class="c1"># Compute 2D representation</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">fob</span><span class="o">.</span><span class="n">compute_visualization</span><span class="p">(</span>
+    <span class="n">dataset</span><span class="p">,</span>
+    <span class="n">embeddings</span><span class="o">=</span><span class="n">embeddings</span><span class="p">,</span>
+    <span class="n">num_dims</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">method</span><span class="o">=</span><span class="s2">&quot;umap&quot;</span><span class="p">,</span>
+    <span class="n">brain_key</span><span class="o">=</span><span class="s2">&quot;mnist&quot;</span><span class="p">,</span>
+    <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">seed</span><span class="o">=</span><span class="mi">51</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Generating visualization...
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/opt/homebrew/Caskroom/miniforge/base/envs/fo-dev/lib/python3.9/site-packages/numba/cpython/hashing.py:482: UserWarning: FNV hashing is not implemented in Numba. See PEP 456 https://www.python.org/dev/peps/pep-0456/ for rationale over not using FNV. Numba will continue to work, but hashes for built in types will be computed using siphash24. This will permit e.g. dictionaries to continue to behave as expected, however anything relying on the value of the hash opposed to hash as a derived property is likely to not work as expected.
+  warnings.warn(msg)
+/opt/homebrew/Caskroom/miniforge/base/envs/fo-dev/lib/python3.9/site-packages/umap/umap_.py:1943: UserWarning: n_jobs value -1 overridden to 1 by setting random_state. Use no seed for parallelism.
+  warn(f&#34;n_jobs value {self.n_jobs} overridden to 1 by setting random_state. Use no seed for parallelism.&#34;)
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+UMAP(random_state=51, verbose=True)
+Wed Mar 27 11:37:27 2024 Construct fuzzy simplicial set
+Wed Mar 27 11:37:27 2024 Finding Nearest Neighbors
+Wed Mar 27 11:37:27 2024 Building RP forest with 18 trees
+Wed Mar 27 11:37:30 2024 NN descent for 16 iterations
+         1  /  16
+         2  /  16
+         3  /  16
+         4  /  16
+        Stopping threshold met -- exiting after 4 iterations
+Wed Mar 27 11:37:38 2024 Finished Nearest Neighbor Search
+Wed Mar 27 11:37:40 2024 Construct embedding
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "cef3d23476c84f6db42f2a572277b49c", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+        completed  0  /  200 epochs
+        completed  20  /  200 epochs
+        completed  40  /  200 epochs
+        completed  60  /  200 epochs
+        completed  80  /  200 epochs
+        completed  100  /  200 epochs
+        completed  120  /  200 epochs
+        completed  140  /  200 epochs
+        completed  160  /  200 epochs
+        completed  180  /  200 epochs
+Wed Mar 27 11:38:12 2024 Finished embedding
+</pre></div></div>
+</div>
+<p>Of course, our dataset already has ground truth labels for the train split, but let’s pretend that’s not the case and generate an array of <code class="docutils literal notranslate"><span class="pre">labels</span></code> for our visualization that colors the test split by its ground truth labels and marks all images in the train split as <code class="docutils literal notranslate"><span class="pre">unlabeled</span></code>:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fiftyone</span> <span class="kn">import</span> <span class="n">ViewField</span> <span class="k">as</span> <span class="n">F</span>
+
+<span class="c1"># Label `test` split samples by their ground truth label</span>
+<span class="c1"># Mark all samples in `train` split as `unlabeled`</span>
+<span class="n">expr</span> <span class="o">=</span> <span class="n">F</span><span class="p">(</span><span class="s2">&quot;$tags&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">if_else</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s2">&quot;label&quot;</span><span class="p">),</span> <span class="s2">&quot;unlabeled&quot;</span><span class="p">)</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span> <span class="n">expr</span><span class="o">=</span><span class="n">expr</span><span class="p">)</span>
+<span class="c1"># Set the `ground_truth.label` field to the computed labels</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">set_values</span><span class="p">(</span><span class="s2">&quot;ground_truth.label&quot;</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Launch a new App instance</span>
+<span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">auto</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p><img alt="Unlabeled Images" src="../_images/image_embeddings_unlabeled.png" /></p>
+<p>What’s so great about this plot? Notice that the unlabeled points in our (to-be-labeled) train split are heavily clustered into the same clusters as the labeled points from the test split!</p>
+<p>Follow the simple workflow below to use FiftyOne’s <a class="reference external" href="https://voxel51.com/docs/fiftyone/user_guide/app.html#tags-and-tagging">in-App tagging feature</a> to efficiently assign proposed labels for all samples in the <code class="docutils literal notranslate"><span class="pre">train</span></code> split: 1. Click on the <code class="docutils literal notranslate"><span class="pre">unlabeled</span></code> trace to hide it, and then use the predominant color of the labeled points in the cluster below to determine the identity of the cluster 2. Now double-click on the <code class="docutils literal notranslate"><span class="pre">unlabeled</span></code> trace so that <em>only</em> the unlabeled points are visible in the
+plot 3. Use the <code class="docutils literal notranslate"><span class="pre">Lasso</span> <span class="pre">Select</span></code> tool to select the <code class="docutils literal notranslate"><span class="pre">unlabeled</span></code> points in the cluster whose identity you just deduced 4. Over in the App, click on the <code class="docutils literal notranslate"><span class="pre">tag</span></code> icon and assign a tag to the samples 5. Repeat steps 1-4 for the other clusters</p>
+<p>Congratulations, you just pre-annotated ~60,000 training images!</p>
+<p><img alt="pre-annotation" src="../_images/image_embeddings_prelabel.gif" /></p>
+<p>You can easily print some statistics about the sample tags that you created:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The train split that we pre-annotated</span>
+<span class="n">train_split</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">match_tags</span><span class="p">(</span><span class="s2">&quot;train&quot;</span><span class="p">)</span>
+
+<span class="c1"># Print state about labels that were added</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">train_split</span><span class="o">.</span><span class="n">count_sample_tags</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;8&#39;: 5577, &#39;6&#39;: 6006, &#39;3&#39;: 6104, &#39;7&#39;: 6361, &#39;9&#39;: 6036, &#39;5&#39;: 5389, &#39;train&#39;: 60000, &#39;0&#39;: 5981, &#39;4&#39;: 5737, &#39;2&#39;: 5811, &#39;1&#39;: 6937}
+</pre></div></div>
+</div>
+<p>The snippet below converts the sample tags into <a class="reference external" href="https://voxel51.com/docs/fiftyone/user_guide/using_datasets.html#classification">Classification labels</a> in a new <code class="docutils literal notranslate"><span class="pre">hypothesis</span></code> field of the dataset:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add a new Classification field called `hypothesis` to store our guesses</span>
+<span class="k">with</span> <span class="n">fo</span><span class="o">.</span><span class="n">ProgressBar</span><span class="p">()</span> <span class="k">as</span> <span class="n">pb</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">sample</span> <span class="ow">in</span> <span class="n">pb</span><span class="p">(</span><span class="n">train_split</span><span class="p">):</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="n">t</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">sample</span><span class="o">.</span><span class="n">tags</span> <span class="k">if</span> <span class="n">t</span> <span class="o">!=</span> <span class="s2">&quot;train&quot;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">labels</span><span class="p">:</span>
+            <span class="n">sample</span><span class="p">[</span><span class="s2">&quot;hypothesis&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Classification</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="n">labels</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="n">sample</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+<span class="c1"># Print stats about the labels we created</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">train_split</span><span class="o">.</span><span class="n">count_values</span><span class="p">(</span><span class="s2">&quot;hypothesis.label&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ 100% |█████████████| 60000/60000 [2.6m elapsed, 0s remaining, 353.0 samples/s]
+{&#39;0&#39;: 5981, &#39;9&#39;: 6036, &#39;8&#39;: 5572, &#39;7&#39;: 6361, &#39;6&#39;: 6006, &#39;5&#39;: 5388, None: 69, &#39;3&#39;: 6104, &#39;1&#39;: 6937, &#39;4&#39;: 5735, &#39;2&#39;: 5811}
+</pre></div></div>
+</div>
+<p>In the example above, notice that 69 samples in the train split were not given a hypothesis (i.e., they were not included in the cluster-based tagging procedure). If you would like to retrieve them and manually assign tags, that is easy:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">no_hypothesis</span> <span class="o">=</span> <span class="n">train_split</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s2">&quot;hypothesis.label&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">no_hypothesis</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Dataset:        mnist
+Media type:     image
+Num samples:    69
+Tags:           [&#39;train&#39;]
+Sample fields:
+    filepath:     fiftyone.core.fields.StringField
+    tags:         fiftyone.core.fields.ListField(fiftyone.core.fields.StringField)
+    metadata:     fiftyone.core.fields.EmbeddedDocumentField(fiftyone.core.metadata.Metadata)
+    ground_truth: fiftyone.core.fields.EmbeddedDocumentField(fiftyone.core.labels.Classification)
+    hypothesis:   fiftyone.core.fields.EmbeddedDocumentField(fiftyone.core.labels.Classification)
+View stages:
+    1. MatchTags(tags=[&#39;train&#39;])
+    2. Exists(field=&#39;hypothesis.label&#39;, bool=False)
+</pre></div></div>
+</div>
+<p>Depending on your application, you may be able to start training using the <code class="docutils literal notranslate"><span class="pre">hypothesis</span></code> labels directly by <a class="reference external" href="https://voxel51.com/docs/fiftyone/user_guide/export_datasets.html">exporting the dataset</a> as, say, a classification directory tree structure:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Export `hypothesis` labels as a classification directory tree format</span>
+<span class="c1"># `exists()` ensures that we only export samples with a hypothesis</span>
+<span class="n">train_split</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s2">&quot;hypothesis.label&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">export</span><span class="p">(</span>
+    <span class="n">export_dir</span><span class="o">=</span><span class="s2">&quot;/path/for/dataset&quot;</span><span class="p">,</span>
+    <span class="n">dataset_type</span><span class="o">=</span><span class="n">fo</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">ImageClassificationDirectoryTree</span><span class="p">,</span>
+    <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;hypothesis&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Or perhaps you’ll want to export the hypothesized labels to your annotation provider to fine-tune the labels for training.</p>
+<p>FiftyOne provides integrations for importing/exporting data to <a class="reference external" href="https://voxel51.com/docs/fiftyone/api/fiftyone.utils.scale.html">Scale</a>, <a class="reference external" href="https://voxel51.com/docs/fiftyone/api/fiftyone.utils.labelbox.html">Labelbox</a>, <a class="reference external" href="https://docs.voxel51.com/integrations/labelstudio.html">Label Studio</a>, <a class="reference external" href="https://docs.voxel51.com/integrations/v7.html">V7</a>, and <a class="reference external" href="https://voxel51.com/docs/fiftyone/user_guide/export_datasets.html#cvatimagedataset">CVAT</a>. Check out <a class="reference external" href="https://towardsdatascience.com/managing-annotation-mistakes-with-fiftyone-and-labelbox-fc6e87b51102">this blog
+post</a> for more information about FiftyOne’s Labelbox integration.</p>
+</div>
+<div class="section" id="Loading-existing-visualizations">
+<h3>Loading existing visualizations<a class="headerlink" href="#Loading-existing-visualizations" title="Permalink to this headline">¶</a></h3>
+<p>If you provide the <code class="docutils literal notranslate"><span class="pre">brain_key</span></code> argument to <a class="reference external" href="https://voxel51.com/docs/fiftyone/api/fiftyone.brain.html#fiftyone.brain.compute_visualization">compute_visualization()</a>, then the visualization results that you generate will be saved and you can recall them later.</p>
+<p>For example, we can recall the visualization results that we first computed on the test split:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[60]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># List brain runs saved on the dataset</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">list_brain_runs</span><span class="p">())</span>
+
+<span class="c1"># Load the results for a brain run</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">load_brain_results</span><span class="p">(</span><span class="s2">&quot;mnist_test&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">results</span><span class="p">))</span>
+
+<span class="c1"># Load the dataset view on which the results were computed</span>
+<span class="n">results_view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">load_brain_view</span><span class="p">(</span><span class="s2">&quot;mnist_test&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">results_view</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&#39;mnist&#39;, &#39;mnist_test&#39;]
+&lt;class &#39;fiftyone.brain.visualization.VisualizationResults&#39;&gt;
+10000
+</pre></div></div>
+</div>
+<p>See <a class="reference external" href="https://voxel51.com/docs/fiftyone/user_guide/brain.html#managing-brain-runs">this docs page</a> for more information about managing brain runs.</p>
+</div>
+</div>
+<div class="section" id="Part-II:-BDD100K">
+<h2>Part II: BDD100K<a class="headerlink" href="#Part-II:-BDD100K" title="Permalink to this headline">¶</a></h2>
+<p>In this section, we’ll visualize embeddings from a deep model on the <a class="reference external" href="https://voxel51.com/docs/fiftyone/user_guide/dataset_zoo/datasets.html?highlight=bdd100k#dataset-zoo-bdd100k">BDD100K dataset</a> from the FiftyOne Dataset Zoo and demonstrate some of the insights that you can glean from them.</p>
+<p>If you want to follow along youself, you will need to register at <a class="reference external" href="https://bdd-data.berkeley.edu">https://bdd-data.berkeley.edu</a> in order to get links to download the data. See the <a class="reference external" href="https://voxel51.com/docs/fiftyone/user_guide/dataset_zoo/datasets.html?highlight=bdd100k#dataset-zoo-bdd100k">zoo docs</a> for details on loading the dataset.</p>
+<p>We’ll be working with the validation split, which contains 10,000 labeled images:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="c1"># The path to the source files that you manually downloaded</span>
+<span class="n">source_dir</span> <span class="o">=</span> <span class="s2">&quot;/path/to/dir-with-bdd100k-files&quot;</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;bdd100k&quot;</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="s2">&quot;validation&quot;</span><span class="p">,</span> <span class="n">source_dir</span><span class="o">=</span><span class="n">source_dir</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Split &#39;validation&#39; already prepared
+Loading existing dataset &#39;bdd100k-validation&#39;. To reload from disk, either delete the existing dataset or provide a custom `dataset_name` to use
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p><img alt="BDD100K validation split" src="../_images/image_embeddings_bdd100k.png" /></p>
+<div class="section" id="id1">
+<h3>Computing image embeddings<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>The BDD100K images are 1280 x 720 pixels, so we’ll use a deep model to generate intermediate embeddings.</p>
+<p>Using a deep model not only enables us to visualize larger datasets or ones with different image sizes, it also enables us to key in on different features of the dataset, depending on the model that we use to generate embeddings. By default, <a class="reference external" href="https://voxel51.com/docs/fiftyone/api/fiftyone.brain.html#fiftyone.brain.compute_visualization">compute_visualization()</a> will generate embeddings using a general-purpose model that works well for datasets of any kind.</p>
+<p>You can run the cell below to generate a 2D representation for the BDD100K validation split using FiftyOne’s default model. You will likely want to run this on a machine with GPU, as this requires running inference on 10,000 images:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone.brain</span> <span class="k">as</span> <span class="nn">fob</span>
+
+<span class="c1"># Compute 2D representation</span>
+<span class="c1"># This will compute deep embeddings for all 10,000 images</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">fob</span><span class="o">.</span><span class="n">compute_visualization</span><span class="p">(</span>
+    <span class="n">dataset</span><span class="p">,</span>
+    <span class="n">num_dims</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">brain_key</span><span class="o">=</span><span class="s2">&quot;img_viz&quot;</span><span class="p">,</span>
+    <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">seed</span><span class="o">=</span><span class="mi">51</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Alternatively, you can provide your own custom embeddings via the <code class="docutils literal notranslate"><span class="pre">embeddings</span></code> parameter of <a class="reference external" href="https://voxel51.com/docs/fiftyone/api/fiftyone.brain.html#fiftyone.brain.compute_visualization">compute_visualization()</a>. The <a class="reference external" href="https://voxel51.com/docs/fiftyone/user_guide/model_zoo/index.html">FiftyOne Model Zoo</a> provides dozens of models that expose embeddings that you can use for this purpose.</p>
+<p>For example, the cell below generates a visualization using pre-computed embeddings from a ResNet model from the zoo:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load a resnet from the model zoo</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_model</span><span class="p">(</span><span class="s2">&quot;resnet50-imagenet-torch&quot;</span><span class="p">)</span>
+
+<span class="c1"># Verify that the model exposes embeddings</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">has_embeddings</span><span class="p">)</span>
+<span class="c1"># True</span>
+
+<span class="c1"># Compute embeddings for each image</span>
+<span class="n">embeddings</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">compute_embeddings</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">embeddings</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="c1"># 10000 x 2048</span>
+
+<span class="c1"># Compute 2D representation using pre-computed embeddings</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">fob</span><span class="o">.</span><span class="n">compute_visualization</span><span class="p">(</span>
+    <span class="n">dataset</span><span class="p">,</span>
+    <span class="n">embeddings</span><span class="o">=</span><span class="n">embeddings</span><span class="p">,</span>
+    <span class="n">num_dims</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">brain_key</span><span class="o">=</span><span class="s2">&quot;image_embeddings&quot;</span><span class="p">,</span>
+    <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">seed</span><span class="o">=</span><span class="mi">51</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Either way, we’re ready to visualize our representation.</p>
+</div>
+<div class="section" id="id2">
+<h3>Visualizing embeddings<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>As usual, we’ll start by launching an App instance and opening the embeddings panel to interactively explore the results:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>The BDD100K dataset contains a handful of image-level labels, including scene type, time of day, and weather.</p>
+<p>Let’s use the time of day labels to color our scatterplot:</p>
+<p><img alt="BDD100K embeddings" src="../_images/image_embeddings_bdd100k_colorby.gif" /></p>
+<p>Notice that the visualization has a dominant bimodal distribution corresponding to whether the time of day is <code class="docutils literal notranslate"><span class="pre">daytime</span></code> or <code class="docutils literal notranslate"><span class="pre">night</span></code>!</p>
+<p>You can investigate each cluster in more detail using the <code class="docutils literal notranslate"><span class="pre">Zoom</span></code> and <code class="docutils literal notranslate"><span class="pre">Pan</span></code> controls of the plot’s modebar.</p>
+</div>
+<div class="section" id="Investigating-outliers">
+<h3>Investigating outliers<a class="headerlink" href="#Investigating-outliers" title="Permalink to this headline">¶</a></h3>
+<p>Outlier clusters in these plots often correspond to images with distinctive properties. Let’s <code class="docutils literal notranslate"><span class="pre">Lasso</span> <span class="pre">Select</span></code> some outlier regions to investigate:</p>
+<ul class="simple">
+<li><p>The first cluster contains images where the dashboard of the vehicle heavily occludes the view</p></li>
+<li><p>The second cluster contains images in rainy scenes where the windshield has water droplets on it</p></li>
+<li><p>The third cluster contains images where a cell phone is in the field of view</p></li>
+</ul>
+<p><img alt="bdd100k-outliers" src="../_images/image_embeddings_outliers.gif" /></p>
+</div>
+<div class="section" id="Tagging-label-mistakes">
+<h3>Tagging label mistakes<a class="headerlink" href="#Tagging-label-mistakes" title="Permalink to this headline">¶</a></h3>
+<p>We can also use the scatterplot to tag samples whose <code class="docutils literal notranslate"><span class="pre">timeofday</span></code> labels are incorrect by taking the following actions:</p>
+<ul class="simple">
+<li><p>Deselect all labels except <code class="docutils literal notranslate"><span class="pre">night</span></code> in the legend</p></li>
+<li><p>Lasso select the nightime points (yellow) within the daytime cluster (red)</p></li>
+<li><p>Click the tag icon in the upper-left corner of the sample grid in the App</p></li>
+<li><p>Add an appropriate tag to the samples in the current view to mark the mistakes</p></li>
+</ul>
+<p><img alt="bdd100k-mistakes" src="../_images/image_embeddings_tag_mistakes.gif" /></p>
+</div>
+</div>
+<div class="section" id="Summary">
+<h2>Summary<a class="headerlink" href="#Summary" title="Permalink to this headline">¶</a></h2>
+<p>In this tutorial, we showed how to use FiftyOne to compute embeddings for image datasets and demonstrated a few of their many uses, including:</p>
+<ul class="simple">
+<li><p>Visualizing the hidden structure of image datasets</p></li>
+<li><p>Pre-annotating unlabeled data for training</p></li>
+<li><p>Identifying anomolous/incorrect image labels</p></li>
+<li><p>Finding examples of scenarios of interest</p></li>
+</ul>
+<p><strong>So, what’s the takeaway?</strong></p>
+<p>Combing through individual images in a dataset and staring at aggregate performance metrics trying to figure out how to improve the performance of a model is an ineffective and time-consuming process.</p>
+<p>Visualizing your dataset in a low-dimensional embedding space is a powerful workflow that can reveal patterns and clusters in your data that can answer important questions about the critical failure modes of your model. It can also help you automate workflows like finding label mistakes and efficiently pre-annotating data.</p>
+<p>FiftyOne also supports visualizing embeddings for object detections. Stay tuned for an upcoming tutorial on the topic!</p>
+<script type="application/vnd.jupyter.widget-state+json">
+{"307700e692704d128c9000235a6f17c5": {"model_module": "@jupyter-widgets/controls", "model_name": "FloatProgressModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "FloatProgressModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "ProgressView", "bar_style": "success", "description": "100%", "description_tooltip": null, "layout": "IPY_MODEL_411eb725c43c4adf9340a0a27ef061da", "max": 256198016, "min": 0, "orientation": "horizontal", "style": "IPY_MODEL_9e103a1d535a40fd8f417c8689884b8b", "value": 256198016}}, "411eb725c43c4adf9340a0a27ef061da": {"model_module": "@jupyter-widgets/base", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "451754fff86644b5912b33c58ac5981a": {"model_module": "@jupyter-widgets/base", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "49ec2b75718b473fa00541d7fb50259a": {"model_module": "@jupyter-widgets/base", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "53e8b0f53dbe492592b21c6c288ca914": {"model_module": "@jupyter-widgets/controls", "model_name": "HBoxModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HBoxView", "box_style": "", "children": ["IPY_MODEL_95c0356316274d999df93162d27da01d", "IPY_MODEL_e4499c59e6f8453699ba1921a82dc780"], "layout": "IPY_MODEL_49ec2b75718b473fa00541d7fb50259a"}}, "702a1184a1314468ba935e167a863cf8": {"model_module": "@jupyter-widgets/base", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "7281666eb2864344bdf7d8bf897cadaa": {"model_module": "@jupyter-widgets/base", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "8547c80a5f2645fea1d61c9a6d8cec16": {"model_module": "@jupyter-widgets/controls", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "931041a5074542d192a1533f944ee789": {"model_module": "@jupyter-widgets/controls", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "95c0356316274d999df93162d27da01d": {"model_module": "@jupyter-widgets/controls", "model_name": "FloatProgressModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "FloatProgressModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "ProgressView", "bar_style": "success", "description": "100%", "description_tooltip": null, "layout": "IPY_MODEL_7281666eb2864344bdf7d8bf897cadaa", "max": 256198016, "min": 0, "orientation": "horizontal", "style": "IPY_MODEL_ed07f0250541454cbbd39c83b01aae6d", "value": 256198016}}, "9e103a1d535a40fd8f417c8689884b8b": {"model_module": "@jupyter-widgets/controls", "model_name": "ProgressStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ProgressStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "bar_color": null, "description_width": "initial"}}, "c0b89280a59d4f31aec03b9361fcffdd": {"model_module": "@jupyter-widgets/controls", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_702a1184a1314468ba935e167a863cf8", "placeholder": "\u200b", "style": "IPY_MODEL_8547c80a5f2645fea1d61c9a6d8cec16", "value": " 244M/244M [00:06&lt;00:00, 40.7MB/s]"}}, "c6c98e77502045719bc02b0a116e01a5": {"model_module": "@jupyter-widgets/base", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "dfe11b89f27a43ef9db67ccb96d3bad2": {"model_module": "@jupyter-widgets/controls", "model_name": "HBoxModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HBoxView", "box_style": "", "children": ["IPY_MODEL_307700e692704d128c9000235a6f17c5", "IPY_MODEL_c0b89280a59d4f31aec03b9361fcffdd"], "layout": "IPY_MODEL_c6c98e77502045719bc02b0a116e01a5"}}, "e4499c59e6f8453699ba1921a82dc780": {"model_module": "@jupyter-widgets/controls", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_451754fff86644b5912b33c58ac5981a", "placeholder": "\u200b", "style": "IPY_MODEL_931041a5074542d192a1533f944ee789", "value": " 244M/244M [00:06&lt;00:00, 42.2MB/s]"}}, "ed07f0250541454cbbd39c83b01aae6d": {"model_module": "@jupyter-widgets/controls", "model_name": "ProgressStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ProgressStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "bar_color": null, "description_width": "initial"}}}
+</script></div>
+</div>
+
+
+             </article>
+             
+            </div>
+            <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="cvat_annotation.html" class="btn btn-neutral float-right" title="Annotating Datasets with CVAT" accesskey="n" rel="next">Next <img src="../_static/images/chevron-right-orange.svg" class="next-page"></a>
+      
+      
+        <a href="evaluate_classifications.html" class="btn btn-neutral" title="Evaluating a Classifier with FiftyOne" accesskey="p" rel="prev"><img src="../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
+      
+    </div>
+  
+</footer>
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              <ul>
+<li><a class="reference internal" href="#">Using Image Embeddings</a><ul>
+<li><a class="reference internal" href="#Setup">Setup</a></li>
+<li><a class="reference internal" href="#Part-I:-MNIST">Part I: MNIST</a><ul>
+<li><a class="reference internal" href="#Computing-image-embeddings">Computing image embeddings</a></li>
+<li><a class="reference internal" href="#Visualization-parameters">Visualization parameters</a></li>
+<li><a class="reference internal" href="#Visualizing-embeddings">Visualizing embeddings</a></li>
+<li><a class="reference internal" href="#Scatterplot-controls">Scatterplot controls</a></li>
+<li><a class="reference internal" href="#Exploring-the-embeddings">Exploring the embeddings</a></li>
+<li><a class="reference internal" href="#Pre-annotation-of-samples">Pre-annotation of samples</a></li>
+<li><a class="reference internal" href="#Loading-existing-visualizations">Loading existing visualizations</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#Part-II:-BDD100K">Part II: BDD100K</a><ul>
+<li><a class="reference internal" href="#id1">Computing image embeddings</a></li>
+<li><a class="reference internal" href="#id2">Visualizing embeddings</a></li>
+<li><a class="reference internal" href="#Investigating-outliers">Investigating outliers</a></li>
+<li><a class="reference internal" href="#Tagging-label-mistakes">Tagging label mistakes</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#Summary">Summary</a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  
+
+
+  
+
+     
+       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+         <script src="../_static/jquery.js"></script>
+         <script src="../_static/underscore.js"></script>
+         <script src="../_static/doctools.js"></script>
+         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+         <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+         <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+         <script src="../_static/js/voxel51-website.js"></script>
+         <script src="../_static/js/custom.js"></script>
+     
+
+  
+
+  <script type="text/javascript" src="../_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="../_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+  <!-- Begin Footer -->
+
+
+<footer class="footer-wrapper" id="docs-tutorials-resources">
+  <div class="footer pytorch-container">
+    <div class="footer__logo">
+      <a href="https://voxel51.com/"
+        ><img
+          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
+      /></a>
+    </div>
+
+    <div class="footer__address">
+      330 E Liberty St<br />
+      Ann Arbor, MI 48104<br />
+      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
+    </div>
+
+    <!--
+    <div class="footer__contact">
+      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
+    </div>
+    -->
+
+    <div class="footer__links">
+      <div class="footer__links--col2">
+        <p class="nav__item--brand">Products</p>
+        <a href="https://voxel51.com/fiftyone/">FiftyOne</a>
+        <a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a>
+        <a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a>
+        <a href="https://voxel51.com/success-stories/">Success Stories</a>
+      </div>
+      <div class="footer__links--col3">
+        <p class="nav__item--brand">Resources</p>
+        <a href="https://voxel51.com/blog/">Blog</a>
+        <a href="https://docs.voxel51.com/">Docs</a>
+        <a href="https://github.com/voxel51/">GitHub</a>
+        <a href="https://community.voxel51.com">Discord</a>
+        <a href="https://voxel51.com/ourstory/">About Us</a>
+        <a href="https://voxel51.com/computer-vision-events/">Events</a>
+        <a href="https://voxel51.com/jobs/">Careers</a>
+        <a href="https://voxel51.com/press/">Press</a>
+      </div>
+    </div>
+
+    <div class="footer__icons">
+      <ul class="list-inline">
+        <li>
+          <a href="https://www.linkedin.com/company/voxel51/">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/voxel51/">
+            <i class="fa-brands fa-github"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/voxel51">
+            <i class="fa-brands fa-twitter"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/voxel51/">
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="footer__copyright">
+      <ul class="list-inline">
+        <li>&copy; 2024 Voxel51 Inc.</li>
+        <li>
+          <a href="https://voxel51.com/privacy/">Privacy Policy</a>
+        </li>
+        <li>
+          <a href="https://voxel51.com/terms/">Terms of Service</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<!-- https://buttons.github.io -->
+<script async defer src="https://buttons.github.io/buttons.js" ></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XD15NFRY3M" ></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+  gtag("config", "G-XD15NFRY3M");
+</script>
+
+<script>
+  function open_modal(modal_id, modal_closer_id) {
+    // Get the modal
+    let the_modal = document.getElementById(modal_id);
+
+    the_modal.style.display = "flex";
+    document.body.style.overflow = "hidden";
+
+    let the_modal_closer = document.getElementById(modal_closer_id);
+
+    // When the user clicks on <span> (x), close the modal
+    the_modal_closer &&
+      (the_modal_closer.onclick = function () {
+        the_modal.style.display = "none";
+      });
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+      if (event.target == the_modal) {
+        the_modal.style.display = "none";
+        document.body.style.overflow = "unset";
+        window.onclick = undefined;
+      }
+    };
+  }
+</script>
+
+<!-- bigpicture.io -->
+<script>
+  !(function (e, t, i) {
+    var r = (e.bigPicture = e.bigPicture || []);
+    if (!r.initialized)
+      if (r.invoked)
+        e.console &&
+          console.error &&
+          console.error("BigPicture.io snippet included twice.");
+      else {
+        (r.invoked = !0),
+          (r.SNIPPET_VERSION = 1.5),
+          (r.handler = function (e) {
+            if (void 0 !== r.callback)
+              try {
+                return r.callback(e);
+              } catch (e) {}
+          }),
+          (r.eventList = ["mousedown", "mouseup", "click", "submit"]),
+          (r.methods = [
+            "track",
+            "identify",
+            "page",
+            "group",
+            "alias",
+            "integration",
+            "ready",
+            "intelReady",
+            "consentReady",
+            "on",
+            "off",
+          ]),
+          (r.factory = function (e) {
+            return function () {
+              var t = Array.prototype.slice.call(arguments);
+              return t.unshift(e), r.push(t), r;
+            };
+          });
+        for (var n = 0; n < r.methods.length; n++) {
+          var o = r.methods[n];
+          r[o] = r.factory(o);
+        }
+        r.getCookie = function (e) {
+          var i = ("; " + t.cookie).split("; " + e + "=");
+          return 2 == i.length && i.pop().split(";").shift();
+        };
+        var c = (r.isEditor = (function () {
+          try {
+            return (
+              e.self !== e.top &&
+              (new RegExp("app" + i, "ig").test(t.referrer) ||
+                "edit" == r.getCookie("_bpr_edit"))
+            );
+          } catch (e) {
+            return !1;
+          }
+        })());
+        r.init = function (n, o) {
+          if (((r.projectId = n), (r._config = o), !c))
+            for (var a = 0; a < r.eventList.length; a++)
+              e.addEventListener(r.eventList[a], r.handler, !0);
+          var s = t.createElement("script");
+          s.async = !0;
+          var d = c ? "/editor/editor" : "/public-" + n;
+          (s.src = "//cdn" + i + d + ".js"),
+            t.getElementsByTagName("head")[0].appendChild(s);
+        };
+      }
+  })(window, document, ".bigpicture.io");
+  bigPicture.init("1646");
+</script>
+
+
+  
+
+  <!-- End Footer -->
+
+  <!-- Begin Mobile Menu -->
+
+  
+
+  <!-- End Mobile Menu -->
+
+  <script type="text/javascript" src="../_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function(e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+</body>
+</html>

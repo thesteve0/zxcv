@@ -1,0 +1,1768 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Annotating Datasets &mdash; FiftyOne 1.3.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <link rel="stylesheet" href="../_static/css/voxel51-website.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Evaluating Models" href="evaluation.html" />
+    <link rel="prev" title="Grouped datasets" href="groups.html" />
+<meta property="og:image" content="https://voxel51.com/wp-content/uploads/2024/03/3.24_webpages_Home_AV.png" />
+
+<link
+  href="https://fonts.googleapis.com/css?family=Palanquin:400,600,700,800"
+  rel="stylesheet"
+/>
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+  rel="stylesheet"
+/>
+<script src="https://tag.clearbitscripts.com/v1/pk_b9ed71c8234edd4f77326bcbfab5a4ca/tags.js"></script>
+
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+  
+</head>
+
+
+<div class="container-fluid header-holder tutorials-header" id="header-holder">
+  <nav id="nav__main" class="nav__main">
+    <div class="nav__main__logo">
+      <a href="https://voxel51.com/">
+        <img
+          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
+        />
+      </a>
+    </div>
+
+    <div class="nav__spacer desktop_only"></div>
+
+    <div id="nav__main__mobilebutton--on">
+      <a href="javascript:void(0);" onclick="navMobileButton()">
+        <i class="fa-solid fa-bars"></i>
+      </a>
+    </div>
+
+    <div id="nav__main__mobilebutton--off">
+      <a href="javascript:void(0);" onclick="navMobileButton()">
+        <i class="fa-solid fa-times"></i>
+      </a>
+    </div>
+
+    <div id="nav__main__items">
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Products</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://voxel51.com/fiftyone/">Open Source</a></li>
+            <li><a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a></li>
+            <li><a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a></li>
+            <li><a href="https://voxel51.com/success-stories/">Success Stories</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Learn</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://community.voxel51.com">Community Discord</a></li>
+            <li><a href="https://voxel51.com/blog/">Blog</a></li>
+            <li><a href="https://voxel51.com/computer-vision-events/">Events</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item">
+        <a href="https://docs.voxel51.com/">Docs</a>
+      </div>
+
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Company</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://voxel51.com/ourstory/">About Us</a></li>
+            <li><a href="https://voxel51.com/jobs/">Careers</a></li>
+            <li><a href="https://voxel51.com/talk-to-sales/">Talk to Sales</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item mobile_only">
+        <a href="https://github.com/voxel51/fiftyone">GitHub</a>
+      </div>
+
+      <div class="nav__item desktop_only" id="octocat">
+        <!-- https://buttons.github.io -->
+        <a
+          class="github-button"
+          href="https://github.com/voxel51/fiftyone"
+          data-color-scheme="no-preference: dark_high_contrast; light: dark_high_contrast; dark: dark_high_contrast;"
+          data-size="large"
+          data-show-count="true"
+          aria-label="Star voxel51/fiftyone on GitHub"
+          >Star</a
+        >
+      </div>
+
+      <div class="nav__item full_nav_only">
+        <a class="button-primary" href="https://voxel51.com/schedule-teams-workshop/" target="_blank"
+          >Schedule a workshop</a
+        >
+      </div>
+    </div>
+  </nav>
+</div>
+
+
+
+<body class="pytorch-body">
+
+   
+
+    
+
+    <div class="table-of-contents-link-wrapper">
+      <span>Table of Contents</span>
+      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+    </div>
+
+    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+      <div class="pytorch-side-scroll">
+        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          <div class="pytorch-left-menu-search">
+            
+
+            
+              
+              
+            
+
+            
+
+
+  
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+            
+          </div>
+
+           <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../teams/index.html">FiftyOne Teams 🚀</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../environments/index.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../recipes/index.html">Recipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheat_sheets/index.html">Cheat Sheets</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">User Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="basics.html">FiftyOne basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dataset_creation/index.html">Loading datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="using_datasets.html">Using datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="using_views.html">Dataset views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app.html">Using the App</a></li>
+<li class="toctree-l2"><a class="reference internal" href="groups.html">Grouped datasets</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Annotating datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="evaluation.html">Evaluating models <strong style="color: hsl(25, 100%, 51%); font-size: 0.85em; vertical-align: top">NEW</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="using_aggregations.html">Using aggregations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plots.html">Interactive plots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="export_datasets.html">Exporting datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="draw_labels.html">Drawing labels on samples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config.html">Configuring FiftyOne</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config.html#configuring-the-app">Configuring the App</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../dataset_zoo/index.html">Dataset Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_zoo/index.html">Model Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brain.html">FiftyOne Brain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/index.html">Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plugins/index.html">Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli/index.html">CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/fiftyone.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deprecation.html">Deprecation Notices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a></li>
+</ul>
+ 
+        </div>
+      </div>
+    </nav>
+
+    <div class="pytorch-container">
+      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+        <div class="pytorch-breadcrumbs-wrapper">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="../index.html">
+          
+            Docs
+          
+        </a> &gt;
+      </li>
+
+        
+          <li><a href="index.html">FiftyOne User Guide</a> &gt;</li>
+        
+      <li>Annotating Datasets</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+        </div>
+
+        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+          Contents
+        </div>
+      </div>
+
+      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+        <div class="pytorch-content-left">
+
+        
+          
+          <div class="rst-content style-external-links">
+          
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+              
+  <div class="section" id="annotating-datasets">
+<span id="fiftyone-annotation"></span><h1>Annotating Datasets<a class="headerlink" href="#annotating-datasets" title="Permalink to this headline">¶</a></h1>
+<p>FiftyOne provides a powerful annotation API that makes it easy to add or edit
+labels on your <a class="reference internal" href="using_datasets.html#using-datasets"><span class="std std-ref">datasets</span></a> or specific
+<a class="reference internal" href="using_views.html#using-views"><span class="std std-ref">views</span></a> into them.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Did you know? You can request, manage, and import annotations from within
+the FiftyOne App by installing the
+<a class="reference external" href="https://github.com/voxel51/fiftyone-plugins/tree/main/plugins/annotation">&#64;voxel51/annotation</a>
+plugin!</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Check out <a class="reference internal" href="../tutorials/cvat_annotation.html"><span class="doc">this tutorial</span></a> to see an
+example workflow that uses the annotation API to create, delete, and fix
+annotations on a FiftyOne dataset.</p>
+</div>
+<div class="section" id="basic-recipe">
+<span id="annotation-basic-recipe"></span><h2>Basic recipe<a class="headerlink" href="#basic-recipe" title="Permalink to this headline">¶</a></h2>
+<p>The basic workflow to use the annotation API to add or edit labels on your
+FiftyOne datasets is as follows:</p>
+<ol class="arabic simple">
+<li><p>Load a <a class="reference internal" href="dataset_creation/index.html#loading-datasets"><span class="std std-ref">labeled or unlabeled dataset</span></a> into FiftyOne</p></li>
+<li><p>Explore the dataset using the <a class="reference internal" href="app.html#fiftyone-app"><span class="std std-ref">App</span></a> or
+<a class="reference internal" href="using_views.html#using-views"><span class="std std-ref">dataset views</span></a> to locate either unlabeled samples that
+you wish to annotate or labeled samples whose annotations you want to edit</p></li>
+<li><p>Use the
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.annotate" title="fiftyone.core.collections.SampleCollection.annotate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">annotate()</span></code></a>
+method on your dataset or view to upload the samples and optionally their
+existing labels to the annotation backend</p></li>
+<li><p>In the annotation tool, perform the necessary annotation work</p></li>
+<li><p>Back in FiftyOne, load your dataset and use the
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.load_annotations" title="fiftyone.core.collections.SampleCollection.load_annotations"><code class="xref py py-meth docutils literal notranslate"><span class="pre">load_annotations()</span></code></a>
+method to merge the annotations back into your FiftyOne dataset</p></li>
+<li><p>If desired, delete the annotation tasks and the record of the annotation run
+from your FiftyOne dataset</p></li>
+</ol>
+<p><br />
+The example below demonstrates this workflow using the default
+<a class="reference internal" href="../integrations/cvat.html#cvat-integration"><span class="std std-ref">CVAT backend</span></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You must create an account at <a class="reference external" href="https://app.cvat.ai">app.cvat.ai</a> in order to
+run this example.</p>
+<p>Note that you can store your credentials as described in
+<a class="reference internal" href="../integrations/cvat.html#cvat-setup"><span class="std std-ref">this section</span></a> to avoid entering them manually each time
+you interact with CVAT.</p>
+</div>
+<p>First, we create the annotation tasks:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+<span class="kn">from</span> <span class="nn">fiftyone</span> <span class="kn">import</span> <span class="n">ViewField</span> <span class="k">as</span> <span class="n">F</span>
+
+<span class="c1"># Step 1: Load your data into FiftyOne</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span>
+    <span class="s2">&quot;quickstart&quot;</span><span class="p">,</span> <span class="n">dataset_name</span><span class="o">=</span><span class="s2">&quot;cvat-annotation-example&quot;</span>
+<span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">persistent</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="n">dataset</span><span class="o">.</span><span class="n">evaluate_detections</span><span class="p">(</span>
+    <span class="s2">&quot;predictions&quot;</span><span class="p">,</span> <span class="n">gt_field</span><span class="o">=</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span> <span class="n">eval_key</span><span class="o">=</span><span class="s2">&quot;eval&quot;</span>
+<span class="p">)</span>
+
+<span class="c1"># Step 2: Locate a subset of your data requiring annotation</span>
+
+<span class="c1"># Create a view that contains only high confidence false positive model</span>
+<span class="c1"># predictions, with samples containing the most false positives first</span>
+<span class="n">most_fp_view</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">dataset</span>
+    <span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span><span class="s2">&quot;predictions&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s2">&quot;confidence&quot;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">0.8</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s2">&quot;eval&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;fp&quot;</span><span class="p">))</span>
+    <span class="o">.</span><span class="n">sort_by</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s2">&quot;predictions.detections&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">length</span><span class="p">(),</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="c1"># Let&#39;s edit the ground truth annotations for the sample with the most</span>
+<span class="c1"># high confidence false positives</span>
+<span class="n">sample_id</span> <span class="o">=</span> <span class="n">most_fp_view</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">id</span>
+<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">sample_id</span><span class="p">)</span>
+
+<span class="c1"># Step 3: Send samples to CVAT</span>
+
+<span class="c1"># A unique identifier for this run</span>
+<span class="n">anno_key</span> <span class="o">=</span> <span class="s2">&quot;cvat_basic_recipe&quot;</span>
+
+<span class="n">view</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span>
+    <span class="n">anno_key</span><span class="p">,</span>
+    <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span>
+    <span class="n">attributes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;iscrowd&quot;</span><span class="p">],</span>
+    <span class="n">launch_editor</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">get_annotation_info</span><span class="p">(</span><span class="n">anno_key</span><span class="p">))</span>
+
+<span class="c1"># Step 4: Perform annotation in CVAT and save the tasks</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>Then, once the annotation work is complete, we merge the annotations back into
+FiftyOne:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+
+<span class="n">anno_key</span> <span class="o">=</span> <span class="s2">&quot;cvat_basic_recipe&quot;</span>
+
+<span class="c1"># Step 5: Merge annotations back into FiftyOne dataset</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;cvat-annotation-example&quot;</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">load_annotations</span><span class="p">(</span><span class="n">anno_key</span><span class="p">)</span>
+
+<span class="c1"># Load the view that was annotated in the App</span>
+<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">load_annotation_view</span><span class="p">(</span><span class="n">anno_key</span><span class="p">)</span>
+<span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">view</span><span class="o">=</span><span class="n">view</span><span class="p">)</span>
+
+<span class="c1"># Step 6: Cleanup</span>
+
+<span class="c1"># Delete tasks from CVAT</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">load_annotation_results</span><span class="p">(</span><span class="n">anno_key</span><span class="p">)</span>
+<span class="n">results</span><span class="o">.</span><span class="n">cleanup</span><span class="p">()</span>
+
+<span class="c1"># Delete run record (not the labels) from FiftyOne</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">delete_annotation_run</span><span class="p">(</span><span class="n">anno_key</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Check out <a class="reference internal" href="../integrations/cvat.html#cvat-examples"><span class="std std-ref">this page</span></a> to see a variety of common
+annotation patterns using the CVAT backend to illustrate the full process.</p>
+</div>
+</div>
+<div class="section" id="setup">
+<span id="annotation-setup"></span><h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
+<p>By default, all annotation is performed via <a class="reference external" href="https://app.cvat.ai">app.cvat.ai</a>,
+which simply requires that you create an account and then configure your
+username and password credentials.</p>
+<p>However, you can configure FiftyOne to use a
+<a class="reference internal" href="../integrations/cvat.html#cvat-self-hosted-server"><span class="std std-ref">self-hosted CVAT server</span></a>, or you can even use a
+completely <a class="reference internal" href="#custom-annotation-backend"><span class="std std-ref">custom backend</span></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>See <a class="reference internal" href="../integrations/cvat.html#cvat-setup"><span class="std std-ref">this page</span></a> for CVAT-specific setup instructions.</p>
+</div>
+<div class="section" id="changing-your-annotation-backend">
+<h3>Changing your annotation backend<a class="headerlink" href="#changing-your-annotation-backend" title="Permalink to this headline">¶</a></h3>
+<p>You can use a specific backend for a particular annotation run by passing the
+<code class="code docutils literal notranslate"><span class="pre">backend</span></code> parameter to
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.annotate" title="fiftyone.core.collections.SampleCollection.annotate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">annotate()</span></code></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">view</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;&lt;backend&gt;&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>Alternatively, you can change your default annotation backend for an entire
+session by setting the <code class="code docutils literal notranslate"><span class="pre">FIFTYONE_ANNOTATION_DEFAULT_BACKEND</span></code> environment
+variable.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">FIFTYONE_ANNOTATION_DEFAULT_BACKEND</span><span class="o">=</span>&lt;backend&gt;
+</pre></div>
+</div>
+<p>Finally, you can permanently change your default annotation backend by updating
+the <code class="code docutils literal notranslate"><span class="pre">default_backend</span></code> key of your <a class="reference internal" href="#annotation-config"><span class="std std-ref">annotation config</span></a>
+at <code class="code docutils literal notranslate"><span class="pre">~/.fiftyone/annotation_config.json</span></code>:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
+    &quot;default_backend&quot;: &quot;&lt;backend&gt;&quot;,
+    &quot;backends&quot;: {
+        &quot;&lt;backend&gt;&quot;: {...},
+        ...
+    }
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="configuring-your-backend">
+<span id="id2"></span><h3>Configuring your backend<a class="headerlink" href="#configuring-your-backend" title="Permalink to this headline">¶</a></h3>
+<p>Annotation backends may be configured in a variety of backend-specific ways,
+which you can see by inspecting the parameters of a backend’s associated
+<a class="reference internal" href="../api/fiftyone.utils.annotations.html#fiftyone.utils.annotations.AnnotationBackendConfig" title="fiftyone.utils.annotations.AnnotationBackendConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnotationBackendConfig</span></code></a> class.</p>
+<p>The relevant classes for the builtin annotation backends are:</p>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">&quot;cvat&quot;</span></code>: <a class="reference internal" href="../api/fiftyone.utils.cvat.html#fiftyone.utils.cvat.CVATBackendConfig" title="fiftyone.utils.cvat.CVATBackendConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">fiftyone.utils.cvat.CVATBackendConfig</span></code></a></p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">&quot;labelstudio&quot;</span></code>: <a class="reference internal" href="../api/fiftyone.utils.labelstudio.html#fiftyone.utils.labelstudio.LabelStudioBackendConfig" title="fiftyone.utils.labelstudio.LabelStudioBackendConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">fiftyone.utils.labelstudio.LabelStudioBackendConfig</span></code></a></p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">&quot;labelbox&quot;</span></code>: <a class="reference internal" href="../api/fiftyone.utils.labelbox.html#fiftyone.utils.labelbox.LabelboxBackendConfig" title="fiftyone.utils.labelbox.LabelboxBackendConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">fiftyone.utils.labelbox.LabelboxBackendConfig</span></code></a></p></li>
+</ul>
+<p>You can configure an annotation backend’s parameters for a specific run by
+simply passing supported config parameters as keyword arguments each time you call
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.annotate" title="fiftyone.core.collections.SampleCollection.annotate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">annotate()</span></code></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">view</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span>
+    <span class="o">...</span>
+    <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;cvat&quot;</span><span class="p">,</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;http://localhost:8080&quot;</span><span class="p">,</span>
+    <span class="n">username</span><span class="o">=...</span><span class="p">,</span>
+    <span class="n">password</span><span class="o">=...</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>Alternatively, you can more permanently configure your backend(s) via your
+<a class="reference internal" href="#annotation-config"><span class="std std-ref">annotation config</span></a>.</p>
+</div>
+</div>
+<div class="section" id="annotation-config">
+<span id="id3"></span><h2>Annotation config<a class="headerlink" href="#annotation-config" title="Permalink to this headline">¶</a></h2>
+<p>FiftyOne provides an annotation config that you can use to either temporarily
+or permanently configure the behavior of the annotation API.</p>
+<div class="section" id="viewing-your-config">
+<h3>Viewing your config<a class="headerlink" href="#viewing-your-config" title="Permalink to this headline">¶</a></h3>
+<p>You can print your current annotation config at any time via the Python library
+and the CLI:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you have customized your annotation config via any of the methods
+described below, printing your config is a convenient way to ensure that
+the changes you made have taken effect as you expected.</p>
+</div>
+</div>
+<div class="section" id="modifying-your-config">
+<h3>Modifying your config<a class="headerlink" href="#modifying-your-config" title="Permalink to this headline">¶</a></h3>
+<p>You can modify your annotation config in a variety of ways. The following
+sections describe these options in detail.</p>
+<div class="section" id="order-of-precedence">
+<h4>Order of precedence<a class="headerlink" href="#order-of-precedence" title="Permalink to this headline">¶</a></h4>
+<p>The following order of precedence is used to assign values to your annotation
+config settings as runtime:</p>
+<ol class="arabic simple">
+<li><p>Config settings applied at runtime by directly editing
+<code class="code docutils literal notranslate"><span class="pre">fiftyone.annotation_config</span></code></p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">FIFTYONE_XXX</span></code> environment variables</p></li>
+<li><p>Settings in your JSON config (<code class="code docutils literal notranslate"><span class="pre">~/.fiftyone/annotation_config.json</span></code>)</p></li>
+<li><p>The default config values</p></li>
+</ol>
+</div>
+<div class="section" id="editing-your-json-config">
+<h4>Editing your JSON config<a class="headerlink" href="#editing-your-json-config" title="Permalink to this headline">¶</a></h4>
+<p>You can permanently customize your annotation config by creating a
+<code class="code docutils literal notranslate"><span class="pre">~/.fiftyone/annotation_config.json</span></code> file on your machine. The JSON file may
+contain any desired subset of config fields that you wish to customize.</p>
+<p>For example, the following config JSON file customizes the URL of your CVAT
+server without changing any other default config settings:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;backends&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;cvat&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://localhost:8080&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>When <code class="code docutils literal notranslate"><span class="pre">fiftyone</span></code> is imported, any options from your JSON config are merged into
+the default config, as per the order of precedence described above.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can customize the location from which your JSON config is read by
+setting the <code class="code docutils literal notranslate"><span class="pre">FIFTYONE_ANNOTATION_CONFIG_PATH</span></code> environment variable.</p>
+</div>
+</div>
+<div class="section" id="setting-environment-variables">
+<h4>Setting environment variables<a class="headerlink" href="#setting-environment-variables" title="Permalink to this headline">¶</a></h4>
+<p>Annotation config settings may be customized on a per-session basis by setting
+the <code class="code docutils literal notranslate"><span class="pre">FIFTYONE_XXX</span></code> environment variable(s) for the desired config settings.</p>
+<p>The <code class="code docutils literal notranslate"><span class="pre">FIFTYONE_ANNOTATION_DEFAULT_BACKEND</span></code> environment variable allows you to
+configure your default backend:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">FIFTYONE_ANNOTATION_DEFAULT_BACKEND</span><span class="o">=</span>labelbox
+</pre></div>
+</div>
+<p>You can declare parameters for specific annotation backends by setting
+environment variables of the form <code class="code docutils literal notranslate"><span class="pre">FIFTYONE_&lt;BACKEND&gt;_&lt;PARAMETER&gt;</span></code>. Any
+settings that you declare in this way will be passed as keyword arguments to
+methods like
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.annotate" title="fiftyone.core.collections.SampleCollection.annotate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">annotate()</span></code></a>
+whenever the corresponding backend is in use. For example, you can configure
+the URL, username, password, and email (if applicable) of your CVAT server as
+follows:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">FIFTYONE_CVAT_URL</span><span class="o">=</span>http://localhost:8080
+<span class="nb">export</span><span class="w"> </span><span class="nv">FIFTYONE_CVAT_USERNAME</span><span class="o">=</span>...
+<span class="nb">export</span><span class="w"> </span><span class="nv">FIFTYONE_CVAT_PASSWORD</span><span class="o">=</span>...
+<span class="nb">export</span><span class="w"> </span><span class="nv">FIFTYONE_CVAT_EMAIL</span><span class="o">=</span>...<span class="w">  </span><span class="c1"># if applicable</span>
+</pre></div>
+</div>
+<p>The <code class="code docutils literal notranslate"><span class="pre">FIFTYONE_ANNOTATION_BACKENDS</span></code> environment variable can be set to a
+<code class="code docutils literal notranslate"><span class="pre">list,of,backends</span></code> that you want to expose in your session, which may exclude
+native backends and/or declare additional custom backends whose parameters are
+defined via additional config modifications of any kind:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">FIFTYONE_ANNOTATION_BACKENDS</span><span class="o">=</span>custom,cvat,labelbox
+</pre></div>
+</div>
+<p>When declaring new backends, you can include <code class="code docutils literal notranslate"><span class="pre">*</span></code> to append new backend(s)
+without omitting or explicitly enumerating the builtin backends. For example,
+you can add a <code class="code docutils literal notranslate"><span class="pre">custom</span></code> annotation backend as follows:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">FIFTYONE_ANNOTATION_BACKENDS</span><span class="o">=</span>*,custom
+<span class="nb">export</span><span class="w"> </span><span class="nv">FIFTYONE_CUSTOM_CONFIG_CLS</span><span class="o">=</span>your.custom.AnnotationConfig
+</pre></div>
+</div>
+</div>
+<div class="section" id="modifying-your-config-in-code">
+<h4>Modifying your config in code<a class="headerlink" href="#modifying-your-config-in-code" title="Permalink to this headline">¶</a></h4>
+<p>You can dynamically modify your annotation config at runtime by directly
+editing the <code class="code docutils literal notranslate"><span class="pre">fiftyone.annotation_config</span></code> object.</p>
+<p>Any changes to your annotation config applied via this manner will immediately
+take effect in all subsequent calls to <code class="code docutils literal notranslate"><span class="pre">fiftyone.annotation_config</span></code> during your
+current session.</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+
+<span class="n">fo</span><span class="o">.</span><span class="n">annotation_config</span><span class="o">.</span><span class="n">default_backend</span> <span class="o">=</span> <span class="s2">&quot;&lt;backend&gt;&quot;</span>
+</pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="requesting-annotations">
+<span id="id4"></span><h2>Requesting annotations<a class="headerlink" href="#requesting-annotations" title="Permalink to this headline">¶</a></h2>
+<p>Use the
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.annotate" title="fiftyone.core.collections.SampleCollection.annotate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">annotate()</span></code></a> method
+to send the samples and optionally existing labels in a <a class="reference internal" href="../api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset" title="fiftyone.core.dataset.Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dataset</span></code></a> or
+<a class="reference internal" href="../api/fiftyone.core.view.html#fiftyone.core.view.DatasetView" title="fiftyone.core.view.DatasetView"><code class="xref py py-class docutils literal notranslate"><span class="pre">DatasetView</span></code></a> to your annotation backend for processing.</p>
+<p>The basic syntax is:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">anno_key</span> <span class="o">=</span> <span class="s2">&quot;...&quot;</span>
+<span class="n">view</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">anno_key</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>The <code class="code docutils literal notranslate"><span class="pre">anno_key</span></code> argument defines a unique identifier for the annotation run, and
+you will provide it to methods like
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.load_annotations" title="fiftyone.core.collections.SampleCollection.load_annotations"><code class="xref py py-meth docutils literal notranslate"><span class="pre">load_annotations()</span></code></a>,
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.load_annotations" title="fiftyone.core.collections.SampleCollection.load_annotations"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_annotation_info()</span></code></a>,
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.load_annotation_results" title="fiftyone.core.collections.SampleCollection.load_annotation_results"><code class="xref py py-meth docutils literal notranslate"><span class="pre">load_annotation_results()</span></code></a>,
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.rename_annotation_run" title="fiftyone.core.collections.SampleCollection.rename_annotation_run"><code class="xref py py-meth docutils literal notranslate"><span class="pre">rename_annotation_run()</span></code></a>, and
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.delete_annotation_run" title="fiftyone.core.collections.SampleCollection.delete_annotation_run"><code class="xref py py-meth docutils literal notranslate"><span class="pre">delete_annotation_run()</span></code></a>
+to manage the run in the future.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>FiftyOne assumes that all labels in an annotation run can fit in memory.</p>
+<p>If you are annotating very large scale video datasets with dense frame
+labels, you may violate this assumption. Instead, consider breaking the
+work into multiple smaller annotation runs that each contain limited
+subsets of the samples you wish to annotate.</p>
+<p>You can use <a class="reference internal" href="../api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset.stats" title="fiftyone.core.dataset.Dataset.stats"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Dataset.stats()</span></code></a>
+to get a sense for the total size of the labels in a dataset as a rule of
+thumb to estimate the size of a candidate annotation run.</p>
+</div>
+<p>In addition,
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.annotate" title="fiftyone.core.collections.SampleCollection.annotate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">annotate()</span></code></a>
+provides various parameters that you can use to customize the annotation tasks
+that you wish to be performed.</p>
+<p>The following parameters are supported by all annotation backends:</p>
+<ul class="simple">
+<li><p><strong>backend</strong> (<em>None</em>): the annotation backend to use. The supported values
+are <code class="code docutils literal notranslate"><span class="pre">fiftyone.annotation_config.backends.keys()</span></code> and the default is
+<code class="code docutils literal notranslate"><span class="pre">fiftyone.annotation_config.default_backend</span></code></p></li>
+<li><p><strong>media_field</strong> (<em>“filepath”</em>): the sample field containing the path to the
+source media to upload</p></li>
+<li><p><strong>launch_editor</strong> (<em>False</em>): whether to launch the annotation backend’s
+editor after uploading the samples</p></li>
+</ul>
+<p>The following parameters allow you to configure the labeling schema to use for
+your annotation tasks. See <a class="reference internal" href="#annotation-label-schema"><span class="std std-ref">this section</span></a> for
+more details:</p>
+<ul>
+<li><p><strong>label_schema</strong> (<em>None</em>): a dictionary defining the label schema to use.
+If this argument is provided, it takes precedence over the remaining fields</p></li>
+<li><p><strong>label_field</strong> (<em>None</em>): a string indicating a new or existing label field
+to annotate</p></li>
+<li><p><strong>label_type</strong> (<em>None</em>): a string indicating the type of labels to
+annotate. The possible label types are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;classification&quot;</span></code>: a single classification stored in
+<a class="reference internal" href="../api/fiftyone.core.labels.html#fiftyone.core.labels.Classification" title="fiftyone.core.labels.Classification"><code class="xref py py-class docutils literal notranslate"><span class="pre">Classification</span></code></a> fields</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;classifications&quot;</span></code>: multilabel classifications stored in
+<a class="reference internal" href="../api/fiftyone.core.labels.html#fiftyone.core.labels.Classifications" title="fiftyone.core.labels.Classifications"><code class="xref py py-class docutils literal notranslate"><span class="pre">Classifications</span></code></a> fields</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;detections&quot;</span></code>: object detections stored in <a class="reference internal" href="../api/fiftyone.core.labels.html#fiftyone.core.labels.Detections" title="fiftyone.core.labels.Detections"><code class="xref py py-class docutils literal notranslate"><span class="pre">Detections</span></code></a> fields</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;instances&quot;</span></code>: instance segmentations stored in <a class="reference internal" href="../api/fiftyone.core.labels.html#fiftyone.core.labels.Detections" title="fiftyone.core.labels.Detections"><code class="xref py py-class docutils literal notranslate"><span class="pre">Detections</span></code></a> fields
+with their <a class="reference internal" href="../api/fiftyone.core.labels.html#fiftyone.core.labels.Detection.mask" title="fiftyone.core.labels.Detection.mask"><code class="xref py py-attr docutils literal notranslate"><span class="pre">mask</span></code></a>
+attributes populated</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;polylines&quot;</span></code>: polylines stored in <a class="reference internal" href="../api/fiftyone.core.labels.html#fiftyone.core.labels.Polylines" title="fiftyone.core.labels.Polylines"><code class="xref py py-class docutils literal notranslate"><span class="pre">Polylines</span></code></a> fields with their
+<a class="reference internal" href="../api/fiftyone.core.labels.html#fiftyone.core.labels.Polyline.filled" title="fiftyone.core.labels.Polyline.filled"><code class="xref py py-attr docutils literal notranslate"><span class="pre">filled</span></code></a> attributes set to
+<code class="code docutils literal notranslate"><span class="pre">False</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;polygons&quot;</span></code>: polygons stored in <a class="reference internal" href="../api/fiftyone.core.labels.html#fiftyone.core.labels.Polylines" title="fiftyone.core.labels.Polylines"><code class="xref py py-class docutils literal notranslate"><span class="pre">Polylines</span></code></a> fields with their
+<a class="reference internal" href="../api/fiftyone.core.labels.html#fiftyone.core.labels.Polyline.filled" title="fiftyone.core.labels.Polyline.filled"><code class="xref py py-attr docutils literal notranslate"><span class="pre">filled</span></code></a> attributes set to
+<code class="code docutils literal notranslate"><span class="pre">True</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;keypoints&quot;</span></code>: keypoints stored in <a class="reference internal" href="../api/fiftyone.core.labels.html#fiftyone.core.labels.Keypoints" title="fiftyone.core.labels.Keypoints"><code class="xref py py-class docutils literal notranslate"><span class="pre">Keypoints</span></code></a> fields</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;segmentation&quot;</span></code>: semantic segmentations stored in <a class="reference internal" href="../api/fiftyone.core.labels.html#fiftyone.core.labels.Segmentation" title="fiftyone.core.labels.Segmentation"><code class="xref py py-class docutils literal notranslate"><span class="pre">Segmentation</span></code></a>
+fields</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;scalar&quot;</span></code>: scalar labels stored in <a class="reference internal" href="../api/fiftyone.core.fields.html#fiftyone.core.fields.IntField" title="fiftyone.core.fields.IntField"><code class="xref py py-class docutils literal notranslate"><span class="pre">IntField</span></code></a>, <a class="reference internal" href="../api/fiftyone.core.fields.html#fiftyone.core.fields.FloatField" title="fiftyone.core.fields.FloatField"><code class="xref py py-class docutils literal notranslate"><span class="pre">FloatField</span></code></a>,
+<a class="reference internal" href="../api/fiftyone.core.fields.html#fiftyone.core.fields.StringField" title="fiftyone.core.fields.StringField"><code class="xref py py-class docutils literal notranslate"><span class="pre">StringField</span></code></a>, or <a class="reference internal" href="../api/fiftyone.core.fields.html#fiftyone.core.fields.BooleanField" title="fiftyone.core.fields.BooleanField"><code class="xref py py-class docutils literal notranslate"><span class="pre">BooleanField</span></code></a> fields</p></li>
+</ul>
+<p>All new label fields must have their type specified via this argument or in
+<code class="code docutils literal notranslate"><span class="pre">label_schema</span></code></p>
+</li>
+<li><p><strong>classes</strong> (<em>None</em>): a list of strings indicating the class options for
+<code class="code docutils literal notranslate"><span class="pre">label_field</span></code> or all fields in <code class="code docutils literal notranslate"><span class="pre">label_schema</span></code> without classes specified.
+All new label fields must have a class list provided via one of the
+supported methods. For existing label fields, if classes are not provided
+by this argument nor <code class="code docutils literal notranslate"><span class="pre">label_schema</span></code>, the observed labels on your dataset
+are used</p></li>
+<li><p><strong>attributes</strong> (<em>True</em>): specifies the label attributes of each label field
+to include (other than their <code class="code docutils literal notranslate"><span class="pre">label</span></code>, which is always included) in the
+annotation export. Can be any of the following:</p>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">True</span></code>: export all label attributes</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">False</span></code>: don’t export any custom label attributes</p></li>
+<li><p>a list of label attributes to export</p></li>
+<li><p>a dict mapping attribute names to dicts specifying the <code class="code docutils literal notranslate"><span class="pre">type</span></code>,
+<code class="code docutils literal notranslate"><span class="pre">values</span></code>, and <code class="code docutils literal notranslate"><span class="pre">default</span></code> for each attribute</p></li>
+</ul>
+<p>If a <code class="code docutils literal notranslate"><span class="pre">label_schema</span></code> is also provided, this parameter determines which
+attributes are included for all fields that do not explicitly define their
+per-field attributes (in addition to any per-class attributes)</p>
+</li>
+<li><p><strong>mask_targets</strong> (<em>None</em>): a dict mapping pixel values to semantic label
+strings. Only applicable when annotating semantic segmentations</p></li>
+<li><p><strong>allow_additions</strong> (<em>True</em>): whether to allow new labels to be added. Only
+applicable when editing existing label fields</p></li>
+<li><p><strong>allow_deletions</strong> (<em>True</em>): whether to allow labels to be deleted. Only
+applicable when editing existing label fields</p></li>
+<li><p><strong>allow_label_edits</strong> (<em>True</em>): whether to allow the <code class="code docutils literal notranslate"><span class="pre">label</span></code> attribute of
+existing labels to be modified. Only applicable when editing existing
+fields with <code class="code docutils literal notranslate"><span class="pre">label</span></code> attributes</p></li>
+<li><p><strong>allow_index_edits</strong> (<em>True</em>): whether to allow the <code class="code docutils literal notranslate"><span class="pre">index</span></code> attribute
+of existing video tracks to be modified. Only applicable when editing
+existing frame fields with <code class="code docutils literal notranslate"><span class="pre">index</span></code> attributes</p></li>
+<li><p><strong>allow_spatial_edits</strong> (<em>True</em>): whether to allow edits to the spatial
+properties (bounding boxes, vertices, keypoints, masks, etc) of labels.
+Only applicable when editing existing spatial label fields</p></li>
+</ul>
+<p><br />
+In addition, each annotation backend can typically be configured in a variety
+of backend-specific ways. See <a class="reference internal" href="#configuring-your-backend"><span class="std std-ref">this section</span></a>
+for more details.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Specific annotation backends may not support all <code class="docutils literal notranslate"><span class="pre">label_type</span></code> options.</p>
+</div>
+<div class="section" id="label-schema">
+<span id="annotation-label-schema"></span><h3>Label schema<a class="headerlink" href="#label-schema" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="code docutils literal notranslate"><span class="pre">label_schema</span></code>, <code class="code docutils literal notranslate"><span class="pre">label_field</span></code>, <code class="code docutils literal notranslate"><span class="pre">label_type</span></code>, <code class="code docutils literal notranslate"><span class="pre">classes</span></code>, <code class="code docutils literal notranslate"><span class="pre">attributes</span></code>, and
+<code class="code docutils literal notranslate"><span class="pre">mask_targets</span></code> parameters to
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.annotate" title="fiftyone.core.collections.SampleCollection.annotate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">annotate()</span></code></a> allow
+you to define the annotation schema that you wish to be used.</p>
+<p>The label schema may define new label field(s) that you wish to populate, and
+it may also include existing label field(s), in which case you can add, delete,
+or edit the existing labels on your FiftyOne dataset.</p>
+<p>The <code class="code docutils literal notranslate"><span class="pre">label_schema</span></code> argument is the most flexible way to define how to construct
+tasks in CVAT. In its most verbose form, it is a dictionary that defines the
+label type, annotation type, possible classes, and possible attributes for each
+label field:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">anno_key</span> <span class="o">=</span> <span class="s2">&quot;...&quot;</span>
+
+<span class="n">label_schema</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;new_field&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;classifications&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;classes&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;class1&quot;</span><span class="p">,</span> <span class="s2">&quot;class2&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;attributes&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;attr1&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;select&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;values&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;val1&quot;</span><span class="p">,</span> <span class="s2">&quot;val2&quot;</span><span class="p">],</span>
+                <span class="s2">&quot;default&quot;</span><span class="p">:</span> <span class="s2">&quot;val1&quot;</span><span class="p">,</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;attr2&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;radio&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;values&quot;</span><span class="p">:</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span>
+                <span class="s2">&quot;default&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;existing_field&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;classes&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;class3&quot;</span><span class="p">,</span> <span class="s2">&quot;class4&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;attributes&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;attr3&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;text&quot;</span><span class="p">,</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+<span class="p">}</span>
+
+<span class="n">dataset</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">anno_key</span><span class="p">,</span> <span class="n">label_schema</span><span class="o">=</span><span class="n">label_schema</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>You can also define class-specific attributes by setting elements of the
+<code class="code docutils literal notranslate"><span class="pre">classes</span></code> list to dicts that specify groups of <code class="code docutils literal notranslate"><span class="pre">classes</span></code> and their
+corresponding <code class="code docutils literal notranslate"><span class="pre">attributes</span></code>. For example, in the configuration below, <code class="code docutils literal notranslate"><span class="pre">attr1</span></code>
+only applies to <code class="code docutils literal notranslate"><span class="pre">class1</span></code> and <code class="code docutils literal notranslate"><span class="pre">class2</span></code> while <code class="code docutils literal notranslate"><span class="pre">attr2</span></code> applies to all classes:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">anno_key</span> <span class="o">=</span> <span class="s2">&quot;...&quot;</span>
+
+<span class="n">label_schema</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;new_field&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;detections&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;classes&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;classes&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;class1&quot;</span><span class="p">,</span> <span class="s2">&quot;class2&quot;</span><span class="p">],</span>
+                <span class="s2">&quot;attributes&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;attr1&quot;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;select&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;values&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;val1&quot;</span><span class="p">,</span> <span class="s2">&quot;val2&quot;</span><span class="p">],</span>
+                        <span class="s2">&quot;default&quot;</span><span class="p">:</span> <span class="s2">&quot;val1&quot;</span><span class="p">,</span>
+                    <span class="p">}</span>
+                 <span class="p">}</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;class3&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;class4&quot;</span><span class="p">,</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;attributes&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;attr2&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;radio&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;values&quot;</span><span class="p">:</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span>
+                <span class="s2">&quot;default&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+    <span class="p">},</span>
+<span class="p">}</span>
+
+<span class="n">dataset</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">anno_key</span><span class="p">,</span> <span class="n">label_schema</span><span class="o">=</span><span class="n">label_schema</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>Alternatively, if you are only editing or creating a single label field, you
+can use the <code class="code docutils literal notranslate"><span class="pre">label_field</span></code>, <code class="code docutils literal notranslate"><span class="pre">label_type</span></code>, <code class="code docutils literal notranslate"><span class="pre">classes</span></code>, <code class="code docutils literal notranslate"><span class="pre">attributes</span></code>, and
+<code class="code docutils literal notranslate"><span class="pre">mask_targets</span></code> parameters to specify the components of the label schema
+individually:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">anno_key</span> <span class="o">=</span> <span class="s2">&quot;...&quot;</span>
+
+<span class="n">label_field</span> <span class="o">=</span> <span class="s2">&quot;new_field&quot;</span><span class="p">,</span>
+<span class="n">label_type</span> <span class="o">=</span> <span class="s2">&quot;classifications&quot;</span>
+<span class="n">classes</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;class1&quot;</span><span class="p">,</span> <span class="s2">&quot;class2&quot;</span><span class="p">]</span>
+
+<span class="c1"># These are optional</span>
+<span class="n">attributes</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;attr1&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;select&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;values&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;val1&quot;</span><span class="p">,</span> <span class="s2">&quot;val2&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;default&quot;</span><span class="p">:</span> <span class="s2">&quot;val1&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;attr2&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;radio&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;values&quot;</span><span class="p">:</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span>
+        <span class="s2">&quot;default&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">dataset</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span>
+    <span class="n">anno_key</span><span class="p">,</span>
+    <span class="n">label_field</span><span class="o">=</span><span class="n">label_field</span><span class="p">,</span>
+    <span class="n">label_type</span><span class="o">=</span><span class="n">label_type</span><span class="p">,</span>
+    <span class="n">classes</span><span class="o">=</span><span class="n">classes</span><span class="p">,</span>
+    <span class="n">attributes</span><span class="o">=</span><span class="n">attributes</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>When you are annotating existing label fields, you can omit some of these
+parameters from
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.annotate" title="fiftyone.core.collections.SampleCollection.annotate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">annotate()</span></code></a>, as
+FiftyOne can infer the appropriate values to use:</p>
+<ul class="simple">
+<li><p><strong>label_type</strong>: if omitted, the <a class="reference internal" href="../api/fiftyone.core.labels.html#fiftyone.core.labels.Label" title="fiftyone.core.labels.Label"><code class="xref py py-class docutils literal notranslate"><span class="pre">Label</span></code></a> type of the field will be used to
+infer the appropriate value for this parameter</p></li>
+<li><p><strong>classes</strong>: if omitted for a non-semantic segmentation field, the observed
+labels on your dataset will be used to construct a classes list</p></li>
+</ul>
+</div>
+<div class="section" id="label-attributes">
+<span id="annotation-label-attributes"></span><h3>Label attributes<a class="headerlink" href="#label-attributes" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="code docutils literal notranslate"><span class="pre">attributes</span></code> parameter allows you to configure whether
+<a class="reference internal" href="using_datasets.html#using-labels"><span class="std std-ref">custom attributes</span></a> beyond the default <code class="code docutils literal notranslate"><span class="pre">label</span></code> attribute
+are included in the annotation tasks.</p>
+<p>When adding new label fields for which you want to include attributes, you must
+use the dictionary syntax demonstrated below to define the schema of each
+attribute that you wish to label:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">anno_key</span> <span class="o">=</span> <span class="s2">&quot;...&quot;</span>
+
+<span class="n">attributes</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;occluded&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;radio&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;values&quot;</span><span class="p">:</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span>
+        <span class="s2">&quot;default&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;gender&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;select&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;values&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;male&quot;</span><span class="p">,</span> <span class="s2">&quot;female&quot;</span><span class="p">],</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;caption&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;text&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">view</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span>
+    <span class="n">anno_key</span><span class="p">,</span>
+    <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;new_field&quot;</span><span class="p">,</span>
+    <span class="n">label_type</span><span class="o">=</span><span class="s2">&quot;detections&quot;</span><span class="p">,</span>
+    <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;dog&quot;</span><span class="p">,</span> <span class="s2">&quot;cat&quot;</span><span class="p">,</span> <span class="s2">&quot;person&quot;</span><span class="p">],</span>
+    <span class="n">attributes</span><span class="o">=</span><span class="n">attributes</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>You can always omit this parameter if you do not require attributes beyond the
+default <code class="code docutils literal notranslate"><span class="pre">label</span></code>.</p>
+<p>Each annotation backend may support different <code class="code docutils literal notranslate"><span class="pre">type</span></code> values, as declared by the
+<a class="reference internal" href="../api/fiftyone.utils.annotations.html#fiftyone.utils.annotations.AnnotationBackend.supported_attr_types" title="fiftyone.utils.annotations.AnnotationBackend.supported_attr_types"><code class="xref py py-meth docutils literal notranslate"><span class="pre">supported_attr_types()</span></code></a>
+method of its <a class="reference internal" href="../api/fiftyone.utils.annotations.html#fiftyone.utils.annotations.AnnotationBackend" title="fiftyone.utils.annotations.AnnotationBackend"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnotationBackend</span></code></a> class. For example, CVAT supports the
+following choices for <code class="code docutils literal notranslate"><span class="pre">type</span></code>:</p>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">text</span></code>: a free-form text box. In this case, <code class="code docutils literal notranslate"><span class="pre">default</span></code> is optional and
+<code class="code docutils literal notranslate"><span class="pre">values</span></code> is unused</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">select</span></code>: a selection dropdown. In this case, <code class="code docutils literal notranslate"><span class="pre">values</span></code> is required and
+<code class="code docutils literal notranslate"><span class="pre">default</span></code> is optional</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">radio</span></code>: a radio button list UI. In this case, <code class="code docutils literal notranslate"><span class="pre">values</span></code> is required and
+<code class="code docutils literal notranslate"><span class="pre">default</span></code> is optional</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">checkbox</span></code>: a boolean checkbox UI. In this case, <code class="code docutils literal notranslate"><span class="pre">default</span></code> is optional and
+<code class="code docutils literal notranslate"><span class="pre">values</span></code> is unused</p></li>
+</ul>
+<p>When you are annotating existing label fields, the <code class="code docutils literal notranslate"><span class="pre">attributes</span></code> parameter can
+take additional values:</p>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">True</span></code> (default): export all custom attributes observed on the existing
+labels, using their observed values to determine the appropriate UI type
+and possible values, if applicable</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">False</span></code>: do not include any custom attributes in the export</p></li>
+<li><p>a list of custom attributes to include in the export</p></li>
+<li><p>a full dictionary syntax described above</p></li>
+</ul>
+<p>Note that only scalar-valued label attributes are supported. Other attribute
+types like lists, dictionaries, and arrays will be omitted.</p>
+</div>
+<div class="section" id="restricting-additions-deletions-and-edits">
+<span id="annotation-restricting-edits"></span><h3>Restricting additions, deletions, and edits<a class="headerlink" href="#restricting-additions-deletions-and-edits" title="Permalink to this headline">¶</a></h3>
+<p>When you create annotation runs that involve editing existing label fields, you
+can optionally specify that certain changes are not allowed by passing the
+following flags to
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.annotate" title="fiftyone.core.collections.SampleCollection.annotate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">annotate()</span></code></a>:</p>
+<ul class="simple">
+<li><p><strong>allow_additions</strong> (<em>True</em>): whether to allow new labels to be added</p></li>
+<li><p><strong>allow_deletions</strong> (<em>True</em>): whether to allow labels to be deleted</p></li>
+<li><p><strong>allow_label_edits</strong> (<em>True</em>): whether to allow the <code class="code docutils literal notranslate"><span class="pre">label</span></code> attribute to
+be modified</p></li>
+<li><p><strong>allow_index_edits</strong> (<em>True</em>): whether to allow the <code class="code docutils literal notranslate"><span class="pre">index</span></code> attribute of
+video tracks to be modified</p></li>
+<li><p><strong>allow_spatial_edits</strong> (<em>True</em>): whether to allow edits to the spatial
+properties (bounding boxes, vertices, keypoints, etc) of labels</p></li>
+</ul>
+<p>If you are using the <code class="code docutils literal notranslate"><span class="pre">label_schema</span></code> parameter to provide a full annotation
+schema to
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.annotate" title="fiftyone.core.collections.SampleCollection.annotate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">annotate()</span></code></a>, you
+can also directly include the above flags in the configuration dicts for any
+existing label field(s) you wish.</p>
+<p>For example, suppose you have an existing <code class="code docutils literal notranslate"><span class="pre">ground_truth</span></code> field that contains
+objects of various types and you would like to add new <code class="code docutils literal notranslate"><span class="pre">sex</span></code> and <code class="code docutils literal notranslate"><span class="pre">age</span></code>
+attributes to all people in this field while also strictly enforcing that no
+objects can be added, deleted, or have their labels or bounding boxes modified.
+You can configure an annotation run for this as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">anno_key</span> <span class="o">=</span> <span class="s2">&quot;...&quot;</span>
+
+<span class="n">attributes</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;sex&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;select&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;values&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;male&quot;</span><span class="p">,</span> <span class="s2">&quot;female&quot;</span><span class="p">],</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;text&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">}</span>
+
+<span class="n">view</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span>
+    <span class="n">anno_key</span><span class="p">,</span>
+    <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span>
+    <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;person&quot;</span><span class="p">],</span>
+    <span class="n">attributes</span><span class="o">=</span><span class="n">attributes</span><span class="p">,</span>
+    <span class="n">allow_additions</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">allow_deletions</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">allow_label_edits</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">allow_spatial_edits</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>You can also include a <code class="code docutils literal notranslate"><span class="pre">read_only=True</span></code> parameter when uploading existing
+label attributes to specify that the attribute’s value should be uploaded to
+the annotation backend for informational purposes, but any edits to the
+attribute’s value should not be imported back into FiftyOne.</p>
+<p>For example, if you have vehicles with their <code class="code docutils literal notranslate"><span class="pre">make</span></code> attribute populated and you
+want to populate a new <code class="code docutils literal notranslate"><span class="pre">model</span></code> attribute based on this information without
+allowing changes to the vehicle’s <code class="code docutils literal notranslate"><span class="pre">make</span></code>, you can configure an annotation run
+for this as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">anno_key</span> <span class="o">=</span> <span class="s2">&quot;...&quot;</span>
+
+<span class="n">attributes</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;make&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;text&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;read_only&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;text&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">}</span>
+
+<span class="n">view</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span>
+    <span class="n">anno_key</span><span class="p">,</span>
+    <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span>
+    <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;vehicle&quot;</span><span class="p">],</span>
+    <span class="n">attributes</span><span class="o">=</span><span class="n">attributes</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Some annotation backends may not support restrictions to additions,
+deletions, spatial edits, and read-only attributes in their editing
+interface.</p>
+<p>However, any restrictions that you specify via the above parameters will
+still be enforced when you call
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.load_annotations" title="fiftyone.core.collections.SampleCollection.load_annotations"><code class="xref py py-meth docutils literal notranslate"><span class="pre">load_annotations()</span></code></a>
+to merge the annotations back into FiftyOne.</p>
+</div>
+</div>
+<div class="section" id="labeling-videos">
+<span id="annotation-labeling-videos"></span><h3>Labeling videos<a class="headerlink" href="#labeling-videos" title="Permalink to this headline">¶</a></h3>
+<p>When annotating spatiotemporal objects in videos, you have a few additional
+options at your fingertips.</p>
+<p>First, each object attribute specification can include a <code class="code docutils literal notranslate"><span class="pre">mutable</span></code> property
+that controls whether the attribute’s value can change between frames for each
+object:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">anno_key</span> <span class="o">=</span> <span class="s2">&quot;...&quot;</span>
+
+<span class="n">attributes</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;select&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;values&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;sedan&quot;</span><span class="p">,</span> <span class="s2">&quot;suv&quot;</span><span class="p">,</span> <span class="s2">&quot;truck&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;mutable&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;occluded&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;radio&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;values&quot;</span><span class="p">:</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span>
+        <span class="s2">&quot;default&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="s2">&quot;mutable&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">}</span>
+
+<span class="n">view</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span>
+    <span class="n">anno_key</span><span class="p">,</span>
+    <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;frames.new_field&quot;</span><span class="p">,</span>
+    <span class="n">label_type</span><span class="o">=</span><span class="s2">&quot;detections&quot;</span><span class="p">,</span>
+    <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;vehicle&quot;</span><span class="p">],</span>
+    <span class="n">attributes</span><span class="o">=</span><span class="n">attributes</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>The meaning of the <code class="code docutils literal notranslate"><span class="pre">mutable</span></code> attribute is defined as follows:</p>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">True</span></code> (default): the attribute is dynamic and can have a different value
+for every frame in which the object track appears</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">False</span></code>: the attribute is static and is the same for every frame in which
+the object track appears</p></li>
+</ul>
+<p>In addition, if you are using an annotation backend
+<a class="reference internal" href="../integrations/cvat.html#cvat-annotating-videos"><span class="std std-ref">like CVAT</span></a> that supports keyframes, then when
+you <a class="reference internal" href="#loading-annotations"><span class="std std-ref">download annotation runs</span></a> that include track
+annotations, the downloaded label corresponding to each keyframe of an object
+track will have its <code class="code docutils literal notranslate"><span class="pre">keyframe=True</span></code> attribute set to denote that it was a
+keyframe.</p>
+<p>Similarly, when you create an annotation run on a video dataset that involves
+<em>editing</em> existing video tracks, if at least one existing label has a
+<code class="code docutils literal notranslate"><span class="pre">keyframe=True</span></code> attribute set, then the available keyframe information will be
+uploaded to the annotation backend.</p>
+</div>
+</div>
+<div class="section" id="loading-annotations">
+<span id="id5"></span><h2>Loading annotations<a class="headerlink" href="#loading-annotations" title="Permalink to this headline">¶</a></h2>
+<p>After your annotations tasks in the annotation backend are complete, you can
+use the
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.load_annotations" title="fiftyone.core.collections.SampleCollection.load_annotations"><code class="xref py py-meth docutils literal notranslate"><span class="pre">load_annotations()</span></code></a>
+method to download them and merge them back into your FiftyOne dataset.</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">view</span><span class="o">.</span><span class="n">load_annotations</span><span class="p">(</span><span class="n">anno_key</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>The <code class="code docutils literal notranslate"><span class="pre">anno_key</span></code> parameter is the unique identifier for the annotation run that
+you provided when calling
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.annotate" title="fiftyone.core.collections.SampleCollection.annotate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">annotate()</span></code></a>. You
+can use
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.list_annotation_runs" title="fiftyone.core.collections.SampleCollection.list_annotation_runs"><code class="xref py py-meth docutils literal notranslate"><span class="pre">list_annotation_runs()</span></code></a>
+to see the available keys on a dataset.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>By default, calling
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.load_annotations" title="fiftyone.core.collections.SampleCollection.load_annotations"><code class="xref py py-meth docutils literal notranslate"><span class="pre">load_annotations()</span></code></a>
+will not delete any information for the run from the annotation backend.</p>
+<p>However, you can pass <code class="code docutils literal notranslate"><span class="pre">cleanup=True</span></code> to delete all information associated
+with the run from the backend after the annotations are downloaded.</p>
+</div>
+<p>You can use the optional <code class="code docutils literal notranslate"><span class="pre">dest_field</span></code> parameter to override the task’s
+label schema and instead load annotations into different field name(s) of your
+dataset. This can be useful, for example, when editing existing annotations, if
+you would like to do a before/after comparison of the edits that you import. If
+the annotation run involves multiple fields, <code class="code docutils literal notranslate"><span class="pre">dest_field</span></code> should be a
+dictionary mapping label schema field names to destination field names.</p>
+<p>Some annotation backends like CVAT cannot explicitly prevent annotators from
+creating labels that don’t obey the run’s label schema. You can pass the
+optional <code class="code docutils literal notranslate"><span class="pre">unexpected</span></code> parameter to
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.load_annotations" title="fiftyone.core.collections.SampleCollection.load_annotations"><code class="xref py py-meth docutils literal notranslate"><span class="pre">load_annotations()</span></code></a>
+to configure how to deal with any such unexpected labels that are found. The
+supported values are:</p>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">&quot;prompt&quot;</span></code> (<strong>default</strong>): present an interactive prompt to direct/discard
+unexpected labels</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;keep&quot;</span></code>: automatically keep all unexpected labels in a field whose name
+matches the the label type</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">&quot;ignore&quot;</span></code>: automatically ignore any unexpected labels</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">&quot;return&quot;</span></code>: return a dict containing all unexpected labels, if any</p></li>
+</ul>
+</div>
+<div class="section" id="managing-annotation-runs">
+<span id="id6"></span><h2>Managing annotation runs<a class="headerlink" href="#managing-annotation-runs" title="Permalink to this headline">¶</a></h2>
+<p>FiftyOne provides a variety of methods that you can use to manage in-progress
+or completed annotation runs.</p>
+<p>For example, you can call
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.list_annotation_runs" title="fiftyone.core.collections.SampleCollection.list_annotation_runs"><code class="xref py py-meth docutils literal notranslate"><span class="pre">list_annotation_runs()</span></code></a>
+to see the available annotation keys on a dataset:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">list_annotation_runs</span><span class="p">()</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>Or, you can use
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.get_annotation_info" title="fiftyone.core.collections.SampleCollection.get_annotation_info"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_annotation_info()</span></code></a>
+to retrieve information about the configuration of an annotation run:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">info</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">get_annotation_info</span><span class="p">(</span><span class="n">anno_key</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">info</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>Use <a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.load_annotation_results" title="fiftyone.core.collections.SampleCollection.load_annotation_results"><code class="xref py py-meth docutils literal notranslate"><span class="pre">load_annotation_results()</span></code></a>
+to load the <a class="reference internal" href="../api/fiftyone.utils.annotations.html#fiftyone.utils.annotations.AnnotationResults" title="fiftyone.utils.annotations.AnnotationResults"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnotationResults</span></code></a>
+instance for an annotation run.</p>
+<p>All results objects provide a <a class="reference internal" href="../api/fiftyone.utils.annotations.html#fiftyone.utils.annotations.AnnotationResults.cleanup" title="fiftyone.utils.annotations.AnnotationResults.cleanup"><code class="xref py py-class docutils literal notranslate"><span class="pre">cleanup()</span></code></a>
+method that you can use to delete all information associated with a run from
+the annotation backend.</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">load_annotation_results</span><span class="p">(</span><span class="n">anno_key</span><span class="p">)</span>
+<span class="n">results</span><span class="o">.</span><span class="n">cleanup</span><span class="p">()</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>In addition, the
+<a class="reference internal" href="../api/fiftyone.utils.annotations.html#fiftyone.utils.annotations.AnnotationResults" title="fiftyone.utils.annotations.AnnotationResults"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnotationResults</span></code></a>
+subclasses for each backend may provide additional utilities such as support
+for programmatically monitoring the status of the annotation tasks in the run.</p>
+<p>You can use
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.rename_annotation_run" title="fiftyone.core.collections.SampleCollection.rename_annotation_run"><code class="xref py py-meth docutils literal notranslate"><span class="pre">rename_annotation_run()</span></code></a>
+to rename the annotation key associated with an existing annotation run:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">rename_annotation_run</span><span class="p">(</span><span class="n">anno_key</span><span class="p">,</span> <span class="n">new_anno_key</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>Finally, you can use
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.delete_annotation_run" title="fiftyone.core.collections.SampleCollection.delete_annotation_run"><code class="xref py py-meth docutils literal notranslate"><span class="pre">delete_annotation_run()</span></code></a>
+to delete the record of an annotation run from your FiftyOne dataset:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">delete_annotation_run</span><span class="p">(</span><span class="n">anno_key</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Calling
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.delete_annotation_run" title="fiftyone.core.collections.SampleCollection.delete_annotation_run"><code class="xref py py-meth docutils literal notranslate"><span class="pre">delete_annotation_run()</span></code></a>
+only deletes the <strong>record</strong> of the annotation run from your FiftyOne
+dataset; it will not delete any annotations loaded onto your dataset via
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.load_annotations" title="fiftyone.core.collections.SampleCollection.load_annotations"><code class="xref py py-meth docutils literal notranslate"><span class="pre">load_annotations()</span></code></a>,
+nor will it delete any associated information from the annotation backend.</p>
+</div>
+</div>
+<div class="section" id="custom-annotation-backends">
+<span id="custom-annotation-backend"></span><h2>Custom annotation backends<a class="headerlink" href="#custom-annotation-backends" title="Permalink to this headline">¶</a></h2>
+<p>If you would like to use an annotation tool that is not natively supported by
+FiftyOne, you can follow the instructions below to implement an interface for
+your tool and then configure your environment so that the
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.annotate" title="fiftyone.core.collections.SampleCollection.annotate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">annotate()</span></code></a> and
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.load_annotations" title="fiftyone.core.collections.SampleCollection.load_annotations"><code class="xref py py-meth docutils literal notranslate"><span class="pre">load_annotations()</span></code></a>
+methods will use your custom backend.</p>
+<p>Annotation backends are defined by writing subclasses of the following
+three classes with the appropriate abstract methods implemented:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../api/fiftyone.utils.annotations.html#fiftyone.utils.annotations.AnnotationBackend" title="fiftyone.utils.annotations.AnnotationBackend"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnotationBackend</span></code></a>: this class implements the logic required for your
+annotation backend to declare the types of labeling tasks that it supports,
+as well as the core
+<a class="reference internal" href="../api/fiftyone.utils.annotations.html#fiftyone.utils.annotations.AnnotationBackend.upload_annotations" title="fiftyone.utils.annotations.AnnotationBackend.upload_annotations"><code class="xref py py-meth docutils literal notranslate"><span class="pre">upload_annotations()</span></code></a>
+and
+<a class="reference internal" href="../api/fiftyone.utils.annotations.html#fiftyone.utils.annotations.AnnotationBackend.download_annotations" title="fiftyone.utils.annotations.AnnotationBackend.download_annotations"><code class="xref py py-meth docutils literal notranslate"><span class="pre">download_annotations()</span></code></a>
+methods, which handle uploading and downloading data and labels to your
+annotation tool</p></li>
+<li><p><a class="reference internal" href="../api/fiftyone.utils.annotations.html#fiftyone.utils.annotations.AnnotationBackendConfig" title="fiftyone.utils.annotations.AnnotationBackendConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnotationBackendConfig</span></code></a>: this class defines the available parameters that
+users can pass as keyword arguments to
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.annotate" title="fiftyone.core.collections.SampleCollection.annotate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">annotate()</span></code></a> to
+customize the behavior of the annotation run</p></li>
+<li><p><a class="reference internal" href="../api/fiftyone.utils.annotations.html#fiftyone.utils.annotations.AnnotationResults" title="fiftyone.utils.annotations.AnnotationResults"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnotationResults</span></code></a>:
+this class stores any intermediate information necessary to track the
+progress of an annotation run that has been created and is now waiting for
+its results to be merged back into the FiftyOne dataset</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Refer to the
+<a class="reference external" href="https://github.com/voxel51/fiftyone/blob/develop/fiftyone/utils/cvat.py">fiftyone.utils.cvat</a>
+module for an example of how the above subclasses are implemented for the
+CVAT backend.</p>
+</div>
+<p>The recommended way to expose a custom backend is to add it to your
+<a class="reference internal" href="#annotation-config"><span class="std std-ref">annotation config</span></a> at
+<code class="code docutils literal notranslate"><span class="pre">~/.fiftyone/annotation_config.json</span></code> as follows:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
+    &quot;default_backend&quot;: &quot;&lt;backend&gt;&quot;,
+    &quot;backends&quot;: {
+        &quot;&lt;backend&gt;&quot;: {
+            &quot;config_cls&quot;: &quot;your.custom.AnnotationConfig&quot;,
+            # custom parameters here
+        }
+    }
+}
+</pre></div>
+</div>
+<p>In the above, <code class="code docutils literal notranslate"><span class="pre">&lt;backend&gt;</span></code> defines the name of your custom backend, which you
+can henceforward pass as the <code class="code docutils literal notranslate"><span class="pre">backend</span></code> parameter to
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.annotate" title="fiftyone.core.collections.SampleCollection.annotate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">annotate()</span></code></a>, and
+the <code class="code docutils literal notranslate"><span class="pre">config_cls</span></code> parameter specifies the fully-qualified name of the
+<a class="reference internal" href="../api/fiftyone.utils.annotations.html#fiftyone.utils.annotations.AnnotationBackendConfig" title="fiftyone.utils.annotations.AnnotationBackendConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnotationBackendConfig</span></code></a> subclass for your annotation backend.</p>
+<p>With the <code class="code docutils literal notranslate"><span class="pre">default_backend</span></code> parameter set to your custom backend as shown above,
+calling
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.annotate" title="fiftyone.core.collections.SampleCollection.annotate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">annotate()</span></code></a> will
+automatically use your backend.</p>
+<p>Alternatively, you can manually opt to use your custom backend on a per-run
+basis by passing the <code class="code docutils literal notranslate"><span class="pre">backend</span></code> parameter:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">view</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;&lt;backend&gt;&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
+
+
+             </article>
+             
+            </div>
+            <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="evaluation.html" class="btn btn-neutral float-right" title="Evaluating Models" accesskey="n" rel="next">Next <img src="../_static/images/chevron-right-orange.svg" class="next-page"></a>
+      
+      
+        <a href="groups.html" class="btn btn-neutral" title="Grouped datasets" accesskey="p" rel="prev"><img src="../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
+      
+    </div>
+  
+</footer>
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              <ul>
+<li><a class="reference internal" href="#">Annotating Datasets</a><ul>
+<li><a class="reference internal" href="#basic-recipe">Basic recipe</a></li>
+<li><a class="reference internal" href="#setup">Setup</a><ul>
+<li><a class="reference internal" href="#changing-your-annotation-backend">Changing your annotation backend</a></li>
+<li><a class="reference internal" href="#configuring-your-backend">Configuring your backend</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#annotation-config">Annotation config</a><ul>
+<li><a class="reference internal" href="#viewing-your-config">Viewing your config</a></li>
+<li><a class="reference internal" href="#modifying-your-config">Modifying your config</a><ul>
+<li><a class="reference internal" href="#order-of-precedence">Order of precedence</a></li>
+<li><a class="reference internal" href="#editing-your-json-config">Editing your JSON config</a></li>
+<li><a class="reference internal" href="#setting-environment-variables">Setting environment variables</a></li>
+<li><a class="reference internal" href="#modifying-your-config-in-code">Modifying your config in code</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#requesting-annotations">Requesting annotations</a><ul>
+<li><a class="reference internal" href="#label-schema">Label schema</a></li>
+<li><a class="reference internal" href="#label-attributes">Label attributes</a></li>
+<li><a class="reference internal" href="#restricting-additions-deletions-and-edits">Restricting additions, deletions, and edits</a></li>
+<li><a class="reference internal" href="#labeling-videos">Labeling videos</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#loading-annotations">Loading annotations</a></li>
+<li><a class="reference internal" href="#managing-annotation-runs">Managing annotation runs</a></li>
+<li><a class="reference internal" href="#custom-annotation-backends">Custom annotation backends</a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  
+
+
+  
+
+     
+       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+         <script src="../_static/jquery.js"></script>
+         <script src="../_static/underscore.js"></script>
+         <script src="../_static/doctools.js"></script>
+         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+         <script src="../_static/js/voxel51-website.js"></script>
+         <script src="../_static/js/custom.js"></script>
+     
+
+  
+
+  <script type="text/javascript" src="../_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="../_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+  <!-- Begin Footer -->
+
+
+<footer class="footer-wrapper" id="docs-tutorials-resources">
+  <div class="footer pytorch-container">
+    <div class="footer__logo">
+      <a href="https://voxel51.com/"
+        ><img
+          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
+      /></a>
+    </div>
+
+    <div class="footer__address">
+      330 E Liberty St<br />
+      Ann Arbor, MI 48104<br />
+      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
+    </div>
+
+    <!--
+    <div class="footer__contact">
+      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
+    </div>
+    -->
+
+    <div class="footer__links">
+      <div class="footer__links--col2">
+        <p class="nav__item--brand">Products</p>
+        <a href="https://voxel51.com/fiftyone/">FiftyOne</a>
+        <a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a>
+        <a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a>
+        <a href="https://voxel51.com/success-stories/">Success Stories</a>
+      </div>
+      <div class="footer__links--col3">
+        <p class="nav__item--brand">Resources</p>
+        <a href="https://voxel51.com/blog/">Blog</a>
+        <a href="https://docs.voxel51.com/">Docs</a>
+        <a href="https://github.com/voxel51/">GitHub</a>
+        <a href="https://community.voxel51.com">Discord</a>
+        <a href="https://voxel51.com/ourstory/">About Us</a>
+        <a href="https://voxel51.com/computer-vision-events/">Events</a>
+        <a href="https://voxel51.com/jobs/">Careers</a>
+        <a href="https://voxel51.com/press/">Press</a>
+      </div>
+    </div>
+
+    <div class="footer__icons">
+      <ul class="list-inline">
+        <li>
+          <a href="https://www.linkedin.com/company/voxel51/">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/voxel51/">
+            <i class="fa-brands fa-github"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/voxel51">
+            <i class="fa-brands fa-twitter"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/voxel51/">
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="footer__copyright">
+      <ul class="list-inline">
+        <li>&copy; 2024 Voxel51 Inc.</li>
+        <li>
+          <a href="https://voxel51.com/privacy/">Privacy Policy</a>
+        </li>
+        <li>
+          <a href="https://voxel51.com/terms/">Terms of Service</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<!-- https://buttons.github.io -->
+<script async defer src="https://buttons.github.io/buttons.js" ></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XD15NFRY3M" ></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+  gtag("config", "G-XD15NFRY3M");
+</script>
+
+<script>
+  function open_modal(modal_id, modal_closer_id) {
+    // Get the modal
+    let the_modal = document.getElementById(modal_id);
+
+    the_modal.style.display = "flex";
+    document.body.style.overflow = "hidden";
+
+    let the_modal_closer = document.getElementById(modal_closer_id);
+
+    // When the user clicks on <span> (x), close the modal
+    the_modal_closer &&
+      (the_modal_closer.onclick = function () {
+        the_modal.style.display = "none";
+      });
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+      if (event.target == the_modal) {
+        the_modal.style.display = "none";
+        document.body.style.overflow = "unset";
+        window.onclick = undefined;
+      }
+    };
+  }
+</script>
+
+<!-- bigpicture.io -->
+<script>
+  !(function (e, t, i) {
+    var r = (e.bigPicture = e.bigPicture || []);
+    if (!r.initialized)
+      if (r.invoked)
+        e.console &&
+          console.error &&
+          console.error("BigPicture.io snippet included twice.");
+      else {
+        (r.invoked = !0),
+          (r.SNIPPET_VERSION = 1.5),
+          (r.handler = function (e) {
+            if (void 0 !== r.callback)
+              try {
+                return r.callback(e);
+              } catch (e) {}
+          }),
+          (r.eventList = ["mousedown", "mouseup", "click", "submit"]),
+          (r.methods = [
+            "track",
+            "identify",
+            "page",
+            "group",
+            "alias",
+            "integration",
+            "ready",
+            "intelReady",
+            "consentReady",
+            "on",
+            "off",
+          ]),
+          (r.factory = function (e) {
+            return function () {
+              var t = Array.prototype.slice.call(arguments);
+              return t.unshift(e), r.push(t), r;
+            };
+          });
+        for (var n = 0; n < r.methods.length; n++) {
+          var o = r.methods[n];
+          r[o] = r.factory(o);
+        }
+        r.getCookie = function (e) {
+          var i = ("; " + t.cookie).split("; " + e + "=");
+          return 2 == i.length && i.pop().split(";").shift();
+        };
+        var c = (r.isEditor = (function () {
+          try {
+            return (
+              e.self !== e.top &&
+              (new RegExp("app" + i, "ig").test(t.referrer) ||
+                "edit" == r.getCookie("_bpr_edit"))
+            );
+          } catch (e) {
+            return !1;
+          }
+        })());
+        r.init = function (n, o) {
+          if (((r.projectId = n), (r._config = o), !c))
+            for (var a = 0; a < r.eventList.length; a++)
+              e.addEventListener(r.eventList[a], r.handler, !0);
+          var s = t.createElement("script");
+          s.async = !0;
+          var d = c ? "/editor/editor" : "/public-" + n;
+          (s.src = "//cdn" + i + d + ".js"),
+            t.getElementsByTagName("head")[0].appendChild(s);
+        };
+      }
+  })(window, document, ".bigpicture.io");
+  bigPicture.init("1646");
+</script>
+
+
+  
+
+  <!-- End Footer -->
+
+  <!-- Begin Mobile Menu -->
+
+  
+
+  <!-- End Mobile Menu -->
+
+  <script type="text/javascript" src="../_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function(e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+</body>
+</html>

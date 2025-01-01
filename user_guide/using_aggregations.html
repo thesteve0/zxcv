@@ -1,0 +1,1610 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Using Aggregations &mdash; FiftyOne 1.3.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <link rel="stylesheet" href="../_static/css/voxel51-website.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Interactive Plots" href="plots.html" />
+    <link rel="prev" title="Evaluating Models" href="evaluation.html" />
+<meta property="og:image" content="https://voxel51.com/wp-content/uploads/2024/03/3.24_webpages_Home_AV.png" />
+
+<link
+  href="https://fonts.googleapis.com/css?family=Palanquin:400,600,700,800"
+  rel="stylesheet"
+/>
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+  rel="stylesheet"
+/>
+<script src="https://tag.clearbitscripts.com/v1/pk_b9ed71c8234edd4f77326bcbfab5a4ca/tags.js"></script>
+
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+  
+</head>
+
+
+<div class="container-fluid header-holder tutorials-header" id="header-holder">
+  <nav id="nav__main" class="nav__main">
+    <div class="nav__main__logo">
+      <a href="https://voxel51.com/">
+        <img
+          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
+        />
+      </a>
+    </div>
+
+    <div class="nav__spacer desktop_only"></div>
+
+    <div id="nav__main__mobilebutton--on">
+      <a href="javascript:void(0);" onclick="navMobileButton()">
+        <i class="fa-solid fa-bars"></i>
+      </a>
+    </div>
+
+    <div id="nav__main__mobilebutton--off">
+      <a href="javascript:void(0);" onclick="navMobileButton()">
+        <i class="fa-solid fa-times"></i>
+      </a>
+    </div>
+
+    <div id="nav__main__items">
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Products</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://voxel51.com/fiftyone/">Open Source</a></li>
+            <li><a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a></li>
+            <li><a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a></li>
+            <li><a href="https://voxel51.com/success-stories/">Success Stories</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Learn</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://community.voxel51.com">Community Discord</a></li>
+            <li><a href="https://voxel51.com/blog/">Blog</a></li>
+            <li><a href="https://voxel51.com/computer-vision-events/">Events</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item">
+        <a href="https://docs.voxel51.com/">Docs</a>
+      </div>
+
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Company</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://voxel51.com/ourstory/">About Us</a></li>
+            <li><a href="https://voxel51.com/jobs/">Careers</a></li>
+            <li><a href="https://voxel51.com/talk-to-sales/">Talk to Sales</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item mobile_only">
+        <a href="https://github.com/voxel51/fiftyone">GitHub</a>
+      </div>
+
+      <div class="nav__item desktop_only" id="octocat">
+        <!-- https://buttons.github.io -->
+        <a
+          class="github-button"
+          href="https://github.com/voxel51/fiftyone"
+          data-color-scheme="no-preference: dark_high_contrast; light: dark_high_contrast; dark: dark_high_contrast;"
+          data-size="large"
+          data-show-count="true"
+          aria-label="Star voxel51/fiftyone on GitHub"
+          >Star</a
+        >
+      </div>
+
+      <div class="nav__item full_nav_only">
+        <a class="button-primary" href="https://voxel51.com/schedule-teams-workshop/" target="_blank"
+          >Schedule a workshop</a
+        >
+      </div>
+    </div>
+  </nav>
+</div>
+
+
+
+<body class="pytorch-body">
+
+   
+
+    
+
+    <div class="table-of-contents-link-wrapper">
+      <span>Table of Contents</span>
+      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+    </div>
+
+    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+      <div class="pytorch-side-scroll">
+        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          <div class="pytorch-left-menu-search">
+            
+
+            
+              
+              
+            
+
+            
+
+
+  
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+            
+          </div>
+
+           <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../teams/index.html">FiftyOne Teams 🚀</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../environments/index.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../recipes/index.html">Recipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheat_sheets/index.html">Cheat Sheets</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">User Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="basics.html">FiftyOne basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dataset_creation/index.html">Loading datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="using_datasets.html">Using datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="using_views.html">Dataset views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app.html">Using the App</a></li>
+<li class="toctree-l2"><a class="reference internal" href="groups.html">Grouped datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="annotation.html">Annotating datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="evaluation.html">Evaluating models <strong style="color: hsl(25, 100%, 51%); font-size: 0.85em; vertical-align: top">NEW</strong></a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Using aggregations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plots.html">Interactive plots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="export_datasets.html">Exporting datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="draw_labels.html">Drawing labels on samples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config.html">Configuring FiftyOne</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config.html#configuring-the-app">Configuring the App</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../dataset_zoo/index.html">Dataset Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_zoo/index.html">Model Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brain.html">FiftyOne Brain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/index.html">Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plugins/index.html">Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli/index.html">CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/fiftyone.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deprecation.html">Deprecation Notices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a></li>
+</ul>
+ 
+        </div>
+      </div>
+    </nav>
+
+    <div class="pytorch-container">
+      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+        <div class="pytorch-breadcrumbs-wrapper">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="../index.html">
+          
+            Docs
+          
+        </a> &gt;
+      </li>
+
+        
+          <li><a href="index.html">FiftyOne User Guide</a> &gt;</li>
+        
+      <li>Using Aggregations</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+        </div>
+
+        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+          Contents
+        </div>
+      </div>
+
+      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+        <div class="pytorch-content-left">
+
+        
+          
+          <div class="rst-content style-external-links">
+          
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+              
+  <div class="section" id="using-aggregations">
+<span id="id1"></span><h1>Using Aggregations<a class="headerlink" href="#using-aggregations" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference internal" href="using_datasets.html#using-datasets"><span class="std std-ref">Datasets</span></a> are the core data structure in FiftyOne,
+allowing you to represent your raw data, labels, and associated metadata. When
+you query and manipulate a <a class="reference internal" href="../api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset" title="fiftyone.core.dataset.Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dataset</span></code></a> object using
+<a class="reference internal" href="using_views.html#using-views"><span class="std std-ref">dataset views</span></a>, a <a class="reference internal" href="../api/fiftyone.core.view.html#fiftyone.core.view.DatasetView" title="fiftyone.core.view.DatasetView"><code class="xref py py-class docutils literal notranslate"><span class="pre">DatasetView</span></code></a> object is returned, which
+represents a filtered view into a subset of the underlying dataset’s contents.</p>
+<p>Complementary to this data model, one is often interested in computing
+aggregate statistics about datasets, such as label counts, distributions, and
+ranges, where each <a class="reference internal" href="../api/fiftyone.core.sample.html#fiftyone.core.sample.Sample" title="fiftyone.core.sample.Sample"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sample</span></code></a> is reduced to a single quantity in the aggregate
+results.</p>
+<p>The <a class="reference internal" href="../api/fiftyone.core.aggregations.html#module-fiftyone.core.aggregations" title="fiftyone.core.aggregations"><code class="xref py py-mod docutils literal notranslate"><span class="pre">fiftyone.core.aggregations</span></code></a> module offers a declarative and
+highly-efficient approach to computing summary statistics about your datasets
+and views.</p>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>All builtin aggregations are subclasses of the <a class="reference internal" href="../api/fiftyone.core.aggregations.html#fiftyone.core.aggregations.Aggregation" title="fiftyone.core.aggregations.Aggregation"><code class="xref py py-class docutils literal notranslate"><span class="pre">Aggregation</span></code></a> class, each
+encapsulating the computation of a different statistic about your data.</p>
+<p>Aggregations are conveniently exposed as methods on all <a class="reference internal" href="../api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset" title="fiftyone.core.dataset.Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dataset</span></code></a> and
+<a class="reference internal" href="../api/fiftyone.core.view.html#fiftyone.core.view.DatasetView" title="fiftyone.core.view.DatasetView"><code class="xref py py-class docutils literal notranslate"><span class="pre">DatasetView</span></code></a> objects:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+
+<span class="c1"># List available aggregations</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">list_aggregations</span><span class="p">())</span>
+<span class="c1"># [&#39;bounds&#39;, &#39;count&#39;, &#39;count_values&#39;, &#39;distinct&#39;, ..., &#39;sum&#39;]</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>Think of aggregations as more efficient, concise alternatives to writing
+explicit loops over your dataset to compute a statistic:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
+
+<span class="c1"># Compute label histogram manually</span>
+<span class="n">manual_counts</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">sample</span> <span class="ow">in</span> <span class="n">dataset</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">detection</span> <span class="ow">in</span> <span class="n">sample</span><span class="o">.</span><span class="n">ground_truth</span><span class="o">.</span><span class="n">detections</span><span class="p">:</span>
+        <span class="n">manual_counts</span><span class="p">[</span><span class="n">detection</span><span class="o">.</span><span class="n">label</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="c1"># Compute via aggregation</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">count_values</span><span class="p">(</span><span class="s2">&quot;ground_truth.detections.label&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>  <span class="c1"># same as `manual_counts` above</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>You can even <a class="reference internal" href="#aggregations-expressions"><span class="std std-ref">aggregate on expressions</span></a> that
+transform the data in arbitrarily complex ways:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">from</span> <span class="nn">fiftyone</span> <span class="kn">import</span> <span class="n">ViewField</span> <span class="k">as</span> <span class="n">F</span>
+
+<span class="c1"># Expression that computes the number of predicted objects</span>
+<span class="n">num_objects</span> <span class="o">=</span> <span class="n">F</span><span class="p">(</span><span class="s2">&quot;predictions.detections&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">length</span><span class="p">()</span>
+
+<span class="c1"># The `(min, max)` number of predictions per sample</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">bounds</span><span class="p">(</span><span class="n">num_objects</span><span class="p">))</span>
+
+<span class="c1"># The average number of predictions per sample</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">num_objects</span><span class="p">))</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>The sections below discuss the available aggregations in more detail. You can
+also refer to the <a class="reference internal" href="../api/fiftyone.core.aggregations.html#module-fiftyone.core.aggregations" title="fiftyone.core.aggregations"><code class="xref py py-mod docutils literal notranslate"><span class="pre">fiftyone.core.aggregations</span></code></a> module documentation for
+detailed examples of using each aggregation.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>All aggregations can operate on embedded sample fields using the
+<code class="docutils literal notranslate"><span class="pre">embedded.field.name</span></code> syntax.</p>
+<p>Aggregation fields can also include array fields. Most array fields are
+automatically unwound, but you can always manually unwind an array using
+the <code class="docutils literal notranslate"><span class="pre">embedded.array[].field</span></code> syntax. See
+<a class="reference internal" href="#aggregations-list-fields"><span class="std std-ref">this section</span></a> for more details.</p>
+</div>
+</div>
+<div class="section" id="compute-bounds">
+<span id="aggregations-bounds"></span><h2>Compute bounds<a class="headerlink" href="#compute-bounds" title="Permalink to this headline">¶</a></h2>
+<p>You can use the
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.bounds" title="fiftyone.core.collections.SampleCollection.bounds"><code class="xref py py-meth docutils literal notranslate"><span class="pre">bounds()</span></code></a>
+aggregation to compute the <code class="docutils literal notranslate"><span class="pre">[min,</span> <span class="pre">max]</span></code> range of a numeric field of a
+dataset:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+
+<span class="c1"># Compute the bounds of the `uniqueness` field</span>
+<span class="n">bounds</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">bounds</span><span class="p">(</span><span class="s2">&quot;uniqueness&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bounds</span><span class="p">)</span>
+<span class="c1"># (0.15001302256126986, 1.0)</span>
+
+<span class="c1"># Compute the bounds of the detection confidences in the `predictions` field</span>
+<span class="n">bounds</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">bounds</span><span class="p">(</span><span class="s2">&quot;predictions.detections.confidence&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bounds</span><span class="p">)</span>
+<span class="c1"># (0.05003104358911514, 0.9999035596847534)</span>
+</pre></div></td></tr></table></div>
+</div>
+</div>
+<div class="section" id="count-items">
+<span id="aggregations-count"></span><h2>Count items<a class="headerlink" href="#count-items" title="Permalink to this headline">¶</a></h2>
+<p>You can use the
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.count" title="fiftyone.core.collections.SampleCollection.count"><code class="xref py py-meth docutils literal notranslate"><span class="pre">count()</span></code></a> aggregation
+to compute the number of non-<code class="docutils literal notranslate"><span class="pre">None</span></code> field values in a collection:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+
+<span class="c1"># Compute the number of samples in the dataset</span>
+<span class="n">count</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
+<span class="c1"># 200</span>
+
+<span class="c1"># Compute the number of samples with `predictions`</span>
+<span class="n">count</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;predictions&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
+<span class="c1"># 200</span>
+
+<span class="c1"># Compute the number of detections in the `ground_truth` field</span>
+<span class="n">count</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;predictions.detections&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
+<span class="c1"># 5620</span>
+</pre></div></td></tr></table></div>
+</div>
+</div>
+<div class="section" id="count-values">
+<span id="aggregations-count-values"></span><h2>Count values<a class="headerlink" href="#count-values" title="Permalink to this headline">¶</a></h2>
+<p>You can use the
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.count_values" title="fiftyone.core.collections.SampleCollection.count_values"><code class="xref py py-meth docutils literal notranslate"><span class="pre">count_values()</span></code></a>
+aggregation to compute the occurrences of field values in a collection:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+
+<span class="c1"># Compute the number of samples in the dataset</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">count_values</span><span class="p">(</span><span class="s2">&quot;tags&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
+<span class="c1"># {&#39;validation&#39;: 200}</span>
+
+<span class="c1"># Compute a histogram of the predicted labels in the `predictions` field</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">count_values</span><span class="p">(</span><span class="s2">&quot;predictions.detections.label&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
+<span class="c1"># {&#39;bicycle&#39;: 13, &#39;hot dog&#39;: 8, ..., &#39;skis&#39;: 52}</span>
+</pre></div></td></tr></table></div>
+</div>
+</div>
+<div class="section" id="distinct-values">
+<span id="aggregations-distinct"></span><h2>Distinct values<a class="headerlink" href="#distinct-values" title="Permalink to this headline">¶</a></h2>
+<p>You can use the
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.distinct" title="fiftyone.core.collections.SampleCollection.distinct"><code class="xref py py-meth docutils literal notranslate"><span class="pre">distinct()</span></code></a>
+aggregation to compute the distinct values of a field in a collection:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+
+<span class="c1"># Get the distinct tags on the dataset</span>
+<span class="n">values</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">distinct</span><span class="p">(</span><span class="s2">&quot;tags&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+<span class="c1"># [&#39;validation&#39;]</span>
+
+<span class="c1"># Get the distinct labels in the `predictions` field</span>
+<span class="n">values</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">distinct</span><span class="p">(</span><span class="s2">&quot;predictions.detections.label&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+<span class="c1"># [&#39;airplane&#39;, &#39;apple&#39;, &#39;backpack&#39;, ..., &#39;wine glass&#39;, &#39;zebra&#39;]</span>
+</pre></div></td></tr></table></div>
+</div>
+</div>
+<div class="section" id="histogram-values">
+<span id="aggregations-histogram-values"></span><h2>Histogram values<a class="headerlink" href="#histogram-values" title="Permalink to this headline">¶</a></h2>
+<p>You can use the
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.histogram_values" title="fiftyone.core.collections.SampleCollection.histogram_values"><code class="xref py py-meth docutils literal notranslate"><span class="pre">histogram_values()</span></code></a>
+aggregation to compute the histograms of numeric fields of a collection:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="k">def</span> <span class="nf">plot_hist</span><span class="p">(</span><span class="n">counts</span><span class="p">,</span> <span class="n">edges</span><span class="p">):</span>
+    <span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
+    <span class="n">edges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">edges</span><span class="p">)</span>
+    <span class="n">left_edges</span> <span class="o">=</span> <span class="n">edges</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">widths</span> <span class="o">=</span> <span class="n">edges</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">-</span> <span class="n">edges</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">left_edges</span><span class="p">,</span> <span class="n">counts</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">widths</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="s2">&quot;edge&quot;</span><span class="p">)</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+
+<span class="c1">#</span>
+<span class="c1"># Compute a histogram of the `uniqueness` field</span>
+<span class="c1">#</span>
+
+<span class="n">counts</span><span class="p">,</span> <span class="n">edges</span><span class="p">,</span> <span class="n">other</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">histogram_values</span><span class="p">(</span><span class="s2">&quot;uniqueness&quot;</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+
+<span class="n">plot_hist</span><span class="p">(</span><span class="n">counts</span><span class="p">,</span> <span class="n">edges</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">block</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<img alt="histogram-values" class="align-center" src="../_images/histogram_values_uniqueness.png" />
+</div>
+<div class="section" id="schema">
+<span id="aggregations-schema"></span><h2>Schema<a class="headerlink" href="#schema" title="Permalink to this headline">¶</a></h2>
+<p>You can use the
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.schema" title="fiftyone.core.collections.SampleCollection.schema"><code class="xref py py-meth docutils literal notranslate"><span class="pre">schema()</span></code></a>
+aggregation to extract the names and types of the attributes of a specified
+embedded document field across all samples in a collection.</p>
+<p>Schema aggregations are useful for detecting the presence and types of
+<a class="reference internal" href="using_datasets.html#dynamic-attributes"><span class="std std-ref">dynamic attributes</span></a> of <a class="reference internal" href="../api/fiftyone.core.labels.html#fiftyone.core.labels.Label" title="fiftyone.core.labels.Label"><code class="xref py py-class docutils literal notranslate"><span class="pre">Label</span></code></a> fields across a
+collection.</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+
+<span class="c1"># Extract the names and types of all dynamic attributes on the</span>
+<span class="c1"># `ground_truth` detections</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">schema</span><span class="p">(</span><span class="s2">&quot;ground_truth.detections&quot;</span><span class="p">,</span> <span class="n">dynamic_only</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
+    &#39;area&#39;: &lt;fiftyone.core.fields.FloatField object at 0x7fc94015fb50&gt;,
+    &#39;iscrowd&#39;: &lt;fiftyone.core.fields.FloatField object at 0x7fc964869fd0&gt;,
+}
+</pre></div>
+</div>
+<p>You can also use the
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.list_schema" title="fiftyone.core.collections.SampleCollection.list_schema"><code class="xref py py-meth docutils literal notranslate"><span class="pre">list_schema()</span></code></a>
+aggregation to extract the value type(s) in a list field across all samples in
+a collection:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Dataset</span><span class="p">()</span>
+
+<span class="n">sample1</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Sample</span><span class="p">(</span>
+    <span class="n">filepath</span><span class="o">=</span><span class="s2">&quot;image1.png&quot;</span><span class="p">,</span>
+    <span class="n">ground_truth</span><span class="o">=</span><span class="n">fo</span><span class="o">.</span><span class="n">Classification</span><span class="p">(</span>
+        <span class="n">label</span><span class="o">=</span><span class="s2">&quot;cat&quot;</span><span class="p">,</span>
+        <span class="n">info</span><span class="o">=</span><span class="p">[</span>
+            <span class="n">fo</span><span class="o">.</span><span class="n">DynamicEmbeddedDocument</span><span class="p">(</span>
+                <span class="n">task</span><span class="o">=</span><span class="s2">&quot;initial_annotation&quot;</span><span class="p">,</span>
+                <span class="n">author</span><span class="o">=</span><span class="s2">&quot;Alice&quot;</span><span class="p">,</span>
+                <span class="n">timestamp</span><span class="o">=</span><span class="n">datetime</span><span class="p">(</span><span class="mi">1970</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+                <span class="n">notes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;foo&quot;</span><span class="p">,</span> <span class="s2">&quot;bar&quot;</span><span class="p">],</span>
+            <span class="p">),</span>
+            <span class="n">fo</span><span class="o">.</span><span class="n">DynamicEmbeddedDocument</span><span class="p">(</span>
+                <span class="n">task</span><span class="o">=</span><span class="s2">&quot;editing_pass&quot;</span><span class="p">,</span>
+                <span class="n">author</span><span class="o">=</span><span class="s2">&quot;Bob&quot;</span><span class="p">,</span>
+                <span class="n">timestamp</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">(),</span>
+            <span class="p">),</span>
+        <span class="p">],</span>
+    <span class="p">),</span>
+<span class="p">)</span>
+
+<span class="n">sample2</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Sample</span><span class="p">(</span>
+    <span class="n">filepath</span><span class="o">=</span><span class="s2">&quot;image2.png&quot;</span><span class="p">,</span>
+    <span class="n">ground_truth</span><span class="o">=</span><span class="n">fo</span><span class="o">.</span><span class="n">Classification</span><span class="p">(</span>
+        <span class="n">label</span><span class="o">=</span><span class="s2">&quot;dog&quot;</span><span class="p">,</span>
+        <span class="n">info</span><span class="o">=</span><span class="p">[</span>
+            <span class="n">fo</span><span class="o">.</span><span class="n">DynamicEmbeddedDocument</span><span class="p">(</span>
+                <span class="n">task</span><span class="o">=</span><span class="s2">&quot;initial_annotation&quot;</span><span class="p">,</span>
+                <span class="n">author</span><span class="o">=</span><span class="s2">&quot;Bob&quot;</span><span class="p">,</span>
+                <span class="n">timestamp</span><span class="o">=</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">18</span><span class="p">),</span>
+                <span class="n">notes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;spam&quot;</span><span class="p">,</span> <span class="s2">&quot;eggs&quot;</span><span class="p">],</span>
+            <span class="p">),</span>
+        <span class="p">],</span>
+    <span class="p">),</span>
+<span class="p">)</span>
+
+<span class="n">dataset</span><span class="o">.</span><span class="n">add_samples</span><span class="p">([</span><span class="n">sample1</span><span class="p">,</span> <span class="n">sample2</span><span class="p">])</span>
+
+<span class="c1"># Determine that `ground_truth.info` contains embedded documents</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">list_schema</span><span class="p">(</span><span class="s2">&quot;ground_truth.info&quot;</span><span class="p">))</span>
+<span class="c1"># fo.EmbeddedDocumentField</span>
+
+<span class="c1"># Determine the fields of the embedded documents in the list</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">schema</span><span class="p">(</span><span class="s2">&quot;ground_truth.info[]&quot;</span><span class="p">))</span>
+<span class="c1"># {&#39;task&#39;: StringField, ..., &#39;notes&#39;: ListField}</span>
+
+<span class="c1"># Determine the type of the values in the nested `notes` list field</span>
+<span class="c1"># Since `ground_truth.info` is not yet declared on the dataset&#39;s schema, we</span>
+<span class="c1"># must manually include `[]` to unwind the info lists</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">list_schema</span><span class="p">(</span><span class="s2">&quot;ground_truth.info[].notes&quot;</span><span class="p">))</span>
+<span class="c1"># fo.StringField</span>
+
+<span class="c1"># Declare the `ground_truth.info` field</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">add_sample_field</span><span class="p">(</span>
+    <span class="s2">&quot;ground_truth.info&quot;</span><span class="p">,</span>
+    <span class="n">fo</span><span class="o">.</span><span class="n">ListField</span><span class="p">,</span>
+    <span class="n">subfield</span><span class="o">=</span><span class="n">fo</span><span class="o">.</span><span class="n">EmbeddedDocumentField</span><span class="p">,</span>
+    <span class="n">embedded_doc_type</span><span class="o">=</span><span class="n">fo</span><span class="o">.</span><span class="n">DynamicEmbeddedDocument</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># Now we can inspect the nested `notes` field without unwinding</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">list_schema</span><span class="p">(</span><span class="s2">&quot;ground_truth.info.notes&quot;</span><span class="p">))</span>
+<span class="c1"># fo.StringField</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Schema aggregations are used internally by
+<a class="reference internal" href="../api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset.get_dynamic_field_schema" title="fiftyone.core.dataset.Dataset.get_dynamic_field_schema"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_dynamic_field_schema()</span></code></a>
+to impute the types of undeclared lists and embedded documents in a
+dataset.</p>
+</div>
+</div>
+<div class="section" id="sum-values">
+<span id="aggregations-sum"></span><h2>Sum values<a class="headerlink" href="#sum-values" title="Permalink to this headline">¶</a></h2>
+<p>You can use the
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.sum" title="fiftyone.core.collections.SampleCollection.sum"><code class="xref py py-meth docutils literal notranslate"><span class="pre">sum()</span></code></a> aggregation to
+compute the sum of the (non-<code class="docutils literal notranslate"><span class="pre">None</span></code>) values of a field in a collection:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+
+<span class="c1"># Compute average confidence of detections in the `predictions` field</span>
+<span class="nb">print</span><span class="p">(</span>
+    <span class="n">dataset</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s2">&quot;predictions.detections.confidence&quot;</span><span class="p">)</span> <span class="o">/</span>
+    <span class="n">dataset</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;predictions.detections.confidence&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="c1"># 0.34994137249820706</span>
+</pre></div></td></tr></table></div>
+</div>
+</div>
+<div class="section" id="min-values">
+<span id="aggregations-min"></span><h2>Min values<a class="headerlink" href="#min-values" title="Permalink to this headline">¶</a></h2>
+<p>You can use the
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.min" title="fiftyone.core.collections.SampleCollection.min"><code class="xref py py-meth docutils literal notranslate"><span class="pre">min()</span></code></a> aggregation to
+compute the minimum of the (non-<code class="docutils literal notranslate"><span class="pre">None</span></code>) values of a field in a collection:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+
+<span class="c1"># Compute minimum confidence of detections in the `predictions` field</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="s2">&quot;predictions.detections.confidence&quot;</span><span class="p">))</span>
+<span class="c1"># 0.05003104358911514</span>
+</pre></div></td></tr></table></div>
+</div>
+</div>
+<div class="section" id="max-values">
+<span id="aggregations-max"></span><h2>Max values<a class="headerlink" href="#max-values" title="Permalink to this headline">¶</a></h2>
+<p>You can use the
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.max" title="fiftyone.core.collections.SampleCollection.max"><code class="xref py py-meth docutils literal notranslate"><span class="pre">max()</span></code></a> aggregation to
+compute the maximum of the (non-<code class="docutils literal notranslate"><span class="pre">None</span></code>) values of a field in a collection:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+
+<span class="c1"># Compute maximum confidence of detections in the `predictions` field</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="s2">&quot;predictions.detections.confidence&quot;</span><span class="p">))</span>
+<span class="c1"># 0.9999035596847534</span>
+</pre></div></td></tr></table></div>
+</div>
+</div>
+<div class="section" id="mean-values">
+<span id="aggregations-mean"></span><h2>Mean values<a class="headerlink" href="#mean-values" title="Permalink to this headline">¶</a></h2>
+<p>You can use the
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.mean" title="fiftyone.core.collections.SampleCollection.mean"><code class="xref py py-meth docutils literal notranslate"><span class="pre">mean()</span></code></a> aggregation to
+compute the arithmetic mean of the (non-<code class="docutils literal notranslate"><span class="pre">None</span></code>) values of a field in a
+collection:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+
+<span class="c1"># Compute average confidence of detections in the `predictions` field</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="s2">&quot;predictions.detections.confidence&quot;</span><span class="p">))</span>
+<span class="c1"># 0.34994137249820706</span>
+</pre></div></td></tr></table></div>
+</div>
+</div>
+<div class="section" id="quantiles">
+<span id="aggregations-quantiles"></span><h2>Quantiles<a class="headerlink" href="#quantiles" title="Permalink to this headline">¶</a></h2>
+<p>You can use the
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.quantiles" title="fiftyone.core.collections.SampleCollection.quantiles"><code class="xref py py-meth docutils literal notranslate"><span class="pre">quantiles()</span></code></a>
+aggregation to compute the quantile(s) of the (non-<code class="docutils literal notranslate"><span class="pre">None</span></code>) values of a field
+in a collection:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+
+<span class="c1"># Compute quantiles of the `uniqueness` field</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">quantiles</span><span class="p">(</span><span class="s2">&quot;uniqueness&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">]))</span>
+<span class="c1"># [0.22027, 0.33771, 0.62554, 0.69488]</span>
+
+<span class="c1"># Compute quantiles of detection confidence in the `predictions` field</span>
+<span class="n">quantiles</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">quantiles</span><span class="p">(</span>
+    <span class="s2">&quot;predictions.detections.confidence&quot;</span><span class="p">,</span>
+    <span class="p">[</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">],</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">quantiles</span><span class="p">)</span>
+<span class="c1"># [0.09231, 0.20251, 0.56273, 0.94354]</span>
+</pre></div></td></tr></table></div>
+</div>
+</div>
+<div class="section" id="standard-deviation">
+<span id="aggregations-std"></span><h2>Standard deviation<a class="headerlink" href="#standard-deviation" title="Permalink to this headline">¶</a></h2>
+<p>You can use the
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.std" title="fiftyone.core.collections.SampleCollection.std"><code class="xref py py-meth docutils literal notranslate"><span class="pre">std()</span></code></a> aggregation to
+compute the standard deviation of the (non-<code class="docutils literal notranslate"><span class="pre">None</span></code>) values of a field in a
+collection:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+
+<span class="c1"># Compute standard deviation of the confidence of detections in the</span>
+<span class="c1"># `predictions` field</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="s2">&quot;predictions.detections.confidence&quot;</span><span class="p">))</span>
+<span class="c1"># 0.3184061813934825</span>
+</pre></div></td></tr></table></div>
+</div>
+</div>
+<div class="section" id="values">
+<span id="aggregations-values"></span><h2>Values<a class="headerlink" href="#values" title="Permalink to this headline">¶</a></h2>
+<p>You can use the
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.values" title="fiftyone.core.collections.SampleCollection.values"><code class="xref py py-meth docutils literal notranslate"><span class="pre">values()</span></code></a>
+aggregation to extract a list containing the values of a field across all
+samples in a collection:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+
+<span class="c1"># Extract the `uniqueness` values for all samples</span>
+<span class="n">uniqueness</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;uniqueness&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">uniqueness</span><span class="p">))</span>  <span class="c1"># 200</span>
+
+<span class="c1"># Extract the labels for all predictions</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;predictions.detections.label&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">labels</span><span class="p">))</span>  <span class="c1"># 200</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">labels</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="c1"># [&#39;bird&#39;, ..., &#39;bear&#39;, &#39;sheep&#39;]</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Unlike other aggregations,
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.values" title="fiftyone.core.collections.SampleCollection.values"><code class="xref py py-meth docutils literal notranslate"><span class="pre">values()</span></code></a> does
+not automatically unwind list fields, which ensures that the returned
+values match the potentially-nested structure of the documents.</p>
+<p>You can opt-in to unwinding specific list fields using the <code class="docutils literal notranslate"><span class="pre">[]</span></code>
+syntax, or you can pass the optional <code class="docutils literal notranslate"><span class="pre">unwind=True</span></code> parameter to unwind
+all supported list fields. See <a class="reference internal" href="#aggregations-list-fields"><span class="std std-ref">Aggregating list fields</span></a> for more
+information.</p>
+</div>
+</div>
+<div class="section" id="advanced-usage">
+<span id="aggregations-advanced"></span><h2>Advanced usage<a class="headerlink" href="#advanced-usage" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="aggregating-list-fields">
+<span id="aggregations-list-fields"></span><h3>Aggregating list fields<a class="headerlink" href="#aggregating-list-fields" title="Permalink to this headline">¶</a></h3>
+<p>Aggregations that operate on scalar fields can also be applied to the elements
+of list fields by appending <code class="docutils literal notranslate"><span class="pre">[]</span></code> to the list component of the field path.</p>
+<p>The example below demonstrates this capability:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Dataset</span><span class="p">()</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">add_samples</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="n">fo</span><span class="o">.</span><span class="n">Sample</span><span class="p">(</span>
+            <span class="n">filepath</span><span class="o">=</span><span class="s2">&quot;/path/to/image1.png&quot;</span><span class="p">,</span>
+            <span class="n">keypoints</span><span class="o">=</span><span class="n">fo</span><span class="o">.</span><span class="n">Keypoint</span><span class="p">(</span><span class="n">points</span><span class="o">=</span><span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]),</span>
+            <span class="n">classes</span><span class="o">=</span><span class="n">fo</span><span class="o">.</span><span class="n">Classification</span><span class="p">(</span>
+                <span class="n">label</span><span class="o">=</span><span class="s2">&quot;cat&quot;</span><span class="p">,</span> <span class="n">confidence</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">friends</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;dog&quot;</span><span class="p">,</span> <span class="s2">&quot;squirrel&quot;</span><span class="p">]</span>
+            <span class="p">),</span>
+        <span class="p">),</span>
+        <span class="n">fo</span><span class="o">.</span><span class="n">Sample</span><span class="p">(</span>
+            <span class="n">filepath</span><span class="o">=</span><span class="s2">&quot;/path/to/image2.png&quot;</span><span class="p">,</span>
+            <span class="n">keypoints</span><span class="o">=</span><span class="n">fo</span><span class="o">.</span><span class="n">Keypoint</span><span class="p">(</span><span class="n">points</span><span class="o">=</span><span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]),</span>
+            <span class="n">classes</span><span class="o">=</span><span class="n">fo</span><span class="o">.</span><span class="n">Classification</span><span class="p">(</span>
+                <span class="n">label</span><span class="o">=</span><span class="s2">&quot;dog&quot;</span><span class="p">,</span> <span class="n">confidence</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">friends</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;rabbit&quot;</span><span class="p">,</span> <span class="s2">&quot;squirrel&quot;</span><span class="p">],</span>
+            <span class="p">),</span>
+        <span class="p">),</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+
+<span class="c1">#</span>
+<span class="c1"># Count the number of keypoints in the dataset</span>
+<span class="c1">#</span>
+<span class="c1"># The `points` list attribute is declared on the `Keypoint` class, so it is</span>
+<span class="c1"># automatically unwound</span>
+<span class="c1">#</span>
+<span class="n">count</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;keypoints.points&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
+<span class="c1"># 5</span>
+
+<span class="c1">#</span>
+<span class="c1"># Compute the values in the `friends` field of the predictions</span>
+<span class="c1">#</span>
+<span class="c1"># The `friends` list attribute is a dynamic custom attribute, so we must</span>
+<span class="c1"># explicitly request that it be unwound</span>
+<span class="c1">#</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">count_values</span><span class="p">(</span><span class="s2">&quot;classes.friends[]&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
+<span class="c1"># {&#39;dog&#39;: 1, &#39;squirrel&#39;: 2, &#39;rabbit&#39;: 1}</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>FiftyOne will automatically unwind all array fields that are defined in the
+dataset’s schema without requiring you to explicitly specify this via the
+<code class="docutils literal notranslate"><span class="pre">[]</span></code> syntax. This includes the following cases:</p>
+<p><strong>Top-level list fields:</strong> When you write an aggregation that refers to a
+top-level list field of a dataset; i.e., <code class="docutils literal notranslate"><span class="pre">list_field</span></code> is automatically
+coerced to <code class="docutils literal notranslate"><span class="pre">list_field[]</span></code>, if necessary.</p>
+<p><strong>Frame fields:</strong> When you write an aggregation that refers to a
+frame-level field of a video dataset; i.e.,
+<code class="docutils literal notranslate"><span class="pre">frames.classification.label</span></code> is automatically coerced to
+<code class="docutils literal notranslate"><span class="pre">frames[].classification.label</span></code> if necessary.</p>
+<p><strong>Embedded list fields:</strong> When you write an aggregation that refers to a
+list attribute that is declared on a <a class="reference internal" href="../api/fiftyone.core.sample.html#fiftyone.core.sample.Sample" title="fiftyone.core.sample.Sample"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sample</span></code></a>, <a class="reference internal" href="../api/fiftyone.core.frame.html#fiftyone.core.frame.Frame" title="fiftyone.core.frame.Frame"><code class="xref py py-class docutils literal notranslate"><span class="pre">Frame</span></code></a>, or <a class="reference internal" href="../api/fiftyone.core.labels.html#fiftyone.core.labels.Label" title="fiftyone.core.labels.Label"><code class="xref py py-class docutils literal notranslate"><span class="pre">Label</span></code></a> class,
+such as the
+<a class="reference internal" href="../api/fiftyone.core.labels.html#fiftyone.core.labels.Classification.tags" title="fiftyone.core.labels.Classification.tags"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Classification.tags</span></code></a>,
+<a class="reference internal" href="../api/fiftyone.core.labels.html#fiftyone.core.labels.Detections.detections" title="fiftyone.core.labels.Detections.detections"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Detections.detections</span></code></a>,
+or <a class="reference internal" href="../api/fiftyone.core.labels.html#fiftyone.core.labels.Keypoint.points" title="fiftyone.core.labels.Keypoint.points"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Keypoint.points</span></code></a>
+attributes; i.e., <code class="docutils literal notranslate"><span class="pre">ground_truth.detections.label</span></code> is automatically
+coerced to <code class="docutils literal notranslate"><span class="pre">ground_truth.detections[].label</span></code>, if necessary.</p>
+</div>
+</div>
+<div class="section" id="aggregating-expressions">
+<span id="aggregations-expressions"></span><h3>Aggregating expressions<a class="headerlink" href="#aggregating-expressions" title="Permalink to this headline">¶</a></h3>
+<p>Aggregations also support performing more complex computations on fields via
+the optional <a class="reference internal" href="../api/fiftyone.core.aggregations.html#fiftyone.core.aggregations.Aggregation" title="fiftyone.core.aggregations.Aggregation"><code class="xref py py-class docutils literal notranslate"><span class="pre">expr</span></code></a> argument,
+which is supported by all aggregations and allows you to specify a
+<a class="reference internal" href="../api/fiftyone.core.expressions.html#fiftyone.core.expressions.ViewExpression" title="fiftyone.core.expressions.ViewExpression"><code class="xref py py-class docutils literal notranslate"><span class="pre">ViewExpression</span></code></a> defining an arbitrary transformation of the field you’re
+operating on prior to aggregating.</p>
+<p>The following examples demonstrate the power of aggregating with expressions:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When aggregating expressions, field names may contain list fields, and such
+field paths are handled as
+<a class="reference internal" href="#aggregations-list-fields"><span class="std std-ref">explained above</span></a>.</p>
+<p>However, there is one important exception when expressions are involved:
+fields paths that <strong>end</strong> in array fields are not automatically unwound,
+you must specify that they should be unwound by appending <code class="docutils literal notranslate"><span class="pre">[]</span></code>. This
+change in default behavior allows for the possibility that the
+<a class="reference internal" href="../api/fiftyone.core.expressions.html#fiftyone.core.expressions.ViewExpression" title="fiftyone.core.expressions.ViewExpression"><code class="xref py py-class docutils literal notranslate"><span class="pre">ViewExpression</span></code></a> you provide is intended to operate on the array as a
+whole.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+<span class="kn">from</span> <span class="nn">fiftyone</span> <span class="kn">import</span> <span class="n">ViewField</span> <span class="k">as</span> <span class="n">F</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+
+<span class="c1"># Counts the number of predicted objects</span>
+<span class="c1"># Here, `predictions.detections` is treated as `predictions.detections[]`</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;predictions.detections&quot;</span><span class="p">))</span>
+
+<span class="c1"># Counts the number of predicted objects with confidence &gt; 0.9</span>
+<span class="c1"># Here, `predictions.detections` is not automatically unwound</span>
+<span class="n">num_preds</span> <span class="o">=</span> <span class="n">F</span><span class="p">(</span><span class="s2">&quot;predictions.detections&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s2">&quot;confidence&quot;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">0.9</span><span class="p">)</span><span class="o">.</span><span class="n">length</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">num_preds</span><span class="p">))</span>
+
+<span class="c1"># Computes the (min, max) bounding box area in normalized coordinates</span>
+<span class="c1"># Here we must manually specify that we want to unwind terminal list field</span>
+<span class="c1"># `predictions.detections` by appending `[]`</span>
+<span class="n">bbox_area</span> <span class="o">=</span> <span class="n">F</span><span class="p">(</span><span class="s2">&quot;bounding_box&quot;</span><span class="p">)[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="n">F</span><span class="p">(</span><span class="s2">&quot;bounding_box&quot;</span><span class="p">)[</span><span class="mi">3</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">bounds</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s2">&quot;ground_truth.detections[]&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">bbox_area</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="batching-aggregations">
+<span id="aggregations-batching"></span><h3>Batching aggregations<a class="headerlink" href="#batching-aggregations" title="Permalink to this headline">¶</a></h3>
+<p>Rather than computing a single aggregation by invoking methods on a <a class="reference internal" href="../api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset" title="fiftyone.core.dataset.Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dataset</span></code></a>
+or <a class="reference internal" href="../api/fiftyone.core.view.html#fiftyone.core.view.DatasetView" title="fiftyone.core.view.DatasetView"><code class="xref py py-class docutils literal notranslate"><span class="pre">DatasetView</span></code></a> object, you can also instantiate an <a class="reference internal" href="../api/fiftyone.core.aggregations.html#fiftyone.core.aggregations.Aggregation" title="fiftyone.core.aggregations.Aggregation"><code class="xref py py-class docutils literal notranslate"><span class="pre">Aggregation</span></code></a> object
+directly. In this case, the aggregation is not tied to any dataset or view,
+only to the parameters such as field name that define it.</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+
+<span class="c1"># will count the number of samples in a dataset</span>
+<span class="n">sample_count</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Count</span><span class="p">()</span>
+
+<span class="c1"># will count the labels in a `ground_truth` detections field</span>
+<span class="n">count_values</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">CountValues</span><span class="p">(</span><span class="s2">&quot;ground_truth.detections.label&quot;</span><span class="p">)</span>
+
+<span class="c1"># will compute a histogram of the `uniqueness` field</span>
+<span class="n">histogram_values</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">HistogramValues</span><span class="p">(</span><span class="s2">&quot;uniqueness&quot;</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>Instantiating aggregations in this way allows you to execute multiple
+aggregations on a dataset or view efficiently in a batch via
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.aggregate" title="fiftyone.core.collections.SampleCollection.aggregate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">aggregate()</span></code></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+
+<span class="n">results</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">aggregate</span><span class="p">([</span><span class="n">sample_count</span><span class="p">,</span> <span class="n">count_values</span><span class="p">,</span> <span class="n">histogram_values</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="c1"># 200</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="c1"># {&#39;bowl&#39;: 15, &#39;scissors&#39;: 1, &#39;cup&#39;: 21, ..., &#39;vase&#39;: 1, &#39;sports ball&#39;: 3}</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># counts</span>
+<span class="c1"># [0, 0, 0, ..., 15, 12, ..., 0, 0]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>  <span class="c1"># edges</span>
+<span class="c1"># [0.0, 0.02, 0.04, ..., 0.98, 1.0]</span>
+</pre></div></td></tr></table></div>
+</div>
+</div>
+<div class="section" id="transforming-data-before-aggregating">
+<span id="aggregations-transforming-data"></span><h3>Transforming data before aggregating<a class="headerlink" href="#transforming-data-before-aggregating" title="Permalink to this headline">¶</a></h3>
+<p>You can use view stages like
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.map_labels" title="fiftyone.core.collections.SampleCollection.map_labels"><code class="xref py py-meth docutils literal notranslate"><span class="pre">map_labels()</span></code></a>
+in concert with aggregations to efficiently compute statistics on your
+datasets.</p>
+<p>For example, suppose you would like to compute the histogram of the labels in
+a dataset with certain labels grouped into a single category. You can use
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.map_labels" title="fiftyone.core.collections.SampleCollection.map_labels"><code class="xref py py-meth docutils literal notranslate"><span class="pre">map_labels()</span></code></a> +
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.count_values" title="fiftyone.core.collections.SampleCollection.count_values"><code class="xref py py-meth docutils literal notranslate"><span class="pre">count_values()</span></code></a>
+to succinctly express this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+
+<span class="c1"># Map `cat` and `dog` to `pet`</span>
+<span class="n">labels_map</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;cat&quot;</span><span class="p">:</span> <span class="s2">&quot;pet&quot;</span><span class="p">,</span> <span class="s2">&quot;dog&quot;</span><span class="p">:</span> <span class="s2">&quot;pet&quot;</span><span class="p">}</span>
+
+<span class="n">counts</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">dataset</span>
+    <span class="o">.</span><span class="n">map_labels</span><span class="p">(</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span> <span class="n">labels_map</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">count_values</span><span class="p">(</span><span class="s2">&quot;ground_truth.detections.label&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
+<span class="c1"># {&#39;toothbrush&#39;: 2, &#39;train&#39;: 5, ..., &#39;pet&#39;: 31, ..., &#39;cow&#39;: 22}</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>Or, suppose you would like to compute the average confidence of a model’s
+predictions, ignoring any values less than 0.5. You can use
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.filter_labels" title="fiftyone.core.collections.SampleCollection.filter_labels"><code class="xref py py-meth docutils literal notranslate"><span class="pre">filter_labels()</span></code></a> +
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.sum" title="fiftyone.core.collections.SampleCollection.sum"><code class="xref py py-meth docutils literal notranslate"><span class="pre">sum()</span></code></a> +
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.count" title="fiftyone.core.collections.SampleCollection.count"><code class="xref py py-meth docutils literal notranslate"><span class="pre">count()</span></code></a>
+to succinctly express this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+<span class="kn">from</span> <span class="nn">fiftyone</span> <span class="kn">import</span> <span class="n">ViewField</span> <span class="k">as</span> <span class="n">F</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+
+<span class="n">avg_conf</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">dataset</span>
+    <span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span><span class="s2">&quot;predictions&quot;</span><span class="p">,</span> <span class="n">F</span><span class="p">(</span><span class="s2">&quot;confidence&quot;</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mf">0.5</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="s2">&quot;predictions.detections.confidence&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">avg_conf</span><span class="p">)</span>
+<span class="c1"># 0.8170506501060617</span>
+</pre></div></td></tr></table></div>
+</div>
+</div>
+<div class="section" id="aggregating-frame-labels">
+<span id="aggregations-frame-labels"></span><h3>Aggregating frame labels<a class="headerlink" href="#aggregating-frame-labels" title="Permalink to this headline">¶</a></h3>
+<p>You can compute aggregations on the frame labels of a video dataset by adding
+the <code class="docutils literal notranslate"><span class="pre">frames</span></code> prefix to the relevant frame field name:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart-video&quot;</span><span class="p">)</span>
+
+<span class="c1"># Count the number of video frames</span>
+<span class="n">count</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;frames&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
+<span class="c1"># 1279</span>
+
+<span class="c1"># Compute a histogram of per-frame object labels</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">count_values</span><span class="p">(</span><span class="s2">&quot;frames.detections.detections.label&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
+<span class="c1"># {&#39;person&#39;: 1108, &#39;vehicle&#39;: 7511, &#39;road sign&#39;: 2726}</span>
+</pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
+</div>
+
+
+             </article>
+             
+            </div>
+            <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="plots.html" class="btn btn-neutral float-right" title="Interactive Plots" accesskey="n" rel="next">Next <img src="../_static/images/chevron-right-orange.svg" class="next-page"></a>
+      
+      
+        <a href="evaluation.html" class="btn btn-neutral" title="Evaluating Models" accesskey="p" rel="prev"><img src="../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
+      
+    </div>
+  
+</footer>
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              <ul>
+<li><a class="reference internal" href="#">Using Aggregations</a><ul>
+<li><a class="reference internal" href="#overview">Overview</a></li>
+<li><a class="reference internal" href="#compute-bounds">Compute bounds</a></li>
+<li><a class="reference internal" href="#count-items">Count items</a></li>
+<li><a class="reference internal" href="#count-values">Count values</a></li>
+<li><a class="reference internal" href="#distinct-values">Distinct values</a></li>
+<li><a class="reference internal" href="#histogram-values">Histogram values</a></li>
+<li><a class="reference internal" href="#schema">Schema</a></li>
+<li><a class="reference internal" href="#sum-values">Sum values</a></li>
+<li><a class="reference internal" href="#min-values">Min values</a></li>
+<li><a class="reference internal" href="#max-values">Max values</a></li>
+<li><a class="reference internal" href="#mean-values">Mean values</a></li>
+<li><a class="reference internal" href="#quantiles">Quantiles</a></li>
+<li><a class="reference internal" href="#standard-deviation">Standard deviation</a></li>
+<li><a class="reference internal" href="#values">Values</a></li>
+<li><a class="reference internal" href="#advanced-usage">Advanced usage</a><ul>
+<li><a class="reference internal" href="#aggregating-list-fields">Aggregating list fields</a></li>
+<li><a class="reference internal" href="#aggregating-expressions">Aggregating expressions</a></li>
+<li><a class="reference internal" href="#batching-aggregations">Batching aggregations</a></li>
+<li><a class="reference internal" href="#transforming-data-before-aggregating">Transforming data before aggregating</a></li>
+<li><a class="reference internal" href="#aggregating-frame-labels">Aggregating frame labels</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  
+
+
+  
+
+     
+       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+         <script src="../_static/jquery.js"></script>
+         <script src="../_static/underscore.js"></script>
+         <script src="../_static/doctools.js"></script>
+         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+         <script src="../_static/js/voxel51-website.js"></script>
+         <script src="../_static/js/custom.js"></script>
+     
+
+  
+
+  <script type="text/javascript" src="../_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="../_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+  <!-- Begin Footer -->
+
+
+<footer class="footer-wrapper" id="docs-tutorials-resources">
+  <div class="footer pytorch-container">
+    <div class="footer__logo">
+      <a href="https://voxel51.com/"
+        ><img
+          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
+      /></a>
+    </div>
+
+    <div class="footer__address">
+      330 E Liberty St<br />
+      Ann Arbor, MI 48104<br />
+      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
+    </div>
+
+    <!--
+    <div class="footer__contact">
+      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
+    </div>
+    -->
+
+    <div class="footer__links">
+      <div class="footer__links--col2">
+        <p class="nav__item--brand">Products</p>
+        <a href="https://voxel51.com/fiftyone/">FiftyOne</a>
+        <a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a>
+        <a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a>
+        <a href="https://voxel51.com/success-stories/">Success Stories</a>
+      </div>
+      <div class="footer__links--col3">
+        <p class="nav__item--brand">Resources</p>
+        <a href="https://voxel51.com/blog/">Blog</a>
+        <a href="https://docs.voxel51.com/">Docs</a>
+        <a href="https://github.com/voxel51/">GitHub</a>
+        <a href="https://community.voxel51.com">Discord</a>
+        <a href="https://voxel51.com/ourstory/">About Us</a>
+        <a href="https://voxel51.com/computer-vision-events/">Events</a>
+        <a href="https://voxel51.com/jobs/">Careers</a>
+        <a href="https://voxel51.com/press/">Press</a>
+      </div>
+    </div>
+
+    <div class="footer__icons">
+      <ul class="list-inline">
+        <li>
+          <a href="https://www.linkedin.com/company/voxel51/">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/voxel51/">
+            <i class="fa-brands fa-github"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/voxel51">
+            <i class="fa-brands fa-twitter"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/voxel51/">
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="footer__copyright">
+      <ul class="list-inline">
+        <li>&copy; 2024 Voxel51 Inc.</li>
+        <li>
+          <a href="https://voxel51.com/privacy/">Privacy Policy</a>
+        </li>
+        <li>
+          <a href="https://voxel51.com/terms/">Terms of Service</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<!-- https://buttons.github.io -->
+<script async defer src="https://buttons.github.io/buttons.js" ></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XD15NFRY3M" ></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+  gtag("config", "G-XD15NFRY3M");
+</script>
+
+<script>
+  function open_modal(modal_id, modal_closer_id) {
+    // Get the modal
+    let the_modal = document.getElementById(modal_id);
+
+    the_modal.style.display = "flex";
+    document.body.style.overflow = "hidden";
+
+    let the_modal_closer = document.getElementById(modal_closer_id);
+
+    // When the user clicks on <span> (x), close the modal
+    the_modal_closer &&
+      (the_modal_closer.onclick = function () {
+        the_modal.style.display = "none";
+      });
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+      if (event.target == the_modal) {
+        the_modal.style.display = "none";
+        document.body.style.overflow = "unset";
+        window.onclick = undefined;
+      }
+    };
+  }
+</script>
+
+<!-- bigpicture.io -->
+<script>
+  !(function (e, t, i) {
+    var r = (e.bigPicture = e.bigPicture || []);
+    if (!r.initialized)
+      if (r.invoked)
+        e.console &&
+          console.error &&
+          console.error("BigPicture.io snippet included twice.");
+      else {
+        (r.invoked = !0),
+          (r.SNIPPET_VERSION = 1.5),
+          (r.handler = function (e) {
+            if (void 0 !== r.callback)
+              try {
+                return r.callback(e);
+              } catch (e) {}
+          }),
+          (r.eventList = ["mousedown", "mouseup", "click", "submit"]),
+          (r.methods = [
+            "track",
+            "identify",
+            "page",
+            "group",
+            "alias",
+            "integration",
+            "ready",
+            "intelReady",
+            "consentReady",
+            "on",
+            "off",
+          ]),
+          (r.factory = function (e) {
+            return function () {
+              var t = Array.prototype.slice.call(arguments);
+              return t.unshift(e), r.push(t), r;
+            };
+          });
+        for (var n = 0; n < r.methods.length; n++) {
+          var o = r.methods[n];
+          r[o] = r.factory(o);
+        }
+        r.getCookie = function (e) {
+          var i = ("; " + t.cookie).split("; " + e + "=");
+          return 2 == i.length && i.pop().split(";").shift();
+        };
+        var c = (r.isEditor = (function () {
+          try {
+            return (
+              e.self !== e.top &&
+              (new RegExp("app" + i, "ig").test(t.referrer) ||
+                "edit" == r.getCookie("_bpr_edit"))
+            );
+          } catch (e) {
+            return !1;
+          }
+        })());
+        r.init = function (n, o) {
+          if (((r.projectId = n), (r._config = o), !c))
+            for (var a = 0; a < r.eventList.length; a++)
+              e.addEventListener(r.eventList[a], r.handler, !0);
+          var s = t.createElement("script");
+          s.async = !0;
+          var d = c ? "/editor/editor" : "/public-" + n;
+          (s.src = "//cdn" + i + d + ".js"),
+            t.getElementsByTagName("head")[0].appendChild(s);
+        };
+      }
+  })(window, document, ".bigpicture.io");
+  bigPicture.init("1646");
+</script>
+
+
+  
+
+  <!-- End Footer -->
+
+  <!-- Begin Mobile Menu -->
+
+  
+
+  <!-- End Mobile Menu -->
+
+  <script type="text/javascript" src="../_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function(e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+</body>
+</html>

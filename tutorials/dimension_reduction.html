@@ -1,0 +1,1333 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Visualizing Data with Dimensionality Reduction Techniques &mdash; FiftyOne 1.3.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <link rel="stylesheet" href="../_static/css/voxel51-website.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Zero-Shot Image Classification with Multimodal Models and FiftyOne" href="zero_shot_classification.html" />
+    <link rel="prev" title="Monocular Depth Estimation with FiftyOne" href="monocular_depth_estimation.html" />
+<meta property="og:image" content="https://voxel51.com/wp-content/uploads/2024/03/3.24_webpages_Home_AV.png" />
+
+<link
+  href="https://fonts.googleapis.com/css?family=Palanquin:400,600,700,800"
+  rel="stylesheet"
+/>
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+  rel="stylesheet"
+/>
+<script src="https://tag.clearbitscripts.com/v1/pk_b9ed71c8234edd4f77326bcbfab5a4ca/tags.js"></script>
+
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+  
+</head>
+
+
+<div class="container-fluid header-holder tutorials-header" id="header-holder">
+  <nav id="nav__main" class="nav__main">
+    <div class="nav__main__logo">
+      <a href="https://voxel51.com/">
+        <img
+          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
+        />
+      </a>
+    </div>
+
+    <div class="nav__spacer desktop_only"></div>
+
+    <div id="nav__main__mobilebutton--on">
+      <a href="javascript:void(0);" onclick="navMobileButton()">
+        <i class="fa-solid fa-bars"></i>
+      </a>
+    </div>
+
+    <div id="nav__main__mobilebutton--off">
+      <a href="javascript:void(0);" onclick="navMobileButton()">
+        <i class="fa-solid fa-times"></i>
+      </a>
+    </div>
+
+    <div id="nav__main__items">
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Products</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://voxel51.com/fiftyone/">Open Source</a></li>
+            <li><a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a></li>
+            <li><a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a></li>
+            <li><a href="https://voxel51.com/success-stories/">Success Stories</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Learn</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://community.voxel51.com">Community Discord</a></li>
+            <li><a href="https://voxel51.com/blog/">Blog</a></li>
+            <li><a href="https://voxel51.com/computer-vision-events/">Events</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item">
+        <a href="https://docs.voxel51.com/">Docs</a>
+      </div>
+
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Company</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://voxel51.com/ourstory/">About Us</a></li>
+            <li><a href="https://voxel51.com/jobs/">Careers</a></li>
+            <li><a href="https://voxel51.com/talk-to-sales/">Talk to Sales</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item mobile_only">
+        <a href="https://github.com/voxel51/fiftyone">GitHub</a>
+      </div>
+
+      <div class="nav__item desktop_only" id="octocat">
+        <!-- https://buttons.github.io -->
+        <a
+          class="github-button"
+          href="https://github.com/voxel51/fiftyone"
+          data-color-scheme="no-preference: dark_high_contrast; light: dark_high_contrast; dark: dark_high_contrast;"
+          data-size="large"
+          data-show-count="true"
+          aria-label="Star voxel51/fiftyone on GitHub"
+          >Star</a
+        >
+      </div>
+
+      <div class="nav__item full_nav_only">
+        <a class="button-primary" href="https://voxel51.com/schedule-teams-workshop/" target="_blank"
+          >Schedule a workshop</a
+        >
+      </div>
+    </div>
+  </nav>
+</div>
+
+
+
+<body class="pytorch-body">
+
+   
+
+    
+
+    <div class="table-of-contents-link-wrapper">
+      <span>Table of Contents</span>
+      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+    </div>
+
+    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+      <div class="pytorch-side-scroll">
+        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          <div class="pytorch-left-menu-search">
+            
+
+            
+              
+              
+            
+
+            
+
+
+  
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+            
+          </div>
+
+           <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../teams/index.html">FiftyOne Teams 🚀</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../environments/index.html">Environments</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="pandas_comparison.html">pandas and FiftyOne</a></li>
+<li class="toctree-l2"><a class="reference internal" href="evaluate_detections.html">Evaluating object detections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="evaluate_classifications.html">Evaluating a classifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="image_embeddings.html">Using image embeddings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cvat_annotation.html">Annotating with CVAT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="labelbox_annotation.html">Annotating with Labelbox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open_images.html">Working with Open Images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="detectron2.html">Training with Detectron2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uniqueness.html">Exploring image uniqueness</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classification_mistakes.html">Finding class mistakes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="detection_mistakes.html">Finding detection mistakes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qdrant.html">Embeddings with Qdrant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="yolov8.html">Fine-tuning YOLOv8 models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pointe.html">3D point clouds with Point-E</a></li>
+<li class="toctree-l2"><a class="reference internal" href="monocular_depth_estimation.html">Monocular depth estimation</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Dimensionality reduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="zero_shot_classification.html">Zero-shot classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_augmentation.html">Data augmentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clustering.html">Clustering images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="small_object_detection.html">Detecting small objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="anomaly_detection.html">Anomaly detection</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../recipes/index.html">Recipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheat_sheets/index.html">Cheat Sheets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dataset_zoo/index.html">Dataset Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_zoo/index.html">Model Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brain.html">FiftyOne Brain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/index.html">Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plugins/index.html">Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli/index.html">CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/fiftyone.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deprecation.html">Deprecation Notices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a></li>
+</ul>
+ 
+        </div>
+      </div>
+    </nav>
+
+    <div class="pytorch-container">
+      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+        <div class="pytorch-breadcrumbs-wrapper">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="../index.html">
+          
+            Docs
+          
+        </a> &gt;
+      </li>
+
+        
+          <li><a href="index.html">FiftyOne Tutorials</a> &gt;</li>
+        
+      <li>Visualizing Data with Dimensionality Reduction Techniques</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+        </div>
+
+        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+          Contents
+        </div>
+      </div>
+
+      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+        <div class="pytorch-content-left">
+
+        
+          
+          <div class="rst-content style-external-links">
+          
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+              
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    /*background: #f5f5f5;*/
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+    margin: 0;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt .copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+</style>
+<table class="fo-notebook-links" align="left">
+    <td>
+        <a target="_blank" href="https://colab.research.google.com/github/voxel51/fiftyone/blob/v1.3.0/docs/source/tutorials/dimension_reduction.ipynb">
+            <img src="../_static/images/icons/colab-logo-256px.png"> &nbsp; Run in Google Colab
+        </a>
+    </td>
+    <td>
+        <a target="_blank" href="https://github.com/voxel51/fiftyone/blob/v1.3.0/docs/source/tutorials/dimension_reduction.ipynb">
+            <img src="../_static/images/icons/github-logo-256px.png"> &nbsp; View source on GitHub
+        </a>
+    </td>
+    <td>
+        <a target="_blank" href="https://raw.githubusercontent.com/voxel51/fiftyone/v1.3.0/docs/source/tutorials/dimension_reduction.ipynb" download>
+            <img src="../_static/images/icons/cloud-icon-256px.png"> &nbsp; Download notebook
+        </a>
+    </td>
+</table><div class="section" id="Visualizing-Data-with-Dimensionality-Reduction-Techniques">
+<h1>Visualizing Data with Dimensionality Reduction Techniques<a class="headerlink" href="#Visualizing-Data-with-Dimensionality-Reduction-Techniques" title="Permalink to this headline">¶</a></h1>
+<p>In this walkthrough, you’ll learn how to run PCA, t-SNE, UMAP, and custom dimensionality reduction techniques on your data in FiftyOne!</p>
+<p>It covers the following:</p>
+<ul class="simple">
+<li><p>Why dimensionality reduction is useful</p></li>
+<li><p>Strengths and weaknesses of different dimensionality reduction techniques</p></li>
+<li><p>Running built-in dimensionality reduction techniques in FiftyOne</p></li>
+<li><p>Running custom dimensionality reduction techniques in FiftyOne</p></li>
+</ul>
+<div class="section" id="Why-Dimensionality-Reduction?">
+<h2>Why Dimensionality Reduction?<a class="headerlink" href="#Why-Dimensionality-Reduction?" title="Permalink to this headline">¶</a></h2>
+<p>These days, everyone is excited about embeddings — numeric vectors that represent features of your input data. In computer vision for instance, image embeddings are used in reverse image search applications. And in the context of large language models (LLMs), documents are chunked and embedded (with text embedding models) for retrieval augmented generation (RAG).</p>
+<p>Embeddings are incredibly powerful, but given their high dimensionality (with lengths typically between 384 and 4096), they can be hard for humans to interpret and inspect. This is where dimensionality reduction techniques come in handy!</p>
+<p>Dimensionality reduction techniques are quantitative methods for representing information from a higher dimensional space in a lower dimensional space. By squeezing our embeddings into two or three dimensions, we can visualize them to get a more intuitive understanding of the “hidden” structure in our data.</p>
+<p>When we project high dimensional data into a low dimensional space, we implicitly make a trade-off between representational complexity and interpretability. To compress embeddings, dimensionality reduction techniques make assumptions about the underlying data, its distribution, and the relationships between variables.</p>
+<p>In this post, we will visualize embeddings using four popular dimensionality reduction techniques: PCA, t-SNE, and UMAP. We will give a brief overview of the strengths, weaknesses, and assumptions of each technique. And we will illustrate that both the model used to generate embeddings, and the dimensionality reduction technique play essential roles in shaping the visualization of your data.</p>
+<p><em>It is also important to note that dimensionality reduction techniques often have hyperparameters, which can have non-negligible impacts on the results. In this post, I am going to use the default hyperparameters everywhere that choices arise. Feel free to modify as you see fit!</em></p>
+</div>
+<div class="section" id="Setup">
+<h2>Setup<a class="headerlink" href="#Setup" title="Permalink to this headline">¶</a></h2>
+<p>For this walkthrough, we will be using the FiftyOne library for data management and visualization. We will use <a class="reference external" href="https://scikit-learn.org/stable/">scikit-learn</a> for PCA and t-SNE, and <a class="reference external" href="https://umap-learn.readthedocs.io/en/latest/#">umap-learn</a> for UMAP dimension reduction implementations:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span>fiftyone<span class="w"> </span>scikit-learn<span class="w"> </span>umap-learn
+</pre></div>
+</div>
+</div>
+<p>We will be using the test split of the <a class="reference external" href="https://www.cs.toronto.edu/~kriz/cifar.html">CIFAR-10</a> dataset as our testbed, which contains 10,000 images of size 32x32 pixels, spanning 10 image classes. We can load the dataset/split directly from the <a class="reference external" href="https://docs.voxel51.com/user_guide/dataset_zoo/datasets.html">FiftyOne Dataset Zoo</a>:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.brain</span> <span class="k">as</span> <span class="nn">fob</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;cifar10&quot;</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="s2">&quot;test&quot;</span><span class="p">)</span>
+<span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p><img alt="CIFAR-10" src="../_images/dimension_reduction_cifar10_base_dataset.png" /></p>
+<p>We will compare and contrast our four dimensionality reduction techniques with two image embedding models: <a class="reference external" href="https://pytorch.org/vision/main/models/generated/torchvision.models.resnet101.html">ResNet-101</a> and <a class="reference external" href="https://github.com/openai/CLIP">CLIP</a>. Whereas ResNet-101 is a more traditional vision model, representing the relationships between pixels and patches in images, CLIP captures more of the semantic content of the images.</p>
+<p>We can load both from the <a class="reference external" href="https://docs.voxel51.com/user_guide/model_zoo/index.html">FiftyOne Model Zoo</a>:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clip</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_model</span><span class="p">(</span><span class="s2">&quot;clip-vit-base32-torch&quot;</span><span class="p">)</span>
+<span class="n">resnet101</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_model</span><span class="p">(</span><span class="s2">&quot;resnet101-imagenet-torch&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Then generating embeddings for each model amounts to making a single call to the dataset’s <code class="docutils literal notranslate"><span class="pre">compute_embeddings()</span></code> method:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## compute and store resnet101 embeddings</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">compute_embeddings</span><span class="p">(</span>
+    <span class="n">resnet101</span><span class="p">,</span>
+    <span class="n">embeddings_field</span><span class="o">=</span><span class="s2">&quot;resnet101_embeddings&quot;</span>
+<span class="p">)</span>
+
+<span class="c1">## compute and store clip embeddings</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">compute_embeddings</span><span class="p">(</span>
+    <span class="n">clip</span><span class="p">,</span>
+    <span class="n">embeddings_field</span><span class="o">=</span><span class="s2">&quot;clip_embeddings&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Dimensionality-Reduction-API-in-FiftyOne">
+<h2>Dimensionality Reduction API in FiftyOne<a class="headerlink" href="#Dimensionality-Reduction-API-in-FiftyOne" title="Permalink to this headline">¶</a></h2>
+<p>Before we dive into the details of each dimensionality reduction technique, let’s recap the API for running dimensionality reduction in FiftyOne. The <a class="reference external" href="https://docs.voxel51.com/user_guide/brain.html">FiftyOne Brain</a> provides a <a class="reference external" href="https://docs.voxel51.com/api/fiftyone.brain.html#fiftyone.brain.compute_visualization">compute_visualization()</a> function that can be used to run dimensionality reduction on your data.</p>
+<p>The first and only positional argument to this function is a sample collection, which can be either a <a class="reference external" href="https://docs.voxel51.com/user_guide/using_datasets.html#datasets">Dataset</a> or a <a class="reference external" href="https://docs.voxel51.com/user_guide/using_views.html">DatasetView</a>.</p>
+<p>Beyond that, you need to specify the following three things: 1. <em>What</em> you want to reduce the dimensionality of. 2. <em>How</em> you want to reduce the dimensionality. 3. <em>Where</em> you want to store the results.</p>
+<div class="section" id="What-to-reduce-the-dimensionality-of">
+<h3>What to reduce the dimensionality of<a class="headerlink" href="#What-to-reduce-the-dimensionality-of" title="Permalink to this headline">¶</a></h3>
+<p>There are multiple ways to specify what you would like dimension-reduced. Here are a few options (but certainly not all of them!):</p>
+<ul class="simple">
+<li><p>You can specify the name of the field containing the embeddings you would like to reduce using the <code class="docutils literal notranslate"><span class="pre">embeddings</span></code> argument. If your embeddings are stored in field “my_embeddings_field” on your samples, you would employ the syntax <code class="docutils literal notranslate"><span class="pre">embeddings=&quot;my_embeddings_field&quot;</span></code>. This is useful if you need to reuse the same embeddings for multiple dimensionality reduction techniques, or for other brain methods.</p></li>
+<li><p>You can pass the embeddings in directly using as numpy array, also via the <code class="docutils literal notranslate"><span class="pre">embeddings</span></code> argument. This is useful if you have already computed your embeddings, and don’t need to store them on your samples.</p></li>
+<li><p>You can specify the <em>model</em> you would like to use to generate embeddings. This can be:</p>
+<ul>
+<li><p>A <code class="docutils literal notranslate"><span class="pre">FiftyOne.Model</span></code> instance</p></li>
+<li><p>The name (a string) of a model from the model zoo, in which case the model by that will be loaded from the FiftyOne Model Zoo.</p></li>
+<li><p>A Hugging Face Transformers model, in which case the model will be converted to a <code class="docutils literal notranslate"><span class="pre">FiftyOne.Model</span></code> instance. See the <a class="reference external" href="https://docs.voxel51.com/integrations/huggingface.html">Hugging Face integration docs</a> for more details.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="How-to-reduce-the-dimensionality">
+<h3>How to reduce the dimensionality<a class="headerlink" href="#How-to-reduce-the-dimensionality" title="Permalink to this headline">¶</a></h3>
+<p>You can specify the base dimensionality reduction technique to use via the <code class="docutils literal notranslate"><span class="pre">method</span></code> argument. This can be one of the following strings: <code class="docutils literal notranslate"><span class="pre">pca</span></code>, <code class="docutils literal notranslate"><span class="pre">tsne</span></code>, <code class="docutils literal notranslate"><span class="pre">umap</span></code>, or <code class="docutils literal notranslate"><span class="pre">manual</span></code>.</p>
+<p>For <code class="docutils literal notranslate"><span class="pre">pca</span></code>, <code class="docutils literal notranslate"><span class="pre">tsne</span></code>, and <code class="docutils literal notranslate"><span class="pre">umap</span></code>, you can specify the number of dimensions to reduce to via the <code class="docutils literal notranslate"><span class="pre">num_dims</span></code> argument. Additionally, you can specify hyperparameters for each technique as kwargs. For a complete description of available options, check out the visualization configs: <a class="reference external" href="https://docs.voxel51.com/api/fiftyone.brain.visualization.html#fiftyone.brain.visualization.TSNEVisualizationConfig">TSNEVisualizationConfig</a>,
+<a class="reference external" href="https://docs.voxel51.com/api/fiftyone.brain.visualization.html#fiftyone.brain.visualization.UMAPVisualizationConfig">UMAPVisualizationConfig</a>, and <a class="reference external" href="https://docs.voxel51.com/api/fiftyone.brain.visualization.html#fiftyone.brain.visualization.PCAVisualizationConfig">PCAVisualizationConfig</a>.</p>
+<p>You can use <code class="docutils literal notranslate"><span class="pre">method=&quot;manual&quot;</span></code> if you already have the dimensionality-reduced data, and just want to store it on your samples for visualization purposes.</p>
+</div>
+<div class="section" id="Where-to-store-the-results">
+<h3>Where to store the results<a class="headerlink" href="#Where-to-store-the-results" title="Permalink to this headline">¶</a></h3>
+<p>Once you have specified what you want to reduce the dimensionality of, and how you want to do it, you need to specify where you want to store the results. This is done via the <code class="docutils literal notranslate"><span class="pre">brain_key</span></code> argument. Once you have run the <code class="docutils literal notranslate"><span class="pre">compute_visualization()</span></code> method, you will be able to select this brain key in the FiftyOne App to visualize the results. You can also use the brain key to access the results programmatically:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.brain</span> <span class="k">as</span> <span class="nn">fob</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;cifar10&quot;</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="s2">&quot;test&quot;</span><span class="p">)</span>
+
+<span class="c1">## Compute PCA visualization</span>
+<span class="n">fob</span><span class="o">.</span><span class="n">compute_visualization</span><span class="p">(</span>
+    <span class="n">dataset</span><span class="p">,</span>
+    <span class="n">embeddings</span><span class="o">=</span><span class="s2">&quot;resnet101&quot;</span><span class="p">,</span>
+    <span class="n">method</span><span class="o">=</span><span class="s2">&quot;pca&quot;</span><span class="p">,</span>
+    <span class="n">brain_key</span><span class="o">=</span><span class="s2">&quot;pca_resnet101&quot;</span>
+<span class="p">)</span>
+
+<span class="c1">## Access results</span>
+<span class="n">pca_resnet_results</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">load_brain_results</span><span class="p">(</span><span class="s2">&quot;pca_resnet101&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="Dimensionality-Reduction-with-PCA">
+<h2>Dimensionality Reduction with PCA<a class="headerlink" href="#Dimensionality-Reduction-with-PCA" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Principal_component_analysis">Principal Component Analysis</a>, or PCA, is a dimensionality reduction technique that seeks to preserve as much variance as possible. Intuitively, PCA finds a set of orthogonal axes (principal components) that jointly “explain” as much of the variation in the data as possible. Mathematically, you can interpret PCA algorithms as effectively performing singular value decompositions and truncating the number of dimensions by eliminating
+the singular vectors with the smallest eigenvalues.</p>
+<p><strong>Strengths</strong></p>
+<ul class="simple">
+<li><p>Simple, intuitive, and efficient for large datasets!</p></li>
+<li><p>PCA is amenable to new data: If you have precomputed the transformation on an initial set of embeddings, you can apply that transformation to new embeddings and immediately visualize them in the same space.</p></li>
+</ul>
+<p><strong>Limitations</strong></p>
+<ul class="simple">
+<li><p>Assumes that the relationships between variables are linear — an assumption which often does not hold when the inputs are embeddings, which themselves come from highly nonlinear deep neural networks</p></li>
+<li><p>Very susceptible to outliers.</p></li>
+</ul>
+<div class="section" id="Running-PCA-on-Embeddings">
+<h3>Running PCA on Embeddings<a class="headerlink" href="#Running-PCA-on-Embeddings" title="Permalink to this headline">¶</a></h3>
+<p>PCA is natively supported by the FiftyOne Brain’s <code class="docutils literal notranslate"><span class="pre">compute_visualization()</span></code>. To reduce dimensionality for a set of embeddings, we can specify the field the embeddings are stored in, and pass in <code class="docutils literal notranslate"><span class="pre">method=&quot;pca&quot;</span></code>. In the app, we can open up an Embeddings panel to view the results:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## PCA with ResNet101 embeddings</span>
+<span class="n">fob</span><span class="o">.</span><span class="n">compute_visualization</span><span class="p">(</span>
+    <span class="n">dataset</span><span class="p">,</span>
+    <span class="n">embeddings</span><span class="o">=</span><span class="s2">&quot;resnet101_embeddings&quot;</span><span class="p">,</span>
+    <span class="n">method</span><span class="o">=</span><span class="s2">&quot;pca&quot;</span><span class="p">,</span>
+    <span class="n">brain_key</span><span class="o">=</span><span class="s2">&quot;resnet101_pca&quot;</span>
+<span class="p">)</span>
+
+<span class="c1">## PCA with CLIP embeddings</span>
+<span class="n">fob</span><span class="o">.</span><span class="n">compute_visualization</span><span class="p">(</span>
+    <span class="n">dataset</span><span class="p">,</span>
+    <span class="n">embeddings</span><span class="o">=</span><span class="s2">&quot;clip_embeddings&quot;</span><span class="p">,</span>
+    <span class="n">method</span><span class="o">=</span><span class="s2">&quot;pca&quot;</span><span class="p">,</span>
+    <span class="n">brain_key</span><span class="o">=</span><span class="s2">&quot;resnet101_pca&quot;</span>
+<span class="p">)</span>
+
+<span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p><img alt="Loading visualization" src="../_images/dimension_reduction_load_resnet101_pca.gif" /></p>
+<p>We can color by any attribute on our samples — in this case the ground truth label — and filter the contents of the sample grid interactively by selecting regions in the embeddings panel.</p>
+<p><img alt="color-by-label" src="../_images/dimension_reduction_clip_pca.png" /></p>
+<p>For both the CLIP and ResNet-101 embeddings, the PCA plot does seem to very loosely retain information from the embeddings (and the original images). However, when we color by label, there is substantial overlap from one class to another.</p>
+<p>Restricting the CLIP PCA view to just automobiles, trucks, and ships, we can see that the distributions for all three classes are essentially identical, aside from the ships extending slightly farther out.</p>
+<p><img alt="PCA-overlap" src="../_images/dimension_reduction_clip_pca_overlap.png" /></p>
+</div>
+</div>
+<div class="section" id="Dimensionality-Reduction-with-t-SNE">
+<h2>Dimensionality Reduction with t-SNE<a class="headerlink" href="#Dimensionality-Reduction-with-t-SNE" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/T-distributed_stochastic_neighbor_embedding">t-Distributed Stochastic Neighbor Embedding</a>, or t-SNE, is a nonlinear dimensionality reduction technique that aims to, roughly speaking, keep neighbors close. More precisely, t-SNE takes the initial, high-dimensional data (in our case embedding vectors) and computes the similarity between inputs. The algorithm then attempts to learn a lower-dimensional representation which preserves as much of the similarity as
+possible. Mathematically, this learning is achieved by minimizing the <a class="reference external" href="https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence">Kullback-Leibler divergence</a> between the high-dimensional (fixed) and low-dimensional (trained) distributions.</p>
+<p><strong>Strengths</strong></p>
+<ul class="simple">
+<li><p>t-SNE is nonlinear, making it a much better fit for (embeddings computed on) datasets like MNIST and CIFAR-10.</p></li>
+<li><p>The technique is good at preserving local structure, making it easy to see clustering in data!</p></li>
+</ul>
+<p><strong>Limitations</strong></p>
+<ul class="simple">
+<li><p>t-SNE relies on random initialization, so good fits are not guaranteed Still sensitive to outliers</p></li>
+<li><p>Not scalable: for a dataset with n samples, t-SNE takes <span class="math notranslate nohighlight">\(\mathcal{O}(n^2)\)</span> time to run, and requires <span class="math notranslate nohighlight">\(\mathcal{O}(n^2)\)</span> space to operate</p></li>
+</ul>
+<div class="section" id="Running-t-SNE-on-Embeddings">
+<h3>Running t-SNE on Embeddings<a class="headerlink" href="#Running-t-SNE-on-Embeddings" title="Permalink to this headline">¶</a></h3>
+<p>Like PCA, t-SNE is natively supported by the FiftyOne Brain’s <code class="docutils literal notranslate"><span class="pre">compute_visualization()</span></code>, so we can run dimensionality reduction on our embeddings by passing <code class="docutils literal notranslate"><span class="pre">method=&quot;tsne&quot;</span></code>:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## t-SNE with ResNet101 embeddings</span>
+<span class="n">fob</span><span class="o">.</span><span class="n">compute_visualization</span><span class="p">(</span>
+    <span class="n">dataset</span><span class="p">,</span>
+    <span class="n">embeddings</span><span class="o">=</span><span class="s2">&quot;resnet101_embeddings&quot;</span><span class="p">,</span>
+    <span class="n">method</span><span class="o">=</span><span class="s2">&quot;tsne&quot;</span><span class="p">,</span>
+    <span class="n">brain_key</span><span class="o">=</span><span class="s2">&quot;resnet101_tsne&quot;</span>
+<span class="p">)</span>
+
+<span class="c1">## t-SNE with CLIP embeddings</span>
+<span class="n">fob</span><span class="o">.</span><span class="n">compute_visualization</span><span class="p">(</span>
+    <span class="n">dataset</span><span class="p">,</span>
+    <span class="n">embeddings</span><span class="o">=</span><span class="s2">&quot;clip_embeddings&quot;</span><span class="p">,</span>
+    <span class="n">method</span><span class="o">=</span><span class="s2">&quot;tsne&quot;</span><span class="p">,</span>
+    <span class="n">brain_key</span><span class="o">=</span><span class="s2">&quot;resnet101_tsne&quot;</span>
+<span class="p">)</span>
+
+<span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Looking at the results of t-SNE dimensionality reduction on both ResNet-101 and CLIP embeddings, we can see a lot more separation between the distributions of different classes.</p>
+<p><img alt="tsne-resnet101" src="../_images/dimension_reduction_resnet_tsne.png" /></p>
+<p>In both cases, similar classes are still close to each other — for instance, automobiles and trucks are adjacent — but we can also mostly distinguish a main cluster for almost every class. In other words, t-SNE does a very good job at capturing local structure, and a decent job at capturing global structure.</p>
+<p><img alt="tsne-clip" src="../_images/dimension_reduction_clip_tsne.png" /></p>
+</div>
+</div>
+<div class="section" id="Dimensionality-Reduction-with-UMAP">
+<h2>Dimensionality Reduction with UMAP<a class="headerlink" href="#Dimensionality-Reduction-with-UMAP" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://umap-learn.readthedocs.io/en/latest/">Uniform Manifold Approximation and Projection</a> (UMAP) is a nonlinear dimensionality reduction technique based on the mathematics of <a class="reference external" href="https://en.wikipedia.org/wiki/Topology">topology</a>. I won’t go into the gory details, as there is an excellent visual explanation of the approach <a class="reference external" href="https://umap-learn.readthedocs.io/en/latest/how_umap_works.html">here</a>, but in essence, UMAP treats the input data as points lying on a special kind of surface
+called a manifold (technically here a <a class="reference external" href="https://en.wikipedia.org/wiki/Riemannian_manifold">Riemannian manifold</a>), and tries to learn a lower dimensional representation of the manifold. This explicitly takes global structure into consideration, as opposed to t-SNE, which concerns itself with keeping neighbors close (local structure).</p>
+<p><strong>Strengths</strong></p>
+<ul class="simple">
+<li><p>Preserves both global and local structure</p></li>
+<li><p>Better scaling than t-SNE with dataset size</p></li>
+</ul>
+<p><strong>Limitations</strong></p>
+<ul class="simple">
+<li><p>Like t-SNE, UMAP relies on randomness, and is dependent upon hyperparameters</p></li>
+<li><p>UMAP assumes that the manifold is locally connected. This can cause problems if there are a few data points that are very far away from the rest of the data.</p></li>
+</ul>
+<div class="section" id="Running-UMAP-on-Embeddings">
+<h3>Running UMAP on Embeddings<a class="headerlink" href="#Running-UMAP-on-Embeddings" title="Permalink to this headline">¶</a></h3>
+<p>Like PCA and t-SNE, UMAP is natively supported by the FiftyOne Brain’s <code class="docutils literal notranslate"><span class="pre">compute_visualization()</span></code>, so we can run dimensionality reduction on our embeddings by passing <code class="docutils literal notranslate"><span class="pre">method=&quot;umap&quot;</span></code>:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## UMAP with ResNet101 embeddings</span>
+<span class="n">fob</span><span class="o">.</span><span class="n">compute_visualization</span><span class="p">(</span>
+    <span class="n">dataset</span><span class="p">,</span>
+    <span class="n">embeddings</span><span class="o">=</span><span class="s2">&quot;resnet101_embeddings&quot;</span><span class="p">,</span>
+    <span class="n">method</span><span class="o">=</span><span class="s2">&quot;umap&quot;</span><span class="p">,</span>
+    <span class="n">brain_key</span><span class="o">=</span><span class="s2">&quot;resnet101_umap&quot;</span>
+<span class="p">)</span>
+
+<span class="c1">## UMAP with CLIP embeddings</span>
+<span class="n">fob</span><span class="o">.</span><span class="n">compute_visualization</span><span class="p">(</span>
+    <span class="n">dataset</span><span class="p">,</span>
+    <span class="n">embeddings</span><span class="o">=</span><span class="s2">&quot;clip_embeddings&quot;</span><span class="p">,</span>
+    <span class="n">method</span><span class="o">=</span><span class="s2">&quot;umap&quot;</span><span class="p">,</span>
+    <span class="n">brain_key</span><span class="o">=</span><span class="s2">&quot;resnet101_umap&quot;</span>
+<span class="p">)</span>
+
+<span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p><img alt="UMAP-resnet101" src="../_images/dimension_reduction_resnet_umap.png" /></p>
+<p>For both sets of embeddings, the clusters are a lot more spread out than with t-SNE. For ResNet-101, all of the vehicles (automobile, truck, airplane, ship) are in one mega-cluster — or two smaller clusters, depending on how you view it — and all of the animals are in another mega-cluster.</p>
+<p><img alt="UMAP-CLIP" src="../_images/dimension_reduction_clip_umap.png" /></p>
+<p>Interestingly, for the CLIP embeddings, we see that the <code class="docutils literal notranslate"><span class="pre">airplane</span></code> cluster is situated close to both <code class="docutils literal notranslate"><span class="pre">bird</span></code> and <code class="docutils literal notranslate"><span class="pre">ship</span></code>. The <code class="docutils literal notranslate"><span class="pre">car</span></code> and <code class="docutils literal notranslate"><span class="pre">truck</span></code> clusters are very close together; and the <code class="docutils literal notranslate"><span class="pre">cat</span></code> and <code class="docutils literal notranslate"><span class="pre">dog</span></code> clusters are very close together.</p>
+</div>
+</div>
+<div class="section" id="Dimensionality-Reduction-with-Custom-Methods">
+<h2>Dimensionality Reduction with Custom Methods<a class="headerlink" href="#Dimensionality-Reduction-with-Custom-Methods" title="Permalink to this headline">¶</a></h2>
+<p>Depending on the specific structure of your data, you may find that none of the techniques detailed above provide an intuitive view into your data. Fortunately, there are tons of other techniques you can use. In this section, we’ll show you how to run custom dimensionality reduction techniques with FiftyOne.</p>
+<div class="section" id="Isomap">
+<h3>Isomap<a class="headerlink" href="#Isomap" title="Permalink to this headline">¶</a></h3>
+<p>Like UMAP, Isomap is also a nonlinear manifold learning technique. Isomap is built into scikit-learn, so we can fit our high-dimensional data and generate low-dimensional transformed data points as follows:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">sklearn.manifold</span> <span class="kn">import</span> <span class="n">Isomap</span>
+
+<span class="c1">## get embeddings from dataset</span>
+<span class="n">embeddings</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;resnet101_embeddings&quot;</span><span class="p">))</span>
+
+<span class="c1">## create and fit</span>
+<span class="n">manifold_embedding</span> <span class="o">=</span> <span class="n">Isomap</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">manifold_embedding</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">embeddings</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>We can then create a visualization in FiftyOne by passing <code class="docutils literal notranslate"><span class="pre">method=’manual’</span></code> into <code class="docutils literal notranslate"><span class="pre">compute_visualization()</span></code> and providing these lower-dimensional points via the <code class="docutils literal notranslate"><span class="pre">points</span></code> argument:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fob</span><span class="o">.</span><span class="n">compute_visualization</span><span class="p">(</span>
+    <span class="n">dataset</span><span class="p">,</span>
+    <span class="n">method</span><span class="o">=</span><span class="s1">&#39;manual&#39;</span><span class="p">,</span>
+    <span class="n">points</span><span class="o">=</span><span class="n">z</span><span class="p">,</span>
+    <span class="n">brain_key</span><span class="o">=</span><span class="s1">&#39;resnet101_isomap&#39;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p><img alt="Isomap" src="../_images/dimension_reduction_resnet_isomap.png" /></p>
+<p>Any dimensionality reduction method supported by scikit-learn can be used in analogous fashion.</p>
+</div>
+<div class="section" id="CompressionVAE">
+<h3>CompressionVAE<a class="headerlink" href="#CompressionVAE" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://github.com/maxfrenzel/CompressionVAE">CompressionVAE</a> uses Variational Autoencoders to deterministically and reversibly transform the high-dimensional data into a lower dimensional space.</p>
+<p>To run CompressionVAE, clone this forked repo:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/jacobmarks/CompressionVAE.git
+</pre></div>
+</div>
+</div>
+<p>Then <code class="docutils literal notranslate"><span class="pre">cd</span></code> into the directory and install the package locally:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="nb">cd</span><span class="w"> </span>CompressionVAE
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>.
+</pre></div>
+</div>
+</div>
+<p>Embed the input data (embeddings) into a lower-dimensional space, and create a visualization in FiftyOne via the same <code class="docutils literal notranslate"><span class="pre">manual</span></code> method:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cvae</span> <span class="kn">import</span> <span class="n">cvae</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;clip_embeddings&quot;</span><span class="p">))</span>
+<span class="n">embedder</span> <span class="o">=</span> <span class="n">cvae</span><span class="o">.</span><span class="n">CompressionVAE</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">embedder</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">embedder</span><span class="o">.</span><span class="n">embed</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="n">fob</span><span class="o">.</span><span class="n">compute_visualization</span><span class="p">(</span>
+    <span class="n">dataset</span><span class="p">,</span>
+    <span class="n">method</span><span class="o">=</span><span class="s1">&#39;manual&#39;</span><span class="p">,</span>
+    <span class="n">points</span><span class="o">=</span><span class="n">z</span><span class="p">,</span>
+    <span class="n">brain_key</span><span class="o">=</span><span class="s1">&#39;clip_cvae&#39;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p><img alt="CompressionVAE" src="../_images/dimension_reduction_cvae_clip.png" /></p>
+</div>
+</div>
+<div class="section" id="Advanced-Dimensionality-Reduction-in-FiftyOne">
+<h2>Advanced Dimensionality Reduction in FiftyOne<a class="headerlink" href="#Advanced-Dimensionality-Reduction-in-FiftyOne" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Registerting-Custom-Visualization-Methods">
+<h3>Registerting Custom Visualization Methods<a class="headerlink" href="#Registerting-Custom-Visualization-Methods" title="Permalink to this headline">¶</a></h3>
+<p>If you find yourself running the same custom dimensionality reduction technique like Isomap or CompressionVAE over and over again, you can create a custom visualization config to make your life easier. This is done by subclassing the <a class="reference external" href="https://docs.voxel51.com/api/fiftyone.brain.visualization.html#fiftyone.brain.visualization.VisualizationConfig">VisualizationConfig</a> and
+<a class="reference external" href="https://docs.voxel51.com/api/fiftyone.brain.visualization.html#fiftyone.brain.visualization.Visualization">Visualization</a> classes.</p>
+<p>Here’s a simple example using Isomap:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">sklearn.manifold</span> <span class="kn">import</span> <span class="n">Isomap</span>
+
+<span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.brain</span> <span class="k">as</span> <span class="nn">fob</span>
+
+<span class="k">class</span> <span class="nc">IsomapVisualizationConfig</span><span class="p">(</span><span class="n">fob</span><span class="o">.</span><span class="n">VisualizationConfig</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_neighbors</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_neighbors</span> <span class="o">=</span> <span class="n">n_neighbors</span>
+
+
+<span class="k">class</span> <span class="nc">IsomapVisualization</span><span class="p">(</span><span class="n">fob</span><span class="o">.</span><span class="n">Visualization</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">embeddings</span><span class="p">):</span>
+        <span class="n">manifold_embedding</span> <span class="o">=</span> <span class="n">Isomap</span><span class="p">(</span>
+            <span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+            <span class="n">n_neighbors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">n_neighbors</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">manifold_embedding</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">embeddings</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>You can then use this by passing in the new visualization config in for the <code class="docutils literal notranslate"><span class="pre">method</span></code> argument:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_model</span><span class="p">(</span><span class="s2">&quot;clip-vit-base32-torch&quot;</span><span class="p">)</span>
+<span class="n">embeddings</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">compute_embeddings</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+
+<span class="n">results2</span> <span class="o">=</span> <span class="n">fob</span><span class="o">.</span><span class="n">compute_visualization</span><span class="p">(</span>
+    <span class="n">dataset</span><span class="p">,</span>
+    <span class="n">embeddings</span><span class="o">=</span><span class="n">embeddings</span><span class="p">,</span>
+    <span class="n">method</span><span class="o">=</span><span class="n">IsomapVisualizationConfig</span><span class="p">,</span>
+    <span class="n">brain_key</span><span class="o">=</span><span class="s2">&quot;isomap&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Dimensionality-Reduction-with-Object-Patches">
+<h3>Dimensionality Reduction with Object Patches<a class="headerlink" href="#Dimensionality-Reduction-with-Object-Patches" title="Permalink to this headline">¶</a></h3>
+<p>All of the dimensionality reduction techniques we have discussed so far have been applied to embeddings computed on entire images. However, you can also apply dimensionality reduction to embeddings computed on object patches. This can be useful if you want to visualize the relationships between objects in your images.</p>
+<p>To do this, pass in the name of the field containing the object patches you would like to reduce via the <code class="docutils literal notranslate"><span class="pre">patches_field</span></code> argument.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.brain</span> <span class="k">as</span> <span class="nn">fob</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+
+<span class="n">fob</span><span class="o">.</span><span class="n">compute_visualization</span><span class="p">(</span>
+    <span class="n">dataset</span><span class="p">,</span>
+    <span class="n">patches_field</span><span class="o">=</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span>
+    <span class="n">method</span><span class="o">=</span><span class="s2">&quot;umap&quot;</span><span class="p">,</span>
+    <span class="n">brain_key</span><span class="o">=</span><span class="s2">&quot;gt_umap&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="Summary">
+<h2>Summary<a class="headerlink" href="#Summary" title="Permalink to this headline">¶</a></h2>
+<p>Dimensionality reduction is critical to understanding our data, and our models. But it is important to think of dimensionality reduction not just as a single tool, but rather as a collection of techniques. Each technique has its own advantages; and each method projects certain assumptions onto the data, which may or may not hold for your data. I hope this walkthrough helps you to see your data in a new way!</p>
+</div>
+</div>
+
+
+             </article>
+             
+            </div>
+            <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="zero_shot_classification.html" class="btn btn-neutral float-right" title="Zero-Shot Image Classification with Multimodal Models and FiftyOne" accesskey="n" rel="next">Next <img src="../_static/images/chevron-right-orange.svg" class="next-page"></a>
+      
+      
+        <a href="monocular_depth_estimation.html" class="btn btn-neutral" title="Monocular Depth Estimation with FiftyOne" accesskey="p" rel="prev"><img src="../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
+      
+    </div>
+  
+</footer>
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              <ul>
+<li><a class="reference internal" href="#">Visualizing Data with Dimensionality Reduction Techniques</a><ul>
+<li><a class="reference internal" href="#Why-Dimensionality-Reduction?">Why Dimensionality Reduction?</a></li>
+<li><a class="reference internal" href="#Setup">Setup</a></li>
+<li><a class="reference internal" href="#Dimensionality-Reduction-API-in-FiftyOne">Dimensionality Reduction API in FiftyOne</a><ul>
+<li><a class="reference internal" href="#What-to-reduce-the-dimensionality-of">What to reduce the dimensionality of</a></li>
+<li><a class="reference internal" href="#How-to-reduce-the-dimensionality">How to reduce the dimensionality</a></li>
+<li><a class="reference internal" href="#Where-to-store-the-results">Where to store the results</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#Dimensionality-Reduction-with-PCA">Dimensionality Reduction with PCA</a><ul>
+<li><a class="reference internal" href="#Running-PCA-on-Embeddings">Running PCA on Embeddings</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#Dimensionality-Reduction-with-t-SNE">Dimensionality Reduction with t-SNE</a><ul>
+<li><a class="reference internal" href="#Running-t-SNE-on-Embeddings">Running t-SNE on Embeddings</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#Dimensionality-Reduction-with-UMAP">Dimensionality Reduction with UMAP</a><ul>
+<li><a class="reference internal" href="#Running-UMAP-on-Embeddings">Running UMAP on Embeddings</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#Dimensionality-Reduction-with-Custom-Methods">Dimensionality Reduction with Custom Methods</a><ul>
+<li><a class="reference internal" href="#Isomap">Isomap</a></li>
+<li><a class="reference internal" href="#CompressionVAE">CompressionVAE</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#Advanced-Dimensionality-Reduction-in-FiftyOne">Advanced Dimensionality Reduction in FiftyOne</a><ul>
+<li><a class="reference internal" href="#Registerting-Custom-Visualization-Methods">Registerting Custom Visualization Methods</a></li>
+<li><a class="reference internal" href="#Dimensionality-Reduction-with-Object-Patches">Dimensionality Reduction with Object Patches</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#Summary">Summary</a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  
+
+
+  
+
+     
+       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+         <script src="../_static/jquery.js"></script>
+         <script src="../_static/underscore.js"></script>
+         <script src="../_static/doctools.js"></script>
+         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+         <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+         <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+         <script src="../_static/js/voxel51-website.js"></script>
+         <script src="../_static/js/custom.js"></script>
+     
+
+  
+
+  <script type="text/javascript" src="../_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="../_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+  <!-- Begin Footer -->
+
+
+<footer class="footer-wrapper" id="docs-tutorials-resources">
+  <div class="footer pytorch-container">
+    <div class="footer__logo">
+      <a href="https://voxel51.com/"
+        ><img
+          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
+      /></a>
+    </div>
+
+    <div class="footer__address">
+      330 E Liberty St<br />
+      Ann Arbor, MI 48104<br />
+      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
+    </div>
+
+    <!--
+    <div class="footer__contact">
+      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
+    </div>
+    -->
+
+    <div class="footer__links">
+      <div class="footer__links--col2">
+        <p class="nav__item--brand">Products</p>
+        <a href="https://voxel51.com/fiftyone/">FiftyOne</a>
+        <a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a>
+        <a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a>
+        <a href="https://voxel51.com/success-stories/">Success Stories</a>
+      </div>
+      <div class="footer__links--col3">
+        <p class="nav__item--brand">Resources</p>
+        <a href="https://voxel51.com/blog/">Blog</a>
+        <a href="https://docs.voxel51.com/">Docs</a>
+        <a href="https://github.com/voxel51/">GitHub</a>
+        <a href="https://community.voxel51.com">Discord</a>
+        <a href="https://voxel51.com/ourstory/">About Us</a>
+        <a href="https://voxel51.com/computer-vision-events/">Events</a>
+        <a href="https://voxel51.com/jobs/">Careers</a>
+        <a href="https://voxel51.com/press/">Press</a>
+      </div>
+    </div>
+
+    <div class="footer__icons">
+      <ul class="list-inline">
+        <li>
+          <a href="https://www.linkedin.com/company/voxel51/">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/voxel51/">
+            <i class="fa-brands fa-github"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/voxel51">
+            <i class="fa-brands fa-twitter"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/voxel51/">
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="footer__copyright">
+      <ul class="list-inline">
+        <li>&copy; 2024 Voxel51 Inc.</li>
+        <li>
+          <a href="https://voxel51.com/privacy/">Privacy Policy</a>
+        </li>
+        <li>
+          <a href="https://voxel51.com/terms/">Terms of Service</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<!-- https://buttons.github.io -->
+<script async defer src="https://buttons.github.io/buttons.js" ></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XD15NFRY3M" ></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+  gtag("config", "G-XD15NFRY3M");
+</script>
+
+<script>
+  function open_modal(modal_id, modal_closer_id) {
+    // Get the modal
+    let the_modal = document.getElementById(modal_id);
+
+    the_modal.style.display = "flex";
+    document.body.style.overflow = "hidden";
+
+    let the_modal_closer = document.getElementById(modal_closer_id);
+
+    // When the user clicks on <span> (x), close the modal
+    the_modal_closer &&
+      (the_modal_closer.onclick = function () {
+        the_modal.style.display = "none";
+      });
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+      if (event.target == the_modal) {
+        the_modal.style.display = "none";
+        document.body.style.overflow = "unset";
+        window.onclick = undefined;
+      }
+    };
+  }
+</script>
+
+<!-- bigpicture.io -->
+<script>
+  !(function (e, t, i) {
+    var r = (e.bigPicture = e.bigPicture || []);
+    if (!r.initialized)
+      if (r.invoked)
+        e.console &&
+          console.error &&
+          console.error("BigPicture.io snippet included twice.");
+      else {
+        (r.invoked = !0),
+          (r.SNIPPET_VERSION = 1.5),
+          (r.handler = function (e) {
+            if (void 0 !== r.callback)
+              try {
+                return r.callback(e);
+              } catch (e) {}
+          }),
+          (r.eventList = ["mousedown", "mouseup", "click", "submit"]),
+          (r.methods = [
+            "track",
+            "identify",
+            "page",
+            "group",
+            "alias",
+            "integration",
+            "ready",
+            "intelReady",
+            "consentReady",
+            "on",
+            "off",
+          ]),
+          (r.factory = function (e) {
+            return function () {
+              var t = Array.prototype.slice.call(arguments);
+              return t.unshift(e), r.push(t), r;
+            };
+          });
+        for (var n = 0; n < r.methods.length; n++) {
+          var o = r.methods[n];
+          r[o] = r.factory(o);
+        }
+        r.getCookie = function (e) {
+          var i = ("; " + t.cookie).split("; " + e + "=");
+          return 2 == i.length && i.pop().split(";").shift();
+        };
+        var c = (r.isEditor = (function () {
+          try {
+            return (
+              e.self !== e.top &&
+              (new RegExp("app" + i, "ig").test(t.referrer) ||
+                "edit" == r.getCookie("_bpr_edit"))
+            );
+          } catch (e) {
+            return !1;
+          }
+        })());
+        r.init = function (n, o) {
+          if (((r.projectId = n), (r._config = o), !c))
+            for (var a = 0; a < r.eventList.length; a++)
+              e.addEventListener(r.eventList[a], r.handler, !0);
+          var s = t.createElement("script");
+          s.async = !0;
+          var d = c ? "/editor/editor" : "/public-" + n;
+          (s.src = "//cdn" + i + d + ".js"),
+            t.getElementsByTagName("head")[0].appendChild(s);
+        };
+      }
+  })(window, document, ".bigpicture.io");
+  bigPicture.init("1646");
+</script>
+
+
+  
+
+  <!-- End Footer -->
+
+  <!-- Begin Mobile Menu -->
+
+  
+
+  <!-- End Mobile Menu -->
+
+  <script type="text/javascript" src="../_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function(e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+</body>
+</html>

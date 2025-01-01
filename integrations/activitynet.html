@@ -1,0 +1,1368 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ActivityNet Integration &mdash; FiftyOne 1.3.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <link rel="stylesheet" href="../_static/css/voxel51-website.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="CVAT Integration" href="cvat.html" />
+    <link rel="prev" title="Open Images Integration" href="open_images.html" />
+<meta property="og:image" content="https://voxel51.com/wp-content/uploads/2024/03/3.24_webpages_Home_AV.png" />
+
+<link
+  href="https://fonts.googleapis.com/css?family=Palanquin:400,600,700,800"
+  rel="stylesheet"
+/>
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+  rel="stylesheet"
+/>
+<script src="https://tag.clearbitscripts.com/v1/pk_b9ed71c8234edd4f77326bcbfab5a4ca/tags.js"></script>
+
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+  
+</head>
+
+
+<div class="container-fluid header-holder tutorials-header" id="header-holder">
+  <nav id="nav__main" class="nav__main">
+    <div class="nav__main__logo">
+      <a href="https://voxel51.com/">
+        <img
+          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
+        />
+      </a>
+    </div>
+
+    <div class="nav__spacer desktop_only"></div>
+
+    <div id="nav__main__mobilebutton--on">
+      <a href="javascript:void(0);" onclick="navMobileButton()">
+        <i class="fa-solid fa-bars"></i>
+      </a>
+    </div>
+
+    <div id="nav__main__mobilebutton--off">
+      <a href="javascript:void(0);" onclick="navMobileButton()">
+        <i class="fa-solid fa-times"></i>
+      </a>
+    </div>
+
+    <div id="nav__main__items">
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Products</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://voxel51.com/fiftyone/">Open Source</a></li>
+            <li><a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a></li>
+            <li><a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a></li>
+            <li><a href="https://voxel51.com/success-stories/">Success Stories</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Learn</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://community.voxel51.com">Community Discord</a></li>
+            <li><a href="https://voxel51.com/blog/">Blog</a></li>
+            <li><a href="https://voxel51.com/computer-vision-events/">Events</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item">
+        <a href="https://docs.voxel51.com/">Docs</a>
+      </div>
+
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Company</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://voxel51.com/ourstory/">About Us</a></li>
+            <li><a href="https://voxel51.com/jobs/">Careers</a></li>
+            <li><a href="https://voxel51.com/talk-to-sales/">Talk to Sales</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item mobile_only">
+        <a href="https://github.com/voxel51/fiftyone">GitHub</a>
+      </div>
+
+      <div class="nav__item desktop_only" id="octocat">
+        <!-- https://buttons.github.io -->
+        <a
+          class="github-button"
+          href="https://github.com/voxel51/fiftyone"
+          data-color-scheme="no-preference: dark_high_contrast; light: dark_high_contrast; dark: dark_high_contrast;"
+          data-size="large"
+          data-show-count="true"
+          aria-label="Star voxel51/fiftyone on GitHub"
+          >Star</a
+        >
+      </div>
+
+      <div class="nav__item full_nav_only">
+        <a class="button-primary" href="https://voxel51.com/schedule-teams-workshop/" target="_blank"
+          >Schedule a workshop</a
+        >
+      </div>
+    </div>
+  </nav>
+</div>
+
+
+
+<body class="pytorch-body">
+
+   
+
+    
+
+    <div class="table-of-contents-link-wrapper">
+      <span>Table of Contents</span>
+      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+    </div>
+
+    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+      <div class="pytorch-side-scroll">
+        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          <div class="pytorch-left-menu-search">
+            
+
+            
+              
+              
+            
+
+            
+
+
+  
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+            
+          </div>
+
+           <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../teams/index.html">FiftyOne Teams 🚀</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../environments/index.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../recipes/index.html">Recipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheat_sheets/index.html">Cheat Sheets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dataset_zoo/index.html">Dataset Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_zoo/index.html">Model Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brain.html">FiftyOne Brain</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Integrations</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="coco.html"> COCO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open_images.html"> Open Images</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#"> ActivityNet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cvat.html"> CVAT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="labelstudio.html"> Label Studio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="v7.html"> V7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="labelbox.html"> Labelbox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qdrant.html"> Qdrant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="redis.html"> Redis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pinecone.html"> Pinecone</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mongodb.html"> MongoDB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="elasticsearch.html"> Elasticsearch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="milvus.html"> Milvus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lancedb.html"> LanceDB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="huggingface.html"> Hugging Face</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ultralytics.html"> Ultralytics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="albumentations.html"> Albumentations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="super_gradients.html"> SuperGradients</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openclip.html"> OpenCLIP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pytorch_hub.html"> PyTorch Hub</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lightning_flash.html"> Lightning Flash</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../plugins/index.html">Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli/index.html">CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/fiftyone.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deprecation.html">Deprecation Notices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a></li>
+</ul>
+ 
+        </div>
+      </div>
+    </nav>
+
+    <div class="pytorch-container">
+      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+        <div class="pytorch-breadcrumbs-wrapper">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="../index.html">
+          
+            Docs
+          
+        </a> &gt;
+      </li>
+
+        
+          <li><a href="index.html">FiftyOne Integrations</a> &gt;</li>
+        
+      <li>ActivityNet Integration</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+        </div>
+
+        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+          Contents
+        </div>
+      </div>
+
+      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+        <div class="pytorch-content-left">
+
+        
+          
+          <div class="rst-content style-external-links">
+          
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+              
+  <div class="section" id="activitynet-integration">
+<span id="activitynet"></span><h1>ActivityNet Integration<a class="headerlink" href="#activitynet-integration" title="Permalink to this headline">¶</a></h1>
+<p>With FiftyOne, you can easily download, visualize, and evaluate on the
+<a class="reference external" href="http://activity-net.org/index.html">ActivityNet dataset</a>!</p>
+<img alt="activitynet-200-validation" class="align-center" src="../_images/activitynet-200-validation.png" />
+<div class="section" id="loading-the-activitynet-dataset">
+<span id="id1"></span><h2>Loading the ActivityNet dataset<a class="headerlink" href="#loading-the-activitynet-dataset" title="Permalink to this headline">¶</a></h2>
+<p>The FiftyOne Dataset Zoo provides support for loading both the
+<a class="reference internal" href="../dataset_zoo/datasets.html#dataset-zoo-activitynet-100"><span class="std std-ref">ActivityNet 100</span></a> and
+<a class="reference internal" href="../dataset_zoo/datasets.html#dataset-zoo-activitynet-200"><span class="std std-ref">ActivityNet 200</span></a> datasets.</p>
+<p>Like all other zoo datasets, you can use
+<a class="reference internal" href="../api/fiftyone.zoo.datasets.html#fiftyone.zoo.datasets.load_zoo_dataset" title="fiftyone.zoo.datasets.load_zoo_dataset"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_zoo_dataset()</span></code></a> to download
+and load an ActivityNet split into FiftyOne:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="c1"># Download and load 10 samples from the validation split of ActivityNet 200</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span>
+    <span class="s2">&quot;activitynet-200&quot;</span><span class="p">,</span>
+    <span class="n">split</span><span class="o">=</span><span class="s2">&quot;validation&quot;</span><span class="p">,</span>
+    <span class="n">max_samples</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>ActivityNet 200 is a superset of ActivityNet 100 so we have made sure
+to only store one copy of every video on disk. Videos in the
+ActivityNet 100 zoo directory are used directly by ActivityNet 200.</p>
+</div>
+<div class="section" id="partial-downloads">
+<span id="activitynet-partial-downloads"></span><h3>Partial Downloads<a class="headerlink" href="#partial-downloads" title="Permalink to this headline">¶</a></h3>
+<p>In addition, FiftyOne provides parameters that can be used to efficiently
+download specific subsets of the ActivityNet dataset, allowing you to quickly
+explore different slices of the dataset without downloading the entire split.</p>
+<p>When performing partial downloads, FiftyOne will use existing downloaded data
+first if possible before resorting to downloading additional data from YouTube.</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="c1">#</span>
+<span class="c1"># Load 10 random samples from the validation split</span>
+<span class="c1">#</span>
+<span class="c1"># Only the required videos will be downloaded (if necessary).</span>
+<span class="c1">#</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span>
+    <span class="s2">&quot;activitynet-200&quot;</span><span class="p">,</span>
+    <span class="n">split</span><span class="o">=</span><span class="s2">&quot;validation&quot;</span><span class="p">,</span>
+    <span class="n">max_samples</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+
+<span class="c1">#</span>
+<span class="c1"># Load 10 samples from the validation split that</span>
+<span class="c1"># contain the actions &quot;Bathing dog&quot; and &quot;Walking the dog&quot;</span>
+<span class="c1"># with a maximum duration of 20 seconds</span>
+<span class="c1">#</span>
+<span class="c1"># Videos that contain all ``classes`` will be prioritized first, followed</span>
+<span class="c1"># by videos that contain at least one of the required ``classes``. If</span>
+<span class="c1"># there are not enough videos matching ``classes`` in the split to meet</span>
+<span class="c1"># ``max_samples``, only the available videos will be loaded.</span>
+<span class="c1">#</span>
+<span class="c1"># Videos will only be downloaded if necessary</span>
+<span class="c1">#</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span>
+    <span class="s2">&quot;activitynet-200&quot;</span><span class="p">,</span>
+    <span class="n">split</span><span class="o">=</span><span class="s2">&quot;validation&quot;</span><span class="p">,</span>
+    <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Bathing dog&quot;</span><span class="p">,</span> <span class="s2">&quot;Walking the dog&quot;</span><span class="p">],</span>
+    <span class="n">max_samples</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">max_duration</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">session</span><span class="o">.</span><span class="n">dataset</span> <span class="o">=</span> <span class="n">dataset</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>The following parameters are available to configure partial downloads of both
+ActivityNet 100 and ActivityNet 200 by passing them to
+<a class="reference internal" href="../api/fiftyone.zoo.datasets.html#fiftyone.zoo.datasets.load_zoo_dataset" title="fiftyone.zoo.datasets.load_zoo_dataset"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_zoo_dataset()</span></code></a>:</p>
+<ul class="simple">
+<li><p><strong>split</strong> (<em>None</em>) and <strong>splits</strong> (<em>None</em>): a string or list of strings,
+respectively, specifying the splits to load. Supported values are
+<code class="docutils literal notranslate"><span class="pre">(&quot;train&quot;,</span> <span class="pre">&quot;test&quot;,</span> <span class="pre">&quot;validation&quot;)</span></code>. If none are provided, all available
+splits are loaded</p></li>
+<li><p><strong>source_dir</strong> (<em>None</em>): the directory containing the manually downloaded
+ActivityNet files used to avoid downloading videos from YouTube</p></li>
+<li><p><strong>classes</strong> (<em>None</em>): a string or list of strings specifying required
+classes to load. If provided, only samples containing at least one instance
+of a specified class will be loaded</p></li>
+<li><p><strong>max_duration</strong> (<em>None</em>): only videos with a duration in seconds that is
+less than or equal to the <code class="docutils literal notranslate"><span class="pre">max_duration</span></code> will be downloaded. By default,
+all videos are downloaded</p></li>
+<li><p><strong>copy_files</strong> (<em>True</em>): whether to move (False) or create copies (True) of
+the source files when populating <code class="docutils literal notranslate"><span class="pre">dataset_dir</span></code>. This is only applicable
+when a <code class="docutils literal notranslate"><span class="pre">source_dir</span></code> is provided</p></li>
+<li><p><strong>num_workers</strong> (<em>None</em>): the number of processes to use when downloading
+individual videos. By default, <code class="docutils literal notranslate"><span class="pre">multiprocessing.cpu_count()</span></code> is used</p></li>
+<li><p><strong>shuffle</strong> (<em>False</em>): whether to randomly shuffle the order in which
+samples are chosen for partial downloads</p></li>
+<li><p><strong>seed</strong> (<em>None</em>): a random seed to use when shuffling</p></li>
+<li><p><strong>max_samples</strong> (<em>None</em>): a maximum number of samples to load per split. If
+<code class="docutils literal notranslate"><span class="pre">classes</span></code> are also specified, only up to the number of samples that
+contain at least one specified class will be loaded. By default, all
+matching samples are loaded</p></li>
+</ul>
+</div>
+<div class="section" id="full-split-downloads">
+<span id="activitynet-full-split-downloads"></span><h3>Full Split Downloads<a class="headerlink" href="#full-split-downloads" title="Permalink to this headline">¶</a></h3>
+<p>Many videos have been removed from YouTube since the creation of ActivityNet.
+As a result, you must first download the official source files from the
+ActivityNet maintainers in order to load a full split into FiftyOne.</p>
+<p>To download the source files, you must fill out
+<a class="reference external" href="https://docs.google.com/forms/d/e/1FAIpQLSeKaFq9ZfcmZ7W0B0PbEhfbTHY41GeEgwsa7WobJgGUhn4DTQ/viewform">this form</a>.</p>
+<p>After downloading the source files, they can be loaded into FiftyOne like so:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="n">source_dir</span> <span class="o">=</span> <span class="s2">&quot;/path/to/dir-with-activitynet-files&quot;</span>
+
+<span class="c1"># Load the entire ActivityNet 200 dataset into FiftyOne</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;activitynet-200&quot;</span><span class="p">,</span> <span class="n">source_dir</span><span class="o">=</span><span class="n">source_dir</span><span class="p">)</span>
+
+<span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">source_dir</span></code> contains the source files in the following format:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>source_dir/
+    missing_files.zip
+    missing_files_v1-2_test.zip
+    missing_files_v1-3_test.zip
+    v1-2_test.tar.gz
+    v1-2_train.tar.gz
+    v1-2_val.tar.gz
+    v1-3_test.tar.gz
+    v1-3_train_val.tar.gz
+</pre></div>
+</div>
+<p>If you have already decompressed the archives, that is okay too:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>source_dir/
+    missing_files/
+        v_&lt;id&gt;.&lt;ext&gt;
+        ...
+    missing_files_v1-2_test/
+        v_&lt;id&gt;.&lt;ext&gt;
+        ...
+    missing_files_v_1-3_test/
+        v_&lt;id&gt;.&lt;ext&gt;
+        ...
+    v1-2/
+        train/
+            v_&lt;id&gt;.&lt;ext&gt;
+            ...
+        val/
+            ...
+        test/
+            ...
+    v1-3/
+        train_val/
+            v_&lt;id&gt;.&lt;ext&gt;
+            ...
+        test/
+            ...
+</pre></div>
+</div>
+<p>If you are only interested in loading specific splits into FiftyOne, the files
+for the other splits do not need to be present.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When <a class="reference internal" href="../api/fiftyone.zoo.datasets.html#fiftyone.zoo.datasets.load_zoo_dataset" title="fiftyone.zoo.datasets.load_zoo_dataset"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_zoo_dataset()</span></code></a>
+is called with the <code class="docutils literal notranslate"><span class="pre">source_dir</span></code> parameter, the contents are copied (or
+moved, if <code class="docutils literal notranslate"><span class="pre">copy_files=False</span></code>) into the zoo dataset’s backing directory.</p>
+<p>Therefore, future use of the loaded dataset or future calls to
+<a class="reference internal" href="../api/fiftyone.zoo.datasets.html#fiftyone.zoo.datasets.load_zoo_dataset" title="fiftyone.zoo.datasets.load_zoo_dataset"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_zoo_dataset()</span></code></a>
+will not require the <code class="docutils literal notranslate"><span class="pre">source_dir</span></code> parameter.</p>
+</div>
+</div>
+</div>
+<div class="section" id="activitynet-style-evaluation">
+<span id="activitynet-evaluation"></span><h2>ActivityNet-style evaluation<a class="headerlink" href="#activitynet-style-evaluation" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.evaluate_detections" title="fiftyone.core.collections.SampleCollection.evaluate_detections"><code class="xref py py-meth docutils literal notranslate"><span class="pre">evaluate_detections()</span></code></a>
+method provides builtin support for running
+<a class="reference external" href="https://github.com/activitynet/ActivityNet/tree/master/Evaluation">ActivityNet-style evaluation</a>.</p>
+<p>ActivityNet-style evaluation is the default method when evaluating
+<a class="reference internal" href="../api/fiftyone.core.labels.html#fiftyone.core.labels.TemporalDetections" title="fiftyone.core.labels.TemporalDetections"><code class="xref py py-class docutils literal notranslate"><span class="pre">TemporalDetections</span></code></a> labels, but you can also explicitly request it by setting
+the <code class="docutils literal notranslate"><span class="pre">method</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">&quot;actvitynet&quot;</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>FiftyOne’s implementation of ActivityNet-style evaluation matches the
+reference implementation available via the
+<a class="reference external" href="https://github.com/activitynet/ActivityNet/tree/master/Evaluation">ActivityNet API</a>.</p>
+</div>
+<div class="section" id="overview">
+<h3>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h3>
+<p>When running ActivityNet-style evaluation using
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.evaluate_detections" title="fiftyone.core.collections.SampleCollection.evaluate_detections"><code class="xref py py-meth docutils literal notranslate"><span class="pre">evaluate_detections()</span></code></a>:</p>
+<ul class="simple">
+<li><p>Predicted and ground truth segments are matched using a specified IoU
+threshold (default = 0.50). This threshold can be customized via the
+<code class="docutils literal notranslate"><span class="pre">iou</span></code> parameter</p></li>
+<li><p>By default, only segments with the same <code class="docutils literal notranslate"><span class="pre">label</span></code> will be matched. Classwise
+matching can be disabled by passing <code class="docutils literal notranslate"><span class="pre">classwise=False</span></code></p></li>
+<li><p>mAP is computed by averaging over the same range of IoU values
+<a class="reference internal" href="coco.html#coco-map"><span class="std std-ref">used by COCO</span></a></p></li>
+</ul>
+<p>When you specify an <code class="docutils literal notranslate"><span class="pre">eval_key</span></code> parameter, a number of helpful fields will be
+populated on each sample and its predicted/ground truth segments:</p>
+<ul>
+<li><p>True positive (TP), false positive (FP), and false negative (FN) counts
+for the each sample are saved in top-level fields of each sample:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">TP</span><span class="p">:</span> <span class="n">sample</span><span class="o">.&lt;</span><span class="n">eval_key</span><span class="o">&gt;</span><span class="n">_tp</span>
+<span class="n">FP</span><span class="p">:</span> <span class="n">sample</span><span class="o">.&lt;</span><span class="n">eval_key</span><span class="o">&gt;</span><span class="n">_fp</span>
+<span class="n">FN</span><span class="p">:</span> <span class="n">sample</span><span class="o">.&lt;</span><span class="n">eval_key</span><span class="o">&gt;</span><span class="n">_fn</span>
+</pre></div>
+</div>
+</li>
+<li><p>The fields listed below are populated on each individual temporal detection
+segment; these fields tabulate the TP/FP/FN status of the segment, the ID
+of the matching segment (if any), and the matching IoU:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">TP</span><span class="o">/</span><span class="n">FP</span><span class="o">/</span><span class="n">FN</span><span class="p">:</span> <span class="n">segment</span><span class="o">.&lt;</span><span class="n">eval_key</span><span class="o">&gt;</span>
+      <span class="n">ID</span><span class="p">:</span> <span class="n">segment</span><span class="o">.&lt;</span><span class="n">eval_key</span><span class="o">&gt;</span><span class="n">_id</span>
+     <span class="n">IoU</span><span class="p">:</span> <span class="n">segment</span><span class="o">.&lt;</span><span class="n">eval_key</span><span class="o">&gt;</span><span class="n">_iou</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>See <a class="reference internal" href="../api/fiftyone.utils.eval.activitynet.html#fiftyone.utils.eval.activitynet.ActivityNetEvaluationConfig" title="fiftyone.utils.eval.activitynet.ActivityNetEvaluationConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">ActivityNetEvaluationConfig</span></code></a> for complete descriptions of the optional
+keyword arguments that you can pass to
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.evaluate_detections" title="fiftyone.core.collections.SampleCollection.evaluate_detections"><code class="xref py py-meth docutils literal notranslate"><span class="pre">evaluate_detections()</span></code></a>
+when running ActivityNet-style evaluation.</p>
+</div>
+</div>
+<div class="section" id="example-evaluation">
+<h3>Example evaluation<a class="headerlink" href="#example-evaluation" title="Permalink to this headline">¶</a></h3>
+<p>The example below demonstrates ActivityNet-style temporal detection evaluation
+on the <a class="reference internal" href="../dataset_zoo/datasets.html#dataset-zoo-activitynet-200"><span class="std std-ref">ActivityNet 200 dataset</span></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+<span class="kn">from</span> <span class="nn">fiftyone</span> <span class="kn">import</span> <span class="n">ViewField</span> <span class="k">as</span> <span class="n">F</span>
+
+<span class="c1"># Load subset of ActivityNet 200</span>
+<span class="n">classes</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Bathing dog&quot;</span><span class="p">,</span> <span class="s2">&quot;Walking the dog&quot;</span><span class="p">]</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span>
+    <span class="s2">&quot;activitynet-200&quot;</span><span class="p">,</span>
+    <span class="n">split</span><span class="o">=</span><span class="s2">&quot;validation&quot;</span><span class="p">,</span>
+    <span class="n">classes</span><span class="o">=</span><span class="n">classes</span><span class="p">,</span>
+    <span class="n">max_samples</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+
+<span class="c1"># Generate some fake predictions for this example</span>
+<span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">51</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">clone_sample_field</span><span class="p">(</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span> <span class="s2">&quot;predictions&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">sample</span> <span class="ow">in</span> <span class="n">dataset</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">det</span> <span class="ow">in</span> <span class="n">sample</span><span class="o">.</span><span class="n">predictions</span><span class="o">.</span><span class="n">detections</span><span class="p">:</span>
+        <span class="n">det</span><span class="o">.</span><span class="n">support</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+        <span class="n">det</span><span class="o">.</span><span class="n">support</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+        <span class="n">det</span><span class="o">.</span><span class="n">support</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">det</span><span class="o">.</span><span class="n">support</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">det</span><span class="o">.</span><span class="n">support</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">det</span><span class="o">.</span><span class="n">support</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">det</span><span class="o">.</span><span class="n">support</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">det</span><span class="o">.</span><span class="n">confidence</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
+        <span class="n">det</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">classes</span><span class="p">)</span>
+
+    <span class="n">sample</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+<span class="c1"># Evaluate the segments in the `predictions` field with respect to the</span>
+<span class="c1"># segments in the `ground_truth` field</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">evaluate_detections</span><span class="p">(</span>
+    <span class="s2">&quot;predictions&quot;</span><span class="p">,</span>
+    <span class="n">gt_field</span><span class="o">=</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span>
+    <span class="n">eval_key</span><span class="o">=</span><span class="s2">&quot;eval&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># Print a classification report for the classes</span>
+<span class="n">results</span><span class="o">.</span><span class="n">print_report</span><span class="p">(</span><span class="n">classes</span><span class="o">=</span><span class="n">classes</span><span class="p">)</span>
+
+<span class="c1"># Print some statistics about the total TP/FP/FN counts</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;TP: </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">dataset</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s2">&quot;eval_tp&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;FP: </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">dataset</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s2">&quot;eval_fp&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;FN: </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">dataset</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s2">&quot;eval_fn&quot;</span><span class="p">))</span>
+
+<span class="c1"># Create a view that has samples with the most false positives first, and</span>
+<span class="c1"># only includes false positive segments in the `predictions` field</span>
+<span class="n">view</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">dataset</span>
+    <span class="o">.</span><span class="n">sort_by</span><span class="p">(</span><span class="s2">&quot;eval_fp&quot;</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span><span class="s2">&quot;predictions&quot;</span><span class="p">,</span> <span class="n">F</span><span class="p">(</span><span class="s2">&quot;eval&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;fp&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="c1"># Visualize results in the App</span>
+<span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">view</span><span class="o">=</span><span class="n">view</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                 precision    recall  f1-score   support
+
+    Bathing dog       0.50      0.40      0.44         5
+Walking the dog       0.50      0.60      0.55         5
+
+      micro avg       0.50      0.50      0.50        10
+      macro avg       0.50      0.50      0.49        10
+   weighted avg       0.50      0.50      0.49        10
+</pre></div>
+</div>
+<img alt="activitynet-evaluate-detections" class="align-center" src="../_images/activitynet_evaluate_detections.png" />
+</div>
+<div class="section" id="map-and-pr-curves">
+<h3>mAP and PR curves<a class="headerlink" href="#map-and-pr-curves" title="Permalink to this headline">¶</a></h3>
+<p>You can compute mean average precision (mAP) and precision-recall (PR) curves
+for your segments by passing the <code class="docutils literal notranslate"><span class="pre">compute_mAP=True</span></code> flag to
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.evaluate_detections" title="fiftyone.core.collections.SampleCollection.evaluate_detections"><code class="xref py py-meth docutils literal notranslate"><span class="pre">evaluate_detections()</span></code></a>:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>All mAP calculations are performed according to the
+<a class="reference external" href="https://github.com/activitynet/ActivityNet/tree/master/Evaluation">ActivityNet evaluation protocol</a>.</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="c1"># Load subset of ActivityNet 200</span>
+<span class="n">classes</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Bathing dog&quot;</span><span class="p">,</span> <span class="s2">&quot;Walking the dog&quot;</span><span class="p">]</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span>
+    <span class="s2">&quot;activitynet-200&quot;</span><span class="p">,</span>
+    <span class="n">split</span><span class="o">=</span><span class="s2">&quot;validation&quot;</span><span class="p">,</span>
+    <span class="n">classes</span><span class="o">=</span><span class="n">classes</span><span class="p">,</span>
+    <span class="n">max_samples</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+
+<span class="c1"># Generate some fake predictions for this example</span>
+<span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">51</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">clone_sample_field</span><span class="p">(</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span> <span class="s2">&quot;predictions&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">sample</span> <span class="ow">in</span> <span class="n">dataset</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">det</span> <span class="ow">in</span> <span class="n">sample</span><span class="o">.</span><span class="n">predictions</span><span class="o">.</span><span class="n">detections</span><span class="p">:</span>
+        <span class="n">det</span><span class="o">.</span><span class="n">support</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+        <span class="n">det</span><span class="o">.</span><span class="n">support</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+        <span class="n">det</span><span class="o">.</span><span class="n">support</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">det</span><span class="o">.</span><span class="n">support</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">det</span><span class="o">.</span><span class="n">support</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">det</span><span class="o">.</span><span class="n">support</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">det</span><span class="o">.</span><span class="n">support</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">det</span><span class="o">.</span><span class="n">confidence</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
+        <span class="n">det</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">classes</span><span class="p">)</span>
+
+    <span class="n">sample</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+<span class="c1"># Performs an IoU sweep so that mAP and PR curves can be computed</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">evaluate_detections</span><span class="p">(</span>
+    <span class="s2">&quot;predictions&quot;</span><span class="p">,</span>
+    <span class="n">gt_field</span><span class="o">=</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span>
+    <span class="n">eval_key</span><span class="o">=</span><span class="s2">&quot;eval&quot;</span><span class="p">,</span>
+    <span class="n">compute_mAP</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">mAP</span><span class="p">())</span>
+<span class="c1"># 0.367</span>
+
+<span class="n">plot</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">plot_pr_curves</span><span class="p">(</span><span class="n">classes</span><span class="o">=</span><span class="n">classes</span><span class="p">)</span>
+<span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div></td></tr></table></div>
+</div>
+<img alt="activitynet-pr-curves" class="align-center" src="../_images/activitynet_pr_curves.png" />
+</div>
+<div class="section" id="confusion-matrices">
+<h3>Confusion matrices<a class="headerlink" href="#confusion-matrices" title="Permalink to this headline">¶</a></h3>
+<p>You can also easily generate <a class="reference internal" href="../user_guide/evaluation.html#confusion-matrices"><span class="std std-ref">confusion matrices</span></a> for
+the results of ActivityNet-style evaluations.</p>
+<p>In order for the confusion matrix to capture anything other than false
+positive/negative counts, you will likely want to set the
+<code class="xref py py-class docutils literal notranslate"><span class="pre">classwise</span></code>
+parameter to <code class="docutils literal notranslate"><span class="pre">False</span></code> during evaluation so that predicted segments can be
+matched with ground truth segments of different classes.</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="c1"># Load subset of ActivityNet 200</span>
+<span class="n">classes</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Bathing dog&quot;</span><span class="p">,</span> <span class="s2">&quot;Grooming dog&quot;</span><span class="p">,</span> <span class="s2">&quot;Grooming horse&quot;</span><span class="p">,</span> <span class="s2">&quot;Walking the dog&quot;</span><span class="p">]</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span>
+    <span class="s2">&quot;activitynet-200&quot;</span><span class="p">,</span>
+    <span class="n">split</span><span class="o">=</span><span class="s2">&quot;validation&quot;</span><span class="p">,</span>
+    <span class="n">classes</span><span class="o">=</span><span class="n">classes</span><span class="p">,</span>
+    <span class="n">max_samples</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+
+<span class="c1"># Generate some fake predictions for this example</span>
+<span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">51</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">clone_sample_field</span><span class="p">(</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span> <span class="s2">&quot;predictions&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">sample</span> <span class="ow">in</span> <span class="n">dataset</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">det</span> <span class="ow">in</span> <span class="n">sample</span><span class="o">.</span><span class="n">predictions</span><span class="o">.</span><span class="n">detections</span><span class="p">:</span>
+        <span class="n">det</span><span class="o">.</span><span class="n">support</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+        <span class="n">det</span><span class="o">.</span><span class="n">support</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+        <span class="n">det</span><span class="o">.</span><span class="n">support</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">det</span><span class="o">.</span><span class="n">support</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">det</span><span class="o">.</span><span class="n">support</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">det</span><span class="o">.</span><span class="n">support</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">det</span><span class="o">.</span><span class="n">support</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">det</span><span class="o">.</span><span class="n">confidence</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
+        <span class="n">det</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">classes</span><span class="p">)</span>
+
+    <span class="n">sample</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+<span class="c1"># Perform evaluation, allowing objects to be matched between classes</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">evaluate_detections</span><span class="p">(</span>
+    <span class="s2">&quot;predictions&quot;</span><span class="p">,</span> <span class="n">gt_field</span><span class="o">=</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span> <span class="n">classwise</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+
+<span class="c1"># Generate a confusion matrix for the specified classes</span>
+<span class="n">plot</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">plot_confusion_matrix</span><span class="p">(</span><span class="n">classes</span><span class="o">=</span><span class="n">classes</span><span class="p">)</span>
+<span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div></td></tr></table></div>
+</div>
+<img alt="activitynet-confusion-matrix" class="align-center" src="../_images/activitynet_confusion_matrix.png" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Did you know? <a class="reference internal" href="../user_guide/evaluation.html#confusion-matrices"><span class="std std-ref">Confusion matrices</span></a> can be
+attached to your <a class="reference internal" href="../api/fiftyone.core.session.html#fiftyone.core.session.Session" title="fiftyone.core.session.Session"><code class="xref py py-class docutils literal notranslate"><span class="pre">Session</span></code></a> object and dynamically explored using FiftyOne’s
+<a class="reference internal" href="../user_guide/plots.html#interactive-plots"><span class="std std-ref">interactive plotting features</span></a>!</p>
+</div>
+</div>
+</div>
+<div class="section" id="activitynet-challenge">
+<span id="id3"></span><h2>ActivityNet Challenge<a class="headerlink" href="#activitynet-challenge" title="Permalink to this headline">¶</a></h2>
+<p>Since FiftyOne’s implementation of ActivityNet-style evaluation matches the
+reference implementation from the
+<a class="reference external" href="https://github.com/activitynet/ActivityNet/tree/master/Evaluation">ActivityNet API</a>
+used in the
+<a class="reference external" href="http://activity-net.org/challenges/2021/index.html">ActivityNet challenges</a>.
+you can use it to compute the official mAP for your model while also enjoying
+the benefits of working in the FiftyOne ecosystem, including
+<a class="reference internal" href="../user_guide/using_views.html#using-views"><span class="std std-ref">using views</span></a> to manipulate your dataset and visually
+exploring your model’s predictions in the <a class="reference internal" href="../user_guide/app.html#fiftyone-app"><span class="std std-ref">FiftyOne App</span></a>!</p>
+<p>The example snippet below loads the
+<a class="reference internal" href="../dataset_zoo/datasets.html#dataset-zoo-activitynet-200"><span class="std std-ref">ActivityNet 200</span></a> dataset and runs the
+official ActivityNet evaluation protocol on some mock model predictions:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="c1"># Load subset of ActivityNet 200</span>
+<span class="n">classes</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Bathing dog&quot;</span><span class="p">,</span> <span class="s2">&quot;Walking the dog&quot;</span><span class="p">]</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span>
+    <span class="s2">&quot;activitynet-200&quot;</span><span class="p">,</span>
+    <span class="n">split</span><span class="o">=</span><span class="s2">&quot;validation&quot;</span><span class="p">,</span>
+    <span class="n">classes</span><span class="o">=</span><span class="n">classes</span><span class="p">,</span>
+    <span class="n">max_samples</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># Generate some fake predictions for this example</span>
+<span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">51</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">clone_sample_field</span><span class="p">(</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span> <span class="s2">&quot;predictions&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">sample</span> <span class="ow">in</span> <span class="n">dataset</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">det</span> <span class="ow">in</span> <span class="n">sample</span><span class="o">.</span><span class="n">predictions</span><span class="o">.</span><span class="n">detections</span><span class="p">:</span>
+        <span class="n">det</span><span class="o">.</span><span class="n">support</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+        <span class="n">det</span><span class="o">.</span><span class="n">support</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+        <span class="n">det</span><span class="o">.</span><span class="n">support</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">det</span><span class="o">.</span><span class="n">support</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">det</span><span class="o">.</span><span class="n">support</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">det</span><span class="o">.</span><span class="n">support</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">det</span><span class="o">.</span><span class="n">support</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">det</span><span class="o">.</span><span class="n">confidence</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
+        <span class="n">det</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">classes</span><span class="p">)</span>
+
+    <span class="n">sample</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+<span class="c1"># Evaluate predictions via the official ActivityNet protocol</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">evaluate_detections</span><span class="p">(</span>
+    <span class="s2">&quot;predictions&quot;</span><span class="p">,</span>
+    <span class="n">gt_field</span><span class="o">=</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span>
+    <span class="n">compute_mAP</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># The official mAP for the results</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">mAP</span><span class="p">())</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Check out <a class="reference internal" href="../recipes/adding_detections.html"><span class="doc">this recipe</span></a> to learn how to
+add your model’s predictions to a FiftyOne Dataset.</p>
+</div>
+</div>
+<div class="section" id="map-protocol">
+<span id="activitynet-map"></span><h2>mAP protocol<a class="headerlink" href="#map-protocol" title="Permalink to this headline">¶</a></h2>
+<p>The ActivityNet mAP protocol is similar to <a class="reference internal" href="coco.html#coco-map"><span class="std std-ref">COCO-style mAP</span></a>,
+with the primary difference being a different IoU computation using temporal
+segments, a lack of crowds, and the way interpolation of precision values is
+handled.</p>
+<p>The steps to compute ActivityNet-style mAP are detailed below.</p>
+<p><strong>Preprocessing</strong></p>
+<ul class="simple">
+<li><p>Filter ground truth and predicted segments by class (unless
+<code class="docutils literal notranslate"><span class="pre">classwise=False</span></code>)</p></li>
+<li><p>Sort predicted segments by confidence score so high confidence segments are
+matched first</p></li>
+<li><p>Compute IoU between every ground truth and predicted segment within the
+same class (and between classes if <code class="docutils literal notranslate"><span class="pre">classwise=False</span></code>) in each video</p></li>
+</ul>
+<p><strong>Matching</strong></p>
+<p>Once IoUs have been computed, predictions and ground truth segments are matched
+to compute true positives, false positives, and false negatives:</p>
+<ul class="simple">
+<li><p>For each class, start with the highest confidence prediction, match it to
+the ground truth segment that it overlaps with the highest IoU. A
+prediction only matches if the IoU is above the specified <code class="docutils literal notranslate"><span class="pre">iou</span></code> threshold</p></li>
+<li><p>If a prediction maximally overlaps with a ground truth segment that has
+already been matched (by a higher confidence prediction), the prediction is
+matched with the next highest IoU ground truth segment</p></li>
+</ul>
+<p><strong>Computing mAP</strong></p>
+<ul class="simple">
+<li><p>Compute matches for 10 IoU thresholds from 0.5 to 0.95 in increments of
+0.05</p></li>
+<li><p>The next 6 steps are computed separately for each class and IoU threshold:</p></li>
+<li><p>Construct a boolean array of true positives and false positives, sorted
+by confidence</p></li>
+<li><p>Compute the cumulative sum of the true positive and false positive array</p></li>
+<li><p>Compute precision by elementwise dividing the TP-FP-sum array by the total
+number of predictions up to that point</p></li>
+<li><p>Compute recall by elementwise dividing TP-FP-sum array by the number of
+ground truth segments for the class</p></li>
+<li><p>Ensure that precision is a non-increasing array</p></li>
+<li><p>(Unlike COCO) DO NOT interpolate precision values onto an 101 evenly spaced
+recall values.  In FiftyOne, this step is performed anyway with the results
+stored separately for the purpose of plotting PR curves. It is not factored
+into mAP calculation</p></li>
+<li><p>For every class that contains at least one ground truth segment, compute
+the average precision (AP) by averaging the precision values over all 10
+IoU thresholds. Then compute mAP by averaging the per-class AP values over
+all classes</p></li>
+</ul>
+</div>
+</div>
+
+
+             </article>
+             
+            </div>
+            <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="cvat.html" class="btn btn-neutral float-right" title="CVAT Integration" accesskey="n" rel="next">Next <img src="../_static/images/chevron-right-orange.svg" class="next-page"></a>
+      
+      
+        <a href="open_images.html" class="btn btn-neutral" title="Open Images Integration" accesskey="p" rel="prev"><img src="../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
+      
+    </div>
+  
+</footer>
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              <ul>
+<li><a class="reference internal" href="#">ActivityNet Integration</a><ul>
+<li><a class="reference internal" href="#loading-the-activitynet-dataset">Loading the ActivityNet dataset</a><ul>
+<li><a class="reference internal" href="#partial-downloads">Partial Downloads</a></li>
+<li><a class="reference internal" href="#full-split-downloads">Full Split Downloads</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#activitynet-style-evaluation">ActivityNet-style evaluation</a><ul>
+<li><a class="reference internal" href="#overview">Overview</a></li>
+<li><a class="reference internal" href="#example-evaluation">Example evaluation</a></li>
+<li><a class="reference internal" href="#map-and-pr-curves">mAP and PR curves</a></li>
+<li><a class="reference internal" href="#confusion-matrices">Confusion matrices</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#activitynet-challenge">ActivityNet Challenge</a></li>
+<li><a class="reference internal" href="#map-protocol">mAP protocol</a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  
+
+
+  
+
+     
+       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+         <script src="../_static/jquery.js"></script>
+         <script src="../_static/underscore.js"></script>
+         <script src="../_static/doctools.js"></script>
+         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+         <script src="../_static/js/voxel51-website.js"></script>
+         <script src="../_static/js/custom.js"></script>
+     
+
+  
+
+  <script type="text/javascript" src="../_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="../_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+  <!-- Begin Footer -->
+
+
+<footer class="footer-wrapper" id="docs-tutorials-resources">
+  <div class="footer pytorch-container">
+    <div class="footer__logo">
+      <a href="https://voxel51.com/"
+        ><img
+          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
+      /></a>
+    </div>
+
+    <div class="footer__address">
+      330 E Liberty St<br />
+      Ann Arbor, MI 48104<br />
+      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
+    </div>
+
+    <!--
+    <div class="footer__contact">
+      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
+    </div>
+    -->
+
+    <div class="footer__links">
+      <div class="footer__links--col2">
+        <p class="nav__item--brand">Products</p>
+        <a href="https://voxel51.com/fiftyone/">FiftyOne</a>
+        <a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a>
+        <a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a>
+        <a href="https://voxel51.com/success-stories/">Success Stories</a>
+      </div>
+      <div class="footer__links--col3">
+        <p class="nav__item--brand">Resources</p>
+        <a href="https://voxel51.com/blog/">Blog</a>
+        <a href="https://docs.voxel51.com/">Docs</a>
+        <a href="https://github.com/voxel51/">GitHub</a>
+        <a href="https://community.voxel51.com">Discord</a>
+        <a href="https://voxel51.com/ourstory/">About Us</a>
+        <a href="https://voxel51.com/computer-vision-events/">Events</a>
+        <a href="https://voxel51.com/jobs/">Careers</a>
+        <a href="https://voxel51.com/press/">Press</a>
+      </div>
+    </div>
+
+    <div class="footer__icons">
+      <ul class="list-inline">
+        <li>
+          <a href="https://www.linkedin.com/company/voxel51/">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/voxel51/">
+            <i class="fa-brands fa-github"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/voxel51">
+            <i class="fa-brands fa-twitter"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/voxel51/">
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="footer__copyright">
+      <ul class="list-inline">
+        <li>&copy; 2024 Voxel51 Inc.</li>
+        <li>
+          <a href="https://voxel51.com/privacy/">Privacy Policy</a>
+        </li>
+        <li>
+          <a href="https://voxel51.com/terms/">Terms of Service</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<!-- https://buttons.github.io -->
+<script async defer src="https://buttons.github.io/buttons.js" ></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XD15NFRY3M" ></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+  gtag("config", "G-XD15NFRY3M");
+</script>
+
+<script>
+  function open_modal(modal_id, modal_closer_id) {
+    // Get the modal
+    let the_modal = document.getElementById(modal_id);
+
+    the_modal.style.display = "flex";
+    document.body.style.overflow = "hidden";
+
+    let the_modal_closer = document.getElementById(modal_closer_id);
+
+    // When the user clicks on <span> (x), close the modal
+    the_modal_closer &&
+      (the_modal_closer.onclick = function () {
+        the_modal.style.display = "none";
+      });
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+      if (event.target == the_modal) {
+        the_modal.style.display = "none";
+        document.body.style.overflow = "unset";
+        window.onclick = undefined;
+      }
+    };
+  }
+</script>
+
+<!-- bigpicture.io -->
+<script>
+  !(function (e, t, i) {
+    var r = (e.bigPicture = e.bigPicture || []);
+    if (!r.initialized)
+      if (r.invoked)
+        e.console &&
+          console.error &&
+          console.error("BigPicture.io snippet included twice.");
+      else {
+        (r.invoked = !0),
+          (r.SNIPPET_VERSION = 1.5),
+          (r.handler = function (e) {
+            if (void 0 !== r.callback)
+              try {
+                return r.callback(e);
+              } catch (e) {}
+          }),
+          (r.eventList = ["mousedown", "mouseup", "click", "submit"]),
+          (r.methods = [
+            "track",
+            "identify",
+            "page",
+            "group",
+            "alias",
+            "integration",
+            "ready",
+            "intelReady",
+            "consentReady",
+            "on",
+            "off",
+          ]),
+          (r.factory = function (e) {
+            return function () {
+              var t = Array.prototype.slice.call(arguments);
+              return t.unshift(e), r.push(t), r;
+            };
+          });
+        for (var n = 0; n < r.methods.length; n++) {
+          var o = r.methods[n];
+          r[o] = r.factory(o);
+        }
+        r.getCookie = function (e) {
+          var i = ("; " + t.cookie).split("; " + e + "=");
+          return 2 == i.length && i.pop().split(";").shift();
+        };
+        var c = (r.isEditor = (function () {
+          try {
+            return (
+              e.self !== e.top &&
+              (new RegExp("app" + i, "ig").test(t.referrer) ||
+                "edit" == r.getCookie("_bpr_edit"))
+            );
+          } catch (e) {
+            return !1;
+          }
+        })());
+        r.init = function (n, o) {
+          if (((r.projectId = n), (r._config = o), !c))
+            for (var a = 0; a < r.eventList.length; a++)
+              e.addEventListener(r.eventList[a], r.handler, !0);
+          var s = t.createElement("script");
+          s.async = !0;
+          var d = c ? "/editor/editor" : "/public-" + n;
+          (s.src = "//cdn" + i + d + ".js"),
+            t.getElementsByTagName("head")[0].appendChild(s);
+        };
+      }
+  })(window, document, ".bigpicture.io");
+  bigPicture.init("1646");
+</script>
+
+
+  
+
+  <!-- End Footer -->
+
+  <!-- Begin Mobile Menu -->
+
+  
+
+  <!-- End Mobile Menu -->
+
+  <script type="text/javascript" src="../_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function(e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+</body>
+</html>

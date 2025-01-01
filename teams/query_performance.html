@@ -1,0 +1,726 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Query Performance &mdash; FiftyOne 1.3.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <link rel="stylesheet" href="../_static/css/voxel51-website.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="FiftyOne Teams Plugins" href="teams_plugins.html" />
+    <link rel="prev" title="Data Quality" href="data_quality.html" />
+<meta property="og:image" content="https://voxel51.com/wp-content/uploads/2024/03/3.24_webpages_Home_AV.png" />
+
+<link
+  href="https://fonts.googleapis.com/css?family=Palanquin:400,600,700,800"
+  rel="stylesheet"
+/>
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+  rel="stylesheet"
+/>
+<script src="https://tag.clearbitscripts.com/v1/pk_b9ed71c8234edd4f77326bcbfab5a4ca/tags.js"></script>
+
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+  
+</head>
+
+
+<div class="container-fluid header-holder tutorials-header" id="header-holder">
+  <nav id="nav__main" class="nav__main">
+    <div class="nav__main__logo">
+      <a href="https://voxel51.com/">
+        <img
+          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
+        />
+      </a>
+    </div>
+
+    <div class="nav__spacer desktop_only"></div>
+
+    <div id="nav__main__mobilebutton--on">
+      <a href="javascript:void(0);" onclick="navMobileButton()">
+        <i class="fa-solid fa-bars"></i>
+      </a>
+    </div>
+
+    <div id="nav__main__mobilebutton--off">
+      <a href="javascript:void(0);" onclick="navMobileButton()">
+        <i class="fa-solid fa-times"></i>
+      </a>
+    </div>
+
+    <div id="nav__main__items">
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Products</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://voxel51.com/fiftyone/">Open Source</a></li>
+            <li><a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a></li>
+            <li><a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a></li>
+            <li><a href="https://voxel51.com/success-stories/">Success Stories</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Learn</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://community.voxel51.com">Community Discord</a></li>
+            <li><a href="https://voxel51.com/blog/">Blog</a></li>
+            <li><a href="https://voxel51.com/computer-vision-events/">Events</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item">
+        <a href="https://docs.voxel51.com/">Docs</a>
+      </div>
+
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Company</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://voxel51.com/ourstory/">About Us</a></li>
+            <li><a href="https://voxel51.com/jobs/">Careers</a></li>
+            <li><a href="https://voxel51.com/talk-to-sales/">Talk to Sales</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item mobile_only">
+        <a href="https://github.com/voxel51/fiftyone">GitHub</a>
+      </div>
+
+      <div class="nav__item desktop_only" id="octocat">
+        <!-- https://buttons.github.io -->
+        <a
+          class="github-button"
+          href="https://github.com/voxel51/fiftyone"
+          data-color-scheme="no-preference: dark_high_contrast; light: dark_high_contrast; dark: dark_high_contrast;"
+          data-size="large"
+          data-show-count="true"
+          aria-label="Star voxel51/fiftyone on GitHub"
+          >Star</a
+        >
+      </div>
+
+      <div class="nav__item full_nav_only">
+        <a class="button-primary" href="https://voxel51.com/schedule-teams-workshop/" target="_blank"
+          >Schedule a workshop</a
+        >
+      </div>
+    </div>
+  </nav>
+</div>
+
+
+
+<body class="pytorch-body">
+
+   
+
+    
+
+    <div class="table-of-contents-link-wrapper">
+      <span>Table of Contents</span>
+      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+    </div>
+
+    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+      <div class="pytorch-side-scroll">
+        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          <div class="pytorch-left-menu-search">
+            
+
+            
+              
+              
+            
+
+            
+
+
+  
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+            
+          </div>
+
+           <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Overview</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">FiftyOne Teams 🚀</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_connection.html">API connection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloud_media.html">Cloud-backed media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="roles_and_permissions.html">Roles and permissions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dataset_versioning.html">Dataset Versioning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="teams_app.html">FiftyOne Teams App</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_lens.html">Data Lens <strong style="color: hsl(25, 100%, 51%); font-size: 0.85em; vertical-align: top">NEW</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_quality.html">Data Quality <strong style="color: hsl(25, 100%, 51%); font-size: 0.85em; vertical-align: top">NEW</strong></a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Query Performance <strong style="color: hsl(25, 100%, 51%); font-size: 0.85em; vertical-align: top">NEW</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="teams_plugins.html">Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="secrets.html">Secrets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="management_sdk.html">Management SDK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migrations.html">Migrations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pluggable_auth.html">Pluggable Auth</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../environments/index.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../recipes/index.html">Recipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheat_sheets/index.html">Cheat Sheets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dataset_zoo/index.html">Dataset Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_zoo/index.html">Model Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brain.html">FiftyOne Brain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/index.html">Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plugins/index.html">Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli/index.html">CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/fiftyone.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deprecation.html">Deprecation Notices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a></li>
+</ul>
+ 
+        </div>
+      </div>
+    </nav>
+
+    <div class="pytorch-container">
+      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+        <div class="pytorch-breadcrumbs-wrapper">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="../index.html">
+          
+            Docs
+          
+        </a> &gt;
+      </li>
+
+        
+          <li><a href="index.html">FiftyOne Teams</a> &gt;</li>
+        
+      <li>Query Performance</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+        </div>
+
+        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+          Contents
+        </div>
+      </div>
+
+      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+        <div class="pytorch-content-left">
+
+        
+          
+          <div class="rst-content style-external-links">
+          
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+              
+  <div class="section" id="query-performance">
+<span id="id1"></span><h1>Query Performance<a class="headerlink" href="#query-performance" title="Permalink to this headline">¶</a></h1>
+<p><strong>Available in FiftyOne Teams v2.2+</strong></p>
+<p>Query Performance is a builtin feature of the
+<a class="reference internal" href="teams_app.html#teams-app"><span class="std std-ref">FiftyOne Teams App</span></a> that leverages database indexes to
+optimize your queries on large-scale datasets.</p>
+<div class="section" id="optimizing-query-performance">
+<h2>Optimizing Query Performance<a class="headerlink" href="#optimizing-query-performance" title="Permalink to this headline">¶</a></h2>
+<p>The App’s sidebar is optimized to leverage database indexes whenever possible.</p>
+<p>Fields that are indexed are indicated by lightning bolt icons next to their
+field/attribute names:</p>
+<img alt="app-query-performance" class="align-center" src="../_images/app-query-performance.gif" />
+<p>The above GIF shows Query Performance in action on the train split of the
+<a class="reference internal" href="../dataset_zoo/datasets.html#dataset-zoo-bdd100k"><span class="std std-ref">BDD100K dataset</span></a> with an index on the
+<code class="code docutils literal notranslate"><span class="pre">detections.detections.label</span></code> field.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When filtering by multiple fields, queries will be more efficient when your
+<strong>first</strong> filter is on an indexed field.</p>
+</div>
+<p>If you perform a filter that could benefit from an index and the query takes
+longer than a few seconds, you’ll see a toast notification that nudges you to
+take the appropriate action to optimize the query:</p>
+<img alt="query-performance-toast" class="align-center" src="../_images/qp_toast.png" />
+<p>Clicking “Create Index” will open the
+<a class="reference internal" href="#query-performance-panel"><span class="std std-ref">Query Performance panel</span></a> with a preconfigured
+recommendation of an <a class="reference internal" href="#query-performance-index"><span class="std std-ref">index</span></a> or
+<a class="reference internal" href="#query-performance-summary"><span class="std std-ref">summary field</span></a> to create.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Clicking “Dismiss” will prevent this notification from appearing for the
+remainder of your current App session.</p>
+</div>
+</div>
+<div class="section" id="query-performance-panel">
+<span id="id2"></span><h2>Query Performance panel<a class="headerlink" href="#query-performance-panel" title="Permalink to this headline">¶</a></h2>
+<p>You can open the Query Performance panel manually either by clicking the “+”
+icon next to the Samples tab or by clicking the yellow lightning bolt in the
+top-right of the sidbar:</p>
+<img alt="query-performance-tooltip" class="align-center" src="../_images/qp_tooltip.png" />
+<p>The first time you open the Query Performance panel, you’ll see a welcome page:</p>
+<img alt="query-performance-home-tab" class="align-center" src="../_images/qp_home.png" />
+<p>After you’ve created at least one custom index or summary field for a dataset,
+you’ll instead see a list of the indexes and summary fields that exist on the
+dataset:</p>
+<img alt="query-performance-tableview" class="align-center" src="../_images/qp_tableview.png" />
+<div class="section" id="creating-indexes">
+<span id="query-performance-index"></span><h3>Creating indexes<a class="headerlink" href="#creating-indexes" title="Permalink to this headline">¶</a></h3>
+<p>You can create a new index at any time by clicking the <code class="code docutils literal notranslate"><span class="pre">Create</span> <span class="pre">Index</span></code> button
+in the top-right of the panel:</p>
+<img alt="query-performance-create-index" class="align-center" src="../_images/qp_create_index.png" />
+<p>When you click “Execute”, the index will be initiated and you’ll see
+“In progress” in the panel’s summary table.</p>
+<p>After the index creation has finished, the field that you indexed will have a
+lightning bolt icon in the sidebar, and you should notice that expanding the
+field’s filter widget and performing queries on it will be noticably faster.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>For large datasets, index creation can have a significant impact on the
+performance of the database while the index is under construction.</p>
+<p>We recommend indexing <em>only</em> the specific fields that you wish to perform
+initial filters on, and we recommend consulting with your deployment admin
+before creating multiple indexes simultaneously.</p>
+</div>
+<p>You can also create and manage custom indexes
+<a class="reference internal" href="../user_guide/app.html#app-optimizing-query-performance"><span class="std std-ref">via the SDK</span></a>.</p>
+</div>
+<div class="section" id="creating-summary-fields">
+<span id="query-performance-summary"></span><h3>Creating summary fields<a class="headerlink" href="#creating-summary-fields" title="Permalink to this headline">¶</a></h3>
+<p>The Query Performance panel also allows you to create
+<a class="reference internal" href="../user_guide/using_datasets.html#summary-fields"><span class="std std-ref">summary fields</span></a>, which are sample-level fields that
+allow you to efficiently perform queries on large datasets where directly
+querying the underlying field is prohibitively slow due to the number of
+objects/frames in the field.</p>
+<p>For example, summary fields can help you query video datasets to find samples
+that contain specific classes of interest, eg <code class="code docutils literal notranslate"><span class="pre">person</span></code>, in at least one frame.</p>
+<p>You can create a new summary field at any time by clicking the <code class="code docutils literal notranslate"><span class="pre">Create</span> <span class="pre">Index</span></code>
+button in the top-right of the panel and selecting the “Summary field” type in
+the model:</p>
+<img alt="query-performance-create-summary-field" class="align-center" src="../_images/qp_create_summary_field.png" />
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>For large datasets, creating summary fields can take a few minutes.</p>
+</div>
+<p>You can also create and manage summary fields
+<a class="reference internal" href="../user_guide/using_datasets.html#summary-fields"><span class="std std-ref">via the SDK</span></a>.</p>
+</div>
+<div class="section" id="updating-summary-fields">
+<span id="query-performance-update"></span><h3>Updating summary fields<a class="headerlink" href="#updating-summary-fields" title="Permalink to this headline">¶</a></h3>
+<p>Since a <a class="reference internal" href="../user_guide/using_datasets.html#summary-fields"><span class="std std-ref">summary field</span></a> is derived from the contents of
+another field, it must be updated whenever there have been modifications to its
+source field.</p>
+<p>Click the update icon in the actions column of any summary field to open a
+modal that will provide guidance on whether to update the summary field to
+reflect recent dataset changes.</p>
+</div>
+<div class="section" id="deleting-indexes-summaries">
+<span id="query-performance-delete"></span><h3>Deleting indexes/summaries<a class="headerlink" href="#deleting-indexes-summaries" title="Permalink to this headline">¶</a></h3>
+<p>You can delete a custom index or summary field by clicking its trash can icon
+in the actions column of the panel.</p>
+</div>
+</div>
+<div class="section" id="disabling-query-performance">
+<span id="query-performance-disable"></span><h2>Disabling Query Performance<a class="headerlink" href="#disabling-query-performance" title="Permalink to this headline">¶</a></h2>
+<p>Query Performance is enabled by default for all datasets. This is generally the
+recommended setting for all large datasets to ensure that queries are
+performant.</p>
+<p>However, in certain circumstances you may prefer to disable Query Performance,
+which enables the App’s sidebar to show additional information such as
+label/value counts that are useful but more expensive to compute.</p>
+<p>You can enable/disable Query Performance for a particular dataset for its
+lifetime (in your current browser) via the gear icon in the Samples panel’s
+actions row:</p>
+<img alt="app-query-performance-disabled" class="align-center" src="../_images/app-query-performance-disabled.gif" />
+<p>You can also enable/disable Query Performance via the status button in the
+upper right corner of the Query Performance panel:</p>
+<img alt="query-performance-config" class="align-center" src="../_images/qp_config.png" />
+<p>Deployment admins can also configure the global behavior of Query Performance
+via the following environment variables:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Disable Query Performance by default for all new datasets</span>
+<span class="nv">FIFTYONE_APP_DEFAULT_QUERY_PERFORMANCE</span><span class="o">=</span><span class="nb">false</span>
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Completely disable Query Performance for all users</span>
+<span class="nv">FIFTYONE_APP_ENABLE_QUERY_PERFORMANCE</span><span class="o">=</span><span class="nb">false</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+             </article>
+             
+            </div>
+            <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="teams_plugins.html" class="btn btn-neutral float-right" title="FiftyOne Teams Plugins" accesskey="n" rel="next">Next <img src="../_static/images/chevron-right-orange.svg" class="next-page"></a>
+      
+      
+        <a href="data_quality.html" class="btn btn-neutral" title="Data Quality" accesskey="p" rel="prev"><img src="../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
+      
+    </div>
+  
+</footer>
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              <ul>
+<li><a class="reference internal" href="#">Query Performance</a><ul>
+<li><a class="reference internal" href="#optimizing-query-performance">Optimizing Query Performance</a></li>
+<li><a class="reference internal" href="#query-performance-panel">Query Performance panel</a><ul>
+<li><a class="reference internal" href="#creating-indexes">Creating indexes</a></li>
+<li><a class="reference internal" href="#creating-summary-fields">Creating summary fields</a></li>
+<li><a class="reference internal" href="#updating-summary-fields">Updating summary fields</a></li>
+<li><a class="reference internal" href="#deleting-indexes-summaries">Deleting indexes/summaries</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#disabling-query-performance">Disabling Query Performance</a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  
+
+
+  
+
+     
+       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+         <script src="../_static/jquery.js"></script>
+         <script src="../_static/underscore.js"></script>
+         <script src="../_static/doctools.js"></script>
+         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+         <script src="../_static/js/voxel51-website.js"></script>
+         <script src="../_static/js/custom.js"></script>
+     
+
+  
+
+  <script type="text/javascript" src="../_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="../_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+  <!-- Begin Footer -->
+
+
+<footer class="footer-wrapper" id="docs-tutorials-resources">
+  <div class="footer pytorch-container">
+    <div class="footer__logo">
+      <a href="https://voxel51.com/"
+        ><img
+          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
+      /></a>
+    </div>
+
+    <div class="footer__address">
+      330 E Liberty St<br />
+      Ann Arbor, MI 48104<br />
+      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
+    </div>
+
+    <!--
+    <div class="footer__contact">
+      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
+    </div>
+    -->
+
+    <div class="footer__links">
+      <div class="footer__links--col2">
+        <p class="nav__item--brand">Products</p>
+        <a href="https://voxel51.com/fiftyone/">FiftyOne</a>
+        <a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a>
+        <a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a>
+        <a href="https://voxel51.com/success-stories/">Success Stories</a>
+      </div>
+      <div class="footer__links--col3">
+        <p class="nav__item--brand">Resources</p>
+        <a href="https://voxel51.com/blog/">Blog</a>
+        <a href="https://docs.voxel51.com/">Docs</a>
+        <a href="https://github.com/voxel51/">GitHub</a>
+        <a href="https://community.voxel51.com">Discord</a>
+        <a href="https://voxel51.com/ourstory/">About Us</a>
+        <a href="https://voxel51.com/computer-vision-events/">Events</a>
+        <a href="https://voxel51.com/jobs/">Careers</a>
+        <a href="https://voxel51.com/press/">Press</a>
+      </div>
+    </div>
+
+    <div class="footer__icons">
+      <ul class="list-inline">
+        <li>
+          <a href="https://www.linkedin.com/company/voxel51/">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/voxel51/">
+            <i class="fa-brands fa-github"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/voxel51">
+            <i class="fa-brands fa-twitter"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/voxel51/">
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="footer__copyright">
+      <ul class="list-inline">
+        <li>&copy; 2024 Voxel51 Inc.</li>
+        <li>
+          <a href="https://voxel51.com/privacy/">Privacy Policy</a>
+        </li>
+        <li>
+          <a href="https://voxel51.com/terms/">Terms of Service</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<!-- https://buttons.github.io -->
+<script async defer src="https://buttons.github.io/buttons.js" ></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XD15NFRY3M" ></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+  gtag("config", "G-XD15NFRY3M");
+</script>
+
+<script>
+  function open_modal(modal_id, modal_closer_id) {
+    // Get the modal
+    let the_modal = document.getElementById(modal_id);
+
+    the_modal.style.display = "flex";
+    document.body.style.overflow = "hidden";
+
+    let the_modal_closer = document.getElementById(modal_closer_id);
+
+    // When the user clicks on <span> (x), close the modal
+    the_modal_closer &&
+      (the_modal_closer.onclick = function () {
+        the_modal.style.display = "none";
+      });
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+      if (event.target == the_modal) {
+        the_modal.style.display = "none";
+        document.body.style.overflow = "unset";
+        window.onclick = undefined;
+      }
+    };
+  }
+</script>
+
+<!-- bigpicture.io -->
+<script>
+  !(function (e, t, i) {
+    var r = (e.bigPicture = e.bigPicture || []);
+    if (!r.initialized)
+      if (r.invoked)
+        e.console &&
+          console.error &&
+          console.error("BigPicture.io snippet included twice.");
+      else {
+        (r.invoked = !0),
+          (r.SNIPPET_VERSION = 1.5),
+          (r.handler = function (e) {
+            if (void 0 !== r.callback)
+              try {
+                return r.callback(e);
+              } catch (e) {}
+          }),
+          (r.eventList = ["mousedown", "mouseup", "click", "submit"]),
+          (r.methods = [
+            "track",
+            "identify",
+            "page",
+            "group",
+            "alias",
+            "integration",
+            "ready",
+            "intelReady",
+            "consentReady",
+            "on",
+            "off",
+          ]),
+          (r.factory = function (e) {
+            return function () {
+              var t = Array.prototype.slice.call(arguments);
+              return t.unshift(e), r.push(t), r;
+            };
+          });
+        for (var n = 0; n < r.methods.length; n++) {
+          var o = r.methods[n];
+          r[o] = r.factory(o);
+        }
+        r.getCookie = function (e) {
+          var i = ("; " + t.cookie).split("; " + e + "=");
+          return 2 == i.length && i.pop().split(";").shift();
+        };
+        var c = (r.isEditor = (function () {
+          try {
+            return (
+              e.self !== e.top &&
+              (new RegExp("app" + i, "ig").test(t.referrer) ||
+                "edit" == r.getCookie("_bpr_edit"))
+            );
+          } catch (e) {
+            return !1;
+          }
+        })());
+        r.init = function (n, o) {
+          if (((r.projectId = n), (r._config = o), !c))
+            for (var a = 0; a < r.eventList.length; a++)
+              e.addEventListener(r.eventList[a], r.handler, !0);
+          var s = t.createElement("script");
+          s.async = !0;
+          var d = c ? "/editor/editor" : "/public-" + n;
+          (s.src = "//cdn" + i + d + ".js"),
+            t.getElementsByTagName("head")[0].appendChild(s);
+        };
+      }
+  })(window, document, ".bigpicture.io");
+  bigPicture.init("1646");
+</script>
+
+
+  
+
+  <!-- End Footer -->
+
+  <!-- Begin Mobile Menu -->
+
+  
+
+  <!-- End Mobile Menu -->
+
+  <script type="text/javascript" src="../_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function(e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+</body>
+</html>

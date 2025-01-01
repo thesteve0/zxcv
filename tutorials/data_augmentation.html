@@ -1,0 +1,1014 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Augmenting Datasets with Albumentations &mdash; FiftyOne 1.3.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <link rel="stylesheet" href="../_static/css/voxel51-website.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Clustering Images with Embeddings" href="clustering.html" />
+    <link rel="prev" title="Zero-Shot Image Classification with Multimodal Models and FiftyOne" href="zero_shot_classification.html" />
+<meta property="og:image" content="https://voxel51.com/wp-content/uploads/2024/03/3.24_webpages_Home_AV.png" />
+
+<link
+  href="https://fonts.googleapis.com/css?family=Palanquin:400,600,700,800"
+  rel="stylesheet"
+/>
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+  rel="stylesheet"
+/>
+<script src="https://tag.clearbitscripts.com/v1/pk_b9ed71c8234edd4f77326bcbfab5a4ca/tags.js"></script>
+
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+  
+</head>
+
+
+<div class="container-fluid header-holder tutorials-header" id="header-holder">
+  <nav id="nav__main" class="nav__main">
+    <div class="nav__main__logo">
+      <a href="https://voxel51.com/">
+        <img
+          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
+        />
+      </a>
+    </div>
+
+    <div class="nav__spacer desktop_only"></div>
+
+    <div id="nav__main__mobilebutton--on">
+      <a href="javascript:void(0);" onclick="navMobileButton()">
+        <i class="fa-solid fa-bars"></i>
+      </a>
+    </div>
+
+    <div id="nav__main__mobilebutton--off">
+      <a href="javascript:void(0);" onclick="navMobileButton()">
+        <i class="fa-solid fa-times"></i>
+      </a>
+    </div>
+
+    <div id="nav__main__items">
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Products</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://voxel51.com/fiftyone/">Open Source</a></li>
+            <li><a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a></li>
+            <li><a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a></li>
+            <li><a href="https://voxel51.com/success-stories/">Success Stories</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Learn</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://community.voxel51.com">Community Discord</a></li>
+            <li><a href="https://voxel51.com/blog/">Blog</a></li>
+            <li><a href="https://voxel51.com/computer-vision-events/">Events</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item">
+        <a href="https://docs.voxel51.com/">Docs</a>
+      </div>
+
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Company</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://voxel51.com/ourstory/">About Us</a></li>
+            <li><a href="https://voxel51.com/jobs/">Careers</a></li>
+            <li><a href="https://voxel51.com/talk-to-sales/">Talk to Sales</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item mobile_only">
+        <a href="https://github.com/voxel51/fiftyone">GitHub</a>
+      </div>
+
+      <div class="nav__item desktop_only" id="octocat">
+        <!-- https://buttons.github.io -->
+        <a
+          class="github-button"
+          href="https://github.com/voxel51/fiftyone"
+          data-color-scheme="no-preference: dark_high_contrast; light: dark_high_contrast; dark: dark_high_contrast;"
+          data-size="large"
+          data-show-count="true"
+          aria-label="Star voxel51/fiftyone on GitHub"
+          >Star</a
+        >
+      </div>
+
+      <div class="nav__item full_nav_only">
+        <a class="button-primary" href="https://voxel51.com/schedule-teams-workshop/" target="_blank"
+          >Schedule a workshop</a
+        >
+      </div>
+    </div>
+  </nav>
+</div>
+
+
+
+<body class="pytorch-body">
+
+   
+
+    
+
+    <div class="table-of-contents-link-wrapper">
+      <span>Table of Contents</span>
+      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+    </div>
+
+    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+      <div class="pytorch-side-scroll">
+        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          <div class="pytorch-left-menu-search">
+            
+
+            
+              
+              
+            
+
+            
+
+
+  
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+            
+          </div>
+
+           <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../teams/index.html">FiftyOne Teams 🚀</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../environments/index.html">Environments</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="pandas_comparison.html">pandas and FiftyOne</a></li>
+<li class="toctree-l2"><a class="reference internal" href="evaluate_detections.html">Evaluating object detections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="evaluate_classifications.html">Evaluating a classifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="image_embeddings.html">Using image embeddings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cvat_annotation.html">Annotating with CVAT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="labelbox_annotation.html">Annotating with Labelbox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open_images.html">Working with Open Images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="detectron2.html">Training with Detectron2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uniqueness.html">Exploring image uniqueness</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classification_mistakes.html">Finding class mistakes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="detection_mistakes.html">Finding detection mistakes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qdrant.html">Embeddings with Qdrant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="yolov8.html">Fine-tuning YOLOv8 models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pointe.html">3D point clouds with Point-E</a></li>
+<li class="toctree-l2"><a class="reference internal" href="monocular_depth_estimation.html">Monocular depth estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dimension_reduction.html">Dimensionality reduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="zero_shot_classification.html">Zero-shot classification</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Data augmentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clustering.html">Clustering images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="small_object_detection.html">Detecting small objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="anomaly_detection.html">Anomaly detection</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../recipes/index.html">Recipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheat_sheets/index.html">Cheat Sheets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dataset_zoo/index.html">Dataset Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_zoo/index.html">Model Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brain.html">FiftyOne Brain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/index.html">Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plugins/index.html">Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli/index.html">CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/fiftyone.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deprecation.html">Deprecation Notices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a></li>
+</ul>
+ 
+        </div>
+      </div>
+    </nav>
+
+    <div class="pytorch-container">
+      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+        <div class="pytorch-breadcrumbs-wrapper">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="../index.html">
+          
+            Docs
+          
+        </a> &gt;
+      </li>
+
+        
+          <li><a href="index.html">FiftyOne Tutorials</a> &gt;</li>
+        
+      <li>Augmenting Datasets with Albumentations</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+        </div>
+
+        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+          Contents
+        </div>
+      </div>
+
+      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+        <div class="pytorch-content-left">
+
+        
+          
+          <div class="rst-content style-external-links">
+          
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+              
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    /*background: #f5f5f5;*/
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+    margin: 0;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt .copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+</style>
+<table class="fo-notebook-links" align="left">
+    <td>
+        <a target="_blank" href="https://colab.research.google.com/github/voxel51/fiftyone/blob/v1.3.0/docs/source/tutorials/data_augmentation.ipynb">
+            <img src="../_static/images/icons/colab-logo-256px.png"> &nbsp; Run in Google Colab
+        </a>
+    </td>
+    <td>
+        <a target="_blank" href="https://github.com/voxel51/fiftyone/blob/v1.3.0/docs/source/tutorials/data_augmentation.ipynb">
+            <img src="../_static/images/icons/github-logo-256px.png"> &nbsp; View source on GitHub
+        </a>
+    </td>
+    <td>
+        <a target="_blank" href="https://raw.githubusercontent.com/voxel51/fiftyone/v1.3.0/docs/source/tutorials/data_augmentation.ipynb" download>
+            <img src="../_static/images/icons/cloud-icon-256px.png"> &nbsp; Download notebook
+        </a>
+    </td>
+</table><div class="section" id="Augmenting-Datasets-with-Albumentations">
+<h1>Augmenting Datasets with Albumentations<a class="headerlink" href="#Augmenting-Datasets-with-Albumentations" title="Permalink to this headline">¶</a></h1>
+<p>Traditionally, <a class="reference external" href="(https://en.wikipedia.org/wiki/Data_augmentation)">data augmentation</a> is performed on-the-fly during training. This is great… <em>if</em> you know exactly what augmentations you want to apply to your dataset.</p>
+<p>However, if you’re just getting started with a new dataset, you may not know what augmentations are appropriate for your data. Should you include rotations? How much blurring is reasonable? Does it make sense to employ random cropping? These questions just scratch the surface.</p>
+<p>When effective, data augmentation can significantly boost model performance by reducing overfitting and turning a small set of collected data into a much larger and more diverse data moat. But when left unchecked, data augmentation transformations can completely confuse your model, burying the original high quality data in a glut of digital garbage.</p>
+<p>In this walkthrough, you’ll learn how to apply data augmentation to your dataset using the <a class="reference external" href="https://albumentations.ai/">Albumentations</a> library, and how to ensure those augmentations are appropriate for your data.</p>
+<p>It covers the following:</p>
+<ul class="simple">
+<li><p>What is data augmentation?</p></li>
+<li><p>The perils of blind data augmentation</p></li>
+<li><p>Testing transformations on your dataset</p></li>
+</ul>
+<div class="section" id="What-is-Data-Augmentation?">
+<h2>What is Data Augmentation?<a class="headerlink" href="#What-is-Data-Augmentation?" title="Permalink to this headline">¶</a></h2>
+<figure><p><img alt="38d05928311e4a9597921ac44262876f" src="../_images/augmentations_illustration.png" /></p>
+<figcaption align="center"><p>Illustration of data augmentation applied to a single natural image</p>
+</figcaption></figure><p>Broadly speaking, <a class="reference external" href="https://en.wikipedia.org/wiki/Data_augmentation">data augmentation</a> is any process that involves increasing the size of the training set by modifying the original data. Typically, data augmentation is used to fill expected gaps in the original data and reduce overfitting to the specific data that you were able to collect and curate. It is also a <a class="reference external" href="https://www.picsellia.com/post/improve-imbalanced-datasets-in-computer-vision">handy technique for mitigating class
+imbalance</a>: by augmenting the number of samples for underrepresented classes, you can restore balance to the training distribution. Often, augmentations can account for 90% of the training data, or even more.</p>
+<p>In the context of computer vision, modifications can be made via geometric transformations like rotations and reflections, transformations which blur or add noise, or transformations that simulate different lighting conditions, such as changing the brightness, contrast, or saturation. For most of these augmentations, if you just need to transform the raw images, then torchvision’s <code class="docutils literal notranslate"><span class="pre">transforms</span></code> module is a great solution. If you want to take your labels (bounding boxes, masks, and keypoints)
+along for the ride, then you’ll need a purpose-built image augmentation library, such as <a class="reference external" href="https://albumentations.ai/">Albumentations</a>, <a class="reference external" href="https://imgaug.readthedocs.io/en/latest/">imgaug</a>, or <a class="reference external" href="https://augmentor.readthedocs.io/en/master/">Augmentor</a>.</p>
+<p>There are also more sophisticated image augmentation techniques for changing the scenery, background, and weather conditions in images. If you’re interested in this level of control over your augmentations, check out <a class="reference external" href="https://www.kopikat.co/">Kopikat</a> and Stability AI’s <a class="reference external" href="https://clipdrop.co/real-estate/sky-replacer">Sky Replacer</a>.</p>
+<p>While data augmentation itself does not include completely synthetic data generation, augmentation is often used in conjunction with synthetic data generation approaches. Synthetic data from <a class="reference external" href="https://www.nvidia.com/en-us/omniverse/">NVIDIA Omniverse</a> can be <a class="reference external" href="https://blogs.nvidia.com/blog/what-is-synthetic-data/">orders of magnitude cheaper</a> than collecting similar data in the field — combining this with (computationally inexpensive) data augmentation can lead to still further cost savings!</p>
+</div>
+<div class="section" id="The-Perils-of-Blind-Data-Augmentation">
+<h2>The Perils of Blind Data Augmentation<a class="headerlink" href="#The-Perils-of-Blind-Data-Augmentation" title="Permalink to this headline">¶</a></h2>
+<p>When applied irresponsibly, data augmentations can degrade model performance and have severe real–world consequences. Some transformations clearly push beyond the bounds of the desired data distribution — too much blurring makes an image unrecognizable; vertically flipping a portrait (leading to an upside down face) is clearly undesirable for most use cases.</p>
+<p>But the damage done by blindly boosting dataset size can be far more subtle and pernicious. Let’s look at two examples, to make this explicit.</p>
+<p>Suppose you’re working for a wildlife conservation organization, using computer vision to count the number of <a class="reference external" href="https://animalia.bio/blue-throated-macaw">blue-throated macaws</a>. At last count, there were <a class="reference external" href="https://animalia.bio/blue-throated-macaw?collection=35#:~:text=Recent%20population%20and%20range%20estimates,individuals%20remain%20in%20the%20wild.">only around 350 in the wild</a>, so you only have a few images to start with, and you want to augment your data.</p>
+<figure><p><img alt="5b1f9edbf3c74d7d926b54b746aae9ea" src="../_images/augmentations_blue_throated_macaw.png" /></p>
+<figcaption align="center"><p>Blue-throated macaw. Image courtesy of wikimedia commons</p>
+</figcaption></figure><p>Your field cameras take pretty high-resolution images, so you augment the data by randomly cropping 600x600 patches from your original images. When you randomly crop, some of the resulting augmentations look like this:</p>
+<figure><p><img alt="32a8780ec7a347e5baf7ab65c0263cf0" src="../_images/augmentations_macaw_crops.png" /></p>
+<figcaption align="center"><p>600x600 pixel random crops of the image above</p>
+</figcaption></figure><p>But there’s a problem. If you use this to train your model, the model might incorrectly tag <a class="reference external" href="https://animalia.bio/blue-and-gold-macaw">blue-and-gold macaws</a> — which are far more abundant (<a class="reference external" href="https://en.wikipedia.org/wiki/Blue-and-yellow_macaw#:~:text=The%20species%20is%20therefore%20listed,CITES%20Appendix%20II%2C%20trade%20restricted.">more than 10,000 in the wild</a>), share an overlapping geographic range and apart from their head look pretty similar. This might significantly throw off your
+population estimates.</p>
+<figure><p><img alt="86b501462a6e400382c32caaccb695a1" src="../_images/augmentations_blue_and_yellow_macaw.png" /></p>
+<figcaption align="center"><p>Blue and yellow macaw. Image courtesy of Ketian Chen</p>
+</figcaption></figure><p>To hammer this idea home, let’s look at another example. Suppose you’re building a model to detect pneumonia from chest X-rays. Typically, pneumonia shows up in these images as an abnormally opaque region within the chest, so teaching a neural net to diagnose it should be possible, but you only have hundreds of images — far too few to train your desired model.</p>
+<p>One of the augmentations you are interested in performing is changing the contrast in the images. Each lab from which you are receiving data sends you X-ray images with different amounts of contrast, so it seems reasonable to turn each image into a set of images across the spectrum of contrast.</p>
+<p>But there’s a problem here too. Turning the contrast up or down may be viable for some images. However, too high of a contrast can also change the perceived diagnosis. Consider the image on the left side below, of a non-pneumatic patient from the <a class="reference external" href="https://try.fiftyone.ai/datasets/chestx-ray14/samples">ChestX-ray14 dataset</a>. Now look at the image on the right, after the contrast has been increased and a region made substantially more opaque. If we retained the training label from the left, we
+would be telling the model that images like this are non-pneumatic. This could potentially cause confusion and result in false negative diagnoses.</p>
+<figure><p><img alt="ebf0d5f097344104947072a164e9f49d" src="../_images/augmentations_lung_contrast_comparison.png" /></p>
+<figcaption align="center"><p>Left: Lung without pneumonia (image from ChestX-ray14 dataset). Right: Contrast-heightened augmentation of left image</p>
+</figcaption></figure></div>
+<div class="section" id="Testing-Transformations-with-Albumentations-and-FiftyOne">
+<h2>Testing Transformations with Albumentations and FiftyOne<a class="headerlink" href="#Testing-Transformations-with-Albumentations-and-FiftyOne" title="Permalink to this headline">¶</a></h2>
+<p>The examples highlighted in the last section may not apply in your use case, but there are countless ways that augmentations can make a mess out of high quality data. Albumentations has <a class="reference external" href="https://albumentations.ai/docs/getting_started/transforms_and_targets/">80+ transformations</a>, many of which give you multiple control knobs to turn. And these transformations can be composed, altogether amounting to a massive space of possible augmentations.</p>
+<p>To ensure that your augmentations are reasonable, in domain, and add diversity to your dataset, it is absolutely essential that you test out your transformations before including them in a training loop.</p>
+<p>Fortunately, the <a class="reference external" href="https://github.com/jacobmarks/fiftyone-albumentations-plugin">Albumentations plugin for FiftyOne</a> allows you to do just this! In particular, you can:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/jacobmarks/fiftyone-albumentations-plugin?tab=readme-ov-file#applying-augmentations">Apply Albumentations transformations</a></p></li>
+<li><p><a class="reference external" href="https://github.com/jacobmarks/fiftyone-albumentations-plugin?tab=readme-ov-file#view-last-augmentation">View samples generated by last augmentation</a></p></li>
+<li><p><a class="reference external" href="https://github.com/jacobmarks/fiftyone-albumentations-plugin?tab=readme-ov-file#saving-augmentations">Save augmentations to the dataset</a>, and</p></li>
+<li><p><a class="reference external" href="https://github.com/jacobmarks/fiftyone-albumentations-plugin?tab=readme-ov-file#saving-transformations">Save transformations you found useful</a></p></li>
+</ul>
+<p>The augmentation transforms not only the raw image, but also any <a class="reference external" href="https://github.com/jacobmarks/fiftyone-albumentations-plugin?tab=readme-ov-file#view-last-augmentation:~:text=following%20label%20types%3A-,Object%20Detection,-Keypoint%20Detection">Object Detections</a>, <a class="reference external" href="https://docs.voxel51.com/user_guide/using_datasets.html#keypoints">Keypoints</a>, <a class="reference external" href="https://github.com/jacobmarks/fiftyone-albumentations-plugin?tab=readme-ov-file#view-last-augmentation:~:text=Instance%20Segmentation">Instance
+Segmentations</a>, <a class="reference external" href="https://github.com/jacobmarks/fiftyone-albumentations-plugin?tab=readme-ov-file#view-last-augmentation:~:text=Semantic%20Segmentation">Semantic Segmentations</a>, and <a class="reference external" href="https://docs.voxel51.com/user_guide/using_datasets.html#heatmaps">Heatmap</a> labels on the transformed samples.</p>
+<div class="section" id="Setup">
+<h3>Setup<a class="headerlink" href="#Setup" title="Permalink to this headline">¶</a></h3>
+<p>To get started, first make sure you have FiftyOne and Albumentations installed:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span>fiftyone<span class="w"> </span>albumentations
+</pre></div>
+</div>
+<p>Then download the Albumentations plugin with FiftyOne’s plugin CLI syntax:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>fiftyone<span class="w"> </span>plugins<span class="w"> </span>download<span class="w"> </span>https://github.com/jacobmarks/fiftyone-albumentations-plugin
+</pre></div>
+</div>
+<p>For this walkthrough, we’ll pretend that our goal is to train a vision model for an autonomous vehicle application, but we are starting from just a handful of labeled images. In particular, we’ll take just the first 10 images from the <a class="reference external" href="https://docs.voxel51.com/user_guide/dataset_zoo/datasets.html#kitti">KITTI</a> dataset, which contains left stereo images from road scenes.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;kitti&quot;</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span> <span class="n">max_samples</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<figure><p><img alt="6ce86bdff61a46a98ca226f19c1423e2" src="../_images/augmentations_initial_dataset.png" /></p>
+<figcaption align="center"><p>Subset of 10 images from the train split of the KITTI dataset, visualized in the FiftyOne App</p>
+</figcaption></figure><p>To make things more fun — and to show that this plugin allows you to experiment with all different types of labels — let’s add some pose estimation keypoints with <a class="reference external" href="https://docs.ultralytics.com/">Ultralytics</a>, and some relative depth maps with Hugging Face’s <a class="reference external" href="https://huggingface.co/docs/transformers/index">Transformers</a> library:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span>transformers<span class="w"> </span>ultralytics
+</pre></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Add depth maps</span>
+<span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">AutoModelForDepthEstimation</span>
+<span class="n">depth_model</span> <span class="o">=</span> <span class="n">AutoModelForDepthEstimation</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span>
+    <span class="s2">&quot;Intel/dpt-large&quot;</span>
+<span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">apply_model</span><span class="p">(</span><span class="n">depth_model</span><span class="p">,</span> <span class="s2">&quot;depth&quot;</span><span class="p">)</span>
+
+
+<span class="c1">## Add keypoints</span>
+<span class="kn">from</span> <span class="nn">ultralytics</span> <span class="kn">import</span> <span class="n">YOLO</span>
+<span class="n">pose_model</span> <span class="o">=</span> <span class="n">YOLO</span><span class="p">(</span><span class="s1">&#39;yolov8x-pose.pt&#39;</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">apply_model</span><span class="p">(</span><span class="n">pose_model</span><span class="p">,</span> <span class="s2">&quot;keypoints&quot;</span><span class="p">)</span>
+
+<span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p><img alt="Dataset with labels" src="../_images/augmentations_dataset_with_labels.gif" /></p>
+</div>
+<div class="section" id="Creating-Augmentations">
+<h3>Creating Augmentations<a class="headerlink" href="#Creating-Augmentations" title="Permalink to this headline">¶</a></h3>
+<p>Pressing the backtick “`” key on the keyboard, and typing “augment” in. Press the <code class="docutils literal notranslate"><span class="pre">augment_with_albumentations</span></code> option. This is an operator in the FiftyOne Plugin system, and by interacting with the UI-based input form, we will be able to specify what transform we want to apply.</p>
+<p>Let’s try a simple example of randomly cropping boxes out of each image. To do so, we will use the <code class="docutils literal notranslate"><span class="pre">RandomCropFromBorders</span></code> transform from Albumentations:</p>
+<p><img alt="Random crop from borders" src="../_images/augmentations_compose_transforms.gif" /></p>
+<p>Notice how as we interact with the input form, the contents dynamically change. In this case, when we select the transformation we want to apply, we are greeted with input items for each argument taken by that transform function. This is made possible through the use of Python’s <code class="docutils literal notranslate"><span class="pre">inspect</span></code> module — each argument is processed (input and output) in semi-automated fashion by utilizing the docstrings and function signatures of Albumentations’ transformations.</p>
+<p>Also notice that we chose to generate just one augmentation per sample from this transform — hence going from 10 to 20 samples. For transformations which involve randomness, it can be helpful to generate multiple augmentations to investigate the broader range of possible generations.</p>
+</div>
+<div class="section" id="Isolating-the-Augmented-Samples">
+<h3>Isolating the Augmented Samples<a class="headerlink" href="#Isolating-the-Augmented-Samples" title="Permalink to this headline">¶</a></h3>
+<p>If we wanted to isolate the samples we just generated, as opposed to viewing them in line with the original samples, we could do so by invoking the <code class="docutils literal notranslate"><span class="pre">view_last_albumentations_run</span> <span class="pre">operator</span></code>:</p>
+<p><img alt="Random crop from borders" src="../_images/augmentations_compose_transforms.gif" /></p>
+<p>If we want to keep them, then we can save the augmentations to the dataset with the <code class="docutils literal notranslate"><span class="pre">save_albumentations_augmentations</span></code> operator. Otherwise, they will be treated as temporary — for the purposes of experimentation — and deleted when you next generate augmentations.</p>
+</div>
+<div class="section" id="Inspecting-the-Generating-Transformation">
+<h3>Inspecting the Generating Transformation<a class="headerlink" href="#Inspecting-the-Generating-Transformation" title="Permalink to this headline">¶</a></h3>
+<p>Perhaps even more importantly, running <code class="docutils literal notranslate"><span class="pre">get_last_albumentations_run_info</span></code> will display for us a formatted compilation of all of the parameters used to construct the prior transformation and generate these augmentations:</p>
+<p><img alt="Random crop from borders" src="../_images/augmentations_compose_transforms.gif" /></p>
+<p>If we are satisfied with this transformation and the hyperparameters employed, we can save it, either for composition with other transforms in our exploration, or to use in your inference pipelines:</p>
+<p><img alt="Random crop from borders" src="../_images/augmentations_compose_transforms.gif" /></p>
+</div>
+<div class="section" id="Composing-Transformations">
+<h3>Composing Transformations<a class="headerlink" href="#Composing-Transformations" title="Permalink to this headline">¶</a></h3>
+<p>In production-grade inference pipelines, augmentations are often generated by composing multiple augmentation transformations to each base sample. For instance, you might apply a random brightness shift, followed by a random crop, and finally some sort of blur. Let’s see this in action:</p>
+<p><img alt="Random crop from borders" src="../_images/augmentations_compose_transforms.gif" /></p>
+<p>This is of course just one combination, and yet even this indicates that perhaps if we want to combine cropping with brightness changes, we should be intentional about the minimum size of the cropped region or the maximum amount of darkening we add. And this will all depend on the particular application!</p>
+</div>
+</div>
+<div class="section" id="Summary">
+<h2>Summary<a class="headerlink" href="#Summary" title="Permalink to this headline">¶</a></h2>
+<p>Whether you’re building a low-latency embedded vision model for real-time detection or you’re building the next state of the art multimodal foundation model, it almost goes without saying that data augmentation is an essential ingredient in the training process. Yet far too often, we treat data augmentation as a black-box component and heuristically determine what transformations to apply.</p>
+<p>But if you’re optimizing your model architecture, and painstakingly pouring over your ground truth data to ensure the highest quality, there’s no reason not to take the same care with your data augmentation. I hope this post hammers home the importance of understanding what transformations you are applying, and gives you the tools you need to start treating data augmentation like data curation!</p>
+</div>
+</div>
+
+
+             </article>
+             
+            </div>
+            <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="clustering.html" class="btn btn-neutral float-right" title="Clustering Images with Embeddings" accesskey="n" rel="next">Next <img src="../_static/images/chevron-right-orange.svg" class="next-page"></a>
+      
+      
+        <a href="zero_shot_classification.html" class="btn btn-neutral" title="Zero-Shot Image Classification with Multimodal Models and FiftyOne" accesskey="p" rel="prev"><img src="../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
+      
+    </div>
+  
+</footer>
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              <ul>
+<li><a class="reference internal" href="#">Augmenting Datasets with Albumentations</a><ul>
+<li><a class="reference internal" href="#What-is-Data-Augmentation?">What is Data Augmentation?</a></li>
+<li><a class="reference internal" href="#The-Perils-of-Blind-Data-Augmentation">The Perils of Blind Data Augmentation</a></li>
+<li><a class="reference internal" href="#Testing-Transformations-with-Albumentations-and-FiftyOne">Testing Transformations with Albumentations and FiftyOne</a><ul>
+<li><a class="reference internal" href="#Setup">Setup</a></li>
+<li><a class="reference internal" href="#Creating-Augmentations">Creating Augmentations</a></li>
+<li><a class="reference internal" href="#Isolating-the-Augmented-Samples">Isolating the Augmented Samples</a></li>
+<li><a class="reference internal" href="#Inspecting-the-Generating-Transformation">Inspecting the Generating Transformation</a></li>
+<li><a class="reference internal" href="#Composing-Transformations">Composing Transformations</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#Summary">Summary</a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  
+
+
+  
+
+     
+       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+         <script src="../_static/jquery.js"></script>
+         <script src="../_static/underscore.js"></script>
+         <script src="../_static/doctools.js"></script>
+         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+         <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+         <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+         <script src="../_static/js/voxel51-website.js"></script>
+         <script src="../_static/js/custom.js"></script>
+     
+
+  
+
+  <script type="text/javascript" src="../_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="../_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+  <!-- Begin Footer -->
+
+
+<footer class="footer-wrapper" id="docs-tutorials-resources">
+  <div class="footer pytorch-container">
+    <div class="footer__logo">
+      <a href="https://voxel51.com/"
+        ><img
+          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
+      /></a>
+    </div>
+
+    <div class="footer__address">
+      330 E Liberty St<br />
+      Ann Arbor, MI 48104<br />
+      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
+    </div>
+
+    <!--
+    <div class="footer__contact">
+      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
+    </div>
+    -->
+
+    <div class="footer__links">
+      <div class="footer__links--col2">
+        <p class="nav__item--brand">Products</p>
+        <a href="https://voxel51.com/fiftyone/">FiftyOne</a>
+        <a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a>
+        <a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a>
+        <a href="https://voxel51.com/success-stories/">Success Stories</a>
+      </div>
+      <div class="footer__links--col3">
+        <p class="nav__item--brand">Resources</p>
+        <a href="https://voxel51.com/blog/">Blog</a>
+        <a href="https://docs.voxel51.com/">Docs</a>
+        <a href="https://github.com/voxel51/">GitHub</a>
+        <a href="https://community.voxel51.com">Discord</a>
+        <a href="https://voxel51.com/ourstory/">About Us</a>
+        <a href="https://voxel51.com/computer-vision-events/">Events</a>
+        <a href="https://voxel51.com/jobs/">Careers</a>
+        <a href="https://voxel51.com/press/">Press</a>
+      </div>
+    </div>
+
+    <div class="footer__icons">
+      <ul class="list-inline">
+        <li>
+          <a href="https://www.linkedin.com/company/voxel51/">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/voxel51/">
+            <i class="fa-brands fa-github"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/voxel51">
+            <i class="fa-brands fa-twitter"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/voxel51/">
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="footer__copyright">
+      <ul class="list-inline">
+        <li>&copy; 2024 Voxel51 Inc.</li>
+        <li>
+          <a href="https://voxel51.com/privacy/">Privacy Policy</a>
+        </li>
+        <li>
+          <a href="https://voxel51.com/terms/">Terms of Service</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<!-- https://buttons.github.io -->
+<script async defer src="https://buttons.github.io/buttons.js" ></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XD15NFRY3M" ></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+  gtag("config", "G-XD15NFRY3M");
+</script>
+
+<script>
+  function open_modal(modal_id, modal_closer_id) {
+    // Get the modal
+    let the_modal = document.getElementById(modal_id);
+
+    the_modal.style.display = "flex";
+    document.body.style.overflow = "hidden";
+
+    let the_modal_closer = document.getElementById(modal_closer_id);
+
+    // When the user clicks on <span> (x), close the modal
+    the_modal_closer &&
+      (the_modal_closer.onclick = function () {
+        the_modal.style.display = "none";
+      });
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+      if (event.target == the_modal) {
+        the_modal.style.display = "none";
+        document.body.style.overflow = "unset";
+        window.onclick = undefined;
+      }
+    };
+  }
+</script>
+
+<!-- bigpicture.io -->
+<script>
+  !(function (e, t, i) {
+    var r = (e.bigPicture = e.bigPicture || []);
+    if (!r.initialized)
+      if (r.invoked)
+        e.console &&
+          console.error &&
+          console.error("BigPicture.io snippet included twice.");
+      else {
+        (r.invoked = !0),
+          (r.SNIPPET_VERSION = 1.5),
+          (r.handler = function (e) {
+            if (void 0 !== r.callback)
+              try {
+                return r.callback(e);
+              } catch (e) {}
+          }),
+          (r.eventList = ["mousedown", "mouseup", "click", "submit"]),
+          (r.methods = [
+            "track",
+            "identify",
+            "page",
+            "group",
+            "alias",
+            "integration",
+            "ready",
+            "intelReady",
+            "consentReady",
+            "on",
+            "off",
+          ]),
+          (r.factory = function (e) {
+            return function () {
+              var t = Array.prototype.slice.call(arguments);
+              return t.unshift(e), r.push(t), r;
+            };
+          });
+        for (var n = 0; n < r.methods.length; n++) {
+          var o = r.methods[n];
+          r[o] = r.factory(o);
+        }
+        r.getCookie = function (e) {
+          var i = ("; " + t.cookie).split("; " + e + "=");
+          return 2 == i.length && i.pop().split(";").shift();
+        };
+        var c = (r.isEditor = (function () {
+          try {
+            return (
+              e.self !== e.top &&
+              (new RegExp("app" + i, "ig").test(t.referrer) ||
+                "edit" == r.getCookie("_bpr_edit"))
+            );
+          } catch (e) {
+            return !1;
+          }
+        })());
+        r.init = function (n, o) {
+          if (((r.projectId = n), (r._config = o), !c))
+            for (var a = 0; a < r.eventList.length; a++)
+              e.addEventListener(r.eventList[a], r.handler, !0);
+          var s = t.createElement("script");
+          s.async = !0;
+          var d = c ? "/editor/editor" : "/public-" + n;
+          (s.src = "//cdn" + i + d + ".js"),
+            t.getElementsByTagName("head")[0].appendChild(s);
+        };
+      }
+  })(window, document, ".bigpicture.io");
+  bigPicture.init("1646");
+</script>
+
+
+  
+
+  <!-- End Footer -->
+
+  <!-- Begin Mobile Menu -->
+
+  
+
+  <!-- End Mobile Menu -->
+
+  <script type="text/javascript" src="../_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function(e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+</body>
+</html>

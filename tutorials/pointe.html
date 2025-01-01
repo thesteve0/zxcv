@@ -1,0 +1,1681 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Build a 3D self-driving dataset from scratch with OpenAI’s Point-E and FiftyOne &mdash; FiftyOne 1.3.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <link rel="stylesheet" href="../_static/css/voxel51-website.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Monocular Depth Estimation with FiftyOne" href="monocular_depth_estimation.html" />
+    <link rel="prev" title="Fine-tune YOLOv8 models for custom use cases with the help of FiftyOne" href="yolov8.html" />
+<meta property="og:image" content="https://voxel51.com/wp-content/uploads/2024/03/3.24_webpages_Home_AV.png" />
+
+<link
+  href="https://fonts.googleapis.com/css?family=Palanquin:400,600,700,800"
+  rel="stylesheet"
+/>
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+  rel="stylesheet"
+/>
+<script src="https://tag.clearbitscripts.com/v1/pk_b9ed71c8234edd4f77326bcbfab5a4ca/tags.js"></script>
+
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+  
+</head>
+
+
+<div class="container-fluid header-holder tutorials-header" id="header-holder">
+  <nav id="nav__main" class="nav__main">
+    <div class="nav__main__logo">
+      <a href="https://voxel51.com/">
+        <img
+          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
+        />
+      </a>
+    </div>
+
+    <div class="nav__spacer desktop_only"></div>
+
+    <div id="nav__main__mobilebutton--on">
+      <a href="javascript:void(0);" onclick="navMobileButton()">
+        <i class="fa-solid fa-bars"></i>
+      </a>
+    </div>
+
+    <div id="nav__main__mobilebutton--off">
+      <a href="javascript:void(0);" onclick="navMobileButton()">
+        <i class="fa-solid fa-times"></i>
+      </a>
+    </div>
+
+    <div id="nav__main__items">
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Products</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://voxel51.com/fiftyone/">Open Source</a></li>
+            <li><a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a></li>
+            <li><a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a></li>
+            <li><a href="https://voxel51.com/success-stories/">Success Stories</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Learn</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://community.voxel51.com">Community Discord</a></li>
+            <li><a href="https://voxel51.com/blog/">Blog</a></li>
+            <li><a href="https://voxel51.com/computer-vision-events/">Events</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item">
+        <a href="https://docs.voxel51.com/">Docs</a>
+      </div>
+
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Company</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://voxel51.com/ourstory/">About Us</a></li>
+            <li><a href="https://voxel51.com/jobs/">Careers</a></li>
+            <li><a href="https://voxel51.com/talk-to-sales/">Talk to Sales</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item mobile_only">
+        <a href="https://github.com/voxel51/fiftyone">GitHub</a>
+      </div>
+
+      <div class="nav__item desktop_only" id="octocat">
+        <!-- https://buttons.github.io -->
+        <a
+          class="github-button"
+          href="https://github.com/voxel51/fiftyone"
+          data-color-scheme="no-preference: dark_high_contrast; light: dark_high_contrast; dark: dark_high_contrast;"
+          data-size="large"
+          data-show-count="true"
+          aria-label="Star voxel51/fiftyone on GitHub"
+          >Star</a
+        >
+      </div>
+
+      <div class="nav__item full_nav_only">
+        <a class="button-primary" href="https://voxel51.com/schedule-teams-workshop/" target="_blank"
+          >Schedule a workshop</a
+        >
+      </div>
+    </div>
+  </nav>
+</div>
+
+
+
+<body class="pytorch-body">
+
+   
+
+    
+
+    <div class="table-of-contents-link-wrapper">
+      <span>Table of Contents</span>
+      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+    </div>
+
+    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+      <div class="pytorch-side-scroll">
+        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          <div class="pytorch-left-menu-search">
+            
+
+            
+              
+              
+            
+
+            
+
+
+  
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+            
+          </div>
+
+           <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../teams/index.html">FiftyOne Teams 🚀</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../environments/index.html">Environments</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="pandas_comparison.html">pandas and FiftyOne</a></li>
+<li class="toctree-l2"><a class="reference internal" href="evaluate_detections.html">Evaluating object detections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="evaluate_classifications.html">Evaluating a classifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="image_embeddings.html">Using image embeddings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cvat_annotation.html">Annotating with CVAT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="labelbox_annotation.html">Annotating with Labelbox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open_images.html">Working with Open Images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="detectron2.html">Training with Detectron2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uniqueness.html">Exploring image uniqueness</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classification_mistakes.html">Finding class mistakes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="detection_mistakes.html">Finding detection mistakes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qdrant.html">Embeddings with Qdrant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="yolov8.html">Fine-tuning YOLOv8 models</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">3D point clouds with Point-E</a></li>
+<li class="toctree-l2"><a class="reference internal" href="monocular_depth_estimation.html">Monocular depth estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dimension_reduction.html">Dimensionality reduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="zero_shot_classification.html">Zero-shot classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_augmentation.html">Data augmentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clustering.html">Clustering images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="small_object_detection.html">Detecting small objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="anomaly_detection.html">Anomaly detection</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../recipes/index.html">Recipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheat_sheets/index.html">Cheat Sheets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dataset_zoo/index.html">Dataset Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_zoo/index.html">Model Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brain.html">FiftyOne Brain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/index.html">Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plugins/index.html">Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli/index.html">CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/fiftyone.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deprecation.html">Deprecation Notices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a></li>
+</ul>
+ 
+        </div>
+      </div>
+    </nav>
+
+    <div class="pytorch-container">
+      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+        <div class="pytorch-breadcrumbs-wrapper">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="../index.html">
+          
+            Docs
+          
+        </a> &gt;
+      </li>
+
+        
+          <li><a href="index.html">FiftyOne Tutorials</a> &gt;</li>
+        
+      <li>Build a 3D self-driving dataset from scratch with OpenAI’s Point-E and FiftyOne</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+        </div>
+
+        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+          Contents
+        </div>
+      </div>
+
+      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+        <div class="pytorch-content-left">
+
+        
+          
+          <div class="rst-content style-external-links">
+          
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+              
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    /*background: #f5f5f5;*/
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+    margin: 0;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt .copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+</style>
+<table class="fo-notebook-links" align="left">
+    <td>
+        <a target="_blank" href="https://colab.research.google.com/github/voxel51/fiftyone/blob/v1.3.0/docs/source/tutorials/pointe.ipynb">
+            <img src="../_static/images/icons/colab-logo-256px.png"> &nbsp; Run in Google Colab
+        </a>
+    </td>
+    <td>
+        <a target="_blank" href="https://github.com/voxel51/fiftyone/blob/v1.3.0/docs/source/tutorials/pointe.ipynb">
+            <img src="../_static/images/icons/github-logo-256px.png"> &nbsp; View source on GitHub
+        </a>
+    </td>
+    <td>
+        <a target="_blank" href="https://raw.githubusercontent.com/voxel51/fiftyone/v1.3.0/docs/source/tutorials/pointe.ipynb" download>
+            <img src="../_static/images/icons/cloud-icon-256px.png"> &nbsp; Download notebook
+        </a>
+    </td>
+</table><div class="section" id="Build-a-3D-self-driving-dataset-from-scratch-with-OpenAI’s-Point-E-and-FiftyOne">
+<h1>Build a 3D self-driving dataset from scratch with OpenAI’s Point-E and FiftyOne<a class="headerlink" href="#Build-a-3D-self-driving-dataset-from-scratch-with-OpenAI’s-Point-E-and-FiftyOne" title="Permalink to this headline">¶</a></h1>
+<p>In this walkthrough, we will show you how to build your own <span class="math notranslate nohighlight">\(3D\)</span> point cloud dataset using OpenAI’s <a class="reference external" href="https://github.com/openai/point-e">Point-E</a> for <span class="math notranslate nohighlight">\(3D\)</span> point cloud synthesis, and FiftyOne for dataset curation and visualization.</p>
+<p>Specifically, this walkthrough covers:</p>
+<ul class="simple">
+<li><p>Generating <span class="math notranslate nohighlight">\(3D\)</span> point clouds from text with Point-E</p></li>
+<li><p>Loading point cloud data into FiftyOne</p></li>
+<li><p>Curating synthetically generated data assets</p></li>
+<li><p>Constructing a high-quality point-cloud dataset for self-driving applications</p></li>
+</ul>
+<p><strong>So, what’s the takeaway?</strong></p>
+<p>FiftyOne can help you to understand, curate, and process <span class="math notranslate nohighlight">\(3D\)</span> point cloud data and build high quality <span class="math notranslate nohighlight">\(3D\)</span> datasets</p>
+<p><img alt="pointe-preview" src="../_images/pointe_preview.gif" /></p>
+<div class="section" id="Setup">
+<h2>Setup<a class="headerlink" href="#Setup" title="Permalink to this headline">¶</a></h2>
+<p>To get started, you need to install <a class="reference external" href="https://docs.voxel51.com/getting_started/install.html">FiftyOne</a> and <a class="reference external" href="https://github.com/openai/point-e">Point-E</a>:</p>
+<p>To install FiftyOne, you can use the Python package installer <code class="docutils literal notranslate"><span class="pre">pip</span></code>:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>fiftyone
+</pre></div>
+</div>
+</div>
+<p>To install Point-E, you will need to clone the <a class="reference external" href="https://github.com/openai/point-e">Point-E github repo</a>:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/openai/point-e.git
+</pre></div>
+</div>
+</div>
+<p>And then <code class="docutils literal notranslate"><span class="pre">cd</span></code> into the <code class="docutils literal notranslate"><span class="pre">point-e</span></code> directory and install the package locally:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
+</pre></div>
+</div>
+</div>
+<p>You will also need to have <a class="reference external" href="http://www.open3d.org/">Open3D</a> and <a class="reference external" href="https://pytorch.org/">PyTorch</a> installed:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>open3d<span class="w"> </span>torch
+</pre></div>
+</div>
+</div>
+<p>Next, we’ll import all of the relevant modules that we will be using in this walkthrough:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">open3d</span> <span class="k">as</span> <span class="nn">o3d</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">from</span> <span class="nn">tqdm.auto</span> <span class="kn">import</span> <span class="n">tqdm</span>
+<span class="kn">import</span> <span class="nn">uuid</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.brain</span> <span class="k">as</span> <span class="nn">fob</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+<span class="kn">import</span> <span class="nn">fiftyone.utils.utils3d</span> <span class="k">as</span> <span class="nn">fou3d</span>
+<span class="kn">from</span> <span class="nn">fiftyone</span> <span class="kn">import</span> <span class="n">ViewField</span> <span class="k">as</span> <span class="n">F</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">point_e.diffusion.configs</span> <span class="kn">import</span> <span class="n">DIFFUSION_CONFIGS</span><span class="p">,</span> <span class="n">diffusion_from_config</span>
+<span class="kn">from</span> <span class="nn">point_e.diffusion.sampler</span> <span class="kn">import</span> <span class="n">PointCloudSampler</span>
+<span class="kn">from</span> <span class="nn">point_e.models.download</span> <span class="kn">import</span> <span class="n">load_checkpoint</span>
+<span class="kn">from</span> <span class="nn">point_e.models.configs</span> <span class="kn">import</span> <span class="n">MODEL_CONFIGS</span><span class="p">,</span> <span class="n">model_from_config</span>
+<span class="kn">from</span> <span class="nn">point_e.util.plotting</span> <span class="kn">import</span> <span class="n">plot_point_cloud</span>
+</pre></div>
+</div>
+</div>
+<p>We will also set our device:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">&#39;cuda&#39;</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s1">&#39;cpu&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Generating-a-point-cloud-from-text">
+<h2>Generating a point cloud from text<a class="headerlink" href="#Generating-a-point-cloud-from-text" title="Permalink to this headline">¶</a></h2>
+<p>Following the OpenAI’s <a class="reference external" href="https://github.com/openai/point-e/tree/main/point_e/examples">text2pointcloud</a> example notebook, we will show how to generate a <span class="math notranslate nohighlight">\(3D\)</span> point cloud with an input text prompt.</p>
+<p>For this walkthrough, we will use OpenAI’s <code class="docutils literal notranslate"><span class="pre">base40M-textvec</span></code> model, which is a model with <span class="math notranslate nohighlight">\(40M\)</span> parameters which takes a text prompt as input and generates an embedding vector.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">base_name</span> <span class="o">=</span> <span class="s1">&#39;base40M-textvec&#39;</span>
+<span class="n">base_model</span> <span class="o">=</span> <span class="n">model_from_config</span><span class="p">(</span><span class="n">MODEL_CONFIGS</span><span class="p">[</span><span class="n">base_name</span><span class="p">],</span> <span class="n">device</span><span class="p">)</span>
+<span class="n">base_model</span><span class="o">.</span><span class="n">eval</span><span class="p">();</span>
+<span class="n">base_model</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">load_checkpoint</span><span class="p">(</span><span class="n">base_name</span><span class="p">,</span> <span class="n">device</span><span class="p">));</span>
+<span class="n">base_diffusion</span> <span class="o">=</span> <span class="n">diffusion_from_config</span><span class="p">(</span><span class="n">DIFFUSION_CONFIGS</span><span class="p">[</span><span class="n">base_name</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<p>Applied on its own, this model will generate a point cloud with <span class="math notranslate nohighlight">\(1024\)</span> points. We will also use an upsampler to generate from this a point cloud with <span class="math notranslate nohighlight">\(4096\)</span> points:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">upsampler_model</span> <span class="o">=</span> <span class="n">model_from_config</span><span class="p">(</span><span class="n">MODEL_CONFIGS</span><span class="p">[</span><span class="s1">&#39;upsample&#39;</span><span class="p">],</span> <span class="n">device</span><span class="p">)</span>
+<span class="n">upsampler_model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+<span class="n">upsampler_diffusion</span> <span class="o">=</span> <span class="n">diffusion_from_config</span><span class="p">(</span><span class="n">DIFFUSION_CONFIGS</span><span class="p">[</span><span class="s1">&#39;upsample&#39;</span><span class="p">])</span>
+<span class="n">upsampler_model</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">load_checkpoint</span><span class="p">(</span><span class="s1">&#39;upsample&#39;</span><span class="p">,</span> <span class="n">device</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;All keys matched successfully&gt;
+</pre></div></div>
+</div>
+<p>The base diffusion model and upsampling diffusion model are joined together in a <code class="docutils literal notranslate"><span class="pre">PointCloudSampler</span></code> object, which will take in a text prompt, and output a point cloud with <span class="math notranslate nohighlight">\(4096\)</span> points:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sampler</span> <span class="o">=</span> <span class="n">PointCloudSampler</span><span class="p">(</span>
+    <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span>
+    <span class="n">models</span><span class="o">=</span><span class="p">[</span><span class="n">base_model</span><span class="p">,</span> <span class="n">upsampler_model</span><span class="p">],</span>
+    <span class="n">diffusions</span><span class="o">=</span><span class="p">[</span><span class="n">base_diffusion</span><span class="p">,</span> <span class="n">upsampler_diffusion</span><span class="p">],</span>
+    <span class="n">num_points</span><span class="o">=</span><span class="p">[</span><span class="mi">1024</span><span class="p">,</span> <span class="mi">4096</span> <span class="o">-</span> <span class="mi">1024</span><span class="p">],</span>
+    <span class="n">aux_channels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;R&#39;</span><span class="p">,</span> <span class="s1">&#39;G&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">],</span>
+    <span class="n">guidance_scale</span><span class="o">=</span><span class="p">[</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
+    <span class="n">model_kwargs_key_filter</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;texts&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">),</span> <span class="c1"># Do not condition the upsampler at all</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Let’s see this point cloud diffusion model in action, with the text prompt ‘red and silver headphones’:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set a prompt to condition on.</span>
+<span class="n">prompt</span> <span class="o">=</span> <span class="s1">&#39;red and silver headphones&#39;</span>
+
+<span class="c1"># Produce a sample from the model.</span>
+<span class="n">samples</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">sampler</span><span class="o">.</span><span class="n">sample_batch_progressive</span><span class="p">(</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">model_kwargs</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">texts</span><span class="o">=</span><span class="p">[</span><span class="n">prompt</span><span class="p">]))):</span>
+    <span class="n">samples</span> <span class="o">=</span> <span class="n">x</span>
+</pre></div>
+</div>
+</div>
+<p>We can visualize this with Point-E’s native visualizer:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pc</span> <span class="o">=</span> <span class="n">sampler</span><span class="o">.</span><span class="n">output_to_point_clouds</span><span class="p">(</span><span class="n">samples</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plot_point_cloud</span><span class="p">(</span><span class="n">pc</span><span class="p">,</span> <span class="n">grid_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">fixed_bounds</span><span class="o">=</span><span class="p">((</span><span class="o">-</span><span class="mf">0.75</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.75</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.75</span><span class="p">),(</span><span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<p><img alt="pointe-headphones" src="../_images/pointe_headphones.png" /></p>
+<p>Point-E’s diffusion model is probabilistic, so if we were to run the model again, we would get a different result.</p>
+</div>
+<div class="section" id="Loading-a-Point-E-point-cloud-into-FiftyOne">
+<h2>Loading a Point-E point cloud into FiftyOne<a class="headerlink" href="#Loading-a-Point-E-point-cloud-into-FiftyOne" title="Permalink to this headline">¶</a></h2>
+<p>It is nice that Point-E provides its own native visualizer, but these two-dimensional projections are inherently limited. We can far more thoroughly and interactively visualize point clouds in FiftyOne’s <cite>:math:`3D</cite> visualizer &lt;<a class="reference external" href="https://docs.voxel51.com/user_guide/groups.html#using-the-3d-visualizer">https://docs.voxel51.com/user_guide/groups.html#using-the-3d-visualizer</a>&gt;`__. Let’s see how to load a Point-E point cloud into FiftyOne:</p>
+<p>In order to load the point cloud into FiftyOne, we will convert the point cloud from Point-E’s native format into a more standard Open3D format, and create a sample in FiftyOne. First, let’s see what the data structure for Point-E point clouds look like:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">pc</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>PointCloud(coords=array([[ 0.00992463,  0.18218482, -0.40539104],
+    [ 0.0122245 ,  0.21034709, -0.32078362],
+    [ 0.10288931,  0.4029989 , -0.40072548],
+    ...,
+    [-0.06964707, -0.33723998, -0.48611435],
+    [ 0.00664746,  0.3134488 , -0.4915944 ],
+    [ 0.1077411 ,  0.3176389 , -0.423187  ]], dtype=float32), channels={&#39;R&#39;: array([0.03921569, 0.04313726, 0.9450981 , ..., 0.9490197 , 0.9490197 ,
+    0.9490197 ], dtype=float32), &#39;G&#39;: array([0.04313726, 0.04705883, 0.05490196, ..., 0.04705883, 0.05490196,
+    0.03529412], dtype=float32), &#39;B&#39;: array([0.04313726, 0.04705883, 0.0509804 , ..., 0.04705883, 0.0509804 ,
+    0.03137255], dtype=float32)})
+</pre></div>
+</div>
+<p>Position coordinates are represented by a <span class="math notranslate nohighlight">\((4096, 3)\)</span> array in the <code class="docutils literal notranslate"><span class="pre">coords</span></code> attribute:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">pc</span><span class="o">.</span><span class="n">coords</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(4096, 3)
+</pre></div></div>
+</div>
+<p>And point colors are stored in a dict object within <code class="docutils literal notranslate"><span class="pre">channels</span></code>:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">pc</span><span class="o">.</span><span class="n">channels</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">pc</span><span class="o">.</span><span class="n">channels</span><span class="p">[</span><span class="s1">&#39;R&#39;</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+dict_keys([&#39;R&#39;, &#39;G&#39;, &#39;B&#39;])
+4096
+</pre></div></div>
+</div>
+<p>We can write a simple function that will take in a text prompt, generate the Point-E point cloud, and convert this into a standard Open3D point cloud (<code class="docutils literal notranslate"><span class="pre">open3d.geometry.PointCloud</span></code>) object:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">generate_pcd_from_text</span><span class="p">(</span><span class="n">prompt</span><span class="p">):</span>
+    <span class="n">samples</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">sampler</span><span class="o">.</span><span class="n">sample_batch_progressive</span><span class="p">(</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">model_kwargs</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">texts</span><span class="o">=</span><span class="p">[</span><span class="n">prompt</span><span class="p">])):</span>
+        <span class="n">samples</span> <span class="o">=</span> <span class="n">x</span>
+    <span class="n">pointe_pcd</span> <span class="o">=</span> <span class="n">sampler</span><span class="o">.</span><span class="n">output_to_point_clouds</span><span class="p">(</span><span class="n">samples</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="n">channels</span> <span class="o">=</span> <span class="n">pointe_pcd</span><span class="o">.</span><span class="n">channels</span>
+    <span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">channels</span><span class="p">[</span><span class="s2">&quot;R&quot;</span><span class="p">],</span> <span class="n">channels</span><span class="p">[</span><span class="s2">&quot;G&quot;</span><span class="p">],</span> <span class="n">channels</span><span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">]</span>
+    <span class="n">colors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span><span class="o">.</span><span class="n">T</span>
+    <span class="n">points</span> <span class="o">=</span> <span class="n">pointe_pcd</span><span class="o">.</span><span class="n">coords</span>
+
+    <span class="n">pcd</span> <span class="o">=</span> <span class="n">o3d</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">PointCloud</span><span class="p">()</span>
+    <span class="n">pcd</span><span class="o">.</span><span class="n">points</span> <span class="o">=</span> <span class="n">o3d</span><span class="o">.</span><span class="n">utility</span><span class="o">.</span><span class="n">Vector3dVector</span><span class="p">(</span><span class="n">points</span><span class="p">)</span>
+    <span class="n">pcd</span><span class="o">.</span><span class="n">colors</span> <span class="o">=</span> <span class="n">o3d</span><span class="o">.</span><span class="n">utility</span><span class="o">.</span><span class="n">Vector3dVector</span><span class="p">(</span><span class="n">colors</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">pcd</span>
+</pre></div>
+</div>
+</div>
+<p>To load this Open3D point cloud into FiftyOne, we can use Open3D’s <code class="docutils literal notranslate"><span class="pre">open3d.io</span></code> module to write the point cloud to a <code class="docutils literal notranslate"><span class="pre">.pcd</span></code> file, and then create a FiftyOne Sample object associated with this file:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">headphone_pcd</span> <span class="o">=</span> <span class="n">generate_pcd_from_text</span><span class="p">(</span><span class="s1">&#39;red and silver headphones&#39;</span><span class="p">)</span>
+<span class="n">headphone_file</span> <span class="o">=</span> <span class="s2">&quot;headphone.pcd&quot;</span>
+<span class="n">o3d</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write_point_cloud</span><span class="p">(</span><span class="n">headphone_file</span><span class="p">,</span> <span class="n">headphone_pcd</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">headphone_dataset</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;headphone_dataset&quot;</span><span class="p">)</span>
+<span class="n">headphone_dataset</span><span class="o">.</span><span class="n">add_sample</span><span class="p">(</span>
+    <span class="n">fo</span><span class="o">.</span><span class="n">Sample</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="n">headphone_file</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">headphone_dataset</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p><img alt="pointe-headphones-fo" src="../_images/pointe_headphones_fo.gif" /></p>
+</div>
+<div class="section" id="Curating-synthetic-3D-point-cloud-assets">
+<h2>Curating synthetic <span class="math notranslate nohighlight">\(3D\)</span> point cloud assets<a class="headerlink" href="#Curating-synthetic-3D-point-cloud-assets" title="Permalink to this headline">¶</a></h2>
+<p>Now that we have a workflow for generating <span class="math notranslate nohighlight">\(3D\)</span> point cloud samples in FiftyOne with Point-E, we can generate an entire dataset of synthetic <span class="math notranslate nohighlight">\(3D\)</span> point clouds.</p>
+<p>In this walkthrough, we will generate a variety of vehicles. In particular, we will generate point clouds for vehicles of type <code class="docutils literal notranslate"><span class="pre">car</span></code>, <code class="docutils literal notranslate"><span class="pre">bike</span></code>, <code class="docutils literal notranslate"><span class="pre">bus</span></code>, and <code class="docutils literal notranslate"><span class="pre">motorcycle</span></code>. We will specify what vehicle we want Point-E to generate in our text prompt. Due to the probabilistic nature of diffusion models like Point-E, merely running a simple prompt like “a bicycle” multiple times will generate distinct point cloud models.</p>
+<p>To add even more variety, we will instruct Point-E to paint each of the vehicles two randomly chosen colors with a prompt of the form: <code class="docutils literal notranslate"><span class="pre">&quot;a</span> <span class="pre">$(COLOR1)</span> <span class="pre">$(VEHICLE_TYPE)</span> <span class="pre">with</span> <span class="pre">$(COLOR2)</span> <span class="pre">wheels&quot;</span></code>. This is just an illustrative example.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">VEHICLE_TYPES</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;car&quot;</span><span class="p">,</span> <span class="s2">&quot;bus&quot;</span><span class="p">,</span> <span class="s2">&quot;bike&quot;</span><span class="p">,</span> <span class="s2">&quot;motorcycle&quot;</span><span class="p">]</span>
+<span class="n">VEHICLE_COLORS</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;yellow&quot;</span><span class="p">,</span> <span class="s2">&quot;white&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<p>In this example, we will generate random filenames for each of the point cloud models, but you can specify filenames however you’d like:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">generate_filename</span><span class="p">():</span>
+    <span class="n">rand_str</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid1</span><span class="p">())</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="s2">&quot;pointe_vehicles/&quot;</span> <span class="o">+</span> <span class="n">rand_str</span> <span class="o">+</span> <span class="s2">&quot;.pcd&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">generate_pointe_vehicle_dataset</span><span class="p">(</span>
+    <span class="n">dataset_name</span> <span class="o">=</span> <span class="s2">&quot;point-e-vehicles&quot;</span><span class="p">,</span>
+    <span class="n">num_samples</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="p">):</span>
+    <span class="n">samples</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">num_samples</span><span class="p">)):</span>
+        <span class="n">vehicle_type</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">VEHICLE_TYPES</span><span class="p">)</span>
+        <span class="n">cols</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choices</span><span class="p">(</span><span class="n">VEHICLE_COLORS</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;a </span><span class="si">{</span><span class="n">cols</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">vehicle_type</span><span class="si">}</span><span class="s2"> with </span><span class="si">{</span><span class="n">cols</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2"> wheels&quot;</span>
+        <span class="n">pcd</span> <span class="o">=</span> <span class="n">generate_pcd_from_text</span><span class="p">(</span><span class="n">prompt</span><span class="p">)</span>
+        <span class="n">ofile</span> <span class="o">=</span> <span class="n">generate_filename</span><span class="p">()</span>
+        <span class="n">o3d</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write_point_cloud</span><span class="p">(</span><span class="n">ofile</span><span class="p">,</span> <span class="n">pcd</span><span class="p">)</span>
+
+        <span class="n">sample</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Sample</span><span class="p">(</span>
+            <span class="n">filepath</span> <span class="o">=</span> <span class="n">ofile</span><span class="p">,</span>
+            <span class="n">vehicle_type</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Classification</span><span class="p">(</span><span class="n">label</span> <span class="o">=</span> <span class="n">vehicle_type</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="n">samples</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
+
+    <span class="n">dataset</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="n">dataset_name</span><span class="p">)</span>
+    <span class="n">dataset</span><span class="o">.</span><span class="n">add_samples</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">dataset</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vehicle_dataset</span> <span class="o">=</span> <span class="n">generate_pointe_vehicle_dataset</span><span class="p">(</span>
+    <span class="n">dataset_name</span> <span class="o">=</span> <span class="s2">&quot;point-e-vehicles&quot;</span><span class="p">,</span>
+    <span class="n">num_samples</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>We will then make the dataset persistent so that it saves to database and we can load it at a later time.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vehicle_dataset</span><span class="o">.</span><span class="n">persistent</span> <span class="o">=</span> <span class="kc">True</span>
+</pre></div>
+</div>
+</div>
+<p>Before viewing this in the FiftyOne App, we can use FiftyOne’s <span class="math notranslate nohighlight">\(3D\)</span> utils to generate a two dimensional image for each point cloud, which will allow us to preview our samples in the sample grid. To do this, we will project the point clouds onto a <span class="math notranslate nohighlight">\(2D\)</span> plane with the <code class="docutils literal notranslate"><span class="pre">fou3d.compute_orthographic_projection_images()</span></code> method. We will pass in a vector for the <code class="docutils literal notranslate"><span class="pre">projection_normal</span></code> argument to specify the plane about which to perform the orthographic projection.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">size</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">608</span><span class="p">)</span>
+<span class="c1">## height of images should be 608 pixels</span>
+<span class="c1">## - with aspect ratio preserved</span>
+
+<span class="n">fou3d</span><span class="o">.</span><span class="n">compute_orthographic_projection_images</span><span class="p">(</span>
+    <span class="n">vehicle_dataset</span><span class="p">,</span>
+    <span class="n">size</span><span class="p">,</span>
+    <span class="s2">&quot;/vehicle_side_view_images&quot;</span><span class="p">,</span>
+    <span class="n">shading_mode</span><span class="o">=</span><span class="s2">&quot;height&quot;</span><span class="p">,</span>
+    <span class="n">projection_normal</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Now we are ready to look at our <span class="math notranslate nohighlight">\(3D\)</span> point cloud models of vehicles:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">vehicle_dataset</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p><img alt="pointe-vehicle-projections" src="../_images/pointe_vehicles_projections.gif" /></p>
+<p>Taking a look at these point cloud models (or their orthographic projections), we can see that the vehicles are facing a variety of directions. For the sake of consistency (this will come in handy in the next section), let’s use FiftyOne’s in-app tagging capabilities to tag each of the point cloud samples with an orientation <span class="math notranslate nohighlight">\(\in[\)</span> <code class="docutils literal notranslate"><span class="pre">left</span></code>, <code class="docutils literal notranslate"><span class="pre">right</span></code>, <code class="docutils literal notranslate"><span class="pre">front</span></code>, <code class="docutils literal notranslate"><span class="pre">back</span></code><span class="math notranslate nohighlight">\(]\)</span>. Once we tag a set of samples, we can omit samples with this tag from view in the app, so the we are only
+looking at untagged samples.</p>
+<p><img alt="pointe-tag-orientations" src="../_images/pointe_tag_orientations.gif" /></p>
+<p>Additionally, as we are curating a high quality dataset of vehicle point cloud assets, we can identify models that do not fit our needs. This may include point cloud models that are not good enough representations of vehicles, models that are out of our desired distribution, or models we feel are too similar to other models in our dataset. We will tag these samples as “bad”.</p>
+<p><img alt="pointe-tag-bad" src="../_images/pointe_tag_bad.gif" /></p>
+<p>Once we have tagged all of our samples, we can convert the orientation tags into a new <code class="docutils literal notranslate"><span class="pre">orientation</span></code> field on our samples:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">orientations</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="s2">&quot;right&quot;</span><span class="p">,</span> <span class="s2">&quot;front&quot;</span><span class="p">,</span> <span class="s2">&quot;back&quot;</span><span class="p">]</span>
+
+<span class="n">vehicle_dataset</span><span class="o">.</span><span class="n">add_sample_field</span><span class="p">(</span><span class="s2">&quot;orientation&quot;</span><span class="p">,</span> <span class="n">fo</span><span class="o">.</span><span class="n">StringField</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">orientation</span> <span class="ow">in</span> <span class="n">orientations</span><span class="p">:</span>
+    <span class="n">view</span> <span class="o">=</span> <span class="n">vehicle_dataset</span><span class="o">.</span><span class="n">match_tags</span><span class="p">(</span><span class="n">orientation</span><span class="p">)</span>
+    <span class="n">view</span><span class="o">.</span><span class="n">set_values</span><span class="p">(</span><span class="s2">&quot;orientation&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">orientation</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">view</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<p>Additionally, we can pick out our desired subset of vehicle assets by matching for samples without the <code class="docutils literal notranslate"><span class="pre">bad</span></code> tag:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">usable_vehicles_dataset</span> <span class="o">=</span> <span class="n">vehicle_dataset</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="o">~</span><span class="n">F</span><span class="p">(</span><span class="s2">&quot;tags&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">&quot;bad&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Constructing-a-self-driving-dataset">
+<h2>Constructing a self-driving dataset<a class="headerlink" href="#Constructing-a-self-driving-dataset" title="Permalink to this headline">¶</a></h2>
+<p>Now that we have a dataset of usable <span class="math notranslate nohighlight">\(3D\)</span> point cloud models for vehicles, we can use these to construct a <span class="math notranslate nohighlight">\(3D\)</span> point cloud dataset of road scenes, for use in self-driving applications. In this section, we’ll show you how to get started building your own simple road scenes dataset.</p>
+<div class="section" id="Constructing-a-road-point-cloud">
+<h3>Constructing a road point cloud<a class="headerlink" href="#Constructing-a-road-point-cloud" title="Permalink to this headline">¶</a></h3>
+<p>In this walkthough, we will limit our scope to basic roads with one lane of traffic going in each direction, separated by a dashed yellow line. We will use the same road as the foundation for each scene. Let’s construct a simple point cloud model for the road:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ROAD_LENGTH</span> <span class="o">=</span> <span class="mi">40</span>
+<span class="n">ROAD_WIDTH</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="n">FRONT</span> <span class="o">=</span> <span class="o">-</span><span class="n">ROAD_LENGTH</span><span class="o">/</span><span class="mf">2.</span>
+<span class="n">BACK</span> <span class="o">=</span> <span class="n">ROAD_LENGTH</span><span class="o">/</span><span class="mf">2.</span>
+<span class="n">LANE_WIDTH</span> <span class="o">=</span> <span class="n">ROAD_WIDTH</span><span class="o">/</span><span class="mf">2.</span>
+<span class="n">LINE_POINTS</span> <span class="o">=</span> <span class="mi">1000</span>
+</pre></div>
+</div>
+</div>
+<p>We will build the point cloud model for the road out of two white lines, for the left and right edges of the scene, and a dashed yellow line as a divider. We will save the point cloud model in the file <code class="docutils literal notranslate"><span class="pre">road.pcd</span></code>:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">generate_road_pcd</span><span class="p">():</span>
+    <span class="c1">## LEFT LINE</span>
+    <span class="n">road_line_left_points</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span>
+        <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">LINE_POINTS</span><span class="p">)</span> <span class="o">-</span> <span class="n">ROAD_WIDTH</span><span class="o">/</span><span class="mf">2.</span><span class="p">,</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">FRONT</span><span class="p">,</span> <span class="n">BACK</span><span class="p">,</span> <span class="n">LINE_POINTS</span><span class="p">),</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">LINE_POINTS</span><span class="p">))</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">T</span>
+
+    <span class="c1">## RIGHT LINE</span>
+    <span class="n">road_line_right_points</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="o">-</span><span class="n">road_line_left_points</span><span class="p">)</span>
+
+    <span class="c1">## CENTER LINE</span>
+    <span class="n">road_line_center_points_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span>
+        <span class="n">FRONT</span><span class="p">,</span>
+        <span class="n">BACK</span><span class="p">,</span>
+        <span class="n">LINE_POINTS</span>
+    <span class="p">)</span>
+    <span class="n">road_line_center_points_y</span> <span class="o">=</span> <span class="n">road_line_center_points_y</span><span class="p">[</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mod</span><span class="p">(</span><span class="n">road_line_center_points_y</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">0.3</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="p">]</span>
+    <span class="n">num_center_points</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">road_line_center_points_y</span><span class="p">)</span>
+    <span class="n">road_line_center_points</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span>
+        <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">num_center_points</span><span class="p">),</span>
+        <span class="n">road_line_center_points_y</span><span class="p">,</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">num_center_points</span><span class="p">))</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">T</span>
+
+    <span class="c1">## CONCATENATE</span>
+    <span class="n">road_pcd_points</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span>
+        <span class="p">(</span><span class="n">road_line_center_points</span><span class="p">,</span>
+         <span class="n">road_line_left_points</span><span class="p">,</span>
+        <span class="n">road_line_right_points</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="c1">## COLOR</span>
+    <span class="c1">## white</span>
+    <span class="n">road_pcd_colors</span> <span class="o">=</span> <span class="mi">255</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">road_pcd_points</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    <span class="c1">## yellow</span>
+    <span class="n">road_pcd_colors</span><span class="p">[:</span><span class="n">num_center_points</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="n">road_pcd</span> <span class="o">=</span> <span class="n">o3d</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">PointCloud</span><span class="p">()</span>
+    <span class="n">road_pcd</span><span class="o">.</span><span class="n">points</span> <span class="o">=</span> <span class="n">o3d</span><span class="o">.</span><span class="n">utility</span><span class="o">.</span><span class="n">Vector3dVector</span><span class="p">(</span><span class="n">road_pcd_points</span><span class="p">)</span>
+    <span class="n">road_pcd</span><span class="o">.</span><span class="n">colors</span> <span class="o">=</span> <span class="n">o3d</span><span class="o">.</span><span class="n">utility</span><span class="o">.</span><span class="n">Vector3dVector</span><span class="p">(</span><span class="n">road_pcd_colors</span><span class="p">)</span>
+    <span class="n">o3d</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write_point_cloud</span><span class="p">(</span><span class="s2">&quot;road.pcd&quot;</span><span class="p">,</span> <span class="n">road_pcd</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">generate_road_pcd</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Placing-a-vehicle-on-the-road">
+<h3>Placing a vehicle on the road<a class="headerlink" href="#Placing-a-vehicle-on-the-road" title="Permalink to this headline">¶</a></h3>
+<p>Next, we piece together a workflow for placing individual vehicles on the road in a scene. This workflow needs to take into account a few factors:</p>
+<ul class="simple">
+<li><p>Point-E point clouds are not always centered at the origin</p></li>
+<li><p>The Point-E point clouds were all generated to fill the same volume, so a <code class="docutils literal notranslate"><span class="pre">bus</span></code> point cloud model will be the same size as a <code class="docutils literal notranslate"><span class="pre">bicycle</span></code> point cloud model</p></li>
+<li><p>The vehicle models were generated with variable orientations, which we have categorized, but need to be taken into account in our road scenes</p></li>
+<li><p>Vehicles must face in the direction that traffic is flowing, which depends on the side of the road on which we place the vehicle</p></li>
+</ul>
+<p>With these considerations in mind, we compose the following steps:</p>
+<ol class="arabic simple">
+<li><p>Center the vehicle at the origin</p></li>
+<li><p>Scale the vehicle according to its vehicle type</p></li>
+<li><p>Pick a side of the road for the vehicle</p></li>
+<li><p>Orient the vehicle, given its initial orientation and selected side of the road</p></li>
+<li><p>Position the vehicle on the road</p></li>
+</ol>
+<p>In the cells below, we implement minimal functions for these steps, leveraging Open3D’s comprehensive point cloud functionality:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ORIGIN</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">center_vehicle</span><span class="p">(</span><span class="n">vehicle_pcd</span><span class="p">):</span>
+    <span class="n">vehicle_pcd</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">ORIGIN</span><span class="p">,</span> <span class="n">relative</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">VEHICLE_SCALE_MAP</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;car&quot;</span><span class="p">:</span> <span class="mf">4.0</span><span class="p">,</span>
+    <span class="s2">&quot;bus&quot;</span><span class="p">:</span> <span class="mf">6.0</span><span class="p">,</span>
+    <span class="s2">&quot;motorcycle&quot;</span><span class="p">:</span> <span class="mf">2.5</span><span class="p">,</span>
+    <span class="s2">&quot;bike&quot;</span><span class="p">:</span> <span class="mf">1.5</span>
+<span class="p">}</span>
+
+<span class="k">def</span> <span class="nf">scale_vehicle</span><span class="p">(</span><span class="n">vehicle_pcd</span><span class="p">,</span> <span class="n">vehicle_type</span><span class="p">):</span>
+    <span class="n">vehicle_scale</span> <span class="o">=</span> <span class="n">VEHICLE_SCALE_MAP</span><span class="p">[</span><span class="n">vehicle_type</span><span class="p">]</span>
+    <span class="n">vehicle_pcd</span><span class="o">.</span><span class="n">scale</span><span class="p">(</span><span class="n">vehicle_scale</span><span class="p">,</span> <span class="n">ORIGIN</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">choose_side_of_road</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="s2">&quot;right&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ORIENTATION_TO_ROTATION</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;back&quot;</span><span class="p">:</span> <span class="mf">0.</span><span class="p">,</span>
+    <span class="s2">&quot;right&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mf">2.</span><span class="p">,</span>
+    <span class="s2">&quot;front&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span>
+    <span class="s2">&quot;left&quot;</span><span class="p">:</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mf">2.</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="k">def</span> <span class="nf">orient_vehicle</span><span class="p">(</span><span class="n">vehicle_pcd</span><span class="p">,</span> <span class="n">side_of_road</span><span class="p">,</span> <span class="n">initial_orientation</span><span class="p">):</span>
+    <span class="n">rot_xyz</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">]</span>
+    <span class="n">rot_xyz</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+=</span> <span class="n">ORIENTATION_TO_ROTATION</span><span class="p">[</span><span class="n">initial_orientation</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="n">side_of_road</span> <span class="o">==</span> <span class="s2">&quot;left&quot;</span><span class="p">:</span>
+        <span class="n">rot_xyz</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>
+    <span class="n">R</span> <span class="o">=</span> <span class="n">vehicle_pcd</span><span class="o">.</span><span class="n">get_rotation_matrix_from_xyz</span><span class="p">(</span><span class="n">rot_xyz</span><span class="p">)</span>
+    <span class="n">vehicle_pcd</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="n">R</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## randomly position the vehicle in its lane</span>
+<span class="k">def</span> <span class="nf">position_vehicle</span><span class="p">(</span><span class="n">vehicle_pcd</span><span class="p">,</span> <span class="n">side_of_road</span><span class="p">):</span>
+    <span class="c1">## raise vehicle so it is ON the road</span>
+    <span class="n">minz</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">amin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">vehicle_pcd</span><span class="o">.</span><span class="n">points</span><span class="p">),</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="n">xpos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span> <span class="o">=</span> <span class="n">LANE_WIDTH</span><span class="o">/</span><span class="mf">2.</span><span class="p">,</span> <span class="n">scale</span> <span class="o">=</span> <span class="mf">0.4</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">side_of_road</span> <span class="o">==</span> <span class="s2">&quot;left&quot;</span><span class="p">:</span>
+        <span class="n">xpos</span> <span class="o">*=</span> <span class="o">-</span><span class="mi">1</span>
+
+    <span class="n">ypos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">low</span> <span class="o">=</span> <span class="n">FRONT</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="n">BACK</span><span class="p">)</span>
+
+    <span class="n">translation</span> <span class="o">=</span> <span class="p">[</span><span class="n">xpos</span><span class="p">,</span> <span class="n">ypos</span><span class="p">,</span> <span class="o">-</span><span class="n">minz</span><span class="p">]</span>
+    <span class="n">vehicle_pcd</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">translation</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>We can then wrap all of this up in a function which takes in a sample from the usable subset of the FiftyOne point cloud vehicle asset dataset, and returns a tuple containing the transformed point cloud for the vehicle, and a label for its vehicle type:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">generate_scene_vehicle</span><span class="p">(</span><span class="n">sample</span><span class="p">):</span>
+    <span class="n">vehicle_type</span> <span class="o">=</span> <span class="n">sample</span><span class="o">.</span><span class="n">vehicle_type</span><span class="o">.</span><span class="n">label</span>
+
+    <span class="n">initial_orientation</span> <span class="o">=</span> <span class="n">sample</span><span class="o">.</span><span class="n">orientation</span>
+    <span class="n">side_of_road</span> <span class="o">=</span> <span class="n">choose_side_of_road</span><span class="p">()</span>
+
+    <span class="n">vehicle_pcd</span> <span class="o">=</span> <span class="n">o3d</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">read_point_cloud</span><span class="p">(</span><span class="n">sample</span><span class="o">.</span><span class="n">filepath</span><span class="p">)</span>
+    <span class="n">center_vehicle</span><span class="p">(</span><span class="n">vehicle_pcd</span><span class="p">)</span>
+    <span class="n">scale_vehicle</span><span class="p">(</span><span class="n">vehicle_pcd</span><span class="p">,</span> <span class="n">vehicle_type</span><span class="p">)</span>
+    <span class="n">orient_vehicle</span><span class="p">(</span><span class="n">vehicle_pcd</span><span class="p">,</span> <span class="n">side_of_road</span><span class="p">,</span> <span class="n">initial_orientation</span><span class="p">)</span>
+    <span class="n">position_vehicle</span><span class="p">(</span><span class="n">vehicle_pcd</span><span class="p">,</span> <span class="n">side_of_road</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">vehicle_pcd</span><span class="p">,</span> <span class="n">vehicle_type</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>We can generate a “scene” with this vehicle placed on the road by adding this point cloud to the point cloud for the road:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sample</span> <span class="o">=</span> <span class="n">usable_vehicles_dataset</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+<span class="n">vehicle_pcd</span><span class="p">,</span> <span class="n">vehicle_type</span> <span class="o">=</span> <span class="n">generate_scene_vehicle</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
+<span class="n">road_pcd</span> <span class="o">=</span> <span class="n">o3d</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">read_point_cloud</span><span class="p">(</span><span class="s2">&quot;road.pcd&quot;</span><span class="p">)</span>
+<span class="n">vehicle_on_road_pcd</span> <span class="o">=</span> <span class="n">road_pcd</span> <span class="o">+</span> <span class="n">vehicle_pcd</span>
+</pre></div>
+</div>
+</div>
+<p><img alt="pointe-single-vehicle-scene" src="../_images/pointe_single_vehicle_scene.png" /></p>
+</div>
+<div class="section" id="Constructing-road-scenes">
+<h3>Constructing road scenes<a class="headerlink" href="#Constructing-road-scenes" title="Permalink to this headline">¶</a></h3>
+<p>Now that we have a workflow for placing a single vehicle on the road, we can construct “scenes” including multiple vehicles on the road.</p>
+<p>To do this, we need to ensure that none of the vehicles in our scene overlap with each other. We can implement this logic by using Open3D’s <code class="docutils literal notranslate"><span class="pre">compute_point_cloud_distance()</span></code> method to compute the distance between the point cloud models for vehicles that are already in a given scene, and the point cloud model for a prospective vehicle that will potentially be placed in the scene. If the minimum distance between any of the existing scene vehicle point clouds and the candidate vehicle point cloud
+is below some threshold, then we retry randomly placing a vehicle in the scene.</p>
+<p>We will wrap this logic in a new <code class="docutils literal notranslate"><span class="pre">check_compatibility()</span></code> function:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">check_compatibility</span><span class="p">(</span>
+    <span class="n">vehicle</span><span class="p">,</span>
+    <span class="n">scene_vehicles</span><span class="p">,</span>
+    <span class="n">thresh</span> <span class="o">=</span> <span class="mf">0.2</span>
+<span class="p">):</span>
+    <span class="k">for</span> <span class="n">sv</span> <span class="ow">in</span> <span class="n">scene_vehicles</span><span class="p">:</span>
+        <span class="n">dists</span> <span class="o">=</span> <span class="n">vehicle</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">compute_point_cloud_distance</span><span class="p">(</span><span class="n">sv</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">amin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">dists</span><span class="p">))</span> <span class="o">&lt;</span> <span class="n">thresh</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="kc">True</span>
+</pre></div>
+</div>
+</div>
+<p>The last ingredient is a simple function to randomly select a single sample from our usable vehicle assets dataset:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">choose_vehicle_sample</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">usable_vehicles_dataset</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<p>Finally, we are ready to generate road scenes! The following function generates a FiftyOne point cloud sample for a road scene with <code class="docutils literal notranslate"><span class="pre">num_vehicles</span></code> vehicles, and stores the point cloud for the scene in <code class="docutils literal notranslate"><span class="pre">scene_filepath</span></code>:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">generate_scene_sample</span><span class="p">(</span><span class="n">num_vehicles</span><span class="p">,</span> <span class="n">scene_filepath</span><span class="p">):</span>
+    <span class="n">ZERO_ROT</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">]</span>
+
+    <span class="n">sample</span> <span class="o">=</span> <span class="n">choose_vehicle_sample</span><span class="p">()</span>
+    <span class="n">scene_vehicles</span> <span class="o">=</span> <span class="p">[</span><span class="n">generate_scene_vehicle</span><span class="p">(</span><span class="n">sample</span><span class="p">)]</span>
+
+    <span class="n">k</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="n">num_vehicles</span><span class="p">:</span>
+        <span class="n">sample</span> <span class="o">=</span> <span class="n">choose_vehicle_sample</span><span class="p">()</span>
+        <span class="n">candidate_vehicle</span> <span class="o">=</span> <span class="n">generate_scene_vehicle</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">check_compatibility</span><span class="p">(</span>
+            <span class="n">candidate_vehicle</span><span class="p">,</span>
+            <span class="n">scene_vehicles</span>
+        <span class="p">):</span>
+            <span class="n">scene_vehicles</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">candidate_vehicle</span><span class="p">)</span>
+            <span class="n">k</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="n">detections</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">scene_pcd</span> <span class="o">=</span> <span class="n">o3d</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">read_point_cloud</span><span class="p">(</span><span class="s2">&quot;road.pcd&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">vehicle</span> <span class="ow">in</span> <span class="n">scene_vehicles</span><span class="p">:</span>
+        <span class="n">vehicle_pcd</span><span class="p">,</span> <span class="n">vehicle_type</span> <span class="o">=</span> <span class="n">vehicle</span>
+        <span class="n">scene_pcd</span> <span class="o">=</span> <span class="n">scene_pcd</span> <span class="o">+</span> <span class="n">vehicle_pcd</span>
+        <span class="n">obb</span> <span class="o">=</span> <span class="n">vehicle_pcd</span><span class="o">.</span><span class="n">get_oriented_bounding_box</span><span class="p">()</span>
+        <span class="n">dim</span><span class="p">,</span> <span class="n">loc</span> <span class="o">=</span> <span class="n">obb</span><span class="o">.</span><span class="n">extent</span><span class="p">,</span> <span class="n">obb</span><span class="o">.</span><span class="n">center</span>
+        <span class="n">dim</span> <span class="o">=</span> <span class="p">[</span><span class="n">dim</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">dim</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dim</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span>
+        <span class="n">detection</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Detection</span><span class="p">(</span>
+            <span class="n">label</span> <span class="o">=</span> <span class="n">vehicle_type</span><span class="p">,</span>
+            <span class="n">location</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">loc</span><span class="p">),</span>
+            <span class="n">dimensions</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">dim</span><span class="p">),</span>
+            <span class="n">rotation</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">ZERO_ROT</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="n">detections</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">detection</span><span class="p">)</span>
+
+    <span class="n">o3d</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write_point_cloud</span><span class="p">(</span><span class="n">scene_filepath</span><span class="p">,</span> <span class="n">scene_pcd</span><span class="p">)</span>
+    <span class="n">sample</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Sample</span><span class="p">(</span>
+        <span class="n">filepath</span> <span class="o">=</span> <span class="n">scene_filepath</span><span class="p">,</span>
+        <span class="n">ground_truth</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Detections</span><span class="p">(</span><span class="n">detections</span><span class="o">=</span><span class="n">detections</span><span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">sample</span>
+</pre></div>
+</div>
+</div>
+<p>This <code class="docutils literal notranslate"><span class="pre">generate_scene_sample()</span></code> function not only generates a complete point cloud scene - it also generates labeled <span class="math notranslate nohighlight">\(3D\)</span> object detection bounding boxes for each vehicle using Open3D’s <code class="docutils literal notranslate"><span class="pre">get_oriented_bounding_box()</span></code> method. You can then use these as ground truth labels to train your own <span class="math notranslate nohighlight">\(3D\)</span> road scenes object detection model.</p>
+<p>All that is left to do is populate a new FiftyOne dataset with these generated road scenes.</p>
+<p>To generate this dataset, we will randomly select a number of vehicles for each scene, from within a set range:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">MIN_SCENE_VEHICLES</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">MAX_SCENE_VEHICLES</span> <span class="o">=</span> <span class="mi">7</span>
+
+<span class="k">def</span> <span class="nf">choose_num_scene_vehicles</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span>
+        <span class="n">MIN_SCENE_VEHICLES</span><span class="p">,</span>
+        <span class="n">MAX_SCENE_VEHICLES</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>And we will randomly generate filepaths for the scenes:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">generate_scene_filepath</span><span class="p">():</span>
+    <span class="n">rand_str</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid1</span><span class="p">())</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="s2">&quot;pointe_road_scenes/&quot;</span> <span class="o">+</span> <span class="n">rand_str</span> <span class="o">+</span> <span class="s2">&quot;.pcd&quot;</span>
+</pre></div>
+</div>
+</div>
+<p>Putting it all together:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">generate_road_scenes_dataset</span><span class="p">(</span><span class="n">num_scenes</span><span class="p">):</span>
+    <span class="n">samples</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_scenes</span><span class="p">):</span>
+        <span class="n">num_scene_vehicles</span> <span class="o">=</span> <span class="n">choose_num_scene_vehicles</span><span class="p">()</span>
+        <span class="n">scene_filepath</span> <span class="o">=</span> <span class="n">generate_scene_filepath</span><span class="p">()</span>
+
+        <span class="n">sample</span> <span class="o">=</span> <span class="n">generate_scene_sample</span><span class="p">(</span>
+            <span class="n">num_scene_vehicles</span><span class="p">,</span>
+            <span class="n">scene_filepath</span>
+        <span class="p">)</span>
+        <span class="n">samples</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
+
+    <span class="n">dataset</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;point-e-road-scenes&quot;</span><span class="p">)</span>
+    <span class="n">dataset</span><span class="o">.</span><span class="n">add_samples</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span>
+    <span class="n">dataset</span><span class="o">.</span><span class="n">persistent</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">return</span> <span class="n">dataset</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_scenes</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">road_scene_dataset</span> <span class="o">=</span> <span class="n">generate_road_scenes_dataset</span><span class="p">(</span><span class="n">num_scenes</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>If you’d like, you can also generate bird’s eye view projection images for these scenes, so you can preview scenes in the sample grid:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">size</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">608</span><span class="p">)</span>
+
+<span class="n">fou3d</span><span class="o">.</span><span class="n">compute_orthographic_projection_images</span><span class="p">(</span>
+    <span class="n">road_scene_dataset</span><span class="p">,</span>
+    <span class="n">size</span><span class="p">,</span>
+    <span class="s2">&quot;/road_scene_bev_images&quot;</span><span class="p">,</span>
+    <span class="n">shading_mode</span><span class="o">=</span><span class="s2">&quot;rgb&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">road_scene_dataset</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p><img alt="pointe-road-scene" src="../_images/pointe_road_scenes_3d_visualizer.gif" /></p>
+</div>
+</div>
+<div class="section" id="Conclusion">
+<h2>Conclusion<a class="headerlink" href="#Conclusion" title="Permalink to this headline">¶</a></h2>
+<p>FiftyOne is a valuable tool that can help you to build high quality computer vision datasets. This is true whether you are working with images, videos, point clouds, or geo data. And this is true whether you are adapting existing datasets, or constructing your own datasets from scratch!</p>
+</div>
+</div>
+
+
+             </article>
+             
+            </div>
+            <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="monocular_depth_estimation.html" class="btn btn-neutral float-right" title="Monocular Depth Estimation with FiftyOne" accesskey="n" rel="next">Next <img src="../_static/images/chevron-right-orange.svg" class="next-page"></a>
+      
+      
+        <a href="yolov8.html" class="btn btn-neutral" title="Fine-tune YOLOv8 models for custom use cases with the help of FiftyOne" accesskey="p" rel="prev"><img src="../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
+      
+    </div>
+  
+</footer>
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              <ul>
+<li><a class="reference internal" href="#">Build a 3D self-driving dataset from scratch with OpenAI’s Point-E and FiftyOne</a><ul>
+<li><a class="reference internal" href="#Setup">Setup</a></li>
+<li><a class="reference internal" href="#Generating-a-point-cloud-from-text">Generating a point cloud from text</a></li>
+<li><a class="reference internal" href="#Loading-a-Point-E-point-cloud-into-FiftyOne">Loading a Point-E point cloud into FiftyOne</a></li>
+<li><a class="reference internal" href="#Curating-synthetic-3D-point-cloud-assets">Curating synthetic <span class="math notranslate nohighlight">\(3D\)</span> point cloud assets</a></li>
+<li><a class="reference internal" href="#Constructing-a-self-driving-dataset">Constructing a self-driving dataset</a><ul>
+<li><a class="reference internal" href="#Constructing-a-road-point-cloud">Constructing a road point cloud</a></li>
+<li><a class="reference internal" href="#Placing-a-vehicle-on-the-road">Placing a vehicle on the road</a></li>
+<li><a class="reference internal" href="#Constructing-road-scenes">Constructing road scenes</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#Conclusion">Conclusion</a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  
+
+
+  
+
+     
+       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+         <script src="../_static/jquery.js"></script>
+         <script src="../_static/underscore.js"></script>
+         <script src="../_static/doctools.js"></script>
+         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+         <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+         <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+         <script src="../_static/js/voxel51-website.js"></script>
+         <script src="../_static/js/custom.js"></script>
+     
+
+  
+
+  <script type="text/javascript" src="../_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="../_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+  <!-- Begin Footer -->
+
+
+<footer class="footer-wrapper" id="docs-tutorials-resources">
+  <div class="footer pytorch-container">
+    <div class="footer__logo">
+      <a href="https://voxel51.com/"
+        ><img
+          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
+      /></a>
+    </div>
+
+    <div class="footer__address">
+      330 E Liberty St<br />
+      Ann Arbor, MI 48104<br />
+      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
+    </div>
+
+    <!--
+    <div class="footer__contact">
+      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
+    </div>
+    -->
+
+    <div class="footer__links">
+      <div class="footer__links--col2">
+        <p class="nav__item--brand">Products</p>
+        <a href="https://voxel51.com/fiftyone/">FiftyOne</a>
+        <a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a>
+        <a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a>
+        <a href="https://voxel51.com/success-stories/">Success Stories</a>
+      </div>
+      <div class="footer__links--col3">
+        <p class="nav__item--brand">Resources</p>
+        <a href="https://voxel51.com/blog/">Blog</a>
+        <a href="https://docs.voxel51.com/">Docs</a>
+        <a href="https://github.com/voxel51/">GitHub</a>
+        <a href="https://community.voxel51.com">Discord</a>
+        <a href="https://voxel51.com/ourstory/">About Us</a>
+        <a href="https://voxel51.com/computer-vision-events/">Events</a>
+        <a href="https://voxel51.com/jobs/">Careers</a>
+        <a href="https://voxel51.com/press/">Press</a>
+      </div>
+    </div>
+
+    <div class="footer__icons">
+      <ul class="list-inline">
+        <li>
+          <a href="https://www.linkedin.com/company/voxel51/">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/voxel51/">
+            <i class="fa-brands fa-github"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/voxel51">
+            <i class="fa-brands fa-twitter"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/voxel51/">
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="footer__copyright">
+      <ul class="list-inline">
+        <li>&copy; 2024 Voxel51 Inc.</li>
+        <li>
+          <a href="https://voxel51.com/privacy/">Privacy Policy</a>
+        </li>
+        <li>
+          <a href="https://voxel51.com/terms/">Terms of Service</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<!-- https://buttons.github.io -->
+<script async defer src="https://buttons.github.io/buttons.js" ></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XD15NFRY3M" ></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+  gtag("config", "G-XD15NFRY3M");
+</script>
+
+<script>
+  function open_modal(modal_id, modal_closer_id) {
+    // Get the modal
+    let the_modal = document.getElementById(modal_id);
+
+    the_modal.style.display = "flex";
+    document.body.style.overflow = "hidden";
+
+    let the_modal_closer = document.getElementById(modal_closer_id);
+
+    // When the user clicks on <span> (x), close the modal
+    the_modal_closer &&
+      (the_modal_closer.onclick = function () {
+        the_modal.style.display = "none";
+      });
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+      if (event.target == the_modal) {
+        the_modal.style.display = "none";
+        document.body.style.overflow = "unset";
+        window.onclick = undefined;
+      }
+    };
+  }
+</script>
+
+<!-- bigpicture.io -->
+<script>
+  !(function (e, t, i) {
+    var r = (e.bigPicture = e.bigPicture || []);
+    if (!r.initialized)
+      if (r.invoked)
+        e.console &&
+          console.error &&
+          console.error("BigPicture.io snippet included twice.");
+      else {
+        (r.invoked = !0),
+          (r.SNIPPET_VERSION = 1.5),
+          (r.handler = function (e) {
+            if (void 0 !== r.callback)
+              try {
+                return r.callback(e);
+              } catch (e) {}
+          }),
+          (r.eventList = ["mousedown", "mouseup", "click", "submit"]),
+          (r.methods = [
+            "track",
+            "identify",
+            "page",
+            "group",
+            "alias",
+            "integration",
+            "ready",
+            "intelReady",
+            "consentReady",
+            "on",
+            "off",
+          ]),
+          (r.factory = function (e) {
+            return function () {
+              var t = Array.prototype.slice.call(arguments);
+              return t.unshift(e), r.push(t), r;
+            };
+          });
+        for (var n = 0; n < r.methods.length; n++) {
+          var o = r.methods[n];
+          r[o] = r.factory(o);
+        }
+        r.getCookie = function (e) {
+          var i = ("; " + t.cookie).split("; " + e + "=");
+          return 2 == i.length && i.pop().split(";").shift();
+        };
+        var c = (r.isEditor = (function () {
+          try {
+            return (
+              e.self !== e.top &&
+              (new RegExp("app" + i, "ig").test(t.referrer) ||
+                "edit" == r.getCookie("_bpr_edit"))
+            );
+          } catch (e) {
+            return !1;
+          }
+        })());
+        r.init = function (n, o) {
+          if (((r.projectId = n), (r._config = o), !c))
+            for (var a = 0; a < r.eventList.length; a++)
+              e.addEventListener(r.eventList[a], r.handler, !0);
+          var s = t.createElement("script");
+          s.async = !0;
+          var d = c ? "/editor/editor" : "/public-" + n;
+          (s.src = "//cdn" + i + d + ".js"),
+            t.getElementsByTagName("head")[0].appendChild(s);
+        };
+      }
+  })(window, document, ".bigpicture.io");
+  bigPicture.init("1646");
+</script>
+
+
+  
+
+  <!-- End Footer -->
+
+  <!-- Begin Mobile Menu -->
+
+  
+
+  <!-- End Mobile Menu -->
+
+  <script type="text/javascript" src="../_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function(e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+</body>
+</html>

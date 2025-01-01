@@ -1,0 +1,2498 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Labelbox Integration &mdash; FiftyOne 1.3.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <link rel="stylesheet" href="../_static/css/voxel51-website.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Qdrant Integration" href="qdrant.html" />
+    <link rel="prev" title="V7 Integration" href="v7.html" />
+<meta property="og:image" content="https://voxel51.com/wp-content/uploads/2024/03/3.24_webpages_Home_AV.png" />
+
+<link
+  href="https://fonts.googleapis.com/css?family=Palanquin:400,600,700,800"
+  rel="stylesheet"
+/>
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+  rel="stylesheet"
+/>
+<script src="https://tag.clearbitscripts.com/v1/pk_b9ed71c8234edd4f77326bcbfab5a4ca/tags.js"></script>
+
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+  
+</head>
+
+
+<div class="container-fluid header-holder tutorials-header" id="header-holder">
+  <nav id="nav__main" class="nav__main">
+    <div class="nav__main__logo">
+      <a href="https://voxel51.com/">
+        <img
+          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
+        />
+      </a>
+    </div>
+
+    <div class="nav__spacer desktop_only"></div>
+
+    <div id="nav__main__mobilebutton--on">
+      <a href="javascript:void(0);" onclick="navMobileButton()">
+        <i class="fa-solid fa-bars"></i>
+      </a>
+    </div>
+
+    <div id="nav__main__mobilebutton--off">
+      <a href="javascript:void(0);" onclick="navMobileButton()">
+        <i class="fa-solid fa-times"></i>
+      </a>
+    </div>
+
+    <div id="nav__main__items">
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Products</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://voxel51.com/fiftyone/">Open Source</a></li>
+            <li><a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a></li>
+            <li><a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a></li>
+            <li><a href="https://voxel51.com/success-stories/">Success Stories</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Learn</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://community.voxel51.com">Community Discord</a></li>
+            <li><a href="https://voxel51.com/blog/">Blog</a></li>
+            <li><a href="https://voxel51.com/computer-vision-events/">Events</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item">
+        <a href="https://docs.voxel51.com/">Docs</a>
+      </div>
+
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Company</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://voxel51.com/ourstory/">About Us</a></li>
+            <li><a href="https://voxel51.com/jobs/">Careers</a></li>
+            <li><a href="https://voxel51.com/talk-to-sales/">Talk to Sales</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item mobile_only">
+        <a href="https://github.com/voxel51/fiftyone">GitHub</a>
+      </div>
+
+      <div class="nav__item desktop_only" id="octocat">
+        <!-- https://buttons.github.io -->
+        <a
+          class="github-button"
+          href="https://github.com/voxel51/fiftyone"
+          data-color-scheme="no-preference: dark_high_contrast; light: dark_high_contrast; dark: dark_high_contrast;"
+          data-size="large"
+          data-show-count="true"
+          aria-label="Star voxel51/fiftyone on GitHub"
+          >Star</a
+        >
+      </div>
+
+      <div class="nav__item full_nav_only">
+        <a class="button-primary" href="https://voxel51.com/schedule-teams-workshop/" target="_blank"
+          >Schedule a workshop</a
+        >
+      </div>
+    </div>
+  </nav>
+</div>
+
+
+
+<body class="pytorch-body">
+
+   
+
+    
+
+    <div class="table-of-contents-link-wrapper">
+      <span>Table of Contents</span>
+      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+    </div>
+
+    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+      <div class="pytorch-side-scroll">
+        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          <div class="pytorch-left-menu-search">
+            
+
+            
+              
+              
+            
+
+            
+
+
+  
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+            
+          </div>
+
+           <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../teams/index.html">FiftyOne Teams 🚀</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../environments/index.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../recipes/index.html">Recipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheat_sheets/index.html">Cheat Sheets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dataset_zoo/index.html">Dataset Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_zoo/index.html">Model Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brain.html">FiftyOne Brain</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Integrations</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="coco.html"> COCO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open_images.html"> Open Images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="activitynet.html"> ActivityNet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cvat.html"> CVAT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="labelstudio.html"> Label Studio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="v7.html"> V7</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#"> Labelbox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qdrant.html"> Qdrant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="redis.html"> Redis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pinecone.html"> Pinecone</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mongodb.html"> MongoDB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="elasticsearch.html"> Elasticsearch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="milvus.html"> Milvus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lancedb.html"> LanceDB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="huggingface.html"> Hugging Face</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ultralytics.html"> Ultralytics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="albumentations.html"> Albumentations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="super_gradients.html"> SuperGradients</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openclip.html"> OpenCLIP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pytorch_hub.html"> PyTorch Hub</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lightning_flash.html"> Lightning Flash</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../plugins/index.html">Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli/index.html">CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/fiftyone.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deprecation.html">Deprecation Notices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a></li>
+</ul>
+ 
+        </div>
+      </div>
+    </nav>
+
+    <div class="pytorch-container">
+      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+        <div class="pytorch-breadcrumbs-wrapper">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="../index.html">
+          
+            Docs
+          
+        </a> &gt;
+      </li>
+
+        
+          <li><a href="index.html">FiftyOne Integrations</a> &gt;</li>
+        
+      <li>Labelbox Integration</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+        </div>
+
+        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+          Contents
+        </div>
+      </div>
+
+      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+        <div class="pytorch-content-left">
+
+        
+          
+          <div class="rst-content style-external-links">
+          
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+              
+  <div class="section" id="labelbox-integration">
+<span id="id1"></span><h1>Labelbox Integration<a class="headerlink" href="#labelbox-integration" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://labelbox.com/">Labelbox</a> is one of the most popular cloud-based
+image and video annotation tools available, and we’ve made it easy to upload
+your data directly from FiftyOne to Labelbox for labeling.</p>
+<p>You can create a <a class="reference external" href="https://app.labelbox.com/signin">free Labelbox account</a> to
+upload and annotate raw data in the user-friendly Labelbox editor. FiftyOne
+provides <a class="reference internal" href="#labelbox-setup"><span class="std std-ref">simple setup instructions</span></a> that you can use to
+specify the necessary API key and server endpoint to use.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Did you know? You can request, manage, and import annotations from within
+the FiftyOne App by installing the
+<a class="reference external" href="https://github.com/voxel51/fiftyone-plugins/tree/main/plugins/annotation">&#64;voxel51/annotation</a>
+plugin!</p>
+</div>
+<p>FiftyOne provides an API to create projects, upload data, define label schemas,
+and download annotations using Labelbox, all programmatically in Python. All of
+the following label types are supported, for both image and video datasets:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../user_guide/using_datasets.html#classification"><span class="std std-ref">Classifications</span></a></p></li>
+<li><p><a class="reference internal" href="../user_guide/using_datasets.html#object-detection"><span class="std std-ref">Detections</span></a></p></li>
+<li><p><a class="reference internal" href="../user_guide/using_datasets.html#instance-segmentation"><span class="std std-ref">Instance segmentations</span></a></p></li>
+<li><p><a class="reference internal" href="../user_guide/using_datasets.html#polylines"><span class="std std-ref">Polygons and polylines</span></a></p></li>
+<li><p><a class="reference internal" href="../user_guide/using_datasets.html#keypoints"><span class="std std-ref">Keypoints</span></a></p></li>
+<li><p><a class="reference internal" href="../user_guide/using_datasets.html#adding-sample-fields"><span class="std std-ref">Scalar fields</span></a></p></li>
+<li><p><a class="reference internal" href="../user_guide/using_datasets.html#semantic-segmentation"><span class="std std-ref">Semantic segmentation</span></a></p></li>
+</ul>
+<img alt="labelbox-video" class="align-center" src="../_images/labelbox_video.png" />
+<div class="section" id="basic-recipe">
+<span id="labelbox-basic-recipe"></span><h2>Basic recipe<a class="headerlink" href="#basic-recipe" title="Permalink to this headline">¶</a></h2>
+<p>The basic workflow to use Labelbox to add or edit labels on your FiftyOne
+datasets is as follows:</p>
+<ol class="arabic simple">
+<li><p>Load a <a class="reference internal" href="../user_guide/dataset_creation/index.html#loading-datasets"><span class="std std-ref">labeled or unlabeled dataset</span></a> into FiftyOne</p></li>
+<li><p>Explore the dataset using the <a class="reference internal" href="../user_guide/app.html#fiftyone-app"><span class="std std-ref">App</span></a> or
+<a class="reference internal" href="../user_guide/using_views.html#using-views"><span class="std std-ref">dataset views</span></a> to locate either unlabeled samples that
+you wish to annotate or labeled samples whose annotations you want to edit</p></li>
+<li><p>Use the
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.annotate" title="fiftyone.core.collections.SampleCollection.annotate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">annotate()</span></code></a>
+method on your dataset or view to upload the samples and optionally their
+existing labels to Labelbox by setting the parameter <code class="code docutils literal notranslate"><span class="pre">backend=&quot;labelbox&quot;</span></code></p></li>
+<li><p>In Labelbox, perform the necessary annotation work</p></li>
+<li><p>Back in FiftyOne, load your dataset and use the
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.load_annotations" title="fiftyone.core.collections.SampleCollection.load_annotations"><code class="xref py py-meth docutils literal notranslate"><span class="pre">load_annotations()</span></code></a>
+method to merge the annotations back into your FiftyOne dataset</p></li>
+<li><p>If desired, delete the Labelbox tasks and the record of the annotation run
+from your FiftyOne dataset</p></li>
+</ol>
+<p><br />
+The example below demonstrates this workflow.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You must create an account at <a class="reference external" href="https://labelbox.com">labelbox.com</a> in
+order to run this example.</p>
+<p>Note that you can store your credentials as described in
+<a class="reference internal" href="#labelbox-setup"><span class="std std-ref">this section</span></a> to avoid entering them manually each
+time you interact with Labelbox.</p>
+<p>You’ll also need to install the
+<a class="reference external" href="https://github.com/Labelbox/labelbox-python">Labelbox Python client</a>:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>labelbox
+</pre></div>
+</div>
+</div>
+<p>First, we create the annotation tasks in Labelbox:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+<span class="kn">from</span> <span class="nn">fiftyone</span> <span class="kn">import</span> <span class="n">ViewField</span> <span class="k">as</span> <span class="n">F</span>
+
+<span class="c1"># Step 1: Load your data into FiftyOne</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span>
+    <span class="s2">&quot;quickstart&quot;</span><span class="p">,</span> <span class="n">dataset_name</span><span class="o">=</span><span class="s2">&quot;lb-annotation-example&quot;</span>
+<span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">persistent</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="n">dataset</span><span class="o">.</span><span class="n">evaluate_detections</span><span class="p">(</span>
+    <span class="s2">&quot;predictions&quot;</span><span class="p">,</span> <span class="n">gt_field</span><span class="o">=</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span> <span class="n">eval_key</span><span class="o">=</span><span class="s2">&quot;eval&quot;</span>
+<span class="p">)</span>
+
+<span class="c1"># Step 2: Locate a subset of your data requiring annotation</span>
+
+<span class="c1"># Create a view that contains only high confidence false positive model</span>
+<span class="c1"># predictions, with samples containing the most false positives first</span>
+<span class="n">most_fp_view</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">dataset</span>
+    <span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span><span class="s2">&quot;predictions&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s2">&quot;confidence&quot;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">0.8</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s2">&quot;eval&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;fp&quot;</span><span class="p">))</span>
+    <span class="o">.</span><span class="n">sort_by</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s2">&quot;predictions.detections&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">length</span><span class="p">(),</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="c1"># Retrieve the sample with the most high confidence false positives</span>
+<span class="n">sample_id</span> <span class="o">=</span> <span class="n">most_fp_view</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">id</span>
+<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">sample_id</span><span class="p">)</span>
+
+<span class="c1"># Step 3: Send samples to Labelbox</span>
+
+<span class="c1"># A unique identifier for this run</span>
+<span class="n">anno_key</span> <span class="o">=</span> <span class="s2">&quot;labelbox_basic_recipe&quot;</span>
+
+<span class="n">label_schema</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;new_ground_truth&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;detections&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;classes&quot;</span><span class="p">:</span> <span class="n">dataset</span><span class="o">.</span><span class="n">distinct</span><span class="p">(</span><span class="s2">&quot;ground_truth.detections.label&quot;</span><span class="p">),</span>
+        <span class="s2">&quot;attributes&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;iscrowd&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;radio&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;values&quot;</span><span class="p">:</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span>
+            <span class="p">},</span>
+        <span class="p">},</span>
+    <span class="p">},</span>
+<span class="p">}</span>
+
+<span class="n">view</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span>
+    <span class="n">anno_key</span><span class="p">,</span>
+    <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;labelbox&quot;</span><span class="p">,</span>
+    <span class="n">label_schema</span><span class="o">=</span><span class="n">label_schema</span><span class="p">,</span>
+    <span class="n">launch_editor</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">get_annotation_info</span><span class="p">(</span><span class="n">anno_key</span><span class="p">))</span>
+
+<span class="c1"># Step 4: Perform annotation in Labelbox and save the tasks</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>Then, once the annotation work is complete, we merge the annotations back into
+FiftyOne:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+
+<span class="n">anno_key</span> <span class="o">=</span> <span class="s2">&quot;labelbox_basic_recipe&quot;</span>
+
+<span class="c1"># Step 5: Merge annotations back into FiftyOne dataset</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;lb-annotation-example&quot;</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">load_annotations</span><span class="p">(</span><span class="n">anno_key</span><span class="p">)</span>
+
+<span class="c1"># Load the view that was annotated in the App</span>
+<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">load_annotation_view</span><span class="p">(</span><span class="n">anno_key</span><span class="p">)</span>
+<span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">view</span><span class="o">=</span><span class="n">view</span><span class="p">)</span>
+
+<span class="c1"># Step 6: Cleanup</span>
+
+<span class="c1"># Delete tasks from Labelbox</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">load_annotation_results</span><span class="p">(</span><span class="n">anno_key</span><span class="p">)</span>
+<span class="n">results</span><span class="o">.</span><span class="n">cleanup</span><span class="p">()</span>
+
+<span class="c1"># Delete run record (not the labels) from FiftyOne</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">delete_annotation_run</span><span class="p">(</span><span class="n">anno_key</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>See <a class="reference internal" href="#labelbox-examples"><span class="std std-ref">this section</span></a> to see a variety of common
+Labelbox annotation patterns.</p>
+</div>
+</div>
+<div class="section" id="setup">
+<span id="labelbox-setup"></span><h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
+<p>FiftyOne supports both
+<a class="reference external" href="https://app.labelbox.com/signin">standard Labelbox cloud accounts</a>  and
+<a class="reference external" href="https://docs.labelbox.com/docs/labelbox-on-premises">on-premise Labelbox deployments</a>.</p>
+<p>The easiest way to get started is to use
+<a class="reference external" href="https://app.labelbox.com">app.labelbox.com</a>, which simply requires creating
+an account and then providing your API key as shown below.</p>
+<div class="section" id="installing-the-labelbox-client">
+<h3>Installing the Labelbox client<a class="headerlink" href="#installing-the-labelbox-client" title="Permalink to this headline">¶</a></h3>
+<p>In order to use the Labelbox backend, you must install the
+<a class="reference external" href="https://github.com/Labelbox/labelbox-python">Labelbox Python client</a>:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>labelbox
+</pre></div>
+</div>
+</div>
+<div class="section" id="using-the-labelbox-backend">
+<h3>Using the Labelbox backend<a class="headerlink" href="#using-the-labelbox-backend" title="Permalink to this headline">¶</a></h3>
+<p>By default, calling
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.annotate" title="fiftyone.core.collections.SampleCollection.annotate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">annotate()</span></code></a> will
+use the <a class="reference internal" href="cvat.html#cvat-integration"><span class="std std-ref">CVAT backend</span></a>.</p>
+<p>To use the Labelbox backend, simply set the optional <code class="code docutils literal notranslate"><span class="pre">backend</span></code> parameter of
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.annotate" title="fiftyone.core.collections.SampleCollection.annotate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">annotate()</span></code></a> to
+<code class="code docutils literal notranslate"><span class="pre">&quot;labelbox&quot;</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">view</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">anno_key</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;labelbox&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>Alternatively, you can permanently configure FiftyOne to use the Labelbox
+backend by setting the <code class="code docutils literal notranslate"><span class="pre">FIFTYONE_ANNOTATION_DEFAULT_BACKEND</span></code> environment
+variable:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">FIFTYONE_ANNOTATION_DEFAULT_BACKEND</span><span class="o">=</span>labelbox
+</pre></div>
+</div>
+<p>or by setting the <code class="code docutils literal notranslate"><span class="pre">default_backend</span></code> parameter of your
+<a class="reference internal" href="../user_guide/annotation.html#annotation-config"><span class="std std-ref">annotation config</span></a> located at
+<code class="code docutils literal notranslate"><span class="pre">~/.fiftyone/annotation_config.json</span></code>:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
+    &quot;default_backend&quot;: &quot;labelbox&quot;
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="authentication">
+<h3>Authentication<a class="headerlink" href="#authentication" title="Permalink to this headline">¶</a></h3>
+<p>In order to connect to a Labelbox server, you must provide your API key, which
+can be done in a variety of ways.</p>
+<p><strong>Environment variables (recommended)</strong></p>
+<p>The recommended way to configure your Labelbox API key is to store it in the
+<code class="code docutils literal notranslate"><span class="pre">FIFTYONE_LABELBOX_API_KEY</span></code> environment variable. This is automatically
+accessed by FiftyOne whenever a connection to Labelbox is made.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">FIFTYONE_LABELBOX_API_KEY</span><span class="o">=</span>...
+</pre></div>
+</div>
+<p><strong>FiftyOne annotation config</strong></p>
+<p>You can also store your credentials in your
+<a class="reference internal" href="../user_guide/annotation.html#annotation-config"><span class="std std-ref">annotation config</span></a> located at
+<code class="code docutils literal notranslate"><span class="pre">~/.fiftyone/annotation_config.json</span></code>:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
+    &quot;backends&quot;: {
+        &quot;labelbox&quot;: {
+            &quot;api_key&quot;: ...,
+        }
+    }
+}
+</pre></div>
+</div>
+<p>Note that this file will not exist until you create it.</p>
+<p><strong>Keyword arguments</strong></p>
+<p>You can manually provide your API key as a keyword argument each time you call
+methods like
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.annotate" title="fiftyone.core.collections.SampleCollection.annotate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">annotate()</span></code></a> and
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.load_annotations" title="fiftyone.core.collections.SampleCollection.load_annotations"><code class="xref py py-meth docutils literal notranslate"><span class="pre">load_annotations()</span></code></a>
+that require connections to Labelbox:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">view</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span>
+    <span class="n">anno_key</span><span class="p">,</span>
+    <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;labelbox&quot;</span><span class="p">,</span>
+    <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span>
+    <span class="n">api_key</span><span class="o">=...</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<p><strong>Command line prompt</strong></p>
+<p>If you have not stored your API key via another method, you will be prompted to
+enter it interactively in your shell each time you call a method that requires
+a connection to Labelbox:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">view</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span>
+    <span class="n">anno_key</span><span class="p">,</span>
+    <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;labelbox&quot;</span><span class="p">,</span>
+    <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span>
+    <span class="n">launch_editor</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Please enter your API key.
+You can avoid this in the future by setting your `FIFTYONE_LABELBOX_API_KEY` environment variable.
+API key: ...
+</pre></div>
+</div>
+</div>
+<div class="section" id="on-premises-servers">
+<span id="labelbox-on-premises"></span><h3>On-premises servers<a class="headerlink" href="#on-premises-servers" title="Permalink to this headline">¶</a></h3>
+<p>If you have an
+<a class="reference external" href="https://docs.labelbox.com/docs/labelbox-on-premises">on-premises Labelbox server</a>,
+you can configure the URL of your server in any of the following ways:</p>
+<ul class="simple">
+<li><p>Set the <code class="code docutils literal notranslate"><span class="pre">FIFTYONE_LABELBOX_URL</span></code> environment variable:</p></li>
+</ul>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">FIFTYONE_LABELBOX_URL</span><span class="o">=</span>http://localhost:8080
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Store the <code class="code docutils literal notranslate"><span class="pre">url</span></code> of your server in your
+<a class="reference internal" href="../user_guide/annotation.html#annotation-config"><span class="std std-ref">annotation config</span></a> at
+<code class="code docutils literal notranslate"><span class="pre">~/.fiftyone/annotation_config.json</span></code>:</p></li>
+</ul>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
+    &quot;backends&quot;: {
+        &quot;labelbox&quot;: {
+            &quot;url&quot;: &quot;http://localhost:8080&quot;
+        }
+    }
+}
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Pass the <code class="code docutils literal notranslate"><span class="pre">url</span></code> parameter manually each time you call
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.annotate" title="fiftyone.core.collections.SampleCollection.annotate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">annotate()</span></code></a>:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">view</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span>
+    <span class="n">anno_key</span><span class="p">,</span>
+    <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;labelbox&quot;</span><span class="p">,</span>
+    <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;http://localhost:8080&quot;</span><span class="p">,</span>
+    <span class="n">api_key</span><span class="o">=...</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
+<div class="section" id="requesting-annotations">
+<span id="labelbox-requesting-annotations"></span><h2>Requesting annotations<a class="headerlink" href="#requesting-annotations" title="Permalink to this headline">¶</a></h2>
+<p>Use the
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.annotate" title="fiftyone.core.collections.SampleCollection.annotate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">annotate()</span></code></a> method
+to send the samples and optionally existing labels in a <a class="reference internal" href="../api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset" title="fiftyone.core.dataset.Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dataset</span></code></a> or
+<a class="reference internal" href="../api/fiftyone.core.view.html#fiftyone.core.view.DatasetView" title="fiftyone.core.view.DatasetView"><code class="xref py py-class docutils literal notranslate"><span class="pre">DatasetView</span></code></a> to Labelbox for annotation.</p>
+<p>The basic syntax is:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">anno_key</span> <span class="o">=</span> <span class="s2">&quot;...&quot;</span>
+<span class="n">view</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">anno_key</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;labelbox&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>The <code class="code docutils literal notranslate"><span class="pre">anno_key</span></code> argument defines a unique identifier for the annotation run, and
+you will provide it to methods like
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.load_annotations" title="fiftyone.core.collections.SampleCollection.load_annotations"><code class="xref py py-meth docutils literal notranslate"><span class="pre">load_annotations()</span></code></a>,
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.load_annotations" title="fiftyone.core.collections.SampleCollection.load_annotations"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_annotation_info()</span></code></a>,
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.load_annotation_results" title="fiftyone.core.collections.SampleCollection.load_annotation_results"><code class="xref py py-meth docutils literal notranslate"><span class="pre">load_annotation_results()</span></code></a>,
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.rename_annotation_run" title="fiftyone.core.collections.SampleCollection.rename_annotation_run"><code class="xref py py-meth docutils literal notranslate"><span class="pre">rename_annotation_run()</span></code></a>, and
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.delete_annotation_run" title="fiftyone.core.collections.SampleCollection.delete_annotation_run"><code class="xref py py-meth docutils literal notranslate"><span class="pre">delete_annotation_run()</span></code></a>
+to manage the run in the future.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Calling
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.annotate" title="fiftyone.core.collections.SampleCollection.annotate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">annotate()</span></code></a>
+will upload the source media files to the Labelbox server.</p>
+</div>
+<p>In addition,
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.annotate" title="fiftyone.core.collections.SampleCollection.annotate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">annotate()</span></code></a>
+provides various parameters that you can use to customize the annotation tasks
+that you wish to be performed.</p>
+<p>The following parameters are supported by all annotation backends:</p>
+<ul class="simple">
+<li><p><strong>backend</strong> (<em>None</em>): the annotation backend to use. Use <code class="code docutils literal notranslate"><span class="pre">&quot;labelbox&quot;</span></code> for
+the Labelbox backend. The supported values are
+<code class="code docutils literal notranslate"><span class="pre">fiftyone.annotation_config.backends.keys()</span></code> and the default is
+<code class="code docutils literal notranslate"><span class="pre">fiftyone.annotation_config.default_backend</span></code></p></li>
+<li><p><strong>media_field</strong> (<em>“filepath”</em>): the sample field containing the path to the
+source media to upload</p></li>
+<li><p><strong>launch_editor</strong> (<em>False</em>): whether to launch the annotation backend’s
+editor after uploading the samples</p></li>
+</ul>
+<p>The following parameters allow you to configure the labeling schema to use for
+your annotation tasks. See <a class="reference internal" href="#labelbox-label-schema"><span class="std std-ref">this section</span></a> for more
+details:</p>
+<ul>
+<li><p><strong>label_schema</strong> (<em>None</em>): a dictionary defining the label schema to use.
+If this argument is provided, it takes precedence over <code class="code docutils literal notranslate"><span class="pre">label_field</span></code> and
+<code class="code docutils literal notranslate"><span class="pre">label_type</span></code></p></li>
+<li><p><strong>label_field</strong> (<em>None</em>): a string indicating a new or existing label field
+to annotate</p></li>
+<li><p><strong>label_type</strong> (<em>None</em>): a string indicating the type of labels to
+annotate. The possible label types are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;classification&quot;</span></code>: a single classification stored in
+<a class="reference internal" href="../api/fiftyone.core.labels.html#fiftyone.core.labels.Classification" title="fiftyone.core.labels.Classification"><code class="xref py py-class docutils literal notranslate"><span class="pre">Classification</span></code></a> fields</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;classifications&quot;</span></code>: multilabel classifications stored in
+<a class="reference internal" href="../api/fiftyone.core.labels.html#fiftyone.core.labels.Classifications" title="fiftyone.core.labels.Classifications"><code class="xref py py-class docutils literal notranslate"><span class="pre">Classifications</span></code></a> fields</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;detections&quot;</span></code>: object detections stored in <a class="reference internal" href="../api/fiftyone.core.labels.html#fiftyone.core.labels.Detections" title="fiftyone.core.labels.Detections"><code class="xref py py-class docutils literal notranslate"><span class="pre">Detections</span></code></a> fields</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;instances&quot;</span></code>: instance segmentations stored in <a class="reference internal" href="../api/fiftyone.core.labels.html#fiftyone.core.labels.Detections" title="fiftyone.core.labels.Detections"><code class="xref py py-class docutils literal notranslate"><span class="pre">Detections</span></code></a> fields
+with their <a class="reference internal" href="../api/fiftyone.core.labels.html#fiftyone.core.labels.Detection.mask" title="fiftyone.core.labels.Detection.mask"><code class="xref py py-attr docutils literal notranslate"><span class="pre">mask</span></code></a>
+attributes populated</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;polylines&quot;</span></code>: polylines stored in <a class="reference internal" href="../api/fiftyone.core.labels.html#fiftyone.core.labels.Polylines" title="fiftyone.core.labels.Polylines"><code class="xref py py-class docutils literal notranslate"><span class="pre">Polylines</span></code></a> fields with their
+<a class="reference internal" href="../api/fiftyone.core.labels.html#fiftyone.core.labels.Polyline.filled" title="fiftyone.core.labels.Polyline.filled"><code class="xref py py-attr docutils literal notranslate"><span class="pre">filled</span></code></a> attributes set to
+<code class="code docutils literal notranslate"><span class="pre">False</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;polygons&quot;</span></code>: polygons stored in <a class="reference internal" href="../api/fiftyone.core.labels.html#fiftyone.core.labels.Polylines" title="fiftyone.core.labels.Polylines"><code class="xref py py-class docutils literal notranslate"><span class="pre">Polylines</span></code></a> fields with their
+<a class="reference internal" href="../api/fiftyone.core.labels.html#fiftyone.core.labels.Polyline.filled" title="fiftyone.core.labels.Polyline.filled"><code class="xref py py-attr docutils literal notranslate"><span class="pre">filled</span></code></a> attributes set to
+<code class="code docutils literal notranslate"><span class="pre">True</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;keypoints&quot;</span></code>: keypoints stored in <a class="reference internal" href="../api/fiftyone.core.labels.html#fiftyone.core.labels.Keypoints" title="fiftyone.core.labels.Keypoints"><code class="xref py py-class docutils literal notranslate"><span class="pre">Keypoints</span></code></a> fields</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;segmentation&quot;</span></code>: semantic segmentations stored in <a class="reference internal" href="../api/fiftyone.core.labels.html#fiftyone.core.labels.Segmentation" title="fiftyone.core.labels.Segmentation"><code class="xref py py-class docutils literal notranslate"><span class="pre">Segmentation</span></code></a>
+fields</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;scalar&quot;</span></code>: scalar labels stored in <a class="reference internal" href="../api/fiftyone.core.fields.html#fiftyone.core.fields.IntField" title="fiftyone.core.fields.IntField"><code class="xref py py-class docutils literal notranslate"><span class="pre">IntField</span></code></a>, <a class="reference internal" href="../api/fiftyone.core.fields.html#fiftyone.core.fields.FloatField" title="fiftyone.core.fields.FloatField"><code class="xref py py-class docutils literal notranslate"><span class="pre">FloatField</span></code></a>,
+<a class="reference internal" href="../api/fiftyone.core.fields.html#fiftyone.core.fields.StringField" title="fiftyone.core.fields.StringField"><code class="xref py py-class docutils literal notranslate"><span class="pre">StringField</span></code></a>, or <a class="reference internal" href="../api/fiftyone.core.fields.html#fiftyone.core.fields.BooleanField" title="fiftyone.core.fields.BooleanField"><code class="xref py py-class docutils literal notranslate"><span class="pre">BooleanField</span></code></a> fields</p></li>
+</ul>
+<p>All new label fields must have their type specified via this argument or in
+<code class="code docutils literal notranslate"><span class="pre">label_schema</span></code></p>
+</li>
+<li><p><strong>classes</strong> (<em>None</em>): a list of strings indicating the class options for
+<code class="code docutils literal notranslate"><span class="pre">label_field</span></code> or all fields in <code class="code docutils literal notranslate"><span class="pre">label_schema</span></code> without classes specified.
+All new label fields must have a class list provided via one of the
+supported methods. For existing label fields, if classes are not provided
+by this argument nor <code class="code docutils literal notranslate"><span class="pre">label_schema</span></code>, the observed labels on your dataset
+are used</p></li>
+<li><p><strong>attributes</strong> (<em>True</em>): specifies the label attributes of each label field
+to include (other than their <code class="code docutils literal notranslate"><span class="pre">label</span></code>, which is always included) in the
+annotation export. Can be any of the following:</p>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">True</span></code>: export all label attributes</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">False</span></code>: don’t export any custom label attributes</p></li>
+<li><p>a list of label attributes to export</p></li>
+<li><p>a dict mapping attribute names to dicts specifying the <code class="code docutils literal notranslate"><span class="pre">type</span></code>,
+<code class="code docutils literal notranslate"><span class="pre">values</span></code>, and <code class="code docutils literal notranslate"><span class="pre">default</span></code> for each attribute</p></li>
+</ul>
+<p>If a <code class="code docutils literal notranslate"><span class="pre">label_schema</span></code> is also provided, this parameter determines which
+attributes are included for all fields that do not explicitly define their
+per-field attributes (in addition to any per-class attributes)</p>
+</li>
+<li><p><strong>mask_targets</strong> (<em>None</em>): a dict mapping pixel values to semantic label
+strings. Only applicable when annotating semantic segmentations</p></li>
+<li><p><strong>allow_additions</strong> (<em>True</em>): whether to allow new labels to be added. Only
+applicable when editing existing label fields</p></li>
+<li><p><strong>allow_deletions</strong> (<em>True</em>): whether to allow labels to be deleted. Only
+applicable when editing existing label fields</p></li>
+<li><p><strong>allow_label_edits</strong> (<em>True</em>): whether to allow the <code class="code docutils literal notranslate"><span class="pre">label</span></code> attribute of
+existing labels to be modified. Only applicable when editing existing
+fields with <code class="code docutils literal notranslate"><span class="pre">label</span></code> attributes</p></li>
+<li><p><strong>allow_index_edits</strong> (<em>True</em>): whether to allow the <code class="code docutils literal notranslate"><span class="pre">index</span></code> attribute
+of existing video tracks to be modified. Only applicable when editing
+existing frame fields with <code class="code docutils literal notranslate"><span class="pre">index</span></code> attributes</p></li>
+<li><p><strong>allow_spatial_edits</strong> (<em>True</em>): whether to allow edits to the spatial
+properties (bounding boxes, vertices, keypoints, masks, etc) of labels.
+Only applicable when editing existing spatial label fields</p></li>
+</ul>
+<p><br />
+In addition, the following Labelbox-specific parameters from
+<a class="reference internal" href="../api/fiftyone.utils.labelbox.html#fiftyone.utils.labelbox.LabelboxBackendConfig" title="fiftyone.utils.labelbox.LabelboxBackendConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">LabelboxBackendConfig</span></code></a>
+can also be provided:</p>
+<ul class="simple">
+<li><p><strong>project_name</strong> (<em>None</em>): a name for the Labelbox project that will be
+created. The default is <code class="code docutils literal notranslate"><span class="pre">&quot;FiftyOne_&lt;dataset_name&gt;&quot;</span></code></p></li>
+<li><p><strong>members</strong> (None): an optional list of <code class="code docutils literal notranslate"><span class="pre">(email,</span> <span class="pre">role)</span></code> tuples specifying
+the email addresses and roles of users to add to the project. If a user is
+not a member of the project’s organization, an email invitation will be
+sent to them. The supported roles are
+<code class="code docutils literal notranslate"><span class="pre">[&quot;LABELER&quot;,</span> <span class="pre">&quot;REVIEWER&quot;,</span> <span class="pre">&quot;TEAM_MANAGER&quot;,</span> <span class="pre">&quot;ADMIN&quot;]</span></code></p></li>
+<li><p><strong>classes_as_attrs</strong> (<em>True</em>): whether to show every object class at the
+top level of the editor (False) or whether to show the label field at the
+top level and annotate the class as a required attribute of each object
+(True)</p></li>
+<li><p><strong>export_version</strong> (<em>“v2”</em>): the Labelbox export format and API version to
+use. Supported values are <code class="code docutils literal notranslate"><span class="pre">(&quot;v1&quot;,</span> <span class="pre">&quot;v2&quot;)</span></code></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>See <a class="reference internal" href="#labelbox-editing-labels-paid"><span class="std std-ref">this section</span></a> for details about
+editing existing labels.</p>
+</div>
+<div class="section" id="label-schema">
+<span id="labelbox-label-schema"></span><h3>Label schema<a class="headerlink" href="#label-schema" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="code docutils literal notranslate"><span class="pre">label_schema</span></code>, <code class="code docutils literal notranslate"><span class="pre">label_field</span></code>, <code class="code docutils literal notranslate"><span class="pre">label_type</span></code>, <code class="code docutils literal notranslate"><span class="pre">classes</span></code>, <code class="code docutils literal notranslate"><span class="pre">attributes</span></code>, and
+<code class="code docutils literal notranslate"><span class="pre">mask_targets</span></code> parameters to
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.annotate" title="fiftyone.core.collections.SampleCollection.annotate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">annotate()</span></code></a> allow
+you to define the annotation schema that you wish to be used.</p>
+<p>The label schema may define new label field(s) that you wish to populate, and
+it may also include existing label field(s), in which case you can add, delete,
+or edit the existing labels on your FiftyOne dataset.</p>
+<p>The <code class="code docutils literal notranslate"><span class="pre">label_schema</span></code> argument is the most flexible way to define how to construct
+tasks in Labelbox. In its most verbose form, it is a dictionary that defines
+the label type, annotation type, possible classes, and possible attributes for
+each label field:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">anno_key</span> <span class="o">=</span> <span class="s2">&quot;...&quot;</span>
+
+<span class="n">label_schema</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;new_field&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;classifications&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;classes&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;class1&quot;</span><span class="p">,</span> <span class="s2">&quot;class2&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;attributes&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;attr1&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;checkbox&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;values&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;val1&quot;</span><span class="p">,</span> <span class="s2">&quot;val2&quot;</span><span class="p">],</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;attr2&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;radio&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;values&quot;</span><span class="p">:</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;existing_field&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;classes&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;class3&quot;</span><span class="p">,</span> <span class="s2">&quot;class4&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;attributes&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;attr3&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;text&quot;</span><span class="p">,</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+<span class="p">}</span>
+
+<span class="n">dataset</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">anno_key</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;labelbox&quot;</span><span class="p">,</span> <span class="n">label_schema</span><span class="o">=</span><span class="n">label_schema</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>You can also define class-specific attributes by setting elements of the
+<code class="code docutils literal notranslate"><span class="pre">classes</span></code> list to dicts that specify groups of <code class="code docutils literal notranslate"><span class="pre">classes</span></code> and their
+corresponding <code class="code docutils literal notranslate"><span class="pre">attributes</span></code>. For example, in the configuration below, <code class="code docutils literal notranslate"><span class="pre">attr1</span></code>
+only applies to <code class="code docutils literal notranslate"><span class="pre">class1</span></code> and <code class="code docutils literal notranslate"><span class="pre">class2</span></code> while <code class="code docutils literal notranslate"><span class="pre">attr2</span></code> applies to all classes:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">anno_key</span> <span class="o">=</span> <span class="s2">&quot;...&quot;</span>
+
+<span class="n">label_schema</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;new_field&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;detections&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;classes&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;classes&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;class1&quot;</span><span class="p">,</span> <span class="s2">&quot;class2&quot;</span><span class="p">],</span>
+                <span class="s2">&quot;attributes&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;attr1&quot;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;radio&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;values&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;val1&quot;</span><span class="p">,</span> <span class="s2">&quot;val2&quot;</span><span class="p">],</span>
+                    <span class="p">}</span>
+                 <span class="p">}</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;class3&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;class4&quot;</span><span class="p">,</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;attributes&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;attr2&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;radio&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;values&quot;</span><span class="p">:</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+    <span class="p">},</span>
+<span class="p">}</span>
+
+<span class="n">dataset</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">anno_key</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;labelbox&quot;</span><span class="p">,</span> <span class="n">label_schema</span><span class="o">=</span><span class="n">label_schema</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>Alternatively, if you are only editing or creating a single label field, you
+can use the <code class="code docutils literal notranslate"><span class="pre">label_field</span></code>, <code class="code docutils literal notranslate"><span class="pre">label_type</span></code>, <code class="code docutils literal notranslate"><span class="pre">classes</span></code>, <code class="code docutils literal notranslate"><span class="pre">attributes</span></code>, and
+<code class="code docutils literal notranslate"><span class="pre">mask_targets</span></code> parameters to specify the components of the label schema
+individually:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">anno_key</span> <span class="o">=</span> <span class="s2">&quot;...&quot;</span>
+
+<span class="n">label_field</span> <span class="o">=</span> <span class="s2">&quot;new_field&quot;</span><span class="p">,</span>
+<span class="n">label_type</span> <span class="o">=</span> <span class="s2">&quot;classifications&quot;</span>
+<span class="n">classes</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;class1&quot;</span><span class="p">,</span> <span class="s2">&quot;class2&quot;</span><span class="p">]</span>
+
+<span class="c1"># These are optional</span>
+<span class="n">attributes</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;attr1&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;radio&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;values&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;val1&quot;</span><span class="p">,</span> <span class="s2">&quot;val2&quot;</span><span class="p">],</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;attr2&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;radio&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;values&quot;</span><span class="p">:</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">dataset</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span>
+    <span class="n">anno_key</span><span class="p">,</span>
+    <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;labelbox&quot;</span><span class="p">,</span>
+    <span class="n">label_field</span><span class="o">=</span><span class="n">label_field</span><span class="p">,</span>
+    <span class="n">label_type</span><span class="o">=</span><span class="n">label_type</span><span class="p">,</span>
+    <span class="n">classes</span><span class="o">=</span><span class="n">classes</span><span class="p">,</span>
+    <span class="n">attributes</span><span class="o">=</span><span class="n">attributes</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>When you are annotating existing label fields, you can omit some of these
+parameters from
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.annotate" title="fiftyone.core.collections.SampleCollection.annotate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">annotate()</span></code></a>, as
+FiftyOne can infer the appropriate values to use:</p>
+<ul class="simple">
+<li><p><strong>label_type</strong>: if omitted, the <a class="reference internal" href="../api/fiftyone.core.labels.html#fiftyone.core.labels.Label" title="fiftyone.core.labels.Label"><code class="xref py py-class docutils literal notranslate"><span class="pre">Label</span></code></a> type of the field will be used to
+infer the appropriate value for this parameter</p></li>
+<li><p><strong>classes</strong>: if omitted for a non-semantic segmentation field, the observed
+labels on your dataset will be used to construct a classes list</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>See <a class="reference internal" href="#labelbox-editing-labels-paid"><span class="std std-ref">this section</span></a> for details about
+editing existing labels.</p>
+</div>
+</div>
+<div class="section" id="label-attributes">
+<span id="labelbox-label-attributes"></span><h3>Label attributes<a class="headerlink" href="#label-attributes" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="code docutils literal notranslate"><span class="pre">attributes</span></code> parameter allows you to configure whether
+<a class="reference internal" href="../user_guide/using_datasets.html#using-labels"><span class="std std-ref">custom attributes</span></a> beyond the default <code class="code docutils literal notranslate"><span class="pre">label</span></code> attribute
+are included in the annotation tasks.</p>
+<p>When adding new label fields for which you want to include attributes, you must
+use the dictionary syntax demonstrated below to define the schema of each
+attribute that you wish to label:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">anno_key</span> <span class="o">=</span> <span class="s2">&quot;...&quot;</span>
+
+<span class="n">attributes</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;occluded&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;radio&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;values&quot;</span><span class="p">:</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;weather&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;checkbox&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;values&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;cloudy&quot;</span><span class="p">,</span> <span class="s2">&quot;sunny&quot;</span><span class="p">,</span> <span class="s2">&quot;overcast&quot;</span><span class="p">],</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;caption&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;text&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">view</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span>
+    <span class="n">anno_key</span><span class="p">,</span>
+    <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;labelbox&quot;</span><span class="p">,</span>
+    <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;new_field&quot;</span><span class="p">,</span>
+    <span class="n">label_type</span><span class="o">=</span><span class="s2">&quot;detections&quot;</span><span class="p">,</span>
+    <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;dog&quot;</span><span class="p">,</span> <span class="s2">&quot;cat&quot;</span><span class="p">,</span> <span class="s2">&quot;person&quot;</span><span class="p">],</span>
+    <span class="n">attributes</span><span class="o">=</span><span class="n">attributes</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>You can always omit this parameter if you do not require attributes beyond the
+default <code class="code docutils literal notranslate"><span class="pre">label</span></code>.</p>
+<p>For Labelbox, the following <code class="code docutils literal notranslate"><span class="pre">type</span></code> values are supported:</p>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">text</span></code>: a free-form text box. In this case, <code class="code docutils literal notranslate"><span class="pre">values</span></code> is unused</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">radio</span></code>: a radio button list UI. In this case, <code class="code docutils literal notranslate"><span class="pre">values</span></code> is required</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">checkbox</span></code>: a list of checkboxes. In this case, <code class="code docutils literal notranslate"><span class="pre">values</span></code> is required</p></li>
+</ul>
+<p>When you are annotating existing label fields, the <code class="code docutils literal notranslate"><span class="pre">attributes</span></code> parameter can
+take additional values:</p>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">True</span></code> (default): export all custom attributes observed on the existing
+labels, using their observed values to determine the appropriate UI type
+and possible values, if applicable</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">False</span></code>: do not include any custom attributes in the export</p></li>
+<li><p>a list of custom attributes to include in the export</p></li>
+<li><p>a full dictionary syntax described above</p></li>
+</ul>
+<p>Note that only scalar-valued label attributes are supported. Other attribute
+types like lists, dictionaries, and arrays will be omitted.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Labelbox does not support default values for attributes, so the <code class="code docutils literal notranslate"><span class="pre">default</span></code>
+key <a class="reference internal" href="../user_guide/annotation.html#annotation-label-attributes"><span class="std std-ref">described here</span></a> will be ignored if
+included in label schemas provided when annotating with Labelbox.</p>
+</div>
+</div>
+<div class="section" id="video-label-attributes">
+<span id="labelbox-video-label-attributes"></span><h3>Video label attributes<a class="headerlink" href="#video-label-attributes" title="Permalink to this headline">¶</a></h3>
+<p>When annotating spatiotemporal objects in videos, each object attribute
+specification can include a <code class="code docutils literal notranslate"><span class="pre">mutable</span></code> property that controls whether the
+attribute’s value can change between frames for each object:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">anno_key</span> <span class="o">=</span> <span class="s2">&quot;...&quot;</span>
+
+<span class="n">attributes</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;checkbox&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;values&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;sedan&quot;</span><span class="p">,</span> <span class="s2">&quot;suv&quot;</span><span class="p">,</span> <span class="s2">&quot;truck&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;mutable&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;occluded&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;radio&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;values&quot;</span><span class="p">:</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span>
+        <span class="s2">&quot;mutable&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">}</span>
+
+<span class="n">view</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span>
+    <span class="n">anno_key</span><span class="p">,</span>
+    <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;labelbox&quot;</span><span class="p">,</span>
+    <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;frames.new_field&quot;</span><span class="p">,</span>
+    <span class="n">label_type</span><span class="o">=</span><span class="s2">&quot;detections&quot;</span><span class="p">,</span>
+    <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;vehicle&quot;</span><span class="p">],</span>
+    <span class="n">attributes</span><span class="o">=</span><span class="n">attributes</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>The meaning of the <code class="code docutils literal notranslate"><span class="pre">mutable</span></code> attribute is defined as follows:</p>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">True</span></code> (default): the attribute is dynamic and can have a different value
+for every frame in which the object track appears</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">False</span></code>: the attribute is static and is the same for every frame in which
+the object track appears (<strong>Not yet supported</strong>)</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="loading-annotations">
+<span id="labelbox-loading-annotations"></span><h2>Loading annotations<a class="headerlink" href="#loading-annotations" title="Permalink to this headline">¶</a></h2>
+<p>After your annotations tasks in the annotation backend are complete, you can
+use the
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.load_annotations" title="fiftyone.core.collections.SampleCollection.load_annotations"><code class="xref py py-meth docutils literal notranslate"><span class="pre">load_annotations()</span></code></a>
+method to download them and merge them back into your FiftyOne dataset.</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">view</span><span class="o">.</span><span class="n">load_annotations</span><span class="p">(</span><span class="n">anno_key</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>The <code class="code docutils literal notranslate"><span class="pre">anno_key</span></code> parameter is the unique identifier for the annotation run that
+you provided when calling
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.annotate" title="fiftyone.core.collections.SampleCollection.annotate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">annotate()</span></code></a>. You
+can use
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.list_annotation_runs" title="fiftyone.core.collections.SampleCollection.list_annotation_runs"><code class="xref py py-meth docutils literal notranslate"><span class="pre">list_annotation_runs()</span></code></a>
+to see the available keys on a dataset.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>By default, calling
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.load_annotations" title="fiftyone.core.collections.SampleCollection.load_annotations"><code class="xref py py-meth docutils literal notranslate"><span class="pre">load_annotations()</span></code></a>
+will not delete any information for the run from the annotation backend.</p>
+<p>However, you can pass <code class="code docutils literal notranslate"><span class="pre">cleanup=True</span></code> to delete all information associated
+with the run from the backend after the annotations are downloaded.
+Specifically, it will delete the project and ontology
+associated with this annotation run. Data rows are not deleted since they
+can be reused by other annotation runs.</p>
+</div>
+<p>You can use the optional <code class="code docutils literal notranslate"><span class="pre">dest_field</span></code> parameter to override the task’s
+label schema and instead load annotations into different field name(s) of your
+dataset. This can be useful, for example, when editing existing annotations, if
+you would like to do a before/after comparison of the edits that you import. If
+the annotation run involves multiple fields, <code class="code docutils literal notranslate"><span class="pre">dest_field</span></code> should be a
+dictionary mapping label schema field names to destination field names.</p>
+</div>
+<div class="section" id="managing-annotation-runs">
+<span id="labelbox-managing-annotation-runs"></span><h2>Managing annotation runs<a class="headerlink" href="#managing-annotation-runs" title="Permalink to this headline">¶</a></h2>
+<p>FiftyOne provides a variety of methods that you can use to manage in-progress
+or completed annotation runs.</p>
+<p>For example, you can call
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.list_annotation_runs" title="fiftyone.core.collections.SampleCollection.list_annotation_runs"><code class="xref py py-meth docutils literal notranslate"><span class="pre">list_annotation_runs()</span></code></a>
+to see the available annotation keys on a dataset:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">list_annotation_runs</span><span class="p">()</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>Or, you can use
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.get_annotation_info" title="fiftyone.core.collections.SampleCollection.get_annotation_info"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_annotation_info()</span></code></a>
+to retrieve information about the configuration of an annotation run:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">info</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">get_annotation_info</span><span class="p">(</span><span class="n">anno_key</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">info</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>Use <a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.load_annotation_results" title="fiftyone.core.collections.SampleCollection.load_annotation_results"><code class="xref py py-meth docutils literal notranslate"><span class="pre">load_annotation_results()</span></code></a>
+to load the <a class="reference internal" href="../api/fiftyone.utils.annotations.html#fiftyone.utils.annotations.AnnotationResults" title="fiftyone.utils.annotations.AnnotationResults"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnotationResults</span></code></a>
+instance for an annotation run.</p>
+<p>All results objects provide a <a class="reference internal" href="../api/fiftyone.utils.annotations.html#fiftyone.utils.annotations.AnnotationResults.cleanup" title="fiftyone.utils.annotations.AnnotationResults.cleanup"><code class="xref py py-class docutils literal notranslate"><span class="pre">cleanup()</span></code></a>
+method that you can use to delete all information associated with a run from
+the annotation backend.</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">load_annotation_results</span><span class="p">(</span><span class="n">anno_key</span><span class="p">)</span>
+<span class="n">results</span><span class="o">.</span><span class="n">cleanup</span><span class="p">()</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>In addition, the
+<a class="reference internal" href="../api/fiftyone.utils.annotations.html#fiftyone.utils.annotations.AnnotationResults" title="fiftyone.utils.annotations.AnnotationResults"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnotationResults</span></code></a>
+subclasses for each backend may provide additional utilities such as support
+for programmatically monitoring the status of the annotation tasks in the run.</p>
+<p>You can use
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.rename_annotation_run" title="fiftyone.core.collections.SampleCollection.rename_annotation_run"><code class="xref py py-meth docutils literal notranslate"><span class="pre">rename_annotation_run()</span></code></a>
+to rename the annotation key associated with an existing annotation run:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">rename_annotation_run</span><span class="p">(</span><span class="n">anno_key</span><span class="p">,</span> <span class="n">new_anno_key</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>Finally, you can use
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.delete_annotation_run" title="fiftyone.core.collections.SampleCollection.delete_annotation_run"><code class="xref py py-meth docutils literal notranslate"><span class="pre">delete_annotation_run()</span></code></a>
+to delete the record of an annotation run from your FiftyOne dataset:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">delete_annotation_run</span><span class="p">(</span><span class="n">anno_key</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Calling
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.delete_annotation_run" title="fiftyone.core.collections.SampleCollection.delete_annotation_run"><code class="xref py py-meth docutils literal notranslate"><span class="pre">delete_annotation_run()</span></code></a>
+only deletes the <strong>record</strong> of the annotation run from your FiftyOne
+dataset; it will not delete any annotations loaded onto your dataset via
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.load_annotations" title="fiftyone.core.collections.SampleCollection.load_annotations"><code class="xref py py-meth docutils literal notranslate"><span class="pre">load_annotations()</span></code></a>,
+nor will it delete any associated information from the annotation backend.</p>
+</div>
+</div>
+<div class="section" id="examples">
+<span id="labelbox-examples"></span><h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<p>This section demonstrates how to perform some common annotation workflows on a
+FiftyOne dataset using the Labelbox backend.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>All of the examples below assume you have configured your Labelbox server
+and API key as described in <a class="reference internal" href="#labelbox-setup"><span class="std std-ref">this section</span></a>.</p>
+</div>
+<div class="section" id="adding-new-label-fields">
+<span id="labelbox-new-label-fields"></span><h3>Adding new label fields<a class="headerlink" href="#adding-new-label-fields" title="Permalink to this headline">¶</a></h3>
+<p>In order to annotate a new label field, you can provide the <code class="code docutils literal notranslate"><span class="pre">label_field</span></code>,
+<code class="code docutils literal notranslate"><span class="pre">label_type</span></code>, and <code class="code docutils literal notranslate"><span class="pre">classes</span></code> parameters to
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.annotate" title="fiftyone.core.collections.SampleCollection.annotate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">annotate()</span></code></a> to
+define the annotation schema for the field:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">anno_key</span> <span class="o">=</span> <span class="s2">&quot;labelbox_new_field&quot;</span>
+
+<span class="n">view</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span>
+    <span class="n">anno_key</span><span class="p">,</span>
+    <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;labelbox&quot;</span><span class="p">,</span>
+    <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;new_classifications&quot;</span><span class="p">,</span>
+    <span class="n">label_type</span><span class="o">=</span><span class="s2">&quot;classifications&quot;</span><span class="p">,</span>
+    <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;dog&quot;</span><span class="p">,</span> <span class="s2">&quot;cat&quot;</span><span class="p">,</span> <span class="s2">&quot;person&quot;</span><span class="p">],</span>
+    <span class="n">launch_editor</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">get_annotation_info</span><span class="p">(</span><span class="n">anno_key</span><span class="p">))</span>
+
+<span class="c1"># Create annotations in Labelbox</span>
+
+<span class="n">dataset</span><span class="o">.</span><span class="n">load_annotations</span><span class="p">(</span><span class="n">anno_key</span><span class="p">,</span> <span class="n">cleanup</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">delete_annotation_run</span><span class="p">(</span><span class="n">anno_key</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>Alternatively, you can use the <code class="code docutils literal notranslate"><span class="pre">label_schema</span></code> argument to define the same
+labeling task:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">anno_key</span> <span class="o">=</span> <span class="s2">&quot;labelbox_new_field&quot;</span>
+
+<span class="n">label_schema</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;new_classifications&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;classifications&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;classes&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;dog&quot;</span><span class="p">,</span> <span class="s2">&quot;cat&quot;</span><span class="p">,</span> <span class="s2">&quot;person&quot;</span><span class="p">],</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">view</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span>
+    <span class="n">anno_key</span><span class="p">,</span>
+    <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;labelbox&quot;</span><span class="p">,</span>
+    <span class="n">label_schema</span><span class="o">=</span><span class="n">label_schema</span><span class="p">,</span>
+    <span class="n">launch_editor</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">get_annotation_info</span><span class="p">(</span><span class="n">anno_key</span><span class="p">))</span>
+
+<span class="c1"># Create annotations in Labelbox</span>
+
+<span class="n">dataset</span><span class="o">.</span><span class="n">load_annotations</span><span class="p">(</span><span class="n">anno_key</span><span class="p">,</span> <span class="n">cleanup</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">delete_annotation_run</span><span class="p">(</span><span class="n">anno_key</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<img alt="labelbox-tag" class="align-center" src="../_images/labelbox_tag.png" />
+</div>
+<div class="section" id="editing-labels-with-a-free-labelbox-account">
+<span id="labelbox-editing-labels-free"></span><h3>Editing labels with a free Labelbox account<a class="headerlink" href="#editing-labels-with-a-free-labelbox-account" title="Permalink to this headline">¶</a></h3>
+<p>A common use case is to fix annotation mistakes that you discovered in your
+datasets through FiftyOne.</p>
+<p>If you have a paid Labelbox account with access to Labelbox’s
+<a class="reference external" href="https://docs.labelbox.com/docs/model-assisted-labeling">Model Assisted Labeling</a>
+feature, see <a class="reference internal" href="#labelbox-editing-labels-paid"><span class="std std-ref">this section</span></a> for the
+recommended workflow for editing existing labels.</p>
+<p>For free Labelbox users, one possible workflow for editing existing labels is
+the following:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../user_guide/app.html#app-tagging"><span class="std std-ref">Tag the labels</span></a> that need editing in FiftyOne</p></li>
+<li><p>Use FiftyOne to construct the label schema for the existing label field</p></li>
+<li><p>Upload the samples containing the tagged labels to Labelbox using
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.annotate" title="fiftyone.core.collections.SampleCollection.annotate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">annotate()</span></code></a>
+using a new (temporary) label field to hold the edited labels</p></li>
+<li><p>Perform the annotation work in Labelbox, and download the results</p></li>
+<li><p>Use the FiftyOne App to compare the newly loaded labels with the previously
+tagged labels to make sure you’re happy with the edits</p></li>
+<li><p>Use <a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.merge_labels" title="fiftyone.core.collections.SampleCollection.merge_labels"><code class="xref py py-meth docutils literal notranslate"><span class="pre">merge_labels()</span></code></a>
+to merge edits into the original label field and then delete the tagged
+labels that you edited</p></li>
+</ul>
+<p>The example snippet below demonstrates this workflow:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">view</span><span class="o">=</span><span class="n">view</span><span class="p">)</span>
+
+<span class="c1"># In the App, tag some ground truth labels with the &quot;edit&quot; tag...</span>
+
+<span class="c1"># Create view that only contains samples having labels with the &quot;edit&quot; tag</span>
+<span class="n">edit_view</span> <span class="o">=</span> <span class="n">view</span><span class="o">.</span><span class="n">match_labels</span><span class="p">(</span><span class="n">tags</span><span class="o">=</span><span class="s2">&quot;edit&quot;</span><span class="p">)</span>
+
+<span class="c1">#</span>
+<span class="c1"># Create an annotation run to reannotate the chosen samples in a new</span>
+<span class="c1"># `ground_truth_edits` field</span>
+<span class="c1">#</span>
+
+<span class="n">anno_key</span> <span class="o">=</span> <span class="s2">&quot;labelbox_edit_labels&quot;</span>
+
+<span class="n">label_schema</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;ground_truth_edits&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;detections&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;classes&quot;</span><span class="p">:</span> <span class="n">dataset</span><span class="o">.</span><span class="n">distinct</span><span class="p">(</span><span class="s2">&quot;ground_truth.detections.label&quot;</span><span class="p">),</span>
+        <span class="s2">&quot;attributes&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;iscrowd&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;radio&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;values&quot;</span><span class="p">:</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">edit_view</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span>
+    <span class="n">anno_key</span><span class="p">,</span>
+    <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;labelbox&quot;</span><span class="p">,</span>
+    <span class="n">label_schema</span><span class="o">=</span><span class="n">label_schema</span><span class="p">,</span>
+    <span class="n">launch_editor</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">get_annotation_info</span><span class="p">(</span><span class="n">anno_key</span><span class="p">))</span>
+
+<span class="c1"># In Labelbox, re-annotate the relevant objects...</span>
+
+<span class="c1"># Download the results</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">load_annotations</span><span class="p">(</span><span class="n">anno_key</span><span class="p">,</span> <span class="n">cleanup</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">delete_annotation_run</span><span class="p">(</span><span class="n">anno_key</span><span class="p">)</span>
+
+<span class="c1"># In the App, compare the tagged and re-annotated labels</span>
+<span class="n">session</span><span class="o">.</span><span class="n">view</span> <span class="o">=</span> <span class="n">edit_view</span>
+
+<span class="c1"># If the edits look good, merge them into the `ground_truth` field</span>
+<span class="c1"># and delete the previously tagged labels</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">merge_labels</span><span class="p">(</span><span class="s2">&quot;ground_truth_edits&quot;</span><span class="p">,</span> <span class="s2">&quot;ground_truth&quot;</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">delete_labels</span><span class="p">(</span><span class="n">tags</span><span class="o">=</span><span class="s2">&quot;edit&quot;</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<img alt="labelbox-example" class="align-center" src="../_images/labelbox_example.png" />
+<img alt="labelbox-new-class" class="align-center" src="../_images/labelbox_new_class.png" />
+</div>
+<div class="section" id="editing-existing-labels">
+<span id="labelbox-editing-labels-paid"></span><h3>Editing existing labels<a class="headerlink" href="#editing-existing-labels" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Uploading existing labels is not yet implemented for the Labelbox backend.</p>
+<p>See <a class="reference internal" href="#labelbox-editing-labels-free"><span class="std std-ref">this section</span></a> for one possible
+workflow for editing existing labels with Labelbox.</p>
+</div>
+</div>
+<div class="section" id="annotating-multiple-fields">
+<span id="labelbox-multiple-fields"></span><h3>Annotating multiple fields<a class="headerlink" href="#annotating-multiple-fields" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="code docutils literal notranslate"><span class="pre">label_schema</span></code> argument allows you to define annotation tasks for multiple
+fields at once:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">anno_key</span> <span class="o">=</span> <span class="s2">&quot;labelbox_multiple_fields&quot;</span>
+
+<span class="n">label_schema</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;people&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;detections&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;classes&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;person&quot;</span><span class="p">],</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;keypoints&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;keypoints&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;classes&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;person&quot;</span><span class="p">,</span> <span class="s2">&quot;cat&quot;</span><span class="p">,</span> <span class="s2">&quot;dog&quot;</span><span class="p">,</span> <span class="s2">&quot;food&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;attributes&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;occluded&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;radio&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;values&quot;</span><span class="p">:</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">view</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span>
+    <span class="n">anno_key</span><span class="p">,</span>
+    <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;labelbox&quot;</span><span class="p">,</span>
+    <span class="n">label_schema</span><span class="o">=</span><span class="n">label_schema</span><span class="p">,</span>
+    <span class="n">launch_editor</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">get_annotation_info</span><span class="p">(</span><span class="n">anno_key</span><span class="p">))</span>
+
+<span class="c1"># Add annotations in Labelbox...</span>
+
+<span class="n">dataset</span><span class="o">.</span><span class="n">load_annotations</span><span class="p">(</span><span class="n">anno_key</span><span class="p">,</span> <span class="n">cleanup</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">delete_annotation_run</span><span class="p">(</span><span class="n">anno_key</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<img alt="labelbox-multiple-fields" class="align-center" src="../_images/labelbox_multiple_fields.png" />
+</div>
+<div class="section" id="configuring-labelbox-projects">
+<span id="labelbox-configuring-projects"></span><h3>Configuring Labelbox projects<a class="headerlink" href="#configuring-labelbox-projects" title="Permalink to this headline">¶</a></h3>
+<p>When using the Labelbox backend, you can provide the optional <code class="code docutils literal notranslate"><span class="pre">project_name</span></code>
+and <code class="code docutils literal notranslate"><span class="pre">members</span></code> parameters to
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.annotate" title="fiftyone.core.collections.SampleCollection.annotate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">annotate()</span></code></a> to
+configure the Labelbox project that is created.</p>
+<p>The <code class="code docutils literal notranslate"><span class="pre">members</span></code> parameter can contain a list of <code class="code docutils literal notranslate"><span class="pre">(email,</span> <span class="pre">role)</span></code> tuples defining
+the email addresses and project-level roles of members to add to the Labelbox
+project. The supported roles are:</p>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">&quot;LABELER&quot;</span></code></p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">&quot;REVIEWER&quot;</span></code></p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">&quot;TEAM_MANAGER&quot;</span></code></p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">&quot;ADMIN&quot;</span></code></p></li>
+</ul>
+<p>If any email addresses do not correspond to users already in your organization,
+an email invitation will be sent to them.</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="n">anno_key</span> <span class="o">=</span> <span class="s2">&quot;labelbox_assign_users&quot;</span>
+
+<span class="n">project_name</span> <span class="o">=</span> <span class="s2">&quot;your_project_name&quot;</span>
+<span class="n">members</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s2">&quot;user1@domain.com&quot;</span><span class="p">,</span> <span class="s2">&quot;LABELER&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;user2@domain.com&quot;</span><span class="p">,</span> <span class="s2">&quot;REVIEWER&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;user3@domain.com&quot;</span><span class="p">,</span> <span class="s2">&quot;TEAM_MANAGER&quot;</span><span class="p">),</span>
+<span class="p">]</span>
+
+<span class="n">view</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span>
+    <span class="n">anno_key</span><span class="p">,</span>
+    <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;labelbox&quot;</span><span class="p">,</span>
+    <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;people&quot;</span><span class="p">,</span>
+    <span class="n">label_type</span><span class="o">=</span><span class="s2">&quot;detections&quot;</span><span class="p">,</span>
+    <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;person&quot;</span><span class="p">],</span>
+    <span class="n">project_name</span><span class="o">=</span><span class="n">project_name</span><span class="p">,</span>
+    <span class="n">members</span><span class="o">=</span><span class="n">members</span><span class="p">,</span>
+    <span class="n">launch_editor</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">get_annotation_info</span><span class="p">(</span><span class="n">anno_key</span><span class="p">))</span>
+
+<span class="c1"># Cleanup (without downloading results)</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">load_annotation_results</span><span class="p">(</span><span class="n">anno_key</span><span class="p">)</span>
+<span class="n">results</span><span class="o">.</span><span class="n">cleanup</span><span class="p">()</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">delete_annotation_run</span><span class="p">(</span><span class="n">anno_key</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+</div>
+<div class="section" id="scalar-labels">
+<span id="labelbox-scalar-labels"></span><h3>Scalar labels<a class="headerlink" href="#scalar-labels" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="../api/fiftyone.core.labels.html#fiftyone.core.labels.Label" title="fiftyone.core.labels.Label"><code class="xref py py-class docutils literal notranslate"><span class="pre">Label</span></code></a> fields are the preferred way to store information for common tasks such
+as classification and detection in your FiftyOne datasets. However, you can
+also store Labelbox annotations in scalar fields of type <code class="code docutils literal notranslate"><span class="pre">float</span></code>, <code class="code docutils literal notranslate"><span class="pre">int</span></code>, <code class="code docutils literal notranslate"><span class="pre">str</span></code>,
+or  <code class="code docutils literal notranslate"><span class="pre">bool</span></code>.</p>
+<p>When storing annotations in scalar fields, the <code class="code docutils literal notranslate"><span class="pre">label_field</span></code> parameter is still
+used to define the name of the field, but the <code class="code docutils literal notranslate"><span class="pre">classes</span></code> argument is now
+optional and the <code class="code docutils literal notranslate"><span class="pre">attributes</span></code> argument is unused.</p>
+<p>If <code class="code docutils literal notranslate"><span class="pre">classes</span></code> are provided, you will be able to select from these values in
+Labelbox; otherwise, the Labelbox tag will show the <code class="code docutils literal notranslate"><span class="pre">label_field</span></code> name and you
+must enter the appropriate scalar in the <code class="code docutils literal notranslate"><span class="pre">value</span></code> attribute of the tag.</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">anno_key</span> <span class="o">=</span> <span class="s2">&quot;labelbox_scalar_fields&quot;</span>
+
+<span class="c1"># Create two scalar fields, one with classes and one without</span>
+<span class="n">label_schema</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;scalar1&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;scalar&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;scalar2&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;scalar&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;classes&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;class1&quot;</span><span class="p">,</span> <span class="s2">&quot;class2&quot;</span><span class="p">,</span> <span class="s2">&quot;class3&quot;</span><span class="p">],</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">view</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span>
+    <span class="n">anno_key</span><span class="p">,</span>
+    <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;labelbox&quot;</span><span class="p">,</span>
+    <span class="n">label_schema</span><span class="o">=</span><span class="n">label_schema</span><span class="p">,</span>
+    <span class="n">launch_editor</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">get_annotation_info</span><span class="p">(</span><span class="n">anno_key</span><span class="p">))</span>
+
+<span class="c1"># Cleanup (without downloading results)</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">load_annotation_results</span><span class="p">(</span><span class="n">anno_key</span><span class="p">)</span>
+<span class="n">results</span><span class="o">.</span><span class="n">cleanup</span><span class="p">()</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">delete_annotation_run</span><span class="p">(</span><span class="n">anno_key</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<img alt="labelbox-scalar" class="align-center" src="../_images/labelbox_scalar.png" />
+</div>
+<div class="section" id="uploading-alternate-media">
+<span id="labelbox-alternate-media"></span><h3>Uploading alternate media<a class="headerlink" href="#uploading-alternate-media" title="Permalink to this headline">¶</a></h3>
+<p>In some cases, you may want to upload media files other than those stored in
+the <code class="code docutils literal notranslate"><span class="pre">filepath</span></code> field of your dataset’s samples for annotation. For example, you
+may have a dataset with personal information like faces or license plates that
+must be anonymized before uploading for annotation.</p>
+<p>The recommended approach in this case is to store the alternative media files
+for each sample on disk and record these paths in a new field of your FiftyOne
+dataset. You can then specify this field via the <code class="code docutils literal notranslate"><span class="pre">media_field</span></code> parameter of
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.annotate" title="fiftyone.core.collections.SampleCollection.annotate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">annotate()</span></code></a>.</p>
+<p>For example, let’s upload some blurred images to Labelbox for annotation:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">cv2</span>
+
+<span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">alt_dir</span> <span class="o">=</span> <span class="s2">&quot;/tmp/blurred&quot;</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">alt_dir</span><span class="p">):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">alt_dir</span><span class="p">)</span>
+
+<span class="c1"># Blur images</span>
+<span class="k">for</span> <span class="n">sample</span> <span class="ow">in</span> <span class="n">view</span><span class="p">:</span>
+    <span class="n">filepath</span> <span class="o">=</span> <span class="n">sample</span><span class="o">.</span><span class="n">filepath</span>
+    <span class="n">alt_filepath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">alt_dir</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">filepath</span><span class="p">))</span>
+
+    <span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span>
+    <span class="n">cv2</span><span class="o">.</span><span class="n">imwrite</span><span class="p">(</span><span class="n">alt_filepath</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">blur</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">)))</span>
+
+    <span class="n">sample</span><span class="p">[</span><span class="s2">&quot;alt_filepath&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">alt_filepath</span>
+    <span class="n">sample</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+<span class="n">anno_key</span> <span class="o">=</span> <span class="s2">&quot;labelbox_alt_media&quot;</span>
+
+<span class="n">view</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span>
+    <span class="n">anno_key</span><span class="p">,</span>
+    <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;labelbox&quot;</span><span class="p">,</span>
+    <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;objects&quot;</span><span class="p">,</span>
+    <span class="n">label_type</span><span class="o">=</span><span class="s2">&quot;detections&quot;</span><span class="p">,</span>
+    <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;person&quot;</span><span class="p">,</span> <span class="s2">&quot;car&quot;</span><span class="p">],</span>
+    <span class="n">media_field</span><span class="o">=</span><span class="s2">&quot;alt_filepath&quot;</span><span class="p">,</span>
+    <span class="n">launch_editor</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">get_annotation_info</span><span class="p">(</span><span class="n">anno_key</span><span class="p">))</span>
+
+<span class="c1"># Create annotations in Labelbox</span>
+
+<span class="n">dataset</span><span class="o">.</span><span class="n">load_annotations</span><span class="p">(</span><span class="n">anno_key</span><span class="p">,</span> <span class="n">cleanup</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">delete_annotation_run</span><span class="p">(</span><span class="n">anno_key</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<img alt="labelbox-alt-media" class="align-center" src="../_images/labelbox_alt_media.png" />
+</div>
+<div class="section" id="annotating-classes-directly">
+<span id="labelbox-classes-as-attrs"></span><h3>Annotating classes directly<a class="headerlink" href="#annotating-classes-directly" title="Permalink to this headline">¶</a></h3>
+<p>By default, the Labelbox editor is constructed so that all label fields being
+annotated are shown on the left sidebar at the top-level. When an object is
+annotated, the class name is then selected as an attribute.</p>
+<p>However, it can be useful to directly show the object classes at the top-level
+of the sidebar to avoid additional clicks. The <code class="code docutils literal notranslate"><span class="pre">classes_as_attrs</span></code> argument can
+be set to <code class="code docutils literal notranslate"><span class="pre">False</span></code> to provide this functionality.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When <code class="code docutils literal notranslate"><span class="pre">classes_as_attrs=False</span></code>, only one label field of each type of spatial
+label is allowed. For example, only one “detections” label field can be
+annotated. Annotating multiple “scalar”, “classification”, an
+“classifications” fields is still allowed.</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">anno_key</span> <span class="o">=</span> <span class="s2">&quot;labelbox_classes_as_attrs&quot;</span>
+
+<span class="n">view</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span>
+    <span class="n">anno_key</span><span class="p">,</span>
+    <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;labelbox&quot;</span><span class="p">,</span>
+    <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;new_detections&quot;</span><span class="p">,</span>
+    <span class="n">label_type</span><span class="o">=</span><span class="s2">&quot;detections&quot;</span><span class="p">,</span>
+    <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;dog&quot;</span><span class="p">,</span> <span class="s2">&quot;cat&quot;</span><span class="p">,</span> <span class="s2">&quot;person&quot;</span><span class="p">],</span>
+    <span class="n">classes_as_attrs</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">launch_editor</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">get_annotation_info</span><span class="p">(</span><span class="n">anno_key</span><span class="p">))</span>
+
+<span class="c1"># Create annotations in Labelbox...</span>
+
+<span class="n">dataset</span><span class="o">.</span><span class="n">load_annotations</span><span class="p">(</span><span class="n">anno_key</span><span class="p">,</span> <span class="n">cleanup</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">delete_annotation_run</span><span class="p">(</span><span class="n">anno_key</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<img alt="labelbox_classes_as_attrs" class="align-center" src="../_images/labelbox_classes_as_attrs.png" />
+</div>
+</div>
+<div class="section" id="annotating-videos">
+<span id="labelbox-annotating-videos"></span><h2>Annotating videos<a class="headerlink" href="#annotating-videos" title="Permalink to this headline">¶</a></h2>
+<p>You can annotate for video datasets using the Labelbox backend through the
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.annotate" title="fiftyone.core.collections.SampleCollection.annotate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">annotate()</span></code></a>
+method.</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart-video&quot;</span><span class="p">)</span>
+<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">anno_key</span> <span class="o">=</span> <span class="s2">&quot;labelbox_video&quot;</span>
+
+<span class="n">view</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span>
+    <span class="n">anno_key</span><span class="p">,</span>
+    <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;labelbox&quot;</span><span class="p">,</span>
+    <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;frames.new_detections&quot;</span><span class="p">,</span>
+    <span class="n">label_type</span><span class="o">=</span><span class="s2">&quot;detections&quot;</span><span class="p">,</span>
+    <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;person&quot;</span><span class="p">],</span>
+    <span class="n">launch_editor</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">get_annotation_info</span><span class="p">(</span><span class="n">anno_key</span><span class="p">))</span>
+
+<span class="c1"># Create annotations in Labelbox...</span>
+
+<span class="c1"># Download annotations</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">load_annotations</span><span class="p">(</span><span class="n">anno_key</span><span class="p">)</span>
+
+<span class="c1"># Load the view that was annotated in the App</span>
+<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">load_annotation_view</span><span class="p">(</span><span class="n">anno_key</span><span class="p">)</span>
+<span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">view</span><span class="o">=</span><span class="n">view</span><span class="p">)</span>
+
+<span class="c1"># Cleanup</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">load_annotation_results</span><span class="p">(</span><span class="n">anno_key</span><span class="p">)</span>
+<span class="n">results</span><span class="o">.</span><span class="n">cleanup</span><span class="p">()</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">delete_annotation_run</span><span class="p">(</span><span class="n">anno_key</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Prepend <code class="code docutils literal notranslate"><span class="pre">&quot;frames.&quot;</span></code> to reference frame-level fields when calling
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.annotate" title="fiftyone.core.collections.SampleCollection.annotate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">annotate()</span></code></a>.</p>
+</div>
+<img alt="labelbox-video" class="align-center" src="../_images/labelbox_video.png" />
+</div>
+<div class="section" id="additional-utilities">
+<span id="labelbox-utils"></span><h2>Additional utilities<a class="headerlink" href="#additional-utilities" title="Permalink to this headline">¶</a></h2>
+<p>You can perform additional Labelbox-specific operations to monitor the progress
+of an annotation project initiated by
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.annotate" title="fiftyone.core.collections.SampleCollection.annotate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">annotate()</span></code></a> via
+the returned
+<a class="reference internal" href="../api/fiftyone.utils.labelbox.html#fiftyone.utils.labelbox.LabelboxAnnotationResults" title="fiftyone.utils.labelbox.LabelboxAnnotationResults"><code class="xref py py-class docutils literal notranslate"><span class="pre">LabelboxAnnotationResults</span></code></a>
+instance.</p>
+<p>The sections below highlight some common actions that you may want to perform.</p>
+<div class="section" id="viewing-project-status">
+<span id="labelbox-project-status"></span><h3>Viewing project status<a class="headerlink" href="#viewing-project-status" title="Permalink to this headline">¶</a></h3>
+<p>You can use the
+<a class="reference internal" href="../api/fiftyone.utils.labelbox.html#fiftyone.utils.labelbox.LabelboxAnnotationResults.get_status" title="fiftyone.utils.labelbox.LabelboxAnnotationResults.get_status"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_status()</span></code></a>
+and
+<a class="reference internal" href="../api/fiftyone.utils.labelbox.html#fiftyone.utils.labelbox.LabelboxAnnotationResults.print_status" title="fiftyone.utils.labelbox.LabelboxAnnotationResults.print_status"><code class="xref py py-meth docutils literal notranslate"><span class="pre">print_status()</span></code></a>
+methods to get information about the current status of the project for that
+annotation run:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="n">anno_key</span> <span class="o">=</span> <span class="s2">&quot;labelbox_status&quot;</span>
+
+<span class="n">view</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span>
+    <span class="n">anno_key</span><span class="p">,</span>
+    <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;labelbox&quot;</span><span class="p">,</span>
+    <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;people&quot;</span><span class="p">,</span>
+    <span class="n">label_type</span><span class="o">=</span><span class="s2">&quot;detections&quot;</span><span class="p">,</span>
+    <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;person&quot;</span><span class="p">],</span>
+<span class="p">)</span>
+
+<span class="c1"># Print the project&#39;s status</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">load_annotation_results</span><span class="p">(</span><span class="n">anno_key</span><span class="p">)</span>
+<span class="n">results</span><span class="o">.</span><span class="n">print_status</span><span class="p">()</span>
+
+<span class="n">results</span><span class="o">.</span><span class="n">cleanup</span><span class="p">()</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">delete_annotation_run</span><span class="p">(</span><span class="n">anno_key</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Project: FiftyOne_quickstart
+ID: cktixtv70e8zm0yba501v0ltz
+Created at: 2021-09-13 17:46:21+00:00
+Updated at: 2021-09-13 17:46:24+00:00
+
+Members:
+    User: user1
+    Name: user1
+    Role: Admin
+    Email: USER1_EMAIL@email.com
+    ID: ckl137jfiss1c07320dacd81l
+
+    User: user2
+    Name: FIRSTNAME LASTNAME
+    Role: Labeler
+    Email: USER2_EMAIL@email.com
+    ID: ckl137jfiss1c07320dacd82y
+
+Reviews:
+    Positive: 2
+    Zero: 0
+    Negative: 1
+</pre></div>
+</div>
+</div>
+<div class="section" id="deleting-projects">
+<span id="labelbox-deleting-projects"></span><h3>Deleting projects<a class="headerlink" href="#deleting-projects" title="Permalink to this headline">¶</a></h3>
+<p>You can use
+<a class="reference internal" href="../api/fiftyone.utils.labelbox.html#fiftyone.utils.labelbox.LabelboxAnnotationAPI.delete_project" title="fiftyone.utils.labelbox.LabelboxAnnotationAPI.delete_project"><code class="xref py py-meth docutils literal notranslate"><span class="pre">delete_project()</span></code></a>
+or
+<a class="reference internal" href="../api/fiftyone.utils.labelbox.html#fiftyone.utils.labelbox.LabelboxAnnotationAPI.delete_projects" title="fiftyone.utils.labelbox.LabelboxAnnotationAPI.delete_projects"><code class="xref py py-meth docutils literal notranslate"><span class="pre">delete_projects()</span></code></a>
+methods to delete specific Labelbox project(s) associated with an annotation
+run.</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">anno_key</span> <span class="o">=</span> <span class="s2">&quot;labelbox_delete_tasks&quot;</span>
+
+<span class="n">view</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span>
+    <span class="n">anno_key</span><span class="p">,</span>
+    <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;labelbox&quot;</span><span class="p">,</span>
+    <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;people&quot;</span><span class="p">,</span>
+    <span class="n">label_type</span><span class="o">=</span><span class="s2">&quot;detections&quot;</span><span class="p">,</span>
+    <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;person&quot;</span><span class="p">],</span>
+<span class="p">)</span>
+
+<span class="n">results</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">load_annotation_results</span><span class="p">(</span><span class="n">anno_key</span><span class="p">)</span>
+<span class="n">api</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">connect_to_api</span><span class="p">()</span>
+
+<span class="n">api</span><span class="o">.</span><span class="n">delete_project</span><span class="p">(</span>
+    <span class="n">results</span><span class="o">.</span><span class="n">project_id</span><span class="p">,</span>
+    <span class="n">delete_batches</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">delete_ontologies</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># OR</span>
+
+<span class="c1"># List all projects or datasets associated with your Labelbox account</span>
+<span class="n">project_ids</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">list_projects</span><span class="p">()</span>
+<span class="n">dataset_ids</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">list_datasets</span><span class="p">()</span>
+
+<span class="c1"># Delete all projects and datasets from your Labelbox account</span>
+<span class="n">api</span><span class="o">.</span><span class="n">delete_projects</span><span class="p">(</span><span class="n">project_ids</span><span class="p">)</span>
+<span class="n">api</span><span class="o">.</span><span class="n">delete_datasets</span><span class="p">(</span><span class="n">dataset_ids</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note that passing <code class="code docutils literal notranslate"><span class="pre">delete_batches=True</span></code> when deleting projects will not
+delete the corresponding data rows from Labelbox when using the V2 export
+API (the default).</p>
+</div>
+</div>
+</div>
+</div>
+
+
+             </article>
+             
+            </div>
+            <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="qdrant.html" class="btn btn-neutral float-right" title="Qdrant Integration" accesskey="n" rel="next">Next <img src="../_static/images/chevron-right-orange.svg" class="next-page"></a>
+      
+      
+        <a href="v7.html" class="btn btn-neutral" title="V7 Integration" accesskey="p" rel="prev"><img src="../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
+      
+    </div>
+  
+</footer>
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              <ul>
+<li><a class="reference internal" href="#">Labelbox Integration</a><ul>
+<li><a class="reference internal" href="#basic-recipe">Basic recipe</a></li>
+<li><a class="reference internal" href="#setup">Setup</a><ul>
+<li><a class="reference internal" href="#installing-the-labelbox-client">Installing the Labelbox client</a></li>
+<li><a class="reference internal" href="#using-the-labelbox-backend">Using the Labelbox backend</a></li>
+<li><a class="reference internal" href="#authentication">Authentication</a></li>
+<li><a class="reference internal" href="#on-premises-servers">On-premises servers</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#requesting-annotations">Requesting annotations</a><ul>
+<li><a class="reference internal" href="#label-schema">Label schema</a></li>
+<li><a class="reference internal" href="#label-attributes">Label attributes</a></li>
+<li><a class="reference internal" href="#video-label-attributes">Video label attributes</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#loading-annotations">Loading annotations</a></li>
+<li><a class="reference internal" href="#managing-annotation-runs">Managing annotation runs</a></li>
+<li><a class="reference internal" href="#examples">Examples</a><ul>
+<li><a class="reference internal" href="#adding-new-label-fields">Adding new label fields</a></li>
+<li><a class="reference internal" href="#editing-labels-with-a-free-labelbox-account">Editing labels with a free Labelbox account</a></li>
+<li><a class="reference internal" href="#editing-existing-labels">Editing existing labels</a></li>
+<li><a class="reference internal" href="#annotating-multiple-fields">Annotating multiple fields</a></li>
+<li><a class="reference internal" href="#configuring-labelbox-projects">Configuring Labelbox projects</a></li>
+<li><a class="reference internal" href="#scalar-labels">Scalar labels</a></li>
+<li><a class="reference internal" href="#uploading-alternate-media">Uploading alternate media</a></li>
+<li><a class="reference internal" href="#annotating-classes-directly">Annotating classes directly</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#annotating-videos">Annotating videos</a></li>
+<li><a class="reference internal" href="#additional-utilities">Additional utilities</a><ul>
+<li><a class="reference internal" href="#viewing-project-status">Viewing project status</a></li>
+<li><a class="reference internal" href="#deleting-projects">Deleting projects</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  
+
+
+  
+
+     
+       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+         <script src="../_static/jquery.js"></script>
+         <script src="../_static/underscore.js"></script>
+         <script src="../_static/doctools.js"></script>
+         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+         <script src="../_static/js/voxel51-website.js"></script>
+         <script src="../_static/js/custom.js"></script>
+     
+
+  
+
+  <script type="text/javascript" src="../_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="../_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+  <!-- Begin Footer -->
+
+
+<footer class="footer-wrapper" id="docs-tutorials-resources">
+  <div class="footer pytorch-container">
+    <div class="footer__logo">
+      <a href="https://voxel51.com/"
+        ><img
+          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
+      /></a>
+    </div>
+
+    <div class="footer__address">
+      330 E Liberty St<br />
+      Ann Arbor, MI 48104<br />
+      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
+    </div>
+
+    <!--
+    <div class="footer__contact">
+      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
+    </div>
+    -->
+
+    <div class="footer__links">
+      <div class="footer__links--col2">
+        <p class="nav__item--brand">Products</p>
+        <a href="https://voxel51.com/fiftyone/">FiftyOne</a>
+        <a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a>
+        <a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a>
+        <a href="https://voxel51.com/success-stories/">Success Stories</a>
+      </div>
+      <div class="footer__links--col3">
+        <p class="nav__item--brand">Resources</p>
+        <a href="https://voxel51.com/blog/">Blog</a>
+        <a href="https://docs.voxel51.com/">Docs</a>
+        <a href="https://github.com/voxel51/">GitHub</a>
+        <a href="https://community.voxel51.com">Discord</a>
+        <a href="https://voxel51.com/ourstory/">About Us</a>
+        <a href="https://voxel51.com/computer-vision-events/">Events</a>
+        <a href="https://voxel51.com/jobs/">Careers</a>
+        <a href="https://voxel51.com/press/">Press</a>
+      </div>
+    </div>
+
+    <div class="footer__icons">
+      <ul class="list-inline">
+        <li>
+          <a href="https://www.linkedin.com/company/voxel51/">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/voxel51/">
+            <i class="fa-brands fa-github"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/voxel51">
+            <i class="fa-brands fa-twitter"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/voxel51/">
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="footer__copyright">
+      <ul class="list-inline">
+        <li>&copy; 2024 Voxel51 Inc.</li>
+        <li>
+          <a href="https://voxel51.com/privacy/">Privacy Policy</a>
+        </li>
+        <li>
+          <a href="https://voxel51.com/terms/">Terms of Service</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<!-- https://buttons.github.io -->
+<script async defer src="https://buttons.github.io/buttons.js" ></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XD15NFRY3M" ></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+  gtag("config", "G-XD15NFRY3M");
+</script>
+
+<script>
+  function open_modal(modal_id, modal_closer_id) {
+    // Get the modal
+    let the_modal = document.getElementById(modal_id);
+
+    the_modal.style.display = "flex";
+    document.body.style.overflow = "hidden";
+
+    let the_modal_closer = document.getElementById(modal_closer_id);
+
+    // When the user clicks on <span> (x), close the modal
+    the_modal_closer &&
+      (the_modal_closer.onclick = function () {
+        the_modal.style.display = "none";
+      });
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+      if (event.target == the_modal) {
+        the_modal.style.display = "none";
+        document.body.style.overflow = "unset";
+        window.onclick = undefined;
+      }
+    };
+  }
+</script>
+
+<!-- bigpicture.io -->
+<script>
+  !(function (e, t, i) {
+    var r = (e.bigPicture = e.bigPicture || []);
+    if (!r.initialized)
+      if (r.invoked)
+        e.console &&
+          console.error &&
+          console.error("BigPicture.io snippet included twice.");
+      else {
+        (r.invoked = !0),
+          (r.SNIPPET_VERSION = 1.5),
+          (r.handler = function (e) {
+            if (void 0 !== r.callback)
+              try {
+                return r.callback(e);
+              } catch (e) {}
+          }),
+          (r.eventList = ["mousedown", "mouseup", "click", "submit"]),
+          (r.methods = [
+            "track",
+            "identify",
+            "page",
+            "group",
+            "alias",
+            "integration",
+            "ready",
+            "intelReady",
+            "consentReady",
+            "on",
+            "off",
+          ]),
+          (r.factory = function (e) {
+            return function () {
+              var t = Array.prototype.slice.call(arguments);
+              return t.unshift(e), r.push(t), r;
+            };
+          });
+        for (var n = 0; n < r.methods.length; n++) {
+          var o = r.methods[n];
+          r[o] = r.factory(o);
+        }
+        r.getCookie = function (e) {
+          var i = ("; " + t.cookie).split("; " + e + "=");
+          return 2 == i.length && i.pop().split(";").shift();
+        };
+        var c = (r.isEditor = (function () {
+          try {
+            return (
+              e.self !== e.top &&
+              (new RegExp("app" + i, "ig").test(t.referrer) ||
+                "edit" == r.getCookie("_bpr_edit"))
+            );
+          } catch (e) {
+            return !1;
+          }
+        })());
+        r.init = function (n, o) {
+          if (((r.projectId = n), (r._config = o), !c))
+            for (var a = 0; a < r.eventList.length; a++)
+              e.addEventListener(r.eventList[a], r.handler, !0);
+          var s = t.createElement("script");
+          s.async = !0;
+          var d = c ? "/editor/editor" : "/public-" + n;
+          (s.src = "//cdn" + i + d + ".js"),
+            t.getElementsByTagName("head")[0].appendChild(s);
+        };
+      }
+  })(window, document, ".bigpicture.io");
+  bigPicture.init("1646");
+</script>
+
+
+  
+
+  <!-- End Footer -->
+
+  <!-- Begin Mobile Menu -->
+
+  
+
+  <!-- End Mobile Menu -->
+
+  <script type="text/javascript" src="../_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function(e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+</body>
+</html>

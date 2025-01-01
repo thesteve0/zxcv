@@ -1,0 +1,1539 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Configuring FiftyOne &mdash; FiftyOne 1.3.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <link rel="stylesheet" href="../_static/css/voxel51-website.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="FiftyOne Dataset Zoo" href="../dataset_zoo/index.html" />
+    <link rel="prev" title="Drawing Labels on Samples" href="draw_labels.html" />
+<meta property="og:image" content="https://voxel51.com/wp-content/uploads/2024/03/3.24_webpages_Home_AV.png" />
+
+<link
+  href="https://fonts.googleapis.com/css?family=Palanquin:400,600,700,800"
+  rel="stylesheet"
+/>
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+  rel="stylesheet"
+/>
+<script src="https://tag.clearbitscripts.com/v1/pk_b9ed71c8234edd4f77326bcbfab5a4ca/tags.js"></script>
+
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+  
+</head>
+
+
+<div class="container-fluid header-holder tutorials-header" id="header-holder">
+  <nav id="nav__main" class="nav__main">
+    <div class="nav__main__logo">
+      <a href="https://voxel51.com/">
+        <img
+          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
+        />
+      </a>
+    </div>
+
+    <div class="nav__spacer desktop_only"></div>
+
+    <div id="nav__main__mobilebutton--on">
+      <a href="javascript:void(0);" onclick="navMobileButton()">
+        <i class="fa-solid fa-bars"></i>
+      </a>
+    </div>
+
+    <div id="nav__main__mobilebutton--off">
+      <a href="javascript:void(0);" onclick="navMobileButton()">
+        <i class="fa-solid fa-times"></i>
+      </a>
+    </div>
+
+    <div id="nav__main__items">
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Products</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://voxel51.com/fiftyone/">Open Source</a></li>
+            <li><a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a></li>
+            <li><a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a></li>
+            <li><a href="https://voxel51.com/success-stories/">Success Stories</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Learn</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://community.voxel51.com">Community Discord</a></li>
+            <li><a href="https://voxel51.com/blog/">Blog</a></li>
+            <li><a href="https://voxel51.com/computer-vision-events/">Events</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item">
+        <a href="https://docs.voxel51.com/">Docs</a>
+      </div>
+
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Company</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://voxel51.com/ourstory/">About Us</a></li>
+            <li><a href="https://voxel51.com/jobs/">Careers</a></li>
+            <li><a href="https://voxel51.com/talk-to-sales/">Talk to Sales</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item mobile_only">
+        <a href="https://github.com/voxel51/fiftyone">GitHub</a>
+      </div>
+
+      <div class="nav__item desktop_only" id="octocat">
+        <!-- https://buttons.github.io -->
+        <a
+          class="github-button"
+          href="https://github.com/voxel51/fiftyone"
+          data-color-scheme="no-preference: dark_high_contrast; light: dark_high_contrast; dark: dark_high_contrast;"
+          data-size="large"
+          data-show-count="true"
+          aria-label="Star voxel51/fiftyone on GitHub"
+          >Star</a
+        >
+      </div>
+
+      <div class="nav__item full_nav_only">
+        <a class="button-primary" href="https://voxel51.com/schedule-teams-workshop/" target="_blank"
+          >Schedule a workshop</a
+        >
+      </div>
+    </div>
+  </nav>
+</div>
+
+
+
+<body class="pytorch-body">
+
+   
+
+    
+
+    <div class="table-of-contents-link-wrapper">
+      <span>Table of Contents</span>
+      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+    </div>
+
+    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+      <div class="pytorch-side-scroll">
+        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          <div class="pytorch-left-menu-search">
+            
+
+            
+              
+              
+            
+
+            
+
+
+  
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+            
+          </div>
+
+           <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../teams/index.html">FiftyOne Teams 🚀</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../environments/index.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../recipes/index.html">Recipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheat_sheets/index.html">Cheat Sheets</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">User Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="basics.html">FiftyOne basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dataset_creation/index.html">Loading datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="using_datasets.html">Using datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="using_views.html">Dataset views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app.html">Using the App</a></li>
+<li class="toctree-l2"><a class="reference internal" href="groups.html">Grouped datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="annotation.html">Annotating datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="evaluation.html">Evaluating models <strong style="color: hsl(25, 100%, 51%); font-size: 0.85em; vertical-align: top">NEW</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="using_aggregations.html">Using aggregations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plots.html">Interactive plots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="export_datasets.html">Exporting datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="draw_labels.html">Drawing labels on samples</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Configuring FiftyOne</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuring-the-app">Configuring the App</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../dataset_zoo/index.html">Dataset Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_zoo/index.html">Model Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brain.html">FiftyOne Brain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/index.html">Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plugins/index.html">Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli/index.html">CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/fiftyone.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deprecation.html">Deprecation Notices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a></li>
+</ul>
+ 
+        </div>
+      </div>
+    </nav>
+
+    <div class="pytorch-container">
+      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+        <div class="pytorch-breadcrumbs-wrapper">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="../index.html">
+          
+            Docs
+          
+        </a> &gt;
+      </li>
+
+        
+          <li><a href="index.html">FiftyOne User Guide</a> &gt;</li>
+        
+      <li>Configuring FiftyOne</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+        </div>
+
+        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+          Contents
+        </div>
+      </div>
+
+      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+        <div class="pytorch-content-left">
+
+        
+          
+          <div class="rst-content style-external-links">
+          
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+              
+  <div class="section" id="configuring-fiftyone">
+<span id="id1"></span><h1>Configuring FiftyOne<a class="headerlink" href="#configuring-fiftyone" title="Permalink to this headline">¶</a></h1>
+<p>FiftyOne can be configured in various ways. This guide covers the various
+options that exist, how to view your current config, and how to customize your
+config as desired.</p>
+<div class="section" id="configuration-options">
+<h2>Configuration options<a class="headerlink" href="#configuration-options" title="Permalink to this headline">¶</a></h2>
+<p>FiftyOne supports the configuration options described below:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 21%" />
+<col style="width: 16%" />
+<col style="width: 47%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Config field</p></th>
+<th class="head"><p>Environment variable</p></th>
+<th class="head"><p>Default value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="code docutils literal notranslate"><span class="pre">database_admin</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">FIFTYONE_DATABASE_ADMIN</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">True</span></code></p></td>
+<td><p>Whether the client is allowed to trigger database migrations. See
+<a class="reference internal" href="#database-migrations"><span class="std std-ref">this section</span></a> for more information.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">database_dir</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">FIFTYONE_DATABASE_DIR</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">~/.fiftyone/var/lib/mongo</span></code></p></td>
+<td><p>The directory in which to store FiftyOne’s backing database. Only applicable if
+<code class="code docutils literal notranslate"><span class="pre">database_uri</span></code> is not defined.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code docutils literal notranslate"><span class="pre">database_name</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">FIFTYONE_DATABASE_NAME</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">fiftyone</span></code></p></td>
+<td><p>A name to use for FiftyOne’s backing database in your MongoDB instance. The database
+is automatically created if necessary.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">database_uri</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">FIFTYONE_DATABASE_URI</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">None</span></code></p></td>
+<td><p>A <a class="reference external" href="https://docs.mongodb.com/manual/reference/connection-string/">MongoDB URI</a> to
+specifying a custom MongoDB database to which to connect. See
+<a class="reference internal" href="#configuring-mongodb-connection"><span class="std std-ref">this section</span></a> for more information.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code docutils literal notranslate"><span class="pre">database_validation</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">FIFTYONE_DATABASE_VALIDATION</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">True</span></code></p></td>
+<td><p>Whether to validate the compatibility of database before connecting to it. See
+<a class="reference internal" href="#configuring-mongodb-connection"><span class="std std-ref">this section</span></a> for more information.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">dataset_zoo_dir</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">FIFTYONE_DATASET_ZOO_DIR</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">~/fiftyone</span></code></p></td>
+<td><p>The default directory in which to store datasets that are downloaded from the
+<a class="reference internal" href="../dataset_zoo/index.html#dataset-zoo"><span class="std std-ref">FiftyOne Dataset Zoo</span></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code docutils literal notranslate"><span class="pre">dataset_zoo_manifest_paths</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">FIFTYONE_ZOO_MANIFEST_PATHS</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">None</span></code></p></td>
+<td><p>A list of manifest JSON files specifying additional zoo datasets. See
+<a class="reference internal" href="../dataset_zoo/api.html#dataset-zoo-add"><span class="std std-ref">adding datasets to the zoo</span></a> for more information.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">default_dataset_dir</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">FIFTYONE_DEFAULT_DATASET_DIR</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">~/fiftyone</span></code></p></td>
+<td><p>The default directory to use when performing FiftyOne operations that
+require writing dataset contents to disk, such as ingesting datasets via
+<a class="reference internal" href="../api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset.ingest_labeled_images" title="fiftyone.core.dataset.Dataset.ingest_labeled_images"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ingest_labeled_images()</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code docutils literal notranslate"><span class="pre">default_ml_backend</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">FIFTYONE_DEFAULT_ML_BACKEND</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">torch</span></code></p></td>
+<td><p>The default ML backend to use when performing operations such as
+downloading datasets from the FiftyOne Dataset Zoo that support multiple ML
+backends. Supported values are <code class="code docutils literal notranslate"><span class="pre">torch</span></code> and <code class="code docutils literal notranslate"><span class="pre">tensorflow</span></code>. By default,
+<code class="code docutils literal notranslate"><span class="pre">torch</span></code> is used if <a class="reference external" href="https://pytorch.org">PyTorch</a> is installed in your
+Python environment, and <code class="code docutils literal notranslate"><span class="pre">tensorflow</span></code> is used if
+<a class="reference external" href="http://tensorflow.org">TensorFlow</a> is installed. If no supported backend
+is detected, this defaults to <code class="code docutils literal notranslate"><span class="pre">None</span></code>, and any operation that requires an
+installed ML backend will raise an informative error message if invoked in
+this state.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">default_batch_size</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">FIFTYONE_DEFAULT_BATCH_SIZE</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">None</span></code></p></td>
+<td><p>A default batch size to use when <a class="reference internal" href="../model_zoo/api.html#model-zoo-apply"><span class="std std-ref">applying models to datasets</span></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code docutils literal notranslate"><span class="pre">default_batcher</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">FIFTYONE_DEFAULT_BATCHER</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">latency</span></code></p></td>
+<td><p>Batching implementation to use in some batched database operations such as
+<a class="reference internal" href="../api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset.add_samples" title="fiftyone.core.dataset.Dataset.add_samples"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_samples()</span></code></a>,
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.set_values" title="fiftyone.core.collections.SampleCollection.set_values"><code class="xref py py-meth docutils literal notranslate"><span class="pre">set_values()</span></code></a>, and
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.save_context" title="fiftyone.core.collections.SampleCollection.save_context"><code class="xref py py-meth docutils literal notranslate"><span class="pre">save_context()</span></code></a>.
+Supported values are <code class="code docutils literal notranslate"><span class="pre">latency</span></code>, <code class="code docutils literal notranslate"><span class="pre">size</span></code>, and <code class="code docutils literal notranslate"><span class="pre">static</span></code>.</p>
+<p><code class="code docutils literal notranslate"><span class="pre">latency</span></code> is the default, which uses a dynamic batch size to achieve a target latency
+of <code class="code docutils literal notranslate"><span class="pre">batcher_target_latency</span></code> between calls. The default changes to <code class="code docutils literal notranslate"><span class="pre">size</span></code> for the
+FiftyOne Teams SDK in <a class="reference internal" href="../teams/api_connection.html#teams-api-connection"><span class="std std-ref">API connection mode</span></a>, which targets
+a size of <code class="code docutils literal notranslate"><span class="pre">batcher_target_size_bytes</span></code> for each call. <code class="code docutils literal notranslate"><span class="pre">static</span></code> uses a fixed batch size
+of <code class="code docutils literal notranslate"><span class="pre">batcher_static_size</span></code>.</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">batcher_static_size</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">FIFTYONE_BATCHER_STATIC_SIZE</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">100</span></code></p></td>
+<td><p>Fixed size of batches. Only used when <code class="code docutils literal notranslate"><span class="pre">default_batcher</span></code> is <code class="code docutils literal notranslate"><span class="pre">static</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code docutils literal notranslate"><span class="pre">batcher_target_size_bytes</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">FIFTYONE_BATCHER_TARGET_SIZE_BYTES</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">2</span> <span class="pre">**</span> <span class="pre">20</span></code></p></td>
+<td><p>Target content size of batches, in bytes. Only used when <code class="code docutils literal notranslate"><span class="pre">default_batcher</span></code> is <code class="code docutils literal notranslate"><span class="pre">size</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">batcher_target_latency</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">FIFTYONE_BATCHER_TARGET_LATENCY</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">0.2</span></code></p></td>
+<td><p>Target latency between batches, in seconds. Only used when <code class="code docutils literal notranslate"><span class="pre">default_batcher</span></code> is
+<code class="code docutils literal notranslate"><span class="pre">latency</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code docutils literal notranslate"><span class="pre">default_sequence_idx</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">FIFTYONE_DEFAULT_SEQUENCE_IDX</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">%06d</span></code></p></td>
+<td><p>The default numeric string pattern to use when writing sequential lists of
+files.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">default_image_ext</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">FIFTYONE_DEFAULT_IMAGE_EXT</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">.jpg</span></code></p></td>
+<td><p>The default image format to use when writing images to disk.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code docutils literal notranslate"><span class="pre">default_video_ext</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">FIFTYONE_DEFAULT_VIDEO_EXT</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">.mp4</span></code></p></td>
+<td><p>The default video format to use when writing videos to disk.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">default_app_port</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">FIFTYONE_DEFAULT_APP_PORT</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">5151</span></code></p></td>
+<td><p>The default port to use to serve the <a class="reference internal" href="app.html#fiftyone-app"><span class="std std-ref">FiftyOne App</span></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code docutils literal notranslate"><span class="pre">default_app_address</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">FIFTYONE_DEFAULT_APP_ADDRESS</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">localhost</span></code></p></td>
+<td><p>The default address to use to serve the <a class="reference internal" href="app.html#fiftyone-app"><span class="std std-ref">FiftyOne App</span></a>. This may
+be either an IP address or hostname. If it’s a hostname, the App will listen to all
+IP addresses associated with the name. The default is <code class="code docutils literal notranslate"><span class="pre">localhost</span></code>, which means the App
+will only listen on the local interface. See <a class="reference internal" href="../environments/index.html#restricting-app-address"><span class="std std-ref">this page</span></a>
+for more information.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">do_not_track</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">FIFTYONE_DO_NOT_TRACK</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">False</span></code></p></td>
+<td><p>Controls whether UUID based import and App usage events are tracked.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code docutils literal notranslate"><span class="pre">logging_level</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">FIFTYONE_LOGGING_LEVEL</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">INFO</span></code></p></td>
+<td><p>Controls FiftyOne’s package-wide logging level. Can be any valid <code class="docutils literal notranslate"><span class="pre">logging</span></code> level as
+a string: <code class="docutils literal notranslate"><span class="pre">DEBUG,</span> <span class="pre">INFO,</span> <span class="pre">WARNING,</span> <span class="pre">ERROR,</span> <span class="pre">CRITICAL</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">max_thread_pool_workers</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">FIFTYONE_MAX_THREAD_POOL_WORKERS</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">None</span></code></p></td>
+<td><p>An optional maximum number of workers to use when creating thread pools</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code docutils literal notranslate"><span class="pre">max_process_pool_workers</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">FIFTYONE_MAX_PROCESS_POOL_WORKERS</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">None</span></code></p></td>
+<td><p>An optional maximum number of workers to use when creating process pools</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">model_zoo_dir</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">FIFTYONE_MODEL_ZOO_DIR</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">~/fiftyone/__models__</span></code></p></td>
+<td><p>The default directory in which to store models that are downloaded from the
+<a class="reference internal" href="../model_zoo/index.html#model-zoo"><span class="std std-ref">FiftyOne Model Zoo</span></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code docutils literal notranslate"><span class="pre">model_zoo_manifest_paths</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">FIFTYONE_MODEL_ZOO_MANIFEST_PATHS</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">None</span></code></p></td>
+<td><p>A list of manifest JSON files specifying additional zoo models. See
+<a class="reference internal" href="../model_zoo/api.html#model-zoo-add"><span class="std std-ref">adding models to the zoo</span></a> for more information.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">module_path</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">FIFTYONE_MODULE_PATH</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">None</span></code></p></td>
+<td><p>A list of modules that should be automatically imported whenever FiftyOne is imported.
+See <a class="reference internal" href="using_datasets.html#custom-embedded-documents"><span class="std std-ref">this page</span></a> for an example usage.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code docutils literal notranslate"><span class="pre">operator_timeout</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">FIFTYONE_OPERATOR_TIMEOUT</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">600</span></code></p></td>
+<td><p>The timeout for execution of an operator. See <a class="reference internal" href="../plugins/index.html#fiftyone-plugins"><span class="std std-ref">this page</span></a> for
+more information.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">allow_legacy_orchestrators</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">FIFTYONE_ALLOW_LEGACY_ORCHESTRATORS</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">False</span></code></p></td>
+<td><p>Whether to allow delegated operations to be scheduled locally.
+See <a class="reference internal" href="../plugins/using_plugins.html#delegated-orchestrator-open-source"><span class="std std-ref">this page</span></a> for more information.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code docutils literal notranslate"><span class="pre">plugins_dir</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">FIFTYONE_PLUGINS_DIR</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">None</span></code></p></td>
+<td><p>A directory containing custom App plugins. See <a class="reference internal" href="../plugins/index.html#fiftyone-plugins"><span class="std std-ref">this page</span></a> for
+more information.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">plugins_cache_enabled</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">FIFTYONE_PLUGINS_CACHE_ENABLED</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">False</span></code></p></td>
+<td><p>When set to <code class="docutils literal notranslate"><span class="pre">True</span></code> plugins will be cached until their directory’s <code class="docutils literal notranslate"><span class="pre">mtime</span></code> changes.
+This is intended to be used in production.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code docutils literal notranslate"><span class="pre">do_not_track</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">FIFTYONE_DO_NOT_TRACK</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">False</span></code></p></td>
+<td><p>Controls whether UUID based import and App usage events are tracked.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">show_progress_bars</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">FIFTYONE_SHOW_PROGRESS_BARS</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">True</span></code></p></td>
+<td><p>Controls whether progress bars are printed to the terminal when performing
+operations such reading/writing large datasets or activating FiftyOne
+Brain methods on datasets.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code docutils literal notranslate"><span class="pre">timezone</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">FIFTYONE_TIMEZONE</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">None</span></code></p></td>
+<td><p>An optional timezone string. If provided, all datetimes read from FiftyOne datasets
+will be expressed in this timezone. See <a class="reference internal" href="#configuring-timezone"><span class="std std-ref">this section</span></a> for
+more information.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="viewing-your-config">
+<h2>Viewing your config<a class="headerlink" href="#viewing-your-config" title="Permalink to this headline">¶</a></h2>
+<p>You can print your current FiftyOne config at any time via the Python library
+and the CLI:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you have customized your FiftyOne config via any of the methods
+described below, printing your config is a convenient way to ensure that
+the changes you made have taken effect as you expected.</p>
+</div>
+</div>
+<div class="section" id="modifying-your-config">
+<h2>Modifying your config<a class="headerlink" href="#modifying-your-config" title="Permalink to this headline">¶</a></h2>
+<p>You can modify your FiftyOne config in a variety of ways. The following
+sections describe these options in detail.</p>
+<div class="section" id="order-of-precedence">
+<h3>Order of precedence<a class="headerlink" href="#order-of-precedence" title="Permalink to this headline">¶</a></h3>
+<p>The following order of precedence is used to assign values to your FiftyOne
+config settings at runtime:</p>
+<ol class="arabic simple">
+<li><p>Config changes applied at runtime by directly editing <code class="code docutils literal notranslate"><span class="pre">fiftyone.config</span></code></p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">FIFTYONE_XXX</span></code> environment variables</p></li>
+<li><p>Settings in your JSON config (<code class="code docutils literal notranslate"><span class="pre">~/.fiftyone/config.json</span></code>)</p></li>
+<li><p>The default config values</p></li>
+</ol>
+</div>
+<div class="section" id="editing-your-json-config">
+<h3>Editing your JSON config<a class="headerlink" href="#editing-your-json-config" title="Permalink to this headline">¶</a></h3>
+<p>You can permanently customize your FiftyOne config by creating a
+<code class="code docutils literal notranslate"><span class="pre">~/.fiftyone/config.json</span></code> file on your machine. The JSON file may contain any
+desired subset of config fields that you wish to customize.</p>
+<p>For example, a valid config JSON file is:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;default_ml_backend&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tensorflow&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;show_progress_bars&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>When <code class="code docutils literal notranslate"><span class="pre">fiftyone</span></code> is imported, any options from your JSON config are applied,
+as per the order of precedence described above.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can customize the location from which your JSON config is read by
+setting the <code class="code docutils literal notranslate"><span class="pre">FIFTYONE_CONFIG_PATH</span></code> environment variable.</p>
+</div>
+</div>
+<div class="section" id="setting-environment-variables">
+<h3>Setting environment variables<a class="headerlink" href="#setting-environment-variables" title="Permalink to this headline">¶</a></h3>
+<p>FiftyOne config settings may be customized on a per-session basis by setting
+the <code class="code docutils literal notranslate"><span class="pre">FIFTYONE_XXX</span></code> environment variable(s) for the desired config settings.</p>
+<p>When <code class="code docutils literal notranslate"><span class="pre">fiftyone</span></code> is imported, all config environment variables are applied, as
+per the order of precedence described above.</p>
+<p>For example, you can customize your FiftyOne config in a Terminal session by
+issuing the following commands prior to launching your Python interpreter:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">FIFTYONE_DEFAULT_ML_BACKEND</span><span class="o">=</span>tensorflow
+<span class="nb">export</span><span class="w"> </span><span class="nv">FIFTYONE_SHOW_PROGRESS_BARS</span><span class="o">=</span><span class="nb">true</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="modifying-your-config-in-code">
+<h3>Modifying your config in code<a class="headerlink" href="#modifying-your-config-in-code" title="Permalink to this headline">¶</a></h3>
+<p>You can dynamically modify your FiftyOne config at runtime by editing the
+<code class="code docutils literal notranslate"><span class="pre">fiftyone.config</span></code> object.</p>
+<p>Any changes to your FiftyOne config applied via this manner will immediately
+take effect for all subsequent calls to <code class="code docutils literal notranslate"><span class="pre">fiftyone.config</span></code> during your current
+session.</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+
+<span class="n">fo</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">default_ml_backend</span> <span class="o">=</span> <span class="s2">&quot;tensorflow&quot;</span>
+<span class="n">fo</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">show_progress_bars</span> <span class="o">=</span> <span class="kc">True</span>
+</pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
+<div class="section" id="configuring-a-mongodb-connection">
+<span id="configuring-mongodb-connection"></span><h2>Configuring a MongoDB connection<a class="headerlink" href="#configuring-a-mongodb-connection" title="Permalink to this headline">¶</a></h2>
+<p>By default, FiftyOne is installed with its own MongoDB database distribution.
+This database is managed by FiftyOne automatically as a service that runs
+whenever at least one FiftyOne Python client is alive.</p>
+<p>Alternatively, you can configure FiftyOne to connect to your own self-managed
+MongoDB instance. To do so, simply set the <code class="code docutils literal notranslate"><span class="pre">database_uri</span></code> property of your
+FiftyOne config to any valid
+<a class="reference external" href="https://docs.mongodb.com/manual/reference/connection-string/">MongoDB connection string URI</a>.</p>
+<p>You can achieve this by adding the following entry to your
+<code class="code docutils literal notranslate"><span class="pre">~/.fiftyone/config.json</span></code> file:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;database_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mongodb://[username:password@]host[:port]&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>or you can set the following environment variable:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">FIFTYONE_DATABASE_URI</span><span class="o">=</span>mongodb://<span class="o">[</span>username:password@<span class="o">]</span>host<span class="o">[</span>:port<span class="o">]</span>
+</pre></div>
+</div>
+<p>If you are running MongoDB with authentication enabled (the <code class="code docutils literal notranslate"><span class="pre">--auth</span></code> flag),
+FiftyOne must connect as a root user.</p>
+<p>You can create a root user with the Mongo shell as follows:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>mongo<span class="w"> </span>--shell
+&gt;<span class="w"> </span>use<span class="w"> </span>admin
+&gt;<span class="w"> </span>db.createUser<span class="o">({</span>user:<span class="w"> </span><span class="s2">&quot;username&quot;</span>,<span class="w"> </span>pwd:<span class="w"> </span>passwordPrompt<span class="o">()</span>,<span class="w"> </span>roles:<span class="w"> </span><span class="o">[</span><span class="s2">&quot;root&quot;</span><span class="o">]})</span>
+</pre></div>
+</div>
+<p>You must also add <code class="code docutils literal notranslate"><span class="pre">?authSource=admin</span></code> to your database URI:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>mongodb://[username:password@]host[:port]/?authSource=admin
+</pre></div>
+</div>
+<div class="section" id="using-a-different-mongodb-version">
+<span id="id2"></span><h3>Using a different MongoDB version<a class="headerlink" href="#using-a-different-mongodb-version" title="Permalink to this headline">¶</a></h3>
+<p>FiftyOne is designed for <strong>MongoDB v4.4 or later</strong>.</p>
+<p>If you wish to connect FiftyOne to a MongoDB database whose version is not
+explicitly supported, you will also need to set the <code class="code docutils literal notranslate"><span class="pre">database_validation</span></code>
+property of your FiftyOne config to <code class="code docutils literal notranslate"><span class="pre">False</span></code> to suppress a runtime error that
+will otherwise occur.</p>
+<p>You can achieve this by adding the following entry to your
+<code class="code docutils literal notranslate"><span class="pre">~/.fiftyone/config.json</span></code> file:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;database_validation&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>or you can set the following environment variable:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">FIFTYONE_DATABASE_VALIDATION</span><span class="o">=</span><span class="nb">false</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="controlling-database-migrations">
+<h3>Controlling database migrations<a class="headerlink" href="#controlling-database-migrations" title="Permalink to this headline">¶</a></h3>
+<p>If you are working with a shared MongoDB database, you can use
+<a class="reference internal" href="#database-migrations"><span class="std std-ref">database admin privileges</span></a> to control which clients
+are allowed to migrate the shared database.</p>
+</div>
+<div class="section" id="example-custom-database-usage">
+<h3>Example custom database usage<a class="headerlink" href="#example-custom-database-usage" title="Permalink to this headline">¶</a></h3>
+<p>In order to use a custom MongoDB database with FiftyOne, you must manually
+start the database before importing FiftyOne. MongoDB provides
+<a class="reference external" href="https://docs.mongodb.com/manual/tutorial/manage-mongodb-processes">a variety of options</a>
+for this, including running the database as a daemon automatically.</p>
+<p>In the simplest case, you can just run <code class="code docutils literal notranslate"><span class="pre">mongod</span></code> in one shell:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>-p<span class="w"> </span>/path/for/db
+mongod<span class="w"> </span>--dbpath<span class="w"> </span>/path/for/db
+</pre></div>
+</div>
+<p>Then, in another shell, configure the database URI and launch FiftyOne:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">FIFTYONE_DATABASE_URI</span><span class="o">=</span>mongodb://localhost
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+<span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="database-migrations">
+<span id="id3"></span><h2>Database migrations<a class="headerlink" href="#database-migrations" title="Permalink to this headline">¶</a></h2>
+<p>New FiftyOne versions occasionally introduce data model changes that require
+database migrations when you <a class="reference internal" href="../getting_started/install.html#upgrading-fiftyone"><span class="std std-ref">upgrade</span></a> or
+<a class="reference internal" href="../getting_started/install.html#downgrading-fiftyone"><span class="std std-ref">downgrade</span></a>.</p>
+<p>By default, database upgrades happen automatically in two steps:</p>
+<ul class="simple">
+<li><p><strong>Database</strong>: when you import FiftyOne for the first time using a newer
+version of the Python package, the database’s version is automatically
+updated to match your client version</p></li>
+<li><p><strong>Datasets</strong> are lazily migrated to the current database version on a
+per-dataset basis whenever you load the dataset for the first time using a
+newer version of the FiftyOne package</p></li>
+</ul>
+<p>Database downgrades must be manually performed. See
+<a class="reference internal" href="../getting_started/install.html#downgrading-fiftyone"><span class="std std-ref">this page</span></a> for instructions.</p>
+<p>You can use the <a class="reference internal" href="../cli/index.html#cli-fiftyone-migrate"><span class="std std-ref">fiftyone migrate</span></a> command to view
+the current versions of your client, database, and datasets:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># View your client, database, and dataset versions</span>
+fiftyone<span class="w"> </span>migrate<span class="w"> </span>--info
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Client version: 0.16.6
+Compatible versions: &gt;=0.16.3,&lt;0.17
+
+Database version: 0.16.6
+
+dataset                      version
+---------------------------  ---------
+bdd100k-validation           0.16.5
+quickstart                   0.16.5
+...
+</pre></div>
+</div>
+<div class="section" id="restricting-migrations">
+<h3>Restricting migrations<a class="headerlink" href="#restricting-migrations" title="Permalink to this headline">¶</a></h3>
+<p>You can use the <code class="code docutils literal notranslate"><span class="pre">database_admin</span></code> config setting to control whether a client is
+allowed to upgrade/downgrade your FiftyOne database. The default is <code class="code docutils literal notranslate"><span class="pre">True</span></code>,
+which means that upgrades are automatically performed when you connect to your
+database with newer Python client versions.</p>
+<p>If you set <code class="code docutils literal notranslate"><span class="pre">database_admin</span></code> to <code class="code docutils literal notranslate"><span class="pre">False</span></code>, your client will <strong>never</strong> cause the
+database to be migrated to a new version. Instead, you’ll see the following
+behavior:</p>
+<ul class="simple">
+<li><p>If your client is compatible with the current database version, you will be
+allowed to connect to the database and use FiftyOne</p></li>
+<li><p>If your client is not compatible with the current database version, you
+will see an informative error message when you import the library</p></li>
+</ul>
+<p>You can restrict migrations by adding the following entry to your
+<code class="code docutils literal notranslate"><span class="pre">~/.fiftyone/config.json</span></code> file:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;database_admin&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>or by setting the following environment variable:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">FIFTYONE_DATABASE_ADMIN</span><span class="o">=</span><span class="nb">false</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A common pattern when working with
+<a class="reference internal" href="#configuring-mongodb-connection"><span class="std std-ref">custom/shared MongoDB databases</span></a> is
+to adopt a convention that all non-administrators set their
+<code class="code docutils literal notranslate"><span class="pre">database_admin</span></code> config setting to <code class="code docutils literal notranslate"><span class="pre">False</span></code> to ensure that they cannot
+trigger automatic database upgrades by connecting to the database with
+newer Python client versions.</p>
+</div>
+</div>
+<div class="section" id="coordinating-a-migration">
+<h3>Coordinating a migration<a class="headerlink" href="#coordinating-a-migration" title="Permalink to this headline">¶</a></h3>
+<p>If you are working in an environment where multiple services are connecting to
+your MongoDB database at any given time, use this strategy to upgrade your
+deployment:</p>
+<ol class="arabic simple">
+<li><p>Ensure that all clients are running without database admin privileges,
+e.g., by adding this to their <code class="code docutils literal notranslate"><span class="pre">~/.fiftyone/config.json</span></code>:</p></li>
+</ol>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;database_admin&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Perform a test upgrade of one client and ensure that it is compatible with
+your current database version:</p></li>
+</ol>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># In a test environment</span>
+pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>fiftyone
+
+<span class="c1"># View client&#39;s compatibility info</span>
+fiftyone<span class="w"> </span>migrate<span class="w"> </span>--info
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+
+<span class="c1"># Convince yourself that the new client can load a dataset</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Now upgrade the client version used by all services:</p></li>
+</ol>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># In all client environments</span>
+pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>fiftyone
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Once all services are running the new client version, upgrade the database
+with admin privileges:</p></li>
+</ol>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">FIFTYONE_DATABASE_ADMIN</span><span class="o">=</span><span class="nb">true</span>
+
+pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>fiftyone
+fiftyone<span class="w"> </span>migrate<span class="w"> </span>--all
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Newly created datasets will always bear the
+<a class="reference internal" href="../api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset.version" title="fiftyone.core.dataset.Dataset.version"><code class="xref py py-meth docutils literal notranslate"><span class="pre">version</span></code></a> of the Python
+client that created them, which may differ from your database’s version
+if you are undergoing a migration.</p>
+<p>If the new client’s version is not in the compatibility range for the old
+clients that are still in use, the old clients will not be able to load
+the new datasets.</p>
+<p>Therefore, it is recommended to upgrade all clients as soon as possible!</p>
+</div>
+</div>
+</div>
+<div class="section" id="configuring-a-timezone">
+<span id="configuring-timezone"></span><h2>Configuring a timezone<a class="headerlink" href="#configuring-a-timezone" title="Permalink to this headline">¶</a></h2>
+<p>By default, FiftyOne loads all datetimes in FiftyOne datasets as naive
+<code class="code docutils literal notranslate"><span class="pre">datetime</span></code> objects expressed in UTC time.</p>
+<p>However, you can configure FiftyOne to express datetimes in a specific timezone
+by setting the <code class="code docutils literal notranslate"><span class="pre">timezone</span></code> property of your FiftyOne config.</p>
+<p>The <code class="code docutils literal notranslate"><span class="pre">timezone</span></code> property can be set to any timezone string supported by
+<code class="code docutils literal notranslate"><span class="pre">pytz.timezone()</span></code>, or <code class="code docutils literal notranslate"><span class="pre">&quot;local&quot;</span></code> to use your current local timezone.</p>
+<p>For example, you could set the <code class="code docutils literal notranslate"><span class="pre">FIFTYONE_TIMEZONE</span></code> environment variable:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Local timezone</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">FIFTYONE_TIMEZONE</span><span class="o">=</span><span class="nb">local</span>
+
+<span class="c1"># US Eastern timezone</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">FIFTYONE_TIMEZONE</span><span class="o">=</span>US/Eastern
+</pre></div>
+</div>
+<p>Or, you can even dynamically change the timezone while you work in Python:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+
+<span class="n">sample</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Sample</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="s2">&quot;image.png&quot;</span><span class="p">,</span> <span class="n">created_at</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">())</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Dataset</span><span class="p">()</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">add_sample</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">sample</span><span class="o">.</span><span class="n">created_at</span><span class="p">)</span>
+<span class="c1"># 2021-08-24 20:24:09.723021</span>
+
+<span class="n">fo</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">timezone</span> <span class="o">=</span> <span class="s2">&quot;local&quot;</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">reload</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">sample</span><span class="o">.</span><span class="n">created_at</span><span class="p">)</span>
+<span class="c1"># 2021-08-24 16:24:09.723000-04:00</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="code docutils literal notranslate"><span class="pre">timezone</span></code> setting does not affect the internal database representation
+of datetimes, which are always stored as UTC timestamps.</p>
+</div>
+</div>
+</div>
+<div class="section" id="configuring-the-app">
+<span id="configuring-fiftyone-app"></span><h1>Configuring the App<a class="headerlink" href="#configuring-the-app" title="Permalink to this headline">¶</a></h1>
+<p>The <a class="reference internal" href="app.html#fiftyone-app"><span class="std std-ref">FiftyOne App</span></a> can also be configured in various ways.
+A new copy of your App config is applied to each <a class="reference internal" href="../api/fiftyone.core.session.html#fiftyone.core.session.Session" title="fiftyone.core.session.Session"><code class="xref py py-class docutils literal notranslate"><span class="pre">Session</span></code></a> object that is
+created when you launch the App. A session’s config can be inspected and
+modified via the <a class="reference internal" href="../api/fiftyone.core.session.html#fiftyone.core.session.Session.config" title="fiftyone.core.session.Session.config"><code class="xref py py-meth docutils literal notranslate"><span class="pre">session.config</span></code></a>
+property.</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fo</span><span class="o">.</span><span class="n">app_config</span><span class="p">)</span>
+
+<span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">session</span><span class="o">.</span><span class="n">config</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For changes to a live session’s config to take effect in the App, you must
+call <a class="reference internal" href="../api/fiftyone.core.session.html#fiftyone.core.session.Session.refresh" title="fiftyone.core.session.Session.refresh"><code class="xref py py-meth docutils literal notranslate"><span class="pre">session.refresh()</span></code></a> or
+invoke another state-updating action such as <code class="docutils literal notranslate"><span class="pre">session.view</span> <span class="pre">=</span> <span class="pre">my_view</span></code>.</p>
+</div>
+<p>The FiftyOne App can be configured in the ways described below:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 23%" />
+<col style="width: 9%" />
+<col style="width: 52%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Config field</p></th>
+<th class="head"><p>Environment variable</p></th>
+<th class="head"><p>Default value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="code docutils literal notranslate"><span class="pre">color_by</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">FIFTYONE_APP_COLOR_BY</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">&quot;field&quot;</span></code></p></td>
+<td><p>Whether to color labels by their field name (<code class="code docutils literal notranslate"><span class="pre">&quot;field&quot;</span></code>), <code class="code docutils literal notranslate"><span class="pre">label</span></code> value (<code class="code docutils literal notranslate"><span class="pre">&quot;label&quot;</span></code>), or
+render each instance ID/trajectory index (<code class="code docutils literal notranslate"><span class="pre">&quot;instance&quot;</span></code>).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">color_pool</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">FIFTYONE_APP_COLOR_POOL</span></code></p></td>
+<td><p>See below</p></td>
+<td><p>A list of browser supported color strings from which the App should draw from when
+drawing labels (e.g., object bounding boxes).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code docutils literal notranslate"><span class="pre">colorscale</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">FIFTYONE_APP_COLORSCALE</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">&quot;viridis&quot;</span></code></p></td>
+<td><p>The colorscale to use when rendering heatmaps in the App. See
+<a class="reference internal" href="using_datasets.html#heatmaps"><span class="std std-ref">this section</span></a> for more details.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">default_query_performance</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">FIFTYONE_APP_DEFAULT_QUERY_PERFORMANCE</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">True</span></code></p></td>
+<td><p>Default if a user hasn’t selected a query performance mode in their current session. See
+<a class="reference internal" href="app.html#app-optimizing-query-performance"><span class="std std-ref">this section</span></a> for more details.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code docutils literal notranslate"><span class="pre">disable_frame_filtering</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">FIFTYONE_APP_DISABLE_FRAME_FILTERING</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">False</span></code></p></td>
+<td><p>Whether to disable frame filtering for video datasets in the App’s grid view. See
+<a class="reference internal" href="app.html#app-optimizing-query-performance"><span class="std std-ref">this section</span></a> for more details.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">enable_query_performance</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">FIFTYONE_APP_ENABLE_QUERY_PERFORMANCE</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">True</span></code></p></td>
+<td><p>Whether to show the query performance toggle in the UI for users to select. See
+<a class="reference internal" href="app.html#app-optimizing-query-performance"><span class="std std-ref">this section</span></a> for more details.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code docutils literal notranslate"><span class="pre">grid_zoom</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">FIFTYONE_APP_GRID_ZOOM</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">5</span></code></p></td>
+<td><p>The zoom level of the App’s sample grid. Larger values result in larger samples (and thus
+fewer samples in the grid). Supported values are <code class="code docutils literal notranslate"><span class="pre">{0,</span> <span class="pre">1,</span> <span class="pre">...,</span> <span class="pre">10}</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">loop_videos</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">FIFTYONE_APP_LOOP_VIDEOS</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">False</span></code></p></td>
+<td><p>Whether to loop videos by default in the expanded sample view.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code docutils literal notranslate"><span class="pre">media_fallback</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">FIFTYONE_APP_MEDIA_FALLBACK</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">False</span></code></p></td>
+<td><p>Whether to fall back to the default media field (<code class="code docutils literal notranslate"><span class="pre">&quot;filepath&quot;</span></code>) when the configured media
+field’s value for a sample is not defined.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">multicolor_keypoints</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">FIFTYONE_APP_MULTICOLOR_KEYPOINTS</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">False</span></code></p></td>
+<td><p>Whether to independently coloy keypoint points by their index</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code docutils literal notranslate"><span class="pre">notebook_height</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">FIFTYONE_APP_NOTEBOOK_HEIGHT</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">800</span></code></p></td>
+<td><p>The height of App instances displayed in notebook cells.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">proxy_url</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">FIFTYONE_APP_PROXY_URL</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">None</span></code></p></td>
+<td><p>A URL string to override the default server URL. Useful for configuring the session
+through a reverse proxy in notebook environments.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code docutils literal notranslate"><span class="pre">show_confidence</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">FIFTYONE_APP_SHOW_CONFIDENCE</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">True</span></code></p></td>
+<td><p>Whether to show confidences when rendering labels in the App’s expanded sample view.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">show_index</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">FIFTYONE_APP_SHOW_INDEX</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">True</span></code></p></td>
+<td><p>Whether to show indexes when rendering labels in the App’s expanded sample view.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code docutils literal notranslate"><span class="pre">show_label</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">FIFTYONE_APP_SHOW_LABEL</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">True</span></code></p></td>
+<td><p>Whether to show the label value when rendering detection labels in the App’s expanded
+sample view.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">show_skeletons</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">FIFTYONE_APP_SHOW_SKELETONS</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">True</span></code></p></td>
+<td><p>Whether to show keypoint skeletons, if available.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code docutils literal notranslate"><span class="pre">show_tooltip</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">FIFTYONE_APP_SHOW_TOOLTIP</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">True</span></code></p></td>
+<td><p>Whether to show the tooltip when hovering over labels in the App’s expanded sample view.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">theme</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">FIFTYONE_APP_THEME</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">&quot;browser&quot;</span></code></p></td>
+<td><p>The default theme to use in the App. Supported values are <code class="code docutils literal notranslate"><span class="pre">{&quot;browser&quot;,</span> <span class="pre">&quot;dark&quot;,</span> <span class="pre">&quot;light&quot;}</span></code>.
+If <code class="code docutils literal notranslate"><span class="pre">&quot;browser&quot;</span></code>, your current theme will be persisted in your browser’s storage.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code docutils literal notranslate"><span class="pre">use_frame_number</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">FIFTYONE_APP_USE_FRAME_NUMBER</span></code></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">False</span></code></p></td>
+<td><p>Whether to use the frame number instead of a timestamp in the expanded sample view. Only
+applicable to video samples.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">plugins</span></code></p></td>
+<td><p>N/A</p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">{}</span></code></p></td>
+<td><p>A dict of plugin configurations. See <a class="reference internal" href="#configuring-plugins"><span class="std std-ref">this section</span></a> for
+details.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="viewing-your-app-config">
+<h2>Viewing your App config<a class="headerlink" href="#viewing-your-app-config" title="Permalink to this headline">¶</a></h2>
+<p>You can print your App config at any time via the Python library and the CLI:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you have customized your App config via any of the methods described
+below, printing your config is a convenient way to ensure that the changes
+you made have taken effect as you expected.</p>
+</div>
+</div>
+<div class="section" id="modifying-your-app-config">
+<h2>Modifying your App config<a class="headerlink" href="#modifying-your-app-config" title="Permalink to this headline">¶</a></h2>
+<p>You can modify your App config in a variety of ways. The following sections
+describe these options in detail.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Did you know? You can also configure the behavior of the App on a
+per-dataset basis by customizing your
+<a class="reference internal" href="using_datasets.html#dataset-app-config"><span class="std std-ref">dataset’s App config</span></a>.</p>
+</div>
+<div class="section" id="id4">
+<h3>Order of precedence<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>The following order of precedence is used to assign values to your App config
+settings at runtime:</p>
+<ol class="arabic simple">
+<li><p>Config settings of a
+<a class="reference internal" href="../api/fiftyone.core.session.html#fiftyone.core.session.Session" title="fiftyone.core.session.Session"><code class="xref py py-class docutils literal notranslate"><span class="pre">Session</span></code></a> instance in question</p></li>
+<li><p>App config settings applied at runtime by directly editing
+<code class="code docutils literal notranslate"><span class="pre">fiftyone.app_config</span></code></p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">FIFTYONE_APP_XXX</span></code> environment variables</p></li>
+<li><p>Settings in your JSON App config (<code class="code docutils literal notranslate"><span class="pre">~/.fiftyone/app_config.json</span></code>)</p></li>
+<li><p>The default App config values</p></li>
+</ol>
+</div>
+<div class="section" id="launching-the-app-with-a-custom-config">
+<h3>Launching the App with a custom config<a class="headerlink" href="#launching-the-app-with-a-custom-config" title="Permalink to this headline">¶</a></h3>
+<p>You can launch the FiftyOne App with a customized App config on a one-off basis
+via the following pattern:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+
+<span class="c1"># Create a custom App config</span>
+<span class="n">app_config</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">app_config</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">app_config</span><span class="o">.</span><span class="n">show_confidence</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">app_config</span><span class="o">.</span><span class="n">show_label</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">app_config</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>You can also configure a live <a class="reference internal" href="../api/fiftyone.core.session.html#fiftyone.core.session.Session" title="fiftyone.core.session.Session"><code class="xref py py-class docutils literal notranslate"><span class="pre">Session</span></code></a> by editing its
+<a class="reference internal" href="../api/fiftyone.core.session.html#fiftyone.core.session.Session.config" title="fiftyone.core.session.Session.config"><code class="xref py py-meth docutils literal notranslate"><span class="pre">session.config</span></code></a> property and
+calling <a class="reference internal" href="../api/fiftyone.core.session.html#fiftyone.core.session.Session.refresh" title="fiftyone.core.session.Session.refresh"><code class="xref py py-meth docutils literal notranslate"><span class="pre">session.refresh()</span></code></a> to
+apply the changes:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># Customize the config of a live session</span>
+<span class="n">session</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">show_confidence</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">session</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">show_label</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">session</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>  <span class="c1"># must refresh after edits</span>
+</pre></div></td></tr></table></div>
+</div>
+</div>
+<div class="section" id="editing-your-json-app-config">
+<h3>Editing your JSON App config<a class="headerlink" href="#editing-your-json-app-config" title="Permalink to this headline">¶</a></h3>
+<p>You can permanently customize your App config by creating a
+<code class="code docutils literal notranslate"><span class="pre">~/.fiftyone/app_config.json</span></code> file on your machine. The JSON file may contain
+any desired subset of config fields that you wish to customize.</p>
+<p>For example, a valid App config JSON file is:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;show_confidence&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;show_label&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>When <code class="code docutils literal notranslate"><span class="pre">fiftyone</span></code> is imported, any options from your JSON App config are applied,
+as per the order of precedence described above.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can customize the location from which your JSON App config is read by
+setting the <code class="code docutils literal notranslate"><span class="pre">FIFTYONE_APP_CONFIG_PATH</span></code> environment variable.</p>
+</div>
+</div>
+<div class="section" id="setting-app-environment-variables">
+<h3>Setting App environment variables<a class="headerlink" href="#setting-app-environment-variables" title="Permalink to this headline">¶</a></h3>
+<p>App config settings may be customized on a per-session basis by setting the
+<code class="code docutils literal notranslate"><span class="pre">FIFTYONE_APP_XXX</span></code> environment variable(s) for the desired App config settings.</p>
+<p>When <code class="code docutils literal notranslate"><span class="pre">fiftyone</span></code> is imported, all App config environment variables are applied,
+as per the order of precedence described above.</p>
+<p>For example, you can customize your App config in a Terminal session by
+issuing the following commands prior to launching your Python interpreter:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">FIFTYONE_APP_SHOW_CONFIDENCE</span><span class="o">=</span><span class="nb">false</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">FIFTYONE_APP_SHOW_LABEL</span><span class="o">=</span><span class="nb">false</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="modifying-your-app-config-in-code">
+<h3>Modifying your App config in code<a class="headerlink" href="#modifying-your-app-config-in-code" title="Permalink to this headline">¶</a></h3>
+<p>You can dynamically modify your App config at runtime by editing the
+<code class="code docutils literal notranslate"><span class="pre">fiftyone.app_config</span></code> object.</p>
+<p>Any changes to your App config applied via this manner will immediately
+take effect for all subsequent calls to <code class="code docutils literal notranslate"><span class="pre">fiftyone.app_config</span></code> during your
+current session.</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+
+<span class="n">fo</span><span class="o">.</span><span class="n">app_config</span><span class="o">.</span><span class="n">show_confidence</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">fo</span><span class="o">.</span><span class="n">app_config</span><span class="o">.</span><span class="n">show_label</span> <span class="o">=</span> <span class="kc">False</span>
+</pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
+<div class="section" id="configuring-plugins">
+<span id="id5"></span><h2>Configuring plugins<a class="headerlink" href="#configuring-plugins" title="Permalink to this headline">¶</a></h2>
+<p>You can store system-wide plugin configurations under the <code class="code docutils literal notranslate"><span class="pre">plugins</span></code> key of your
+App config.</p>
+<p>Builtin plugins that you can configure include:</p>
+<ul class="simple">
+<li><p>The builtin <a class="reference internal" href="app.html#app-map-panel"><span class="std std-ref">Map panel</span></a></p></li>
+<li><p>The builtin <a class="reference internal" href="app.html#app-3d-visualizer-config"><span class="std std-ref">3D visualizer</span></a></p></li>
+<li><p>Any <a class="reference internal" href="../plugins/index.html#fiftyone-plugins"><span class="std std-ref">custom plugins</span></a> that you’ve registered</p></li>
+</ul>
+<p>For example, you may add the following to your JSON App config
+(<code class="code docutils literal notranslate"><span class="pre">~/.fiftyone/app_config.json</span></code>) to register a Mapbox token globally on your
+system:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
+    &quot;plugins&quot;: {
+        &quot;map&quot;: {
+            &quot;mapboxAccessToken&quot;: &quot;XXXXXXXX&quot;
+        }
+    }
+}
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can also store dataset-specific plugin settings by storing any subset
+of the above values on a <a class="reference internal" href="using_datasets.html#dataset-app-config"><span class="std std-ref">dataset’s App config</span></a>.</p>
+</div>
+</div>
+<div class="section" id="configuring-a-proxy-url">
+<span id="configuring-proxy-url"></span><h2>Configuring a proxy URL<a class="headerlink" href="#configuring-a-proxy-url" title="Permalink to this headline">¶</a></h2>
+<p>When running FiftyOne in a cloud machine, such as a
+<a class="reference external" href="https://aws.amazon.com/sagemaker/notebooks/">SageMaker Notebook</a>, a
+<code class="code docutils literal notranslate"><span class="pre">proxy_url</span></code> should be set in your
+<a class="reference internal" href="#configuring-fiftyone-app"><span class="std std-ref">FiftyOne App config</span></a> before launching the App
+in order for browser windows or notebook cells to point to a correct App URL.
+For <a class="reference external" href="https://aws.amazon.com/sagemaker/notebooks/">SageMaker Notebooks</a>, the
+below code snippet shows how to configure the proxy based on your instance.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+
+<span class="c1"># before launching the App, configure a proxy_url</span>
+<span class="n">fo</span><span class="o">.</span><span class="n">app_config</span><span class="o">.</span><span class="n">proxy_url</span> <span class="o">=</span> <span class="s2">&quot;https://&lt;myinstance&gt;.notebook.&lt;region&gt;.sagemaker.aws/proxy/&lt;port&gt;/&quot;</span>
+
+<span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">port</span><span class="o">=&lt;</span><span class="n">port</span><span class="o">&gt;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+             </article>
+             
+            </div>
+            <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../dataset_zoo/index.html" class="btn btn-neutral float-right" title="FiftyOne Dataset Zoo" accesskey="n" rel="next">Next <img src="../_static/images/chevron-right-orange.svg" class="next-page"></a>
+      
+      
+        <a href="draw_labels.html" class="btn btn-neutral" title="Drawing Labels on Samples" accesskey="p" rel="prev"><img src="../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
+      
+    </div>
+  
+</footer>
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              <ul>
+<li><a class="reference internal" href="#">Configuring FiftyOne</a><ul>
+<li><a class="reference internal" href="#configuration-options">Configuration options</a></li>
+<li><a class="reference internal" href="#viewing-your-config">Viewing your config</a></li>
+<li><a class="reference internal" href="#modifying-your-config">Modifying your config</a><ul>
+<li><a class="reference internal" href="#order-of-precedence">Order of precedence</a></li>
+<li><a class="reference internal" href="#editing-your-json-config">Editing your JSON config</a></li>
+<li><a class="reference internal" href="#setting-environment-variables">Setting environment variables</a></li>
+<li><a class="reference internal" href="#modifying-your-config-in-code">Modifying your config in code</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#configuring-a-mongodb-connection">Configuring a MongoDB connection</a><ul>
+<li><a class="reference internal" href="#using-a-different-mongodb-version">Using a different MongoDB version</a></li>
+<li><a class="reference internal" href="#controlling-database-migrations">Controlling database migrations</a></li>
+<li><a class="reference internal" href="#example-custom-database-usage">Example custom database usage</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#database-migrations">Database migrations</a><ul>
+<li><a class="reference internal" href="#restricting-migrations">Restricting migrations</a></li>
+<li><a class="reference internal" href="#coordinating-a-migration">Coordinating a migration</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#configuring-a-timezone">Configuring a timezone</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#configuring-the-app">Configuring the App</a><ul>
+<li><a class="reference internal" href="#viewing-your-app-config">Viewing your App config</a></li>
+<li><a class="reference internal" href="#modifying-your-app-config">Modifying your App config</a><ul>
+<li><a class="reference internal" href="#id4">Order of precedence</a></li>
+<li><a class="reference internal" href="#launching-the-app-with-a-custom-config">Launching the App with a custom config</a></li>
+<li><a class="reference internal" href="#editing-your-json-app-config">Editing your JSON App config</a></li>
+<li><a class="reference internal" href="#setting-app-environment-variables">Setting App environment variables</a></li>
+<li><a class="reference internal" href="#modifying-your-app-config-in-code">Modifying your App config in code</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#configuring-plugins">Configuring plugins</a></li>
+<li><a class="reference internal" href="#configuring-a-proxy-url">Configuring a proxy URL</a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  
+
+
+  
+
+     
+       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+         <script src="../_static/jquery.js"></script>
+         <script src="../_static/underscore.js"></script>
+         <script src="../_static/doctools.js"></script>
+         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+         <script src="../_static/js/voxel51-website.js"></script>
+         <script src="../_static/js/custom.js"></script>
+     
+
+  
+
+  <script type="text/javascript" src="../_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="../_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+  <!-- Begin Footer -->
+
+
+<footer class="footer-wrapper" id="docs-tutorials-resources">
+  <div class="footer pytorch-container">
+    <div class="footer__logo">
+      <a href="https://voxel51.com/"
+        ><img
+          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
+      /></a>
+    </div>
+
+    <div class="footer__address">
+      330 E Liberty St<br />
+      Ann Arbor, MI 48104<br />
+      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
+    </div>
+
+    <!--
+    <div class="footer__contact">
+      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
+    </div>
+    -->
+
+    <div class="footer__links">
+      <div class="footer__links--col2">
+        <p class="nav__item--brand">Products</p>
+        <a href="https://voxel51.com/fiftyone/">FiftyOne</a>
+        <a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a>
+        <a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a>
+        <a href="https://voxel51.com/success-stories/">Success Stories</a>
+      </div>
+      <div class="footer__links--col3">
+        <p class="nav__item--brand">Resources</p>
+        <a href="https://voxel51.com/blog/">Blog</a>
+        <a href="https://docs.voxel51.com/">Docs</a>
+        <a href="https://github.com/voxel51/">GitHub</a>
+        <a href="https://community.voxel51.com">Discord</a>
+        <a href="https://voxel51.com/ourstory/">About Us</a>
+        <a href="https://voxel51.com/computer-vision-events/">Events</a>
+        <a href="https://voxel51.com/jobs/">Careers</a>
+        <a href="https://voxel51.com/press/">Press</a>
+      </div>
+    </div>
+
+    <div class="footer__icons">
+      <ul class="list-inline">
+        <li>
+          <a href="https://www.linkedin.com/company/voxel51/">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/voxel51/">
+            <i class="fa-brands fa-github"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/voxel51">
+            <i class="fa-brands fa-twitter"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/voxel51/">
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="footer__copyright">
+      <ul class="list-inline">
+        <li>&copy; 2024 Voxel51 Inc.</li>
+        <li>
+          <a href="https://voxel51.com/privacy/">Privacy Policy</a>
+        </li>
+        <li>
+          <a href="https://voxel51.com/terms/">Terms of Service</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<!-- https://buttons.github.io -->
+<script async defer src="https://buttons.github.io/buttons.js" ></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XD15NFRY3M" ></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+  gtag("config", "G-XD15NFRY3M");
+</script>
+
+<script>
+  function open_modal(modal_id, modal_closer_id) {
+    // Get the modal
+    let the_modal = document.getElementById(modal_id);
+
+    the_modal.style.display = "flex";
+    document.body.style.overflow = "hidden";
+
+    let the_modal_closer = document.getElementById(modal_closer_id);
+
+    // When the user clicks on <span> (x), close the modal
+    the_modal_closer &&
+      (the_modal_closer.onclick = function () {
+        the_modal.style.display = "none";
+      });
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+      if (event.target == the_modal) {
+        the_modal.style.display = "none";
+        document.body.style.overflow = "unset";
+        window.onclick = undefined;
+      }
+    };
+  }
+</script>
+
+<!-- bigpicture.io -->
+<script>
+  !(function (e, t, i) {
+    var r = (e.bigPicture = e.bigPicture || []);
+    if (!r.initialized)
+      if (r.invoked)
+        e.console &&
+          console.error &&
+          console.error("BigPicture.io snippet included twice.");
+      else {
+        (r.invoked = !0),
+          (r.SNIPPET_VERSION = 1.5),
+          (r.handler = function (e) {
+            if (void 0 !== r.callback)
+              try {
+                return r.callback(e);
+              } catch (e) {}
+          }),
+          (r.eventList = ["mousedown", "mouseup", "click", "submit"]),
+          (r.methods = [
+            "track",
+            "identify",
+            "page",
+            "group",
+            "alias",
+            "integration",
+            "ready",
+            "intelReady",
+            "consentReady",
+            "on",
+            "off",
+          ]),
+          (r.factory = function (e) {
+            return function () {
+              var t = Array.prototype.slice.call(arguments);
+              return t.unshift(e), r.push(t), r;
+            };
+          });
+        for (var n = 0; n < r.methods.length; n++) {
+          var o = r.methods[n];
+          r[o] = r.factory(o);
+        }
+        r.getCookie = function (e) {
+          var i = ("; " + t.cookie).split("; " + e + "=");
+          return 2 == i.length && i.pop().split(";").shift();
+        };
+        var c = (r.isEditor = (function () {
+          try {
+            return (
+              e.self !== e.top &&
+              (new RegExp("app" + i, "ig").test(t.referrer) ||
+                "edit" == r.getCookie("_bpr_edit"))
+            );
+          } catch (e) {
+            return !1;
+          }
+        })());
+        r.init = function (n, o) {
+          if (((r.projectId = n), (r._config = o), !c))
+            for (var a = 0; a < r.eventList.length; a++)
+              e.addEventListener(r.eventList[a], r.handler, !0);
+          var s = t.createElement("script");
+          s.async = !0;
+          var d = c ? "/editor/editor" : "/public-" + n;
+          (s.src = "//cdn" + i + d + ".js"),
+            t.getElementsByTagName("head")[0].appendChild(s);
+        };
+      }
+  })(window, document, ".bigpicture.io");
+  bigPicture.init("1646");
+</script>
+
+
+  
+
+  <!-- End Footer -->
+
+  <!-- Begin Mobile Menu -->
+
+  
+
+  <!-- End Mobile Menu -->
+
+  <script type="text/javascript" src="../_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function(e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+</body>
+</html>

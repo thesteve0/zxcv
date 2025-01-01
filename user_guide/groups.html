@@ -1,0 +1,1802 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Grouped datasets &mdash; FiftyOne 1.3.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <link rel="stylesheet" href="../_static/css/voxel51-website.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Annotating Datasets" href="annotation.html" />
+    <link rel="prev" title="Using the FiftyOne App" href="app.html" />
+<meta property="og:image" content="https://voxel51.com/wp-content/uploads/2024/03/3.24_webpages_Home_AV.png" />
+
+<link
+  href="https://fonts.googleapis.com/css?family=Palanquin:400,600,700,800"
+  rel="stylesheet"
+/>
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+  rel="stylesheet"
+/>
+<script src="https://tag.clearbitscripts.com/v1/pk_b9ed71c8234edd4f77326bcbfab5a4ca/tags.js"></script>
+
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+  
+</head>
+
+
+<div class="container-fluid header-holder tutorials-header" id="header-holder">
+  <nav id="nav__main" class="nav__main">
+    <div class="nav__main__logo">
+      <a href="https://voxel51.com/">
+        <img
+          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
+        />
+      </a>
+    </div>
+
+    <div class="nav__spacer desktop_only"></div>
+
+    <div id="nav__main__mobilebutton--on">
+      <a href="javascript:void(0);" onclick="navMobileButton()">
+        <i class="fa-solid fa-bars"></i>
+      </a>
+    </div>
+
+    <div id="nav__main__mobilebutton--off">
+      <a href="javascript:void(0);" onclick="navMobileButton()">
+        <i class="fa-solid fa-times"></i>
+      </a>
+    </div>
+
+    <div id="nav__main__items">
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Products</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://voxel51.com/fiftyone/">Open Source</a></li>
+            <li><a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a></li>
+            <li><a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a></li>
+            <li><a href="https://voxel51.com/success-stories/">Success Stories</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Learn</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://community.voxel51.com">Community Discord</a></li>
+            <li><a href="https://voxel51.com/blog/">Blog</a></li>
+            <li><a href="https://voxel51.com/computer-vision-events/">Events</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item">
+        <a href="https://docs.voxel51.com/">Docs</a>
+      </div>
+
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Company</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://voxel51.com/ourstory/">About Us</a></li>
+            <li><a href="https://voxel51.com/jobs/">Careers</a></li>
+            <li><a href="https://voxel51.com/talk-to-sales/">Talk to Sales</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item mobile_only">
+        <a href="https://github.com/voxel51/fiftyone">GitHub</a>
+      </div>
+
+      <div class="nav__item desktop_only" id="octocat">
+        <!-- https://buttons.github.io -->
+        <a
+          class="github-button"
+          href="https://github.com/voxel51/fiftyone"
+          data-color-scheme="no-preference: dark_high_contrast; light: dark_high_contrast; dark: dark_high_contrast;"
+          data-size="large"
+          data-show-count="true"
+          aria-label="Star voxel51/fiftyone on GitHub"
+          >Star</a
+        >
+      </div>
+
+      <div class="nav__item full_nav_only">
+        <a class="button-primary" href="https://voxel51.com/schedule-teams-workshop/" target="_blank"
+          >Schedule a workshop</a
+        >
+      </div>
+    </div>
+  </nav>
+</div>
+
+
+
+<body class="pytorch-body">
+
+   
+
+    
+
+    <div class="table-of-contents-link-wrapper">
+      <span>Table of Contents</span>
+      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+    </div>
+
+    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+      <div class="pytorch-side-scroll">
+        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          <div class="pytorch-left-menu-search">
+            
+
+            
+              
+              
+            
+
+            
+
+
+  
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+            
+          </div>
+
+           <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../teams/index.html">FiftyOne Teams 🚀</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../environments/index.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../recipes/index.html">Recipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheat_sheets/index.html">Cheat Sheets</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">User Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="basics.html">FiftyOne basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dataset_creation/index.html">Loading datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="using_datasets.html">Using datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="using_views.html">Dataset views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app.html">Using the App</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Grouped datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="annotation.html">Annotating datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="evaluation.html">Evaluating models <strong style="color: hsl(25, 100%, 51%); font-size: 0.85em; vertical-align: top">NEW</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="using_aggregations.html">Using aggregations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plots.html">Interactive plots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="export_datasets.html">Exporting datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="draw_labels.html">Drawing labels on samples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config.html">Configuring FiftyOne</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config.html#configuring-the-app">Configuring the App</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../dataset_zoo/index.html">Dataset Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_zoo/index.html">Model Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brain.html">FiftyOne Brain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/index.html">Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plugins/index.html">Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli/index.html">CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/fiftyone.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deprecation.html">Deprecation Notices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a></li>
+</ul>
+ 
+        </div>
+      </div>
+    </nav>
+
+    <div class="pytorch-container">
+      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+        <div class="pytorch-breadcrumbs-wrapper">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="../index.html">
+          
+            Docs
+          
+        </a> &gt;
+      </li>
+
+        
+          <li><a href="index.html">FiftyOne User Guide</a> &gt;</li>
+        
+      <li>Grouped datasets</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+        </div>
+
+        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+          Contents
+        </div>
+      </div>
+
+      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+        <div class="pytorch-content-left">
+
+        
+          
+          <div class="rst-content style-external-links">
+          
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+              
+  <div class="section" id="grouped-datasets">
+<span id="groups"></span><h1>Grouped datasets<a class="headerlink" href="#grouped-datasets" title="Permalink to this headline">¶</a></h1>
+<p>FiftyOne supports the creation of <strong>grouped datasets</strong>, which contain multiple
+slices of samples of possibly different modalities (e.g.,
+<a class="reference internal" href="using_datasets.html#dataset-media-type"><span class="std std-ref">image</span></a>, <a class="reference internal" href="using_datasets.html#video-datasets"><span class="std std-ref">video</span></a>, or
+<a class="reference internal" href="using_datasets.html#d-datasets"><span class="std std-ref">3D scenes</span></a>) that are organized into groups.</p>
+<p>Grouped datasets can be used to represent multiview scenes, where data for
+multiple perspectives of the same scene can be stored, visualized, and queried
+in ways that respect the relationships between the slices of data.</p>
+<img alt="groups-sizzle" class="align-center" src="../_images/groups-modal.gif" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Did you know? You can also create <a class="reference internal" href="using_views.html#view-groups"><span class="std std-ref">dynamic group views</span></a>
+into your datasets based on a field or expression of interest.</p>
+</div>
+<div class="section" id="overview">
+<span id="groups-overview"></span><h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>In this section, we’ll cover the basics of creating and working with grouped
+datasets via Python.</p>
+<p>Let’s start by creating some test data. We’ll use the quickstart dataset to
+construct some mocked triples of left/center/right images:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.utils.random</span> <span class="k">as</span> <span class="nn">four</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="n">groups</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="s2">&quot;center&quot;</span><span class="p">,</span> <span class="s2">&quot;right&quot;</span><span class="p">]</span>
+
+<span class="n">d</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+<span class="n">four</span><span class="o">.</span><span class="n">random_split</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="p">{</span><span class="n">g</span><span class="p">:</span> <span class="mi">1</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">groups</span><span class="p">)</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">groups</span><span class="p">})</span>
+<span class="n">filepaths</span> <span class="o">=</span> <span class="p">[</span><span class="n">d</span><span class="o">.</span><span class="n">match_tags</span><span class="p">(</span><span class="n">g</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;filepath&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">groups</span><span class="p">]</span>
+<span class="n">filepaths</span> <span class="o">=</span> <span class="p">[</span><span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">groups</span><span class="p">,</span> <span class="n">fps</span><span class="p">))</span> <span class="k">for</span> <span class="n">fps</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">filepaths</span><span class="p">)]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">filepaths</span><span class="p">[:</span><span class="mi">2</span><span class="p">])</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[
+    {
+        &#39;left&#39;: &#39;~/fiftyone/quickstart/data/000880.jpg&#39;,
+        &#39;center&#39;: &#39;~/fiftyone/quickstart/data/002799.jpg&#39;,
+        &#39;right&#39;: &#39;~/fiftyone/quickstart/data/001599.jpg&#39;,
+    },
+    {
+        &#39;left&#39;: &#39;~/fiftyone/quickstart/data/003344.jpg&#39;,
+        &#39;center&#39;: &#39;~/fiftyone/quickstart/data/001057.jpg&#39;,
+        &#39;right&#39;: &#39;~/fiftyone/quickstart/data/001430.jpg&#39;,
+    },
+]
+</pre></div>
+</div>
+<div class="section" id="creating-grouped-datasets">
+<span id="groups-creation"></span><h3>Creating grouped datasets<a class="headerlink" href="#creating-grouped-datasets" title="Permalink to this headline">¶</a></h3>
+<p>To create a grouped dataset, simply use
+<a class="reference internal" href="../api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset.add_group_field" title="fiftyone.core.dataset.Dataset.add_group_field"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_group_field()</span></code></a> to
+declare a <a class="reference internal" href="../api/fiftyone.core.groups.html#fiftyone.core.groups.Group" title="fiftyone.core.groups.Group"><code class="xref py py-class docutils literal notranslate"><span class="pre">Group</span></code></a> field on your dataset before you add samples to it:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="s2">&quot;groups-overview&quot;</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">add_group_field</span><span class="p">(</span><span class="s2">&quot;group&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>The optional <code class="code docutils literal notranslate"><span class="pre">default</span></code> parameter specifies the slice of samples that will be
+returned via the API or visualized in the App’s grid view by default. If you
+don’t specify a default, one will be inferred from the first sample you add to
+the dataset.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Datasets may contain only one <a class="reference internal" href="../api/fiftyone.core.groups.html#fiftyone.core.groups.Group" title="fiftyone.core.groups.Group"><code class="xref py py-class docutils literal notranslate"><span class="pre">Group</span></code></a> field.</p>
+</div>
+</div>
+<div class="section" id="adding-samples">
+<span id="groups-adding-samples"></span><h3>Adding samples<a class="headerlink" href="#adding-samples" title="Permalink to this headline">¶</a></h3>
+<p>To populate a grouped dataset with samples, create a single <a class="reference internal" href="../api/fiftyone.core.groups.html#fiftyone.core.groups.Group" title="fiftyone.core.groups.Group"><code class="xref py py-class docutils literal notranslate"><span class="pre">Group</span></code></a> instance
+for each group of samples and use
+<a class="reference internal" href="../api/fiftyone.core.groups.html#fiftyone.core.groups.Group.element" title="fiftyone.core.groups.Group.element"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Group.element()</span></code></a> to generate values
+for the group field of each <a class="reference internal" href="../api/fiftyone.core.sample.html#fiftyone.core.sample.Sample" title="fiftyone.core.sample.Sample"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sample</span></code></a> object in the group based on their slice’s
+<code class="code docutils literal notranslate"><span class="pre">name</span></code>. The <a class="reference internal" href="../api/fiftyone.core.sample.html#fiftyone.core.sample.Sample" title="fiftyone.core.sample.Sample"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sample</span></code></a> objects can then simply be added to the dataset as usual:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">samples</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">fps</span> <span class="ow">in</span> <span class="n">filepaths</span><span class="p">:</span>
+    <span class="n">group</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Group</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">filepath</span> <span class="ow">in</span> <span class="n">fps</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">sample</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Sample</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="n">filepath</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="n">group</span><span class="o">.</span><span class="n">element</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
+        <span class="n">samples</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
+
+<span class="n">dataset</span><span class="o">.</span><span class="n">add_samples</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Name:        groups-overview
+Media type:  group
+Group slice: center
+Num groups:  66
+Persistent:  False
+Tags:        []
+Sample fields:
+    id:               fiftyone.core.fields.ObjectIdField
+    filepath:         fiftyone.core.fields.StringField
+    tags:             fiftyone.core.fields.ListField(fiftyone.core.fields.StringField)
+    metadata:         fiftyone.core.fields.EmbeddedDocumentField(fiftyone.core.metadata.Metadata)
+    created_at:       fiftyone.core.fields.DateTimeField
+    last_modified_at: fiftyone.core.fields.DateTimeField
+    group:            fiftyone.core.fields.EmbeddedDocumentField(fiftyone.core.groups.Group)
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Every sample in a grouped dataset must have its group field populated with
+a <a class="reference internal" href="../api/fiftyone.core.groups.html#fiftyone.core.groups.Group" title="fiftyone.core.groups.Group"><code class="xref py py-class docutils literal notranslate"><span class="pre">Group</span></code></a> element.</p>
+</div>
+</div>
+<div class="section" id="dataset-properties">
+<span id="groups-dataset-properties"></span><h3>Dataset properties<a class="headerlink" href="#dataset-properties" title="Permalink to this headline">¶</a></h3>
+<p>Grouped datasets have a <code class="code docutils literal notranslate"><span class="pre">media_type</span></code> of <code class="code docutils literal notranslate"><span class="pre">&quot;group&quot;</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">media_type</span><span class="p">)</span>
+<span class="c1"># group</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>The <a class="reference internal" href="../api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset.group_field" title="fiftyone.core.dataset.Dataset.group_field"><code class="xref py py-meth docutils literal notranslate"><span class="pre">group_field</span></code></a> property
+contains the name of the <a class="reference internal" href="../api/fiftyone.core.groups.html#fiftyone.core.groups.Group" title="fiftyone.core.groups.Group"><code class="xref py py-class docutils literal notranslate"><span class="pre">Group</span></code></a> field storing the dataset’s group membership
+information:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">group_field</span><span class="p">)</span>
+<span class="c1"># group</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>The <a class="reference internal" href="../api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset.group_slices" title="fiftyone.core.dataset.Dataset.group_slices"><code class="xref py py-meth docutils literal notranslate"><span class="pre">group_slices</span></code></a> property
+contains the names of all group slices in the dataset:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">group_slices</span><span class="p">)</span>
+<span class="c1"># [&#39;left&#39;, &#39;center&#39;, &#39;right&#39;]</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>The <a class="reference internal" href="../api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset.group_media_types" title="fiftyone.core.dataset.Dataset.group_media_types"><code class="xref py py-meth docutils literal notranslate"><span class="pre">group_media_types</span></code></a>
+property is a dict mapping each slice name to its corresponding media type:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">group_media_types</span><span class="p">)</span>
+<span class="c1"># {&#39;left&#39;: &#39;image&#39;, &#39;center&#39;: &#39;image&#39;, &#39;right&#39;: &#39;image&#39;}</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>The list of group slices and their corresponding media types are dynamically
+expanded as you add samples to a grouped dataset.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Grouped datasets may contain a mix of different modalities (e.g., images,
+videos, and 3D scenes), but FiftyOne strictly enforces that each <strong>slice</strong>
+of a grouped dataset must have a homogeneous media type.</p>
+<p>For example, you would see an error if you tried to add a video sample to
+the <code class="code docutils literal notranslate"><span class="pre">left</span></code> slice of the above dataset, since it contains images.</p>
+</div>
+<p>The <a class="reference internal" href="../api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset.default_group_slice" title="fiftyone.core.dataset.Dataset.default_group_slice"><code class="xref py py-meth docutils literal notranslate"><span class="pre">default_group_slice</span></code></a>
+property stores the name of the default group slice:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">default_group_slice</span><span class="p">)</span>
+<span class="c1"># center</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>The default group slice controls the slice of samples that will be returned via
+the API—for example when you directly iterate over the dataset—or
+visualized in the App’s grid view by default:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">first</span><span class="p">())</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&lt;Sample: {
+    &#39;id&#39;: &#39;62db2ce147e9efc3615cd450&#39;,
+    &#39;media_type&#39;: &#39;image&#39;,
+    &#39;filepath&#39;: &#39;~/fiftyone/quickstart/data/003344.jpg&#39;,
+    &#39;tags&#39;: [],
+    &#39;metadata&#39;: None,
+    &#39;created_at&#39;: datetime.datetime(2024, 7, 22, 5, 16, 10, 701907),
+    &#39;last_modified_at&#39;: datetime.datetime(2024, 7, 22, 5, 16, 10, 701907),
+    &#39;group&#39;: &lt;Group: {&#39;id&#39;: &#39;62db2ce147e9efc3615cd346&#39;, &#39;name&#39;: &#39;center&#39;}&gt;,
+}&gt;
+</pre></div>
+</div>
+<p>You can change the <em>active group slice</em> in your current session by setting the
+<a class="reference internal" href="../api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset.group_slice" title="fiftyone.core.dataset.Dataset.group_slice"><code class="xref py py-meth docutils literal notranslate"><span class="pre">group_slice</span></code></a> property:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">group_slice</span> <span class="o">=</span> <span class="s2">&quot;left&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">first</span><span class="p">())</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&lt;Sample: {
+    &#39;id&#39;: &#39;62db2ce147e9efc3615cd44e&#39;,
+    &#39;media_type&#39;: &#39;image&#39;,
+    &#39;filepath&#39;: &#39;~/fiftyone/quickstart/data/001599.jpg&#39;,
+    &#39;tags&#39;: [],
+    &#39;metadata&#39;: None,
+    &#39;created_at&#39;: datetime.datetime(2024, 7, 22, 5, 16, 10, 701907),
+    &#39;last_modified_at&#39;: datetime.datetime(2024, 7, 22, 5, 16, 10, 701907),
+    &#39;group&#39;: &lt;Group: {&#39;id&#39;: &#39;62db2ce147e9efc3615cd346&#39;, &#39;name&#39;: &#39;left&#39;}&gt;,
+}&gt;
+</pre></div>
+</div>
+<p>You can reset the active group slice to the default value by setting
+<a class="reference internal" href="../api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset.group_slice" title="fiftyone.core.dataset.Dataset.group_slice"><code class="xref py py-meth docutils literal notranslate"><span class="pre">group_slice</span></code></a> to <code class="code docutils literal notranslate"><span class="pre">None</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># Resets to `default_group_slice`</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">group_slice</span> <span class="o">=</span> <span class="kc">None</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>You can also change the default group slice at any time by setting the
+<a class="reference internal" href="../api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset.default_group_slice" title="fiftyone.core.dataset.Dataset.default_group_slice"><code class="xref py py-meth docutils literal notranslate"><span class="pre">default_group_slice</span></code></a>
+property.</p>
+</div>
+<div class="section" id="adding-fields">
+<span id="groups-adding-fields"></span><h3>Adding fields<a class="headerlink" href="#adding-fields" title="Permalink to this headline">¶</a></h3>
+<p>You are free to add arbitrary sample- and frame-level fields to your grouped
+datasets just as you would with ungrouped datasets:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">sample</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+
+<span class="n">sample</span><span class="p">[</span><span class="s2">&quot;int_field&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">51</span>
+<span class="n">sample</span><span class="p">[</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Classification</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;outdoor&quot;</span><span class="p">)</span>
+
+<span class="n">sample</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>You can also use methods like
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.set_values" title="fiftyone.core.collections.SampleCollection.set_values"><code class="xref py py-meth docutils literal notranslate"><span class="pre">set_values()</span></code></a>
+and <a class="reference internal" href="../api/fiftyone.core.view.html#fiftyone.core.view.DatasetView.save" title="fiftyone.core.view.DatasetView.save"><code class="xref py py-meth docutils literal notranslate"><span class="pre">save()</span></code></a> to perform bulk
+edits to the <a class="reference internal" href="#groups-dataset-properties"><span class="std std-ref">active slice</span></a> of a grouped
+dataset.</p>
+<p>Note that all slices of a grouped dataset share the same schema, and hence
+any fields you add to samples from a particular slice will be implicitly
+declared on all samples from that slice and all other slices:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Name:        groups-overview
+Media type:  group
+Group slice: center
+Num groups:  66
+Persistent:  False
+Tags:        []
+Sample fields:
+    id:               fiftyone.core.fields.ObjectIdField
+    filepath:         fiftyone.core.fields.StringField
+    tags:             fiftyone.core.fields.ListField(fiftyone.core.fields.StringField)
+    metadata:         fiftyone.core.fields.EmbeddedDocumentField(fiftyone.core.metadata.Metadata)
+    created_at:       fiftyone.core.fields.DateTimeField
+    last_modified_at: fiftyone.core.fields.DateTimeField
+    group:            fiftyone.core.fields.EmbeddedDocumentField(fiftyone.core.groups.Group)
+    int_field:        fiftyone.core.fields.IntField
+    ground_truth:     fiftyone.core.fields.EmbeddedDocumentField(fiftyone.core.labels.Classification)
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Like ungrouped datasets, any fields in a grouped dataset’s schema that have
+not been explicitly set on a <a class="reference internal" href="../api/fiftyone.core.sample.html#fiftyone.core.sample.Sample" title="fiftyone.core.sample.Sample"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sample</span></code></a> in the dataset will be <code class="code docutils literal notranslate"><span class="pre">None</span></code>.</p>
+</div>
+<p>You can use methods like
+<a class="reference internal" href="../api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset.clone_sample_field" title="fiftyone.core.dataset.Dataset.clone_sample_field"><code class="xref py py-meth docutils literal notranslate"><span class="pre">clone_sample_field()</span></code></a>,
+<a class="reference internal" href="../api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset.rename_sample_field" title="fiftyone.core.dataset.Dataset.rename_sample_field"><code class="xref py py-meth docutils literal notranslate"><span class="pre">rename_sample_field()</span></code></a>,
+<a class="reference internal" href="../api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset.delete_sample_field" title="fiftyone.core.dataset.Dataset.delete_sample_field"><code class="xref py py-meth docutils literal notranslate"><span class="pre">delete_sample_field()</span></code></a>,
+<a class="reference internal" href="../api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset.clear_sample_field" title="fiftyone.core.dataset.Dataset.clear_sample_field"><code class="xref py py-meth docutils literal notranslate"><span class="pre">clear_sample_field()</span></code></a>,
+and <a class="reference internal" href="../api/fiftyone.core.view.html#fiftyone.core.view.DatasetView.keep_fields" title="fiftyone.core.view.DatasetView.keep_fields"><code class="xref py py-meth docutils literal notranslate"><span class="pre">keep_fields()</span></code></a> to
+perform batch edits to the fields across <em>all slices</em> of a grouped dataset.</p>
+</div>
+<div class="section" id="accessing-samples">
+<span id="groups-accessing-samples"></span><h3>Accessing samples<a class="headerlink" href="#accessing-samples" title="Permalink to this headline">¶</a></h3>
+<p>You can access a sample from any slice of grouped dataset via its ID or
+filepath:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># Grab a random sample across all slices</span>
+<span class="n">sample</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">select_group_slices</span><span class="p">()</span><span class="o">.</span><span class="n">shuffle</span><span class="p">()</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+
+<span class="c1"># Directly lookup same sample by ID</span>
+<span class="n">also_sample</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="n">sample</span><span class="o">.</span><span class="n">id</span><span class="p">]</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>In addition, you can also use
+<a class="reference internal" href="../api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset.get_group" title="fiftyone.core.dataset.Dataset.get_group"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_group()</span></code></a> to retrieve a
+dict containing all samples in a group with a given ID:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># Grab a random group ID</span>
+<span class="n">sample</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">shuffle</span><span class="p">()</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+<span class="n">group_id</span> <span class="o">=</span> <span class="n">sample</span><span class="o">.</span><span class="n">group</span><span class="o">.</span><span class="n">id</span>
+
+<span class="n">group</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">get_group</span><span class="p">(</span><span class="n">group_id</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">group</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
+    &#39;left&#39;: &lt;Sample: {
+        &#39;id&#39;: &#39;62f810ba59e644568f229dac&#39;,
+        &#39;media_type&#39;: &#39;image&#39;,
+        &#39;filepath&#39;: &#39;~/fiftyone/quickstart/data/001227.jpg&#39;,
+        &#39;tags&#39;: [],
+        &#39;metadata&#39;: None,
+        &#39;created_at&#39;: datetime.datetime(2024, 7, 22, 5, 16, 10, 701907),
+        &#39;last_modified_at&#39;: datetime.datetime(2024, 7, 22, 5, 16, 10, 701907),
+        &#39;group&#39;: &lt;Group: {&#39;id&#39;: &#39;62f810ba59e644568f229c62&#39;, &#39;name&#39;: &#39;left&#39;}&gt;,
+    }&gt;,
+    &#39;center&#39;: &lt;Sample: {
+        &#39;id&#39;: &#39;62f810ba59e644568f229dad&#39;,
+        &#39;media_type&#39;: &#39;image&#39;,
+        &#39;filepath&#39;: &#39;~/fiftyone/quickstart/data/004172.jpg&#39;,
+        &#39;tags&#39;: [],
+        &#39;metadata&#39;: None,
+        &#39;created_at&#39;: datetime.datetime(2024, 7, 22, 5, 16, 10, 701907),
+        &#39;last_modified_at&#39;: datetime.datetime(2024, 7, 22, 5, 16, 10, 701907),
+        &#39;group&#39;: &lt;Group: {&#39;id&#39;: &#39;62f810ba59e644568f229c62&#39;, &#39;name&#39;: &#39;center&#39;}&gt;,
+    }&gt;,
+    &#39;right&#39;: &lt;Sample: {
+        &#39;id&#39;: &#39;62f810ba59e644568f229dae&#39;,
+        &#39;media_type&#39;: &#39;image&#39;,
+        &#39;filepath&#39;: &#39;~/fiftyone/quickstart/data/000594.jpg&#39;,
+        &#39;tags&#39;: [],
+        &#39;metadata&#39;: None,
+        &#39;created_at&#39;: datetime.datetime(2024, 7, 22, 5, 16, 10, 701907),
+        &#39;last_modified_at&#39;: datetime.datetime(2024, 7, 22, 5, 16, 10, 701907),
+        &#39;group&#39;: &lt;Group: {&#39;id&#39;: &#39;62f810ba59e644568f229c62&#39;, &#39;name&#39;: &#39;right&#39;}&gt;,
+    }&gt;,
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="deleting-samples">
+<span id="groups-deleting-samples"></span><h3>Deleting samples<a class="headerlink" href="#deleting-samples" title="Permalink to this headline">¶</a></h3>
+<p>Like ungrouped datasets, you can use
+<a class="reference internal" href="../api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset.delete_samples" title="fiftyone.core.dataset.Dataset.delete_samples"><code class="xref py py-meth docutils literal notranslate"><span class="pre">delete_samples()</span></code></a> to
+delete individual sample(s) from a grouped dataset:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># Grab a random sample across all slices</span>
+<span class="n">sample</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">select_group_slices</span><span class="p">()</span><span class="o">.</span><span class="n">shuffle</span><span class="p">()</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+
+<span class="n">dataset</span><span class="o">.</span><span class="n">delete_samples</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>In addition, you can use
+<a class="reference internal" href="../api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset.delete_groups" title="fiftyone.core.dataset.Dataset.delete_groups"><code class="xref py py-meth docutils literal notranslate"><span class="pre">delete_groups()</span></code></a> to delete
+all samples in a specific group(s):</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># Continuing from above, delete the rest of the group</span>
+<span class="n">group_id</span> <span class="o">=</span> <span class="n">sample</span><span class="o">.</span><span class="n">group</span><span class="o">.</span><span class="n">id</span>
+
+<span class="n">dataset</span><span class="o">.</span><span class="n">delete_groups</span><span class="p">(</span><span class="n">group_id</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>You can also use methods like
+<a class="reference internal" href="../api/fiftyone.core.view.html#fiftyone.core.view.DatasetView.clear" title="fiftyone.core.view.DatasetView.clear"><code class="xref py py-meth docutils literal notranslate"><span class="pre">clear()</span></code></a> and
+<a class="reference internal" href="../api/fiftyone.core.view.html#fiftyone.core.view.DatasetView.keep" title="fiftyone.core.view.DatasetView.keep"><code class="xref py py-meth docutils literal notranslate"><span class="pre">keep()</span></code></a> to perform batch edits to
+the groups in a grouped dataset.</p>
+</div>
+<div class="section" id="iterating-over-grouped-datasets">
+<span id="groups-iteration"></span><h3>Iterating over grouped datasets<a class="headerlink" href="#iterating-over-grouped-datasets" title="Permalink to this headline">¶</a></h3>
+<p>When you directly iterate over a grouped dataset, you will get samples from the
+dataset’s <a class="reference internal" href="#groups-dataset-properties"><span class="std std-ref">active slice</span></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">group_slice</span><span class="p">)</span>
+<span class="c1"># center</span>
+
+<span class="k">for</span> <span class="n">sample</span> <span class="ow">in</span> <span class="n">dataset</span><span class="p">:</span>
+    <span class="k">pass</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&lt;Sample: {
+    &#39;id&#39;: &#39;62f10dbb68f4ed13eba7c5e7&#39;,
+    &#39;media_type&#39;: &#39;image&#39;,
+    &#39;filepath&#39;: &#39;~/fiftyone/quickstart/data/001394.jpg&#39;,
+    &#39;tags&#39;: [],
+    &#39;metadata&#39;: None,
+    &#39;created_at&#39;: datetime.datetime(2024, 7, 22, 5, 16, 10, 701907),
+    &#39;last_modified_at&#39;: datetime.datetime(2024, 7, 22, 5, 16, 10, 701907),
+    &#39;group&#39;: &lt;Group: {&#39;id&#39;: &#39;62f10dbb68f4ed13eba7c4a0&#39;, &#39;name&#39;: &#39;center&#39;}&gt;,
+}&gt;
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can customize the dataset’s active slice by setting the
+<a class="reference internal" href="../api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset.group_slice" title="fiftyone.core.dataset.Dataset.group_slice"><code class="xref py py-meth docutils literal notranslate"><span class="pre">group_slice</span></code></a> property to
+another slice name.</p>
+</div>
+<p>You can also use
+<a class="reference internal" href="../api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset.iter_groups" title="fiftyone.core.dataset.Dataset.iter_groups"><code class="xref py py-meth docutils literal notranslate"><span class="pre">iter_groups()</span></code></a> to iterate
+over dicts containing all samples in each group:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><span class="k">for</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">dataset</span><span class="o">.</span><span class="n">iter_groups</span><span class="p">():</span>
+    <span class="k">pass</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">group</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
+    &#39;left&#39;: &lt;Sample: {
+        &#39;id&#39;: &#39;62f10dbb68f4ed13eba7c5e6&#39;,
+        &#39;media_type&#39;: &#39;image&#39;,
+        &#39;filepath&#39;: &#39;~/fiftyone/quickstart/data/002538.jpg&#39;,
+        &#39;tags&#39;: [],
+        &#39;metadata&#39;: None,
+        &#39;created_at&#39;: datetime.datetime(2024, 7, 22, 5, 16, 10, 701907),
+        &#39;last_modified_at&#39;: datetime.datetime(2024, 7, 22, 5, 16, 10, 701907),
+        &#39;group&#39;: &lt;Group: {&#39;id&#39;: &#39;62f10dbb68f4ed13eba7c4a0&#39;, &#39;name&#39;: &#39;left&#39;}&gt;,
+    }&gt;,
+    &#39;center&#39;: &lt;Sample: {
+        &#39;id&#39;: &#39;62f10dbb68f4ed13eba7c5e7&#39;,
+        &#39;media_type&#39;: &#39;image&#39;,
+        &#39;filepath&#39;: &#39;~/fiftyone/quickstart/data/001394.jpg&#39;,
+        &#39;tags&#39;: [],
+        &#39;metadata&#39;: None,
+        &#39;created_at&#39;: datetime.datetime(2024, 7, 22, 5, 16, 10, 701907),
+        &#39;last_modified_at&#39;: datetime.datetime(2024, 7, 22, 5, 16, 10, 701907),
+        &#39;group&#39;: &lt;Group: {&#39;id&#39;: &#39;62f10dbb68f4ed13eba7c4a0&#39;, &#39;name&#39;: &#39;center&#39;}&gt;,
+    }&gt;,
+    &#39;right&#39;: &lt;Sample: {
+        &#39;id&#39;: &#39;62f10dbb68f4ed13eba7c5e8&#39;,
+        &#39;media_type&#39;: &#39;image&#39;,
+        &#39;filepath&#39;: &#39;~/fiftyone/quickstart/data/000020.jpg&#39;,
+        &#39;tags&#39;: [],
+        &#39;metadata&#39;: None,
+        &#39;created_at&#39;: datetime.datetime(2024, 7, 22, 5, 16, 10, 701907),
+        &#39;last_modified_at&#39;: datetime.datetime(2024, 7, 22, 5, 16, 10, 701907),
+        &#39;group&#39;: &lt;Group: {&#39;id&#39;: &#39;62f10dbb68f4ed13eba7c4a0&#39;, &#39;name&#39;: &#39;right&#39;}&gt;,
+    }&gt;,
+}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="example-datasets">
+<span id="groups-example-datasets"></span><h2>Example datasets<a class="headerlink" href="#example-datasets" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference internal" href="../dataset_zoo/index.html#dataset-zoo"><span class="std std-ref">FiftyOne Dataset Zoo</span></a> contains grouped datasets that
+you can use out-of-the-box to test drive FiftyOne’s group-related features.</p>
+<div class="section" id="quickstart-groups">
+<h3>Quickstart groups<a class="headerlink" href="#quickstart-groups" title="Permalink to this headline">¶</a></h3>
+<p>The fastest way to get started is by loading the
+<a class="reference internal" href="../dataset_zoo/datasets.html#dataset-zoo-quickstart-groups"><span class="std std-ref">quickstart-groups</span></a> dataset, which
+consists of 200 scenes from the train split of the KITTI dataset, each
+containing left camera, right camera, point cloud, and 2D/3D object annotation
+data:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart-groups&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">group_media_types</span><span class="p">)</span>
+<span class="c1"># {&#39;left&#39;: &#39;image&#39;, &#39;right&#39;: &#39;image&#39;, &#39;pcd&#39;: &#39;3d&#39;}</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Name:        quickstart-groups
+Media type:  group
+Group slice: left
+Num groups:  200
+Persistent:  False
+Tags:        []
+Sample fields:
+    id:               fiftyone.core.fields.ObjectIdField
+    filepath:         fiftyone.core.fields.StringField
+    tags:             fiftyone.core.fields.ListField(fiftyone.core.fields.StringField)
+    metadata:         fiftyone.core.fields.EmbeddedDocumentField(fiftyone.core.metadata.Metadata)
+    created_at:       fiftyone.core.fields.DateTimeField
+    last_modified_at: fiftyone.core.fields.DateTimeField
+    group:            fiftyone.core.fields.EmbeddedDocumentField(fiftyone.core.groups.Group)
+    ground_truth:     fiftyone.core.fields.EmbeddedDocumentField(fiftyone.core.labels.Detections)
+</pre></div>
+</div>
+</div>
+<div class="section" id="kitti-multiview">
+<h3>KITTI multiview<a class="headerlink" href="#kitti-multiview" title="Permalink to this headline">¶</a></h3>
+<p>You can also load the full <a class="reference internal" href="../dataset_zoo/datasets.html#dataset-zoo-kitti-multiview"><span class="std std-ref">kitti-multiview</span></a>
+dataset:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;kitti-multiview&quot;</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<img alt="kitti-multiview-train" class="align-center" src="../_images/kitti-multiview-train.png" />
+</div>
+<div class="section" id="toy-dataset">
+<h3>Toy dataset<a class="headerlink" href="#toy-dataset" title="Permalink to this headline">¶</a></h3>
+<p>The snippet below generates a toy dataset containing 3D cuboids filled with
+points that demonstrates how
+<a class="reference internal" href="using_datasets.html#d-detections"><span class="std std-ref">3D detections are represented</span></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">open3d</span> <span class="k">as</span> <span class="nn">o3d</span>
+
+<span class="n">detections</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">point_cloud</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">dimensions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+    <span class="n">location</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">([</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
+    <span class="n">rotation</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+    <span class="n">detection</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Detection</span><span class="p">(</span>
+        <span class="n">dimensions</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">dimensions</span><span class="p">),</span>
+        <span class="n">location</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">location</span><span class="p">),</span>
+        <span class="n">rotation</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">rotation</span><span class="p">),</span>
+    <span class="p">)</span>
+    <span class="n">detections</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">detection</span><span class="p">)</span>
+
+    <span class="n">R</span> <span class="o">=</span> <span class="n">o3d</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">get_rotation_matrix_from_xyz</span><span class="p">(</span><span class="n">rotation</span><span class="p">)</span>
+    <span class="n">points</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="n">dimensions</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">dimensions</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+    <span class="n">points</span> <span class="o">=</span> <span class="n">points</span> <span class="o">@</span> <span class="n">R</span><span class="o">.</span><span class="n">T</span> <span class="o">+</span> <span class="n">location</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="p">:]</span>
+    <span class="n">point_cloud</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">points</span><span class="p">)</span>
+
+<span class="n">pc</span> <span class="o">=</span> <span class="n">o3d</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">PointCloud</span><span class="p">()</span>
+<span class="n">pc</span><span class="o">.</span><span class="n">points</span> <span class="o">=</span> <span class="n">o3d</span><span class="o">.</span><span class="n">utility</span><span class="o">.</span><span class="n">Vector3dVector</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">point_cloud</span><span class="p">))</span>
+<span class="n">o3d</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write_point_cloud</span><span class="p">(</span><span class="s2">&quot;/tmp/toy.pcd&quot;</span><span class="p">,</span> <span class="n">pc</span><span class="p">)</span>
+
+<span class="n">scene</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Scene</span><span class="p">()</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">fo</span><span class="o">.</span><span class="n">PointCloud</span><span class="p">(</span><span class="s2">&quot;point cloud&quot;</span><span class="p">,</span> <span class="s2">&quot;/tmp/toy.pcd&quot;</span><span class="p">))</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;/tmp/toy.fo3d&quot;</span><span class="p">)</span>
+
+<span class="n">group</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Group</span><span class="p">()</span>
+<span class="n">samples</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">fo</span><span class="o">.</span><span class="n">Sample</span><span class="p">(</span>
+        <span class="n">filepath</span><span class="o">=</span><span class="s2">&quot;/tmp/toy.png&quot;</span><span class="p">,</span>  <span class="c1"># non-existent</span>
+        <span class="n">group</span><span class="o">=</span><span class="n">group</span><span class="o">.</span><span class="n">element</span><span class="p">(</span><span class="s2">&quot;image&quot;</span><span class="p">),</span>
+    <span class="p">),</span>
+    <span class="n">fo</span><span class="o">.</span><span class="n">Sample</span><span class="p">(</span>
+        <span class="n">filepath</span><span class="o">=</span><span class="s2">&quot;/tmp/toy.fo3d&quot;</span><span class="p">,</span>
+        <span class="n">group</span><span class="o">=</span><span class="n">group</span><span class="o">.</span><span class="n">element</span><span class="p">(</span><span class="s2">&quot;pcd&quot;</span><span class="p">),</span>
+        <span class="n">detections</span><span class="o">=</span><span class="n">fo</span><span class="o">.</span><span class="n">Detections</span><span class="p">(</span><span class="n">detections</span><span class="o">=</span><span class="n">detections</span><span class="p">),</span>
+    <span class="p">)</span>
+<span class="p">]</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Dataset</span><span class="p">()</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">add_samples</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span>
+
+<span class="n">dataset</span><span class="o">.</span><span class="n">app_config</span><span class="o">.</span><span class="n">plugins</span><span class="p">[</span><span class="s2">&quot;3d&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;defaultCameraPosition&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;z&quot;</span><span class="p">:</span> <span class="mi">20</span><span class="p">}</span>
+<span class="p">}</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+<span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<img alt="toy-point-cloud" class="align-center" src="../_images/toy-point-cloud.png" />
+</div>
+</div>
+<div class="section" id="grouped-views">
+<span id="groups-views"></span><h2>Grouped views<a class="headerlink" href="#grouped-views" title="Permalink to this headline">¶</a></h2>
+<p>You have the entire <a class="reference internal" href="using_views.html#using-views"><span class="std std-ref">dataset view language</span></a> at your disposal
+to sort, slice, and search your grouped datasets!</p>
+<div class="section" id="basics">
+<span id="groups-basic-views"></span><h3>Basics<a class="headerlink" href="#basics" title="Permalink to this headline">¶</a></h3>
+<p>You can perform simple operations like shuffling and limiting grouped datasets:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># Select 10 random groups from the dataset</span>
+<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">shuffle</span><span class="p">()</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">view</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Dataset:     groups-overview
+Media type:  group
+Group slice: center
+Num groups:  10
+Group fields:
+    id:               fiftyone.core.fields.ObjectIdField
+    filepath:         fiftyone.core.fields.StringField
+    tags:             fiftyone.core.fields.ListField(fiftyone.core.fields.StringField)
+    metadata:         fiftyone.core.fields.EmbeddedDocumentField(fiftyone.core.metadata.Metadata)
+    created_at:       fiftyone.core.fields.DateTimeField
+    last_modified_at: fiftyone.core.fields.DateTimeField
+    group:            fiftyone.core.fields.EmbeddedDocumentField(fiftyone.core.groups.Group)
+View stages:
+    1. Shuffle(seed=None)
+    2. Limit(limit=10)
+</pre></div>
+</div>
+<p>As you can see, the <a class="reference internal" href="#groups-dataset-properties"><span class="std std-ref">basic properties</span></a> of
+grouped datasets carry over to views into them:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">view</span><span class="o">.</span><span class="n">media_type</span><span class="p">)</span>
+<span class="c1"># group</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">view</span><span class="o">.</span><span class="n">group_slice</span><span class="p">)</span>
+<span class="c1"># center</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">view</span><span class="o">.</span><span class="n">group_media_types</span><span class="p">)</span>
+<span class="c1"># {&#39;left&#39;: &#39;image&#39;, &#39;center&#39;: &#39;image&#39;, &#39;right&#39;: &#39;image&#39;}</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>You can also perform all the usual operations on grouped views, such as
+<a class="reference internal" href="#groups-accessing-samples"><span class="std std-ref">accessing samples</span></a>, and
+<a class="reference internal" href="#groups-iteration"><span class="std std-ref">iterating over them</span></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><span class="k">for</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">view</span><span class="o">.</span><span class="n">iter_groups</span><span class="p">():</span>
+    <span class="k">pass</span>
+
+<span class="n">sample</span> <span class="o">=</span> <span class="n">view</span><span class="o">.</span><span class="n">last</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
+
+<span class="n">group_id</span> <span class="o">=</span> <span class="n">sample</span><span class="o">.</span><span class="n">group</span><span class="o">.</span><span class="n">id</span>
+<span class="n">group</span> <span class="o">=</span> <span class="n">view</span><span class="o">.</span><span class="n">get_group</span><span class="p">(</span><span class="n">group_id</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">group</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+</div>
+<div class="section" id="filtering">
+<span id="groups-filtering"></span><h3>Filtering<a class="headerlink" href="#filtering" title="Permalink to this headline">¶</a></h3>
+<p>You can write views that <a class="reference internal" href="using_views.html#view-filtering"><span class="std std-ref">match and filter</span></a> the contents
+of grouped datasets:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+<span class="kn">from</span> <span class="nn">fiftyone</span> <span class="kn">import</span> <span class="n">ViewField</span> <span class="k">as</span> <span class="n">F</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart-groups&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">group_slice</span><span class="p">)</span>
+<span class="c1"># left</span>
+
+<span class="c1"># Filters based on the content in the &#39;left&#39; slice</span>
+<span class="n">view</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">dataset</span>
+    <span class="o">.</span><span class="n">match_tags</span><span class="p">(</span><span class="s2">&quot;train&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span> <span class="n">F</span><span class="p">(</span><span class="s2">&quot;label&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Pedestrian&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>Remember that, just as when <a class="reference internal" href="#groups-iteration"><span class="std std-ref">iterating over</span></a> grouped
+datasets, any filtering operations will only be applied to the
+<a class="reference internal" href="#groups-dataset-properties"><span class="std std-ref">active slice</span></a>.</p>
+<p>However, you can write views that reference specific slice(s) of a grouped
+collection via the special <code class="code docutils literal notranslate"><span class="pre">&quot;groups.&lt;slice&gt;.field.name&quot;</span></code> syntax:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">from</span> <span class="nn">fiftyone</span> <span class="kn">import</span> <span class="n">ViewField</span> <span class="k">as</span> <span class="n">F</span>
+
+<span class="n">dataset</span><span class="o">.</span><span class="n">compute_metadata</span><span class="p">()</span>
+
+<span class="c1"># Match groups whose `left` image has a height of at least 640 pixels and</span>
+<span class="c1"># whose `right` image has a height of at most 480 pixels</span>
+<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">match</span><span class="p">(</span>
+    <span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s2">&quot;groups.left.metadata.height&quot;</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">640</span><span class="p">)</span>
+    <span class="o">&amp;</span> <span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s2">&quot;groups.right.metadata.height&quot;</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">480</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">view</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+</div>
+<div class="section" id="selecting-groups">
+<span id="groups-selecting-groups"></span><h3>Selecting groups<a class="headerlink" href="#selecting-groups" title="Permalink to this headline">¶</a></h3>
+<p>You can use
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.select_groups" title="fiftyone.core.collections.SampleCollection.select_groups"><code class="xref py py-meth docutils literal notranslate"><span class="pre">select_groups()</span></code></a>
+to create a view that contains certain group(s) of interest by their IDs:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># Select two groups at random</span>
+<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">group_ids</span> <span class="o">=</span> <span class="n">view</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;group.id&quot;</span><span class="p">)</span>
+
+<span class="c1"># Select the same groups (default: unordered)</span>
+<span class="n">same_groups</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">select_groups</span><span class="p">(</span><span class="n">group_ids</span><span class="p">)</span>
+<span class="k">assert</span> <span class="nb">set</span><span class="p">(</span><span class="n">view</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">))</span> <span class="o">==</span> <span class="nb">set</span><span class="p">(</span><span class="n">same_groups</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">))</span>
+
+<span class="c1"># Select the same groups (ordered)</span>
+<span class="n">same_order</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">select_groups</span><span class="p">(</span><span class="n">group_ids</span><span class="p">,</span> <span class="n">ordered</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">view</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="n">same_order</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+</div>
+<div class="section" id="excluding-groups">
+<span id="groups-excluding-groups"></span><h3>Excluding groups<a class="headerlink" href="#excluding-groups" title="Permalink to this headline">¶</a></h3>
+<p>You can use
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.exclude_groups" title="fiftyone.core.collections.SampleCollection.exclude_groups"><code class="xref py py-meth docutils literal notranslate"><span class="pre">exclude_groups()</span></code></a>
+to create a view that excludes certain group(s) of interest by their IDs:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># Exclude two groups at random</span>
+<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">group_ids</span> <span class="o">=</span> <span class="n">view</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;group.id&quot;</span><span class="p">)</span>
+<span class="n">other_groups</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">exclude_groups</span><span class="p">(</span><span class="n">group_ids</span><span class="p">)</span>
+<span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">group_ids</span><span class="p">)</span> <span class="o">&amp;</span> <span class="nb">set</span><span class="p">(</span><span class="n">other_groups</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;group.id&quot;</span><span class="p">)))</span> <span class="o">==</span> <span class="mi">0</span>
+</pre></div></td></tr></table></div>
+</div>
+</div>
+<div class="section" id="selecting-slices">
+<span id="groups-selecting-slices"></span><h3>Selecting slices<a class="headerlink" href="#selecting-slices" title="Permalink to this headline">¶</a></h3>
+<p>You can use
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.select_group_slices" title="fiftyone.core.collections.SampleCollection.select_group_slices"><code class="xref py py-meth docutils literal notranslate"><span class="pre">select_group_slices()</span></code></a>
+to create <em>non-grouped views</em> that contain one or more slices of data from a
+grouped dataset.</p>
+<p>For example, you can create an image view that contains only the left camera
+images from the grouped dataset:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">left_view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">select_group_slices</span><span class="p">(</span><span class="s2">&quot;left&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">left_view</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Dataset:     groups-overview
+Media type:  image
+Num samples: 108
+Sample fields:
+    id:               fiftyone.core.fields.ObjectIdField
+    filepath:         fiftyone.core.fields.StringField
+    tags:             fiftyone.core.fields.ListField(fiftyone.core.fields.StringField)
+    metadata:         fiftyone.core.fields.EmbeddedDocumentField(fiftyone.core.metadata.Metadata)
+    created_at:       fiftyone.core.fields.DateTimeField
+    last_modified_at: fiftyone.core.fields.DateTimeField
+    group:            fiftyone.core.fields.EmbeddedDocumentField(fiftyone.core.groups.Group)
+View stages:
+    1. SelectGroupSlices(slices=&#39;left&#39;)
+</pre></div>
+</div>
+<p>or you could create an image collection containing the left and right camera
+images:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">lr_view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">select_group_slices</span><span class="p">([</span><span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="s2">&quot;right&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">lr_view</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Dataset:     groups-overview
+Media type:  image
+Num samples: 216
+Sample fields:
+    id:               fiftyone.core.fields.ObjectIdField
+    filepath:         fiftyone.core.fields.StringField
+    tags:             fiftyone.core.fields.ListField(fiftyone.core.fields.StringField)
+    metadata:         fiftyone.core.fields.EmbeddedDocumentField(fiftyone.core.metadata.Metadata)
+    created_at:       fiftyone.core.fields.DateTimeField
+    last_modified_at: fiftyone.core.fields.DateTimeField
+    group:            fiftyone.core.fields.EmbeddedDocumentField(fiftyone.core.groups.Group)
+View stages:
+    1. SelectGroupSlices(slices=[&#39;left&#39;, &#39;right&#39;])
+</pre></div>
+</div>
+<p>Note that the <a class="reference internal" href="../api/fiftyone.core.view.html#fiftyone.core.view.DatasetView.media_type" title="fiftyone.core.view.DatasetView.media_type"><code class="xref py py-meth docutils literal notranslate"><span class="pre">media_type</span></code></a> of
+the above collections are <code class="code docutils literal notranslate"><span class="pre">image</span></code>, not <code class="code docutils literal notranslate"><span class="pre">group</span></code>. This means you can perform any
+valid operation for image collections to these views, without worrying about
+the fact that their data is sourced from a grouped dataset!</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">image_view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">shuffle</span><span class="p">()</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">select_group_slices</span><span class="p">(</span><span class="s2">&quot;left&quot;</span><span class="p">)</span>
+
+<span class="n">another_view</span> <span class="o">=</span> <span class="n">image_view</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s2">&quot;metadata.width&quot;</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">640</span><span class="p">)</span>
+
+<span class="c1"># Add fields/tags, run evaluation, export, etc</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>Also note that any filtering that you apply prior to a
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.select_group_slices" title="fiftyone.core.collections.SampleCollection.select_group_slices"><code class="xref py py-meth docutils literal notranslate"><span class="pre">select_group_slices()</span></code></a>
+stage in a view is <strong>not</strong> automatically reflected by the output view, as the
+stage looks up unfiltered slice data from the source collection:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># Filter the active slice to locate groups of interest</span>
+<span class="n">match_view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span><span class="o">...</span><span class="p">)</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+
+<span class="c1"># Lookup all image slices for the matching groups</span>
+<span class="c1"># This view contains *unfiltered* image slices</span>
+<span class="n">images_view</span> <span class="o">=</span> <span class="n">match_view</span><span class="o">.</span><span class="n">select_group_slices</span><span class="p">(</span><span class="n">media_type</span><span class="o">=</span><span class="s2">&quot;image&quot;</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>Instead, you can apply the same (or different) filtering <em>after</em> the
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.select_group_slices" title="fiftyone.core.collections.SampleCollection.select_group_slices"><code class="xref py py-meth docutils literal notranslate"><span class="pre">select_group_slices()</span></code></a>
+stage:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># Now apply filters to the flattened collection</span>
+<span class="n">match_images_view</span> <span class="o">=</span> <span class="n">images_view</span><span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span><span class="o">...</span><span class="p">)</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
+<div class="section" id="grouped-aggregations">
+<span id="groups-aggregations"></span><h2>Grouped aggregations<a class="headerlink" href="#grouped-aggregations" title="Permalink to this headline">¶</a></h2>
+<p>You can use the entire <a class="reference internal" href="using_aggregations.html#using-aggregations"><span class="std std-ref">aggregations framework</span></a> to
+efficiently compute statistics on grouped datasets.</p>
+<p>Remember that, just as when <a class="reference internal" href="#groups-iteration"><span class="std std-ref">iterating over</span></a> or
+<a class="reference internal" href="#groups-views"><span class="std std-ref">writing views</span></a> into grouped datasets, aggregations will
+only include samples from the <a class="reference internal" href="#groups-dataset-properties"><span class="std std-ref">active slice</span></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+<span class="kn">from</span> <span class="nn">fiftyone</span> <span class="kn">import</span> <span class="n">ViewField</span> <span class="k">as</span> <span class="n">F</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart-groups&quot;</span><span class="p">)</span>
+
+<span class="c1"># Expression that computes the area of a bounding box, in pixels</span>
+<span class="n">bbox_width</span> <span class="o">=</span> <span class="n">F</span><span class="p">(</span><span class="s2">&quot;bounding_box&quot;</span><span class="p">)[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="n">F</span><span class="p">(</span><span class="s2">&quot;$metadata.width&quot;</span><span class="p">)</span>
+<span class="n">bbox_height</span> <span class="o">=</span> <span class="n">F</span><span class="p">(</span><span class="s2">&quot;bounding_box&quot;</span><span class="p">)[</span><span class="mi">3</span><span class="p">]</span> <span class="o">*</span> <span class="n">F</span><span class="p">(</span><span class="s2">&quot;$metadata.height&quot;</span><span class="p">)</span>
+<span class="n">bbox_area</span> <span class="o">=</span> <span class="n">bbox_width</span> <span class="o">*</span> <span class="n">bbox_height</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">group_slice</span><span class="p">)</span>
+<span class="c1"># left</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;ground_truth.detections&quot;</span><span class="p">))</span>
+<span class="c1"># 1438</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="s2">&quot;ground_truth.detections[]&quot;</span><span class="p">,</span> <span class="n">expr</span><span class="o">=</span><span class="n">bbox_area</span><span class="p">))</span>
+<span class="c1"># 8878.752327468706</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>You can customize the dataset’s active slice by setting the
+<a class="reference internal" href="../api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset.group_slice" title="fiftyone.core.dataset.Dataset.group_slice"><code class="xref py py-meth docutils literal notranslate"><span class="pre">group_slice</span></code></a> property to
+another slice name:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">group_slice</span> <span class="o">=</span> <span class="s2">&quot;right&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;ground_truth.detections&quot;</span><span class="p">))</span>
+<span class="c1"># 1438</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">bounds</span><span class="p">(</span><span class="s2">&quot;ground_truth.detections[]&quot;</span><span class="p">,</span> <span class="n">expr</span><span class="o">=</span><span class="n">bbox_area</span><span class="p">))</span>
+<span class="c1"># 9457.586300995526</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>As usual, you can combine views and aggregations to refine your statistics to
+any subset of the dataset:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">count_values</span><span class="p">(</span><span class="s2">&quot;ground_truth.detections.label&quot;</span><span class="p">))</span>
+<span class="c1"># {&#39;Pedestrian&#39;: 128, &#39;Car&#39;: 793, ...}</span>
+
+<span class="n">view1</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">view1</span><span class="o">.</span><span class="n">count_values</span><span class="p">(</span><span class="s2">&quot;ground_truth.detections.label&quot;</span><span class="p">))</span>
+<span class="c1"># {&#39;Pedestrian&#39;: 1, &#39;Car&#39;: 23, ...}</span>
+
+<span class="n">view2</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span> <span class="n">F</span><span class="p">(</span><span class="s2">&quot;label&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Pedestrian&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">view2</span><span class="o">.</span><span class="n">count_values</span><span class="p">(</span><span class="s2">&quot;ground_truth.detections.label&quot;</span><span class="p">))</span>
+<span class="c1"># {&#39;Pedestrian&#39;: 128}</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>In particular, if you would like to compute statistics across multiple group
+slices, you can <a class="reference internal" href="#groups-selecting-slices"><span class="std std-ref">select them</span></a>!</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">count</span><span class="p">())</span>  <span class="c1"># 200</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;ground_truth.detections&quot;</span><span class="p">))</span>  <span class="c1"># 1438</span>
+
+<span class="n">view3</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">select_group_slices</span><span class="p">([</span><span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="s2">&quot;right&quot;</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">view3</span><span class="o">.</span><span class="n">count</span><span class="p">())</span>  <span class="c1"># 400</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">view3</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;ground_truth.detections&quot;</span><span class="p">))</span>  <span class="c1"># 2876</span>
+</pre></div></td></tr></table></div>
+</div>
+</div>
+<div class="section" id="groups-in-the-app">
+<span id="groups-app"></span><h2>Groups in the App<a class="headerlink" href="#groups-in-the-app" title="Permalink to this headline">¶</a></h2>
+<p>When you load a grouped dataset or view in <a class="reference internal" href="app.html#fiftyone-app"><span class="std std-ref">the App</span></a>,
+you’ll see the samples from the collection’s
+<a class="reference internal" href="#groups-dataset-properties"><span class="std std-ref">default group slice</span></a> in the grid view by
+default.</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart-groups&quot;</span><span class="p">)</span>
+
+<span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>You can use the selector shown below to change which slice you are viewing:</p>
+<img alt="groups-grid-view" class="align-center" src="../_images/groups-grid-view.gif" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In order to view 3D scenes in the grid view, you must populate
+<a class="reference internal" href="using_datasets.html#orthographic-projection-images"><span class="std std-ref">orthographic projection images</span></a>.</p>
+</div>
+<p>When you open the expanded modal with a grouped dataset or view loaded in the
+App, you’ll have access to all samples in the current group.</p>
+<p>If the group contains image/video slices, the lefthand side of the modal will
+contain a scrollable carousel that you can use to choose which sample to load
+in the maximized image/video visualizer below.</p>
+<p>If the group contains 3D slices, the righthand side of the modal will contain a
+<a class="reference internal" href="app.html#app-3d-visualizer"><span class="std std-ref">3D visualizer</span></a>:</p>
+<img alt="groups-modal" class="align-center" src="../_images/groups-modal.gif" />
+<p>By default, the filters sidebar shows statistics for <strong>only</strong> the group slice
+that currently has focus in the grid/modal. In the grid view, the active slice
+is denoted by the selector in the upper-right corner of the grid, and in the
+modal, the active sample is denoted by the <code class="code docutils literal notranslate"><span class="pre">pin</span> <span class="pre">icon</span></code> in the upper-left corner.</p>
+<p>However, you can opt to show statistics across all slices of a grouped dataset
+by selecting <code class="code docutils literal notranslate"><span class="pre">group</span></code> mode under the App’s settings menu:</p>
+<img alt="groups-stats" class="align-center" src="../_images/groups-stats.gif" />
+<p>You can also use the App’s <a class="reference internal" href="app.html#app-dynamic-groups"><span class="std std-ref">dynamic groups</span></a> feature
+to view <em>groups of groups</em> organized by a field of your choice.</p>
+<p>For example, if you have a grouped dataset whose group slices contain different
+sensor modalities for each <code class="code docutils literal notranslate"><span class="pre">frame_number</span></code> of a scene with a given <code class="code docutils literal notranslate"><span class="pre">scene_id</span></code>,
+you can use the dynamic grouping action to playback scenes in sequential order:</p>
+<img alt="dynamic-groups" class="align-center" src="../_images/dynamic-groups.gif" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Did you know? You can also create <a class="reference internal" href="using_views.html#view-groups"><span class="std std-ref">dynamic group views</span></a>
+into your grouped datasets via Python.</p>
+</div>
+</div>
+<div class="section" id="importing-groups">
+<span id="groups-importing"></span><h2>Importing groups<a class="headerlink" href="#importing-groups" title="Permalink to this headline">¶</a></h2>
+<p>The simplest way to import grouped datasets is to
+<a class="reference internal" href="#groups-adding-samples"><span class="std std-ref">write a Python loop</span></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">samples</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">fps</span> <span class="ow">in</span> <span class="n">filepaths</span><span class="p">:</span>
+    <span class="n">group</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Group</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">filepath</span> <span class="ow">in</span> <span class="n">fps</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">sample</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Sample</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="n">filepath</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="n">group</span><span class="o">.</span><span class="n">element</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
+        <span class="n">samples</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
+
+<span class="n">dataset</span><span class="o">.</span><span class="n">add_samples</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>Remember that each group is represented by a <a class="reference internal" href="../api/fiftyone.core.groups.html#fiftyone.core.groups.Group" title="fiftyone.core.groups.Group"><code class="xref py py-class docutils literal notranslate"><span class="pre">Group</span></code></a> instance, and each sample
+in a group is denoted by its slice <code class="code docutils literal notranslate"><span class="pre">name</span></code> using
+<a class="reference internal" href="../api/fiftyone.core.groups.html#fiftyone.core.groups.Group.element" title="fiftyone.core.groups.Group.element"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Group.element()</span></code></a>. The <a class="reference internal" href="../api/fiftyone.core.sample.html#fiftyone.core.sample.Sample" title="fiftyone.core.sample.Sample"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sample</span></code></a>
+objects can then simply be added to the dataset as usual.</p>
+<p>Alternatively, you can
+<a class="reference internal" href="dataset_creation/datasets.html#writing-a-custom-dataset-importer"><span class="std std-ref">write your own importer</span></a> and then
+import grouped datasets in your custom format using the syntax below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># Create an instance of your custom dataset importer</span>
+<span class="n">importer</span> <span class="o">=</span> <span class="n">CustomGroupDatasetImporter</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Dataset</span><span class="o">.</span><span class="n">from_importer</span><span class="p">(</span><span class="n">importer</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+</div>
+<div class="section" id="exporting-groups">
+<span id="groups-exporting"></span><h2>Exporting groups<a class="headerlink" href="#exporting-groups" title="Permalink to this headline">¶</a></h2>
+<p>If you need to export an entire grouped dataset (or a view into it), you can
+use <a class="reference internal" href="export_datasets.html#fiftyonedataset-export"><span class="std std-ref">FiftyOneDataset format</span></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">shuffle</span><span class="p">()</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">view</span><span class="o">.</span><span class="n">export</span><span class="p">(</span>
+    <span class="n">export_dir</span><span class="o">=</span><span class="s2">&quot;/tmp/groups&quot;</span><span class="p">,</span>
+    <span class="n">dataset_type</span><span class="o">=</span><span class="n">fo</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">FiftyOneDataset</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">dataset2</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Dataset</span><span class="o">.</span><span class="n">from_dir</span><span class="p">(</span>
+    <span class="n">dataset_dir</span><span class="o">=</span><span class="s2">&quot;/tmp/groups&quot;</span><span class="p">,</span>
+    <span class="n">dataset_type</span><span class="o">=</span><span class="n">fo</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">FiftyOneDataset</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>You can also <a class="reference internal" href="#groups-selecting-slices"><span class="std std-ref">select specific slice(s)</span></a> and then
+export the resulting ungrouped collection in
+<a class="reference internal" href="export_datasets.html#exporting-datasets"><span class="std std-ref">all the usual ways</span></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">left_view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">shuffle</span><span class="p">()</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">select_group_slices</span><span class="p">(</span><span class="s2">&quot;left&quot;</span><span class="p">)</span>
+
+<span class="n">left_view</span><span class="o">.</span><span class="n">export</span><span class="p">(</span>
+    <span class="n">export_dir</span><span class="o">=</span><span class="s2">&quot;/tmp/groups-left&quot;</span><span class="p">,</span>
+    <span class="n">dataset_type</span><span class="o">=</span><span class="n">fo</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">ImageDirectory</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>Alternatively, you can
+<a class="reference internal" href="export_datasets.html#writing-a-custom-dataset-exporter"><span class="std std-ref">write your own exporter</span></a> and then
+export grouped datasets in your custom format using the syntax below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># Create an instance of your custom dataset exporter</span>
+<span class="n">exporter</span> <span class="o">=</span> <span class="n">CustomGroupDatasetExporter</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+
+<span class="n">dataset_or_view</span><span class="o">.</span><span class="n">export</span><span class="p">(</span><span class="n">dataset_exporter</span><span class="o">=</span><span class="n">exporter</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
+
+
+             </article>
+             
+            </div>
+            <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="annotation.html" class="btn btn-neutral float-right" title="Annotating Datasets" accesskey="n" rel="next">Next <img src="../_static/images/chevron-right-orange.svg" class="next-page"></a>
+      
+      
+        <a href="app.html" class="btn btn-neutral" title="Using the FiftyOne App" accesskey="p" rel="prev"><img src="../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
+      
+    </div>
+  
+</footer>
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              <ul>
+<li><a class="reference internal" href="#">Grouped datasets</a><ul>
+<li><a class="reference internal" href="#overview">Overview</a><ul>
+<li><a class="reference internal" href="#creating-grouped-datasets">Creating grouped datasets</a></li>
+<li><a class="reference internal" href="#adding-samples">Adding samples</a></li>
+<li><a class="reference internal" href="#dataset-properties">Dataset properties</a></li>
+<li><a class="reference internal" href="#adding-fields">Adding fields</a></li>
+<li><a class="reference internal" href="#accessing-samples">Accessing samples</a></li>
+<li><a class="reference internal" href="#deleting-samples">Deleting samples</a></li>
+<li><a class="reference internal" href="#iterating-over-grouped-datasets">Iterating over grouped datasets</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#example-datasets">Example datasets</a><ul>
+<li><a class="reference internal" href="#quickstart-groups">Quickstart groups</a></li>
+<li><a class="reference internal" href="#kitti-multiview">KITTI multiview</a></li>
+<li><a class="reference internal" href="#toy-dataset">Toy dataset</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#grouped-views">Grouped views</a><ul>
+<li><a class="reference internal" href="#basics">Basics</a></li>
+<li><a class="reference internal" href="#filtering">Filtering</a></li>
+<li><a class="reference internal" href="#selecting-groups">Selecting groups</a></li>
+<li><a class="reference internal" href="#excluding-groups">Excluding groups</a></li>
+<li><a class="reference internal" href="#selecting-slices">Selecting slices</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#grouped-aggregations">Grouped aggregations</a></li>
+<li><a class="reference internal" href="#groups-in-the-app">Groups in the App</a></li>
+<li><a class="reference internal" href="#importing-groups">Importing groups</a></li>
+<li><a class="reference internal" href="#exporting-groups">Exporting groups</a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  
+
+
+  
+
+     
+       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+         <script src="../_static/jquery.js"></script>
+         <script src="../_static/underscore.js"></script>
+         <script src="../_static/doctools.js"></script>
+         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+         <script src="../_static/js/voxel51-website.js"></script>
+         <script src="../_static/js/custom.js"></script>
+     
+
+  
+
+  <script type="text/javascript" src="../_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="../_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+  <!-- Begin Footer -->
+
+
+<footer class="footer-wrapper" id="docs-tutorials-resources">
+  <div class="footer pytorch-container">
+    <div class="footer__logo">
+      <a href="https://voxel51.com/"
+        ><img
+          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
+      /></a>
+    </div>
+
+    <div class="footer__address">
+      330 E Liberty St<br />
+      Ann Arbor, MI 48104<br />
+      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
+    </div>
+
+    <!--
+    <div class="footer__contact">
+      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
+    </div>
+    -->
+
+    <div class="footer__links">
+      <div class="footer__links--col2">
+        <p class="nav__item--brand">Products</p>
+        <a href="https://voxel51.com/fiftyone/">FiftyOne</a>
+        <a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a>
+        <a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a>
+        <a href="https://voxel51.com/success-stories/">Success Stories</a>
+      </div>
+      <div class="footer__links--col3">
+        <p class="nav__item--brand">Resources</p>
+        <a href="https://voxel51.com/blog/">Blog</a>
+        <a href="https://docs.voxel51.com/">Docs</a>
+        <a href="https://github.com/voxel51/">GitHub</a>
+        <a href="https://community.voxel51.com">Discord</a>
+        <a href="https://voxel51.com/ourstory/">About Us</a>
+        <a href="https://voxel51.com/computer-vision-events/">Events</a>
+        <a href="https://voxel51.com/jobs/">Careers</a>
+        <a href="https://voxel51.com/press/">Press</a>
+      </div>
+    </div>
+
+    <div class="footer__icons">
+      <ul class="list-inline">
+        <li>
+          <a href="https://www.linkedin.com/company/voxel51/">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/voxel51/">
+            <i class="fa-brands fa-github"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/voxel51">
+            <i class="fa-brands fa-twitter"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/voxel51/">
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="footer__copyright">
+      <ul class="list-inline">
+        <li>&copy; 2024 Voxel51 Inc.</li>
+        <li>
+          <a href="https://voxel51.com/privacy/">Privacy Policy</a>
+        </li>
+        <li>
+          <a href="https://voxel51.com/terms/">Terms of Service</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<!-- https://buttons.github.io -->
+<script async defer src="https://buttons.github.io/buttons.js" ></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XD15NFRY3M" ></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+  gtag("config", "G-XD15NFRY3M");
+</script>
+
+<script>
+  function open_modal(modal_id, modal_closer_id) {
+    // Get the modal
+    let the_modal = document.getElementById(modal_id);
+
+    the_modal.style.display = "flex";
+    document.body.style.overflow = "hidden";
+
+    let the_modal_closer = document.getElementById(modal_closer_id);
+
+    // When the user clicks on <span> (x), close the modal
+    the_modal_closer &&
+      (the_modal_closer.onclick = function () {
+        the_modal.style.display = "none";
+      });
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+      if (event.target == the_modal) {
+        the_modal.style.display = "none";
+        document.body.style.overflow = "unset";
+        window.onclick = undefined;
+      }
+    };
+  }
+</script>
+
+<!-- bigpicture.io -->
+<script>
+  !(function (e, t, i) {
+    var r = (e.bigPicture = e.bigPicture || []);
+    if (!r.initialized)
+      if (r.invoked)
+        e.console &&
+          console.error &&
+          console.error("BigPicture.io snippet included twice.");
+      else {
+        (r.invoked = !0),
+          (r.SNIPPET_VERSION = 1.5),
+          (r.handler = function (e) {
+            if (void 0 !== r.callback)
+              try {
+                return r.callback(e);
+              } catch (e) {}
+          }),
+          (r.eventList = ["mousedown", "mouseup", "click", "submit"]),
+          (r.methods = [
+            "track",
+            "identify",
+            "page",
+            "group",
+            "alias",
+            "integration",
+            "ready",
+            "intelReady",
+            "consentReady",
+            "on",
+            "off",
+          ]),
+          (r.factory = function (e) {
+            return function () {
+              var t = Array.prototype.slice.call(arguments);
+              return t.unshift(e), r.push(t), r;
+            };
+          });
+        for (var n = 0; n < r.methods.length; n++) {
+          var o = r.methods[n];
+          r[o] = r.factory(o);
+        }
+        r.getCookie = function (e) {
+          var i = ("; " + t.cookie).split("; " + e + "=");
+          return 2 == i.length && i.pop().split(";").shift();
+        };
+        var c = (r.isEditor = (function () {
+          try {
+            return (
+              e.self !== e.top &&
+              (new RegExp("app" + i, "ig").test(t.referrer) ||
+                "edit" == r.getCookie("_bpr_edit"))
+            );
+          } catch (e) {
+            return !1;
+          }
+        })());
+        r.init = function (n, o) {
+          if (((r.projectId = n), (r._config = o), !c))
+            for (var a = 0; a < r.eventList.length; a++)
+              e.addEventListener(r.eventList[a], r.handler, !0);
+          var s = t.createElement("script");
+          s.async = !0;
+          var d = c ? "/editor/editor" : "/public-" + n;
+          (s.src = "//cdn" + i + d + ".js"),
+            t.getElementsByTagName("head")[0].appendChild(s);
+        };
+      }
+  })(window, document, ".bigpicture.io");
+  bigPicture.init("1646");
+</script>
+
+
+  
+
+  <!-- End Footer -->
+
+  <!-- Begin Mobile Menu -->
+
+  
+
+  <!-- End Mobile Menu -->
+
+  <script type="text/javascript" src="../_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function(e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+</body>
+</html>

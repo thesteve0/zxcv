@@ -1,0 +1,1311 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Pluggable Authentication &mdash; FiftyOne 1.3.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <link rel="stylesheet" href="../_static/css/voxel51-website.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="FiftyOne Installation" href="../getting_started/install.html" />
+    <link rel="prev" title="Migrations" href="migrations.html" />
+<meta property="og:image" content="https://voxel51.com/wp-content/uploads/2024/03/3.24_webpages_Home_AV.png" />
+
+<link
+  href="https://fonts.googleapis.com/css?family=Palanquin:400,600,700,800"
+  rel="stylesheet"
+/>
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+  rel="stylesheet"
+/>
+<script src="https://tag.clearbitscripts.com/v1/pk_b9ed71c8234edd4f77326bcbfab5a4ca/tags.js"></script>
+
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+  
+</head>
+
+
+<div class="container-fluid header-holder tutorials-header" id="header-holder">
+  <nav id="nav__main" class="nav__main">
+    <div class="nav__main__logo">
+      <a href="https://voxel51.com/">
+        <img
+          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
+        />
+      </a>
+    </div>
+
+    <div class="nav__spacer desktop_only"></div>
+
+    <div id="nav__main__mobilebutton--on">
+      <a href="javascript:void(0);" onclick="navMobileButton()">
+        <i class="fa-solid fa-bars"></i>
+      </a>
+    </div>
+
+    <div id="nav__main__mobilebutton--off">
+      <a href="javascript:void(0);" onclick="navMobileButton()">
+        <i class="fa-solid fa-times"></i>
+      </a>
+    </div>
+
+    <div id="nav__main__items">
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Products</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://voxel51.com/fiftyone/">Open Source</a></li>
+            <li><a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a></li>
+            <li><a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a></li>
+            <li><a href="https://voxel51.com/success-stories/">Success Stories</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Learn</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://community.voxel51.com">Community Discord</a></li>
+            <li><a href="https://voxel51.com/blog/">Blog</a></li>
+            <li><a href="https://voxel51.com/computer-vision-events/">Events</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item">
+        <a href="https://docs.voxel51.com/">Docs</a>
+      </div>
+
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Company</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://voxel51.com/ourstory/">About Us</a></li>
+            <li><a href="https://voxel51.com/jobs/">Careers</a></li>
+            <li><a href="https://voxel51.com/talk-to-sales/">Talk to Sales</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item mobile_only">
+        <a href="https://github.com/voxel51/fiftyone">GitHub</a>
+      </div>
+
+      <div class="nav__item desktop_only" id="octocat">
+        <!-- https://buttons.github.io -->
+        <a
+          class="github-button"
+          href="https://github.com/voxel51/fiftyone"
+          data-color-scheme="no-preference: dark_high_contrast; light: dark_high_contrast; dark: dark_high_contrast;"
+          data-size="large"
+          data-show-count="true"
+          aria-label="Star voxel51/fiftyone on GitHub"
+          >Star</a
+        >
+      </div>
+
+      <div class="nav__item full_nav_only">
+        <a class="button-primary" href="https://voxel51.com/schedule-teams-workshop/" target="_blank"
+          >Schedule a workshop</a
+        >
+      </div>
+    </div>
+  </nav>
+</div>
+
+
+
+<body class="pytorch-body">
+
+   
+
+    
+
+    <div class="table-of-contents-link-wrapper">
+      <span>Table of Contents</span>
+      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+    </div>
+
+    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+      <div class="pytorch-side-scroll">
+        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          <div class="pytorch-left-menu-search">
+            
+
+            
+              
+              
+            
+
+            
+
+
+  
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+            
+          </div>
+
+           <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Overview</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">FiftyOne Teams 🚀</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_connection.html">API connection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloud_media.html">Cloud-backed media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="roles_and_permissions.html">Roles and permissions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dataset_versioning.html">Dataset Versioning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="teams_app.html">FiftyOne Teams App</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_lens.html">Data Lens <strong style="color: hsl(25, 100%, 51%); font-size: 0.85em; vertical-align: top">NEW</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_quality.html">Data Quality <strong style="color: hsl(25, 100%, 51%); font-size: 0.85em; vertical-align: top">NEW</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="query_performance.html">Query Performance <strong style="color: hsl(25, 100%, 51%); font-size: 0.85em; vertical-align: top">NEW</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="teams_plugins.html">Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="secrets.html">Secrets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="management_sdk.html">Management SDK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migrations.html">Migrations</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Pluggable Auth</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../environments/index.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../recipes/index.html">Recipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheat_sheets/index.html">Cheat Sheets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dataset_zoo/index.html">Dataset Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_zoo/index.html">Model Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brain.html">FiftyOne Brain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/index.html">Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plugins/index.html">Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli/index.html">CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/fiftyone.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deprecation.html">Deprecation Notices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a></li>
+</ul>
+ 
+        </div>
+      </div>
+    </nav>
+
+    <div class="pytorch-container">
+      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+        <div class="pytorch-breadcrumbs-wrapper">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="../index.html">
+          
+            Docs
+          
+        </a> &gt;
+      </li>
+
+        
+          <li><a href="index.html">FiftyOne Teams</a> &gt;</li>
+        
+      <li>Pluggable Authentication</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+        </div>
+
+        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+          Contents
+        </div>
+      </div>
+
+      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+        <div class="pytorch-content-left">
+
+        
+          
+          <div class="rst-content style-external-links">
+          
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+              
+  <div class="section" id="pluggable-authentication">
+<span id="pluggable-auth"></span><h1>Pluggable Authentication<a class="headerlink" href="#pluggable-authentication" title="Permalink to this headline">¶</a></h1>
+<p>FiftyOne Teams v1.6.0 introduces Pluggable Authentication that provides the
+Central Authentication Service (CAS). CAS is a self-contained authentication
+system with two modes (<code class="docutils literal notranslate"><span class="pre">legacy</span></code> and <code class="docutils literal notranslate"><span class="pre">internal</span></code>). Legacy mode uses Auth0.
+Internal mode eliminates the Auth0 external dependency and may run in
+environments without egress to the internet. CAS provides a UI, REST API, and
+JavaScript (JS) Hook mechanism to manage FiftyOne Teams user data and
+authentication.</p>
+<div class="section" id="fiftyone-authentication-modes">
+<h2>FiftyOne Authentication Modes<a class="headerlink" href="#fiftyone-authentication-modes" title="Permalink to this headline">¶</a></h2>
+<p>The setting <code class="docutils literal notranslate"><span class="pre">FIFTYONE_AUTH_MODE</span></code> specifies the authentication mode <code class="docutils literal notranslate"><span class="pre">legacy</span></code> or
+<code class="docutils literal notranslate"><span class="pre">internal</span></code>.</p>
+<div class="section" id="legacy-mode">
+<span id="id1"></span><h3>Legacy Mode<a class="headerlink" href="#legacy-mode" title="Permalink to this headline">¶</a></h3>
+<p>In legacy mode, FiftyOne Teams uses Auth0 for user authentication and
+authorization. This mode requires an external connection to Auth0 endpoints.
+User data is eventually consistent (where changes are reflected across
+FiftyOneTeams eventually). Auth0 contains the configuration for identity
+providers and the persistence of user data. Auth0 supports multiple providers
+(including SAML). For the supported IdPs, see
+<a class="reference external" href="https://auth0.com/docs/authenticate/identity-providers/enterprise-identity-providers">Auth0 Enterprise Identity Providers</a>.</p>
+</div>
+<div class="section" id="internal-mode">
+<span id="id2"></span><h3>Internal Mode<a class="headerlink" href="#internal-mode" title="Permalink to this headline">¶</a></h3>
+<p>In internal mode, FiftyOne Teams the CAS replaces Auth0. FiftyOne Teams will
+not require network egress to external services. User data is immediately
+consistent (where changes are reflected across FiftyOne Teams instantly).
+Directory data is immediately written to MongoDB, and organizations have the
+autonomy to manage their Identity Provider Configuration. Internal mode
+supports
+<a class="reference external" href="https://openid.net/developers/discover-openid-and-openid-connect/">OpenID Connect (OIDC)</a>
+and <a class="reference external" href="https://oauth.net/2/">OAuth2</a>.</p>
+<blockquote>
+<div><p><strong>NOTE</strong>: SAML is not supported in <a class="reference external" href="#internal-mode">internal mode</a></p>
+</div></blockquote>
+<!-- TODO: Enumerate what connection types are supported. -->
+</div>
+</div>
+<div class="section" id="super-admin-ui">
+<span id="id3"></span><h2>Super Admin UI<a class="headerlink" href="#super-admin-ui" title="Permalink to this headline">¶</a></h2>
+<p><img alt="Super Admin UI" src="../_images/cas_api_docs.png" /></p>
+<p>The Super Admin UI contains FiftyOne Teams deployment wide configurations. When
+logging into FiftyOne Teams as an admin, you are in the context of an
+organization. Settings are scoped by organization and only apply to that
+organization. The Super Admin UI allows you to administer all organizations and
+global configurations (Identity Providers, Session timeouts, and JS hooks).</p>
+<blockquote>
+<div><p><strong>NOTE</strong>: In v1.6.0, the Super Admin UI is only available in
+<a class="reference external" href="#internal-mode">internal mode</a></p>
+</div></blockquote>
+<p><img alt="Sign In to CAS" src="../_images/cas_sign_in.png" /></p>
+<p>To login to this application navigate to
+<code class="docutils literal notranslate"><span class="pre">https://&lt;YOUR_FIFTYONE_TEAMS_URL&gt;/cas/configurations</span></code>. In the top right of the
+screen, and provide the <code class="docutils literal notranslate"><span class="pre">FIFTYONE_AUTH_SECRET</span></code> to login.</p>
+<blockquote>
+<div><p><strong>NOTE</strong>: The value of <code class="docutils literal notranslate"><span class="pre">FIFTYONE_AUTH_SECRET</span></code> should be set prior to
+installation or upgrade.</p>
+</div></blockquote>
+<div class="section" id="new-user-invitations">
+<span id="identity-providers"></span><h3>New User Invitations<a class="headerlink" href="#new-user-invitations" title="Permalink to this headline">¶</a></h3>
+<p>As of FiftyOne Teams 2.1.0, onboarding new users can be done via invitation
+links. To do so, “Enable invitation” must be toggled on in the Organizations
+section of the <a class="reference external" href="#super-admin-ui">Super Admin UI</a>.</p>
+<p><img alt="Enable Invitations" src="../_images/org_enable_invitations.png" /></p>
+<p>This allows creating invitation links in <a class="reference external" href="#internal-mode">internal mode</a> that
+can be manually sent to users. When those users click the links, they will be
+added to the Organization and prompted to log in.</p>
+<p>As of FiftyOne Teams 2.2.0, these invitation links can be automatically sent
+via an email through a configured SMTP server. This provides similar
+functionality to <a class="reference external" href="#legacy-mode">legacy mode</a> email invitations, but without the
+need for Auth0 or any other external connections beyond the SMTP server itself.</p>
+<blockquote>
+<div><p><strong>NOTE:</strong> Unless the deployment is a Managed Deployment, users must provide
+their own SMTP server to use in <a class="reference external" href="#internal-mode">internal mode</a>. This new
+functionality provides a way to authenticate and communicate with your
+existing mail server.</p>
+</div></blockquote>
+<p>To do so, “Send email invitations” must be toggled on in the Organizations
+section of the <a class="reference external" href="#super-admin-ui">Super Admin UI</a></p>
+<p><img alt="Send email invitations" src="../_images/org_send_email_invitations.png" /></p>
+<p>To configure your SMTP connection, navigate to the SMTP section of the
+<a class="reference external" href="#super-admin-ui">Super Admin UI</a></p>
+<p><img alt="SMTP Config" src="../_images/SMTP_config.png" /></p>
+<p>A notification at the top of the menu will inform if an SMTP configuration is
+already saved. Currently, only one SMTP configuration can be saved per
+Organization.</p>
+<p>Select the appropriate type of authentication for your SMTP server and fill out
+the associated fields. When you save the configuration, FiftyOne Teams will do
+a preliminary check to ensure that the SMTP server is reachable at the host
+provided. The configuration will not save otherwise.</p>
+<p>Additionally, users can enter a valid email address and click Send Test Email
+to test the connection.</p>
+<p><img alt="SMTP Config test email" src="../_images/SMTP_config_test_email.png" /></p>
+<blockquote>
+<div><p><strong>NOTE:</strong> Emails and an SMTP connection are not required to use invitations.
+Invitation links can still be generated and manually distributed without an
+SMTP configuration.</p>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="identity-providers-idp">
+<h2>Identity Providers (IdP)<a class="headerlink" href="#identity-providers-idp" title="Permalink to this headline">¶</a></h2>
+<p>In <a class="reference external" href="#internal-mode">internal mode</a>, use the CAS REST API or Super Admin UI to
+configure FiftyOne teams to authenticate users via OIDC or OAuth2 compatible
+Identity Providers. Below is an example configuration for KeyCloak as an
+Identity Provider.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;keycloak-example&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;wellKnown&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://keycloak.dev.acme.ai/auth/realms/acme/.well-known/openid-configuration&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;KeyCloak&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;oauth&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;authorization&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://keycloak.acme.ai/auth/realms/acme/protocol/openid-connect/auth&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;params&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;scope&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;openid email profile&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;clientId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;clientSecret&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;issuer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://keycloak.dev.acme.ai/auth/realms/acme&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;token&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://keycloak.dev.acme.ai/auth/realms/acme/protocol/openid-connect/token&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;userinfo&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://keycloak.dev.acme.ai/auth/realms/acme/protocol/openid-connect/userinfo&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;idToken&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;style&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;logoDark&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://images.com/keycloak.svg&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;bg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#47abc6&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#fff&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;profile&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;(e,l)=&gt;(console.log({profile:e,tokens:l}),{id:e.sub,name:e.name,email:e.email,image:null})&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;allowDangerousEmailAccountLinking&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<!--
+**Migrating from Legacy to internal mode**
+
+The migration from Legacy to internal mode begins with configuring an
+authentication provider through CAS (UI or REST). Following this, all existing
+user data must be migrated from Auth0, utilizing the management SDK or Auth0
+API to ensure a comprehensive transfer of information.
+
+For each user, the migration involves several steps:
+
+1. Creating a FiftyOne Teams user profile via `POST /cas/api/users`.
+1. Assigning the user to the default organization through a membership entry.
+1. Linking the user's account to the new authentication provider by creating an
+   account reference via `POST /cas/api/accounts`.
+
+The final step in the migration involves changing the `FIFTYONE_AUTH_MODE`
+setting from legacy to internal. This change officially activates Internal
+Mode, completing the migration process.
+-->
+</div>
+<div class="section" id="getting-started-with-internal-mode">
+<h2>Getting Started with Internal Mode<a class="headerlink" href="#getting-started-with-internal-mode" title="Permalink to this headline">¶</a></h2>
+<p>These steps are only required to run FiftyOne Teams in
+<a class="reference external" href="#internal-mode">internal mode</a>. Please skip when using Auth0 in
+<a class="reference external" href="#legacy-mode">legacy mode</a>.</p>
+<ol class="simple">
+<li><p>Configure your Identity Provider</p></li>
+<li><p>Login to the SuperUser UI by navigating to
+<code class="docutils literal notranslate"><span class="pre">https://&lt;YOUR_FIFTYONE_TEAMS_URL&gt;/cas/configurations</span></code> and in the top right,
+and provide the <code class="docutils literal notranslate"><span class="pre">FIFTYONE_AUTH_SECRET</span></code> to login.</p></li>
+<li><p>Create an Admin</p>
+<ol class="simple">
+<li><p>Click on the “Admins” tab</p></li>
+<li><p>Click “Add admin” in the bottom left</p></li>
+<li><p>Set the name and email address (as it appears in your Identity Provider)
+and click “Add”</p></li>
+</ol>
+</li>
+<li><p>Add your Identity Provider</p>
+<ol class="simple">
+<li><p>Click on the “Identity Providers” tab at the top of the screen and click
+“Add provider”</p></li>
+<li><p>Fill out the “Add identity provider”</p>
+<ol class="simple">
+<li><p>You can also click “Switch to advanced editor” to provide the full
+configuration as a JSON object</p></li>
+</ol>
+</li>
+<li><p>In the “Profile callback” field, set the mapping that your Identity
+Provider expects</p></li>
+</ol>
+</li>
+<li><p>Login with the admin user</p>
+<ol class="simple">
+<li><p>Navigate to <code class="docutils literal notranslate"><span class="pre">https://&lt;YOUR_FIFTYONE_TEAMS_URL&gt;/datasets</span></code></p></li>
+<li><p>You should see the login screen for your newly configured authentication
+provider</p></li>
+<li><p>Before logging in, set the admin user (in step 5). Otherwise, you will
+need to remove this user from the database and try again.</p></li>
+<li><p>Click the login button and provide the credentials of the Admin user
+(set in step 3)</p></li>
+<li><p>Click on the icon in the top right corner then click “Settings”</p></li>
+<li><p>Click “Users” on the left side</p></li>
+<li><p>Validate the user is listed as an admin</p></li>
+</ol>
+</li>
+</ol>
+</div>
+<div class="section" id="syncing-with-3rd-party-directories-open-directory-ldap-and-active-directory">
+<h2>Syncing with 3rd Party Directories (Open Directory, LDAP, and Active Directory)<a class="headerlink" href="#syncing-with-3rd-party-directories-open-directory-ldap-and-active-directory" title="Permalink to this headline">¶</a></h2>
+<p>Below is an example of how to use JavaScript hooks to sync FiftyOne Teams with
+a corporate directory (such as Open Directory, LDAP, or Active Directory) via
+an intermediary REST API or Identity Provider. The recommended setup is with
+OAuth/OIDC claims, however the example below illustrates a more intricate
+integration.</p>
+<p>This example specifically addresses a scenario in which additional actions are
+performed during the <code class="docutils literal notranslate"><span class="pre">signIn</span></code> trigger. This demonstrates how hooks can extend
+beyond simple authentication to interact with external APIs and internal
+services for complex user management and group assignment tasks. Here’s a
+breakdown of the example:</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="c1">// Example JavaScript hook implementation</span>
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">Hook</span><span class="p">(</span><span class="nx">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">params</span><span class="p">,</span><span class="w"> </span><span class="nx">services</span><span class="p">,</span><span class="w"> </span><span class="nx">trigger</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">context</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">params</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="nx">trigger</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Callback: user is trying to sign in</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="s2">&quot;signIn&quot;</span><span class="o">:</span>
+<span class="w">            </span><span class="c1">// returning false will prevent user from signing in</span>
+<span class="w">            </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="kd">const</span><span class="w"> </span><span class="nx">groups</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">getGroups</span><span class="p">();</span>
+<span class="w">                </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">const</span><span class="w"> </span><span class="nx">group</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">groups</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="k">await</span><span class="w"> </span><span class="nx">addUserToGroup</span><span class="p">(</span><span class="nx">group</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">getGroups</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">account</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">params</span><span class="p">;</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">services</span><span class="p">.</span><span class="nx">util</span><span class="p">.</span><span class="nx">http</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span>
+<span class="w">            </span><span class="sb">`https://fiftyone.ai/list_groups/</span><span class="si">${</span><span class="nx">user</span><span class="p">.</span><span class="nx">id</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span>
+<span class="w">            </span><span class="p">{</span><span class="w"> </span><span class="nx">headers</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Authorization</span><span class="o">:</span><span class="w"> </span><span class="sb">`Bearer </span><span class="si">${</span><span class="nx">account</span><span class="o">?</span><span class="p">.</span><span class="nx">access_token</span><span class="si">}</span><span class="sb">`</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">addUserToGroup</span><span class="p">(</span><span class="nx">groupName</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">orgId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;my_org_id&quot;</span><span class="p">;</span>
+<span class="w">        </span><span class="c1">// Retrieve all existing groups</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">groups</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">services</span><span class="p">.</span><span class="nx">directory</span><span class="p">.</span><span class="nx">groups</span><span class="p">.</span><span class="nx">listGroups</span><span class="p">(</span><span class="nx">orgId</span><span class="p">);</span>
+<span class="w">        </span><span class="c1">// Find an existing group by name</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="nx">group</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">groups</span><span class="p">.</span><span class="nx">find</span><span class="p">((</span><span class="nx">group</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nx">group</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nx">groupName</span><span class="p">;</span>
+<span class="w">        </span><span class="p">});</span>
+<span class="w">        </span><span class="c1">// If group does not exist, create a new group</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">group</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">group</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">services</span><span class="p">.</span><span class="nx">directory</span><span class="p">.</span><span class="nx">groups</span><span class="p">.</span><span class="nx">createGroup</span><span class="p">(</span>
+<span class="w">                </span><span class="nx">orgId</span><span class="p">,</span>
+<span class="w">                </span><span class="nx">groupName</span>
+<span class="w">            </span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">group</span><span class="p">.</span><span class="nx">userIds</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">id</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// Add signed-in user to the group and update the group</span>
+<span class="w">            </span><span class="kd">const</span><span class="w"> </span><span class="nx">updatedGroupName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">undefined</span><span class="p">;</span>
+<span class="w">            </span><span class="kd">const</span><span class="w"> </span><span class="nx">updatedGroupDescription</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">undefined</span><span class="p">;</span>
+<span class="w">            </span><span class="kd">const</span><span class="w"> </span><span class="nx">updatedGroupUserIds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[...</span><span class="nx">group</span><span class="p">.</span><span class="nx">userIds</span><span class="p">,</span><span class="w"> </span><span class="nx">user</span><span class="p">.</span><span class="nx">id</span><span class="p">];</span>
+<span class="w">            </span><span class="kd">const</span><span class="w"> </span><span class="nx">accessorId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">undefined</span><span class="p">;</span>
+<span class="w">            </span><span class="k">await</span><span class="w"> </span><span class="nx">services</span><span class="p">.</span><span class="nx">directory</span><span class="p">.</span><span class="nx">groups</span><span class="p">.</span><span class="nx">updateGroup</span><span class="p">(</span>
+<span class="w">                </span><span class="nx">orgId</span><span class="p">,</span>
+<span class="w">                </span><span class="nx">group</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span>
+<span class="w">                </span><span class="nx">accessorId</span><span class="p">,</span>
+<span class="w">                </span><span class="nx">updatedGroupName</span><span class="p">,</span>
+<span class="w">                </span><span class="nx">updatedGroupDescription</span><span class="p">,</span>
+<span class="w">                </span><span class="nx">updatedGroupUserIds</span>
+<span class="w">            </span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="section" id="context-object">
+<h3><strong>Context Object</strong><a class="headerlink" href="#context-object" title="Permalink to this headline">¶</a></h3>
+<p>The context object provides information about the current operation, including
+parameters like the user’s details, and services (services) that offer utility
+functions and access to directory operations.</p>
+</div>
+<div class="section" id="external-api-integration">
+<h3><strong>External API Integration</strong><a class="headerlink" href="#external-api-integration" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">getGroups</span></code>: This function calls an external API to retrieve a list of
+groups to which the signing-in user should be added. It utilizes the
+<code class="docutils literal notranslate"><span class="pre">services.util.http.get</span></code> method for making the HTTP request, demonstrating
+how external services can be queried within the hook.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">addUserToGroup</span></code>: For each group retrieved from the external API, this
+function checks if the group exists in the organization’s directory. If a
+group does not exist, it is created, and then the user is added to it. This
+process involves querying and modifying the organization’s group directory,
+illustrating the hook’s capability to perform complex operations like
+dynamic group management based on external data.</p></li>
+</ul>
+</div>
+<div class="section" id="error-handling">
+<h3>Error Handling<a class="headerlink" href="#error-handling" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>The try-catch block around the external API call and group manipulation
+logic ensures that errors do not prevent the user from signing in but are
+properly logged</p></li>
+</ul>
+</div>
+<div class="section" id="summary">
+<h3>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h3>
+<p>This hook example demonstrates a pattern for extending authentication flows in
+CAS with custom logic. By integrating with an external API to fetch group
+information and manipulating the organization’s group memberships accordingly,
+it showcases the flexibility and extensibility of hooks in supporting complex,
+real-world authentication and authorization scenarios.</p>
+</div>
+</div>
+<div class="section" id="rest-api">
+<h2>REST API<a class="headerlink" href="#rest-api" title="Permalink to this headline">¶</a></h2>
+<p>You can view the REST API Documentation by logging into the Super Admin UI (see
+above) or by directly visiting <code class="docutils literal notranslate"><span class="pre">https://&lt;YOUR_FIFTYONE_TEAMS_URL&gt;/cas/api-doc</span></code></p>
+</div>
+<div class="section" id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+<table>
+  <tr>
+   <td><strong>Setting</strong>
+   </td>
+   <td>Type
+   </td>
+   <td>Default
+   </td>
+   <td>Description
+   </td>
+  </tr>
+  <tr>
+   <td><code>authentication_providers</code>
+   </td>
+   <td><code>Array</code>
+   </td>
+   <td><code>[]</code>
+   </td>
+   <td>A list of definitions of OIDC and/or OAuth providers.
+   </td>
+  </tr>
+  <tr>
+   <td><code>authentication_provider.profile</code>
+   </td>
+   <td><code>String</code> (parseable to JS function)
+   </td>
+   <td><code>null</code>
+   </td>
+   <td>When provided this function is called to map the external user_info to the internal fiftyone user/account.
+   </td>
+  </tr>
+  <tr>
+   <td><code>session_ttl</code>
+   </td>
+   <td><code>Number</code>
+   </td>
+   <td><code>300</code>
+   </td>
+   <td>Time in seconds for sessions to live after which users will be forced to log out. Must be greater than 120 seconds to support refreshing of user session using refresh token.
+   </td>
+  </tr>
+  <tr>
+   <td><code>js_hook_enabled</code>
+   </td>
+   <td><code>Boolean</code>
+   </td>
+   <td><code>true</code>
+   </td>
+   <td>When set to False, configured JavaScript hooks will not be invoked.
+   </td>
+  </tr>
+  <tr>
+   <td><code>js_hook</code>
+   </td>
+   <td><code>String</code> (parseable to a single JS function)
+   </td>
+   <td><code>null</code>
+   </td>
+   <td>JavaScript hook which is invoked on several CAS events described in JS Hooks section below
+   </td>
+  </tr>
+  <tr>
+   <td><code>skipSignInPage</code>
+   </td>
+   <td><code>Boolean</code>
+   </td>
+   <td><code>false</code>
+   </td>
+   <td>When set to True, sign in page with identity provider choices will be skipped when there is only one identity provider is configured
+   </td>
+  </tr>
+</table>
+</div>
+<div class="section" id="javascript-hooks">
+<h2>JavaScript Hooks<a class="headerlink" href="#javascript-hooks" title="Permalink to this headline">¶</a></h2>
+<p>This documentation outlines the JavaScript hook implementation for the Central
+Authentication Service (CAS). As a CAS superuser, you are able to define
+JavaScript functions that integrate with various authentication flows within
+CAS, customizing the authentication processes.</p>
+<div class="section" id="overview">
+<h3>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h3>
+<p>JavaScript hooks allow superusers to programmatically influence authentication
+flows, including sign-in, sign-up, JWT handling and customization, redirection,
+and session management. This document describes the available hooks, their
+triggers, expected return types, and contextual information provided to each
+hook.</p>
+</div>
+<div class="section" id="example-javascript-hook">
+<h3>Example JavaScript Hook<a class="headerlink" href="#example-javascript-hook" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="c1">// Example JavaScript hook implementation</span>
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">Hook</span><span class="p">(</span><span class="nx">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">params</span><span class="p">,</span><span class="w"> </span><span class="nx">services</span><span class="p">,</span><span class="w"> </span><span class="nx">trigger</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">context</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="nx">trigger</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// user is trying to sign in</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="s2">&quot;signIn&quot;</span><span class="o">:</span>
+<span class="w">            </span><span class="c1">// returning false will prevent user from signing in</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+
+<span class="w">        </span><span class="c1">// JWT token is created for user session</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="s2">&quot;jwt&quot;</span><span class="o">:</span>
+<span class="w">            </span><span class="c1">// custom payload returned will be merged with default payload</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="p">{};</span>
+
+<span class="w">        </span><span class="c1">// user has logged out</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="s2">&quot;logout&quot;</span><span class="o">:</span>
+<span class="w">            </span><span class="c1">// returning or throwing here does not affect the sign out flow</span>
+<span class="w">            </span><span class="k">break</span><span class="p">;</span>
+
+<span class="w">        </span><span class="c1">// user is being redirected on sign in our sign out</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="s2">&quot;redirect&quot;</span><span class="o">:</span>
+<span class="w">            </span><span class="c1">// user will be redirected to this URL on sign in our sign out</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;/settings/accounts&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="actionable-triggers">
+<h3>Actionable Triggers<a class="headerlink" href="#actionable-triggers" title="Permalink to this headline">¶</a></h3>
+<table>
+  <tr>
+   <td><strong>Trigger</strong>
+   </td>
+   <td><strong>Description</strong>
+   </td>
+   <td><strong>Return Type</strong>
+   </td>
+  </tr>
+  <tr>
+   <td><code>signIn</code>
+   </td>
+   <td>Invoked when a user signs in. If the hook returns false or error is thrown, sign-in will be prevented.
+   </td>
+   <td>Boolean
+   </td>
+  </tr>
+  <tr>
+   <td><code>signUp</code>
+   </td>
+   <td>Invoked when a new user signs in for the very first time. If the hook returns false or an error is thrown, sign-in will be prevented and a user/account will not be created.
+   </td>
+   <td>
+   </td>
+  </tr>
+  <tr>
+   <td><code>jwt</code>
+   </td>
+   <td>Invoked when JWT is created (on signIn, signUp, refresh token). The returned object will override payload of default JWT payload. If an error is thrown, the session will be expired and user will be redirected to sign-in
+   </td>
+   <td>Object | undefined
+   </td>
+  </tr>
+  <tr>
+   <td><code>redirect</code>
+   </td>
+   <td>Invoked post signIn or signOut. The user will be redirected to the URL/Path returned from the hook.
+   </td>
+   <td>String (URL)
+   </td>
+  </tr>
+  <tr>
+   <td><code>session</code>
+   </td>
+   <td>Invoked when a request for a session (on signIn, signUp, refresh token) is received.
+   </td>
+   <td>
+   </td>
+  </tr>
+</table>
+<p><strong>Event-Only Triggers</strong></p>
+<table>
+  <tr>
+   <td><strong>Trigger</strong>
+   </td>
+   <td><strong>Description</strong>
+   </td>
+  </tr>
+  <tr>
+   <td><code>signOut</code>
+   </td>
+   <td>Invoked when a user signs out.
+   </td>
+  </tr>
+  <tr>
+   <td><code>createUser</code>
+   </td>
+   <td>Invoked when the adapter is asked to create a user.
+   </td>
+  </tr>
+  <tr>
+   <td><code>linkAccount</code>
+   </td>
+   <td>Invoked when an account is linked to a user.
+   </td>
+  </tr>
+</table>
+<p><strong>JavaScript Hooks Contextual Parameters</strong></p>
+<table>
+  <tr>
+   <td>
+    <strong>Parameter</strong>
+   </td>
+   <td>
+    <strong>Description</strong>
+   </td>
+   <td>
+    <strong>Available in Triggers</strong>
+   </td>
+  </tr>
+  <tr>
+   <td>
+    <code>token</code>
+   </td>
+   <td>
+    The payload of a JWT token.
+   </td>
+   <td>
+    <code>signIn<strong>, </strong>signUp<strong>, </strong>jwt<strong>, </strong>session<strong>, </strong>signOut<strong>, </strong>linkAccount<strong>, </strong>createUser</code>
+   </td>
+  </tr>
+  <tr>
+   <td>
+    <code>user</code>
+   </td>
+   <td>
+    The signed-in user object.
+   </td>
+   <td>
+    <code>signIn<strong>, </strong>signUp<strong>, </strong>jwt<strong>, </strong>linkAccount</code>
+   </td>
+  </tr>
+  <tr>
+   <td>
+    <code>account</code>
+   </td>
+   <td>
+    The account from an identity provider.
+   </td>
+   <td>
+    <code>signIn<strong>, </strong>signUp<strong>, </strong>jwt<strong>, </strong>linkAccount</code>
+   </td>
+  </tr>
+  <tr>
+   <td>
+    <code>profile</code>
+   </td>
+   <td>
+    The profile from an identity provider.
+   </td>
+   <td>
+    <code>signIn<strong>, </strong>signUp<strong>, </strong>jwt<strong>, </strong>linkAccount</code>
+   </td>
+  </tr>
+  <tr>
+   <td>
+    <code>isNewUser</code>
+   </td>
+   <td>
+    True if a user is signing in for the first time.
+   </td>
+   <td>
+    <code>jwt</code>
+   </td>
+  </tr>
+  <tr>
+   <td>
+    <code>trigger</code>
+   </td>
+   <td>
+    Specifies the current trigger event.
+   </td>
+   <td>
+    <code>jwt</code>
+   </td>
+  </tr>
+  <tr>
+   <td>
+    <code>Session</code>
+   </td>
+   <td>
+    The session object.
+   </td>
+   <td>
+    <code>session</code>
+   </td>
+  </tr>
+  <tr>
+   <td>
+    <code>services</code>
+   </td>
+   <td>
+    Provides access to various services.
+   </td>
+   <td><strong>all</strong>
+   </td>
+  </tr>
+</table>
+<p><strong>Services</strong></p>
+<table>
+  <tr>
+   <td><strong>Service</strong>
+   </td>
+   <td><strong>Description</strong>
+   </td>
+  </tr>
+  <tr>
+   <td><code>services.util.http</code>
+   </td>
+   <td>Provides <code>get</code>, <code>post</code>, <code>put</code>, and <code>delete</code> functions for making <code>HTTP</code> requests from a JS Hook.
+   </td>
+  </tr>
+  <tr>
+   <td><code>services.userContext</code>
+   </td>
+   <td>Object containing information about the user performing the current action.
+   </td>
+  </tr>
+  <tr>
+   <td><code>services.directory</code>
+   </td>
+   <td>
+   </td>
+  </tr>
+  <tr>
+   <td><code>services.directory.users</code>
+   </td>
+   <td>The <code>UserService</code> - providing methods for interacting with the directory of users.
+   </td>
+  </tr>
+  <tr>
+   <td><code>services.directory.groups</code>
+   </td>
+   <td>The <code>GroupsService </code>- providing methods for interacting with the directory of groups.
+   </td>
+  </tr>
+  <tr>
+   <td><code>services.config</code>
+   </td>
+   <td>The <code>ConfigService </code>- providing methods for reading and writing the <code>AuthenticationConfig</code>.
+   </td>
+  </tr>
+  <tr>
+   <td><code>services.util</code>
+   </td>
+   <td>
+   </td>
+  </tr>
+  <tr>
+   <td><code>services.directory.orgs</code>
+   </td>
+   <td>The <code>OrgsService </code>- providing methods for interacting with the directory of organizations.
+   </td>
+  </tr>
+  <tr>
+   <td><code>services.webhookService</code>
+   </td>
+   <td>Experimental
+   </td>
+  </tr>
+  <tr>
+   <td><code>process.env['MY_ENV_VAR']</code>
+   </td>
+   <td>Syntax for reading environment variables in a JS Hook.
+   </td>
+  </tr>
+</table>
+</div>
+</div>
+</div>
+
+
+             </article>
+             
+            </div>
+            <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../getting_started/install.html" class="btn btn-neutral float-right" title="FiftyOne Installation" accesskey="n" rel="next">Next <img src="../_static/images/chevron-right-orange.svg" class="next-page"></a>
+      
+      
+        <a href="migrations.html" class="btn btn-neutral" title="Migrations" accesskey="p" rel="prev"><img src="../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
+      
+    </div>
+  
+</footer>
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              <ul>
+<li><a class="reference internal" href="#">Pluggable Authentication</a><ul>
+<li><a class="reference internal" href="#fiftyone-authentication-modes">FiftyOne Authentication Modes</a><ul>
+<li><a class="reference internal" href="#legacy-mode">Legacy Mode</a></li>
+<li><a class="reference internal" href="#internal-mode">Internal Mode</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#super-admin-ui">Super Admin UI</a><ul>
+<li><a class="reference internal" href="#new-user-invitations">New User Invitations</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#identity-providers-idp">Identity Providers (IdP)</a></li>
+<li><a class="reference internal" href="#getting-started-with-internal-mode">Getting Started with Internal Mode</a></li>
+<li><a class="reference internal" href="#syncing-with-3rd-party-directories-open-directory-ldap-and-active-directory">Syncing with 3rd Party Directories (Open Directory, LDAP, and Active Directory)</a><ul>
+<li><a class="reference internal" href="#context-object"><strong>Context Object</strong></a></li>
+<li><a class="reference internal" href="#external-api-integration"><strong>External API Integration</strong></a></li>
+<li><a class="reference internal" href="#error-handling">Error Handling</a></li>
+<li><a class="reference internal" href="#summary">Summary</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#rest-api">REST API</a></li>
+<li><a class="reference internal" href="#configuration">Configuration</a></li>
+<li><a class="reference internal" href="#javascript-hooks">JavaScript Hooks</a><ul>
+<li><a class="reference internal" href="#overview">Overview</a></li>
+<li><a class="reference internal" href="#example-javascript-hook">Example JavaScript Hook</a></li>
+<li><a class="reference internal" href="#actionable-triggers">Actionable Triggers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  
+
+
+  
+
+     
+       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+         <script src="../_static/jquery.js"></script>
+         <script src="../_static/underscore.js"></script>
+         <script src="../_static/doctools.js"></script>
+         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+         <script src="../_static/js/voxel51-website.js"></script>
+         <script src="../_static/js/custom.js"></script>
+     
+
+  
+
+  <script type="text/javascript" src="../_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="../_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+  <!-- Begin Footer -->
+
+
+<footer class="footer-wrapper" id="docs-tutorials-resources">
+  <div class="footer pytorch-container">
+    <div class="footer__logo">
+      <a href="https://voxel51.com/"
+        ><img
+          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
+      /></a>
+    </div>
+
+    <div class="footer__address">
+      330 E Liberty St<br />
+      Ann Arbor, MI 48104<br />
+      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
+    </div>
+
+    <!--
+    <div class="footer__contact">
+      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
+    </div>
+    -->
+
+    <div class="footer__links">
+      <div class="footer__links--col2">
+        <p class="nav__item--brand">Products</p>
+        <a href="https://voxel51.com/fiftyone/">FiftyOne</a>
+        <a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a>
+        <a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a>
+        <a href="https://voxel51.com/success-stories/">Success Stories</a>
+      </div>
+      <div class="footer__links--col3">
+        <p class="nav__item--brand">Resources</p>
+        <a href="https://voxel51.com/blog/">Blog</a>
+        <a href="https://docs.voxel51.com/">Docs</a>
+        <a href="https://github.com/voxel51/">GitHub</a>
+        <a href="https://community.voxel51.com">Discord</a>
+        <a href="https://voxel51.com/ourstory/">About Us</a>
+        <a href="https://voxel51.com/computer-vision-events/">Events</a>
+        <a href="https://voxel51.com/jobs/">Careers</a>
+        <a href="https://voxel51.com/press/">Press</a>
+      </div>
+    </div>
+
+    <div class="footer__icons">
+      <ul class="list-inline">
+        <li>
+          <a href="https://www.linkedin.com/company/voxel51/">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/voxel51/">
+            <i class="fa-brands fa-github"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/voxel51">
+            <i class="fa-brands fa-twitter"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/voxel51/">
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="footer__copyright">
+      <ul class="list-inline">
+        <li>&copy; 2024 Voxel51 Inc.</li>
+        <li>
+          <a href="https://voxel51.com/privacy/">Privacy Policy</a>
+        </li>
+        <li>
+          <a href="https://voxel51.com/terms/">Terms of Service</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<!-- https://buttons.github.io -->
+<script async defer src="https://buttons.github.io/buttons.js" ></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XD15NFRY3M" ></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+  gtag("config", "G-XD15NFRY3M");
+</script>
+
+<script>
+  function open_modal(modal_id, modal_closer_id) {
+    // Get the modal
+    let the_modal = document.getElementById(modal_id);
+
+    the_modal.style.display = "flex";
+    document.body.style.overflow = "hidden";
+
+    let the_modal_closer = document.getElementById(modal_closer_id);
+
+    // When the user clicks on <span> (x), close the modal
+    the_modal_closer &&
+      (the_modal_closer.onclick = function () {
+        the_modal.style.display = "none";
+      });
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+      if (event.target == the_modal) {
+        the_modal.style.display = "none";
+        document.body.style.overflow = "unset";
+        window.onclick = undefined;
+      }
+    };
+  }
+</script>
+
+<!-- bigpicture.io -->
+<script>
+  !(function (e, t, i) {
+    var r = (e.bigPicture = e.bigPicture || []);
+    if (!r.initialized)
+      if (r.invoked)
+        e.console &&
+          console.error &&
+          console.error("BigPicture.io snippet included twice.");
+      else {
+        (r.invoked = !0),
+          (r.SNIPPET_VERSION = 1.5),
+          (r.handler = function (e) {
+            if (void 0 !== r.callback)
+              try {
+                return r.callback(e);
+              } catch (e) {}
+          }),
+          (r.eventList = ["mousedown", "mouseup", "click", "submit"]),
+          (r.methods = [
+            "track",
+            "identify",
+            "page",
+            "group",
+            "alias",
+            "integration",
+            "ready",
+            "intelReady",
+            "consentReady",
+            "on",
+            "off",
+          ]),
+          (r.factory = function (e) {
+            return function () {
+              var t = Array.prototype.slice.call(arguments);
+              return t.unshift(e), r.push(t), r;
+            };
+          });
+        for (var n = 0; n < r.methods.length; n++) {
+          var o = r.methods[n];
+          r[o] = r.factory(o);
+        }
+        r.getCookie = function (e) {
+          var i = ("; " + t.cookie).split("; " + e + "=");
+          return 2 == i.length && i.pop().split(";").shift();
+        };
+        var c = (r.isEditor = (function () {
+          try {
+            return (
+              e.self !== e.top &&
+              (new RegExp("app" + i, "ig").test(t.referrer) ||
+                "edit" == r.getCookie("_bpr_edit"))
+            );
+          } catch (e) {
+            return !1;
+          }
+        })());
+        r.init = function (n, o) {
+          if (((r.projectId = n), (r._config = o), !c))
+            for (var a = 0; a < r.eventList.length; a++)
+              e.addEventListener(r.eventList[a], r.handler, !0);
+          var s = t.createElement("script");
+          s.async = !0;
+          var d = c ? "/editor/editor" : "/public-" + n;
+          (s.src = "//cdn" + i + d + ".js"),
+            t.getElementsByTagName("head")[0].appendChild(s);
+        };
+      }
+  })(window, document, ".bigpicture.io");
+  bigPicture.init("1646");
+</script>
+
+
+  
+
+  <!-- End Footer -->
+
+  <!-- Begin Mobile Menu -->
+
+  
+
+  <!-- End Mobile Menu -->
+
+  <script type="text/javascript" src="../_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function(e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,922 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Remotely-Sourced Zoo Datasets &mdash; FiftyOne 1.3.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <link rel="stylesheet" href="../_static/css/voxel51-website.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Dataset Zoo API" href="api.html" />
+    <link rel="prev" title="Built-In Zoo Datasets" href="datasets.html" />
+<meta property="og:image" content="https://voxel51.com/wp-content/uploads/2024/03/3.24_webpages_Home_AV.png" />
+
+<link
+  href="https://fonts.googleapis.com/css?family=Palanquin:400,600,700,800"
+  rel="stylesheet"
+/>
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+  rel="stylesheet"
+/>
+<script src="https://tag.clearbitscripts.com/v1/pk_b9ed71c8234edd4f77326bcbfab5a4ca/tags.js"></script>
+
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+  
+</head>
+
+
+<div class="container-fluid header-holder tutorials-header" id="header-holder">
+  <nav id="nav__main" class="nav__main">
+    <div class="nav__main__logo">
+      <a href="https://voxel51.com/">
+        <img
+          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
+        />
+      </a>
+    </div>
+
+    <div class="nav__spacer desktop_only"></div>
+
+    <div id="nav__main__mobilebutton--on">
+      <a href="javascript:void(0);" onclick="navMobileButton()">
+        <i class="fa-solid fa-bars"></i>
+      </a>
+    </div>
+
+    <div id="nav__main__mobilebutton--off">
+      <a href="javascript:void(0);" onclick="navMobileButton()">
+        <i class="fa-solid fa-times"></i>
+      </a>
+    </div>
+
+    <div id="nav__main__items">
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Products</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://voxel51.com/fiftyone/">Open Source</a></li>
+            <li><a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a></li>
+            <li><a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a></li>
+            <li><a href="https://voxel51.com/success-stories/">Success Stories</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Learn</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://community.voxel51.com">Community Discord</a></li>
+            <li><a href="https://voxel51.com/blog/">Blog</a></li>
+            <li><a href="https://voxel51.com/computer-vision-events/">Events</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item">
+        <a href="https://docs.voxel51.com/">Docs</a>
+      </div>
+
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Company</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://voxel51.com/ourstory/">About Us</a></li>
+            <li><a href="https://voxel51.com/jobs/">Careers</a></li>
+            <li><a href="https://voxel51.com/talk-to-sales/">Talk to Sales</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item mobile_only">
+        <a href="https://github.com/voxel51/fiftyone">GitHub</a>
+      </div>
+
+      <div class="nav__item desktop_only" id="octocat">
+        <!-- https://buttons.github.io -->
+        <a
+          class="github-button"
+          href="https://github.com/voxel51/fiftyone"
+          data-color-scheme="no-preference: dark_high_contrast; light: dark_high_contrast; dark: dark_high_contrast;"
+          data-size="large"
+          data-show-count="true"
+          aria-label="Star voxel51/fiftyone on GitHub"
+          >Star</a
+        >
+      </div>
+
+      <div class="nav__item full_nav_only">
+        <a class="button-primary" href="https://voxel51.com/schedule-teams-workshop/" target="_blank"
+          >Schedule a workshop</a
+        >
+      </div>
+    </div>
+  </nav>
+</div>
+
+
+
+<body class="pytorch-body">
+
+   
+
+    
+
+    <div class="table-of-contents-link-wrapper">
+      <span>Table of Contents</span>
+      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+    </div>
+
+    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+      <div class="pytorch-side-scroll">
+        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          <div class="pytorch-left-menu-search">
+            
+
+            
+              
+              
+            
+
+            
+
+
+  
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+            
+          </div>
+
+           <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../teams/index.html">FiftyOne Teams 🚀</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../environments/index.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../recipes/index.html">Recipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheat_sheets/index.html">Cheat Sheets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/index.html">User Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Dataset Zoo</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="datasets.html">Built-in datasets</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Remote datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html">API reference</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../model_zoo/index.html">Model Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brain.html">FiftyOne Brain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/index.html">Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plugins/index.html">Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli/index.html">CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/fiftyone.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deprecation.html">Deprecation Notices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a></li>
+</ul>
+ 
+        </div>
+      </div>
+    </nav>
+
+    <div class="pytorch-container">
+      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+        <div class="pytorch-breadcrumbs-wrapper">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="../index.html">
+          
+            Docs
+          
+        </a> &gt;
+      </li>
+
+        
+          <li><a href="index.html">FiftyOne Dataset Zoo</a> &gt;</li>
+        
+      <li>Remotely-Sourced Zoo Datasets</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+        </div>
+
+        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+          Contents
+        </div>
+      </div>
+
+      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+        <div class="pytorch-content-left">
+
+        
+          
+          <div class="rst-content style-external-links">
+          
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+              
+  <div class="section" id="remotely-sourced-zoo-datasets">
+<span id="dataset-zoo-remote"></span><h1>Remotely-Sourced Zoo Datasets<a class="headerlink" href="#remotely-sourced-zoo-datasets" title="Permalink to this headline">¶</a></h1>
+<p>This page describes how to work with and create zoo datasets whose
+download/preparation methods are hosted via GitHub repositories or public URLs.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To download from a private GitHub repository that you have access to,
+provide your GitHub personal access token by setting the <code class="docutils literal notranslate"><span class="pre">GITHUB_TOKEN</span></code>
+environment variable.</p>
+</div>
+<div class="section" id="working-with-remotely-sourced-datasets">
+<span id="dataset-zoo-remote-usage"></span><h2>Working with remotely-sourced datasets<a class="headerlink" href="#working-with-remotely-sourced-datasets" title="Permalink to this headline">¶</a></h2>
+<p>Working with remotely-sourced zoo datasets is just like
+<a class="reference internal" href="datasets.html#dataset-zoo-datasets"><span class="std std-ref">built-in zoo datasets</span></a>, as both varieties support
+the <a class="reference internal" href="api.html#dataset-zoo-api"><span class="std std-ref">full zoo API</span></a>.</p>
+<p>When specifying remote sources, you can provide any of the following:</p>
+<ul class="simple">
+<li><p>A GitHub repo URL like <code class="docutils literal notranslate"><span class="pre">https://github.com/&lt;user&gt;/&lt;repo&gt;</span></code></p></li>
+<li><p>A GitHub ref like <code class="docutils literal notranslate"><span class="pre">https://github.com/&lt;user&gt;/&lt;repo&gt;/tree/&lt;branch&gt;</span></code> or
+<code class="docutils literal notranslate"><span class="pre">https://github.com/&lt;user&gt;/&lt;repo&gt;/commit/&lt;commit&gt;</span></code></p></li>
+<li><p>A GitHub ref string like <code class="docutils literal notranslate"><span class="pre">&lt;user&gt;/&lt;repo&gt;[/&lt;ref&gt;]</span></code></p></li>
+<li><p>A publicly accessible URL of an archive (eg zip or tar) file</p></li>
+</ul>
+<p>Here’s the basic recipe for working with remotely-sourced zoo datasets:</p>
+</div>
+<div class="section" id="creating-remotely-sourced-datasets">
+<span id="dataset-zoo-remote-creation"></span><h2>Creating remotely-sourced datasets<a class="headerlink" href="#creating-remotely-sourced-datasets" title="Permalink to this headline">¶</a></h2>
+<p>A remotely-sourced dataset is defined by a directory with the following
+contents:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fiftyone.yml
+__init__.py
+    def download_and_prepare(dataset_dir, split=None, **kwargs):
+        pass
+
+    def load_dataset(dataset, dataset_dir, split=None, **kwargs):
+        pass
+</pre></div>
+</div>
+<p>Each component is described in detail below.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>By convention, datasets also contain an optional <code class="code docutils literal notranslate"><span class="pre">README.md</span></code> file that
+provides additional information about the dataset and example syntaxes for
+downloading and working with it.</p>
+</div>
+<div class="section" id="fiftyone-yml">
+<span id="zoo-dataset-remote-fiftyone-yml"></span><h3>fiftyone.yml<a class="headerlink" href="#fiftyone-yml" title="Permalink to this headline">¶</a></h3>
+<p>The dataset’s <code class="code docutils literal notranslate"><span class="pre">fiftyone.yml</span></code> or <code class="code docutils literal notranslate"><span class="pre">fiftyone.yaml</span></code> file defines relevant metadata
+about the dataset:</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 10%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Required?</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="code docutils literal notranslate"><span class="pre">name</span></code></p></td>
+<td><p><strong>yes</strong></p></td>
+<td><p>The name of the dataset. Once you’ve downloaded all or part of a
+remotely-sourced zoo dataset, it will subsequently appear as an available
+zoo dataset under this name when using the
+<a class="reference internal" href="api.html#dataset-zoo-api"><span class="std std-ref">zoo API</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">type</span></code></p></td>
+<td></td>
+<td><p>Declare that the directory defines a <code class="code docutils literal notranslate"><span class="pre">dataset</span></code>. This can be omitted for
+backwards compatibility, but it is recommended to specify this</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code docutils literal notranslate"><span class="pre">author</span></code></p></td>
+<td></td>
+<td><p>The author of the dataset</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">version</span></code></p></td>
+<td></td>
+<td><p>The version of the dataset</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code docutils literal notranslate"><span class="pre">url</span></code></p></td>
+<td></td>
+<td><p>The source (eg GitHub repository) where the directory containing this file
+is hosted</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">source</span></code></p></td>
+<td></td>
+<td><p>The original source of the dataset</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code docutils literal notranslate"><span class="pre">license</span></code></p></td>
+<td></td>
+<td><p>The license under which the dataset is distributed</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">description</span></code></p></td>
+<td></td>
+<td><p>A brief description of the dataset</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code docutils literal notranslate"><span class="pre">fiftyone.version</span></code></p></td>
+<td></td>
+<td><p>A semver version specifier (or <code class="code docutils literal notranslate"><span class="pre">*</span></code>) describing the required
+FiftyOne version for the dataset to load properly</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">supports_partial_downloads</span></code></p></td>
+<td></td>
+<td><p>Specify <code class="code docutils literal notranslate"><span class="pre">true</span></code> or <code class="code docutils literal notranslate"><span class="pre">false</span></code> whether parts of the dataset can be
+downloaded/loaded by providing <code class="code docutils literal notranslate"><span class="pre">kwargs</span></code> to
+<a class="reference internal" href="../api/fiftyone.zoo.datasets.html#fiftyone.zoo.datasets.download_zoo_dataset" title="fiftyone.zoo.datasets.download_zoo_dataset"><code class="xref py py-meth docutils literal notranslate"><span class="pre">download_zoo_dataset()</span></code></a>
+or <a class="reference internal" href="../api/fiftyone.zoo.datasets.html#fiftyone.zoo.datasets.load_zoo_dataset" title="fiftyone.zoo.datasets.load_zoo_dataset"><code class="xref py py-meth docutils literal notranslate"><span class="pre">load_zoo_dataset()</span></code></a> as
+<a class="reference internal" href="#dataset-zoo-remote-partial-downloads"><span class="std std-ref">described here</span></a>. If omitted,
+this is assumed to be <code class="code docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code docutils literal notranslate"><span class="pre">tags</span></code></p></td>
+<td></td>
+<td><p>A list of tags for the dataset. Useful in conjunction with
+<a class="reference internal" href="../api/fiftyone.zoo.datasets.html#fiftyone.zoo.datasets.list_zoo_datasets" title="fiftyone.zoo.datasets.list_zoo_datasets"><code class="xref py py-meth docutils literal notranslate"><span class="pre">list_zoo_datasets()</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">splits</span></code></p></td>
+<td></td>
+<td><p>A list of the dataset’s supported splits. This should be omitted if the
+dataset does not contain splits</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code docutils literal notranslate"><span class="pre">size_samples</span></code></p></td>
+<td></td>
+<td><p>The totaal number of samples in the dataset, or a list of per-split sizes</p></td>
+</tr>
+</tbody>
+</table>
+<p>Here are two example dataset YAML files:</p>
+</div>
+<div class="section" id="download-and-prepare">
+<h3>Download and prepare<a class="headerlink" href="#download-and-prepare" title="Permalink to this headline">¶</a></h3>
+<p>All dataset’s <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> files must define a <code class="docutils literal notranslate"><span class="pre">download_and_prepare()</span></code>
+method with the signature below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span></pre></div></td><td class="code"><div><pre><span></span><span class="k">def</span> <span class="nf">download_and_prepare</span><span class="p">(</span><span class="n">dataset_dir</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Downloads the dataset and prepares it for loading into FiftyOne.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        dataset_dir: the directory in which to construct the dataset</span>
+<span class="sd">        split (None): a specific split to download, if the dataset supports</span>
+<span class="sd">            splits. The supported split values are defined by the dataset&#39;s</span>
+<span class="sd">            YAML file</span>
+<span class="sd">        **kwargs: optional keyword arguments that your dataset can define to</span>
+<span class="sd">            configure what/how the download is performed</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        a tuple of</span>
+
+<span class="sd">        -   ``dataset_type``: a ``fiftyone.types.Dataset`` type that the</span>
+<span class="sd">            dataset is stored in locally, or None if the dataset provides</span>
+<span class="sd">            its own ``load_dataset()`` method</span>
+<span class="sd">        -   ``num_samples``: the total number of downloaded samples for the</span>
+<span class="sd">            dataset or split</span>
+<span class="sd">        -   ``classes``: a list of classes in the dataset, or None if not</span>
+<span class="sd">            applicable</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Download files and organize them in `dataset_dir`</span>
+    <span class="o">...</span>
+
+    <span class="c1"># Define how the data is stored</span>
+    <span class="n">dataset_type</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">ImageClassificationDirectoryTree</span>
+    <span class="n">dataset_type</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># custom ``load_dataset()`` method</span>
+
+    <span class="c1"># Indicate how many samples have been downloaded</span>
+    <span class="c1"># May be less than the total size if partial downloads have been used</span>
+    <span class="n">num_samples</span> <span class="o">=</span> <span class="mi">10000</span>
+
+    <span class="c1"># Optionally report what classes exist in the dataset</span>
+    <span class="n">classes</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">classes</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;cat&quot;</span><span class="p">,</span> <span class="s2">&quot;dog&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">dataset_type</span><span class="p">,</span> <span class="n">num_samples</span><span class="p">,</span> <span class="n">classes</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>This method is called under-the-hood when a user calls
+<a class="reference internal" href="../api/fiftyone.zoo.datasets.html#fiftyone.zoo.datasets.download_zoo_dataset" title="fiftyone.zoo.datasets.download_zoo_dataset"><code class="xref py py-meth docutils literal notranslate"><span class="pre">download_zoo_dataset()</span></code></a> or
+<a class="reference internal" href="../api/fiftyone.zoo.datasets.html#fiftyone.zoo.datasets.load_zoo_dataset" title="fiftyone.zoo.datasets.load_zoo_dataset"><code class="xref py py-meth docutils literal notranslate"><span class="pre">load_zoo_dataset()</span></code></a>, and its
+job is to download any relevant files from the web and organize and/or prepare
+them as necessary into a format that’s ready to be loaded into a FiftyOne
+dataset.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">dataset_type</span></code> that <code class="docutils literal notranslate"><span class="pre">download_and_prepare()</span></code> returns defines how it the
+dataset is ultimately loaded into FiftyOne:</p>
+<ul class="simple">
+<li><p><strong>Built-in importer</strong>: in many cases, FiftyOne already contains a
+<a class="reference internal" href="../user_guide/dataset_creation/datasets.html#supported-import-formats"><span class="std std-ref">built-in importer</span></a> that can be leveraged
+to load data on disk into FiftyOne. Remotely-sourced datasets can take
+advantage of this by simply returning the appropriate <code class="docutils literal notranslate"><span class="pre">dataset_type</span></code> from
+<code class="docutils literal notranslate"><span class="pre">download_and_prepare()</span></code>, which is then used to load the data into
+FiftyOne as follows:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># If the dataset has splits, `dataset_dir` will be the split directory</span>
+<span class="n">dataset_importer_cls</span> <span class="o">=</span> <span class="n">dataset_type</span><span class="o">.</span><span class="n">get_dataset_importer_cls</span><span class="p">()</span>
+<span class="n">dataset_importer</span> <span class="o">=</span> <span class="n">dataset_importer_cls</span><span class="p">(</span><span class="n">dataset_dir</span><span class="o">=</span><span class="n">dataset_dir</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="n">dataset</span><span class="o">.</span><span class="n">add_importer</span><span class="p">(</span><span class="n">dataset_importer</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<ul class="simple">
+<li><p><strong>Custom loader</strong>: if <code class="docutils literal notranslate"><span class="pre">dataset_type=None</span></code> is returned, then
+<code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> must also contain a <code class="docutils literal notranslate"><span class="pre">load_dataset()</span></code> method as described
+below that handles loading the data into FiftyOne as follows:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">load_dataset</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">dataset_dir</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+</div>
+<div class="section" id="load-dataset">
+<h3>Load dataset<a class="headerlink" href="#load-dataset" title="Permalink to this headline">¶</a></h3>
+<p>Datasets that don’t use a built-in importer must also define a
+<code class="docutils literal notranslate"><span class="pre">load_dataset()</span></code> method in their <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> with the signature below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><span class="k">def</span> <span class="nf">load_dataset</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">dataset_dir</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Loads the dataset into the given FiftyOne dataset.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        dataset: a :class:`fiftyone.core.dataset.Dataset` to which to import</span>
+<span class="sd">        dataset_dir: the directory to which the dataset was downloaded</span>
+<span class="sd">        split (None): a split to load. The supported values are</span>
+<span class="sd">            ``(&quot;train&quot;, &quot;validation&quot;, &quot;test&quot;)``</span>
+<span class="sd">        **kwargs: optional keyword arguments that your dataset can define to</span>
+<span class="sd">            configure what/how the load is performed</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Load data into samples</span>
+    <span class="n">samples</span> <span class="o">=</span> <span class="p">[</span><span class="o">...</span><span class="p">]</span>
+
+    <span class="c1"># Add samples to the dataset</span>
+    <span class="n">dataset</span><span class="o">.</span><span class="n">add_samples</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>This method’s job is to load the filepaths and any relevant labels into
+<a class="reference internal" href="../api/fiftyone.core.sample.html#fiftyone.core.sample.Sample" title="fiftyone.core.sample.Sample"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sample</span></code></a> objects and then call
+<a class="reference internal" href="../api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset.add_samples" title="fiftyone.core.dataset.Dataset.add_samples"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_samples()</span></code></a> or a similar
+method to add them to the provided <a class="reference internal" href="../api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset" title="fiftyone.core.dataset.Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dataset</span></code></a>.</p>
+</div>
+</div>
+<div class="section" id="partial-downloads">
+<span id="dataset-zoo-remote-partial-downloads"></span><h2>Partial downloads<a class="headerlink" href="#partial-downloads" title="Permalink to this headline">¶</a></h2>
+<p>Remotely-sourced datasets can support partial downloads, which is useful for a
+variety of reasons, including:</p>
+<ul class="simple">
+<li><p>A dataset may contain labels for multiple task types but the user is only
+interested in a subset of them</p></li>
+<li><p>The dataset may be very large and the user only wants to download a small
+subset of the samples to get familiar with the dataset</p></li>
+</ul>
+<p>Datasets that support partial downloads should declare this in their
+<a class="reference internal" href="#zoo-dataset-remote-fiftyone-yml"><span class="std std-ref">fiftyone.yml</span></a>:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">supports_partial_downloads</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</pre></div>
+</div>
+<p>The partial download behavior itself is defined via <code class="docutils literal notranslate"><span class="pre">**kwargs</span></code> in the
+dataset’s <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> methods:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><span class="k">def</span> <span class="nf">download_and_prepare</span><span class="p">(</span><span class="n">dataset_dir</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="k">def</span> <span class="nf">load_dataset</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">dataset_dir</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">pass</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>When
+<a class="reference internal" href="../api/fiftyone.zoo.datasets.html#fiftyone.zoo.datasets.download_zoo_dataset" title="fiftyone.zoo.datasets.download_zoo_dataset"><code class="xref py py-meth docutils literal notranslate"><span class="pre">download_zoo_dataset(url,</span> <span class="pre">...,</span> <span class="pre">**kwargs)</span></code></a>
+is called, any <code class="code docutils literal notranslate"><span class="pre">kwargs</span></code> declared by <code class="docutils literal notranslate"><span class="pre">download_and_prepare()</span></code> are passed
+through to it.</p>
+<p>When
+<a class="reference internal" href="../api/fiftyone.zoo.datasets.html#fiftyone.zoo.datasets.load_zoo_dataset" title="fiftyone.zoo.datasets.load_zoo_dataset"><code class="xref py py-meth docutils literal notranslate"><span class="pre">load_zoo_dataset(name_or_url,</span> <span class="pre">...,</span> <span class="pre">**kwargs)</span></code></a>
+is called, any <code class="code docutils literal notranslate"><span class="pre">kwargs</span></code> declared by <code class="docutils literal notranslate"><span class="pre">download_and_prepare()</span></code> and
+<code class="docutils literal notranslate"><span class="pre">load_dataset()</span></code> are passed through to them, respectively.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Check out <a class="reference external" href="https://github.com/voxel51/coco-2017">voxel51/coco-2017</a> for
+an example of a remotely-sourced dataset that supports partial downloads.</p>
+</div>
+</div>
+</div>
+
+
+             </article>
+             
+            </div>
+            <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="api.html" class="btn btn-neutral float-right" title="Dataset Zoo API" accesskey="n" rel="next">Next <img src="../_static/images/chevron-right-orange.svg" class="next-page"></a>
+      
+      
+        <a href="datasets.html" class="btn btn-neutral" title="Built-In Zoo Datasets" accesskey="p" rel="prev"><img src="../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
+      
+    </div>
+  
+</footer>
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              <ul>
+<li><a class="reference internal" href="#">Remotely-Sourced Zoo Datasets</a><ul>
+<li><a class="reference internal" href="#working-with-remotely-sourced-datasets">Working with remotely-sourced datasets</a></li>
+<li><a class="reference internal" href="#creating-remotely-sourced-datasets">Creating remotely-sourced datasets</a><ul>
+<li><a class="reference internal" href="#fiftyone-yml">fiftyone.yml</a></li>
+<li><a class="reference internal" href="#download-and-prepare">Download and prepare</a></li>
+<li><a class="reference internal" href="#load-dataset">Load dataset</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#partial-downloads">Partial downloads</a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  
+
+
+  
+
+     
+       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+         <script src="../_static/jquery.js"></script>
+         <script src="../_static/underscore.js"></script>
+         <script src="../_static/doctools.js"></script>
+         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+         <script src="../_static/js/voxel51-website.js"></script>
+         <script src="../_static/js/custom.js"></script>
+     
+
+  
+
+  <script type="text/javascript" src="../_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="../_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+  <!-- Begin Footer -->
+
+
+<footer class="footer-wrapper" id="docs-tutorials-resources">
+  <div class="footer pytorch-container">
+    <div class="footer__logo">
+      <a href="https://voxel51.com/"
+        ><img
+          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
+      /></a>
+    </div>
+
+    <div class="footer__address">
+      330 E Liberty St<br />
+      Ann Arbor, MI 48104<br />
+      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
+    </div>
+
+    <!--
+    <div class="footer__contact">
+      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
+    </div>
+    -->
+
+    <div class="footer__links">
+      <div class="footer__links--col2">
+        <p class="nav__item--brand">Products</p>
+        <a href="https://voxel51.com/fiftyone/">FiftyOne</a>
+        <a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a>
+        <a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a>
+        <a href="https://voxel51.com/success-stories/">Success Stories</a>
+      </div>
+      <div class="footer__links--col3">
+        <p class="nav__item--brand">Resources</p>
+        <a href="https://voxel51.com/blog/">Blog</a>
+        <a href="https://docs.voxel51.com/">Docs</a>
+        <a href="https://github.com/voxel51/">GitHub</a>
+        <a href="https://community.voxel51.com">Discord</a>
+        <a href="https://voxel51.com/ourstory/">About Us</a>
+        <a href="https://voxel51.com/computer-vision-events/">Events</a>
+        <a href="https://voxel51.com/jobs/">Careers</a>
+        <a href="https://voxel51.com/press/">Press</a>
+      </div>
+    </div>
+
+    <div class="footer__icons">
+      <ul class="list-inline">
+        <li>
+          <a href="https://www.linkedin.com/company/voxel51/">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/voxel51/">
+            <i class="fa-brands fa-github"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/voxel51">
+            <i class="fa-brands fa-twitter"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/voxel51/">
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="footer__copyright">
+      <ul class="list-inline">
+        <li>&copy; 2024 Voxel51 Inc.</li>
+        <li>
+          <a href="https://voxel51.com/privacy/">Privacy Policy</a>
+        </li>
+        <li>
+          <a href="https://voxel51.com/terms/">Terms of Service</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<!-- https://buttons.github.io -->
+<script async defer src="https://buttons.github.io/buttons.js" ></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XD15NFRY3M" ></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+  gtag("config", "G-XD15NFRY3M");
+</script>
+
+<script>
+  function open_modal(modal_id, modal_closer_id) {
+    // Get the modal
+    let the_modal = document.getElementById(modal_id);
+
+    the_modal.style.display = "flex";
+    document.body.style.overflow = "hidden";
+
+    let the_modal_closer = document.getElementById(modal_closer_id);
+
+    // When the user clicks on <span> (x), close the modal
+    the_modal_closer &&
+      (the_modal_closer.onclick = function () {
+        the_modal.style.display = "none";
+      });
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+      if (event.target == the_modal) {
+        the_modal.style.display = "none";
+        document.body.style.overflow = "unset";
+        window.onclick = undefined;
+      }
+    };
+  }
+</script>
+
+<!-- bigpicture.io -->
+<script>
+  !(function (e, t, i) {
+    var r = (e.bigPicture = e.bigPicture || []);
+    if (!r.initialized)
+      if (r.invoked)
+        e.console &&
+          console.error &&
+          console.error("BigPicture.io snippet included twice.");
+      else {
+        (r.invoked = !0),
+          (r.SNIPPET_VERSION = 1.5),
+          (r.handler = function (e) {
+            if (void 0 !== r.callback)
+              try {
+                return r.callback(e);
+              } catch (e) {}
+          }),
+          (r.eventList = ["mousedown", "mouseup", "click", "submit"]),
+          (r.methods = [
+            "track",
+            "identify",
+            "page",
+            "group",
+            "alias",
+            "integration",
+            "ready",
+            "intelReady",
+            "consentReady",
+            "on",
+            "off",
+          ]),
+          (r.factory = function (e) {
+            return function () {
+              var t = Array.prototype.slice.call(arguments);
+              return t.unshift(e), r.push(t), r;
+            };
+          });
+        for (var n = 0; n < r.methods.length; n++) {
+          var o = r.methods[n];
+          r[o] = r.factory(o);
+        }
+        r.getCookie = function (e) {
+          var i = ("; " + t.cookie).split("; " + e + "=");
+          return 2 == i.length && i.pop().split(";").shift();
+        };
+        var c = (r.isEditor = (function () {
+          try {
+            return (
+              e.self !== e.top &&
+              (new RegExp("app" + i, "ig").test(t.referrer) ||
+                "edit" == r.getCookie("_bpr_edit"))
+            );
+          } catch (e) {
+            return !1;
+          }
+        })());
+        r.init = function (n, o) {
+          if (((r.projectId = n), (r._config = o), !c))
+            for (var a = 0; a < r.eventList.length; a++)
+              e.addEventListener(r.eventList[a], r.handler, !0);
+          var s = t.createElement("script");
+          s.async = !0;
+          var d = c ? "/editor/editor" : "/public-" + n;
+          (s.src = "//cdn" + i + d + ".js"),
+            t.getElementsByTagName("head")[0].appendChild(s);
+        };
+      }
+  })(window, document, ".bigpicture.io");
+  bigPicture.init("1646");
+</script>
+
+
+  
+
+  <!-- End Footer -->
+
+  <!-- Begin Mobile Menu -->
+
+  
+
+  <!-- End Mobile Menu -->
+
+  <script type="text/javascript" src="../_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function(e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+</body>
+</html>

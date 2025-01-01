@@ -1,0 +1,746 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>FiftyOne Teams App &mdash; FiftyOne 1.3.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <link rel="stylesheet" href="../_static/css/voxel51-website.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Data Lens" href="data_lens.html" />
+    <link rel="prev" title="Dataset Versioning" href="dataset_versioning.html" />
+<meta property="og:image" content="https://voxel51.com/wp-content/uploads/2024/03/3.24_webpages_Home_AV.png" />
+
+<link
+  href="https://fonts.googleapis.com/css?family=Palanquin:400,600,700,800"
+  rel="stylesheet"
+/>
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+  rel="stylesheet"
+/>
+<script src="https://tag.clearbitscripts.com/v1/pk_b9ed71c8234edd4f77326bcbfab5a4ca/tags.js"></script>
+
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+  
+</head>
+
+
+<div class="container-fluid header-holder tutorials-header" id="header-holder">
+  <nav id="nav__main" class="nav__main">
+    <div class="nav__main__logo">
+      <a href="https://voxel51.com/">
+        <img
+          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
+        />
+      </a>
+    </div>
+
+    <div class="nav__spacer desktop_only"></div>
+
+    <div id="nav__main__mobilebutton--on">
+      <a href="javascript:void(0);" onclick="navMobileButton()">
+        <i class="fa-solid fa-bars"></i>
+      </a>
+    </div>
+
+    <div id="nav__main__mobilebutton--off">
+      <a href="javascript:void(0);" onclick="navMobileButton()">
+        <i class="fa-solid fa-times"></i>
+      </a>
+    </div>
+
+    <div id="nav__main__items">
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Products</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://voxel51.com/fiftyone/">Open Source</a></li>
+            <li><a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a></li>
+            <li><a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a></li>
+            <li><a href="https://voxel51.com/success-stories/">Success Stories</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Learn</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://community.voxel51.com">Community Discord</a></li>
+            <li><a href="https://voxel51.com/blog/">Blog</a></li>
+            <li><a href="https://voxel51.com/computer-vision-events/">Events</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item">
+        <a href="https://docs.voxel51.com/">Docs</a>
+      </div>
+
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Company</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://voxel51.com/ourstory/">About Us</a></li>
+            <li><a href="https://voxel51.com/jobs/">Careers</a></li>
+            <li><a href="https://voxel51.com/talk-to-sales/">Talk to Sales</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item mobile_only">
+        <a href="https://github.com/voxel51/fiftyone">GitHub</a>
+      </div>
+
+      <div class="nav__item desktop_only" id="octocat">
+        <!-- https://buttons.github.io -->
+        <a
+          class="github-button"
+          href="https://github.com/voxel51/fiftyone"
+          data-color-scheme="no-preference: dark_high_contrast; light: dark_high_contrast; dark: dark_high_contrast;"
+          data-size="large"
+          data-show-count="true"
+          aria-label="Star voxel51/fiftyone on GitHub"
+          >Star</a
+        >
+      </div>
+
+      <div class="nav__item full_nav_only">
+        <a class="button-primary" href="https://voxel51.com/schedule-teams-workshop/" target="_blank"
+          >Schedule a workshop</a
+        >
+      </div>
+    </div>
+  </nav>
+</div>
+
+
+
+<body class="pytorch-body">
+
+   
+
+    
+
+    <div class="table-of-contents-link-wrapper">
+      <span>Table of Contents</span>
+      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+    </div>
+
+    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+      <div class="pytorch-side-scroll">
+        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          <div class="pytorch-left-menu-search">
+            
+
+            
+              
+              
+            
+
+            
+
+
+  
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+            
+          </div>
+
+           <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Overview</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">FiftyOne Teams 🚀</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_connection.html">API connection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloud_media.html">Cloud-backed media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="roles_and_permissions.html">Roles and permissions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dataset_versioning.html">Dataset Versioning</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">FiftyOne Teams App</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_lens.html">Data Lens <strong style="color: hsl(25, 100%, 51%); font-size: 0.85em; vertical-align: top">NEW</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_quality.html">Data Quality <strong style="color: hsl(25, 100%, 51%); font-size: 0.85em; vertical-align: top">NEW</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="query_performance.html">Query Performance <strong style="color: hsl(25, 100%, 51%); font-size: 0.85em; vertical-align: top">NEW</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="teams_plugins.html">Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="secrets.html">Secrets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="management_sdk.html">Management SDK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migrations.html">Migrations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pluggable_auth.html">Pluggable Auth</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../environments/index.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../recipes/index.html">Recipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheat_sheets/index.html">Cheat Sheets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dataset_zoo/index.html">Dataset Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_zoo/index.html">Model Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brain.html">FiftyOne Brain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/index.html">Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plugins/index.html">Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli/index.html">CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/fiftyone.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deprecation.html">Deprecation Notices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a></li>
+</ul>
+ 
+        </div>
+      </div>
+    </nav>
+
+    <div class="pytorch-container">
+      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+        <div class="pytorch-breadcrumbs-wrapper">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="../index.html">
+          
+            Docs
+          
+        </a> &gt;
+      </li>
+
+        
+          <li><a href="index.html">FiftyOne Teams</a> &gt;</li>
+        
+      <li>FiftyOne Teams App</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+        </div>
+
+        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+          Contents
+        </div>
+      </div>
+
+      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+        <div class="pytorch-content-left">
+
+        
+          
+          <div class="rst-content style-external-links">
+          
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+              
+  <div class="section" id="fiftyone-teams-app">
+<span id="teams-app"></span><h1>FiftyOne Teams App<a class="headerlink" href="#fiftyone-teams-app" title="Permalink to this headline">¶</a></h1>
+<p>The FiftyOne Teams App allows you to visualize, browse, and interact with your
+individual datasets like you can with the <a class="reference internal" href="../user_guide/app.html#fiftyone-app"><span class="std std-ref">FiftyOne App</span></a>,
+but with expanded features for organizing, permissionsing, versioning, and
+sharing your team’s datasets, all from a centralized web portal.</p>
+<p>This page provides a brief overview of some features available only in the
+FiftyOne Teams App.</p>
+<div class="section" id="the-homepage">
+<span id="teams-homepage"></span><h2>The homepage<a class="headerlink" href="#the-homepage" title="Permalink to this headline">¶</a></h2>
+<p>When you login to the FiftyOne Teams App, you’ll land on the homepage pictured
+below.</p>
+<p>In the top bar of this page, on the left side, the gray number next to
+“All datasets” indicates the total number of datasets that you have access to.
+If there are more than 20 datasets, you can use the “Previous” and “Next”
+buttons at the bottom of the page to see different batches of datasets.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can return to the homepage from any page of the Teams App by clicking on
+the Voxel51 logo in the upper left corner.</p>
+</div>
+<img alt="app-homepage" class="align-center" src="../_images/homepage.png" />
+<div class="section" id="pinned-datasets">
+<span id="teams-pinned-datasets"></span><h3>Pinned datasets<a class="headerlink" href="#pinned-datasets" title="Permalink to this headline">¶</a></h3>
+<p>You can pin datasets for easy access by hovering over the dataset’s name in
+the main table and clicking the pin icon.</p>
+<p>The “Your pinned datasets” widget on the right-hand side of the hompage shows
+your pinned datasets at a glance and allows you to quickly open one by
+clicking on its name. Pinned datasets are listed in reverse chronological order
+(most recently pinned on top).</p>
+<p>To unpin a dataset, click the pin icon next to the dataset name in the “Your
+pinned datasets” widget or the pin next to the dataset’s name in the main
+table.</p>
+<a class="reference internal image-reference" href="../_images/pinned_datasets.png"><img alt="pin-datasets" class="align-center" src="../_images/pinned_datasets.png" style="width: 500px;" /></a>
+</div>
+<div class="section" id="sorting-datasets">
+<span id="teams-sorting-datasets"></span><h3>Sorting datasets<a class="headerlink" href="#sorting-datasets" title="Permalink to this headline">¶</a></h3>
+<p>You can use the drop-down menu in the upper left of the main table to sort your
+datasets by various criteria, including size, creation date, recently used, and
+alphabetically by name:</p>
+<a class="reference internal image-reference" href="../_images/ordering_datasets.png"><img alt="order-datasets" class="align-center" src="../_images/ordering_datasets.png" style="width: 500px;" /></a>
+</div>
+<div class="section" id="filtering-datasets">
+<span id="teams-filtering-datasets"></span><h3>Filtering datasets<a class="headerlink" href="#filtering-datasets" title="Permalink to this headline">¶</a></h3>
+<p>You can use the search bar (with the magnifying glass icon) in the upper right
+corner of the dataset table to filter datasets by name, tags, and media type:</p>
+<a class="reference internal image-reference" href="../_images/dataset_search_bar.png"><img alt="dataset-search-bar" class="align-center" src="../_images/dataset_search_bar.png" style="width: 500px;" /></a>
+<p>By default, datasets that match across any supported field are returned, but
+you can narrow the search to specific fields by selecting the relevant option
+in the search dropdown:</p>
+<a class="reference internal image-reference" href="../_images/dataset_search_fields.png"><img alt="dataset-search-fields" class="align-center" src="../_images/dataset_search_fields.png" style="width: 500px;" /></a>
+</div>
+</div>
+<div class="section" id="creating-datasets">
+<span id="teams-creating-datasets"></span><h2>Creating datasets<a class="headerlink" href="#creating-datasets" title="Permalink to this headline">¶</a></h2>
+<p>To create a new dataset, click on the “New dataset” button in the upper right
+corner of the homepage. A pop-up will appear allowing you to choose a name,
+description, and tags for the dataset:</p>
+<ul class="simple">
+<li><p><strong>Name</strong>: as you’re typing a name for your dataset, a URL will appear below
+denoting the address at which the dataset will be accessible. If the name or
+URL is not available, you will be prompted to try another name.</p></li>
+<li><p><strong>Description</strong>: an optional free text description that you can use to store
+relevant information about your dataset.</p></li>
+<li><p><strong>Tags</strong>: an optional list of tag(s) for your dataset. For example, you may
+want to record the media type, task type, project name, or other pertinent
+information. To add a tag, type it in the text bar. If you have previously
+used a tag, it will automatically appear in a dropdown and you can select
+it. To add a new tag, type tab or comma.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A dataset’s name, description, and tags can be edited later from the
+dataset’s <a class="reference internal" href="#teams-managing-datasets"><span class="std std-ref">Manage tab</span></a>.</p>
+</div>
+<img alt="create-dataset" class="align-center" src="../_images/create_dataset.png" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>What next? Use the <a class="reference internal" href="installation.html#teams-python-sdk"><span class="std std-ref">Teams Python SDK</span></a> to upload new
+samples, labels, and metadata to your dataset. A common approach is to
+automate this process via <a class="reference internal" href="cloud_media.html#teams-cloud-functions"><span class="std std-ref">cloud functions</span></a>.</p>
+</div>
+</div>
+<div class="section" id="using-a-dataset">
+<span id="teams-using-datasets"></span><h2>Using a dataset<a class="headerlink" href="#using-a-dataset" title="Permalink to this headline">¶</a></h2>
+<p>Click on a dataset from the homepage to open the dataset’s “Samples” tab.</p>
+<p>From the Samples tab you can visualize, tag, filter, and explore your dataset
+just as you would via the <a class="reference internal" href="../user_guide/app.html#fiftyone-app"><span class="std std-ref">FiftyOne App</span></a>.</p>
+<img alt="samples-page" class="align-center" src="../_images/samples_page.png" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Did you know? You can also navigate directly to a dataset of interest by
+pasting its URL into your browser’s URL bar.</p>
+</div>
+</div>
+<div class="section" id="managing-a-dataset">
+<span id="teams-managing-datasets"></span><h2>Managing a dataset<a class="headerlink" href="#managing-a-dataset" title="Permalink to this headline">¶</a></h2>
+<p>The FiftyOne Teams App provides a number of options for managing existing
+datasets, as described below.</p>
+<p>You can access these options from the <a class="reference internal" href="#teams-using-datasets"><span class="std std-ref">Samples tab</span></a>
+by clicking on the “Manage” tab in the upper left corner of the page.</p>
+<p>You can also directly navigate to this page from the
+<a class="reference internal" href="#teams-homepage"><span class="std std-ref">homepage</span></a> by clicking the three dots on the
+right hand side of a row of the dataset listing table and selecting
+“Edit dataset”.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Did you know? You can also use the <a class="reference internal" href="installation.html#teams-python-sdk"><span class="std std-ref">Teams SDK</span></a> to
+programmatically, create, edit, and delete datasets.</p>
+</div>
+<div class="section" id="basic-info">
+<span id="teams-dataset-basic-info"></span><h3>Basic info<a class="headerlink" href="#basic-info" title="Permalink to this headline">¶</a></h3>
+<p>The “Basic info” tab is accessible to all users with
+<a class="reference internal" href="roles_and_permissions.html#teams-can-view"><span class="std std-ref">Can view</span></a> access to the dataset.</p>
+<p>Users with <a class="reference internal" href="roles_and_permissions.html#teams-can-manage"><span class="std std-ref">Can manage</span></a> permissions on the dataset can
+edit the name, description, and tags of a dataset from this page.</p>
+<p>Additionally, members can create a copy of the dataset by clicking on the
+“Clone this dataset” button.</p>
+<img alt="dataset-basic-info" class="align-center" src="../_images/dataset_basic_info.png" />
+</div>
+<div class="section" id="access">
+<span id="teams-dataset-access"></span><h3>Access<a class="headerlink" href="#access" title="Permalink to this headline">¶</a></h3>
+<p>The “Access” tab is only accessible to users with
+<a class="reference internal" href="roles_and_permissions.html#teams-can-manage"><span class="std std-ref">Can manage</span></a> permissions on the dataset.</p>
+<p>From this tab, users can add, remove, edit, or invite users to the dataset.
+Refer to <a class="reference internal" href="roles_and_permissions.html#teams-permissions"><span class="std std-ref">this page</span></a> for more information about the
+available dataset-level permissions that you can grant.</p>
+<img alt="dataset-access" class="align-center" src="../_images/dataset_access.png" />
+</div>
+<div class="section" id="danger-zone">
+<span id="teams-dataset-danger-zone"></span><h3>Danger zone<a class="headerlink" href="#danger-zone" title="Permalink to this headline">¶</a></h3>
+<p>The “Danger zone” tab is only accessible to users with
+<a class="reference internal" href="roles_and_permissions.html#teams-can-manage"><span class="std std-ref">Can manage</span></a> permissions on the dataset.</p>
+<p>From this tab, you can select “Delete entire dataset” to permanently delete a
+dataset from your Teams deployment. You must type the dataset’s full name in
+the modal to confirm this action.</p>
+<img alt="danger-zone" class="align-center" src="../_images/dataset_danger_zone.png" />
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Deleting a dataset is permanent!</p>
+</div>
+</div>
+</div>
+</div>
+
+
+             </article>
+             
+            </div>
+            <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="data_lens.html" class="btn btn-neutral float-right" title="Data Lens" accesskey="n" rel="next">Next <img src="../_static/images/chevron-right-orange.svg" class="next-page"></a>
+      
+      
+        <a href="dataset_versioning.html" class="btn btn-neutral" title="Dataset Versioning" accesskey="p" rel="prev"><img src="../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
+      
+    </div>
+  
+</footer>
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              <ul>
+<li><a class="reference internal" href="#">FiftyOne Teams App</a><ul>
+<li><a class="reference internal" href="#the-homepage">The homepage</a><ul>
+<li><a class="reference internal" href="#pinned-datasets">Pinned datasets</a></li>
+<li><a class="reference internal" href="#sorting-datasets">Sorting datasets</a></li>
+<li><a class="reference internal" href="#filtering-datasets">Filtering datasets</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#creating-datasets">Creating datasets</a></li>
+<li><a class="reference internal" href="#using-a-dataset">Using a dataset</a></li>
+<li><a class="reference internal" href="#managing-a-dataset">Managing a dataset</a><ul>
+<li><a class="reference internal" href="#basic-info">Basic info</a></li>
+<li><a class="reference internal" href="#access">Access</a></li>
+<li><a class="reference internal" href="#danger-zone">Danger zone</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  
+
+
+  
+
+     
+       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+         <script src="../_static/jquery.js"></script>
+         <script src="../_static/underscore.js"></script>
+         <script src="../_static/doctools.js"></script>
+         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+         <script src="../_static/js/voxel51-website.js"></script>
+         <script src="../_static/js/custom.js"></script>
+     
+
+  
+
+  <script type="text/javascript" src="../_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="../_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+  <!-- Begin Footer -->
+
+
+<footer class="footer-wrapper" id="docs-tutorials-resources">
+  <div class="footer pytorch-container">
+    <div class="footer__logo">
+      <a href="https://voxel51.com/"
+        ><img
+          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
+      /></a>
+    </div>
+
+    <div class="footer__address">
+      330 E Liberty St<br />
+      Ann Arbor, MI 48104<br />
+      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
+    </div>
+
+    <!--
+    <div class="footer__contact">
+      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
+    </div>
+    -->
+
+    <div class="footer__links">
+      <div class="footer__links--col2">
+        <p class="nav__item--brand">Products</p>
+        <a href="https://voxel51.com/fiftyone/">FiftyOne</a>
+        <a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a>
+        <a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a>
+        <a href="https://voxel51.com/success-stories/">Success Stories</a>
+      </div>
+      <div class="footer__links--col3">
+        <p class="nav__item--brand">Resources</p>
+        <a href="https://voxel51.com/blog/">Blog</a>
+        <a href="https://docs.voxel51.com/">Docs</a>
+        <a href="https://github.com/voxel51/">GitHub</a>
+        <a href="https://community.voxel51.com">Discord</a>
+        <a href="https://voxel51.com/ourstory/">About Us</a>
+        <a href="https://voxel51.com/computer-vision-events/">Events</a>
+        <a href="https://voxel51.com/jobs/">Careers</a>
+        <a href="https://voxel51.com/press/">Press</a>
+      </div>
+    </div>
+
+    <div class="footer__icons">
+      <ul class="list-inline">
+        <li>
+          <a href="https://www.linkedin.com/company/voxel51/">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/voxel51/">
+            <i class="fa-brands fa-github"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/voxel51">
+            <i class="fa-brands fa-twitter"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/voxel51/">
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="footer__copyright">
+      <ul class="list-inline">
+        <li>&copy; 2024 Voxel51 Inc.</li>
+        <li>
+          <a href="https://voxel51.com/privacy/">Privacy Policy</a>
+        </li>
+        <li>
+          <a href="https://voxel51.com/terms/">Terms of Service</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<!-- https://buttons.github.io -->
+<script async defer src="https://buttons.github.io/buttons.js" ></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XD15NFRY3M" ></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+  gtag("config", "G-XD15NFRY3M");
+</script>
+
+<script>
+  function open_modal(modal_id, modal_closer_id) {
+    // Get the modal
+    let the_modal = document.getElementById(modal_id);
+
+    the_modal.style.display = "flex";
+    document.body.style.overflow = "hidden";
+
+    let the_modal_closer = document.getElementById(modal_closer_id);
+
+    // When the user clicks on <span> (x), close the modal
+    the_modal_closer &&
+      (the_modal_closer.onclick = function () {
+        the_modal.style.display = "none";
+      });
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+      if (event.target == the_modal) {
+        the_modal.style.display = "none";
+        document.body.style.overflow = "unset";
+        window.onclick = undefined;
+      }
+    };
+  }
+</script>
+
+<!-- bigpicture.io -->
+<script>
+  !(function (e, t, i) {
+    var r = (e.bigPicture = e.bigPicture || []);
+    if (!r.initialized)
+      if (r.invoked)
+        e.console &&
+          console.error &&
+          console.error("BigPicture.io snippet included twice.");
+      else {
+        (r.invoked = !0),
+          (r.SNIPPET_VERSION = 1.5),
+          (r.handler = function (e) {
+            if (void 0 !== r.callback)
+              try {
+                return r.callback(e);
+              } catch (e) {}
+          }),
+          (r.eventList = ["mousedown", "mouseup", "click", "submit"]),
+          (r.methods = [
+            "track",
+            "identify",
+            "page",
+            "group",
+            "alias",
+            "integration",
+            "ready",
+            "intelReady",
+            "consentReady",
+            "on",
+            "off",
+          ]),
+          (r.factory = function (e) {
+            return function () {
+              var t = Array.prototype.slice.call(arguments);
+              return t.unshift(e), r.push(t), r;
+            };
+          });
+        for (var n = 0; n < r.methods.length; n++) {
+          var o = r.methods[n];
+          r[o] = r.factory(o);
+        }
+        r.getCookie = function (e) {
+          var i = ("; " + t.cookie).split("; " + e + "=");
+          return 2 == i.length && i.pop().split(";").shift();
+        };
+        var c = (r.isEditor = (function () {
+          try {
+            return (
+              e.self !== e.top &&
+              (new RegExp("app" + i, "ig").test(t.referrer) ||
+                "edit" == r.getCookie("_bpr_edit"))
+            );
+          } catch (e) {
+            return !1;
+          }
+        })());
+        r.init = function (n, o) {
+          if (((r.projectId = n), (r._config = o), !c))
+            for (var a = 0; a < r.eventList.length; a++)
+              e.addEventListener(r.eventList[a], r.handler, !0);
+          var s = t.createElement("script");
+          s.async = !0;
+          var d = c ? "/editor/editor" : "/public-" + n;
+          (s.src = "//cdn" + i + d + ".js"),
+            t.getElementsByTagName("head")[0].appendChild(s);
+        };
+      }
+  })(window, document, ".bigpicture.io");
+  bigPicture.init("1646");
+</script>
+
+
+  
+
+  <!-- End Footer -->
+
+  <!-- Begin Mobile Menu -->
+
+  
+
+  <!-- End Mobile Menu -->
+
+  <script type="text/javascript" src="../_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function(e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+</body>
+</html>

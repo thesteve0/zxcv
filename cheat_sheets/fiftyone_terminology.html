@@ -1,0 +1,744 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>FiftyOne terminology &mdash; FiftyOne 1.3.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <link rel="stylesheet" href="../_static/css/voxel51-website.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Filtering Cheat Sheet" href="filtering_cheat_sheet.html" />
+    <link rel="prev" title="FiftyOne Cheat Sheets" href="index.html" />
+<meta property="og:image" content="https://voxel51.com/wp-content/uploads/2024/03/3.24_webpages_Home_AV.png" />
+
+<link
+  href="https://fonts.googleapis.com/css?family=Palanquin:400,600,700,800"
+  rel="stylesheet"
+/>
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+  rel="stylesheet"
+/>
+<script src="https://tag.clearbitscripts.com/v1/pk_b9ed71c8234edd4f77326bcbfab5a4ca/tags.js"></script>
+
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+  
+</head>
+
+
+<div class="container-fluid header-holder tutorials-header" id="header-holder">
+  <nav id="nav__main" class="nav__main">
+    <div class="nav__main__logo">
+      <a href="https://voxel51.com/">
+        <img
+          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
+        />
+      </a>
+    </div>
+
+    <div class="nav__spacer desktop_only"></div>
+
+    <div id="nav__main__mobilebutton--on">
+      <a href="javascript:void(0);" onclick="navMobileButton()">
+        <i class="fa-solid fa-bars"></i>
+      </a>
+    </div>
+
+    <div id="nav__main__mobilebutton--off">
+      <a href="javascript:void(0);" onclick="navMobileButton()">
+        <i class="fa-solid fa-times"></i>
+      </a>
+    </div>
+
+    <div id="nav__main__items">
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Products</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://voxel51.com/fiftyone/">Open Source</a></li>
+            <li><a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a></li>
+            <li><a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a></li>
+            <li><a href="https://voxel51.com/success-stories/">Success Stories</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Learn</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://community.voxel51.com">Community Discord</a></li>
+            <li><a href="https://voxel51.com/blog/">Blog</a></li>
+            <li><a href="https://voxel51.com/computer-vision-events/">Events</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item">
+        <a href="https://docs.voxel51.com/">Docs</a>
+      </div>
+
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Company</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://voxel51.com/ourstory/">About Us</a></li>
+            <li><a href="https://voxel51.com/jobs/">Careers</a></li>
+            <li><a href="https://voxel51.com/talk-to-sales/">Talk to Sales</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item mobile_only">
+        <a href="https://github.com/voxel51/fiftyone">GitHub</a>
+      </div>
+
+      <div class="nav__item desktop_only" id="octocat">
+        <!-- https://buttons.github.io -->
+        <a
+          class="github-button"
+          href="https://github.com/voxel51/fiftyone"
+          data-color-scheme="no-preference: dark_high_contrast; light: dark_high_contrast; dark: dark_high_contrast;"
+          data-size="large"
+          data-show-count="true"
+          aria-label="Star voxel51/fiftyone on GitHub"
+          >Star</a
+        >
+      </div>
+
+      <div class="nav__item full_nav_only">
+        <a class="button-primary" href="https://voxel51.com/schedule-teams-workshop/" target="_blank"
+          >Schedule a workshop</a
+        >
+      </div>
+    </div>
+  </nav>
+</div>
+
+
+
+<body class="pytorch-body">
+
+   
+
+    
+
+    <div class="table-of-contents-link-wrapper">
+      <span>Table of Contents</span>
+      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+    </div>
+
+    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+      <div class="pytorch-side-scroll">
+        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          <div class="pytorch-left-menu-search">
+            
+
+            
+              
+              
+            
+
+            
+
+
+  
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+            
+          </div>
+
+           <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../teams/index.html">FiftyOne Teams 🚀</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../environments/index.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../recipes/index.html">Recipes</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Cheat Sheets</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">FiftyOne terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filtering_cheat_sheet.html">Filtering cheat sheet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="views_cheat_sheet.html">Views cheat sheet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pandas_vs_fiftyone.html">pandas vs FiftyOne</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dataset_zoo/index.html">Dataset Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_zoo/index.html">Model Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brain.html">FiftyOne Brain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/index.html">Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plugins/index.html">Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli/index.html">CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/fiftyone.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deprecation.html">Deprecation Notices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a></li>
+</ul>
+ 
+        </div>
+      </div>
+    </nav>
+
+    <div class="pytorch-container">
+      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+        <div class="pytorch-breadcrumbs-wrapper">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="../index.html">
+          
+            Docs
+          
+        </a> &gt;
+      </li>
+
+        
+          <li><a href="index.html">FiftyOne Cheat Sheets</a> &gt;</li>
+        
+      <li>FiftyOne terminology</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+        </div>
+
+        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+          Contents
+        </div>
+      </div>
+
+      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+        <div class="pytorch-content-left">
+
+        
+          
+          <div class="rst-content style-external-links">
+          
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+              
+  <div class="section" id="fiftyone-terminology">
+<span id="terminology-cheat-sheet"></span><h1>FiftyOne terminology<a class="headerlink" href="#fiftyone-terminology" title="Permalink to this headline">¶</a></h1>
+<p>This cheat sheet introduces the key terminology in the world of FiftyOne.</p>
+<div class="section" id="the-basics">
+<h2>The basics<a class="headerlink" href="#the-basics" title="Permalink to this headline">¶</a></h2>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>FiftyOne</p></td>
+<td><p>The <a class="reference internal" href="../index.html#fiftyone-library"><span class="std std-ref">open-source framework</span></a>, the core library,
+and the Python SDK.</p></td>
+</tr>
+<tr class="row-even"><td><p>FiftyOne App</p></td>
+<td><p>The <a class="reference internal" href="../user_guide/app.html#fiftyone-app"><span class="std std-ref">provided user interface</span></a> for graphically
+viewing, filtering, and understanding your datasets. Can be launched in
+the browser or within notebooks.</p></td>
+</tr>
+<tr class="row-odd"><td><p>FiftyOne Teams</p></td>
+<td><p><a class="reference external" href="https://voxel51.com/fiftyone-teams/">The enterprise-grade suite</a>
+built on top of FiftyOne for collaboration, permissioning, and working
+with cloud-backed media.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="other-components">
+<h2>Other components<a class="headerlink" href="#other-components" title="Permalink to this headline">¶</a></h2>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Brain</p></td>
+<td><p>Library of <a class="reference internal" href="../brain.html#fiftyone-brain"><span class="std std-ref">ML-powered capabilities</span></a> for
+computation and visualization.</p></td>
+</tr>
+<tr class="row-even"><td><p>Dataset Zoo</p></td>
+<td><p><a class="reference internal" href="../dataset_zoo/index.html#dataset-zoo"><span class="std std-ref">Collection of common datasets</span></a> available for
+download and loading into  FiftyOne.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Model Zoo</p></td>
+<td><p><a class="reference internal" href="../model_zoo/index.html#model-zoo"><span class="std std-ref">Collection of pre-trained models</span></a> available for
+download and inference.</p></td>
+</tr>
+<tr class="row-even"><td><p>Plugin</p></td>
+<td><p>A module you can use to <a class="reference internal" href="../plugins/index.html#fiftyone-plugins"><span class="std std-ref">customize and extend</span></a>
+the behavior of FiftyOne.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Operator</p></td>
+<td><p>A <a class="reference internal" href="../plugins/using_plugins.html#using-operators"><span class="std std-ref">plugin subcomponent</span></a> that defines an
+operation that can be executed either directly by users in the App
+and/or internally invoked by other plugin components</p></td>
+</tr>
+<tr class="row-even"><td><p>Integration</p></td>
+<td><p>A dataset, ML framework, annotation service, or other tool FiftyOne is
+<a class="reference internal" href="../integrations/index.html#integrations"><span class="std std-ref">directly compatible with</span></a>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="data-model">
+<h2>Data model<a class="headerlink" href="#data-model" title="Permalink to this headline">¶</a></h2>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Dataset</p></td>
+<td><p><a class="reference internal" href="../user_guide/basics.html#basics-datasets"><span class="std std-ref">Core data structure</span></a> in FiftyOne, composed of
+<code class="code docutils literal notranslate"><span class="pre">Sample</span></code> instances. Provides a consistent interface for loading
+images, videos, metadata, annotations, and predictions. The computer
+vision analog of a table of data.</p></td>
+</tr>
+<tr class="row-even"><td><p>Sample</p></td>
+<td><p>The atomic elements of a <code class="code docutils literal notranslate"><span class="pre">Dataset</span></code> that store all the information
+related to a given piece of data. Every <a class="reference internal" href="../user_guide/basics.html#basics-samples"><span class="std std-ref">sample</span></a>
+has an associated media file. The computer vision analog of a row of
+tabular data.</p></td>
+</tr>
+<tr class="row-odd"><td><p>DatasetView</p></td>
+<td><p><a class="reference internal" href="../user_guide/using_views.html#using-views"><span class="std std-ref">A view into</span></a> a <code class="code docutils literal notranslate"><span class="pre">Dataset</span></code>, which can filter,
+sort, transform, etc. the dataset along various axes to obtain a
+desired subset of the samples.</p></td>
+</tr>
+<tr class="row-even"><td><p>ViewStage</p></td>
+<td><p><a class="reference internal" href="../user_guide/using_views.html#view-stages"><span class="std std-ref">A logical operation</span></a>, such as filtering, matching,
+or sorting, which can be used to generate a <code class="code docutils literal notranslate"><span class="pre">DatasetView</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Field</p></td>
+<td><p>Attributes of <code class="code docutils literal notranslate"><span class="pre">Sample</span></code> instances that
+<a class="reference internal" href="../user_guide/basics.html#basics-fields"><span class="std std-ref">store customizable information</span></a> about the
+samples. The computer vision analog of a column in a table.</p></td>
+</tr>
+<tr class="row-even"><td><p>Embedded Document Field</p></td>
+<td><p><a class="reference internal" href="../user_guide/using_datasets.html#custom-embedded-documents"><span class="std std-ref">A collection of related fields</span></a>
+organized under a single top-level <code class="code docutils literal notranslate"><span class="pre">Field</span></code>, similar to a nested
+dictionary.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Label</p></td>
+<td><p>Class hierarchy used to
+<a class="reference internal" href="../user_guide/basics.html#basics-labels"><span class="std std-ref">store semantic information</span></a> about ground truth
+or predicted labels in a sample. Builtin <code class="code docutils literal notranslate"><span class="pre">Label</span></code> types include
+<code class="code docutils literal notranslate"><span class="pre">Classification</span></code>, <code class="code docutils literal notranslate"><span class="pre">Detections</span></code>, <code class="code docutils literal notranslate"><span class="pre">Keypoints</span></code>, and many others.</p></td>
+</tr>
+<tr class="row-even"><td><p>Tag</p></td>
+<td><p>A field containing a list of strings representing relevant
+information. <a class="reference internal" href="../user_guide/basics.html#basics-tags"><span class="std std-ref">Tags</span></a> can be assigned to datasets,
+samples, or labels.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Metadata</p></td>
+<td><p>A special <code class="code docutils literal notranslate"><span class="pre">Sample</span></code> field that can be automatically populated with
+media type-specific  <a class="reference internal" href="../user_guide/basics.html#basics-metadata"><span class="std std-ref">metadata</span></a> about the raw
+media associated with the sample.</p></td>
+</tr>
+<tr class="row-even"><td><p>Aggregation</p></td>
+<td><p>A class encapsulating the computation of an
+<a class="reference internal" href="../user_guide/basics.html#basics-aggregations"><span class="std std-ref">aggregate statistic</span></a> about the contents of
+a dataset or view.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="fiftyone-app">
+<h2>FiftyOne App<a class="headerlink" href="#fiftyone-app" title="Permalink to this headline">¶</a></h2>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Session</p></td>
+<td><p><a class="reference internal" href="../user_guide/app.html#app-sessions"><span class="std std-ref">An instance of the FiftyOne App</span></a> connected to a
+specific dataset, via which you can use to programmatically interact
+with the App.</p></td>
+</tr>
+<tr class="row-even"><td><p>Sample grid</p></td>
+<td><p>The rectangular <a class="reference internal" href="../user_guide/app.html#app-filtering"><span class="std std-ref">media grid</span></a> that you can scroll
+through to quickly browse the samples in a dataset. Click on any media
+in the grid to open the sample modal.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Sample modal</p></td>
+<td><p>The <a class="reference internal" href="../user_guide/app.html#app-sample-view"><span class="std std-ref">expanded modal</span></a> that provides detailed
+information and visualization about an individual sample in a dataset.</p></td>
+</tr>
+<tr class="row-even"><td><p>Sidebar</p></td>
+<td><p>Vertical component on <a class="reference internal" href="../user_guide/app.html#app-fields-sidebar"><span class="std std-ref">left side of App</span></a>
+that provides convenient options for filtering the dataset and
+toggling the visibility of fields in the sample grid.</p></td>
+</tr>
+<tr class="row-odd"><td><p>View bar</p></td>
+<td><p><a class="reference internal" href="../user_guide/app.html#app-create-view"><span class="std std-ref">Horizontal bar at the top of the App</span></a> where
+you can create and compose view stages via point and click operations
+to filter your dataset and show only the content of interest.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+             </article>
+             
+            </div>
+            <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="filtering_cheat_sheet.html" class="btn btn-neutral float-right" title="Filtering Cheat Sheet" accesskey="n" rel="next">Next <img src="../_static/images/chevron-right-orange.svg" class="next-page"></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="FiftyOne Cheat Sheets" accesskey="p" rel="prev"><img src="../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
+      
+    </div>
+  
+</footer>
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              <ul>
+<li><a class="reference internal" href="#">FiftyOne terminology</a><ul>
+<li><a class="reference internal" href="#the-basics">The basics</a></li>
+<li><a class="reference internal" href="#other-components">Other components</a></li>
+<li><a class="reference internal" href="#data-model">Data model</a></li>
+<li><a class="reference internal" href="#fiftyone-app">FiftyOne App</a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  
+
+
+  
+
+     
+       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+         <script src="../_static/jquery.js"></script>
+         <script src="../_static/underscore.js"></script>
+         <script src="../_static/doctools.js"></script>
+         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+         <script src="../_static/js/voxel51-website.js"></script>
+         <script src="../_static/js/custom.js"></script>
+     
+
+  
+
+  <script type="text/javascript" src="../_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="../_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+  <!-- Begin Footer -->
+
+
+<footer class="footer-wrapper" id="docs-tutorials-resources">
+  <div class="footer pytorch-container">
+    <div class="footer__logo">
+      <a href="https://voxel51.com/"
+        ><img
+          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
+      /></a>
+    </div>
+
+    <div class="footer__address">
+      330 E Liberty St<br />
+      Ann Arbor, MI 48104<br />
+      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
+    </div>
+
+    <!--
+    <div class="footer__contact">
+      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
+    </div>
+    -->
+
+    <div class="footer__links">
+      <div class="footer__links--col2">
+        <p class="nav__item--brand">Products</p>
+        <a href="https://voxel51.com/fiftyone/">FiftyOne</a>
+        <a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a>
+        <a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a>
+        <a href="https://voxel51.com/success-stories/">Success Stories</a>
+      </div>
+      <div class="footer__links--col3">
+        <p class="nav__item--brand">Resources</p>
+        <a href="https://voxel51.com/blog/">Blog</a>
+        <a href="https://docs.voxel51.com/">Docs</a>
+        <a href="https://github.com/voxel51/">GitHub</a>
+        <a href="https://community.voxel51.com">Discord</a>
+        <a href="https://voxel51.com/ourstory/">About Us</a>
+        <a href="https://voxel51.com/computer-vision-events/">Events</a>
+        <a href="https://voxel51.com/jobs/">Careers</a>
+        <a href="https://voxel51.com/press/">Press</a>
+      </div>
+    </div>
+
+    <div class="footer__icons">
+      <ul class="list-inline">
+        <li>
+          <a href="https://www.linkedin.com/company/voxel51/">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/voxel51/">
+            <i class="fa-brands fa-github"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/voxel51">
+            <i class="fa-brands fa-twitter"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/voxel51/">
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="footer__copyright">
+      <ul class="list-inline">
+        <li>&copy; 2024 Voxel51 Inc.</li>
+        <li>
+          <a href="https://voxel51.com/privacy/">Privacy Policy</a>
+        </li>
+        <li>
+          <a href="https://voxel51.com/terms/">Terms of Service</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<!-- https://buttons.github.io -->
+<script async defer src="https://buttons.github.io/buttons.js" ></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XD15NFRY3M" ></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+  gtag("config", "G-XD15NFRY3M");
+</script>
+
+<script>
+  function open_modal(modal_id, modal_closer_id) {
+    // Get the modal
+    let the_modal = document.getElementById(modal_id);
+
+    the_modal.style.display = "flex";
+    document.body.style.overflow = "hidden";
+
+    let the_modal_closer = document.getElementById(modal_closer_id);
+
+    // When the user clicks on <span> (x), close the modal
+    the_modal_closer &&
+      (the_modal_closer.onclick = function () {
+        the_modal.style.display = "none";
+      });
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+      if (event.target == the_modal) {
+        the_modal.style.display = "none";
+        document.body.style.overflow = "unset";
+        window.onclick = undefined;
+      }
+    };
+  }
+</script>
+
+<!-- bigpicture.io -->
+<script>
+  !(function (e, t, i) {
+    var r = (e.bigPicture = e.bigPicture || []);
+    if (!r.initialized)
+      if (r.invoked)
+        e.console &&
+          console.error &&
+          console.error("BigPicture.io snippet included twice.");
+      else {
+        (r.invoked = !0),
+          (r.SNIPPET_VERSION = 1.5),
+          (r.handler = function (e) {
+            if (void 0 !== r.callback)
+              try {
+                return r.callback(e);
+              } catch (e) {}
+          }),
+          (r.eventList = ["mousedown", "mouseup", "click", "submit"]),
+          (r.methods = [
+            "track",
+            "identify",
+            "page",
+            "group",
+            "alias",
+            "integration",
+            "ready",
+            "intelReady",
+            "consentReady",
+            "on",
+            "off",
+          ]),
+          (r.factory = function (e) {
+            return function () {
+              var t = Array.prototype.slice.call(arguments);
+              return t.unshift(e), r.push(t), r;
+            };
+          });
+        for (var n = 0; n < r.methods.length; n++) {
+          var o = r.methods[n];
+          r[o] = r.factory(o);
+        }
+        r.getCookie = function (e) {
+          var i = ("; " + t.cookie).split("; " + e + "=");
+          return 2 == i.length && i.pop().split(";").shift();
+        };
+        var c = (r.isEditor = (function () {
+          try {
+            return (
+              e.self !== e.top &&
+              (new RegExp("app" + i, "ig").test(t.referrer) ||
+                "edit" == r.getCookie("_bpr_edit"))
+            );
+          } catch (e) {
+            return !1;
+          }
+        })());
+        r.init = function (n, o) {
+          if (((r.projectId = n), (r._config = o), !c))
+            for (var a = 0; a < r.eventList.length; a++)
+              e.addEventListener(r.eventList[a], r.handler, !0);
+          var s = t.createElement("script");
+          s.async = !0;
+          var d = c ? "/editor/editor" : "/public-" + n;
+          (s.src = "//cdn" + i + d + ".js"),
+            t.getElementsByTagName("head")[0].appendChild(s);
+        };
+      }
+  })(window, document, ".bigpicture.io");
+  bigPicture.init("1646");
+</script>
+
+
+  
+
+  <!-- End Footer -->
+
+  <!-- Begin Mobile Menu -->
+
+  
+
+  <!-- End Mobile Menu -->
+
+  <script type="text/javascript" src="../_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function(e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+</body>
+</html>

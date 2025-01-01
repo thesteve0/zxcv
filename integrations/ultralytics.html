@@ -1,0 +1,1304 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Ultralytics Integration &mdash; FiftyOne 1.3.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <link rel="stylesheet" href="../_static/css/voxel51-website.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Albumentations Integration" href="albumentations.html" />
+    <link rel="prev" title="Hugging Face Integration" href="huggingface.html" />
+<meta property="og:image" content="https://voxel51.com/wp-content/uploads/2024/03/3.24_webpages_Home_AV.png" />
+
+<link
+  href="https://fonts.googleapis.com/css?family=Palanquin:400,600,700,800"
+  rel="stylesheet"
+/>
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+  rel="stylesheet"
+/>
+<script src="https://tag.clearbitscripts.com/v1/pk_b9ed71c8234edd4f77326bcbfab5a4ca/tags.js"></script>
+
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+  
+</head>
+
+
+<div class="container-fluid header-holder tutorials-header" id="header-holder">
+  <nav id="nav__main" class="nav__main">
+    <div class="nav__main__logo">
+      <a href="https://voxel51.com/">
+        <img
+          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
+        />
+      </a>
+    </div>
+
+    <div class="nav__spacer desktop_only"></div>
+
+    <div id="nav__main__mobilebutton--on">
+      <a href="javascript:void(0);" onclick="navMobileButton()">
+        <i class="fa-solid fa-bars"></i>
+      </a>
+    </div>
+
+    <div id="nav__main__mobilebutton--off">
+      <a href="javascript:void(0);" onclick="navMobileButton()">
+        <i class="fa-solid fa-times"></i>
+      </a>
+    </div>
+
+    <div id="nav__main__items">
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Products</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://voxel51.com/fiftyone/">Open Source</a></li>
+            <li><a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a></li>
+            <li><a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a></li>
+            <li><a href="https://voxel51.com/success-stories/">Success Stories</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Learn</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://community.voxel51.com">Community Discord</a></li>
+            <li><a href="https://voxel51.com/blog/">Blog</a></li>
+            <li><a href="https://voxel51.com/computer-vision-events/">Events</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item">
+        <a href="https://docs.voxel51.com/">Docs</a>
+      </div>
+
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Company</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://voxel51.com/ourstory/">About Us</a></li>
+            <li><a href="https://voxel51.com/jobs/">Careers</a></li>
+            <li><a href="https://voxel51.com/talk-to-sales/">Talk to Sales</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item mobile_only">
+        <a href="https://github.com/voxel51/fiftyone">GitHub</a>
+      </div>
+
+      <div class="nav__item desktop_only" id="octocat">
+        <!-- https://buttons.github.io -->
+        <a
+          class="github-button"
+          href="https://github.com/voxel51/fiftyone"
+          data-color-scheme="no-preference: dark_high_contrast; light: dark_high_contrast; dark: dark_high_contrast;"
+          data-size="large"
+          data-show-count="true"
+          aria-label="Star voxel51/fiftyone on GitHub"
+          >Star</a
+        >
+      </div>
+
+      <div class="nav__item full_nav_only">
+        <a class="button-primary" href="https://voxel51.com/schedule-teams-workshop/" target="_blank"
+          >Schedule a workshop</a
+        >
+      </div>
+    </div>
+  </nav>
+</div>
+
+
+
+<body class="pytorch-body">
+
+   
+
+    
+
+    <div class="table-of-contents-link-wrapper">
+      <span>Table of Contents</span>
+      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+    </div>
+
+    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+      <div class="pytorch-side-scroll">
+        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          <div class="pytorch-left-menu-search">
+            
+
+            
+              
+              
+            
+
+            
+
+
+  
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+            
+          </div>
+
+           <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../teams/index.html">FiftyOne Teams 🚀</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../environments/index.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../recipes/index.html">Recipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheat_sheets/index.html">Cheat Sheets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dataset_zoo/index.html">Dataset Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_zoo/index.html">Model Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brain.html">FiftyOne Brain</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Integrations</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="coco.html"> COCO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open_images.html"> Open Images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="activitynet.html"> ActivityNet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cvat.html"> CVAT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="labelstudio.html"> Label Studio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="v7.html"> V7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="labelbox.html"> Labelbox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qdrant.html"> Qdrant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="redis.html"> Redis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pinecone.html"> Pinecone</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mongodb.html"> MongoDB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="elasticsearch.html"> Elasticsearch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="milvus.html"> Milvus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lancedb.html"> LanceDB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="huggingface.html"> Hugging Face</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#"> Ultralytics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="albumentations.html"> Albumentations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="super_gradients.html"> SuperGradients</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openclip.html"> OpenCLIP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pytorch_hub.html"> PyTorch Hub</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lightning_flash.html"> Lightning Flash</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../plugins/index.html">Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli/index.html">CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/fiftyone.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deprecation.html">Deprecation Notices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a></li>
+</ul>
+ 
+        </div>
+      </div>
+    </nav>
+
+    <div class="pytorch-container">
+      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+        <div class="pytorch-breadcrumbs-wrapper">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="../index.html">
+          
+            Docs
+          
+        </a> &gt;
+      </li>
+
+        
+          <li><a href="index.html">FiftyOne Integrations</a> &gt;</li>
+        
+      <li>Ultralytics Integration</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+        </div>
+
+        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+          Contents
+        </div>
+      </div>
+
+      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+        <div class="pytorch-content-left">
+
+        
+          
+          <div class="rst-content style-external-links">
+          
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+              
+  <div class="section" id="ultralytics-integration">
+<span id="id1"></span><h1>Ultralytics Integration<a class="headerlink" href="#ultralytics-integration" title="Permalink to this headline">¶</a></h1>
+<p>FiftyOne integrates natively with
+<a class="reference external" href="https://github.com/ultralytics/ultralytics">Ultralytics</a>, so
+you can load, fine-tune, and run inference with your favorite Ultralytics
+models on your FiftyOne datasets with just a few lines of code!</p>
+<div class="section" id="setup">
+<span id="ultralytics-setup"></span><h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
+<p>To get started with
+<a class="reference external" href="https://github.com/ultralytics/ultralytics">Ultralytics</a>, just install the
+following packages:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">&quot;ultralytics&gt;=8.1.0&quot;</span><span class="w"> </span><span class="s2">&quot;torch&gt;=1.8&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="inference">
+<span id="ultralytics-inference"></span><h2>Inference<a class="headerlink" href="#inference" title="Permalink to this headline">¶</a></h2>
+<p>The examples below show how to run inference with various Ultralytics models on
+the following sample dataset:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># Suppress Ultralytics logging</span>
+<span class="kn">import</span> <span class="nn">os</span><span class="p">;</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;YOLO_VERBOSE&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;False&quot;</span>
+
+<span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+<span class="kn">import</span> <span class="nn">fiftyone.utils.ultralytics</span> <span class="k">as</span> <span class="nn">fou</span>
+
+<span class="kn">from</span> <span class="nn">ultralytics</span> <span class="kn">import</span> <span class="n">YOLO</span>
+
+<span class="c1"># Load an example dataset</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">,</span> <span class="n">max_samples</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">select_fields</span><span class="p">()</span><span class="o">.</span><span class="n">keep_fields</span><span class="p">()</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="section" id="image-classification">
+<span id="ultralytics-image-classification"></span><h3>Image classification<a class="headerlink" href="#image-classification" title="Permalink to this headline">¶</a></h3>
+<p>You can directly pass Ultralytics <code class="code docutils literal notranslate"><span class="pre">YOLO</span></code> classification models to
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.apply_model" title="fiftyone.core.collections.SampleCollection.apply_model"><code class="xref py py-meth docutils literal notranslate"><span class="pre">apply_model()</span></code></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># YOLOv8</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">YOLO</span><span class="p">(</span><span class="s2">&quot;yolov8n-cls.pt&quot;</span><span class="p">)</span>
+<span class="c1"># model = YOLO(&quot;yolov8s-cls.pt&quot;)</span>
+<span class="c1"># model = YOLO(&quot;yolov8m-cls.pt&quot;)</span>
+<span class="c1"># model = YOLO(&quot;yolov8l-cls.pt&quot;)</span>
+<span class="c1"># model = YOLO(&quot;yolov8x-cls.pt&quot;)</span>
+
+<span class="n">dataset</span><span class="o">.</span><span class="n">apply_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;classif&quot;</span><span class="p">)</span>
+
+<span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+</div>
+<div class="section" id="object-detection">
+<span id="ultralytics-object-detection"></span><h3>Object detection<a class="headerlink" href="#object-detection" title="Permalink to this headline">¶</a></h3>
+<p>You can directly pass Ultralytics <code class="code docutils literal notranslate"><span class="pre">YOLO</span></code> or <code class="code docutils literal notranslate"><span class="pre">RTDETR</span></code> detection models to
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.apply_model" title="fiftyone.core.collections.SampleCollection.apply_model"><code class="xref py py-meth docutils literal notranslate"><span class="pre">apply_model()</span></code></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># YOLOv8</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">YOLO</span><span class="p">(</span><span class="s2">&quot;yolov8s.pt&quot;</span><span class="p">)</span>
+<span class="c1"># model = YOLO(&quot;yolov8m.pt&quot;)</span>
+<span class="c1"># model = YOLO(&quot;yolov8l.pt&quot;)</span>
+<span class="c1"># model = YOLO(&quot;yolov8x.pt&quot;)</span>
+
+<span class="c1"># YOLOv5</span>
+<span class="c1"># model = YOLO(&quot;yolov5s.pt&quot;)</span>
+<span class="c1"># model = YOLO(&quot;yolov5m.pt&quot;)</span>
+<span class="c1"># model = YOLO(&quot;yolov5l.pt&quot;)</span>
+<span class="c1"># model = YOLO(&quot;yolov5x.pt&quot;)</span>
+
+<span class="c1"># YOLOv9</span>
+<span class="c1"># model = YOLO(&quot;yolov9c.pt&quot;)</span>
+<span class="c1"># model = YOLO(&quot;yolov9e.pt&quot;)</span>
+
+<span class="c1"># YOLOv10</span>
+<span class="c1"># model = YOLO(&quot;yolov10n.pt)</span>
+<span class="c1"># model = YOLO(&quot;yolov10s.pt)</span>
+<span class="c1"># model = YOLO(&quot;yolov10m.pt)</span>
+<span class="c1"># model = YOLO(&quot;yolov10l.pt)</span>
+<span class="c1"># model = YOLO(&quot;yolov10x.pt)</span>
+
+<span class="c1"># YOLOv11</span>
+<span class="c1"># model = YOLO(&quot;yolo11n.pt)</span>
+<span class="c1"># model = YOLO(&quot;yolo11s.pt)</span>
+<span class="c1"># model = YOLO(&quot;yolo11m.pt)</span>
+<span class="c1"># model = YOLO(&quot;yolo11l.pt)</span>
+<span class="c1"># model = YOLO(&quot;yolo11x.pt)</span>
+
+<span class="c1"># RTDETR</span>
+<span class="c1"># model = YOLO(&quot;rtdetr-l.pt&quot;)</span>
+<span class="c1"># model = YOLO(&quot;rtdetr-x.pt&quot;)</span>
+
+<span class="n">dataset</span><span class="o">.</span><span class="n">apply_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;boxes&quot;</span><span class="p">)</span>
+
+<span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>Alternatively, you can use the
+<code class="xref py py-func docutils literal notranslate"><span class="pre">to_detections()</span></code> utility to
+manually convert Ultralytics predictions to
+<a class="reference internal" href="../user_guide/using_datasets.html#object-detection"><span class="std std-ref">FiftyOne format</span></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><span class="k">for</span> <span class="n">sample</span> <span class="ow">in</span> <span class="n">dataset</span><span class="o">.</span><span class="n">iter_samples</span><span class="p">(</span><span class="n">progress</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">sample</span><span class="o">.</span><span class="n">filepath</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">sample</span><span class="p">[</span><span class="s2">&quot;boxes&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fou</span><span class="o">.</span><span class="n">to_detections</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+    <span class="n">sample</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+</pre></div></td></tr></table></div>
+</div>
+<img alt="ultralytics-boxes" class="align-center" src="../_images/ultralytics_boxes.jpg" />
+<p>You can also load any of these models directly from the
+<a class="reference internal" href="../model_zoo/index.html#model-zoo"><span class="std std-ref">FiftyOne Model Zoo</span></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">model_name</span> <span class="o">=</span> <span class="s2">&quot;yolov5l-coco-torch&quot;</span>
+<span class="c1"># model_name = &quot;yolov8m-coco-torch&quot;</span>
+<span class="c1"># model_name = &quot;yolov9e-coco-torch&quot;</span>
+<span class="c1"># model_name = &quot;yolov10s-coco-torch&quot;</span>
+<span class="c1"># model_name = &quot;yolo11x-coco-torch&quot;</span>
+<span class="c1"># model_name = &quot;rtdetr-l-coco-torch&quot;</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_model</span><span class="p">(</span>
+    <span class="n">model_name</span><span class="p">,</span>
+    <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;boxes&quot;</span><span class="p">,</span>
+    <span class="n">confidence_thresh</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+    <span class="n">iou_thresh</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">dataset</span><span class="o">.</span><span class="n">apply_model</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+
+<span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>You can use <a class="reference internal" href="../api/fiftyone.zoo.html#fiftyone.zoo.list_zoo_models" title="fiftyone.zoo.list_zoo_models"><code class="xref py py-func docutils literal notranslate"><span class="pre">list_zoo_models()</span></code></a> to see all
+available YOLO models that are compatible with Ultralytics or SuperGradients:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">foz</span><span class="o">.</span><span class="n">list_zoo_models</span><span class="p">(</span><span class="n">tags</span><span class="o">=</span><span class="s2">&quot;yolo&quot;</span><span class="p">))</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>In general, YOLO model names will contain “yolov”, followed by the version number,
+then the model size (“n”, “s”, “m”,  “l”, or “x”), and an indicator of the
+label classes (“coco” for MS COCO or “world” for open-world), followed by
+“torch”.</p>
+</div>
+<div class="section" id="instance-segmentation">
+<span id="ultralytics-instance-segmentation"></span><h3>Instance segmentation<a class="headerlink" href="#instance-segmentation" title="Permalink to this headline">¶</a></h3>
+<p>You can directly pass Ultralytics YOLO segmentation models to
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.apply_model" title="fiftyone.core.collections.SampleCollection.apply_model"><code class="xref py py-meth docutils literal notranslate"><span class="pre">apply_model()</span></code></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">YOLO</span><span class="p">(</span><span class="s2">&quot;yolov8s-seg.pt&quot;</span><span class="p">)</span>
+<span class="c1"># model = YOLO(&quot;yolov8m-seg.pt&quot;)</span>
+<span class="c1"># model = YOLO(&quot;yolov8l-seg.pt&quot;)</span>
+<span class="c1"># model = YOLO(&quot;yolov8x-seg.pt&quot;)</span>
+
+<span class="c1"># model = YOLO(&quot;yolo11s-seg.pt&quot;)</span>
+<span class="c1"># model = YOLO(&quot;yolo11m-seg.pt&quot;)</span>
+<span class="c1"># model = YOLO(&quot;yolo11l-seg.pt&quot;)</span>
+<span class="c1"># model = YOLO(&quot;yolo11x-seg.pt&quot;)</span>
+
+<span class="n">dataset</span><span class="o">.</span><span class="n">apply_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;instances&quot;</span><span class="p">)</span>
+
+<span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>Alternatively, you can use the
+<code class="xref py py-func docutils literal notranslate"><span class="pre">to_instances()</span></code> and
+<code class="xref py py-func docutils literal notranslate"><span class="pre">to_polylines()</span></code> utilities to
+manually convert Ultralytics predictions into the desired
+<a class="reference internal" href="../user_guide/using_datasets.html#instance-segmentation"><span class="std std-ref">FiftyOne format</span></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><span class="k">for</span> <span class="n">sample</span> <span class="ow">in</span> <span class="n">dataset</span><span class="o">.</span><span class="n">iter_samples</span><span class="p">(</span><span class="n">progress</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">sample</span><span class="o">.</span><span class="n">filepath</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">sample</span><span class="p">[</span><span class="s2">&quot;detections&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fou</span><span class="o">.</span><span class="n">to_detections</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+    <span class="n">sample</span><span class="p">[</span><span class="s2">&quot;instances&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fou</span><span class="o">.</span><span class="n">to_instances</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+    <span class="n">sample</span><span class="p">[</span><span class="s2">&quot;polylines&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fou</span><span class="o">.</span><span class="n">to_polylines</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+    <span class="n">sample</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+</pre></div></td></tr></table></div>
+</div>
+<img alt="ultralytics-instances" class="align-center" src="../_images/ultralytics_instances.jpg" />
+<p>You can also load YOLOv8, YOLOv9, and YOLO11 segmentation models from the
+<a class="reference internal" href="../model_zoo/index.html#model-zoo"><span class="std std-ref">FiftyOne Model Zoo</span></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">model_name</span> <span class="o">=</span> <span class="s2">&quot;yolov8n-seg-coco-torch&quot;</span>
+<span class="c1"># model_name = &quot;yolov8s-seg-coco-torch&quot;</span>
+<span class="c1"># model_name = &quot;yolov8m-seg-coco-torch&quot;</span>
+<span class="c1"># model_name = &quot;yolov8l-seg-coco-torch&quot;</span>
+<span class="c1"># model_name = &quot;yolov8x-seg-coco-torch&quot;</span>
+
+<span class="c1"># model_name = &quot;yolov9c-seg-coco-torch&quot;</span>
+<span class="c1"># model_name = &quot;yolov9e-seg-coco-torch&quot;</span>
+
+<span class="c1"># model_name = &quot;yolo11n-seg-coco-torch&quot;</span>
+<span class="c1"># model_name = &quot;yolo11s-seg-coco-torch&quot;</span>
+<span class="c1"># model_name = &quot;yolo11m-seg-coco-torch&quot;</span>
+<span class="c1"># model_name = &quot;yolo11l-seg-coco-torch&quot;</span>
+<span class="c1"># model_name = &quot;yolo11x-seg-coco-torch&quot;</span>
+
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_model</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;yolo_seg&quot;</span><span class="p">)</span>
+
+<span class="n">dataset</span><span class="o">.</span><span class="n">apply_model</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+
+<span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+</div>
+<div class="section" id="keypoints">
+<span id="ultralytics-keypoints"></span><h3>Keypoints<a class="headerlink" href="#keypoints" title="Permalink to this headline">¶</a></h3>
+<p>You can directly pass Ultralytics YOLO pose models to
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.apply_model" title="fiftyone.core.collections.SampleCollection.apply_model"><code class="xref py py-meth docutils literal notranslate"><span class="pre">apply_model()</span></code></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">YOLO</span><span class="p">(</span><span class="s2">&quot;yolov8s-pose.pt&quot;</span><span class="p">)</span>
+<span class="c1"># model = YOLO(&quot;yolov8m-pose.pt&quot;)</span>
+<span class="c1"># model = YOLO(&quot;yolov8l-pose.pt&quot;)</span>
+<span class="c1"># model = YOLO(&quot;yolov8x-pose.pt&quot;)</span>
+
+<span class="n">dataset</span><span class="o">.</span><span class="n">apply_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;keypoints&quot;</span><span class="p">)</span>
+
+<span class="c1"># Store the COCO-pose keypoint skeleton so the App can render it</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">default_skeleton</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">KeypointSkeleton</span><span class="p">(</span>
+    <span class="n">labels</span><span class="o">=</span><span class="p">[</span>
+        <span class="s2">&quot;nose&quot;</span><span class="p">,</span> <span class="s2">&quot;left eye&quot;</span><span class="p">,</span> <span class="s2">&quot;right eye&quot;</span><span class="p">,</span> <span class="s2">&quot;left ear&quot;</span><span class="p">,</span> <span class="s2">&quot;right ear&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;left shoulder&quot;</span><span class="p">,</span> <span class="s2">&quot;right shoulder&quot;</span><span class="p">,</span> <span class="s2">&quot;left elbow&quot;</span><span class="p">,</span> <span class="s2">&quot;right elbow&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;left wrist&quot;</span><span class="p">,</span> <span class="s2">&quot;right wrist&quot;</span><span class="p">,</span> <span class="s2">&quot;left hip&quot;</span><span class="p">,</span> <span class="s2">&quot;right hip&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;left knee&quot;</span><span class="p">,</span> <span class="s2">&quot;right knee&quot;</span><span class="p">,</span> <span class="s2">&quot;left ankle&quot;</span><span class="p">,</span> <span class="s2">&quot;right ankle&quot;</span><span class="p">,</span>
+    <span class="p">],</span>
+    <span class="n">edges</span><span class="o">=</span><span class="p">[</span>
+        <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">15</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">16</span><span class="p">],</span>
+    <span class="p">],</span>
+<span class="p">)</span>
+
+<span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>Alternatively, you can use the
+<code class="xref py py-func docutils literal notranslate"><span class="pre">to_keypoints()</span></code> utility to
+manually convert Ultralytics predictions to <a class="reference internal" href="../user_guide/using_datasets.html#keypoints"><span class="std std-ref">FiftyOne format</span></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><span class="k">for</span> <span class="n">sample</span> <span class="ow">in</span> <span class="n">dataset</span><span class="o">.</span><span class="n">iter_samples</span><span class="p">(</span><span class="n">progress</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">sample</span><span class="o">.</span><span class="n">filepath</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">sample</span><span class="p">[</span><span class="s2">&quot;keypoints&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fou</span><span class="o">.</span><span class="n">to_keypoints</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+    <span class="n">sample</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+</pre></div></td></tr></table></div>
+</div>
+<img alt="ultralytics-keypoints" class="align-center" src="../_images/ultralytics_keypoints.jpg" />
+</div>
+<div class="section" id="oriented-bounding-boxes">
+<span id="ultralytics-oriented-bounding-boxes"></span><h3>Oriented bounding boxes<a class="headerlink" href="#oriented-bounding-boxes" title="Permalink to this headline">¶</a></h3>
+<p>You can directly pass Ultralytics YOLO oriented bounding box models to
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.apply_model" title="fiftyone.core.collections.SampleCollection.apply_model"><code class="xref py py-meth docutils literal notranslate"><span class="pre">apply_model()</span></code></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">YOLO</span><span class="p">(</span><span class="s2">&quot;yolov8n-obb.pt&quot;</span><span class="p">)</span>
+<span class="c1"># model = YOLO(&quot;yolov8s-obb.pt&quot;)</span>
+<span class="c1"># model = YOLO(&quot;yolov8m-obb.pt&quot;)</span>
+<span class="c1"># model = YOLO(&quot;yolov8l-obb.pt&quot;)</span>
+<span class="c1"># model = YOLO(&quot;yolov8x-obb.pt&quot;)</span>
+
+<span class="n">dataset</span><span class="o">.</span><span class="n">apply_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;oriented_boxes&quot;</span><span class="p">)</span>
+
+<span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>You can also load YOLOv8 oriented bounding box models from the
+<a class="reference internal" href="../model_zoo/index.html#model-zoo"><span class="std std-ref">FiftyOne Model Zoo</span></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">model_name</span> <span class="o">=</span> <span class="s2">&quot;yolov8n-obb-dotav1-torch&quot;</span>
+<span class="c1"># model_name = &quot;yolov8s-obb-dotav1-torch&quot;</span>
+<span class="c1"># model_name = &quot;yolov8m-obb-dotav1-torch&quot;</span>
+<span class="c1"># model_name = &quot;yolov8l-obb-dotav1-torch&quot;</span>
+<span class="c1"># model_name = &quot;yolov8x-obb-dotav1-torch&quot;</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_model</span><span class="p">(</span><span class="n">model_name</span><span class="p">)</span>
+
+<span class="n">dataset</span><span class="o">.</span><span class="n">apply_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;oriented_boxes&quot;</span><span class="p">)</span>
+
+<span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The oriented bounding box models are trained on the <a class="reference external" href="https://captain-whu.github.io/DOTA/index.html">DOTA dataset</a>, which consists of
+drone images with oriented bounding boxes. The models are trained to
+predict on bird’s eye view images, so applying them to regular images
+may not yield good results.</p>
+</div>
+</div>
+<div class="section" id="open-vocabulary-detection">
+<span id="ultralytics-open-vocabulary-object-detection"></span><h3>Open vocabulary detection<a class="headerlink" href="#open-vocabulary-detection" title="Permalink to this headline">¶</a></h3>
+<p>FiftyOne’s Ultralytics integration also supports real-time open vocabulary
+object detection via
+<a class="reference external" href="https://docs.ultralytics.com/models/yolo-world/">YOLO World</a>.</p>
+<p>The usage syntax is the same as for regular object detection, with the caveat
+that you can set the classes that the model should detect:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="kn">from</span> <span class="nn">ultralytics</span> <span class="kn">import</span> <span class="n">YOLO</span>
+
+<span class="c1">## Load dataset</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span>
+    <span class="s2">&quot;voc-2007&quot;</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="s2">&quot;validation&quot;</span><span class="p">,</span> <span class="n">max_samples</span><span class="o">=</span><span class="mi">100</span>
+<span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">select_fields</span><span class="p">()</span><span class="o">.</span><span class="n">keep_fields</span><span class="p">()</span>
+
+<span class="c1">## Load model</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">YOLO</span><span class="p">(</span><span class="s2">&quot;yolov8l-world.pt&quot;</span><span class="p">)</span>
+<span class="c1"># model = YOLO(&quot;yolov8s-world.pt&quot;)</span>
+<span class="c1"># model =  YOLO(&quot;yolov8m-world.pt&quot;)</span>
+<span class="c1"># model =  YOLO(&quot;yolov8x-world.pt&quot;)</span>
+
+<span class="c1">## Set open vocabulary classes</span>
+<span class="n">model</span><span class="o">.</span><span class="n">set_classes</span><span class="p">(</span>
+    <span class="p">[</span><span class="s2">&quot;plant&quot;</span><span class="p">,</span> <span class="s2">&quot;window&quot;</span><span class="p">,</span> <span class="s2">&quot;keyboard&quot;</span><span class="p">,</span> <span class="s2">&quot;human baby&quot;</span><span class="p">,</span> <span class="s2">&quot;computer monitor&quot;</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="n">label_field</span> <span class="o">=</span> <span class="s2">&quot;yolo_world_detections&quot;</span>
+
+<span class="c1">## Apply model</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">apply_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">label_field</span><span class="o">=</span><span class="n">label_field</span><span class="p">)</span>
+
+<span class="c1">## Visualize the detection patches</span>
+<span class="n">patches</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">to_patches</span><span class="p">(</span><span class="n">label_field</span><span class="p">)</span>
+<span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">patches</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<img alt="ultralytics-open-world-boxes" class="align-center" src="../_images/ultralytics_open_world_boxes.png" />
+<p>You can also load these open-vocabulary models from the
+<a class="reference internal" href="../model_zoo/index.html#model-zoo"><span class="std std-ref">FiftyOne Model Zoo</span></a>, optionally specifying the classes that
+the model should detect:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">model_name</span> <span class="o">=</span> <span class="s2">&quot;yolov8l-world-torch&quot;</span>
+<span class="c1"># model_name = &quot;yolov8m-world-torch&quot;</span>
+<span class="c1"># model_name = &quot;yolov8x-world-torch&quot;</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_model</span><span class="p">(</span>
+    <span class="n">model_name</span><span class="p">,</span>
+    <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;plant&quot;</span><span class="p">,</span> <span class="s2">&quot;window&quot;</span><span class="p">,</span> <span class="s2">&quot;keyboard&quot;</span><span class="p">,</span> <span class="s2">&quot;human baby&quot;</span><span class="p">,</span> <span class="s2">&quot;computer monitor&quot;</span><span class="p">],</span>
+<span class="p">)</span>
+
+<span class="n">dataset</span><span class="o">.</span><span class="n">apply_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;yolo_world_detections&quot;</span><span class="p">)</span>
+
+<span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+</div>
+<div class="section" id="batch-inference">
+<span id="ultralytics-batch-inference"></span><h3>Batch inference<a class="headerlink" href="#batch-inference" title="Permalink to this headline">¶</a></h3>
+<p>When using
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.apply_model" title="fiftyone.core.collections.SampleCollection.apply_model"><code class="xref py py-meth docutils literal notranslate"><span class="pre">apply_model()</span></code></a>,
+you can request batch inference by passing the optional <code class="code docutils literal notranslate"><span class="pre">batch_size</span></code> parameter:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">apply_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;predictions&quot;</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>The manual inference loops can be also executed using batch inference via the
+pattern below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">from</span> <span class="nn">fiftyone.core.utils</span> <span class="kn">import</span> <span class="n">iter_batches</span>
+
+<span class="n">filepaths</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;filepath&quot;</span><span class="p">)</span>
+<span class="n">batch_size</span> <span class="o">=</span> <span class="mi">16</span>
+
+<span class="n">predictions</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">paths</span> <span class="ow">in</span> <span class="n">iter_batches</span><span class="p">(</span><span class="n">filepaths</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">):</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">paths</span><span class="p">)</span>
+    <span class="n">predictions</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">fou</span><span class="o">.</span><span class="n">to_detections</span><span class="p">(</span><span class="n">results</span><span class="p">))</span>
+
+<span class="n">dataset</span><span class="o">.</span><span class="n">set_values</span><span class="p">(</span><span class="s2">&quot;predictions&quot;</span><span class="p">,</span> <span class="n">predictions</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>See <a class="reference internal" href="../user_guide/using_datasets.html#batch-updates"><span class="std std-ref">this section</span></a> for more information about
+performing batch updates to your FiftyOne datasets.</p>
+</div>
+</div>
+</div>
+<div class="section" id="training">
+<span id="ultralytics-training"></span><h2>Training<a class="headerlink" href="#training" title="Permalink to this headline">¶</a></h2>
+<p>You can use FiftyOne’s builtin <a class="reference internal" href="../user_guide/export_datasets.html#yolov5dataset-export"><span class="std std-ref">YOLOv5 exporter</span></a> to
+export your FiftyOne datasets for use with Ultralytics models.</p>
+<p>For example, the code below prepares a random subset of the
+<a class="reference internal" href="../dataset_zoo/datasets.html#dataset-zoo-open-images-v7"><span class="std std-ref">Open Images v7 dataset</span></a> for fine-tuning:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.utils.ultralytics</span> <span class="k">as</span> <span class="nn">fou</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="c1"># The path to export the dataset</span>
+<span class="n">EXPORT_DIR</span> <span class="o">=</span> <span class="s2">&quot;/tmp/oiv7-yolo&quot;</span>
+
+<span class="c1"># Prepare train split</span>
+
+<span class="n">train</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span>
+    <span class="s2">&quot;open-images-v7&quot;</span><span class="p">,</span>
+    <span class="n">split</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span>
+    <span class="n">label_types</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;detections&quot;</span><span class="p">],</span>
+    <span class="n">max_samples</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># YOLO format requires a common classes list</span>
+<span class="n">classes</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">default_classes</span>
+
+<span class="n">train</span><span class="o">.</span><span class="n">export</span><span class="p">(</span>
+    <span class="n">export_dir</span><span class="o">=</span><span class="n">EXPORT_DIR</span><span class="p">,</span>
+    <span class="n">dataset_type</span><span class="o">=</span><span class="n">fo</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">YOLOv5Dataset</span><span class="p">,</span>
+    <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span>
+    <span class="n">split</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span>
+    <span class="n">classes</span><span class="o">=</span><span class="n">classes</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># Prepare validation split</span>
+
+<span class="n">validation</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span>
+    <span class="s2">&quot;open-images-v7&quot;</span><span class="p">,</span>
+    <span class="n">split</span><span class="o">=</span><span class="s2">&quot;validation&quot;</span><span class="p">,</span>
+    <span class="n">label_types</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;detections&quot;</span><span class="p">],</span>
+    <span class="n">max_samples</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">validation</span><span class="o">.</span><span class="n">export</span><span class="p">(</span>
+    <span class="n">export_dir</span><span class="o">=</span><span class="n">EXPORT_DIR</span><span class="p">,</span>
+    <span class="n">dataset_type</span><span class="o">=</span><span class="n">fo</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">YOLOv5Dataset</span><span class="p">,</span>
+    <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span>
+    <span class="n">split</span><span class="o">=</span><span class="s2">&quot;val&quot;</span><span class="p">,</span>  <span class="c1"># Ultralytics uses &#39;val&#39;</span>
+    <span class="n">classes</span><span class="o">=</span><span class="n">classes</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>From here,
+<a class="reference external" href="https://docs.ultralytics.com/modes/train">training an Ultralytics model</a> is
+as simple as passing the path to the dataset YAML file:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">from</span> <span class="nn">ultralytics</span> <span class="kn">import</span> <span class="n">YOLO</span>
+
+<span class="c1"># The path to the `dataset.yaml` file we created above</span>
+<span class="n">YAML_FILE</span> <span class="o">=</span> <span class="s2">&quot;/tmp/oiv7-yolo/dataset.yaml&quot;</span>
+
+<span class="c1"># Load a model</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">YOLO</span><span class="p">(</span><span class="s2">&quot;yolov8s.pt&quot;</span><span class="p">)</span>  <span class="c1"># load a pretrained model</span>
+<span class="c1"># model = YOLO(&quot;yolov8s.yaml&quot;)  # build a model from scratch</span>
+
+<span class="c1"># Train the model</span>
+<span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">YAML_FILE</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># Evaluate model on the validation set</span>
+<span class="n">metrics</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">val</span><span class="p">()</span>
+
+<span class="c1"># Export the model</span>
+<span class="n">path</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">export</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="s2">&quot;onnx&quot;</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
+
+
+             </article>
+             
+            </div>
+            <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="albumentations.html" class="btn btn-neutral float-right" title="Albumentations Integration" accesskey="n" rel="next">Next <img src="../_static/images/chevron-right-orange.svg" class="next-page"></a>
+      
+      
+        <a href="huggingface.html" class="btn btn-neutral" title="Hugging Face Integration" accesskey="p" rel="prev"><img src="../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
+      
+    </div>
+  
+</footer>
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              <ul>
+<li><a class="reference internal" href="#">Ultralytics Integration</a><ul>
+<li><a class="reference internal" href="#setup">Setup</a></li>
+<li><a class="reference internal" href="#inference">Inference</a><ul>
+<li><a class="reference internal" href="#image-classification">Image classification</a></li>
+<li><a class="reference internal" href="#object-detection">Object detection</a></li>
+<li><a class="reference internal" href="#instance-segmentation">Instance segmentation</a></li>
+<li><a class="reference internal" href="#keypoints">Keypoints</a></li>
+<li><a class="reference internal" href="#oriented-bounding-boxes">Oriented bounding boxes</a></li>
+<li><a class="reference internal" href="#open-vocabulary-detection">Open vocabulary detection</a></li>
+<li><a class="reference internal" href="#batch-inference">Batch inference</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#training">Training</a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  
+
+
+  
+
+     
+       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+         <script src="../_static/jquery.js"></script>
+         <script src="../_static/underscore.js"></script>
+         <script src="../_static/doctools.js"></script>
+         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+         <script src="../_static/js/voxel51-website.js"></script>
+         <script src="../_static/js/custom.js"></script>
+     
+
+  
+
+  <script type="text/javascript" src="../_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="../_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+  <!-- Begin Footer -->
+
+
+<footer class="footer-wrapper" id="docs-tutorials-resources">
+  <div class="footer pytorch-container">
+    <div class="footer__logo">
+      <a href="https://voxel51.com/"
+        ><img
+          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
+      /></a>
+    </div>
+
+    <div class="footer__address">
+      330 E Liberty St<br />
+      Ann Arbor, MI 48104<br />
+      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
+    </div>
+
+    <!--
+    <div class="footer__contact">
+      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
+    </div>
+    -->
+
+    <div class="footer__links">
+      <div class="footer__links--col2">
+        <p class="nav__item--brand">Products</p>
+        <a href="https://voxel51.com/fiftyone/">FiftyOne</a>
+        <a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a>
+        <a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a>
+        <a href="https://voxel51.com/success-stories/">Success Stories</a>
+      </div>
+      <div class="footer__links--col3">
+        <p class="nav__item--brand">Resources</p>
+        <a href="https://voxel51.com/blog/">Blog</a>
+        <a href="https://docs.voxel51.com/">Docs</a>
+        <a href="https://github.com/voxel51/">GitHub</a>
+        <a href="https://community.voxel51.com">Discord</a>
+        <a href="https://voxel51.com/ourstory/">About Us</a>
+        <a href="https://voxel51.com/computer-vision-events/">Events</a>
+        <a href="https://voxel51.com/jobs/">Careers</a>
+        <a href="https://voxel51.com/press/">Press</a>
+      </div>
+    </div>
+
+    <div class="footer__icons">
+      <ul class="list-inline">
+        <li>
+          <a href="https://www.linkedin.com/company/voxel51/">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/voxel51/">
+            <i class="fa-brands fa-github"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/voxel51">
+            <i class="fa-brands fa-twitter"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/voxel51/">
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="footer__copyright">
+      <ul class="list-inline">
+        <li>&copy; 2024 Voxel51 Inc.</li>
+        <li>
+          <a href="https://voxel51.com/privacy/">Privacy Policy</a>
+        </li>
+        <li>
+          <a href="https://voxel51.com/terms/">Terms of Service</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<!-- https://buttons.github.io -->
+<script async defer src="https://buttons.github.io/buttons.js" ></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XD15NFRY3M" ></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+  gtag("config", "G-XD15NFRY3M");
+</script>
+
+<script>
+  function open_modal(modal_id, modal_closer_id) {
+    // Get the modal
+    let the_modal = document.getElementById(modal_id);
+
+    the_modal.style.display = "flex";
+    document.body.style.overflow = "hidden";
+
+    let the_modal_closer = document.getElementById(modal_closer_id);
+
+    // When the user clicks on <span> (x), close the modal
+    the_modal_closer &&
+      (the_modal_closer.onclick = function () {
+        the_modal.style.display = "none";
+      });
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+      if (event.target == the_modal) {
+        the_modal.style.display = "none";
+        document.body.style.overflow = "unset";
+        window.onclick = undefined;
+      }
+    };
+  }
+</script>
+
+<!-- bigpicture.io -->
+<script>
+  !(function (e, t, i) {
+    var r = (e.bigPicture = e.bigPicture || []);
+    if (!r.initialized)
+      if (r.invoked)
+        e.console &&
+          console.error &&
+          console.error("BigPicture.io snippet included twice.");
+      else {
+        (r.invoked = !0),
+          (r.SNIPPET_VERSION = 1.5),
+          (r.handler = function (e) {
+            if (void 0 !== r.callback)
+              try {
+                return r.callback(e);
+              } catch (e) {}
+          }),
+          (r.eventList = ["mousedown", "mouseup", "click", "submit"]),
+          (r.methods = [
+            "track",
+            "identify",
+            "page",
+            "group",
+            "alias",
+            "integration",
+            "ready",
+            "intelReady",
+            "consentReady",
+            "on",
+            "off",
+          ]),
+          (r.factory = function (e) {
+            return function () {
+              var t = Array.prototype.slice.call(arguments);
+              return t.unshift(e), r.push(t), r;
+            };
+          });
+        for (var n = 0; n < r.methods.length; n++) {
+          var o = r.methods[n];
+          r[o] = r.factory(o);
+        }
+        r.getCookie = function (e) {
+          var i = ("; " + t.cookie).split("; " + e + "=");
+          return 2 == i.length && i.pop().split(";").shift();
+        };
+        var c = (r.isEditor = (function () {
+          try {
+            return (
+              e.self !== e.top &&
+              (new RegExp("app" + i, "ig").test(t.referrer) ||
+                "edit" == r.getCookie("_bpr_edit"))
+            );
+          } catch (e) {
+            return !1;
+          }
+        })());
+        r.init = function (n, o) {
+          if (((r.projectId = n), (r._config = o), !c))
+            for (var a = 0; a < r.eventList.length; a++)
+              e.addEventListener(r.eventList[a], r.handler, !0);
+          var s = t.createElement("script");
+          s.async = !0;
+          var d = c ? "/editor/editor" : "/public-" + n;
+          (s.src = "//cdn" + i + d + ".js"),
+            t.getElementsByTagName("head")[0].appendChild(s);
+        };
+      }
+  })(window, document, ".bigpicture.io");
+  bigPicture.init("1646");
+</script>
+
+
+  
+
+  <!-- End Footer -->
+
+  <!-- Begin Mobile Menu -->
+
+  
+
+  <!-- End Mobile Menu -->
+
+  <script type="text/javascript" src="../_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function(e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+</body>
+</html>

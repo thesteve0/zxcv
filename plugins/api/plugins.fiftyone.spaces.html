@@ -1,0 +1,1589 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>@fiftyone/spaces &mdash; FiftyOne 1.3.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" /> -->
+  <link rel="stylesheet" href="../../_static/css/voxel51-website.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="@fiftyone/aggregations" href="plugins.fiftyone.aggregations.html" />
+    <link rel="prev" title="@fiftyone/operators" href="plugins.fiftyone.operators.html" />
+<meta property="og:image" content="https://voxel51.com/wp-content/uploads/2024/03/3.24_webpages_Home_AV.png" />
+
+<link
+  href="https://fonts.googleapis.com/css?family=Palanquin:400,600,700,800"
+  rel="stylesheet"
+/>
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+  rel="stylesheet"
+/>
+<script src="https://tag.clearbitscripts.com/v1/pk_b9ed71c8234edd4f77326bcbfab5a4ca/tags.js"></script>
+
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+  
+</head>
+
+
+<div class="container-fluid header-holder tutorials-header" id="header-holder">
+  <nav id="nav__main" class="nav__main">
+    <div class="nav__main__logo">
+      <a href="https://voxel51.com/">
+        <img
+          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
+        />
+      </a>
+    </div>
+
+    <div class="nav__spacer desktop_only"></div>
+
+    <div id="nav__main__mobilebutton--on">
+      <a href="javascript:void(0);" onclick="navMobileButton()">
+        <i class="fa-solid fa-bars"></i>
+      </a>
+    </div>
+
+    <div id="nav__main__mobilebutton--off">
+      <a href="javascript:void(0);" onclick="navMobileButton()">
+        <i class="fa-solid fa-times"></i>
+      </a>
+    </div>
+
+    <div id="nav__main__items">
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Products</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://voxel51.com/fiftyone/">Open Source</a></li>
+            <li><a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a></li>
+            <li><a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a></li>
+            <li><a href="https://voxel51.com/success-stories/">Success Stories</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Learn</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://community.voxel51.com">Community Discord</a></li>
+            <li><a href="https://voxel51.com/blog/">Blog</a></li>
+            <li><a href="https://voxel51.com/computer-vision-events/">Events</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item">
+        <a href="https://docs.voxel51.com/">Docs</a>
+      </div>
+
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Company</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://voxel51.com/ourstory/">About Us</a></li>
+            <li><a href="https://voxel51.com/jobs/">Careers</a></li>
+            <li><a href="https://voxel51.com/talk-to-sales/">Talk to Sales</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item mobile_only">
+        <a href="https://github.com/voxel51/fiftyone">GitHub</a>
+      </div>
+
+      <div class="nav__item desktop_only" id="octocat">
+        <!-- https://buttons.github.io -->
+        <a
+          class="github-button"
+          href="https://github.com/voxel51/fiftyone"
+          data-color-scheme="no-preference: dark_high_contrast; light: dark_high_contrast; dark: dark_high_contrast;"
+          data-size="large"
+          data-show-count="true"
+          aria-label="Star voxel51/fiftyone on GitHub"
+          >Star</a
+        >
+      </div>
+
+      <div class="nav__item full_nav_only">
+        <a class="button-primary" href="https://voxel51.com/schedule-teams-workshop/" target="_blank"
+          >Schedule a workshop</a
+        >
+      </div>
+    </div>
+  </nav>
+</div>
+
+
+
+<body class="pytorch-body">
+
+   
+
+    
+
+    <div class="table-of-contents-link-wrapper">
+      <span>Table of Contents</span>
+      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+    </div>
+
+    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+      <div class="pytorch-side-scroll">
+        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          <div class="pytorch-left-menu-search">
+            
+
+            
+              
+              
+            
+
+            
+
+
+  
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+            
+          </div>
+
+           <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../teams/index.html">FiftyOne Teams 🚀</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../environments/index.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../recipes/index.html">Recipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cheat_sheets/index.html">Cheat Sheets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user_guide/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dataset_zoo/index.html">Dataset Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../model_zoo/index.html">Model Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../brain.html">FiftyOne Brain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integrations/index.html">Integrations</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Plugins</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../index.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../using_plugins.html">Using plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../developing_plugins.html">Developing plugins</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../ts-api.html">TypeScript API reference</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="plugins.fiftyone.state.html">   &#64;fiftyone/state</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plugins.fiftyone.plugins.html">   &#64;fiftyone/plugins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plugins.fiftyone.operators.html">   &#64;fiftyone/operators</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">   &#64;fiftyone/spaces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plugins.fiftyone.aggregations.html">   &#64;fiftyone/aggregations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plugins.fiftyone.relay.html">   &#64;fiftyone/relay</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plugins.fiftyone.utilities.html">   &#64;fiftyone/utilities</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../cli/index.html">CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/fiftyone.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../deprecation.html">Deprecation Notices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../faq/index.html">FAQ</a></li>
+</ul>
+ 
+        </div>
+      </div>
+    </nav>
+
+    <div class="pytorch-container">
+      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+        <div class="pytorch-breadcrumbs-wrapper">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="../../index.html">
+          
+            Docs
+          
+        </a> &gt;
+      </li>
+
+        
+          <li><a href="../index.html">Plugins Overview</a> &gt;</li>
+        
+          <li><a href="../ts-api.html">TypeScript API Reference</a> &gt;</li>
+        
+      <li>&#64;fiftyone/spaces</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+        </div>
+
+        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+          Contents
+        </div>
+      </div>
+
+      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+        <div class="pytorch-content-left">
+
+        
+          
+          <div class="rst-content style-external-links">
+          
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+              
+  <div class="section" id="module-fiftyone-spaces">
+<span id="module-@fiftyone/spaces"></span><span id="fiftyone-spaces"></span><h1>&#64;fiftyone/spaces<a class="headerlink" href="#module-fiftyone-spaces" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="hooks">
+<h2>Hooks<a class="headerlink" href="#hooks" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="usepanel">
+<span id="fos-fiftyone-fiftyone-fiftyone-spaces-usepanel"></span><h3>usePanel<a class="headerlink" href="#usepanel" title="Permalink to this headline">¶</a></h3>
+<dl class="js function">
+<dt id="fiftyone-spaces.usePanel">
+<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/spaces.</span></code><code class="sig-name descname"><span class="pre">usePanel</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">name</span></em>, <em class="sig-param"><span class="pre">predicate</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-spaces.usePanel" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>SpaceNodeType</em>) – </p></li>
+<li><p><strong>predicate</strong> (<em>( panel : PluginComponentRegistration )</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">Union&lt;</span></code> <code class="docutils literal notranslate"><span class="pre">undefined</span></code> <code class="docutils literal notranslate"><span class="pre">,</span></code> <code class="xref js js-class docutils literal notranslate"><span class="pre">plugins.fiftyone.spaces.PluginComponentRegistration()</span></code> <code class="docutils literal notranslate"><span class="pre">&gt;</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="usepanelcloseeffect">
+<span id="fos-fiftyone-fiftyone-fiftyone-spaces-usepanelcloseeffect"></span><h3>usePanelCloseEffect<a class="headerlink" href="#usepanelcloseeffect" title="Permalink to this headline">¶</a></h3>
+<dl class="js function">
+<dt id="fiftyone-spaces.usePanelCloseEffect">
+<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/spaces.</span></code><code class="sig-name descname"><span class="pre">usePanelCloseEffect</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">panelId</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-spaces.usePanelCloseEffect" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>panelId</strong> () – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="usepanelcontext">
+<span id="fos-fiftyone-fiftyone-fiftyone-spaces-usepanelcontext"></span><h3>usePanelContext<a class="headerlink" href="#usepanelcontext" title="Permalink to this headline">¶</a></h3>
+<dl class="js function">
+<dt id="fiftyone-spaces.usePanelContext">
+<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/spaces.</span></code><code class="sig-name descname"><span class="pre">usePanelContext</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-spaces.usePanelContext" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref js js-class docutils literal notranslate"><span class="pre">plugins.fiftyone.spaces.PanelContextType()</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="usepanelid">
+<span id="fos-fiftyone-fiftyone-fiftyone-spaces-usepanelid"></span><h3>usePanelId<a class="headerlink" href="#usepanelid" title="Permalink to this headline">¶</a></h3>
+<dl class="js function">
+<dt id="fiftyone-spaces.usePanelId">
+<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/spaces.</span></code><code class="sig-name descname"><span class="pre">usePanelId</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-spaces.usePanelId" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="usepanelloading">
+<span id="fos-fiftyone-fiftyone-fiftyone-spaces-usepanelloading"></span><h3>usePanelLoading<a class="headerlink" href="#usepanelloading" title="Permalink to this headline">¶</a></h3>
+<dl class="js function">
+<dt id="fiftyone-spaces.usePanelLoading">
+<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/spaces.</span></code><code class="sig-name descname"><span class="pre">usePanelLoading</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">id</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-spaces.usePanelLoading" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">[</span></code> <code class="docutils literal notranslate"><span class="pre">boolean</span></code> <code class="docutils literal notranslate"><span class="pre">,</span></code> <code class="docutils literal notranslate"><span class="pre">(</span> <span class="pre">loading</span> <span class="pre">:</span> <span class="pre">boolean</span> <span class="pre">,</span>&#160; <span class="pre">id</span> <span class="pre">:</span> <span class="pre">string</span> <span class="pre">)</span></code> <code class="docutils literal notranslate"><span class="pre">]</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<p>Get and set loading state of a panel</p>
+<p>Note: <cite>id</cite> is optional if hook is used within the component of a panel.</p>
+</div>
+<div class="section" id="usepanelstate">
+<span id="fos-fiftyone-fiftyone-fiftyone-spaces-usepanelstate"></span><h3>usePanelState<a class="headerlink" href="#usepanelstate" title="Permalink to this headline">¶</a></h3>
+<dl class="js function">
+<dt id="fiftyone-spaces.usePanelState">
+<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/spaces.</span></code><code class="sig-name descname"><span class="pre">usePanelState</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">defaultState</span></em>, <em class="sig-param"><span class="pre">id</span></em>, <em class="sig-param"><span class="pre">local</span></em>, <em class="sig-param"><span class="pre">scope</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-spaces.usePanelState" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>defaultState</strong> (<em>T</em>) – </p></li>
+<li><p><strong>id</strong> (<em>string</em>) – </p></li>
+<li><p><strong>local</strong> (<em>boolean</em>) – </p></li>
+<li><p><strong>scope</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">Array&lt;</span></code> <code class="docutils literal notranslate"><span class="pre">Union&lt;</span></code> <code class="docutils literal notranslate"><span class="pre">undefined</span></code> <code class="docutils literal notranslate"><span class="pre">,</span></code> <code class="xref js js-class docutils literal notranslate"><span class="pre">plugins.fiftyone.spaces.T()</span></code> <code class="docutils literal notranslate"><span class="pre">,</span></code> <code class="docutils literal notranslate"><span class="pre">SetterOrUpdater</span> <span class="pre">&lt;</span> <span class="pre">T</span> <span class="pre">&gt;</span></code> <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> <code class="docutils literal notranslate"><span class="pre">&gt;</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<p>Get and set state of a panel</p>
+<p>Note: <cite>id</cite> is optional if hook is used within the component of a panel.</p>
+</div>
+<div class="section" id="usepanelstatebyidcallback">
+<span id="fos-fiftyone-fiftyone-fiftyone-spaces-usepanelstatebyidcallback"></span><h3>usePanelStateByIdCallback<a class="headerlink" href="#usepanelstatebyidcallback" title="Permalink to this headline">¶</a></h3>
+<dl class="js function">
+<dt id="fiftyone-spaces.usePanelStateByIdCallback">
+<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/spaces.</span></code><code class="sig-name descname"><span class="pre">usePanelStateByIdCallback</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">callback</span></em>, <em class="sig-param"><span class="pre">local</span></em>, <em class="sig-param"><span class="pre">scope</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-spaces.usePanelStateByIdCallback" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>callback</strong> (<em>( panelId : string ,  panelState : T ,  args :  )</em>) – </p></li>
+<li><p><strong>local</strong> (<em>boolean</em>) – </p></li>
+<li><p><strong>scope</strong> () – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<p>Returns a function that will run the callback that was passed when
+calling this hook. Useful for accessing Recoil state in response to
+events.</p>
+</div>
+<div class="section" id="usepanelstatecallback">
+<span id="fos-fiftyone-fiftyone-fiftyone-spaces-usepanelstatecallback"></span><h3>usePanelStateCallback<a class="headerlink" href="#usepanelstatecallback" title="Permalink to this headline">¶</a></h3>
+<dl class="js function">
+<dt id="fiftyone-spaces.usePanelStateCallback">
+<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/spaces.</span></code><code class="sig-name descname"><span class="pre">usePanelStateCallback</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">callback</span></em>, <em class="sig-param"><span class="pre">local</span></em>, <em class="sig-param"><span class="pre">scope</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-spaces.usePanelStateCallback" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>callback</strong> (<em>( panelState : T )</em>) – </p></li>
+<li><p><strong>local</strong> (<em>boolean</em>) – </p></li>
+<li><p><strong>scope</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<p>Can only be used within a panel component</p>
+<blockquote>
+<div><dl class="js function">
+<dt id="fiftyone-spaces.panelStateCallback">
+<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/spaces.</span></code><code class="sig-name descname"><span class="pre">panelStateCallback</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-spaces.panelStateCallback" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong> (<em>[ ]</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">Promise</span> <span class="pre">&lt;</span> <span class="pre">void</span> <span class="pre">&gt;</span></code> <code class="docutils literal notranslate"><span class="pre">&lt;</span></code> <code class="docutils literal notranslate"><span class="pre">void</span></code> <code class="docutils literal notranslate"><span class="pre">&gt;</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+<p>Returns a function that will run the callback that was passed when
+calling this hook. Useful for accessing Recoil state in response to
+events.</p>
+</div>
+<div class="section" id="usepanelstatelazy">
+<span id="fos-fiftyone-fiftyone-fiftyone-spaces-usepanelstatelazy"></span><h3>usePanelStateLazy<a class="headerlink" href="#usepanelstatelazy" title="Permalink to this headline">¶</a></h3>
+<dl class="js function">
+<dt id="fiftyone-spaces.usePanelStateLazy">
+<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/spaces.</span></code><code class="sig-name descname"><span class="pre">usePanelStateLazy</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">local</span></em>, <em class="sig-param"><span class="pre">scope</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-spaces.usePanelStateLazy" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>local</strong> (<em>boolean</em>) – </p></li>
+<li><p><strong>scope</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<p>Lazily read panel state on demand</p>
+<p><strong>Returns</strong></p>
+<p>a state resolver function which return promise that resolves to the
+current state of a panel</p>
+<blockquote>
+<div><dl class="js function">
+<dt id="fiftyone-spaces.panelStateLazy">
+<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/spaces.</span></code><code class="sig-name descname"><span class="pre">panelStateLazy</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-spaces.panelStateLazy" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">Promise</span> <span class="pre">&lt;</span> <span class="pre">any</span> <span class="pre">&gt;</span></code> <code class="docutils literal notranslate"><span class="pre">&lt;</span></code> <code class="docutils literal notranslate"><span class="pre">any</span></code> <code class="docutils literal notranslate"><span class="pre">&gt;</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
+</div>
+<div class="section" id="usepanelstatepartial">
+<span id="fos-fiftyone-fiftyone-fiftyone-spaces-usepanelstatepartial"></span><h3>usePanelStatePartial<a class="headerlink" href="#usepanelstatepartial" title="Permalink to this headline">¶</a></h3>
+<dl class="js function">
+<dt id="fiftyone-spaces.usePanelStatePartial">
+<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/spaces.</span></code><code class="sig-name descname"><span class="pre">usePanelStatePartial</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">key</span></em>, <em class="sig-param"><span class="pre">defaultState</span></em>, <em class="sig-param"><span class="pre">local</span></em>, <em class="sig-param"><span class="pre">scope</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-spaces.usePanelStatePartial" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> (<em>string</em>) – </p></li>
+<li><p><strong>defaultState</strong> (<em>T</em>) – </p></li>
+<li><p><strong>local</strong> (<em>boolean</em>) – </p></li>
+<li><p><strong>scope</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">Array&lt;</span></code> <code class="docutils literal notranslate"><span class="pre">any</span></code> <code class="docutils literal notranslate"><span class="pre">&gt;</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<p>Get partial state of current panel (i.e. property of an object state)</p>
+<dl class="simple">
+<dt>Should only be used within a panel component whose state is an object or</dt><dd><p>an array</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="usepaneltabautoposition">
+<span id="fos-fiftyone-fiftyone-fiftyone-spaces-usepaneltabautoposition"></span><h3>usePanelTabAutoPosition<a class="headerlink" href="#usepaneltabautoposition" title="Permalink to this headline">¶</a></h3>
+<dl class="js function">
+<dt id="fiftyone-spaces.usePanelTabAutoPosition">
+<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/spaces.</span></code><code class="sig-name descname"><span class="pre">usePanelTabAutoPosition</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-spaces.usePanelTabAutoPosition" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="js function">
+<dt id="fiftyone-spaces.panelTabAutoPosition">
+<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/spaces.</span></code><code class="sig-name descname"><span class="pre">panelTabAutoPosition</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-spaces.panelTabAutoPosition" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>e</strong> (<em>SortableEvent</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">Promise</span> <span class="pre">&lt;</span> <span class="pre">void</span> <span class="pre">&gt;</span></code> <code class="docutils literal notranslate"><span class="pre">&lt;</span></code> <code class="docutils literal notranslate"><span class="pre">void</span></code> <code class="docutils literal notranslate"><span class="pre">&gt;</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="usepaneltitle">
+<span id="fos-fiftyone-fiftyone-fiftyone-spaces-usepaneltitle"></span><h3>usePanelTitle<a class="headerlink" href="#usepaneltitle" title="Permalink to this headline">¶</a></h3>
+<dl class="js function">
+<dt id="fiftyone-spaces.usePanelTitle">
+<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/spaces.</span></code><code class="sig-name descname"><span class="pre">usePanelTitle</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">id</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-spaces.usePanelTitle" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">readonly</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<p>Get and set title of a panel</p>
+<p>Note: <cite>id</cite> is optional if hook is used within the component of a panel.</p>
+</div>
+<div class="section" id="usepanels">
+<span id="fos-fiftyone-fiftyone-fiftyone-spaces-usepanels"></span><h3>usePanels<a class="headerlink" href="#usepanels" title="Permalink to this headline">¶</a></h3>
+<dl class="js function">
+<dt id="fiftyone-spaces.usePanels">
+<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/spaces.</span></code><code class="sig-name descname"><span class="pre">usePanels</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">predicate</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-spaces.usePanels" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>predicate</strong> (<em>( panel : PluginComponentRegistration )</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">Array&lt;</span></code> <code class="xref js js-class docutils literal notranslate"><span class="pre">plugins.fiftyone.spaces.PluginComponentRegistration()</span></code> <code class="docutils literal notranslate"><span class="pre">&lt;</span></code> <code class="docutils literal notranslate"><span class="pre">Any</span></code> <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> <code class="docutils literal notranslate"><span class="pre">&gt;</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<p>Hook to get all panels registered in the app, optionally filtered by a
+predicate.</p>
+</div>
+<div class="section" id="usepanelsstate">
+<span id="fos-fiftyone-fiftyone-fiftyone-spaces-usepanelsstate"></span><h3>usePanelsState<a class="headerlink" href="#usepanelsstate" title="Permalink to this headline">¶</a></h3>
+<dl class="js function">
+<dt id="fiftyone-spaces.usePanelsState">
+<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/spaces.</span></code><code class="sig-name descname"><span class="pre">usePanelsState</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-spaces.usePanelsState" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">[</span></code> <code class="xref js js-class docutils literal notranslate"><span class="pre">plugins.fiftyone.spaces.PanelsStateObject()</span></code> <code class="docutils literal notranslate"><span class="pre">,</span></code> <code class="docutils literal notranslate"><span class="pre">(</span> <span class="pre">newPanelsState</span> <span class="pre">:</span> <span class="pre">PanelsStateObject</span> <span class="pre">)</span></code> <code class="docutils literal notranslate"><span class="pre">]</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<p>Get and set multiple panels state</p>
+</div>
+<div class="section" id="usereactivepanel">
+<span id="fos-fiftyone-fiftyone-fiftyone-spaces-usereactivepanel"></span><h3>useReactivePanel<a class="headerlink" href="#usereactivepanel" title="Permalink to this headline">¶</a></h3>
+<dl class="js function">
+<dt id="fiftyone-spaces.useReactivePanel">
+<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/spaces.</span></code><code class="sig-name descname"><span class="pre">useReactivePanel</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-spaces.useReactivePanel" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>SpaceNodeType</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">Union&lt;</span></code> <code class="docutils literal notranslate"><span class="pre">undefined</span></code> <code class="docutils literal notranslate"><span class="pre">,</span></code> <code class="xref js js-class docutils literal notranslate"><span class="pre">plugins.fiftyone.spaces.PluginComponentRegistration()</span></code> <code class="docutils literal notranslate"><span class="pre">&gt;</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="usesetcustompanelstate">
+<span id="fos-fiftyone-fiftyone-fiftyone-spaces-usesetcustompanelstate"></span><h3>useSetCustomPanelState<a class="headerlink" href="#usesetcustompanelstate" title="Permalink to this headline">¶</a></h3>
+<dl class="js function">
+<dt id="fiftyone-spaces.useSetCustomPanelState">
+<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/spaces.</span></code><code class="sig-name descname"><span class="pre">useSetCustomPanelState</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">local</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-spaces.useSetCustomPanelState" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>local</strong> () – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="usesetpanelcloseeffect">
+<span id="fos-fiftyone-fiftyone-fiftyone-spaces-usesetpanelcloseeffect"></span><h3>useSetPanelCloseEffect<a class="headerlink" href="#usesetpanelcloseeffect" title="Permalink to this headline">¶</a></h3>
+<dl class="js function">
+<dt id="fiftyone-spaces.useSetPanelCloseEffect">
+<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/spaces.</span></code><code class="sig-name descname"><span class="pre">useSetPanelCloseEffect</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">panelId</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-spaces.useSetPanelCloseEffect" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>panelId</strong> () – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="usesetpanelstatebyid">
+<span id="fos-fiftyone-fiftyone-fiftyone-spaces-usesetpanelstatebyid"></span><h3>useSetPanelStateById<a class="headerlink" href="#usesetpanelstatebyid" title="Permalink to this headline">¶</a></h3>
+<dl class="js function">
+<dt id="fiftyone-spaces.useSetPanelStateById">
+<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/spaces.</span></code><code class="sig-name descname"><span class="pre">useSetPanelStateById</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">local</span></em>, <em class="sig-param"><span class="pre">scope</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-spaces.useSetPanelStateById" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>local</strong> (<em>boolean</em>) – </p></li>
+<li><p><strong>scope</strong> () – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<p>Returns a function that will run the callback that was passed when
+calling this hook. Useful for accessing Recoil state in response to
+events.</p>
+</div>
+<div class="section" id="usespacenodes">
+<span id="fos-fiftyone-fiftyone-fiftyone-spaces-usespacenodes"></span><h3>useSpaceNodes<a class="headerlink" href="#usespacenodes" title="Permalink to this headline">¶</a></h3>
+<dl class="js function">
+<dt id="fiftyone-spaces.useSpaceNodes">
+<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/spaces.</span></code><code class="sig-name descname"><span class="pre">useSpaceNodes</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">spaceId</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-spaces.useSpaceNodes" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>spaceId</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">Array&lt;</span></code> <code class="xref js js-class docutils literal notranslate"><span class="pre">plugins.fiftyone.spaces.default()</span></code> <code class="docutils literal notranslate"><span class="pre">&gt;</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="usespaces">
+<span id="fos-fiftyone-fiftyone-fiftyone-spaces-usespaces"></span><h3>useSpaces<a class="headerlink" href="#usespaces" title="Permalink to this headline">¶</a></h3>
+<dl class="js function">
+<dt id="fiftyone-spaces.useSpaces">
+<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/spaces.</span></code><code class="sig-name descname"><span class="pre">useSpaces</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">id</span></em>, <em class="sig-param"><span class="pre">defaultState</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-spaces.useSpaces" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<em>string</em>) – </p></li>
+<li><p><strong>defaultState</strong> (<em>SpaceNodeJSON</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">Object</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="panelskeleton">
+<span id="fos-fiftyone-fiftyone-fiftyone-spaces-panelskeleton"></span><h3>PanelSkeleton<a class="headerlink" href="#panelskeleton" title="Permalink to this headline">¶</a></h3>
+<dl class="js function">
+<dt id="fiftyone-spaces.PanelSkeleton">
+<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/spaces.</span></code><code class="sig-name descname"><span class="pre">PanelSkeleton</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-spaces.PanelSkeleton" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">Element</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="spacesroot">
+<span id="fos-fiftyone-fiftyone-fiftyone-spaces-spacesroot"></span><h3>SpacesRoot<a class="headerlink" href="#spacesroot" title="Permalink to this headline">¶</a></h3>
+<dl class="js function">
+<dt id="fiftyone-spaces.SpacesRoot">
+<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/spaces.</span></code><code class="sig-name descname"><span class="pre">SpacesRoot</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">props</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-spaces.SpacesRoot" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>props</strong> (<em>SpacesRootProps</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">Element</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="getnodes">
+<span id="fos-fiftyone-fiftyone-fiftyone-spaces-getnodes"></span><h3>getNodes<a class="headerlink" href="#getnodes" title="Permalink to this headline">¶</a></h3>
+<dl class="js function">
+<dt id="fiftyone-spaces.getNodes">
+<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/spaces.</span></code><code class="sig-name descname"><span class="pre">getNodes</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">node</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-spaces.getNodes" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>node</strong> (<em>default</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">Array&lt;</span></code> <code class="xref js js-class docutils literal notranslate"><span class="pre">plugins.fiftyone.spaces.SpaceNode()</span></code> <code class="docutils literal notranslate"><span class="pre">&gt;</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="spacenodefromjson">
+<span id="fos-fiftyone-fiftyone-fiftyone-spaces-spacenodefromjson"></span><h3>spaceNodeFromJSON<a class="headerlink" href="#spacenodefromjson" title="Permalink to this headline">¶</a></h3>
+<dl class="js function">
+<dt id="fiftyone-spaces.spaceNodeFromJSON">
+<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/spaces.</span></code><code class="sig-name descname"><span class="pre">spaceNodeFromJSON</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">json</span></em>, <em class="sig-param"><span class="pre">parent</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-spaces.spaceNodeFromJSON" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>json</strong> (<em>SpaceNodeJSON</em>) – </p></li>
+<li><p><strong>parent</strong> (<em>default</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref js js-class docutils literal notranslate"><span class="pre">plugins.fiftyone.spaces.default()</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="warnpanelnotfound">
+<span id="fos-fiftyone-fiftyone-fiftyone-spaces-warnpanelnotfound"></span><h3>warnPanelNotFound<a class="headerlink" href="#warnpanelnotfound" title="Permalink to this headline">¶</a></h3>
+<dl class="js function">
+<dt id="fiftyone-spaces.warnPanelNotFound">
+<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/spaces.</span></code><code class="sig-name descname"><span class="pre">warnPanelNotFound</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-spaces.warnPanelNotFound" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>SpaceNodeType</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">null</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="types">
+<h2>Types<a class="headerlink" href="#types" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="fos-fiftyone-fiftyone-fiftyone-spaces-addpanelbuttonprops"></span><dl class="js class">
+<dt id="fiftyone-spaces.AddPanelButtonProps">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/spaces.</span></code><code class="sig-name descname"><span class="pre">AddPanelButtonProps</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-spaces.AddPanelButtonProps" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="section" id="addpanelbuttonprops">
+<h3>AddPanelButtonProps<a class="headerlink" href="#addpanelbuttonprops" title="Permalink to this headline">¶</a></h3>
+<table class="docutils align-left">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>AddPanelButtonProps.node</p></td>
+<td><p><code class="xref js js-class docutils literal notranslate"><span class="pre">plugins.fiftyone.spaces.SpaceNode()</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>AddPanelButtonProps.spaceId</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<span class="target" id="fos-fiftyone-fiftyone-fiftyone-spaces-addpanelitemprops"></span><dl class="js class">
+<dt id="fiftyone-spaces.AddPanelItemProps">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/spaces.</span></code><code class="sig-name descname"><span class="pre">AddPanelItemProps</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-spaces.AddPanelItemProps" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="addpanelitemprops">
+<h3>AddPanelItemProps<a class="headerlink" href="#addpanelitemprops" title="Permalink to this headline">¶</a></h3>
+<table class="docutils align-left">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>AddPanelItemProps.Icon</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">React.ComponentType</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>AddPanelItemProps.label</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>AddPanelItemProps.name</p></td>
+<td><p><code class="xref js js-class docutils literal notranslate"><span class="pre">plugins.fiftyone.spaces.SpaceNodeType()</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>AddPanelItemProps.node</p></td>
+<td><p><code class="xref js js-class docutils literal notranslate"><span class="pre">plugins.fiftyone.spaces.SpaceNode()</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>AddPanelItemProps.onClick</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(</span></code> <code class="docutils literal notranslate"><span class="pre">)</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>AddPanelItemProps.showBeta</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">boolean</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>AddPanelItemProps.showNew</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">boolean</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>AddPanelItemProps.spaceId</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<span class="target" id="fos-fiftyone-fiftyone-fiftyone-spaces-paneliconprops"></span><dl class="js class">
+<dt id="fiftyone-spaces.PanelIconProps">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/spaces.</span></code><code class="sig-name descname"><span class="pre">PanelIconProps</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-spaces.PanelIconProps" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="paneliconprops">
+<h3>PanelIconProps<a class="headerlink" href="#paneliconprops" title="Permalink to this headline">¶</a></h3>
+<table class="docutils align-left">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>PanelIconProps.name</p></td>
+<td><p><code class="xref js js-class docutils literal notranslate"><span class="pre">plugins.fiftyone.spaces.SpaceNodeType()</span></code></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<span class="target" id="fos-fiftyone-fiftyone-fiftyone-spaces-panelprops"></span><dl class="js class">
+<dt id="fiftyone-spaces.PanelProps">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/spaces.</span></code><code class="sig-name descname"><span class="pre">PanelProps</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-spaces.PanelProps" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="panelprops">
+<h3>PanelProps<a class="headerlink" href="#panelprops" title="Permalink to this headline">¶</a></h3>
+<table class="docutils align-left">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>PanelProps.isModalPanel</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">boolean</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>PanelProps.node</p></td>
+<td><p><code class="xref js js-class docutils literal notranslate"><span class="pre">plugins.fiftyone.spaces.SpaceNode()</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>PanelProps.spaceId</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<span class="target" id="fos-fiftyone-fiftyone-fiftyone-spaces-panelstateparameter"></span><dl class="js class">
+<dt id="fiftyone-spaces.PanelStateParameter">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/spaces.</span></code><code class="sig-name descname"><span class="pre">PanelStateParameter</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-spaces.PanelStateParameter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="panelstateparameter">
+<h3>PanelStateParameter<a class="headerlink" href="#panelstateparameter" title="Permalink to this headline">¶</a></h3>
+<table class="docutils align-left">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>PanelStateParameter.local</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">boolean</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>PanelStateParameter.panelId</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>PanelStateParameter.scope</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<span class="target" id="fos-fiftyone-fiftyone-fiftyone-spaces-panelstatepartialparameter"></span><dl class="js class">
+<dt id="fiftyone-spaces.PanelStatePartialParameter">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/spaces.</span></code><code class="sig-name descname"><span class="pre">PanelStatePartialParameter</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-spaces.PanelStatePartialParameter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="panelstatepartialparameter">
+<h3>PanelStatePartialParameter<a class="headerlink" href="#panelstatepartialparameter" title="Permalink to this headline">¶</a></h3>
+<span class="target" id="fos-fiftyone-fiftyone-fiftyone-spaces-paneltabprops"></span><dl class="js class">
+<dt id="fiftyone-spaces.PanelTabProps">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/spaces.</span></code><code class="sig-name descname"><span class="pre">PanelTabProps</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-spaces.PanelTabProps" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="paneltabprops">
+<h3>PanelTabProps<a class="headerlink" href="#paneltabprops" title="Permalink to this headline">¶</a></h3>
+<table class="docutils align-left">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>PanelTabProps.active</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">boolean</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>PanelTabProps.node</p></td>
+<td><p><code class="xref js js-class docutils literal notranslate"><span class="pre">plugins.fiftyone.spaces.SpaceNode()</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>PanelTabProps.spaceId</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<span class="target" id="fos-fiftyone-fiftyone-fiftyone-spaces-panelscloseeffect"></span><dl class="js class">
+<dt id="fiftyone-spaces.PanelsCloseEffect">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/spaces.</span></code><code class="sig-name descname"><span class="pre">PanelsCloseEffect</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-spaces.PanelsCloseEffect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="panelscloseeffect">
+<h3>PanelsCloseEffect<a class="headerlink" href="#panelscloseeffect" title="Permalink to this headline">¶</a></h3>
+<span class="target" id="fos-fiftyone-fiftyone-fiftyone-spaces-panelsstateobject"></span><dl class="js class">
+<dt id="fiftyone-spaces.PanelsStateObject">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/spaces.</span></code><code class="sig-name descname"><span class="pre">PanelsStateObject</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-spaces.PanelsStateObject" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="panelsstateobject">
+<h3>PanelsStateObject<a class="headerlink" href="#panelsstateobject" title="Permalink to this headline">¶</a></h3>
+<span class="target" id="fos-fiftyone-fiftyone-fiftyone-spaces-spacenodejson"></span><dl class="js class">
+<dt id="fiftyone-spaces.SpaceNodeJSON">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/spaces.</span></code><code class="sig-name descname"><span class="pre">SpaceNodeJSON</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-spaces.SpaceNodeJSON" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="spacenodejson">
+<h3>SpaceNodeJSON<a class="headerlink" href="#spacenodejson" title="Permalink to this headline">¶</a></h3>
+<table class="docutils align-left">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>SpaceNodeJSON.activeChild</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>SpaceNodeJSON.children</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Array&lt;</span></code> <code class="xref js js-class docutils literal notranslate"><span class="pre">plugins.fiftyone.spaces.SpaceNodeJSON()</span></code> <code class="docutils literal notranslate"><span class="pre">&gt;</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>SpaceNodeJSON.id</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>SpaceNodeJSON.layout</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>SpaceNodeJSON.pinned</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>SpaceNodeJSON.sizes</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Array&lt;</span></code> <code class="docutils literal notranslate"><span class="pre">number</span></code> <code class="docutils literal notranslate"><span class="pre">&gt;</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>SpaceNodeJSON.type</p></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<span class="target" id="fos-fiftyone-fiftyone-fiftyone-spaces-spacenodetype"></span><dl class="js class">
+<dt id="fiftyone-spaces.SpaceNodeType">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/spaces.</span></code><code class="sig-name descname"><span class="pre">SpaceNodeType</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-spaces.SpaceNodeType" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="spacenodetype">
+<h3>SpaceNodeType<a class="headerlink" href="#spacenodetype" title="Permalink to this headline">¶</a></h3>
+<p>Union of <code class="xref js js-class docutils literal notranslate"><span class="pre">EnumType()</span></code>, <code class="xref js js-class docutils literal notranslate"><span class="pre">string()</span></code></p>
+<span class="target" id="fos-fiftyone-fiftyone-fiftyone-spaces-spaceprops"></span><dl class="js class">
+<dt id="fiftyone-spaces.SpaceProps">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/spaces.</span></code><code class="sig-name descname"><span class="pre">SpaceProps</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-spaces.SpaceProps" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="spaceprops">
+<h3>SpaceProps<a class="headerlink" href="#spaceprops" title="Permalink to this headline">¶</a></h3>
+<table class="docutils align-left">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>SpaceProps.archetype</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Union&lt;</span></code> <code class="docutils literal notranslate"><span class="pre">'grid'</span></code> <code class="docutils literal notranslate"><span class="pre">,</span></code> <code class="docutils literal notranslate"><span class="pre">'modal'</span></code> <code class="docutils literal notranslate"><span class="pre">&gt;</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>SpaceProps.id</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>SpaceProps.node</p></td>
+<td><p><code class="xref js js-class docutils literal notranslate"><span class="pre">plugins.fiftyone.spaces.SpaceNode()</span></code></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<span class="target" id="fos-fiftyone-fiftyone-fiftyone-spaces-spacesrootprops"></span><dl class="js class">
+<dt id="fiftyone-spaces.SpacesRootProps">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/spaces.</span></code><code class="sig-name descname"><span class="pre">SpacesRootProps</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-spaces.SpacesRootProps" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="spacesrootprops">
+<h3>SpacesRootProps<a class="headerlink" href="#spacesrootprops" title="Permalink to this headline">¶</a></h3>
+<table class="docutils align-left">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>SpacesRootProps.defaultState</p></td>
+<td><p><code class="xref js js-class docutils literal notranslate"><span class="pre">plugins.fiftyone.spaces.SpaceNodeJSON()</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>SpacesRootProps.id</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<span class="target" id="fos-fiftyone-fiftyone-fiftyone-spaces-splitpanelbuttonprops"></span><dl class="js class">
+<dt id="fiftyone-spaces.SplitPanelButtonProps">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/spaces.</span></code><code class="sig-name descname"><span class="pre">SplitPanelButtonProps</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-spaces.SplitPanelButtonProps" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="splitpanelbuttonprops">
+<h3>SplitPanelButtonProps<a class="headerlink" href="#splitpanelbuttonprops" title="Permalink to this headline">¶</a></h3>
+<table class="docutils align-left">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>SplitPanelButtonProps.layout</p></td>
+<td><p><code class="xref js js-class docutils literal notranslate"><span class="pre">plugins.fiftyone.spaces.Layout()</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>SplitPanelButtonProps.node</p></td>
+<td><p><code class="xref js js-class docutils literal notranslate"><span class="pre">plugins.fiftyone.spaces.SpaceNode()</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>SplitPanelButtonProps.spaceId</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="enums">
+<h2>Enums<a class="headerlink" href="#enums" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="layout">
+<span id="fos-fiftyone-fiftyone-fiftyone-spaces-layout"></span><h3>Layout<a class="headerlink" href="#layout" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-given docutils align-left">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Horizontal</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Vertical</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="space-types">
+<span id="fos-fiftyone-fiftyone-fiftyone-spaces-space-types"></span><h3>SPACE_TYPES<a class="headerlink" href="#space-types" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-given docutils align-left">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>EMPTY</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>PANEL_CONTAINER</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+             </article>
+             
+            </div>
+            <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="plugins.fiftyone.aggregations.html" class="btn btn-neutral float-right" title="@fiftyone/aggregations" accesskey="n" rel="next">Next <img src="../../_static/images/chevron-right-orange.svg" class="next-page"></a>
+      
+      
+        <a href="plugins.fiftyone.operators.html" class="btn btn-neutral" title="@fiftyone/operators" accesskey="p" rel="prev"><img src="../../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
+      
+    </div>
+  
+</footer>
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              <ul>
+<li><a class="reference internal" href="#">&#64;fiftyone/spaces</a><ul>
+<li><a class="reference internal" href="#hooks">Hooks</a><ul>
+<li><a class="reference internal" href="#usepanel">usePanel</a></li>
+<li><a class="reference internal" href="#usepanelcloseeffect">usePanelCloseEffect</a></li>
+<li><a class="reference internal" href="#usepanelcontext">usePanelContext</a></li>
+<li><a class="reference internal" href="#usepanelid">usePanelId</a></li>
+<li><a class="reference internal" href="#usepanelloading">usePanelLoading</a></li>
+<li><a class="reference internal" href="#usepanelstate">usePanelState</a></li>
+<li><a class="reference internal" href="#usepanelstatebyidcallback">usePanelStateByIdCallback</a></li>
+<li><a class="reference internal" href="#usepanelstatecallback">usePanelStateCallback</a></li>
+<li><a class="reference internal" href="#usepanelstatelazy">usePanelStateLazy</a></li>
+<li><a class="reference internal" href="#usepanelstatepartial">usePanelStatePartial</a></li>
+<li><a class="reference internal" href="#usepaneltabautoposition">usePanelTabAutoPosition</a></li>
+<li><a class="reference internal" href="#usepaneltitle">usePanelTitle</a></li>
+<li><a class="reference internal" href="#usepanels">usePanels</a></li>
+<li><a class="reference internal" href="#usepanelsstate">usePanelsState</a></li>
+<li><a class="reference internal" href="#usereactivepanel">useReactivePanel</a></li>
+<li><a class="reference internal" href="#usesetcustompanelstate">useSetCustomPanelState</a></li>
+<li><a class="reference internal" href="#usesetpanelcloseeffect">useSetPanelCloseEffect</a></li>
+<li><a class="reference internal" href="#usesetpanelstatebyid">useSetPanelStateById</a></li>
+<li><a class="reference internal" href="#usespacenodes">useSpaceNodes</a></li>
+<li><a class="reference internal" href="#usespaces">useSpaces</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#functions">Functions</a><ul>
+<li><a class="reference internal" href="#panelskeleton">PanelSkeleton</a></li>
+<li><a class="reference internal" href="#spacesroot">SpacesRoot</a></li>
+<li><a class="reference internal" href="#getnodes">getNodes</a></li>
+<li><a class="reference internal" href="#spacenodefromjson">spaceNodeFromJSON</a></li>
+<li><a class="reference internal" href="#warnpanelnotfound">warnPanelNotFound</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#types">Types</a><ul>
+<li><a class="reference internal" href="#addpanelbuttonprops">AddPanelButtonProps</a></li>
+<li><a class="reference internal" href="#addpanelitemprops">AddPanelItemProps</a></li>
+<li><a class="reference internal" href="#paneliconprops">PanelIconProps</a></li>
+<li><a class="reference internal" href="#panelprops">PanelProps</a></li>
+<li><a class="reference internal" href="#panelstateparameter">PanelStateParameter</a></li>
+<li><a class="reference internal" href="#panelstatepartialparameter">PanelStatePartialParameter</a></li>
+<li><a class="reference internal" href="#paneltabprops">PanelTabProps</a></li>
+<li><a class="reference internal" href="#panelscloseeffect">PanelsCloseEffect</a></li>
+<li><a class="reference internal" href="#panelsstateobject">PanelsStateObject</a></li>
+<li><a class="reference internal" href="#spacenodejson">SpaceNodeJSON</a></li>
+<li><a class="reference internal" href="#spacenodetype">SpaceNodeType</a></li>
+<li><a class="reference internal" href="#spaceprops">SpaceProps</a></li>
+<li><a class="reference internal" href="#spacesrootprops">SpacesRootProps</a></li>
+<li><a class="reference internal" href="#splitpanelbuttonprops">SplitPanelButtonProps</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#enums">Enums</a><ul>
+<li><a class="reference internal" href="#layout">Layout</a></li>
+<li><a class="reference internal" href="#space-types">SPACE_TYPES</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  
+
+
+  
+
+     
+       <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+         <script src="../../_static/jquery.js"></script>
+         <script src="../../_static/underscore.js"></script>
+         <script src="../../_static/doctools.js"></script>
+         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+         <script src="../../_static/js/voxel51-website.js"></script>
+         <script src="../../_static/js/custom.js"></script>
+     
+
+  
+
+  <script type="text/javascript" src="../../_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="../../_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+  <!-- Begin Footer -->
+
+
+<footer class="footer-wrapper" id="docs-tutorials-resources">
+  <div class="footer pytorch-container">
+    <div class="footer__logo">
+      <a href="https://voxel51.com/"
+        ><img
+          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
+      /></a>
+    </div>
+
+    <div class="footer__address">
+      330 E Liberty St<br />
+      Ann Arbor, MI 48104<br />
+      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
+    </div>
+
+    <!--
+    <div class="footer__contact">
+      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
+    </div>
+    -->
+
+    <div class="footer__links">
+      <div class="footer__links--col2">
+        <p class="nav__item--brand">Products</p>
+        <a href="https://voxel51.com/fiftyone/">FiftyOne</a>
+        <a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a>
+        <a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a>
+        <a href="https://voxel51.com/success-stories/">Success Stories</a>
+      </div>
+      <div class="footer__links--col3">
+        <p class="nav__item--brand">Resources</p>
+        <a href="https://voxel51.com/blog/">Blog</a>
+        <a href="https://docs.voxel51.com/">Docs</a>
+        <a href="https://github.com/voxel51/">GitHub</a>
+        <a href="https://community.voxel51.com">Discord</a>
+        <a href="https://voxel51.com/ourstory/">About Us</a>
+        <a href="https://voxel51.com/computer-vision-events/">Events</a>
+        <a href="https://voxel51.com/jobs/">Careers</a>
+        <a href="https://voxel51.com/press/">Press</a>
+      </div>
+    </div>
+
+    <div class="footer__icons">
+      <ul class="list-inline">
+        <li>
+          <a href="https://www.linkedin.com/company/voxel51/">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/voxel51/">
+            <i class="fa-brands fa-github"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/voxel51">
+            <i class="fa-brands fa-twitter"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/voxel51/">
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="footer__copyright">
+      <ul class="list-inline">
+        <li>&copy; 2024 Voxel51 Inc.</li>
+        <li>
+          <a href="https://voxel51.com/privacy/">Privacy Policy</a>
+        </li>
+        <li>
+          <a href="https://voxel51.com/terms/">Terms of Service</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<!-- https://buttons.github.io -->
+<script async defer src="https://buttons.github.io/buttons.js" ></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XD15NFRY3M" ></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+  gtag("config", "G-XD15NFRY3M");
+</script>
+
+<script>
+  function open_modal(modal_id, modal_closer_id) {
+    // Get the modal
+    let the_modal = document.getElementById(modal_id);
+
+    the_modal.style.display = "flex";
+    document.body.style.overflow = "hidden";
+
+    let the_modal_closer = document.getElementById(modal_closer_id);
+
+    // When the user clicks on <span> (x), close the modal
+    the_modal_closer &&
+      (the_modal_closer.onclick = function () {
+        the_modal.style.display = "none";
+      });
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+      if (event.target == the_modal) {
+        the_modal.style.display = "none";
+        document.body.style.overflow = "unset";
+        window.onclick = undefined;
+      }
+    };
+  }
+</script>
+
+<!-- bigpicture.io -->
+<script>
+  !(function (e, t, i) {
+    var r = (e.bigPicture = e.bigPicture || []);
+    if (!r.initialized)
+      if (r.invoked)
+        e.console &&
+          console.error &&
+          console.error("BigPicture.io snippet included twice.");
+      else {
+        (r.invoked = !0),
+          (r.SNIPPET_VERSION = 1.5),
+          (r.handler = function (e) {
+            if (void 0 !== r.callback)
+              try {
+                return r.callback(e);
+              } catch (e) {}
+          }),
+          (r.eventList = ["mousedown", "mouseup", "click", "submit"]),
+          (r.methods = [
+            "track",
+            "identify",
+            "page",
+            "group",
+            "alias",
+            "integration",
+            "ready",
+            "intelReady",
+            "consentReady",
+            "on",
+            "off",
+          ]),
+          (r.factory = function (e) {
+            return function () {
+              var t = Array.prototype.slice.call(arguments);
+              return t.unshift(e), r.push(t), r;
+            };
+          });
+        for (var n = 0; n < r.methods.length; n++) {
+          var o = r.methods[n];
+          r[o] = r.factory(o);
+        }
+        r.getCookie = function (e) {
+          var i = ("; " + t.cookie).split("; " + e + "=");
+          return 2 == i.length && i.pop().split(";").shift();
+        };
+        var c = (r.isEditor = (function () {
+          try {
+            return (
+              e.self !== e.top &&
+              (new RegExp("app" + i, "ig").test(t.referrer) ||
+                "edit" == r.getCookie("_bpr_edit"))
+            );
+          } catch (e) {
+            return !1;
+          }
+        })());
+        r.init = function (n, o) {
+          if (((r.projectId = n), (r._config = o), !c))
+            for (var a = 0; a < r.eventList.length; a++)
+              e.addEventListener(r.eventList[a], r.handler, !0);
+          var s = t.createElement("script");
+          s.async = !0;
+          var d = c ? "/editor/editor" : "/public-" + n;
+          (s.src = "//cdn" + i + d + ".js"),
+            t.getElementsByTagName("head")[0].appendChild(s);
+        };
+      }
+  })(window, document, ".bigpicture.io");
+  bigPicture.init("1646");
+</script>
+
+
+  
+
+  <!-- End Footer -->
+
+  <!-- Begin Mobile Menu -->
+
+  
+
+  <!-- End Mobile Menu -->
+
+  <script type="text/javascript" src="../../_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function(e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+</body>
+</html>

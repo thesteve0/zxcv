@@ -1,0 +1,1059 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>FiftyOne Basics &mdash; FiftyOne 1.3.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <link rel="stylesheet" href="../_static/css/voxel51-website.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Loading data into FiftyOne" href="dataset_creation/index.html" />
+    <link rel="prev" title="FiftyOne User Guide" href="index.html" />
+<meta property="og:image" content="https://voxel51.com/wp-content/uploads/2024/03/3.24_webpages_Home_AV.png" />
+
+<link
+  href="https://fonts.googleapis.com/css?family=Palanquin:400,600,700,800"
+  rel="stylesheet"
+/>
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+  rel="stylesheet"
+/>
+<script src="https://tag.clearbitscripts.com/v1/pk_b9ed71c8234edd4f77326bcbfab5a4ca/tags.js"></script>
+
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+  
+</head>
+
+
+<div class="container-fluid header-holder tutorials-header" id="header-holder">
+  <nav id="nav__main" class="nav__main">
+    <div class="nav__main__logo">
+      <a href="https://voxel51.com/">
+        <img
+          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
+        />
+      </a>
+    </div>
+
+    <div class="nav__spacer desktop_only"></div>
+
+    <div id="nav__main__mobilebutton--on">
+      <a href="javascript:void(0);" onclick="navMobileButton()">
+        <i class="fa-solid fa-bars"></i>
+      </a>
+    </div>
+
+    <div id="nav__main__mobilebutton--off">
+      <a href="javascript:void(0);" onclick="navMobileButton()">
+        <i class="fa-solid fa-times"></i>
+      </a>
+    </div>
+
+    <div id="nav__main__items">
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Products</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://voxel51.com/fiftyone/">Open Source</a></li>
+            <li><a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a></li>
+            <li><a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a></li>
+            <li><a href="https://voxel51.com/success-stories/">Success Stories</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Learn</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://community.voxel51.com">Community Discord</a></li>
+            <li><a href="https://voxel51.com/blog/">Blog</a></li>
+            <li><a href="https://voxel51.com/computer-vision-events/">Events</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item">
+        <a href="https://docs.voxel51.com/">Docs</a>
+      </div>
+
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Company</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://voxel51.com/ourstory/">About Us</a></li>
+            <li><a href="https://voxel51.com/jobs/">Careers</a></li>
+            <li><a href="https://voxel51.com/talk-to-sales/">Talk to Sales</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item mobile_only">
+        <a href="https://github.com/voxel51/fiftyone">GitHub</a>
+      </div>
+
+      <div class="nav__item desktop_only" id="octocat">
+        <!-- https://buttons.github.io -->
+        <a
+          class="github-button"
+          href="https://github.com/voxel51/fiftyone"
+          data-color-scheme="no-preference: dark_high_contrast; light: dark_high_contrast; dark: dark_high_contrast;"
+          data-size="large"
+          data-show-count="true"
+          aria-label="Star voxel51/fiftyone on GitHub"
+          >Star</a
+        >
+      </div>
+
+      <div class="nav__item full_nav_only">
+        <a class="button-primary" href="https://voxel51.com/schedule-teams-workshop/" target="_blank"
+          >Schedule a workshop</a
+        >
+      </div>
+    </div>
+  </nav>
+</div>
+
+
+
+<body class="pytorch-body">
+
+   
+
+    
+
+    <div class="table-of-contents-link-wrapper">
+      <span>Table of Contents</span>
+      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+    </div>
+
+    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+      <div class="pytorch-side-scroll">
+        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          <div class="pytorch-left-menu-search">
+            
+
+            
+              
+              
+            
+
+            
+
+
+  
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+            
+          </div>
+
+           <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../teams/index.html">FiftyOne Teams 🚀</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../environments/index.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../recipes/index.html">Recipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheat_sheets/index.html">Cheat Sheets</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">User Guide</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">FiftyOne basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dataset_creation/index.html">Loading datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="using_datasets.html">Using datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="using_views.html">Dataset views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="app.html">Using the App</a></li>
+<li class="toctree-l2"><a class="reference internal" href="groups.html">Grouped datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="annotation.html">Annotating datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="evaluation.html">Evaluating models <strong style="color: hsl(25, 100%, 51%); font-size: 0.85em; vertical-align: top">NEW</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="using_aggregations.html">Using aggregations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plots.html">Interactive plots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="export_datasets.html">Exporting datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="draw_labels.html">Drawing labels on samples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config.html">Configuring FiftyOne</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config.html#configuring-the-app">Configuring the App</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../dataset_zoo/index.html">Dataset Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_zoo/index.html">Model Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brain.html">FiftyOne Brain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/index.html">Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plugins/index.html">Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli/index.html">CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/fiftyone.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deprecation.html">Deprecation Notices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a></li>
+</ul>
+ 
+        </div>
+      </div>
+    </nav>
+
+    <div class="pytorch-container">
+      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+        <div class="pytorch-breadcrumbs-wrapper">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="../index.html">
+          
+            Docs
+          
+        </a> &gt;
+      </li>
+
+        
+          <li><a href="index.html">FiftyOne User Guide</a> &gt;</li>
+        
+      <li>FiftyOne Basics</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+        </div>
+
+        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+          Contents
+        </div>
+      </div>
+
+      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+        <div class="pytorch-content-left">
+
+        
+          
+          <div class="rst-content style-external-links">
+          
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+              
+  <div class="section" id="fiftyone-basics">
+<span id="id1"></span><h1>FiftyOne Basics<a class="headerlink" href="#fiftyone-basics" title="Permalink to this headline">¶</a></h1>
+<p>This page provides a brief overview of FiftyOne’s basic concepts.</p>
+<div class="section" id="datasets">
+<span id="basics-datasets"></span><h2>Datasets<a class="headerlink" href="#datasets" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference internal" href="../api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset" title="fiftyone.core.dataset.Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dataset</span></code></a> class is the core data structure in FiftyOne, allowing you to
+represent your data and manipulate it through the Python library and the
+<a class="reference internal" href="app.html#fiftyone-app"><span class="std std-ref">FiftyOne App</span></a>.</p>
+<p>FiftyOne Datasets allow you to easily <a class="reference internal" href="dataset_creation/index.html#loading-datasets"><span class="std std-ref">load</span></a>,
+<a class="reference internal" href="using_datasets.html#using-datasets"><span class="std std-ref">modify</span></a>, <a class="reference internal" href="app.html#fiftyone-app"><span class="std std-ref">visualize</span></a>, and
+<a class="reference internal" href="evaluation.html#evaluating-models"><span class="std std-ref">evaluate</span></a> your data along with any related labels
+(classifications, detections, etc). They provide a consistent interface for
+loading images, videos, annotations, and model predictions into a format that
+can be visualized in the <a class="reference internal" href="app.html#fiftyone-app"><span class="std std-ref">FiftyOne App</span></a>, synced with your
+annotation source, and shared with others.</p>
+<p>If you have your own collection of data, loading it as a <a class="reference internal" href="../api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset" title="fiftyone.core.dataset.Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dataset</span></code></a> will allow
+you to easily search and sort your samples. You can use FiftyOne to identify
+unique samples as well as possible mistakes in your labels.</p>
+<p>If you are training a model, its predictions and associated data such as
+embeddings and logits can be loaded into your <a class="reference internal" href="../api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset" title="fiftyone.core.dataset.Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dataset</span></code></a>. The FiftyOne App makes
+it easy to visually debug what your model has learned, even for complex label
+types like polygons and segmentation masks. With this knowledge, you can update
+your <a class="reference internal" href="../api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset" title="fiftyone.core.dataset.Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dataset</span></code></a> to include more representative samples and samples that your
+model found difficult into your training set.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Check out <a class="reference internal" href="dataset_creation/index.html#loading-datasets"><span class="std std-ref">creating FiftyOne datasets</span></a> for more
+information about loading your data into FiftyOne.</p>
+</div>
+<p>A <a class="reference internal" href="../api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset" title="fiftyone.core.dataset.Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dataset</span></code></a> is composed of multiple <a class="reference internal" href="../api/fiftyone.core.sample.html#fiftyone.core.sample.Sample" title="fiftyone.core.sample.Sample"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sample</span></code></a> objects which contain <a class="reference internal" href="../api/fiftyone.core.fields.html#fiftyone.core.fields.Field" title="fiftyone.core.fields.Field"><code class="xref py py-class docutils literal notranslate"><span class="pre">Field</span></code></a>
+attributes, all of which can be dynamically created, modified and deleted.
+FiftyOne uses a lightweight non-relational database to store datasets, so you
+can easily scale to datasets of any size without worrying about RAM
+constraints on your machine.</p>
+<p>Datasets are ordered collections of samples. When a <a class="reference internal" href="../api/fiftyone.core.sample.html#fiftyone.core.sample.Sample" title="fiftyone.core.sample.Sample"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sample</span></code></a> is added to a
+<a class="reference internal" href="../api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset" title="fiftyone.core.dataset.Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dataset</span></code></a>, it is assigned a unique ID that can be used to retrieve the sample
+from the dataset.</p>
+<p>Slicing and other batch operations on datasets are done through the use of
+<a class="reference internal" href="using_views.html#using-views"><span class="std std-ref">dataset views</span></a>. A <a class="reference internal" href="../api/fiftyone.core.view.html#fiftyone.core.view.DatasetView" title="fiftyone.core.view.DatasetView"><code class="xref py py-class docutils literal notranslate"><span class="pre">DatasetView</span></code></a> provides a view into the
+<a class="reference internal" href="../api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset" title="fiftyone.core.dataset.Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dataset</span></code></a>, which can be filtered, sorted, sampled, etc. along various axes to
+obtain a desired subset of the samples.</p>
+<p><div class="tutorials-callout-container">
+    <a class="btn with-right-arrow callout-button" href="using_datasets.html#using-datasets">Learn more about using datasets</a>
+</div></p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+
+<span class="c1"># Create an empty dataset</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="s2">&quot;test-dataset&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Name:           test-dataset
+Media type:     None
+Num samples:    0
+Persistent:     False
+Tags:           []
+Sample fields:
+    id:               fiftyone.core.fields.ObjectIdField
+    filepath:         fiftyone.core.fields.StringField
+    tags:             fiftyone.core.fields.ListField(fiftyone.core.fields.StringField)
+    metadata:         fiftyone.core.fields.EmbeddedDocumentField(fiftyone.core.metadata.Metadata)
+    created_at:       fiftyone.core.fields.DateTimeField
+    last_modified_at: fiftyone.core.fields.DateTimeField
+</pre></div>
+</div>
+</div>
+<div class="section" id="samples">
+<span id="basics-samples"></span><h2>Samples<a class="headerlink" href="#samples" title="Permalink to this headline">¶</a></h2>
+<p>Samples are the atomic elements of a <a class="reference internal" href="../api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset" title="fiftyone.core.dataset.Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dataset</span></code></a> that store all the information
+related to a given piece of data (e.g., an image or video).</p>
+<p>All <a class="reference internal" href="../api/fiftyone.core.sample.html#fiftyone.core.sample.Sample" title="fiftyone.core.sample.Sample"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sample</span></code></a> instances store the path to their source data on disk in their
+<code class="code docutils literal notranslate"><span class="pre">filepath</span></code> field. Any number of fields can be dynamically added to samples to
+store additional custom information about the sample.</p>
+<p><div class="tutorials-callout-container">
+    <a class="btn with-right-arrow callout-button" href="using_datasets.html#using-samples">Learn more about using samples</a>
+</div></p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+
+<span class="c1"># An image sample</span>
+<span class="n">sample</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Sample</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="s2">&quot;/path/to/image.png&quot;</span><span class="p">)</span>
+
+<span class="c1"># A video sample</span>
+<span class="n">sample</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Sample</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="s2">&quot;/path/to/video.mp4&quot;</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+</div>
+<div class="section" id="fields">
+<span id="basics-fields"></span><h2>Fields<a class="headerlink" href="#fields" title="Permalink to this headline">¶</a></h2>
+<p>Fields are attributes of <a class="reference internal" href="../api/fiftyone.core.sample.html#fiftyone.core.sample.Sample" title="fiftyone.core.sample.Sample"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sample</span></code></a> instances that store customizable information
+about the samples. Thinking of a <a class="reference internal" href="../api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset" title="fiftyone.core.dataset.Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dataset</span></code></a> as a table where each row is a
+<a class="reference internal" href="../api/fiftyone.core.sample.html#fiftyone.core.sample.Sample" title="fiftyone.core.sample.Sample"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sample</span></code></a>, each column of the table is a <a class="reference internal" href="../api/fiftyone.core.fields.html#fiftyone.core.fields.Field" title="fiftyone.core.fields.Field"><code class="xref py py-class docutils literal notranslate"><span class="pre">Field</span></code></a>.</p>
+<p>All samples must have their <code class="code docutils literal notranslate"><span class="pre">filepath</span></code> field populated, which points to the
+source data for the sample on disk. By default, samples are also given <code class="code docutils literal notranslate"><span class="pre">id</span></code>,
+<code class="code docutils literal notranslate"><span class="pre">media_type</span></code>, <code class="code docutils literal notranslate"><span class="pre">tags</span></code>, <code class="code docutils literal notranslate"><span class="pre">metadata</span></code>, <code class="code docutils literal notranslate"><span class="pre">created_at</span></code>, and <code class="code docutils literal notranslate"><span class="pre">last_modified_at</span></code> fields
+that store common information:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+
+<span class="n">sample</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Sample</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="s2">&quot;/path/to/image.png&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&lt;Sample: {
+    &#39;id&#39;: None,
+    &#39;media_type&#39;: &#39;image&#39;,
+    &#39;filepath&#39;: &#39;path/to/image.png&#39;,
+    &#39;tags&#39;: [],
+    &#39;metadata&#39;: None,
+    &#39;created_at&#39;: None,
+    &#39;last_modified_at&#39;: None,
+}&gt;
+</pre></div>
+</div>
+<p>Custom fields can contain any Python primitive data type:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../api/fiftyone.core.fields.html#fiftyone.core.fields.BooleanField" title="fiftyone.core.fields.BooleanField"><code class="xref py py-class docutils literal notranslate"><span class="pre">BooleanField</span></code></a>: contains Python <code class="code docutils literal notranslate"><span class="pre">bool</span></code> instances</p></li>
+<li><p><a class="reference internal" href="../api/fiftyone.core.fields.html#fiftyone.core.fields.IntField" title="fiftyone.core.fields.IntField"><code class="xref py py-class docutils literal notranslate"><span class="pre">IntField</span></code></a>: contains Python <code class="code docutils literal notranslate"><span class="pre">int</span></code> instances</p></li>
+<li><p><a class="reference internal" href="../api/fiftyone.core.fields.html#fiftyone.core.fields.FloatField" title="fiftyone.core.fields.FloatField"><code class="xref py py-class docutils literal notranslate"><span class="pre">FloatField</span></code></a>: contains Python <code class="code docutils literal notranslate"><span class="pre">float</span></code> instances</p></li>
+<li><p><a class="reference internal" href="../api/fiftyone.core.fields.html#fiftyone.core.fields.StringField" title="fiftyone.core.fields.StringField"><code class="xref py py-class docutils literal notranslate"><span class="pre">StringField</span></code></a>: contains Python <code class="code docutils literal notranslate"><span class="pre">str</span></code> instances</p></li>
+<li><p><a class="reference internal" href="../api/fiftyone.core.fields.html#fiftyone.core.fields.DateField" title="fiftyone.core.fields.DateField"><code class="xref py py-class docutils literal notranslate"><span class="pre">DateField</span></code></a>: contains Python <code class="code docutils literal notranslate"><span class="pre">date</span></code> instances</p></li>
+<li><p><a class="reference internal" href="../api/fiftyone.core.fields.html#fiftyone.core.fields.DateTimeField" title="fiftyone.core.fields.DateTimeField"><code class="xref py py-class docutils literal notranslate"><span class="pre">DateTimeField</span></code></a>: contains Python <code class="code docutils literal notranslate"><span class="pre">datetime</span></code> instances</p></li>
+<li><p><a class="reference internal" href="../api/fiftyone.core.fields.html#fiftyone.core.fields.ListField" title="fiftyone.core.fields.ListField"><code class="xref py py-class docutils literal notranslate"><span class="pre">ListField</span></code></a>: contains Python <code class="code docutils literal notranslate"><span class="pre">list</span></code> instances</p></li>
+<li><p><a class="reference internal" href="../api/fiftyone.core.fields.html#fiftyone.core.fields.DictField" title="fiftyone.core.fields.DictField"><code class="xref py py-class docutils literal notranslate"><span class="pre">DictField</span></code></a>: contains Python <code class="code docutils literal notranslate"><span class="pre">dict</span></code> instances</p></li>
+</ul>
+<p>The elements of list and dict fields may be homogeneous or heterogeneous, and
+may even contain nested lists and dicts. Fields can also contain more complex
+data types like <a class="reference internal" href="using_datasets.html#using-labels"><span class="std std-ref">labels</span></a>.</p>
+<p>Fields can be dynamically created, modified, and deleted. When a new <a class="reference internal" href="../api/fiftyone.core.fields.html#fiftyone.core.fields.Field" title="fiftyone.core.fields.Field"><code class="xref py py-class docutils literal notranslate"><span class="pre">Field</span></code></a> is
+assigned to a <a class="reference internal" href="../api/fiftyone.core.sample.html#fiftyone.core.sample.Sample" title="fiftyone.core.sample.Sample"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sample</span></code></a> in a <a class="reference internal" href="../api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset" title="fiftyone.core.dataset.Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dataset</span></code></a>, or a <a class="reference internal" href="../api/fiftyone.core.sample.html#fiftyone.core.sample.Sample" title="fiftyone.core.sample.Sample"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sample</span></code></a> with new fields is added
+to a <a class="reference internal" href="../api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset" title="fiftyone.core.dataset.Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dataset</span></code></a>, the appropriate fields are automatically added to the dataset’s
+schema and thus accessible on all other samples in the dataset.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If a <a class="reference internal" href="../api/fiftyone.core.fields.html#fiftyone.core.fields.Field" title="fiftyone.core.fields.Field"><code class="xref py py-class docutils literal notranslate"><span class="pre">Field</span></code></a> has not been set on a particular <a class="reference internal" href="../api/fiftyone.core.sample.html#fiftyone.core.sample.Sample" title="fiftyone.core.sample.Sample"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sample</span></code></a> in a <a class="reference internal" href="../api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset" title="fiftyone.core.dataset.Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dataset</span></code></a>, its
+value will be <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+
+<span class="n">sample</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Sample</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="s2">&quot;/path/to/image.png&quot;</span><span class="p">)</span>
+
+<span class="n">sample</span><span class="p">[</span><span class="s2">&quot;quality&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">89.7</span>
+<span class="n">sample</span><span class="p">[</span><span class="s2">&quot;keypoints&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">31</span><span class="p">,</span> <span class="mi">27</span><span class="p">],</span> <span class="p">[</span><span class="mi">63</span><span class="p">,</span> <span class="mi">72</span><span class="p">]]</span>
+<span class="n">sample</span><span class="p">[</span><span class="s2">&quot;geo_json&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Feature&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;geometry&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Point&quot;</span><span class="p">,</span> <span class="s2">&quot;coordinates&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">125.6</span><span class="p">,</span> <span class="mf">10.1</span><span class="p">]},</span>
+    <span class="s2">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;camera&quot;</span><span class="p">},</span>
+<span class="p">}</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="s2">&quot;fields-test&quot;</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">add_sample</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Name:           fields-test
+Media type:     image
+Num samples:    1
+Persistent:     False
+Tags:           []
+Sample fields:
+    id:               fiftyone.core.fields.ObjectIdField
+    filepath:         fiftyone.core.fields.StringField
+    tags:             fiftyone.core.fields.ListField(fiftyone.core.fields.StringField)
+    metadata:         fiftyone.core.fields.EmbeddedDocumentField(fiftyone.core.metadata.ImageMetadata)
+    created_at:       fiftyone.core.fields.DateTimeField
+    last_modified_at: fiftyone.core.fields.DateTimeField
+    quality:          fiftyone.core.fields.FloatField
+    keypoints:        fiftyone.core.fields.ListField
+    geo_json:         fiftyone.core.fields.DictField
+</pre></div>
+</div>
+<p><div class="tutorials-callout-container">
+    <a class="btn with-right-arrow callout-button" href="using_datasets.html#using-fields">Learn more about sample fields</a>
+</div></p>
+</div>
+<div class="section" id="media-type">
+<h2>Media type<a class="headerlink" href="#media-type" title="Permalink to this headline">¶</a></h2>
+<p>When a <a class="reference internal" href="../api/fiftyone.core.sample.html#fiftyone.core.sample.Sample" title="fiftyone.core.sample.Sample"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sample</span></code></a> is created, its media type is inferred from the <code class="code docutils literal notranslate"><span class="pre">filepath</span></code> to
+the source media and exposed via the <code class="code docutils literal notranslate"><span class="pre">media_type</span></code> attribute of the sample.</p>
+<p><div class="tutorials-callout-container">
+    <a class="btn with-right-arrow callout-button" href="using_datasets.html#using-media-type">Learn more about media types</a>
+</div></p>
+</div>
+<div class="section" id="tags">
+<span id="basics-tags"></span><h2>Tags<a class="headerlink" href="#tags" title="Permalink to this headline">¶</a></h2>
+<p>All <a class="reference internal" href="../api/fiftyone.core.sample.html#fiftyone.core.sample.Sample" title="fiftyone.core.sample.Sample"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sample</span></code></a> instances have a <code class="code docutils literal notranslate"><span class="pre">tags</span></code> attribute, which stores a list of strings
+that can be used flexibly to store information about a sample.</p>
+<p>A typical use case is to tag the dataset split (<code class="code docutils literal notranslate"><span class="pre">test</span></code>, <code class="code docutils literal notranslate"><span class="pre">train</span></code>, <code class="code docutils literal notranslate"><span class="pre">validation</span></code>)
+to which the <a class="reference internal" href="../api/fiftyone.core.sample.html#fiftyone.core.sample.Sample" title="fiftyone.core.sample.Sample"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sample</span></code></a> belongs. However, you are free to use tags however you
+like.</p>
+<p><div class="tutorials-callout-container">
+    <a class="btn with-right-arrow callout-button" href="using_datasets.html#using-tags">See more information about using tags</a>
+</div></p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+
+<span class="n">sample</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Sample</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="s2">&quot;/path/to/image.png&quot;</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;train&quot;</span><span class="p">])</span>
+<span class="n">sample</span><span class="o">.</span><span class="n">tags</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;my_favorite_samples&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">sample</span><span class="o">.</span><span class="n">tags</span><span class="p">)</span>
+<span class="c1"># [&quot;train&quot;, &quot;my_favorite_samples&quot;]</span>
+</pre></div></td></tr></table></div>
+</div>
+</div>
+<div class="section" id="metadata">
+<span id="basics-metadata"></span><h2>Metadata<a class="headerlink" href="#metadata" title="Permalink to this headline">¶</a></h2>
+<p>All <a class="reference internal" href="../api/fiftyone.core.sample.html#fiftyone.core.sample.Sample" title="fiftyone.core.sample.Sample"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sample</span></code></a> instances have a <code class="code docutils literal notranslate"><span class="pre">metadata</span></code> attribute that stores type-specific
+metadata about the source media of the sample.</p>
+<p><div class="tutorials-callout-container">
+    <a class="btn with-right-arrow callout-button" href="using_datasets.html#using-metadata">Learn more about adding metadata to your samples</a>
+</div></p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+
+<span class="n">sample</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Sample</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="s2">&quot;/path/to/image.png&quot;</span><span class="p">)</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Dataset</span><span class="p">()</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">add_sample</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
+
+<span class="c1"># Populate the `metadata` field of all samples in the dataset</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">compute_metadata</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">first</span><span class="p">())</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&lt;Sample: {
+    &#39;id&#39;: &#39;60302b9dca4a8b5f74e84f16&#39;,
+    &#39;media_type&#39;: &#39;image&#39;,
+    &#39;filepath&#39;: &#39;/path/to/image.png&#39;,
+    &#39;tags&#39;: [],
+    &#39;metadata&#39;: &lt;ImageMetadata: {
+        &#39;size_bytes&#39;: 544559,
+        &#39;mime_type&#39;: &#39;image/png&#39;,
+        &#39;width&#39;: 698,
+        &#39;height&#39;: 664,
+        &#39;num_channels&#39;: 3,
+    }&gt;,
+    &#39;created_at&#39;: datetime.datetime(2024, 7, 22, 5, 16, 10, 701907),
+    &#39;last_modified_at&#39;: datetime.datetime(2024, 7, 22, 5, 16, 10, 701907),
+}&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="labels">
+<span id="basics-labels"></span><h2>Labels<a class="headerlink" href="#labels" title="Permalink to this headline">¶</a></h2>
+<p>Labels store semantic information about the sample, such as ground annotations
+or model predictions.</p>
+<p>FiftyOne provides label classes for many common tasks:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="using_datasets.html#regression"><span class="std std-ref">Regression</span></a>: a regression value</p></li>
+<li><p><a class="reference internal" href="using_datasets.html#classification"><span class="std std-ref">Classification</span></a>: a classification label</p></li>
+<li><p><a class="reference internal" href="using_datasets.html#multilabel-classification"><span class="std std-ref">Classifications</span></a>: a list of classifications
+(typically for multilabel tasks)</p></li>
+<li><p><a class="reference internal" href="using_datasets.html#object-detection"><span class="std std-ref">Detections</span></a>: a list of object detections (with
+optional instance masks)</p></li>
+<li><p><a class="reference internal" href="using_datasets.html#polylines"><span class="std std-ref">Polylines</span></a>: a list of polylines or polygons in an image</p></li>
+<li><p><a class="reference internal" href="using_datasets.html#cuboids"><span class="std std-ref">Cuboids</span></a>: a list of 2D cuboids in an image</p></li>
+<li><p><a class="reference internal" href="using_datasets.html#rotated-bounding-boxes"><span class="std std-ref">Rotated bounding boxes</span></a>: a list of rotated
+boxes in an image</p></li>
+<li><p><a class="reference internal" href="using_datasets.html#keypoints"><span class="std std-ref">Keypoints</span></a>: a list of keypoints in an image</p></li>
+<li><p><a class="reference internal" href="using_datasets.html#semantic-segmentation"><span class="std std-ref">Segmentation</span></a>: a semantic segmentation mask for
+an image</p></li>
+<li><p><a class="reference internal" href="using_datasets.html#heatmaps"><span class="std std-ref">Heatmap</span></a>: an intensity heatmap for an image</p></li>
+<li><p><a class="reference internal" href="using_datasets.html#temporal-detection"><span class="std std-ref">Temporal detection</span></a>: events with a temporal frame
+support in a video</p></li>
+<li><p><a class="reference internal" href="using_datasets.html#d-detections"><span class="std std-ref">3D detections</span></a>: a list of 3D detections in a scene</p></li>
+<li><p><a class="reference internal" href="using_datasets.html#d-polylines"><span class="std std-ref">3D polylines</span></a>: a list of 3D polylines or polygons in a
+scene</p></li>
+<li><p><a class="reference internal" href="using_datasets.html#geolocation"><span class="std std-ref">GeoLocation</span></a>: geolocation point(s), line(s), or
+polygon(s)</p></li>
+</ul>
+<p>Using FiftyOne’s <a class="reference internal" href="../api/fiftyone.core.labels.html#fiftyone.core.labels.Label" title="fiftyone.core.labels.Label"><code class="xref py py-class docutils literal notranslate"><span class="pre">Label</span></code></a> types enables you to visualize your labels in the
+<a class="reference internal" href="app.html#fiftyone-app"><span class="std std-ref">the App</span></a>.</p>
+<p><div class="tutorials-callout-container">
+    <a class="btn with-right-arrow callout-button" href="using_datasets.html#using-labels">Learn more about storing labels in your samples</a>
+</div></p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+
+<span class="n">sample</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Sample</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="s2">&quot;/path/to/image.png&quot;</span><span class="p">)</span>
+
+<span class="n">sample</span><span class="p">[</span><span class="s2">&quot;weather&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Classification</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;sunny&quot;</span><span class="p">)</span>
+<span class="n">sample</span><span class="p">[</span><span class="s2">&quot;animals&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Detections</span><span class="p">(</span>
+    <span class="n">detections</span><span class="o">=</span><span class="p">[</span>
+        <span class="n">fo</span><span class="o">.</span><span class="n">Detection</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;cat&quot;</span><span class="p">,</span> <span class="n">bounding_box</span><span class="o">=</span><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">]),</span>
+        <span class="n">fo</span><span class="o">.</span><span class="n">Detection</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;dog&quot;</span><span class="p">,</span> <span class="n">bounding_box</span><span class="o">=</span><span class="p">[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">]),</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&lt;Sample: {
+    &#39;id&#39;: None,
+    &#39;media_type&#39;: &#39;image&#39;,
+    &#39;filepath&#39;: &#39;path/to/image.png&#39;,
+    &#39;tags&#39;: [],
+    &#39;metadata&#39;: None,
+    &#39;created_at&#39;: None,
+    &#39;last_modified_at&#39;: None,
+    &#39;weather&#39;: &lt;Classification: {&#39;label&#39;: &#39;sunny&#39;, &#39;confidence&#39;: None, &#39;logits&#39;: None}&gt;,
+    &#39;animals&#39;: &lt;Detections: {
+        &#39;detections&#39;: [
+            &lt;Detection: {
+                &#39;label&#39;: &#39;cat&#39;,
+                &#39;bounding_box&#39;: [0.5, 0.5, 0.4, 0.3],
+                &#39;confidence&#39;: None,
+                &#39;attributes&#39;: {},
+            }&gt;,
+            &lt;Detection: {
+                &#39;label&#39;: &#39;dog&#39;,
+                &#39;bounding_box&#39;: [0.2, 0.2, 0.2, 0.4],
+                &#39;confidence&#39;: None,
+                &#39;attributes&#39;: {},
+            }&gt;,
+        ],
+    }&gt;,
+}&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="datasetviews">
+<h2>DatasetViews<a class="headerlink" href="#datasetviews" title="Permalink to this headline">¶</a></h2>
+<p>Dataset views are a powerful tool for exploring your datasets. You can use
+<a class="reference internal" href="../api/fiftyone.core.view.html#fiftyone.core.view.DatasetView" title="fiftyone.core.view.DatasetView"><code class="xref py py-class docutils literal notranslate"><span class="pre">DatasetView</span></code></a> instances to search, filter, sort, and manipulate subsets of your
+datasets to perform the analysis that you need.</p>
+<p><div class="tutorials-callout-container">
+    <a class="btn with-right-arrow callout-button" href="using_views.html">Get a full walkthrough of dataset views</a>
+</div></p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+<span class="kn">import</span> <span class="nn">fiftyone.brain</span> <span class="k">as</span> <span class="nn">fob</span>
+<span class="kn">from</span> <span class="nn">fiftyone</span> <span class="kn">import</span> <span class="n">ViewField</span> <span class="k">as</span> <span class="n">F</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;cifar10&quot;</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="s2">&quot;test&quot;</span><span class="p">)</span>
+
+<span class="n">cats</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s2">&quot;ground_truth.label&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;cat&quot;</span><span class="p">)</span>
+<span class="n">fob</span><span class="o">.</span><span class="n">compute_uniqueness</span><span class="p">(</span><span class="n">cats</span><span class="p">)</span>
+
+<span class="n">similar_cats</span> <span class="o">=</span> <span class="n">cats</span><span class="o">.</span><span class="n">sort_by</span><span class="p">(</span><span class="s2">&quot;uniqueness&quot;</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">view</span><span class="o">=</span><span class="n">similar_cats</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<img alt="cats-similar" class="align-center" src="../_images/cats-similar.png" />
+</div>
+<div class="section" id="aggregations">
+<span id="basics-aggregations"></span><h2>Aggregations<a class="headerlink" href="#aggregations" title="Permalink to this headline">¶</a></h2>
+<p>Dataset views allow you to search for samples in your datasets and filter
+their contents. Complementary to this, one is often interested in computing
+aggregate statistics about a dataset or view, such as label counts,
+distributions, and ranges.</p>
+<p>FiftyOne provides a powerful <a class="reference internal" href="using_aggregations.html#using-aggregations"><span class="std std-ref">aggregations framework</span></a>
+that provides a highly-efficient approach to computing statistics about your
+data.</p>
+<p><div class="tutorials-callout-container">
+    <a class="btn with-right-arrow callout-button" href="using_aggregations.html">Learn more about using aggregations</a>
+</div></p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+<span class="kn">from</span> <span class="nn">fiftyone</span> <span class="kn">import</span> <span class="n">ViewField</span> <span class="k">as</span> <span class="n">F</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+
+<span class="c1"># Compute a histogram of the predicted labels in the `predictions` field</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">count_values</span><span class="p">(</span><span class="s2">&quot;predictions.detections.label&quot;</span><span class="p">))</span>
+<span class="c1"># {&#39;bicycle&#39;: 13, &#39;hot dog&#39;: 8, ..., &#39;skis&#39;: 52}</span>
+
+<span class="c1"># Compute the range of confidences of `cat` predictions in the dataset</span>
+<span class="nb">print</span><span class="p">(</span>
+    <span class="n">dataset</span>
+    <span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span><span class="s2">&quot;predictions&quot;</span><span class="p">,</span> <span class="n">F</span><span class="p">(</span><span class="s2">&quot;label&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;cat&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">bounds</span><span class="p">(</span><span class="s2">&quot;predictions.detections.confidence&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="c1"># (0.05223553627729416, 0.9965479969978333)</span>
+</pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
+
+
+             </article>
+             
+            </div>
+            <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="dataset_creation/index.html" class="btn btn-neutral float-right" title="Loading data into FiftyOne" accesskey="n" rel="next">Next <img src="../_static/images/chevron-right-orange.svg" class="next-page"></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="FiftyOne User Guide" accesskey="p" rel="prev"><img src="../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
+      
+    </div>
+  
+</footer>
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              <ul>
+<li><a class="reference internal" href="#">FiftyOne Basics</a><ul>
+<li><a class="reference internal" href="#datasets">Datasets</a></li>
+<li><a class="reference internal" href="#samples">Samples</a></li>
+<li><a class="reference internal" href="#fields">Fields</a></li>
+<li><a class="reference internal" href="#media-type">Media type</a></li>
+<li><a class="reference internal" href="#tags">Tags</a></li>
+<li><a class="reference internal" href="#metadata">Metadata</a></li>
+<li><a class="reference internal" href="#labels">Labels</a></li>
+<li><a class="reference internal" href="#datasetviews">DatasetViews</a></li>
+<li><a class="reference internal" href="#aggregations">Aggregations</a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  
+
+
+  
+
+     
+       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+         <script src="../_static/jquery.js"></script>
+         <script src="../_static/underscore.js"></script>
+         <script src="../_static/doctools.js"></script>
+         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+         <script src="../_static/js/voxel51-website.js"></script>
+         <script src="../_static/js/custom.js"></script>
+     
+
+  
+
+  <script type="text/javascript" src="../_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="../_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+  <!-- Begin Footer -->
+
+
+<footer class="footer-wrapper" id="docs-tutorials-resources">
+  <div class="footer pytorch-container">
+    <div class="footer__logo">
+      <a href="https://voxel51.com/"
+        ><img
+          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
+      /></a>
+    </div>
+
+    <div class="footer__address">
+      330 E Liberty St<br />
+      Ann Arbor, MI 48104<br />
+      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
+    </div>
+
+    <!--
+    <div class="footer__contact">
+      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
+    </div>
+    -->
+
+    <div class="footer__links">
+      <div class="footer__links--col2">
+        <p class="nav__item--brand">Products</p>
+        <a href="https://voxel51.com/fiftyone/">FiftyOne</a>
+        <a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a>
+        <a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a>
+        <a href="https://voxel51.com/success-stories/">Success Stories</a>
+      </div>
+      <div class="footer__links--col3">
+        <p class="nav__item--brand">Resources</p>
+        <a href="https://voxel51.com/blog/">Blog</a>
+        <a href="https://docs.voxel51.com/">Docs</a>
+        <a href="https://github.com/voxel51/">GitHub</a>
+        <a href="https://community.voxel51.com">Discord</a>
+        <a href="https://voxel51.com/ourstory/">About Us</a>
+        <a href="https://voxel51.com/computer-vision-events/">Events</a>
+        <a href="https://voxel51.com/jobs/">Careers</a>
+        <a href="https://voxel51.com/press/">Press</a>
+      </div>
+    </div>
+
+    <div class="footer__icons">
+      <ul class="list-inline">
+        <li>
+          <a href="https://www.linkedin.com/company/voxel51/">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/voxel51/">
+            <i class="fa-brands fa-github"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/voxel51">
+            <i class="fa-brands fa-twitter"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/voxel51/">
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="footer__copyright">
+      <ul class="list-inline">
+        <li>&copy; 2024 Voxel51 Inc.</li>
+        <li>
+          <a href="https://voxel51.com/privacy/">Privacy Policy</a>
+        </li>
+        <li>
+          <a href="https://voxel51.com/terms/">Terms of Service</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<!-- https://buttons.github.io -->
+<script async defer src="https://buttons.github.io/buttons.js" ></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XD15NFRY3M" ></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+  gtag("config", "G-XD15NFRY3M");
+</script>
+
+<script>
+  function open_modal(modal_id, modal_closer_id) {
+    // Get the modal
+    let the_modal = document.getElementById(modal_id);
+
+    the_modal.style.display = "flex";
+    document.body.style.overflow = "hidden";
+
+    let the_modal_closer = document.getElementById(modal_closer_id);
+
+    // When the user clicks on <span> (x), close the modal
+    the_modal_closer &&
+      (the_modal_closer.onclick = function () {
+        the_modal.style.display = "none";
+      });
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+      if (event.target == the_modal) {
+        the_modal.style.display = "none";
+        document.body.style.overflow = "unset";
+        window.onclick = undefined;
+      }
+    };
+  }
+</script>
+
+<!-- bigpicture.io -->
+<script>
+  !(function (e, t, i) {
+    var r = (e.bigPicture = e.bigPicture || []);
+    if (!r.initialized)
+      if (r.invoked)
+        e.console &&
+          console.error &&
+          console.error("BigPicture.io snippet included twice.");
+      else {
+        (r.invoked = !0),
+          (r.SNIPPET_VERSION = 1.5),
+          (r.handler = function (e) {
+            if (void 0 !== r.callback)
+              try {
+                return r.callback(e);
+              } catch (e) {}
+          }),
+          (r.eventList = ["mousedown", "mouseup", "click", "submit"]),
+          (r.methods = [
+            "track",
+            "identify",
+            "page",
+            "group",
+            "alias",
+            "integration",
+            "ready",
+            "intelReady",
+            "consentReady",
+            "on",
+            "off",
+          ]),
+          (r.factory = function (e) {
+            return function () {
+              var t = Array.prototype.slice.call(arguments);
+              return t.unshift(e), r.push(t), r;
+            };
+          });
+        for (var n = 0; n < r.methods.length; n++) {
+          var o = r.methods[n];
+          r[o] = r.factory(o);
+        }
+        r.getCookie = function (e) {
+          var i = ("; " + t.cookie).split("; " + e + "=");
+          return 2 == i.length && i.pop().split(";").shift();
+        };
+        var c = (r.isEditor = (function () {
+          try {
+            return (
+              e.self !== e.top &&
+              (new RegExp("app" + i, "ig").test(t.referrer) ||
+                "edit" == r.getCookie("_bpr_edit"))
+            );
+          } catch (e) {
+            return !1;
+          }
+        })());
+        r.init = function (n, o) {
+          if (((r.projectId = n), (r._config = o), !c))
+            for (var a = 0; a < r.eventList.length; a++)
+              e.addEventListener(r.eventList[a], r.handler, !0);
+          var s = t.createElement("script");
+          s.async = !0;
+          var d = c ? "/editor/editor" : "/public-" + n;
+          (s.src = "//cdn" + i + d + ".js"),
+            t.getElementsByTagName("head")[0].appendChild(s);
+        };
+      }
+  })(window, document, ".bigpicture.io");
+  bigPicture.init("1646");
+</script>
+
+
+  
+
+  <!-- End Footer -->
+
+  <!-- Begin Mobile Menu -->
+
+  
+
+  <!-- End Mobile Menu -->
+
+  <script type="text/javascript" src="../_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function(e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+</body>
+</html>

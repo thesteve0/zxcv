@@ -1,0 +1,1176 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>FiftyOne Environments &mdash; FiftyOne 1.3.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <link rel="stylesheet" href="../_static/css/voxel51-website.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="FiftyOne Tutorials" href="../tutorials/index.html" />
+    <link rel="prev" title="Install Troubleshooting" href="../getting_started/troubleshooting.html" />
+<meta property="og:image" content="https://voxel51.com/wp-content/uploads/2024/03/3.24_webpages_Home_AV.png" />
+
+<link
+  href="https://fonts.googleapis.com/css?family=Palanquin:400,600,700,800"
+  rel="stylesheet"
+/>
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+  rel="stylesheet"
+/>
+<script src="https://tag.clearbitscripts.com/v1/pk_b9ed71c8234edd4f77326bcbfab5a4ca/tags.js"></script>
+
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+  
+</head>
+
+
+<div class="container-fluid header-holder tutorials-header" id="header-holder">
+  <nav id="nav__main" class="nav__main">
+    <div class="nav__main__logo">
+      <a href="https://voxel51.com/">
+        <img
+          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
+        />
+      </a>
+    </div>
+
+    <div class="nav__spacer desktop_only"></div>
+
+    <div id="nav__main__mobilebutton--on">
+      <a href="javascript:void(0);" onclick="navMobileButton()">
+        <i class="fa-solid fa-bars"></i>
+      </a>
+    </div>
+
+    <div id="nav__main__mobilebutton--off">
+      <a href="javascript:void(0);" onclick="navMobileButton()">
+        <i class="fa-solid fa-times"></i>
+      </a>
+    </div>
+
+    <div id="nav__main__items">
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Products</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://voxel51.com/fiftyone/">Open Source</a></li>
+            <li><a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a></li>
+            <li><a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a></li>
+            <li><a href="https://voxel51.com/success-stories/">Success Stories</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Learn</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://community.voxel51.com">Community Discord</a></li>
+            <li><a href="https://voxel51.com/blog/">Blog</a></li>
+            <li><a href="https://voxel51.com/computer-vision-events/">Events</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item">
+        <a href="https://docs.voxel51.com/">Docs</a>
+      </div>
+
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Company</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://voxel51.com/ourstory/">About Us</a></li>
+            <li><a href="https://voxel51.com/jobs/">Careers</a></li>
+            <li><a href="https://voxel51.com/talk-to-sales/">Talk to Sales</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item mobile_only">
+        <a href="https://github.com/voxel51/fiftyone">GitHub</a>
+      </div>
+
+      <div class="nav__item desktop_only" id="octocat">
+        <!-- https://buttons.github.io -->
+        <a
+          class="github-button"
+          href="https://github.com/voxel51/fiftyone"
+          data-color-scheme="no-preference: dark_high_contrast; light: dark_high_contrast; dark: dark_high_contrast;"
+          data-size="large"
+          data-show-count="true"
+          aria-label="Star voxel51/fiftyone on GitHub"
+          >Star</a
+        >
+      </div>
+
+      <div class="nav__item full_nav_only">
+        <a class="button-primary" href="https://voxel51.com/schedule-teams-workshop/" target="_blank"
+          >Schedule a workshop</a
+        >
+      </div>
+    </div>
+  </nav>
+</div>
+
+
+
+<body class="pytorch-body">
+
+   
+
+    
+
+    <div class="table-of-contents-link-wrapper">
+      <span>Table of Contents</span>
+      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+    </div>
+
+    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+      <div class="pytorch-side-scroll">
+        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          <div class="pytorch-left-menu-search">
+            
+
+            
+              
+              
+            
+
+            
+
+
+  
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+            
+          </div>
+
+           <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../teams/index.html">FiftyOne Teams 🚀</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/install.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../recipes/index.html">Recipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheat_sheets/index.html">Cheat Sheets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dataset_zoo/index.html">Dataset Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_zoo/index.html">Model Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brain.html">FiftyOne Brain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/index.html">Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plugins/index.html">Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli/index.html">CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/fiftyone.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deprecation.html">Deprecation Notices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a></li>
+</ul>
+ 
+        </div>
+      </div>
+    </nav>
+
+    <div class="pytorch-container">
+      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+        <div class="pytorch-breadcrumbs-wrapper">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="../index.html">
+          
+            Docs
+          
+        </a> &gt;
+      </li>
+
+        
+      <li>FiftyOne Environments</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+        </div>
+
+        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+          Contents
+        </div>
+      </div>
+
+      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+        <div class="pytorch-content-left">
+
+        
+          
+          <div class="rst-content style-external-links">
+          
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+              
+  <div class="section" id="fiftyone-environments">
+<span id="environments"></span><h1>FiftyOne Environments<a class="headerlink" href="#fiftyone-environments" title="Permalink to this headline">¶</a></h1>
+<p>This guide describes best practices for using FiftyOne with data stored in
+various environments, including local machines, remote servers, and cloud
+storage.</p>
+<div class="section" id="terminology">
+<h2>Terminology<a class="headerlink" href="#terminology" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="#local-data"><span class="std std-ref">Local machine</span></a>: Data is stored on the same computer that
+will be used to launch the App</p></li>
+</ul>
+<ul class="simple">
+<li><p><a class="reference internal" href="#remote-data"><span class="std std-ref">Remote machine</span></a>: Data is stored on disk on a separate
+machine (typically a remote server) from the one that will be used to launch
+the App</p></li>
+<li><p><a class="reference internal" href="#notebooks"><span class="std std-ref">Notebooks</span></a>: You are working from a
+<a class="reference external" href="https://jupyter.org">Jupyter Notebook</a>,
+<a class="reference external" href="https://colab.research.google.com">Google Colab Notebook</a>, or
+<a class="reference external" href="https://docs.databricks.com/en/notebooks/index.html">Databricks Notebook</a>
+<a class="reference external" href="https://aws.amazon.com/sagemaker/notebooks/">SageMaker Notebook</a></p></li>
+<li><p><a class="reference internal" href="#cloud-storage"><span class="std std-ref">Cloud storage</span></a>: Data is stored in a cloud bucket
+(e.g., <a class="reference internal" href="#aws"><span class="std std-ref">S3</span></a>, <a class="reference internal" href="#google-cloud"><span class="std std-ref">GCS</span></a>, or <a class="reference internal" href="#azure"><span class="std std-ref">Azure</span></a>)</p></li>
+</ul>
+</div>
+<div class="section" id="local-data">
+<span id="id1"></span><h2>Local data<a class="headerlink" href="#local-data" title="Permalink to this headline">¶</a></h2>
+<p>When working with data that is stored on disk on a machine with a display, you
+can directly <a class="reference internal" href="../user_guide/dataset_creation/index.html#loading-datasets"><span class="std std-ref">load a dataset</span></a> and then
+<a class="reference internal" href="../user_guide/app.html#creating-an-app-session"><span class="std std-ref">launch the App</span></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># On local machine</span>
+<span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="s2">&quot;my-dataset&quot;</span><span class="p">)</span>
+
+<span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>  <span class="c1"># (optional) port=XXXX</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>From here, you can explore the dataset interactively from the App and from your
+Python shell by manipulating the
+<a class="reference internal" href="../api/fiftyone.core.session.html#fiftyone.core.session.Session" title="fiftyone.core.session.Session"><code class="xref py py-class docutils literal notranslate"><span class="pre">session</span> <span class="pre">object</span></code></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can use custom ports when launching the App in order to operate
+multiple App instances simultaneously on your machine.</p>
+</div>
+</div>
+<div class="section" id="remote-data">
+<span id="id2"></span><h2>Remote data<a class="headerlink" href="#remote-data" title="Permalink to this headline">¶</a></h2>
+<p>FiftyOne supports working with data that is stored on a remote machine that you
+have <code class="code docutils literal notranslate"><span class="pre">ssh</span></code> access to. The basic workflow is to load a dataset on the remote
+machine via the FiftyOne Python library, launch a
+<a class="reference internal" href="../user_guide/app.html#remote-session"><span class="std std-ref">remote session</span></a>, and connect to the session on your
+local machine where you can then interact with the App.</p>
+<p>First, <code class="code docutils literal notranslate"><span class="pre">ssh</span></code> into your remote machine and
+<a class="reference internal" href="../getting_started/install.html#installing-fiftyone"><span class="std std-ref">install FiftyOne</span></a> if necessary.</p>
+<p>Then <a class="reference internal" href="../user_guide/dataset_creation/index.html#loading-datasets"><span class="std std-ref">load a dataset</span></a> using Python on the remote
+machine and launch a remote session:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># On remote machine</span>
+<span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+
+<span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">remote</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># optional: port=XXXX</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>Leave the Python REPL running and follow the instructions for connecting to
+this session remotely that were printed to your terminal (also described
+below).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can manipulate the <code class="code docutils literal notranslate"><span class="pre">session</span></code> object on the remote machine as usual to
+programmatically interact with the App instance that you view locally.</p>
+</div>
+<p>To connect to your remote session, open a new terminal window on your local
+machine and execute the following command to setup port forwarding to connect
+to your remote session:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># On local machine</span>
+ssh<span class="w"> </span>-N<span class="w"> </span>-L<span class="w"> </span><span class="m">5151</span>:127.0.0.1:XXXX<span class="w"> </span><span class="o">[</span>&lt;username&gt;@<span class="o">]</span>&lt;hostname&gt;
+</pre></div>
+</div>
+<p>Leave this process running and open <a class="reference external" href="http://localhost:5151">http://localhost:5151</a> in your browser to
+access the App.</p>
+<p>In the above, <code class="code docutils literal notranslate"><span class="pre">[&lt;username&gt;&#64;]&lt;hostname&gt;</span></code> specifies the remote machine to connect
+to, <code class="code docutils literal notranslate"><span class="pre">XXXX</span></code> refers to the port that you chose when you launched the session on
+your remote machine (the default is 5151), and <code class="code docutils literal notranslate"><span class="pre">5151</span></code> specifies the local port
+to use to connect to the App (and can be customized).</p>
+<p>Alternatively, if you have FiftyOne installed on your local machine, you can
+<a class="reference internal" href="../cli/index.html#cli-fiftyone-app-connect"><span class="std std-ref">use the CLI</span></a> to automatically configure port
+forwarding and open the App in your browser as follows:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># On local machine</span>
+fiftyone<span class="w"> </span>app<span class="w"> </span>connect<span class="w"> </span>--destination<span class="w"> </span><span class="o">[</span>&lt;username&gt;@<span class="o">]</span>&lt;hostname&gt;
+</pre></div>
+</div>
+<p>If you choose a custom port <code class="code docutils literal notranslate"><span class="pre">XXXX</span></code> on the remote machine, add a <code class="docutils literal notranslate"><span class="pre">--port</span> <span class="pre">XXXX</span></code>
+flag to the above command.</p>
+<p>If you would like to use a custom local port, add a <code class="docutils literal notranslate"><span class="pre">--local-port</span> <span class="pre">YYYY</span></code> flag
+to the above command.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can customize the local/remote ports used when launching remote
+sessions in order to connect/service multiple remote sessions
+simultaneously.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you use ssh keys to connect to your remote machine, you can use the
+optional <code class="code docutils literal notranslate"><span class="pre">--ssh-key</span></code> argument of the
+<a class="reference internal" href="../cli/index.html#cli-fiftyone-app-connect"><span class="std std-ref">fiftyone app connect</span></a> command.</p>
+<p>However, if you are using this key regularly,
+<a class="reference external" href="https://unix.stackexchange.com/a/494485">it is recommended</a> to add it
+to your <code class="code docutils literal notranslate"><span class="pre">~/.ssh/config</span></code> as the default <code class="code docutils literal notranslate"><span class="pre">IdentityFile</span></code>.</p>
+</div>
+<div class="section" id="restricting-the-app-address">
+<span id="restricting-app-address"></span><h3>Restricting the App address<a class="headerlink" href="#restricting-the-app-address" title="Permalink to this headline">¶</a></h3>
+<p>By default, the App will listen on <code class="code docutils literal notranslate"><span class="pre">localhost</span></code>. However, you can provide the
+optional <code class="code docutils literal notranslate"><span class="pre">address</span></code> parameter to
+<a class="reference internal" href="../api/fiftyone.core.session.html#fiftyone.core.session.launch_app" title="fiftyone.core.session.launch_app"><code class="xref py py-meth docutils literal notranslate"><span class="pre">launch_app()</span></code></a> to specify a particular
+IP address or hostname for the App to listen on.</p>
+<p>Using the default of <code class="code docutils literal notranslate"><span class="pre">localhost</span></code> means the App can only be accessed from the
+local machine or a machine that was able to setup ssh port forwarding as
+described in the previous section.</p>
+<p>An alternative is to set the App address to <code class="code docutils literal notranslate"><span class="pre">&quot;0.0.0.0&quot;</span></code> so that the App can be
+accessed from a remote host or from the local machine itself.  Using <code class="code docutils literal notranslate"><span class="pre">&quot;0.0.0.0&quot;</span></code>
+will bind the App to all available interfaces and will allow access to the App
+from any remote resource with access to your network.</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+
+<span class="c1"># Enable connections from remote hosts</span>
+<span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">remote</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">address</span><span class="o">=</span><span class="s2">&quot;0.0.0.0&quot;</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>If desired, you can permanently configure an App address by setting the
+<code class="code docutils literal notranslate"><span class="pre">default_app_address</span></code> of your <a class="reference internal" href="../user_guide/config.html#configuring-fiftyone"><span class="std std-ref">FiftyOne config</span></a>.
+You can achieve this by adding the following entry to your
+<code class="code docutils literal notranslate"><span class="pre">~/.fiftyone/config.json</span></code> file:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;default_app_address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.0.0.0&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>or by setting the following environment variable:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">FIFTYONE_DEFAULT_APP_ADDRESS</span><span class="o">=</span><span class="s1">&#39;0.0.0.0&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="notebooks">
+<span id="id3"></span><h2>Notebooks<a class="headerlink" href="#notebooks" title="Permalink to this headline">¶</a></h2>
+<p>FiftyOne officially supports <a class="reference external" href="https://jupyter.org">Jupyter Notebooks</a>,
+<a class="reference external" href="https://colab.research.google.com">Google Colab Notebooks</a>,
+<a class="reference external" href="https://docs.databricks.com/en/notebooks/index.html">Databricks Notebooks</a>.
+App support is also available in
+<a class="reference external" href="https://aws.amazon.com/sagemaker/notebooks/">SageMaker Notebooks</a> and any
+cloud notebook that has an accessible network proxy via configured
+<a class="reference internal" href="../user_guide/config.html#configuring-proxy-url"><span class="std std-ref">proxy_url</span></a>.</p>
+<p>To use FiftyOne in a notebook, simply install <code class="code docutils literal notranslate"><span class="pre">fiftyone</span></code> via <code class="code docutils literal notranslate"><span class="pre">pip</span></code>:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>!pip install fiftyone
+</pre></div>
+</div>
+<p>and load datasets as usual. When you run
+<a class="reference internal" href="../api/fiftyone.core.session.html#fiftyone.core.session.launch_app" title="fiftyone.core.session.launch_app"><code class="xref py py-meth docutils literal notranslate"><span class="pre">launch_app()</span></code></a> in a notebook, an App
+window will be opened in the output of your current cell.</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="s2">&quot;my-dataset&quot;</span><span class="p">)</span>
+
+<span class="c1"># Creates a session and opens the App in the output of the cell</span>
+<span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>Any time you update the state of your <code class="docutils literal notranslate"><span class="pre">session</span></code> object; e.g., by setting
+<a class="reference internal" href="../api/fiftyone.core.session.html#fiftyone.core.session.Session.dataset" title="fiftyone.core.session.Session.dataset"><code class="xref py py-meth docutils literal notranslate"><span class="pre">session.dataset</span></code></a> or
+<a class="reference internal" href="../api/fiftyone.core.session.html#fiftyone.core.session.Session.view" title="fiftyone.core.session.Session.view"><code class="xref py py-meth docutils literal notranslate"><span class="pre">session.view</span></code></a>, a new App window
+will be automatically opened in the output of the current cell. The previously
+active App will be “frozen”, i.e., replaced with a screenshot of its current
+state.</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># A new App window will be created in the output of this cell, and the</span>
+<span class="c1"># previously active App instance will be replaced with a screenshot</span>
+<span class="n">session</span><span class="o">.</span><span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>You can reactivate a frozen App instance from the same notebook session by
+clicking on the screenshot.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Reactivating a frozen App instance will load the current state of the
+<code class="docutils literal notranslate"><span class="pre">session</span></code> object, not the state in which the screenshot was taken.</p>
+</div>
+<p>To reactivate an App instance from a previous session, e.g., when running a
+notebook downloaded from the web for the first time, you must (re)run the cell.</p>
+<p>You can manually replace the active App instance with a screenshot by calling
+<a class="reference internal" href="../api/fiftyone.core.session.html#fiftyone.core.session.Session.freeze" title="fiftyone.core.session.Session.freeze"><code class="xref py py-meth docutils literal notranslate"><span class="pre">session.freeze()</span></code></a>. This is
+useful when you are finished with your notebook and ready to share it with
+others, as an active App instance itself cannot be viewed outside of the
+current notebook session.</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># Replace active App instance with screenshot so App state is viewable offline</span>
+<span class="n">session</span><span class="o">.</span><span class="n">freeze</span><span class="p">()</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="section" id="manually-controlling-app-instances">
+<h3>Manually controlling App instances<a class="headerlink" href="#manually-controlling-app-instances" title="Permalink to this headline">¶</a></h3>
+<p>If you would like to manually control when new App instances are created in a
+notebook, you can pass the <code class="docutils literal notranslate"><span class="pre">auto=False</span></code> flag to
+<a class="reference internal" href="../api/fiftyone.core.session.html#fiftyone.core.session.launch_app" title="fiftyone.core.session.launch_app"><code class="xref py py-meth docutils literal notranslate"><span class="pre">launch_app()</span></code></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># Creates a session but does not open an App instance</span>
+<span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">auto</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>When <code class="docutils literal notranslate"><span class="pre">auto=False</span></code> is provided, a new App window is created only when you call
+<a class="reference internal" href="../api/fiftyone.core.session.html#fiftyone.core.session.Session.show" title="fiftyone.core.session.Session.show"><code class="xref py py-meth docutils literal notranslate"><span class="pre">session.show()</span></code></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># Update the session&#39;s view; no App window is created</span>
+<span class="n">session</span><span class="o">.</span><span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># In another cell</span>
+
+<span class="c1"># Now open an App window in the cell&#39;s output</span>
+<span class="n">session</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>As usual, this App window will remain connected to your <code class="docutils literal notranslate"><span class="pre">session</span></code> object, so
+it will stay in-sync with your session whenever it is active.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you run <a class="reference internal" href="../api/fiftyone.core.session.html#fiftyone.core.session.Session.show" title="fiftyone.core.session.Session.show"><code class="xref py py-meth docutils literal notranslate"><span class="pre">session.show()</span></code></a> in
+multiple cells, only the most recently created App window will be active,
+i.e., synced with the <code class="docutils literal notranslate"><span class="pre">session</span></code> object.</p>
+<p>You can reactivate an older cell by clicking the link in the deactivated
+App window, or by running the cell again. This will deactivate the
+previously active cell.</p>
+</div>
+</div>
+<div class="section" id="opening-the-app-in-a-dedicated-tab">
+<span id="opening-app-dedicated-tab"></span><h3>Opening the App in a dedicated tab<a class="headerlink" href="#opening-the-app-in-a-dedicated-tab" title="Permalink to this headline">¶</a></h3>
+<p>If you are working from a Jupyter notebook, you can open the App in a separate
+browser tab rather than working with it in cell output(s).</p>
+<p>To do this, pass the <code class="docutils literal notranslate"><span class="pre">auto=False</span></code> flag to
+<a class="reference internal" href="../api/fiftyone.core.session.html#fiftyone.core.session.launch_app" title="fiftyone.core.session.launch_app"><code class="xref py py-meth docutils literal notranslate"><span class="pre">launch_app()</span></code></a> when you launch the
+App (so that additional App instances will not be created as you work) and then
+call <a class="reference internal" href="../api/fiftyone.core.session.html#fiftyone.core.session.Session.open_tab" title="fiftyone.core.session.Session.open_tab"><code class="xref py py-meth docutils literal notranslate"><span class="pre">session.open_tab()</span></code></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># Launch the App in a dedicated browser tab</span>
+<span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">auto</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">session</span><span class="o">.</span><span class="n">open_tab</span><span class="p">()</span>
+</pre></div></td></tr></table></div>
+</div>
+</div>
+<div class="section" id="remote-notebooks">
+<span id="id4"></span><h3>Remote notebooks<a class="headerlink" href="#remote-notebooks" title="Permalink to this headline">¶</a></h3>
+<p>You can also work in a Jupyter notebook in your local browser that is
+<a class="reference external" href="https://ljvmiranda921.github.io/notebook/2018/01/31/running-a-jupyter-notebook">served from a remote machine</a>
+where your data is located. Follow the instructions below to achieve this.</p>
+<p><strong>On the remote machine:</strong></p>
+<p>Start the Jupyter server on a port of your choice:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># On remote machine</span>
+jupyter<span class="w"> </span>notebook<span class="w"> </span>--no-browser<span class="w"> </span>--port<span class="o">=</span>XXXX<span class="w"> </span>/path/to/notebook.ipynb
+</pre></div>
+</div>
+<p><strong>On your local machine:</strong></p>
+<p>Back on your local machine, you will need to forward the remote port <code class="code docutils literal notranslate"><span class="pre">XXXX</span></code> to
+a local port (we’ll also use <code class="code docutils literal notranslate"><span class="pre">XXXX</span></code> here, for consistency):</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># On local machine</span>
+ssh<span class="w"> </span>-N<span class="w"> </span>-L<span class="w"> </span>XXXX:localhost:XXXX<span class="w"> </span><span class="o">[</span>&lt;username&gt;@<span class="o">]</span>&lt;hostname&gt;
+</pre></div>
+</div>
+<p>Now open <code class="docutils literal notranslate"><span class="pre">localhost:XXXX</span></code> in your browser and you should find your notebook!</p>
+<p>If your notebook launches the <a class="reference internal" href="../user_guide/app.html#fiftyone-app"><span class="std std-ref">FiftyOne App</span></a>, you will also
+need to forward the port used by the App to your local machine. By default,
+the App uses port <code class="code docutils literal notranslate"><span class="pre">5151</span></code>, but you can <a class="reference internal" href="#remote-data"><span class="std std-ref">specify any port</span></a>,
+say <code class="code docutils literal notranslate"><span class="pre">YYYY</span></code>, not currently in use on your remote machine:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># On local machine</span>
+ssh<span class="w"> </span>-N<span class="w"> </span>-L<span class="w"> </span><span class="m">5151</span>:localhost:YYYY<span class="w"> </span><span class="o">[</span>&lt;username&gt;@<span class="o">]</span>&lt;hostname&gt;
+</pre></div>
+</div>
+<p><strong>In your Jupyter notebook:</strong></p>
+<p>When you launch the <a class="reference internal" href="../user_guide/app.html#fiftyone-app"><span class="std std-ref">FiftyOne App</span></a> in your notebook, you
+should now see the App as expected!</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Launch the App in a notebook cell</span>
+<span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>  <span class="c1"># port=YYYY</span>
+</pre></div>
+</div>
+<p>If you chose a port <code class="code docutils literal notranslate"><span class="pre">YYYY</span></code> other than the default <code class="code docutils literal notranslate"><span class="pre">5151</span></code>, you will need to
+specify it when launching App instances per the commented argument above.</p>
+<p>Note that you can also open the App
+<a class="reference internal" href="#opening-app-dedicated-tab"><span class="std std-ref">in a dedicated tab</span></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Launch the App in a dedicated browser tab</span>
+<span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">auto</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>  <span class="c1"># port=YYYY</span>
+<span class="n">session</span><span class="o">.</span><span class="n">open_tab</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="docker">
+<span id="id5"></span><h2>Docker<a class="headerlink" href="#docker" title="Permalink to this headline">¶</a></h2>
+<p>The FiftyOne repository contains a
+<a class="reference external" href="https://github.com/voxel51/fiftyone/blob/develop/Dockerfile">Dockerfile</a>
+that you can use/customize to build and run Docker images containing source
+or release builds of FiftyOne.</p>
+<div class="section" id="building-an-image">
+<h3>Building an image<a class="headerlink" href="#building-an-image" title="Permalink to this headline">¶</a></h3>
+<p>First, clone the repository:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/voxel51/fiftyone
+<span class="nb">cd</span><span class="w"> </span>fiftyone
+</pre></div>
+</div>
+<p>If you want a source install of FiftyOne, then build a wheel:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>python
+</pre></div>
+</div>
+<p>If you want to install a FiftyOne release, then make the suggested modification
+in the
+<a class="reference external" href="https://github.com/voxel51/fiftyone/blob/develop/Dockerfile">Dockerfile</a>.</p>
+<p>Next, build the image:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>voxel51/fiftyone<span class="w"> </span>.
+</pre></div>
+</div>
+<p>The default image uses Python 3.11, but you can customize these
+via optional build arguments:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>build<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--build-arg<span class="w"> </span><span class="nv">PYTHON_VERSION</span><span class="o">=</span><span class="m">3</span>.10<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-t<span class="w"> </span>voxel51/fiftyone<span class="w"> </span>.
+</pre></div>
+</div>
+<p>Refer to the
+<a class="reference external" href="https://github.com/voxel51/fiftyone/blob/develop/Dockerfile">Dockerfile</a> for
+additional Python packages that you may wish to include in your build.</p>
+</div>
+<div class="section" id="running-an-image">
+<h3>Running an image<a class="headerlink" href="#running-an-image" title="Permalink to this headline">¶</a></h3>
+<p>The image is designed to persist all data in a single <code class="code docutils literal notranslate"><span class="pre">/fiftyone</span></code> directory
+with the following organization:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>/fiftyone/
+    db/             # FIFTYONE_DATABASE_DIR
+    default/        # FIFTYONE_DEFAULT_DATASET_DIR
+    zoo/
+        datasets/   # FIFTYONE_DATASET_ZOO_DIR
+        models/     # FIFTYONE_MODEL_ZOO_DIR
+</pre></div>
+</div>
+<p>Therefore, to run a container, you should mount <code class="code docutils literal notranslate"><span class="pre">/fiftyone</span></code> as a local volume
+via <code class="code docutils literal notranslate"><span class="pre">--mount</span></code> or <code class="code docutils literal notranslate"><span class="pre">-v</span></code>, as shown below:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nv">SHARED_DIR</span><span class="o">=</span>/path/to/shared/dir
+
+docker<span class="w"> </span>run<span class="w"> </span>-v<span class="w"> </span><span class="si">${</span><span class="nv">SHARED_DIR</span><span class="si">}</span>:/fiftyone<span class="w"> </span>-p<span class="w"> </span><span class="m">5151</span>:5151<span class="w"> </span>-it<span class="w"> </span>voxel51/fiftyone
+</pre></div>
+</div>
+<p>The <code class="code docutils literal notranslate"><span class="pre">-p</span> <span class="pre">5151:5151</span></code> option is required so that when you
+<a class="reference internal" href="../user_guide/app.html#creating-an-app-session"><span class="std std-ref">launch the App</span></a> from within the container you
+can connect to it at <a class="reference external" href="http://localhost:5151">http://localhost:5151</a> in your browser.</p>
+<p>You can also include the <code class="code docutils literal notranslate"><span class="pre">-e</span></code> or <code class="code docutils literal notranslate"><span class="pre">--env-file</span></code> options if you need to further
+<a class="reference internal" href="../user_guide/config.html#configuring-fiftyone"><span class="std std-ref">configure FiftyOne</span></a>.</p>
+<p>By default, running the image launches an IPython shell, which you can use as
+normal:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+<span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Any datasets you create inside the Docker image must refer to media
+files within <code class="code docutils literal notranslate"><span class="pre">SHARED_DIR</span></code> or another mounted volume if you intend to work
+with datasets between sessions.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>FiftyOne should automatically detect that it is running inside a Docker
+container. However, if you are unable to load the App in your browser, you
+may need to manually <a class="reference internal" href="#restricting-app-address"><span class="std std-ref">set the App address</span></a>
+to <code class="code docutils literal notranslate"><span class="pre">0.0.0.0</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">address</span><span class="o">=</span><span class="s2">&quot;0.0.0.0&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="connecting-to-a-localhost-database">
+<h3>Connecting to a localhost database<a class="headerlink" href="#connecting-to-a-localhost-database" title="Permalink to this headline">¶</a></h3>
+<p>If you are using a
+<a class="reference internal" href="../user_guide/config.html#configuring-mongodb-connection"><span class="std std-ref">self-managed database</span></a> that you
+ordinarily connect to via a URI like <code class="code docutils literal notranslate"><span class="pre">mongodb://localhost</span></code>, then you will need
+to tweak this slightly when working in Docker. See
+<a class="reference external" href="https://stackoverflow.com/q/24319662">this question</a> for details.</p>
+<p>On Linux, include <code class="code docutils literal notranslate"><span class="pre">--network=&quot;host&quot;</span></code> in your <code class="code docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span></code> command and use
+<code class="code docutils literal notranslate"><span class="pre">mongodb://127.0.0.1</span></code> for your URI.</p>
+<p>On Mac or Windows, use <code class="code docutils literal notranslate"><span class="pre">mongodb://host.docker.internal</span></code> for your URI.</p>
+</div>
+</div>
+<div class="section" id="cloud-storage">
+<span id="id8"></span><h2>Cloud storage<a class="headerlink" href="#cloud-storage" title="Permalink to this headline">¶</a></h2>
+<p>For prototyping, it is <em>possible</em> to work with data in cloud storage buckets in
+FiftyOne by mounting the buckets as local drives.</p>
+<p>The following sections describe how to do this in the <a class="reference internal" href="#aws"><span class="std std-ref">AWS</span></a>,
+<a class="reference internal" href="#google-cloud"><span class="std std-ref">Google Cloud</span></a>, and <a class="reference internal" href="#azure"><span class="std std-ref">Microsoft Azure</span></a>
+environments.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Mounting cloud buckets using the techniques below is not performant and is
+not recommended or officially supported. It is useful only for prototyping.</p>
+<p>Our recommended, scalable approach to work with cloud-backed data is
+<a class="reference internal" href="../teams/index.html#fiftyone-teams"><span class="std std-ref">FiftyOne Teams</span></a>, an enterprise deployment of
+FiftyOne with multiuser collaboration features, native cloud dataset
+support, and much more!</p>
+</div>
+<div class="section" id="aws">
+<span id="id9"></span><h3>AWS<a class="headerlink" href="#aws" title="Permalink to this headline">¶</a></h3>
+<p>If your data is stored in an AWS S3 bucket, you can mount the bucket as a local
+drive on an EC2 instance and then access the data using the standard workflow
+for remote data.</p>
+<p>The steps below outline the process.</p>
+<p><strong>Step 1</strong></p>
+<p><a class="reference external" href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html">Create an EC2 instance</a>.</p>
+<p><strong>Step 2</strong></p>
+<p>Now <a class="reference external" href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html">ssh into the instance</a>
+and <a class="reference internal" href="../getting_started/install.html#installing-fiftyone"><span class="std std-ref">install FiftyOne</span></a> if necessary.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># On remote machine</span>
+pip<span class="w"> </span>install<span class="w"> </span>fiftyone
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You may need to <a class="reference internal" href="#compute-instance-setup"><span class="std std-ref">install some system packages</span></a>
+on your compute instance instance in order to run FiftyOne.</p>
+</div>
+<p><strong>Step 3</strong></p>
+<p>Mount the S3 bucket as a local drive.</p>
+<p>You can use <a class="reference external" href="https://github.com/s3fs-fuse/s3fs-fuse">s3fs-fuse</a> to do this.
+You will need to make a <code class="code docutils literal notranslate"><span class="pre">.passwd-s3fs</span></code> file that contains your AWS credentials
+as outlined in the <a class="reference external" href="https://github.com/s3fs-fuse/s3fs-fuse">s3fs-fuse README</a>.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># On remote machine</span>
+s3fs<span class="w"> </span>&lt;bucket-name&gt;<span class="w"> </span>/path/to/mount/point<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-o<span class="w"> </span><span class="nv">passwd_file</span><span class="o">=</span>.passwd-s3fs<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-o<span class="w"> </span><span class="nv">umask</span><span class="o">=</span><span class="m">0007</span>,uid<span class="o">=</span>&lt;your-user-id&gt;
+</pre></div>
+</div>
+<p><strong>Step 4</strong></p>
+<p>Now that you can access your data from the compute instance, start up Python
+and <a class="reference internal" href="../user_guide/dataset_creation/index.html#loading-datasets"><span class="std std-ref">create a FiftyOne dataset</span></a> whose filepaths are in
+the mount point you specified above. Then you can launch the App and work with
+it locally in your browser using <a class="reference internal" href="#remote-data"><span class="std std-ref">remote sessions</span></a>.</p>
+</div>
+<div class="section" id="google-cloud">
+<span id="id10"></span><h3>Google Cloud<a class="headerlink" href="#google-cloud" title="Permalink to this headline">¶</a></h3>
+<p>If your data is stored in a Google Cloud storage bucket, you can mount the
+bucket as a local drive on a GC compute instance and then access the data using
+the standard workflow for remote data.</p>
+<p>The steps below outline the process.</p>
+<p><strong>Step 1</strong></p>
+<p><a class="reference external" href="https://cloud.google.com/compute/docs/quickstart-linux">Create a GC compute instance</a>.</p>
+<p><strong>Step 2</strong></p>
+<p>Now <a class="reference external" href="https://cloud.google.com/compute/docs/quickstart-linux#connect_to_your_instance">ssh into the instance</a>
+and <a class="reference internal" href="../getting_started/install.html#installing-fiftyone"><span class="std std-ref">install FiftyOne</span></a> if necessary.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># On remote machine</span>
+pip<span class="w"> </span>install<span class="w"> </span>fiftyone
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You may need to <a class="reference internal" href="#compute-instance-setup"><span class="std std-ref">install some system packages</span></a>
+on your compute instance instance in order to run FiftyOne.</p>
+</div>
+<p><strong>Step 3</strong></p>
+<p>Mount the GCS bucket as a local drive.</p>
+<p>You can use <a class="reference external" href="https://github.com/GoogleCloudPlatform/gcsfuse">gcsfuse</a> to do
+this:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># On remote machine</span>
+gcsfuse<span class="w"> </span>--implicit-dirs<span class="w"> </span>my-bucket<span class="w"> </span>/path/to/mount
+</pre></div>
+</div>
+<p><strong>Step 4</strong></p>
+<p>Now that you can access your data from the compute instance, start up Python
+and <a class="reference internal" href="../user_guide/dataset_creation/index.html#loading-datasets"><span class="std std-ref">create a FiftyOne dataset</span></a> whose filepaths are in
+the mount point you specified above. Then you can launch the App and work with
+it locally in your browser using <a class="reference internal" href="#remote-data"><span class="std std-ref">remote sessions</span></a>.</p>
+</div>
+<div class="section" id="microsoft-azure">
+<span id="azure"></span><h3>Microsoft Azure<a class="headerlink" href="#microsoft-azure" title="Permalink to this headline">¶</a></h3>
+<p>If your data is stored in an Azure storage bucket, you can mount the bucket as
+a local drive on an Azure compute instance and then access the data using the
+standard workflow for remote data.</p>
+<p>The steps below outline the process.</p>
+<p><strong>Step 1</strong></p>
+<p><a class="reference external" href="https://docs.microsoft.com/en-us/azure/virtual-machines/linux/quick-create-portal">Create an Azure compute instance</a>.</p>
+<p><strong>Step 2</strong></p>
+<p>Now
+<a class="reference external" href="https://docs.microsoft.com/en-us/azure/virtual-machines/linux/quick-create-portal#connect-to-virtual-machine">ssh into the instance</a>
+and <a class="reference internal" href="../getting_started/install.html#installing-fiftyone"><span class="std std-ref">install FiftyOne</span></a> if necessary.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># On remote machine</span>
+pip<span class="w"> </span>install<span class="w"> </span>fiftyone
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You may need to <a class="reference internal" href="#compute-instance-setup"><span class="std std-ref">install some system packages</span></a>
+on your compute instance instance in order to run FiftyOne.</p>
+</div>
+<p><strong>Step 3</strong></p>
+<p>Mount the Azure storage container in the instance.</p>
+<p>This is fairly straightforward if your data is stored in a blob container.
+You can use <a class="reference external" href="https://github.com/Azure/azure-storage-fuse">blobfuse</a> for this.</p>
+<p><strong>Step 4</strong></p>
+<p>Now that you can access your data from the compute instance, start up Python
+and <a class="reference internal" href="../user_guide/dataset_creation/index.html#loading-datasets"><span class="std std-ref">create a FiftyOne dataset</span></a> whose filepaths are in
+the mount point you specified above. Then you can launch the App and work with
+it locally in your browser using <a class="reference internal" href="#remote-data"><span class="std std-ref">remote sessions</span></a>.</p>
+</div>
+</div>
+<div class="section" id="setting-up-a-cloud-instance">
+<span id="compute-instance-setup"></span><h2>Setting up a cloud instance<a class="headerlink" href="#setting-up-a-cloud-instance" title="Permalink to this headline">¶</a></h2>
+<p>When you create a fresh cloud compute instance, you may need to install some
+system packages in order to install and use FiftyOne.</p>
+<p>For example, the script below shows a set of commands that may be used to
+configure a Debian-like Linux instance, after which you should be able to
+successfully <a class="reference internal" href="../getting_started/install.html#installing-fiftyone"><span class="std std-ref">install FiftyOne</span></a>.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example setup script for a Debian-like virtual machine</span>
+
+<span class="c1"># System packages</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>update
+sudo<span class="w"> </span>apt<span class="w"> </span>-y<span class="w"> </span>upgrade
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>build-essential
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>unzip
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>cmake
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>cmake-data
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>pkg-config
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>libsm6
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>libxext6
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>libssl-dev
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>libffi-dev
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>libxml2-dev
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>libxslt1-dev
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>zlib1g-dev
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>python3
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>python-dev
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>python3-dev
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>python3-pip
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>python3-venv
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>ffmpeg<span class="w">  </span><span class="c1"># if working with video</span>
+
+<span class="c1"># (Recommended) Create a virtual environment</span>
+python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>fiftyone-env
+.<span class="w"> </span>fiftyone-env/bin/activate
+
+<span class="c1"># Python packages</span>
+pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>pip<span class="w"> </span>setuptools<span class="w"> </span>wheel<span class="w"> </span>build
+pip<span class="w"> </span>install<span class="w"> </span>ipython
+</pre></div>
+</div>
+</div>
+</div>
+
+
+             </article>
+             
+            </div>
+            <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../tutorials/index.html" class="btn btn-neutral float-right" title="FiftyOne Tutorials" accesskey="n" rel="next">Next <img src="../_static/images/chevron-right-orange.svg" class="next-page"></a>
+      
+      
+        <a href="../getting_started/troubleshooting.html" class="btn btn-neutral" title="Install Troubleshooting" accesskey="p" rel="prev"><img src="../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
+      
+    </div>
+  
+</footer>
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              <ul>
+<li><a class="reference internal" href="#">FiftyOne Environments</a><ul>
+<li><a class="reference internal" href="#terminology">Terminology</a></li>
+<li><a class="reference internal" href="#local-data">Local data</a></li>
+<li><a class="reference internal" href="#remote-data">Remote data</a><ul>
+<li><a class="reference internal" href="#restricting-the-app-address">Restricting the App address</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#notebooks">Notebooks</a><ul>
+<li><a class="reference internal" href="#manually-controlling-app-instances">Manually controlling App instances</a></li>
+<li><a class="reference internal" href="#opening-the-app-in-a-dedicated-tab">Opening the App in a dedicated tab</a></li>
+<li><a class="reference internal" href="#remote-notebooks">Remote notebooks</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#docker">Docker</a><ul>
+<li><a class="reference internal" href="#building-an-image">Building an image</a></li>
+<li><a class="reference internal" href="#running-an-image">Running an image</a></li>
+<li><a class="reference internal" href="#connecting-to-a-localhost-database">Connecting to a localhost database</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cloud-storage">Cloud storage</a><ul>
+<li><a class="reference internal" href="#aws">AWS</a></li>
+<li><a class="reference internal" href="#google-cloud">Google Cloud</a></li>
+<li><a class="reference internal" href="#microsoft-azure">Microsoft Azure</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#setting-up-a-cloud-instance">Setting up a cloud instance</a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  
+
+
+  
+
+     
+       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+         <script src="../_static/jquery.js"></script>
+         <script src="../_static/underscore.js"></script>
+         <script src="../_static/doctools.js"></script>
+         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+         <script src="../_static/js/voxel51-website.js"></script>
+         <script src="../_static/js/custom.js"></script>
+     
+
+  
+
+  <script type="text/javascript" src="../_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="../_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+  <!-- Begin Footer -->
+
+
+<footer class="footer-wrapper" id="docs-tutorials-resources">
+  <div class="footer pytorch-container">
+    <div class="footer__logo">
+      <a href="https://voxel51.com/"
+        ><img
+          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
+      /></a>
+    </div>
+
+    <div class="footer__address">
+      330 E Liberty St<br />
+      Ann Arbor, MI 48104<br />
+      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
+    </div>
+
+    <!--
+    <div class="footer__contact">
+      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
+    </div>
+    -->
+
+    <div class="footer__links">
+      <div class="footer__links--col2">
+        <p class="nav__item--brand">Products</p>
+        <a href="https://voxel51.com/fiftyone/">FiftyOne</a>
+        <a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a>
+        <a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a>
+        <a href="https://voxel51.com/success-stories/">Success Stories</a>
+      </div>
+      <div class="footer__links--col3">
+        <p class="nav__item--brand">Resources</p>
+        <a href="https://voxel51.com/blog/">Blog</a>
+        <a href="https://docs.voxel51.com/">Docs</a>
+        <a href="https://github.com/voxel51/">GitHub</a>
+        <a href="https://community.voxel51.com">Discord</a>
+        <a href="https://voxel51.com/ourstory/">About Us</a>
+        <a href="https://voxel51.com/computer-vision-events/">Events</a>
+        <a href="https://voxel51.com/jobs/">Careers</a>
+        <a href="https://voxel51.com/press/">Press</a>
+      </div>
+    </div>
+
+    <div class="footer__icons">
+      <ul class="list-inline">
+        <li>
+          <a href="https://www.linkedin.com/company/voxel51/">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/voxel51/">
+            <i class="fa-brands fa-github"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/voxel51">
+            <i class="fa-brands fa-twitter"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/voxel51/">
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="footer__copyright">
+      <ul class="list-inline">
+        <li>&copy; 2024 Voxel51 Inc.</li>
+        <li>
+          <a href="https://voxel51.com/privacy/">Privacy Policy</a>
+        </li>
+        <li>
+          <a href="https://voxel51.com/terms/">Terms of Service</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<!-- https://buttons.github.io -->
+<script async defer src="https://buttons.github.io/buttons.js" ></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XD15NFRY3M" ></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+  gtag("config", "G-XD15NFRY3M");
+</script>
+
+<script>
+  function open_modal(modal_id, modal_closer_id) {
+    // Get the modal
+    let the_modal = document.getElementById(modal_id);
+
+    the_modal.style.display = "flex";
+    document.body.style.overflow = "hidden";
+
+    let the_modal_closer = document.getElementById(modal_closer_id);
+
+    // When the user clicks on <span> (x), close the modal
+    the_modal_closer &&
+      (the_modal_closer.onclick = function () {
+        the_modal.style.display = "none";
+      });
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+      if (event.target == the_modal) {
+        the_modal.style.display = "none";
+        document.body.style.overflow = "unset";
+        window.onclick = undefined;
+      }
+    };
+  }
+</script>
+
+<!-- bigpicture.io -->
+<script>
+  !(function (e, t, i) {
+    var r = (e.bigPicture = e.bigPicture || []);
+    if (!r.initialized)
+      if (r.invoked)
+        e.console &&
+          console.error &&
+          console.error("BigPicture.io snippet included twice.");
+      else {
+        (r.invoked = !0),
+          (r.SNIPPET_VERSION = 1.5),
+          (r.handler = function (e) {
+            if (void 0 !== r.callback)
+              try {
+                return r.callback(e);
+              } catch (e) {}
+          }),
+          (r.eventList = ["mousedown", "mouseup", "click", "submit"]),
+          (r.methods = [
+            "track",
+            "identify",
+            "page",
+            "group",
+            "alias",
+            "integration",
+            "ready",
+            "intelReady",
+            "consentReady",
+            "on",
+            "off",
+          ]),
+          (r.factory = function (e) {
+            return function () {
+              var t = Array.prototype.slice.call(arguments);
+              return t.unshift(e), r.push(t), r;
+            };
+          });
+        for (var n = 0; n < r.methods.length; n++) {
+          var o = r.methods[n];
+          r[o] = r.factory(o);
+        }
+        r.getCookie = function (e) {
+          var i = ("; " + t.cookie).split("; " + e + "=");
+          return 2 == i.length && i.pop().split(";").shift();
+        };
+        var c = (r.isEditor = (function () {
+          try {
+            return (
+              e.self !== e.top &&
+              (new RegExp("app" + i, "ig").test(t.referrer) ||
+                "edit" == r.getCookie("_bpr_edit"))
+            );
+          } catch (e) {
+            return !1;
+          }
+        })());
+        r.init = function (n, o) {
+          if (((r.projectId = n), (r._config = o), !c))
+            for (var a = 0; a < r.eventList.length; a++)
+              e.addEventListener(r.eventList[a], r.handler, !0);
+          var s = t.createElement("script");
+          s.async = !0;
+          var d = c ? "/editor/editor" : "/public-" + n;
+          (s.src = "//cdn" + i + d + ".js"),
+            t.getElementsByTagName("head")[0].appendChild(s);
+        };
+      }
+  })(window, document, ".bigpicture.io");
+  bigPicture.init("1646");
+</script>
+
+
+  
+
+  <!-- End Footer -->
+
+  <!-- Begin Mobile Menu -->
+
+  
+
+  <!-- End Mobile Menu -->
+
+  <script type="text/javascript" src="../_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function(e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+</body>
+</html>

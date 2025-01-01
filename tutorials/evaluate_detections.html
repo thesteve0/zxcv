@@ -1,0 +1,1890 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Evaluating Object Detections with FiftyOne &mdash; FiftyOne 1.3.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <link rel="stylesheet" href="../_static/css/voxel51-website.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Evaluating a Classifier with FiftyOne" href="evaluate_classifications.html" />
+    <link rel="prev" title="pandas-style queries in FiftyOne" href="pandas_comparison.html" />
+<meta property="og:image" content="https://voxel51.com/wp-content/uploads/2024/03/3.24_webpages_Home_AV.png" />
+
+<link
+  href="https://fonts.googleapis.com/css?family=Palanquin:400,600,700,800"
+  rel="stylesheet"
+/>
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+  rel="stylesheet"
+/>
+<script src="https://tag.clearbitscripts.com/v1/pk_b9ed71c8234edd4f77326bcbfab5a4ca/tags.js"></script>
+
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+  
+</head>
+
+
+<div class="container-fluid header-holder tutorials-header" id="header-holder">
+  <nav id="nav__main" class="nav__main">
+    <div class="nav__main__logo">
+      <a href="https://voxel51.com/">
+        <img
+          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
+        />
+      </a>
+    </div>
+
+    <div class="nav__spacer desktop_only"></div>
+
+    <div id="nav__main__mobilebutton--on">
+      <a href="javascript:void(0);" onclick="navMobileButton()">
+        <i class="fa-solid fa-bars"></i>
+      </a>
+    </div>
+
+    <div id="nav__main__mobilebutton--off">
+      <a href="javascript:void(0);" onclick="navMobileButton()">
+        <i class="fa-solid fa-times"></i>
+      </a>
+    </div>
+
+    <div id="nav__main__items">
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Products</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://voxel51.com/fiftyone/">Open Source</a></li>
+            <li><a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a></li>
+            <li><a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a></li>
+            <li><a href="https://voxel51.com/success-stories/">Success Stories</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Learn</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://community.voxel51.com">Community Discord</a></li>
+            <li><a href="https://voxel51.com/blog/">Blog</a></li>
+            <li><a href="https://voxel51.com/computer-vision-events/">Events</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item">
+        <a href="https://docs.voxel51.com/">Docs</a>
+      </div>
+
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Company</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://voxel51.com/ourstory/">About Us</a></li>
+            <li><a href="https://voxel51.com/jobs/">Careers</a></li>
+            <li><a href="https://voxel51.com/talk-to-sales/">Talk to Sales</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item mobile_only">
+        <a href="https://github.com/voxel51/fiftyone">GitHub</a>
+      </div>
+
+      <div class="nav__item desktop_only" id="octocat">
+        <!-- https://buttons.github.io -->
+        <a
+          class="github-button"
+          href="https://github.com/voxel51/fiftyone"
+          data-color-scheme="no-preference: dark_high_contrast; light: dark_high_contrast; dark: dark_high_contrast;"
+          data-size="large"
+          data-show-count="true"
+          aria-label="Star voxel51/fiftyone on GitHub"
+          >Star</a
+        >
+      </div>
+
+      <div class="nav__item full_nav_only">
+        <a class="button-primary" href="https://voxel51.com/schedule-teams-workshop/" target="_blank"
+          >Schedule a workshop</a
+        >
+      </div>
+    </div>
+  </nav>
+</div>
+
+
+
+<body class="pytorch-body">
+
+   
+
+    
+
+    <div class="table-of-contents-link-wrapper">
+      <span>Table of Contents</span>
+      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+    </div>
+
+    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+      <div class="pytorch-side-scroll">
+        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          <div class="pytorch-left-menu-search">
+            
+
+            
+              
+              
+            
+
+            
+
+
+  
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+            
+          </div>
+
+           <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../teams/index.html">FiftyOne Teams 🚀</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../environments/index.html">Environments</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="pandas_comparison.html">pandas and FiftyOne</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Evaluating object detections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="evaluate_classifications.html">Evaluating a classifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="image_embeddings.html">Using image embeddings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cvat_annotation.html">Annotating with CVAT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="labelbox_annotation.html">Annotating with Labelbox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open_images.html">Working with Open Images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="detectron2.html">Training with Detectron2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uniqueness.html">Exploring image uniqueness</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classification_mistakes.html">Finding class mistakes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="detection_mistakes.html">Finding detection mistakes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qdrant.html">Embeddings with Qdrant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="yolov8.html">Fine-tuning YOLOv8 models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pointe.html">3D point clouds with Point-E</a></li>
+<li class="toctree-l2"><a class="reference internal" href="monocular_depth_estimation.html">Monocular depth estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dimension_reduction.html">Dimensionality reduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="zero_shot_classification.html">Zero-shot classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_augmentation.html">Data augmentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clustering.html">Clustering images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="small_object_detection.html">Detecting small objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="anomaly_detection.html">Anomaly detection</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../recipes/index.html">Recipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheat_sheets/index.html">Cheat Sheets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dataset_zoo/index.html">Dataset Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_zoo/index.html">Model Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brain.html">FiftyOne Brain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/index.html">Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plugins/index.html">Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli/index.html">CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/fiftyone.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deprecation.html">Deprecation Notices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a></li>
+</ul>
+ 
+        </div>
+      </div>
+    </nav>
+
+    <div class="pytorch-container">
+      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+        <div class="pytorch-breadcrumbs-wrapper">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="../index.html">
+          
+            Docs
+          
+        </a> &gt;
+      </li>
+
+        
+          <li><a href="index.html">FiftyOne Tutorials</a> &gt;</li>
+        
+      <li>Evaluating Object Detections with FiftyOne</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+        </div>
+
+        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+          Contents
+        </div>
+      </div>
+
+      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+        <div class="pytorch-content-left">
+
+        
+          
+          <div class="rst-content style-external-links">
+          
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+              
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    /*background: #f5f5f5;*/
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+    margin: 0;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt .copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+</style>
+<table class="fo-notebook-links" align="left">
+    <td>
+        <a target="_blank" href="https://colab.research.google.com/github/voxel51/fiftyone/blob/v1.3.0/docs/source/tutorials/evaluate_detections.ipynb">
+            <img src="../_static/images/icons/colab-logo-256px.png"> &nbsp; Run in Google Colab
+        </a>
+    </td>
+    <td>
+        <a target="_blank" href="https://github.com/voxel51/fiftyone/blob/v1.3.0/docs/source/tutorials/evaluate_detections.ipynb">
+            <img src="../_static/images/icons/github-logo-256px.png"> &nbsp; View source on GitHub
+        </a>
+    </td>
+    <td>
+        <a target="_blank" href="https://raw.githubusercontent.com/voxel51/fiftyone/v1.3.0/docs/source/tutorials/evaluate_detections.ipynb" download>
+            <img src="../_static/images/icons/cloud-icon-256px.png"> &nbsp; Download notebook
+        </a>
+    </td>
+</table><div class="section" id="Evaluating-Object-Detections-with-FiftyOne">
+<h1>Evaluating Object Detections with FiftyOne<a class="headerlink" href="#Evaluating-Object-Detections-with-FiftyOne" title="Permalink to this headline">¶</a></h1>
+<p>This walkthrough demonstrates how to use FiftyOne to perform hands-on evaluation of your detection model.</p>
+<p>It covers the following concepts:</p>
+<ul class="simple">
+<li><p>Loading a dataset with ground truth labels <a class="reference external" href="https://voxel51.com/docs/fiftyone/user_guide/dataset_creation/index.html">into FiftyOne</a></p></li>
+<li><p><a class="reference external" href="https://voxel51.com/docs/fiftyone/recipes/adding_detections.html">Adding model predictions</a> to your dataset</p></li>
+<li><p><a class="reference external" href="https://voxel51.com/docs/fiftyone/user_guide/evaluation.html#detections">Evaluating your model</a> using FiftyOne’s evaluation API</p></li>
+<li><p>Viewing the best and worst performing samples in your dataset</p></li>
+</ul>
+<p><strong>So, what’s the takeaway?</strong></p>
+<p>Aggregate measures of performance like mAP don’t give you the full picture of your detection model. In practice, the limiting factor on your model’s performance is often data quality issues that you need to <strong>see</strong> to address. FiftyOne is designed to make it easy to do just that.</p>
+<p>Running the workflow presented here on your ML projects will help you to understand the current failure modes (edge cases) of your model and how to fix them, including:</p>
+<ul class="simple">
+<li><p>Identifying scenarios that require additional training samples in order to boost your model’s performance</p></li>
+<li><p>Deciding whether your ground truth annotations have errors/weaknesses that need to be corrected before any subsequent model training will be profitable</p></li>
+</ul>
+<div class="section" id="Setup">
+<h2>Setup<a class="headerlink" href="#Setup" title="Permalink to this headline">¶</a></h2>
+<p>If you haven’t already, install FiftyOne:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>fiftyone
+</pre></div>
+</div>
+</div>
+<p>In this tutorial, we’ll use an off-the-shelf <a class="reference external" href="https://pytorch.org/docs/stable/torchvision/models.html#faster-r-cnn">Faster R-CNN detection model</a> provided by PyTorch. To use it, you’ll need to install <code class="docutils literal notranslate"><span class="pre">torch</span></code> and <code class="docutils literal notranslate"><span class="pre">torchvision</span></code>, if necessary.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>torch<span class="w"> </span>torchvision
+</pre></div>
+</div>
+</div>
+<p>If you wanted to, you could download the pretrained model from the web and load it with <code class="docutils literal notranslate"><span class="pre">torchvision</span></code>. However, this model is also available via the <a class="reference external" href="https://docs.voxel51.com/user_guide/model_zoo/index.html">FiftyOne Model Zoo</a>, which makes our lives much easier!</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_model</span><span class="p">(</span><span class="s1">&#39;faster-rcnn-resnet50-fpn-coco-torch&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>We’ll perform our analysis on the validation split of the <a class="reference external" href="https://cocodataset.org/#home">COCO dataset</a>, which is conveniently available for download via the <a class="reference external" href="https://voxel51.com/docs/fiftyone/user_guide/dataset_zoo/datasets.html#coco-2017">FiftyOne Dataset Zoo</a>.</p>
+<p>The snippet below will download the validation split and load it into FiftyOne.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span>
+    <span class="s2">&quot;coco-2017&quot;</span><span class="p">,</span>
+    <span class="n">split</span><span class="o">=</span><span class="s2">&quot;validation&quot;</span><span class="p">,</span>
+    <span class="n">dataset_name</span><span class="o">=</span><span class="s2">&quot;evaluate-detections-tutorial&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">persistent</span> <span class="o">=</span> <span class="kc">True</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Downloading split &#39;validation&#39; to &#39;/Users/jacobmarks/fiftyone/coco-2017/validation&#39; if necessary
+Found annotations at &#39;/Users/jacobmarks/fiftyone/coco-2017/raw/instances_val2017.json&#39;
+Images already downloaded
+Existing download of split &#39;validation&#39; is sufficient
+Loading &#39;coco-2017&#39; split &#39;validation&#39;
+ 100% |███████████████| 5000/5000 [14.7s elapsed, 0s remaining, 360.0 samples/s]
+Dataset &#39;evaluate-detections-tutorial&#39; created
+</pre></div></div>
+</div>
+<p>Let’s inspect the dataset to see what we downloaded:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print some information about the dataset</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Name:        evaluate-detections-tutorial
+Media type:  image
+Num samples: 5000
+Persistent:  True
+Tags:        []
+Sample fields:
+    id:           fiftyone.core.fields.ObjectIdField
+    filepath:     fiftyone.core.fields.StringField
+    tags:         fiftyone.core.fields.ListField(fiftyone.core.fields.StringField)
+    metadata:     fiftyone.core.fields.EmbeddedDocumentField(fiftyone.core.metadata.ImageMetadata)
+    ground_truth: fiftyone.core.fields.EmbeddedDocumentField(fiftyone.core.labels.Detections)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print a ground truth detection</span>
+<span class="n">sample</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sample</span><span class="o">.</span><span class="n">ground_truth</span><span class="o">.</span><span class="n">detections</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;Detection: {
+    &#39;id&#39;: &#39;66047a4705c1282f3e97c5e9&#39;,
+    &#39;attributes&#39;: {},
+    &#39;tags&#39;: [],
+    &#39;label&#39;: &#39;potted plant&#39;,
+    &#39;bounding_box&#39;: [
+        0.37028125,
+        0.3345305164319249,
+        0.038593749999999996,
+        0.16314553990610328,
+    ],
+    &#39;mask&#39;: None,
+    &#39;confidence&#39;: None,
+    &#39;index&#39;: None,
+    &#39;supercategory&#39;: &#39;furniture&#39;,
+    &#39;iscrowd&#39;: 0,
+}&gt;
+</pre></div></div>
+</div>
+<p>Note that the ground truth detections are stored in the <code class="docutils literal notranslate"><span class="pre">ground_truth</span></code> field of the samples.</p>
+<p>Before we go further, let’s launch the <a class="reference external" href="https://voxel51.com/docs/fiftyone/user_guide/app.html">FiftyOne App</a> and use the GUI to explore the dataset visually:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p><img alt="Evaluate Detections Dataset" src="../_images/evaluate_detections_dataset.jpg" /></p>
+</div>
+<div class="section" id="Add-predictions-to-dataset">
+<h2>Add predictions to dataset<a class="headerlink" href="#Add-predictions-to-dataset" title="Permalink to this headline">¶</a></h2>
+<p>Now let’s generate some predictions to analyze.</p>
+<p>Because we loaded the model from the FiftyOne Model Zoo, it is a FiftyOne model object, which means we can apply it directly to our dataset (or any subset thereof) for inference using the sample collection’s <code class="docutils literal notranslate"><span class="pre">apply_model()</span></code> method.</p>
+<p>The code below performs inference with the Faster R-CNN model on a randomly chosen subset of 100 samples from the dataset and stores the resulting predictions in a <code class="docutils literal notranslate"><span class="pre">faster_rcnn</span></code> field of the samples.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Choose a random subset of 100 samples to add predictions to</span>
+<span class="n">predictions_view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">51</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">predictions_view</span><span class="o">.</span><span class="n">apply_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;faster_rcnn&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ 100% |█████████████████| 100/100 [1.4m elapsed, 0s remaining, 1.3 samples/s]
+</pre></div></div>
+</div>
+<p>Let’s load <code class="docutils literal notranslate"><span class="pre">predictions_view</span></code> in the App to visualize the predictions that we added:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">session</span><span class="o">.</span><span class="n">view</span> <span class="o">=</span> <span class="n">predictions_view</span>
+</pre></div>
+</div>
+</div>
+<p><img alt="Predictions View" src="../_images/evaluate_detections_prediction_view.jpg" /></p>
+</div>
+<div class="section" id="Analyzing-detections">
+<h2>Analyzing detections<a class="headerlink" href="#Analyzing-detections" title="Permalink to this headline">¶</a></h2>
+<p>Let’s analyze the raw predictions we’ve added to our dataset in more detail.</p>
+<div class="section" id="Visualizing-bounding-boxes">
+<h3>Visualizing bounding boxes<a class="headerlink" href="#Visualizing-bounding-boxes" title="Permalink to this headline">¶</a></h3>
+<p>Let’s start by loading the full dataset in the App:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Resets the session; the entire dataset will now be shown</span>
+<span class="n">session</span><span class="o">.</span><span class="n">view</span> <span class="o">=</span> <span class="kc">None</span>
+</pre></div>
+</div>
+</div>
+<p><img alt="All boxes" src="../_images/evaluate_detections_all_boxes.jpg" /></p>
+<p>Only the 100 samples in <code class="docutils literal notranslate"><span class="pre">predictions_view</span></code> have predictions in their <code class="docutils literal notranslate"><span class="pre">faster_rcnn</span></code> field, so some of the samples we see above do not have predicted boxes.</p>
+<p>If we want to recover our predictions view, we can do this programmatically via <code class="docutils literal notranslate"><span class="pre">session.view</span> <span class="pre">=</span> <span class="pre">predictions_view</span></code>, or we can use the <a class="reference external" href="https://voxel51.com/docs/fiftyone/user_guide/app.html#using-the-view-bar">view bar in the App</a> to accomplish the same thing:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use the view bar to create an `Exists(faster_rcnn, True)` stage</span>
+<span class="c1"># Now your view contains only the 100 samples with predictions in `faster_rcnn` field</span>
+<span class="n">session</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<p><img alt="Exists Filter" src="../_images/evaluate_detections_exists_filter.gif" /></p>
+<p>Each field of the samples are shown as togglable checkboxes on the left sidebar which can be used to control whether ground truth detections or predictions are rendered on the images.</p>
+<p>You can also click on an image to view the sample in more detail:</p>
+<p><img alt="Click Image" src="../_images/evaluate_detections_click_image.gif" /></p>
+</div>
+<div class="section" id="Selecting-samples-of-interest">
+<h3>Selecting samples of interest<a class="headerlink" href="#Selecting-samples-of-interest" title="Permalink to this headline">¶</a></h3>
+<p>You can select images in the App by clicking on the checkbox when hovering over an image. Then, you can create a view that contains only those samples by clicking the orange checkmark with the number of selected samples in the top left corner of the sample grid and clicking <code class="docutils literal notranslate"><span class="pre">Only</span> <span class="pre">show</span> <span class="pre">selected</span> <span class="pre">samples</span></code>.</p>
+<p><img alt="Only show selected" src="../_images/evaluate_detections_only_show_selected.gif" /></p>
+<p>Let’s reset our session to show our <code class="docutils literal notranslate"><span class="pre">predictions_view</span></code>:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">session</span><span class="o">.</span><span class="n">view</span> <span class="o">=</span> <span class="n">predictions_view</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Confidence-thresholding-in-the-App">
+<h3>Confidence thresholding in the App<a class="headerlink" href="#Confidence-thresholding-in-the-App" title="Permalink to this headline">¶</a></h3>
+<p>From the App instance above, it looks like our detector is generating some spurious low-quality detections. Let’s use the App to interactively filter the predictions by <code class="docutils literal notranslate"><span class="pre">confidence</span></code> to identify a reasonable confidence threshold for our model:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Click the down caret on the `faster_rcnn` field of Fields Sidebar</span>
+<span class="c1"># and apply a confidence threshold</span>
+<span class="n">session</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<p><img alt="Confidence Threshold" src="../_images/evaluate_detections_confidence_filter.jpg" /></p>
+<p>It looks like a confidence threshold of 0.75 is a good choice for our model, but we’ll confirm that quantitatively later.</p>
+</div>
+<div class="section" id="Confidence-thresholding-in-Python">
+<h3>Confidence thresholding in Python<a class="headerlink" href="#Confidence-thresholding-in-Python" title="Permalink to this headline">¶</a></h3>
+<p>FiftyOne also provides the ability to <a class="reference external" href="https://voxel51.com/docs/fiftyone/user_guide/using_views.html#filtering">write expressions</a> that match, filter, and sort detections based on their attributes. See <a class="reference external" href="https://voxel51.com/docs/fiftyone/user_guide/using_views.html">using DatasetViews</a> for full details.</p>
+<p>For example, we can programmatically generate a view that contains only detections whose <code class="docutils literal notranslate"><span class="pre">confidence</span></code> is at least <code class="docutils literal notranslate"><span class="pre">0.75</span></code> as follows:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fiftyone</span> <span class="kn">import</span> <span class="n">ViewField</span> <span class="k">as</span> <span class="n">F</span>
+
+<span class="c1"># Only contains detections with confidence &gt;= 0.75</span>
+<span class="n">high_conf_view</span> <span class="o">=</span> <span class="n">predictions_view</span><span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span><span class="s2">&quot;faster_rcnn&quot;</span><span class="p">,</span> <span class="n">F</span><span class="p">(</span><span class="s2">&quot;confidence&quot;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">0.75</span><span class="p">,</span> <span class="n">only_matches</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Note the <code class="docutils literal notranslate"><span class="pre">only_matches=False</span></code> argument. When filtering labels, any samples that no longer contain labels would normally be removed from the view. However, this is not desired when performing evaluations since it can skew your results between views. We set <code class="docutils literal notranslate"><span class="pre">only_matches=False</span></code> so that all samples will be retained, even if some no longer contain labels.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print some information about the view</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">high_conf_view</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Dataset:     evaluate-detections-tutorial
+Media type:  image
+Num samples: 100
+Sample fields:
+    id:           fiftyone.core.fields.ObjectIdField
+    filepath:     fiftyone.core.fields.StringField
+    tags:         fiftyone.core.fields.ListField(fiftyone.core.fields.StringField)
+    metadata:     fiftyone.core.fields.EmbeddedDocumentField(fiftyone.core.metadata.ImageMetadata)
+    ground_truth: fiftyone.core.fields.EmbeddedDocumentField(fiftyone.core.labels.Detections)
+    faster_rcnn:  fiftyone.core.fields.EmbeddedDocumentField(fiftyone.core.labels.Detections)
+View stages:
+    1. Take(size=100, seed=51)
+    2. FilterLabels(field=&#39;faster_rcnn&#39;, filter={&#39;$gt&#39;: [&#39;$$this.confidence&#39;, 0.75]}, only_matches=False, trajectories=False)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print a prediction from the view to verify that its confidence is &gt; 0.75</span>
+<span class="n">sample</span> <span class="o">=</span> <span class="n">high_conf_view</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sample</span><span class="o">.</span><span class="n">faster_rcnn</span><span class="o">.</span><span class="n">detections</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;Detection: {
+    &#39;id&#39;: &#39;66047b0f05c1282f3e986920&#39;,
+    &#39;attributes&#39;: {},
+    &#39;tags&#39;: [],
+    &#39;label&#39;: &#39;airplane&#39;,
+    &#39;bounding_box&#39;: [
+        0.5629980087280273,
+        0.7977214296832356,
+        0.03478360176086426,
+        0.1007584484383529,
+    ],
+    &#39;mask&#39;: None,
+    &#39;confidence&#39;: 0.9952868223190308,
+    &#39;index&#39;: None,
+}&gt;
+</pre></div></div>
+</div>
+<p>Now let’s load our view in the App to view the predictions that we programmatically selected:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load high confidence view in the App</span>
+<span class="n">session</span><span class="o">.</span><span class="n">view</span> <span class="o">=</span> <span class="n">high_conf_view</span>
+</pre></div>
+</div>
+</div>
+<p><img alt="High Confidence" src="../_images/evaluate_detections_high_conf_view.jpg" /></p>
+</div>
+<div class="section" id="Viewing-object-patches">
+<h3>Viewing object patches<a class="headerlink" href="#Viewing-object-patches" title="Permalink to this headline">¶</a></h3>
+<p>There are multiple situations where it can be useful to visualize each object separately. For example, if a sample contains dozens of objects overlapping one another or if you want to look specifically for instances of a class of objects.</p>
+<p>In any case, the FiftyOne App provides a <a class="reference external" href="https://voxel51.com/docs/fiftyone/user_guide/app.html#viewing-object-patches">patches view button</a> that allows you to take any <code class="docutils literal notranslate"><span class="pre">Detections</span></code> field in your dataset and visualize each object as an individual patch in the image grid.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">session</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<p><img alt="Patches View" src="../_images/evaluate_detections_gt_patches.gif" /></p>
+</div>
+</div>
+<div class="section" id="Evaluate-detections">
+<h2>Evaluate detections<a class="headerlink" href="#Evaluate-detections" title="Permalink to this headline">¶</a></h2>
+<p>Now that we have samples with ground truth and predicted objects, let’s use FiftyOne to evaluate the quality of the detections.</p>
+<p>FiftyOne provides a powerful <a class="reference external" href="https://voxel51.com/docs/fiftyone/user_guide/evaluation.html">evaluation API</a> that contains a collection of methods for performing evaluation of model predictions. Since we’re working with object detections here, we’ll use <a class="reference external" href="https://voxel51.com/docs/fiftyone/user_guide/evaluation.html#detections">detection evaluation</a>.</p>
+<div class="section" id="Running-evaluation">
+<h3>Running evaluation<a class="headerlink" href="#Running-evaluation" title="Permalink to this headline">¶</a></h3>
+<p>We can run evaluation on our samples via <a class="reference external" href="https://voxel51.com/docs/fiftyone/api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.evaluate_detections">evaluate_detections()</a>. Note that this method is available on both the <code class="docutils literal notranslate"><span class="pre">Dataset</span></code> and <code class="docutils literal notranslate"><span class="pre">DatasetView</span></code> classes, which means that we can run evaluation on our <code class="docutils literal notranslate"><span class="pre">high_conf_view</span></code> to assess the quality of only the high confidence predictions in our dataset.</p>
+<p>By default, this method will use the <a class="reference external" href="https://cocodataset.org/#detection-eval">COCO evaluation protocol</a>, plus some extra goodies that we will use later.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Evaluate the predictions in the `faster_rcnn` field of our `high_conf_view`</span>
+<span class="c1"># with respect to the objects in the `ground_truth` field</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">high_conf_view</span><span class="o">.</span><span class="n">evaluate_detections</span><span class="p">(</span>
+    <span class="s2">&quot;faster_rcnn&quot;</span><span class="p">,</span>
+    <span class="n">gt_field</span><span class="o">=</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span>
+    <span class="n">eval_key</span><span class="o">=</span><span class="s2">&quot;eval&quot;</span><span class="p">,</span>
+    <span class="n">compute_mAP</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Evaluating detections...
+ 100% |█████████████████| 100/100 [1.8s elapsed, 0s remaining, 53.7 samples/s]
+Performing IoU sweep...
+ 100% |█████████████████| 100/100 [882.6ms elapsed, 0s remaining, 113.3 samples/s]
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Aggregate-results">
+<h3>Aggregate results<a class="headerlink" href="#Aggregate-results" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">results</span></code> object returned by the evaluation routine provides a number of convenient methods for analyzing our predictions.</p>
+<p>For example, let’s print a classification report for the top-10 most common classes in the dataset:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get the 10 most common classes in the dataset</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">count_values</span><span class="p">(</span><span class="s2">&quot;ground_truth.detections.label&quot;</span><span class="p">)</span>
+<span class="n">classes_top10</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">counts</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">counts</span><span class="o">.</span><span class="n">get</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)[:</span><span class="mi">10</span><span class="p">]</span>
+
+<span class="c1"># Print a classification report for the top-10 classes</span>
+<span class="n">results</span><span class="o">.</span><span class="n">print_report</span><span class="p">(</span><span class="n">classes</span><span class="o">=</span><span class="n">classes_top10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+               precision    recall  f1-score   support
+
+       person       0.89      0.80      0.84       263
+          car       0.72      0.56      0.63        55
+        chair       0.53      0.23      0.32        35
+         book       1.00      0.30      0.47        33
+       bottle       0.60      0.67      0.63         9
+          cup       0.93      0.81      0.87        16
+ dining table       0.50      0.62      0.55        13
+traffic light       0.50      0.46      0.48        13
+         bowl       0.71      0.38      0.50        13
+      handbag       0.50      0.18      0.26        17
+
+    micro avg       0.81      0.64      0.72       467
+    macro avg       0.69      0.50      0.56       467
+ weighted avg       0.81      0.64      0.70       467
+
+</pre></div></div>
+</div>
+<p>We can also compute the mean average-precision (mAP) of our detector:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">mAP</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0.3519380509318074
+</pre></div></div>
+</div>
+<p>Since <a class="reference external" href="https://voxel51.com/docs/fiftyone/api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.evaluate_detections">evaluate_detections()</a> uses the official <a class="reference external" href="https://cocodataset.org/#detection-eval">COCO evaluation protocol</a>, this mAP value will match what <code class="docutils literal notranslate"><span class="pre">pycocotools</span></code> would report.</p>
+<p>We can also view some precision-recall (PR) curves for specific classes of our model:</p>
+<p>Install ipywidgets to view the PR curves:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;ipywidgets&gt;=8,&lt;9&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">plot_pr_curves</span><span class="p">(</span><span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;person&quot;</span><span class="p">,</span> <span class="s2">&quot;car&quot;</span><span class="p">])</span>
+<span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_evaluate_detections_59_1.png" src="../_images/tutorials_evaluate_detections_59_1.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "b2bf1a19f4b748d39ec822b60fb9a5b3", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot</span><span class="o">.</span><span class="n">freeze</span><span class="p">()</span>  <span class="c1"># replaces interactive plot with static image</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Sample-level-analysis">
+<h3>Sample-level analysis<a class="headerlink" href="#Sample-level-analysis" title="Permalink to this headline">¶</a></h3>
+<p>The evaluation routine also populated some new fields on our dataset that contain helpful information that we can use to evaluate our predictions at the sample-level.</p>
+<p>In particular, each sample now contains new fields:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">eval_tp</span></code>: the number of true positive (TP) predictions in the sample</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">eval_fp</span></code>: the number of false positive (FP) predictions in the sample</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">eval_fn</span></code>: the number of false negative (FN) predictions in the sample</p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Our dataset&#39;s schema now contains `eval_*` fields</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Name:        evaluate-detections-tutorial
+Media type:  image
+Num samples: 5000
+Persistent:  True
+Tags:        []
+Sample fields:
+    id:           fiftyone.core.fields.ObjectIdField
+    filepath:     fiftyone.core.fields.StringField
+    tags:         fiftyone.core.fields.ListField(fiftyone.core.fields.StringField)
+    metadata:     fiftyone.core.fields.EmbeddedDocumentField(fiftyone.core.metadata.ImageMetadata)
+    ground_truth: fiftyone.core.fields.EmbeddedDocumentField(fiftyone.core.labels.Detections)
+    faster_rcnn:  fiftyone.core.fields.EmbeddedDocumentField(fiftyone.core.labels.Detections)
+    eval_tp:      fiftyone.core.fields.IntField
+    eval_fp:      fiftyone.core.fields.IntField
+    eval_fn:      fiftyone.core.fields.IntField
+</pre></div></div>
+</div>
+<p>The individual predicted and ground truth objects also have fields populated on them describing the results of the matching process:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">eval</span></code>: whether the object is a TP/FP/FN</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">eval_id</span></code>: the ID of the matching ground truth/predicted object, if any</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">eval_iou</span></code>: the IoU between the matching objects, if any</p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Our detections have helpful evaluation data on them</span>
+<span class="n">sample</span> <span class="o">=</span> <span class="n">high_conf_view</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sample</span><span class="o">.</span><span class="n">faster_rcnn</span><span class="o">.</span><span class="n">detections</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;Detection: {
+    &#39;id&#39;: &#39;66047b0f05c1282f3e986920&#39;,
+    &#39;attributes&#39;: {},
+    &#39;tags&#39;: [],
+    &#39;label&#39;: &#39;airplane&#39;,
+    &#39;bounding_box&#39;: [
+        0.5629980087280273,
+        0.7977214296832356,
+        0.03478360176086426,
+        0.1007584484383529,
+    ],
+    &#39;mask&#39;: None,
+    &#39;confidence&#39;: 0.9952868223190308,
+    &#39;index&#39;: None,
+    &#39;eval_iou&#39;: 0.8995312552391188,
+    &#39;eval_id&#39;: &#39;66047a4b05c1282f3e97f285&#39;,
+    &#39;eval&#39;: &#39;tp&#39;,
+}&gt;
+</pre></div></div>
+</div>
+<p>These extra fields were added because we provided the <code class="docutils literal notranslate"><span class="pre">eval_key</span></code> parameter to <a class="reference external" href="https://voxel51.com/docs/fiftyone/api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.evaluate_detections">evaluate_detections()</a>. If we had omitted this parameter, then no information would have been recorded on our samples.</p>
+<p>Don’t worry, if you forget what evaluations you’ve run, you can retrieve information about the evaluation later:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">list_evaluations</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&#39;eval&#39;]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">get_evaluation_info</span><span class="p">(</span><span class="s2">&quot;eval&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{
+    &#34;key&#34;: &#34;eval&#34;,
+    &#34;version&#34;: &#34;0.24.0&#34;,
+    &#34;timestamp&#34;: &#34;2024-03-27T22:10:32.599000&#34;,
+    &#34;config&#34;: {
+        &#34;cls&#34;: &#34;fiftyone.utils.eval.coco.COCOEvaluationConfig&#34;,
+        &#34;type&#34;: &#34;detection&#34;,
+        &#34;method&#34;: &#34;coco&#34;,
+        &#34;pred_field&#34;: &#34;faster_rcnn&#34;,
+        &#34;gt_field&#34;: &#34;ground_truth&#34;,
+        &#34;iou&#34;: 0.5,
+        &#34;classwise&#34;: true,
+        &#34;iscrowd&#34;: &#34;iscrowd&#34;,
+        &#34;use_masks&#34;: false,
+        &#34;use_boxes&#34;: false,
+        &#34;tolerance&#34;: null,
+        &#34;compute_mAP&#34;: true,
+        &#34;iou_threshs&#34;: [
+            0.5,
+            0.55,
+            0.6,
+            0.65,
+            0.7,
+            0.75,
+            0.8,
+            0.85,
+            0.9,
+            0.95
+        ],
+        &#34;max_preds&#34;: 100,
+        &#34;error_level&#34;: 1
+    }
+}
+</pre></div></div>
+</div>
+<p>You can even load the view on which you ran an evaluation by calling the <a class="reference external" href="https://voxel51.com/docs/fiftyone/api/fiftyone.core.collections.html?highlight=load_evaluation_view#fiftyone.core.collections.SampleCollection.load_evaluation_view">load_evaluation_view()</a> method on the parent dataset:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load the view on which we ran the `eval` evaluation</span>
+<span class="n">eval_view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">load_evaluation_view</span><span class="p">(</span><span class="s2">&quot;eval&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">eval_view</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Dataset:     evaluate-detections-tutorial
+Media type:  image
+Num samples: 100
+Sample fields:
+    id:           fiftyone.core.fields.ObjectIdField
+    filepath:     fiftyone.core.fields.StringField
+    tags:         fiftyone.core.fields.ListField(fiftyone.core.fields.StringField)
+    metadata:     fiftyone.core.fields.EmbeddedDocumentField(fiftyone.core.metadata.ImageMetadata)
+    ground_truth: fiftyone.core.fields.EmbeddedDocumentField(fiftyone.core.labels.Detections)
+    faster_rcnn:  fiftyone.core.fields.EmbeddedDocumentField(fiftyone.core.labels.Detections)
+    eval_tp:      fiftyone.core.fields.IntField
+    eval_fp:      fiftyone.core.fields.IntField
+    eval_fn:      fiftyone.core.fields.IntField
+View stages:
+    1. Take(size=100, seed=51)
+    2. FilterLabels(field=&#39;faster_rcnn&#39;, filter={&#39;$gt&#39;: [&#39;$$this.confidence&#39;, 0.75]}, only_matches=False, trajectories=False)
+</pre></div></div>
+</div>
+<p>Finally, you can delete an evaluation from a dataset, including any information that was added to your samples, by calling <a class="reference external" href="https://voxel51.com/docs/fiftyone/api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.delete_evaluation">delete_evaluation()</a>.</p>
+</div>
+<div class="section" id="Evaluation-views">
+<h3>Evaluation views<a class="headerlink" href="#Evaluation-views" title="Permalink to this headline">¶</a></h3>
+<p>So, now that we have a sense for the aggregate performance of our model, let’s dive into sample-level analysis by creating an <a class="reference external" href="https://voxel51.com/docs/fiftyone/user_guide/app.html#viewing-evaluation-patches">evaluation view</a>.</p>
+<p>Any evaluation that you stored on your dataset can be used to generate an <a class="reference external" href="https://voxel51.com/docs/fiftyone/user_guide/app.html#viewing-evaluation-patches">evaluation view</a> that is a patches view creating a sample for every true positive, false positive, and false negative in your dataset. Through this view, you can quickly filter and sort evaluated detections by their type (TP/FP/FN), evaluated IoU, and if they are matched to a crowd object.</p>
+<p>These evaluation views can be created through Python or directly in the App as shown below.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eval_patches</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">to_evaluation_patches</span><span class="p">(</span><span class="s2">&quot;eval&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">eval_patches</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Dataset:     evaluate-detections-tutorial
+Media type:  image
+Num patches: 37747
+Patch fields:
+    id:           fiftyone.core.fields.ObjectIdField
+    sample_id:    fiftyone.core.fields.ObjectIdField
+    filepath:     fiftyone.core.fields.StringField
+    tags:         fiftyone.core.fields.ListField(fiftyone.core.fields.StringField)
+    metadata:     fiftyone.core.fields.EmbeddedDocumentField(fiftyone.core.metadata.ImageMetadata)
+    ground_truth: fiftyone.core.fields.EmbeddedDocumentField(fiftyone.core.labels.Detections)
+    faster_rcnn:  fiftyone.core.fields.EmbeddedDocumentField(fiftyone.core.labels.Detections)
+    crowd:        fiftyone.core.fields.BooleanField
+    type:         fiftyone.core.fields.StringField
+    iou:          fiftyone.core.fields.FloatField
+View stages:
+    1. ToEvaluationPatches(eval_key=&#39;eval&#39;, config=None)
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">session</span><span class="o">.</span><span class="n">view</span> <span class="o">=</span> <span class="n">high_conf_view</span>
+</pre></div>
+</div>
+</div>
+<p><img alt="Evaluation Patches" src="../_images/evaluate_detections_eval_patches.gif" /></p>
+<p>Let’s use this evaluation view to find individual false positive detections with a confidence of 0.85 or greater.</p>
+<p><img alt="FP Confidence Filter" src="../_images/evaluate_detections_high_conf_fp.gif" /></p>
+</div>
+<div class="section" id="View-the-best-performing-samples">
+<h3>View the best-performing samples<a class="headerlink" href="#View-the-best-performing-samples" title="Permalink to this headline">¶</a></h3>
+<p>To dig in further, let’s create a view that sorts by <code class="docutils literal notranslate"><span class="pre">eval_tp</span></code> so we can see the best-performing cases of our model (i.e., the samples with the most correct predictions):</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Show samples with most true positives</span>
+<span class="n">session</span><span class="o">.</span><span class="n">view</span> <span class="o">=</span> <span class="n">high_conf_view</span><span class="o">.</span><span class="n">sort_by</span><span class="p">(</span><span class="s2">&quot;eval_tp&quot;</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p><img alt="Best Samples" src="../_images/evaluate_detections_eval_tp.jpg" /></p>
+</div>
+<div class="section" id="View-the-worst-performing-samples">
+<h3>View the worst-performing samples<a class="headerlink" href="#View-the-worst-performing-samples" title="Permalink to this headline">¶</a></h3>
+<p>Similarly, we can sort by the <code class="docutils literal notranslate"><span class="pre">eval_fp</span></code> field to see the worst-performing cases of our model (i.e., the samples with the most false positive predictions):</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Show samples with most false positives</span>
+<span class="n">session</span><span class="o">.</span><span class="n">view</span> <span class="o">=</span> <span class="n">high_conf_view</span><span class="o">.</span><span class="n">sort_by</span><span class="p">(</span><span class="s2">&quot;eval_fp&quot;</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p><img alt="Worst Samples" src="../_images/evaluate_detections_eval_fp.jpg" /></p>
+</div>
+<div class="section" id="Filtering-by-bounding-box-area">
+<h3>Filtering by bounding box area<a class="headerlink" href="#Filtering-by-bounding-box-area" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://voxel51.com/docs/fiftyone/user_guide/using_views.html">Dataset views</a> are extremely powerful. For example, let’s look at how our model performed on small objects by creating a view that contains only predictions whose bounding box area is less than <code class="docutils literal notranslate"><span class="pre">32^2</span></code> pixels:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute metadata so we can reference image height/width in our view</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">compute_metadata</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#</span>
+<span class="c1"># Create an expression that will match objects whose bounding boxes have</span>
+<span class="c1"># area less than 32^2 pixels</span>
+<span class="c1">#</span>
+<span class="c1"># Bounding box format is [top-left-x, top-left-y, width, height]</span>
+<span class="c1"># with relative coordinates in [0, 1], so we multiply by image</span>
+<span class="c1"># dimensions to get pixel area</span>
+<span class="c1">#</span>
+<span class="n">bbox_area</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">F</span><span class="p">(</span><span class="s2">&quot;$metadata.width&quot;</span><span class="p">)</span> <span class="o">*</span> <span class="n">F</span><span class="p">(</span><span class="s2">&quot;bounding_box&quot;</span><span class="p">)[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span>
+    <span class="n">F</span><span class="p">(</span><span class="s2">&quot;$metadata.height&quot;</span><span class="p">)</span> <span class="o">*</span> <span class="n">F</span><span class="p">(</span><span class="s2">&quot;bounding_box&quot;</span><span class="p">)[</span><span class="mi">3</span><span class="p">]</span>
+<span class="p">)</span>
+<span class="n">small_boxes</span> <span class="o">=</span> <span class="n">bbox_area</span> <span class="o">&lt;</span> <span class="mi">32</span> <span class="o">**</span> <span class="mi">2</span>
+
+<span class="c1"># Create a view that contains only small (and high confidence) predictions</span>
+<span class="n">small_boxes_view</span> <span class="o">=</span> <span class="n">high_conf_view</span><span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span><span class="s2">&quot;faster_rcnn&quot;</span><span class="p">,</span> <span class="n">small_boxes</span><span class="p">)</span>
+
+<span class="n">session</span><span class="o">.</span><span class="n">view</span> <span class="o">=</span> <span class="n">small_boxes_view</span>
+</pre></div>
+</div>
+</div>
+<p><img alt="Small Bboxes" src="../_images/evaluate_detections_small_bboxes.jpg" /></p>
+<p>We can always re-run evaluation to see how our detector fairs on only small boxes:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a view that contains only small GT and predicted boxes</span>
+<span class="n">small_boxes_eval_view</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">high_conf_view</span>
+    <span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span> <span class="n">small_boxes</span><span class="p">,</span> <span class="n">only_matches</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span><span class="s2">&quot;faster_rcnn&quot;</span><span class="p">,</span> <span class="n">small_boxes</span><span class="p">,</span> <span class="n">only_matches</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="c1"># Run evaluation</span>
+<span class="n">small_boxes_results</span> <span class="o">=</span> <span class="n">small_boxes_eval_view</span><span class="o">.</span><span class="n">evaluate_detections</span><span class="p">(</span>
+    <span class="s2">&quot;faster_rcnn&quot;</span><span class="p">,</span>
+    <span class="n">gt_field</span><span class="o">=</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Evaluating detections...
+ 100% |███████████████████| 34/34 [339.1ms elapsed, 0s remaining, 100.3 samples/s]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get the 10 most common small object classes</span>
+<span class="n">small_counts</span> <span class="o">=</span> <span class="n">small_boxes_eval_view</span><span class="o">.</span><span class="n">count_values</span><span class="p">(</span><span class="s2">&quot;ground_truth.detections.label&quot;</span><span class="p">)</span>
+<span class="n">classes_top10_small</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">small_counts</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">counts</span><span class="o">.</span><span class="n">get</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)[:</span><span class="mi">10</span><span class="p">]</span>
+
+<span class="c1"># Print a classification report for the top-10 small object classes</span>
+<span class="n">small_boxes_results</span><span class="o">.</span><span class="n">print_report</span><span class="p">(</span><span class="n">classes</span><span class="o">=</span><span class="n">classes_top10_small</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+               precision    recall  f1-score   support
+
+       person       0.66      0.44      0.53        80
+          car       0.69      0.43      0.53        21
+        chair       0.00      0.00      0.00         4
+         book       0.00      0.00      0.00        20
+       bottle       0.25      1.00      0.40         1
+          cup       0.00      0.00      0.00         1
+ dining table       0.00      0.00      0.00         2
+traffic light       0.56      0.33      0.42        15
+      handbag       0.00      0.00      0.00         7
+         boat       0.00      0.00      0.00         1
+
+    micro avg       0.61      0.33      0.43       152
+    macro avg       0.22      0.22      0.19       152
+ weighted avg       0.50      0.33      0.39       152
+
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Viewing-detections-in-a-crowd">
+<h3>Viewing detections in a crowd<a class="headerlink" href="#Viewing-detections-in-a-crowd" title="Permalink to this headline">¶</a></h3>
+<p>If you’re familiar with the <a class="reference external" href="https://cocodataset.org/#format-data">COCO data format</a>, you’ll know that the ground truth annotations have an <code class="docutils literal notranslate"><span class="pre">iscrowd</span> <span class="pre">=</span> <span class="pre">0/1</span></code> attribute that indicates whether a box contains multiple instances of the same object.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># View the `iscrowd` attribute on a ground truth object</span>
+<span class="n">sample</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sample</span><span class="o">.</span><span class="n">ground_truth</span><span class="o">.</span><span class="n">detections</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;Detection: {
+    &#39;id&#39;: &#39;66047a4705c1282f3e97c5e9&#39;,
+    &#39;attributes&#39;: {},
+    &#39;tags&#39;: [],
+    &#39;label&#39;: &#39;potted plant&#39;,
+    &#39;bounding_box&#39;: [
+        0.37028125,
+        0.3345305164319249,
+        0.038593749999999996,
+        0.16314553990610328,
+    ],
+    &#39;mask&#39;: None,
+    &#39;confidence&#39;: None,
+    &#39;index&#39;: None,
+    &#39;supercategory&#39;: &#39;furniture&#39;,
+    &#39;iscrowd&#39;: 0,
+}&gt;
+</pre></div></div>
+</div>
+<p>Let’s create a view that contains only samples with at least one detection for which <code class="docutils literal notranslate"><span class="pre">iscrowd</span></code> is 1:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[40]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a view that contains only samples for which at least one detection has</span>
+<span class="c1"># its iscrowd attribute set to 1</span>
+<span class="n">crowded_images_view</span> <span class="o">=</span> <span class="n">high_conf_view</span><span class="o">.</span><span class="n">match</span><span class="p">(</span>
+    <span class="n">F</span><span class="p">(</span><span class="s2">&quot;ground_truth.detections&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s2">&quot;iscrowd&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">length</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span>
+<span class="p">)</span>
+
+<span class="n">session</span><span class="o">.</span><span class="n">view</span> <span class="o">=</span> <span class="n">crowded_images_view</span>
+</pre></div>
+</div>
+</div>
+<p><img alt="Crowd Boxes" src="../_images/evaluate_detections_crowded.jpg" /></p>
+</div>
+<div class="section" id="More-complex-insights">
+<h3>More complex insights<a class="headerlink" href="#More-complex-insights" title="Permalink to this headline">¶</a></h3>
+<p>Let’s combine our previous operations to form more complex queries that provide deeper insight into the quality of our detections.</p>
+<p>For example, let’s sort our view of crowded images from the previous section in decreasing order of false positive counts, so that we can see samples that have many (allegedly) spurious predictions in images that are known to contain crowds of objects:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">session</span><span class="o">.</span><span class="n">view</span> <span class="o">=</span> <span class="n">crowded_images_view</span><span class="o">.</span><span class="n">sort_by</span><span class="p">(</span><span class="s2">&quot;eval_fp&quot;</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p><img alt="Crowd FPs" src="../_images/evaluate_detections_crowded_fp.jpg" /></p>
+<p>Let’s compare the above view to another view that just sorts by false positive count, regardless of whether the image is crowded:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">session</span><span class="o">.</span><span class="n">view</span> <span class="o">=</span> <span class="n">high_conf_view</span><span class="o">.</span><span class="n">sort_by</span><span class="p">(</span><span class="s2">&quot;eval_fp&quot;</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p><img alt="High Conf Eval FPs Sort" src="../_images/evaluate_detections_high_conf_eval_fp.jpg" /></p>
+<p>This was one of the first images in the view. As we can see, while the evaluation is detecting <span class="math notranslate nohighlight">\(7\)</span> false positives, all of the model’s predictions seem accurate. It is just that the ground truth labels lumped a bunch of orange slices together into one box.</p>
+<p><strong>See anything interesting?</strong></p>
+<p>What you find will likely be different because a random subset of samples were chosen. In our case, we find missing ground truth boxes for two of the laptop keyboards, a bottle, and even perhaps a cell phone. The model did not confidently predict many of the boxes in this image, but from a high-level, an example like this makes us consider the consequences of including complex or dense images in datasets. It will likely mean incorrect or incomplete ground truth annotations the annotators are not
+diligent! And that ultimately leads to confused models, and misinformed evaluations.</p>
+<p>This conclusion would have been nearly impossible to achieve without visually inspecting the individual samples in the dataset according to the variety of criteria that we considered in this tutorial.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[45]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">session</span><span class="o">.</span><span class="n">freeze</span><span class="p">()</span>  <span class="c1"># screenshot the active App for sharing</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Tagging-and-next-steps">
+<h3>Tagging and next steps<a class="headerlink" href="#Tagging-and-next-steps" title="Permalink to this headline">¶</a></h3>
+<p>In practice, the next step is to take action on the issues that we identified above. A natural first step is to <em>tag</em> the issues so they can be retrieved and dealt with later. FiftyOne provides support for <a class="reference external" href="https://voxel51.com/docs/fiftyone/user_guide/app.html#tags-and-tagging">tagging samples and labels</a>, both programmatically and via the App.</p>
+<p>In your App instance, try tagging the predictions with missing ground truth detections. You can do this by clicking on the boxes of the predictions of interest and using the tagging element in the top-right corner to assign a <code class="docutils literal notranslate"><span class="pre">possibly-missing</span></code> tag.</p>
+<p>Alternatively, we can programmatically tag a batch of labels by creating a view that contains the objects of interest and then applying <a class="reference external" href="https://voxel51.com/docs/fiftyone/user_guide/fiftyone.core.collections.html?highlight=tag_labels#fiftyone.core.collections.SampleCollection.tag_labels">tag_labels()</a>:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[44]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Tag all highly confident false positives as &quot;possibly-missing&quot;</span>
+<span class="p">(</span>
+    <span class="n">high_conf_view</span>
+        <span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span><span class="s2">&quot;faster_rcnn&quot;</span><span class="p">,</span> <span class="n">F</span><span class="p">(</span><span class="s2">&quot;eval&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;fp&quot;</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">select_fields</span><span class="p">(</span><span class="s2">&quot;faster_rcnn&quot;</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">tag_labels</span><span class="p">(</span><span class="s2">&quot;possibly-missing&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>These tagged labels could then be sent off to our annotation provider of choice for review and addition to the ground truth labels. FiftyOne currently offers integrations for <a class="reference external" href="https://voxel51.com/docs/fiftyone/api/fiftyone.utils.scale.html">Scale AI</a>, <a class="reference external" href="https://voxel51.com/docs/fiftyone/api/fiftyone.utils.labelbox.html">Labelbox</a>, and <a class="reference external" href="https://voxel51.com/docs/fiftyone/api/fiftyone.types.dataset_types.html?highlight=cvat#fiftyone.types.dataset_types.CVATImageDataset">CVAT</a>.</p>
+<p>For example, the snippet below exports the tagged labels and their source media to disk in CVAT format:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Export all labels with the `possibly-missing` tag in CVAT format</span>
+<span class="p">(</span>
+    <span class="n">dataset</span>
+        <span class="o">.</span><span class="n">select_labels</span><span class="p">(</span><span class="n">tags</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;possibly-missing&quot;</span><span class="p">])</span>
+        <span class="o">.</span><span class="n">export</span><span class="p">(</span><span class="s2">&quot;/path/for/export&quot;</span><span class="p">,</span> <span class="n">fo</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">CVATImageDataset</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="Summary">
+<h2>Summary<a class="headerlink" href="#Summary" title="Permalink to this headline">¶</a></h2>
+<p>In this tutorial, we covered loading a dataset into FiftyOne and analyzing the performance of an out-of-the-box object detection model on the dataset.</p>
+<p><strong>So, what’s the takeaway?</strong></p>
+<p>Aggregate evaluation results for an object detector are important, but they alone don’t tell the whole story of a model’s performance. It’s critical to study the failure modes of your model so you can take the right actions to improve them.</p>
+<p>In this tutorial, we covered two types of analysis:</p>
+<ul class="simple">
+<li><p>Analyzing the performance of your detector across different strata, like high confidence, small objects in crowded scenes</p></li>
+<li><p>Inspecting the hardest samples in your dataset to diagnose the underlying issue, whether it be your detector or the ground truth annotations</p></li>
+</ul>
+</div>
+</div>
+
+
+             </article>
+             
+            </div>
+            <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="evaluate_classifications.html" class="btn btn-neutral float-right" title="Evaluating a Classifier with FiftyOne" accesskey="n" rel="next">Next <img src="../_static/images/chevron-right-orange.svg" class="next-page"></a>
+      
+      
+        <a href="pandas_comparison.html" class="btn btn-neutral" title="pandas-style queries in FiftyOne" accesskey="p" rel="prev"><img src="../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
+      
+    </div>
+  
+</footer>
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              <ul>
+<li><a class="reference internal" href="#">Evaluating Object Detections with FiftyOne</a><ul>
+<li><a class="reference internal" href="#Setup">Setup</a></li>
+<li><a class="reference internal" href="#Add-predictions-to-dataset">Add predictions to dataset</a></li>
+<li><a class="reference internal" href="#Analyzing-detections">Analyzing detections</a><ul>
+<li><a class="reference internal" href="#Visualizing-bounding-boxes">Visualizing bounding boxes</a></li>
+<li><a class="reference internal" href="#Selecting-samples-of-interest">Selecting samples of interest</a></li>
+<li><a class="reference internal" href="#Confidence-thresholding-in-the-App">Confidence thresholding in the App</a></li>
+<li><a class="reference internal" href="#Confidence-thresholding-in-Python">Confidence thresholding in Python</a></li>
+<li><a class="reference internal" href="#Viewing-object-patches">Viewing object patches</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#Evaluate-detections">Evaluate detections</a><ul>
+<li><a class="reference internal" href="#Running-evaluation">Running evaluation</a></li>
+<li><a class="reference internal" href="#Aggregate-results">Aggregate results</a></li>
+<li><a class="reference internal" href="#Sample-level-analysis">Sample-level analysis</a></li>
+<li><a class="reference internal" href="#Evaluation-views">Evaluation views</a></li>
+<li><a class="reference internal" href="#View-the-best-performing-samples">View the best-performing samples</a></li>
+<li><a class="reference internal" href="#View-the-worst-performing-samples">View the worst-performing samples</a></li>
+<li><a class="reference internal" href="#Filtering-by-bounding-box-area">Filtering by bounding box area</a></li>
+<li><a class="reference internal" href="#Viewing-detections-in-a-crowd">Viewing detections in a crowd</a></li>
+<li><a class="reference internal" href="#More-complex-insights">More complex insights</a></li>
+<li><a class="reference internal" href="#Tagging-and-next-steps">Tagging and next steps</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#Summary">Summary</a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  
+
+
+  
+
+     
+       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+         <script src="../_static/jquery.js"></script>
+         <script src="../_static/underscore.js"></script>
+         <script src="../_static/doctools.js"></script>
+         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+         <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+         <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+         <script src="../_static/js/voxel51-website.js"></script>
+         <script src="../_static/js/custom.js"></script>
+     
+
+  
+
+  <script type="text/javascript" src="../_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="../_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+  <!-- Begin Footer -->
+
+
+<footer class="footer-wrapper" id="docs-tutorials-resources">
+  <div class="footer pytorch-container">
+    <div class="footer__logo">
+      <a href="https://voxel51.com/"
+        ><img
+          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
+      /></a>
+    </div>
+
+    <div class="footer__address">
+      330 E Liberty St<br />
+      Ann Arbor, MI 48104<br />
+      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
+    </div>
+
+    <!--
+    <div class="footer__contact">
+      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
+    </div>
+    -->
+
+    <div class="footer__links">
+      <div class="footer__links--col2">
+        <p class="nav__item--brand">Products</p>
+        <a href="https://voxel51.com/fiftyone/">FiftyOne</a>
+        <a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a>
+        <a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a>
+        <a href="https://voxel51.com/success-stories/">Success Stories</a>
+      </div>
+      <div class="footer__links--col3">
+        <p class="nav__item--brand">Resources</p>
+        <a href="https://voxel51.com/blog/">Blog</a>
+        <a href="https://docs.voxel51.com/">Docs</a>
+        <a href="https://github.com/voxel51/">GitHub</a>
+        <a href="https://community.voxel51.com">Discord</a>
+        <a href="https://voxel51.com/ourstory/">About Us</a>
+        <a href="https://voxel51.com/computer-vision-events/">Events</a>
+        <a href="https://voxel51.com/jobs/">Careers</a>
+        <a href="https://voxel51.com/press/">Press</a>
+      </div>
+    </div>
+
+    <div class="footer__icons">
+      <ul class="list-inline">
+        <li>
+          <a href="https://www.linkedin.com/company/voxel51/">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/voxel51/">
+            <i class="fa-brands fa-github"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/voxel51">
+            <i class="fa-brands fa-twitter"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/voxel51/">
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="footer__copyright">
+      <ul class="list-inline">
+        <li>&copy; 2024 Voxel51 Inc.</li>
+        <li>
+          <a href="https://voxel51.com/privacy/">Privacy Policy</a>
+        </li>
+        <li>
+          <a href="https://voxel51.com/terms/">Terms of Service</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<!-- https://buttons.github.io -->
+<script async defer src="https://buttons.github.io/buttons.js" ></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XD15NFRY3M" ></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+  gtag("config", "G-XD15NFRY3M");
+</script>
+
+<script>
+  function open_modal(modal_id, modal_closer_id) {
+    // Get the modal
+    let the_modal = document.getElementById(modal_id);
+
+    the_modal.style.display = "flex";
+    document.body.style.overflow = "hidden";
+
+    let the_modal_closer = document.getElementById(modal_closer_id);
+
+    // When the user clicks on <span> (x), close the modal
+    the_modal_closer &&
+      (the_modal_closer.onclick = function () {
+        the_modal.style.display = "none";
+      });
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+      if (event.target == the_modal) {
+        the_modal.style.display = "none";
+        document.body.style.overflow = "unset";
+        window.onclick = undefined;
+      }
+    };
+  }
+</script>
+
+<!-- bigpicture.io -->
+<script>
+  !(function (e, t, i) {
+    var r = (e.bigPicture = e.bigPicture || []);
+    if (!r.initialized)
+      if (r.invoked)
+        e.console &&
+          console.error &&
+          console.error("BigPicture.io snippet included twice.");
+      else {
+        (r.invoked = !0),
+          (r.SNIPPET_VERSION = 1.5),
+          (r.handler = function (e) {
+            if (void 0 !== r.callback)
+              try {
+                return r.callback(e);
+              } catch (e) {}
+          }),
+          (r.eventList = ["mousedown", "mouseup", "click", "submit"]),
+          (r.methods = [
+            "track",
+            "identify",
+            "page",
+            "group",
+            "alias",
+            "integration",
+            "ready",
+            "intelReady",
+            "consentReady",
+            "on",
+            "off",
+          ]),
+          (r.factory = function (e) {
+            return function () {
+              var t = Array.prototype.slice.call(arguments);
+              return t.unshift(e), r.push(t), r;
+            };
+          });
+        for (var n = 0; n < r.methods.length; n++) {
+          var o = r.methods[n];
+          r[o] = r.factory(o);
+        }
+        r.getCookie = function (e) {
+          var i = ("; " + t.cookie).split("; " + e + "=");
+          return 2 == i.length && i.pop().split(";").shift();
+        };
+        var c = (r.isEditor = (function () {
+          try {
+            return (
+              e.self !== e.top &&
+              (new RegExp("app" + i, "ig").test(t.referrer) ||
+                "edit" == r.getCookie("_bpr_edit"))
+            );
+          } catch (e) {
+            return !1;
+          }
+        })());
+        r.init = function (n, o) {
+          if (((r.projectId = n), (r._config = o), !c))
+            for (var a = 0; a < r.eventList.length; a++)
+              e.addEventListener(r.eventList[a], r.handler, !0);
+          var s = t.createElement("script");
+          s.async = !0;
+          var d = c ? "/editor/editor" : "/public-" + n;
+          (s.src = "//cdn" + i + d + ".js"),
+            t.getElementsByTagName("head")[0].appendChild(s);
+        };
+      }
+  })(window, document, ".bigpicture.io");
+  bigPicture.init("1646");
+</script>
+
+
+  
+
+  <!-- End Footer -->
+
+  <!-- Begin Mobile Menu -->
+
+  
+
+  <!-- End Mobile Menu -->
+
+  <script type="text/javascript" src="../_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function(e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+</body>
+</html>

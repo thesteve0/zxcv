@@ -1,0 +1,1106 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>FiftyOne Teams Installation &mdash; FiftyOne 1.3.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <link rel="stylesheet" href="../_static/css/voxel51-website.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="API Connection" href="api_connection.html" />
+    <link rel="prev" title="FiftyOne Teams Overview" href="overview.html" />
+<meta property="og:image" content="https://voxel51.com/wp-content/uploads/2024/03/3.24_webpages_Home_AV.png" />
+
+<link
+  href="https://fonts.googleapis.com/css?family=Palanquin:400,600,700,800"
+  rel="stylesheet"
+/>
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+  rel="stylesheet"
+/>
+<script src="https://tag.clearbitscripts.com/v1/pk_b9ed71c8234edd4f77326bcbfab5a4ca/tags.js"></script>
+
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+  
+</head>
+
+
+<div class="container-fluid header-holder tutorials-header" id="header-holder">
+  <nav id="nav__main" class="nav__main">
+    <div class="nav__main__logo">
+      <a href="https://voxel51.com/">
+        <img
+          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
+        />
+      </a>
+    </div>
+
+    <div class="nav__spacer desktop_only"></div>
+
+    <div id="nav__main__mobilebutton--on">
+      <a href="javascript:void(0);" onclick="navMobileButton()">
+        <i class="fa-solid fa-bars"></i>
+      </a>
+    </div>
+
+    <div id="nav__main__mobilebutton--off">
+      <a href="javascript:void(0);" onclick="navMobileButton()">
+        <i class="fa-solid fa-times"></i>
+      </a>
+    </div>
+
+    <div id="nav__main__items">
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Products</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://voxel51.com/fiftyone/">Open Source</a></li>
+            <li><a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a></li>
+            <li><a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a></li>
+            <li><a href="https://voxel51.com/success-stories/">Success Stories</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Learn</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://community.voxel51.com">Community Discord</a></li>
+            <li><a href="https://voxel51.com/blog/">Blog</a></li>
+            <li><a href="https://voxel51.com/computer-vision-events/">Events</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item">
+        <a href="https://docs.voxel51.com/">Docs</a>
+      </div>
+
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Company</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://voxel51.com/ourstory/">About Us</a></li>
+            <li><a href="https://voxel51.com/jobs/">Careers</a></li>
+            <li><a href="https://voxel51.com/talk-to-sales/">Talk to Sales</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item mobile_only">
+        <a href="https://github.com/voxel51/fiftyone">GitHub</a>
+      </div>
+
+      <div class="nav__item desktop_only" id="octocat">
+        <!-- https://buttons.github.io -->
+        <a
+          class="github-button"
+          href="https://github.com/voxel51/fiftyone"
+          data-color-scheme="no-preference: dark_high_contrast; light: dark_high_contrast; dark: dark_high_contrast;"
+          data-size="large"
+          data-show-count="true"
+          aria-label="Star voxel51/fiftyone on GitHub"
+          >Star</a
+        >
+      </div>
+
+      <div class="nav__item full_nav_only">
+        <a class="button-primary" href="https://voxel51.com/schedule-teams-workshop/" target="_blank"
+          >Schedule a workshop</a
+        >
+      </div>
+    </div>
+  </nav>
+</div>
+
+
+
+<body class="pytorch-body">
+
+   
+
+    
+
+    <div class="table-of-contents-link-wrapper">
+      <span>Table of Contents</span>
+      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+    </div>
+
+    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+      <div class="pytorch-side-scroll">
+        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          <div class="pytorch-left-menu-search">
+            
+
+            
+              
+              
+            
+
+            
+
+
+  
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+            
+          </div>
+
+           <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Overview</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">FiftyOne Teams 🚀</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_connection.html">API connection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloud_media.html">Cloud-backed media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="roles_and_permissions.html">Roles and permissions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dataset_versioning.html">Dataset Versioning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="teams_app.html">FiftyOne Teams App</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_lens.html">Data Lens <strong style="color: hsl(25, 100%, 51%); font-size: 0.85em; vertical-align: top">NEW</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_quality.html">Data Quality <strong style="color: hsl(25, 100%, 51%); font-size: 0.85em; vertical-align: top">NEW</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="query_performance.html">Query Performance <strong style="color: hsl(25, 100%, 51%); font-size: 0.85em; vertical-align: top">NEW</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="teams_plugins.html">Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="secrets.html">Secrets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="management_sdk.html">Management SDK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migrations.html">Migrations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pluggable_auth.html">Pluggable Auth</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../environments/index.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../recipes/index.html">Recipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheat_sheets/index.html">Cheat Sheets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dataset_zoo/index.html">Dataset Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_zoo/index.html">Model Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brain.html">FiftyOne Brain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/index.html">Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plugins/index.html">Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli/index.html">CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/fiftyone.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deprecation.html">Deprecation Notices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a></li>
+</ul>
+ 
+        </div>
+      </div>
+    </nav>
+
+    <div class="pytorch-container">
+      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+        <div class="pytorch-breadcrumbs-wrapper">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="../index.html">
+          
+            Docs
+          
+        </a> &gt;
+      </li>
+
+        
+          <li><a href="index.html">FiftyOne Teams</a> &gt;</li>
+        
+      <li>FiftyOne Teams Installation</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+        </div>
+
+        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+          Contents
+        </div>
+      </div>
+
+      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+        <div class="pytorch-content-left">
+
+        
+          
+          <div class="rst-content style-external-links">
+          
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+              
+  <div class="section" id="fiftyone-teams-installation">
+<span id="teams-installation"></span><h1>FiftyOne Teams Installation<a class="headerlink" href="#fiftyone-teams-installation" title="Permalink to this headline">¶</a></h1>
+<p>FiftyOne Teams deployments come with a centralized FiftyOne Teams App and
+database that allows your entire team to collaborate securely on the same
+datasets. FiftyOne Teams is deployed entirely into your environment, either
+on-premises or in a private cloud. Your data never leaves your environment.</p>
+<p>FiftyOne Teams can be deployed on a wide variety of infrastructure solutions,
+including Kubernetes and Docker.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Detailed instructions for the initial FiftyOne Teams deployment, along with
+all necessary components, are made available by your Voxel51 CS engineer
+during the onboarding process.</p>
+</div>
+<div class="section" id="python-sdk">
+<span id="teams-python-sdk"></span><h2>Python SDK<a class="headerlink" href="#python-sdk" title="Permalink to this headline">¶</a></h2>
+<p>While the <a class="reference internal" href="teams_app.html#teams-app"><span class="std std-ref">FiftyOne Teams App</span></a> allows for countless new
+App-centric workflows, any existing Python-based workflows that you’ve fallen
+in love with in the open-source version of FiftyOne are still directly
+applicable!</p>
+<p>FiftyOne Teams requires an updated Python SDK, which is a wrapper around the
+open-source FiftyOne package that adds new functionality like support for
+cloud-backed media.</p>
+<p>You can find the installation instructions under the “Install FiftyOne” section
+of the Teams App by clicking on your user icon in the upper right corner:</p>
+<a class="reference internal image-reference" href="../_images/install_fiftyone.png"><img alt="install-teams" class="align-center" src="../_images/install_fiftyone.png" style="width: 300px;" /></a>
+<p>There you’ll see instructions for installing a <code class="docutils literal notranslate"><span class="pre">fiftyone</span></code> package from the
+private PyPI server as shown below:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>--index-url<span class="w"> </span>https://<span class="si">${</span><span class="nv">TOKEN</span><span class="si">}</span>@pypi.fiftyone.ai<span class="w"> </span>fiftyone
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>See <a class="reference internal" href="#teams-installation-poetry"><span class="std std-ref">Installation with Poetry</span></a> if you use
+<code class="docutils literal notranslate"><span class="pre">poetry</span></code> instead of <code class="docutils literal notranslate"><span class="pre">pip</span></code>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Teams Python package is named <code class="docutils literal notranslate"><span class="pre">fiftyone</span></code> and has the same module
+structure as <a class="reference internal" href="../api/fiftyone.html"><span class="doc">fiftyone</span></a>, so any existing scripts you
+built using open source will continue to run after you upgrade!</p>
+</div>
+<div class="section" id="next-steps">
+<h3>Next Steps<a class="headerlink" href="#next-steps" title="Permalink to this headline">¶</a></h3>
+<p>After installing the Teams Python SDK in your virtual environment, you’ll need
+to configure two things:</p>
+<ul class="simple">
+<li><p>Your team’s <a class="reference internal" href="api_connection.html#teams-api-connection"><span class="std std-ref">API connection</span></a> or
+<a class="reference internal" href="../user_guide/config.html#configuring-mongodb-connection"><span class="std std-ref">MongoDB connection</span></a></p></li>
+<li><p>The <a class="reference internal" href="#teams-cloud-credentials"><span class="std std-ref">cloud credentials</span></a> to access your
+cloud-backed media</p></li>
+</ul>
+<p>That’s it! Any operations you perform will be stored in a centralized location
+and will be available to all users with access to the same datasets in the
+Teams App or their Python workflows.</p>
+</div>
+<div class="section" id="installation-with-poetry">
+<span id="teams-installation-poetry"></span><h3>Installation with Poetry<a class="headerlink" href="#installation-with-poetry" title="Permalink to this headline">¶</a></h3>
+<p>If you  are using <a class="reference external" href="https://python-poetry.org/">poetry</a> to install your
+dependencies rather than <code class="docutils literal notranslate"><span class="pre">pip</span></code>, you will need to follow instructions in
+<a class="reference external" href="https://python-poetry.org/docs/repositories/#installing-from-private-package-sources">the docs for installing from a private repository.</a>
+The two key points are specifying the additional private source and declaring
+that the <code class="docutils literal notranslate"><span class="pre">fiftyone</span></code> module should be found there and not the default PyPI
+location.</p>
+<div class="section" id="add-source">
+<h4>Add source<a class="headerlink" href="#add-source" title="Permalink to this headline">¶</a></h4>
+<p>In poetry v1.5, it is recommended to use an
+<a class="reference external" href="https://python-poetry.org/docs/repositories/#explicit-package-sources">explicit package source.</a></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>poetry<span class="w"> </span><span class="nb">source</span><span class="w"> </span>add<span class="w"> </span>--priority<span class="o">=</span>explicit<span class="w"> </span>fiftyone-teams<span class="w"> </span>https://pypi.fiftyone.ai/simple/
+</pre></div>
+</div>
+<p>Prior to v1.5, you should use the deprecated
+<a class="reference external" href="https://python-poetry.org/docs/1.4/repositories/#secondary-package-sources">secondary package source.</a></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>poetry<span class="w"> </span><span class="nb">source</span><span class="w"> </span>add<span class="w"> </span>--secondary<span class="w"> </span>fiftyone-teams<span class="w"> </span>https://pypi.fiftyone.ai/simple/
+</pre></div>
+</div>
+</div>
+<div class="section" id="configure-credentials">
+<h4>Configure credentials<a class="headerlink" href="#configure-credentials" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>poetry<span class="w"> </span>config<span class="w"> </span>http-basic.fiftyone-teams<span class="w"> </span><span class="si">${</span><span class="nv">TOKEN</span><span class="si">}</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+</pre></div>
+</div>
+<p>Alternatively, you can specify the credentials in environment variables.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">POETRY_HTTP_BASIC_FIFTYONE_TEAMS_USERNAME</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">TOKEN</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">POETRY_HTTP_BASIC_FIFTYONE_TEAMS_PASSWORD</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+</pre></div>
+</div>
+<p>If you have trouble configuring the credentials, see
+<a class="reference external" href="https://python-poetry.org/docs/repositories/#configuring-credentials">more in the poetry docs here.</a></p>
+</div>
+<div class="section" id="add-fiftyone-dependency">
+<h4>Add fiftyone dependency<a class="headerlink" href="#add-fiftyone-dependency" title="Permalink to this headline">¶</a></h4>
+<p>Replace <code class="docutils literal notranslate"><span class="pre">X.Y.Z</span></code> with the proper version</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">poetry</span> <span class="n">add</span> <span class="o">--</span><span class="n">source</span> <span class="n">fiftyone</span><span class="o">-</span><span class="n">teams</span> <span class="n">fiftyone</span><span class="o">==</span><span class="n">X</span><span class="o">.</span><span class="n">Y</span><span class="o">.</span><span class="n">Z</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Due to an <a class="reference external" href="https://github.com/python-poetry/poetry/issues/4046">unresolved misalignment</a>
+with <code class="docutils literal notranslate"><span class="pre">poetry</span></code> and a FiftyOne dependency, <code class="docutils literal notranslate"><span class="pre">kaleido</span></code>, you must add it
+to your own dependencies as well:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">poetry</span> <span class="n">add</span> <span class="n">kaleido</span><span class="o">==</span><span class="mf">0.2.1</span>
+</pre></div>
+</div>
+</div>
+<p>You should then see snippets in the <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> file like the following
+(the <code class="docutils literal notranslate"><span class="pre">priority</span></code> line will be different for <code class="docutils literal notranslate"><span class="pre">poetry&lt;v1.5</span></code>):</p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[[tool.poetry.source]]</span>
+<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;fiftyone-teams&quot;</span>
+<span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;https://pypi.fiftyone.ai&quot;</span>
+<span class="n">priority</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;explicit&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[tool.poetry.dependencies]</span>
+<span class="n">fiftyone</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">version</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;X.Y.Z&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">source</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;fiftyone-teams}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="cloud-credentials">
+<span id="teams-cloud-credentials"></span><h2>Cloud credentials<a class="headerlink" href="#cloud-credentials" title="Permalink to this headline">¶</a></h2>
+<p>In order to utilize cloud-backed media functionality of FiftyOne Teams, at
+least one cloud source must be configured with proper credentials. Below are
+instructions for configuring each supported cloud provider for local SDK use
+or directly to the Teams containers. An admin can also <a class="reference internal" href="#teams-cloud-storage-page"><span class="std std-ref">configure
+credentials for use by all app users</span></a>.</p>
+<div class="section" id="cross-origin-resource-sharing-cors">
+<span id="teams-cors"></span><h3>Cross-origin resource sharing (CORS)<a class="headerlink" href="#cross-origin-resource-sharing-cors" title="Permalink to this headline">¶</a></h3>
+<p>If your datasets include cloud-backed
+<a class="reference internal" href="../user_guide/using_datasets.html#point-cloud-datasets"><span class="std std-ref">point clouds</span></a> or
+<a class="reference internal" href="../user_guide/using_datasets.html#semantic-segmentation"><span class="std std-ref">segmentation maps</span></a>, you may need to configure
+cross-origin resource sharing (CORS) for your cloud buckets. Details are
+provided below for each cloud platform.</p>
+</div>
+<div class="section" id="browser-caching">
+<h3>Browser caching<a class="headerlink" href="#browser-caching" title="Permalink to this headline">¶</a></h3>
+<p>If your datasets include cloud-backed media, we strongly recommend configuring your data
+sources to allow for built in browser caching. This will cache signed URL responses
+so you don’t need to reload assets from your cloud storage between sessions.
+Details are provided below for each cloud platform.</p>
+</div>
+<div class="section" id="amazon-s3">
+<span id="teams-amazon-s3"></span><h3>Amazon S3<a class="headerlink" href="#amazon-s3" title="Permalink to this headline">¶</a></h3>
+<p>To work with FiftyOne datasets whose media are stored in Amazon S3, you simply
+need to provide
+<a class="reference external" href="https://boto3.amazonaws.com/v1/documentation/api/latest/guide/configuration.html#using-a-configuration-file">AWS credentials</a>
+to your Teams client with read access to the relevant objects and buckets.</p>
+<p>You can do this in any of the following ways:</p>
+<p>1. Configure/provide AWS credentials in any format supported by the
+<a class="reference external" href="https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html#configuring-credentials">boto3 library</a>.
+For example, here are two of the supported methods:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Access key</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">AWS_ACCESS_KEY_ID</span><span class="o">=</span>...
+<span class="nb">export</span><span class="w"> </span><span class="nv">AWS_SECRET_ACCESS_KEY</span><span class="o">=</span>...
+<span class="nb">export</span><span class="w"> </span><span class="nv">AWS_SESSION_TOKEN</span><span class="o">=</span>...<span class="w"> </span><span class="c1"># if applicable</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">AWS_DEFAULT_REGION</span><span class="o">=</span>...
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Web identity provider</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">AWS_ROLE_ARN</span><span class="o">=</span>...
+<span class="nb">export</span><span class="w"> </span><span class="nv">AWS_WEB_IDENTITY_TOKEN_FILE</span><span class="o">=</span>...
+<span class="nb">export</span><span class="w"> </span>AWS_ROLE_SESSION_NAME...<span class="w"> </span><span class="c1">#if applicable</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">AWS_DEFAULT_REGION</span><span class="o">=</span>...
+</pre></div>
+</div>
+<p>2. Provide AWS credentials on a per-session basis by setting one of the
+following sets of environment variables to point to your AWS credentials on
+disk:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># AWS config file</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">AWS_CONFIG_FILE</span><span class="o">=</span><span class="s2">&quot;/path/to/aws-config.ini&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">AWS_PROFILE</span><span class="o">=</span>default<span class="w">  </span><span class="c1"># optional</span>
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Shared credentials file</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">AWS_SHARED_CREDENTIALS_FILE</span><span class="o">=</span><span class="s2">&quot;/path/to/aws-credentials.ini&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">AWS_PROFILE</span><span class="o">=</span>default<span class="w">  </span><span class="c1"># optional</span>
+</pre></div>
+</div>
+<p>In the above, the config file should use
+<a class="reference external" href="https://boto3.amazonaws.com/v1/documentation/api/latest/guide/configuration.html#using-a-configuration-file">this syntax</a>
+and the shared credentials file should use
+<a class="reference external" href="https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html#shared-credentials-file">this syntax</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>FiftyOne Teams requires either the <code class="code docutils literal notranslate"><span class="pre">s3:ListBucket</span></code> or
+<code class="code docutils literal notranslate"><span class="pre">s3:GetBucketLocation</span></code> permission in order to access objects in S3 buckets.</p>
+<p>If you wish to use multi-account credentials, your credentials must have
+the <code class="code docutils literal notranslate"><span class="pre">s3:ListBucket</span></code> permission, as <code class="code docutils literal notranslate"><span class="pre">s3:GetBucketLocation</span></code> does not support
+this.</p>
+</div>
+<p>3. Permanently register AWS credentials on a particular machine by adding the
+following keys to your <a class="reference internal" href="cloud_media.html#teams-media-cache-config"><span class="std std-ref">media cache config</span></a>:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>{
+    &quot;aws_config_file&quot;: &quot;/path/to/aws-config.ini&quot;,
+    &quot;aws_profile&quot;: &quot;default&quot;  # optional
+}
+</pre></div>
+</div>
+<p>If you need to <a class="reference external" href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/enabling-cors-examples.html">configure CORS on your AWS buckets</a>,
+here is an example configuration:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;origin&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;https://fiftyone-teams-deployment.yourcompany.com&quot;</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;HEAD&quot;</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;responseHeader&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;maxAgeSeconds&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">86400</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>If you would like to take advantage of browser caching you can
+<a class="reference external" href="https://docs.aws.amazon.com/whitepapers/latest/build-static-websites-aws/controlling-how-long-amazon-s3-content-is-cached-by-amazon-cloudfront.html#specify-cache-control-headers">specify cache-control headers on S3 objects</a>.
+By default S3 does not provide cache-control headers so it will be up to your browser’s
+heuristics engine to determine how long to cache the object.</p>
+</div>
+<div class="section" id="google-cloud-storage">
+<span id="teams-google-cloud"></span><h3>Google Cloud Storage<a class="headerlink" href="#google-cloud-storage" title="Permalink to this headline">¶</a></h3>
+<p>To work with FiftyOne datasets whose media are stored in Google Cloud Storage,
+you simply need to provide <a class="reference external" href="https://cloud.google.com/docs/authentication">credentials</a>
+to your Teams client with read access to the relevant objects and buckets.</p>
+<p>You can do this in any of the following ways:</p>
+<p>1. Configure
+<a class="reference external" href="https://cloud.google.com/docs/authentication/application-default-credentials">application default credentials</a>
+in a manner supported by Google Cloud, such as:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://cloud.google.com/docs/authentication/application-default-credentials#personal">Using the gcloud CLI</a></p></li>
+<li><p><a class="reference external" href="https://cloud.google.com/docs/authentication/application-default-credentials#attached-sa">Attaching a service account to your Google Cloud resource</a></p></li>
+</ul>
+<p>2. Provide GCS credentials on a per-session basis by setting the following
+environment variables to point to your GCS credentials on disk:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">GOOGLE_APPLICATION_CREDENTIALS</span><span class="o">=</span><span class="s2">&quot;/path/to/gcp-credentials.json&quot;</span>
+</pre></div>
+</div>
+<p>3. Permanently register GCS credentials on a particular machine by adding the
+following keys to your <a class="reference internal" href="cloud_media.html#teams-media-cache-config"><span class="std std-ref">media cache config</span></a>:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;google_application_credentials&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/path/to/gcp-credentials.json&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In the above, the credentials file can contain any format supported by
+<a class="reference external" href="https://google-auth.readthedocs.io/en/master/reference/google.auth.html#google.auth.load_credentials_from_file">google.auth.load_credentials_from_file()</a>,
+which includes a service account key, stored authorized user credentials, or
+external account credentials.</p>
+<p>If you need to <a class="reference external" href="https://cloud.google.com/storage/docs/using-cors">configure CORS on your GCP buckets</a>,
+here is an example configuration:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;origin&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;https://fiftyone-teams-deployment.yourcompany.com&quot;</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;HEAD&quot;</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;responseHeader&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;maxAgeSeconds&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3600</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>If you would like to take advantage of browser caching you can
+<a class="reference external" href="https://cloud.google.com/storage/docs/metadata#cache-control">specify cache-control headers on GCP content</a>.
+By default GCP sets the max-age=0 seconds meaning no caching will occur.</p>
+</div>
+<div class="section" id="microsoft-azure">
+<span id="teams-azure"></span><h3>Microsoft Azure<a class="headerlink" href="#microsoft-azure" title="Permalink to this headline">¶</a></h3>
+<p>To work with FiftyOne datasets whose media are stored in Azure Storage, you
+simply need to provide
+<a class="reference external" href="https://learn.microsoft.com/en-us/azure/storage/blobs/authorize-data-operations-cli">Azure credentials</a>
+to your Teams client with read access to the relevant objects and containers.</p>
+<p>You can do this in any of the following ways:</p>
+<p>1. Provide your Azure credentials in any manner recognized by
+<a class="reference external" href="https://learn.microsoft.com/en-us/python/api/azure-identity/azure.identity.defaultazurecredential?view=azure-python">azure.identity.DefaultAzureCredential</a></p>
+<p>2. Provide your Azure credentials on a per-session basis by setting any group
+of environment variables shown below:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Option 1</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">AZURE_STORAGE_CONNECTION_STRING</span><span class="o">=</span>...
+<span class="nb">export</span><span class="w"> </span><span class="nv">AZURE_ALIAS</span><span class="o">=</span>...<span class="w">  </span><span class="c1"># optional</span>
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Option 2</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">AZURE_STORAGE_ACCOUNT</span><span class="o">=</span>...
+<span class="nb">export</span><span class="w"> </span><span class="nv">AZURE_STORAGE_KEY</span><span class="o">=</span>...
+<span class="nb">export</span><span class="w"> </span><span class="nv">AZURE_ALIAS</span><span class="o">=</span>...<span class="w">  </span><span class="c1"># optional</span>
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Option 3</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">AZURE_STORAGE_ACCOUNT</span><span class="o">=</span>...
+<span class="nb">export</span><span class="w"> </span><span class="nv">AZURE_CLIENT_ID</span><span class="o">=</span>...
+<span class="nb">export</span><span class="w"> </span><span class="nv">AZURE_CLIENT_SECRET</span><span class="o">=</span>...
+<span class="nb">export</span><span class="w"> </span><span class="nv">AZURE_TENANT_ID</span><span class="o">=</span>...
+<span class="nb">export</span><span class="w"> </span><span class="nv">AZURE_ALIAS</span><span class="o">=</span>...<span class="w">  </span><span class="c1"># optional</span>
+</pre></div>
+</div>
+<p>3. Provide Azure credentials on a per-session basis by setting the following
+environment variables to point to your Azure credentials on disk:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">AZURE_CREDENTIALS_FILE</span><span class="o">=</span>/path/to/azure-credentials.ini
+<span class="nb">export</span><span class="w"> </span><span class="nv">AZURE_PROFILE</span><span class="o">=</span>default<span class="w">  </span><span class="c1"># optional</span>
+</pre></div>
+</div>
+<p>4. Permanently register Azure credentials on a particular machine by adding the
+following keys to your <a class="reference internal" href="cloud_media.html#teams-media-cache-config"><span class="std std-ref">media cache config</span></a>:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>{
+    &quot;azure_credentials_file&quot;: &quot;/path/to/azure-credentials.ini&quot;,
+    &quot;azure_profile&quot;: &quot;default&quot;  # optional
+}
+</pre></div>
+</div>
+<p>In the options above, the <code class="code docutils literal notranslate"><span class="pre">.ini</span></code> file should have syntax similar to one of
+the following:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>default<span class="o">]</span>
+<span class="nv">conn_str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>...
+<span class="nb">alias</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>...<span class="w">  </span><span class="c1"># optional</span>
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>default<span class="o">]</span>
+<span class="nv">account_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>...
+<span class="nv">account_key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>...
+<span class="nb">alias</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>...<span class="w">  </span><span class="c1"># optional</span>
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>default<span class="o">]</span>
+<span class="nv">account_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>...
+<span class="nv">client_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>...
+<span class="nv">secret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>...
+<span class="nv">tenant</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>...
+<span class="nb">alias</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>...<span class="w">  </span><span class="c1"># optional</span>
+</pre></div>
+</div>
+<p>When populating samples with Azure Storage filepaths, you can either specify
+paths by their full URL:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">filepath</span> <span class="o">=</span> <span class="s2">&quot;https://$</span><span class="si">{account_name}</span><span class="s2">.blob.core.windows.net/container/path/to/object.ext&quot;</span>
+
+<span class="c1"># For example</span>
+<span class="n">filepath</span> <span class="o">=</span> <span class="s2">&quot;https://voxel51.blob.core.windows.net/test-container/image.jpg&quot;</span>
+</pre></div>
+</div>
+<p>or, if you have defined an alias in your config, you may instead prefix the
+alias:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">filepath</span> <span class="o">=</span> <span class="s2">&quot;$</span><span class="si">{alias}</span><span class="s2">://container/path/to/object.ext&quot;</span>
+
+<span class="c1"># For example</span>
+<span class="n">filepath</span> <span class="o">=</span> <span class="s2">&quot;az://test-container/image.jpg&quot;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you use a
+<a class="reference external" href="https://learn.microsoft.com/en-us/azure/storage/blobs/storage-custom-domain-name?tabs=azure-portal">custom Azure domain</a>,
+you can provide it by setting the
+<code class="code docutils literal notranslate"><span class="pre">AZURE_STORAGE_ACCOUNT_URL</span></code> environment variable or by including the
+<code class="code docutils literal notranslate"><span class="pre">account_url</span></code> key in your credentials <code class="code docutils literal notranslate"><span class="pre">.ini</span></code> file.</p>
+</div>
+<p>If you would like to take advantage of browser caching you can
+<a class="reference external" href="https://learn.microsoft.com/en-us/azure/cdn/cdn-manage-expiration-of-blob-content#setting-cache-control-headers-by-using-azure-powershell">specify cache-control headers on Azure blobs</a>.
+By default Azure does not provide cache-control headers so it will be up to your browser’s
+heuristics engine to determine how long to cache the object.</p>
+</div>
+<div class="section" id="minio">
+<span id="teams-minio"></span><h3>MinIO<a class="headerlink" href="#minio" title="Permalink to this headline">¶</a></h3>
+<p>To work with FiftyOne datasets whose media are stored in
+<a class="reference external" href="https://min.io/">MinIO</a>, you simply need to provide the credentials to your
+Teams client with read access to the relevant objects and buckets.</p>
+<p>You can do this in any of the following ways:</p>
+<p>1. Provide your MinIO credentials on a per-session basis by setting the
+individual environment variables shown below:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">MINIO_ACCESS_KEY</span><span class="o">=</span>...
+<span class="nb">export</span><span class="w"> </span><span class="nv">MINIO_SECRET_ACCESS_KEY</span><span class="o">=</span>...
+<span class="nb">export</span><span class="w"> </span><span class="nv">MINIO_ENDPOINT_URL</span><span class="o">=</span>...
+<span class="nb">export</span><span class="w"> </span><span class="nv">MINIO_ALIAS</span><span class="o">=</span>...<span class="w">  </span><span class="c1"># optional</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">MINIO_REGION</span><span class="o">=</span>...<span class="w">  </span><span class="c1"># if applicable</span>
+</pre></div>
+</div>
+<p>2. Provide MinIO credentials on a per-session basis by setting the following
+environment variables to point to your MinIO credentials on disk:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">MINIO_CONFIG_FILE</span><span class="o">=</span>/path/to/minio-config.ini
+<span class="nb">export</span><span class="w"> </span><span class="nv">MINIO_PROFILE</span><span class="o">=</span>default<span class="w">  </span><span class="c1"># optional</span>
+</pre></div>
+</div>
+<p>3. Permanently register MinIO credentials on a particular machine by adding the
+following keys to your <a class="reference internal" href="cloud_media.html#teams-media-cache-config"><span class="std std-ref">media cache config</span></a>:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>{
+    &quot;minio_config_file&quot;: &quot;/path/to/minio-config.ini&quot;,
+    &quot;minio_profile&quot;: &quot;default&quot;  # optional
+}
+</pre></div>
+</div>
+<p>In the options above, the <code class="code docutils literal notranslate"><span class="pre">.ini</span></code> file should have syntax similar the following:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>default<span class="o">]</span>
+<span class="nv">access_key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>...
+<span class="nv">secret_access_key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>...
+<span class="nv">endpoint_url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>...
+<span class="nb">alias</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>...<span class="w">  </span><span class="c1"># optional</span>
+<span class="nv">region</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>...<span class="w">  </span><span class="c1"># if applicable</span>
+</pre></div>
+</div>
+<p>When populating samples with MinIO filepaths, you can either specify paths by
+prefixing your MinIO endpoint URL:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">filepath</span> <span class="o">=</span> <span class="s2">&quot;$</span><span class="si">{endpoint_url}</span><span class="s2">/bucket/path/to/object.ext&quot;</span>
+
+<span class="c1"># For example</span>
+<span class="n">filepath</span> <span class="o">=</span> <span class="s2">&quot;https://voxel51.min.io/test-bucket/image.jpg&quot;</span>
+</pre></div>
+</div>
+<p>or, if you have defined an alias in your config, you may instead prefix the
+alias:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">filepath</span> <span class="o">=</span> <span class="s2">&quot;$</span><span class="si">{alias}</span><span class="s2">://bucket/path/to/object.ext&quot;</span>
+
+<span class="c1"># For example</span>
+<span class="n">filepath</span> <span class="o">=</span> <span class="s2">&quot;minio://test-bucket/image.jpg&quot;</span>
+</pre></div>
+</div>
+<p>If you would like to take advantage of browser caching you can
+<a class="reference external" href="https://min.io/docs/minio/linux/developers/python/API.html">specify cache-control headers on MinIO content using the metadata field of the put_object API</a>.
+By default Minio does not provide cache-control headers so it will be up to your browser’s
+heuristics engine to determine how long to cache the object.</p>
+</div>
+<div class="section" id="extra-client-arguments">
+<span id="teams-extra-kwargs"></span><h3>Extra client arguments<a class="headerlink" href="#extra-client-arguments" title="Permalink to this headline">¶</a></h3>
+<p>Configuring credentials following the instructions above is almost always
+sufficient for FiftyOne Teams to properly utilize them. In rare cases where the
+cloud provider client needs non-default configuration, you can add extra client
+kwargs via the <a class="reference internal" href="cloud_media.html#teams-media-cache-config"><span class="std std-ref">media cache config</span></a>:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;extra_client_kwargs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;azure&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;extra_kwarg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;value&quot;</span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;gcs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;extra_kwarg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;value&quot;</span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;minio&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;extra_kwarg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;value&quot;</span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;s3&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;extra_kwarg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;value&quot;</span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Provider names and the class that extra kwargs are passed to:</p>
+<ul class="simple">
+    <li> <strong>azure</strong>: <code class="docutils literal notranslate> <span class="pre">azure.identity.DefaultAzureCredential</span></code> </li>
+    <li> <strong>gcs</strong>: <code class="docutils literal notranslate> <span class="pre">google.cloud.storage.Client</span></code> </li>
+    <li> <strong>minio</strong>: <code class="docutils literal notranslate> <span class="pre">botocore.config.Config</span></code> </li>
+    <li> <strong>s3</strong>: <code class="docutils literal notranslate> <span class="pre">botocore.config.Config</span></code> </li>
+</ul></div>
+</div>
+<div class="section" id="cloud-storage-page">
+<span id="teams-cloud-storage-page"></span><h2>Cloud storage page<a class="headerlink" href="#cloud-storage-page" title="Permalink to this headline">¶</a></h2>
+<p>Admins can also configure cloud credentials via the Settings &gt; Cloud storage
+page.</p>
+<p>Credentials configured via this page are stored (encrypted) in the Teams
+database, rather than needing to be configured through environment variables in
+your Teams deployment.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Any credentials configured via environment variables in your deployment
+will not be displayed in this page.</p>
+</div>
+<p>To upload a new credential, click the <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">credential</span></code> button:</p>
+<img alt="cloud-creds-add-credentials-button" class="align-center" src="../_images/cloud_creds_add_btn.png" />
+<p>This will open a modal that you can use to add a credential for any of the
+available providers:</p>
+<img alt="blank-cloud-creds-modal" class="align-center" src="../_images/cloud_creds_modal_blank.png" />
+<p>After the appropriate files or fields are populated, click <code class="docutils literal notranslate"><span class="pre">Save</span> <span class="pre">credential</span></code>
+to store the (encrypted) credential.</p>
+<p>As depicted in the screenshot above, a credential can optionally be restricted
+to a specific list of bucket(s):</p>
+<ul class="simple">
+<li><p>If one or more buckets are provided, the credentials are
+<strong>bucket-specific credentials</strong> that will only be used to read/write media
+within the specified bucket(s)</p></li>
+<li><p>If no buckets are provided, the credentials are <strong>default credentials</strong>
+that will be used whenever trying to read/write any media for the provider
+that does not belong to a bucket with bucket-specific credentials</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Bucket-specific credentials are useful in situations where you cannot or
+do not wish to provide a single set of credentials to cover all buckets
+that your team plans to use within a given cloud storage provider.</p>
+<p>When providing bucket-specific credentials, you may either provide bucket
+names like <code class="docutils literal notranslate"><span class="pre">my-bucket</span></code>, or you can provide fully-qualified buckets like
+<code class="docutils literal notranslate"><span class="pre">s3://my-bucket</span></code> and
+<code class="docutils literal notranslate"><span class="pre">https://voxel51.blob.core.windows.net/my-container</span></code>.</p>
+</div>
+<p>Alternatively, credentials can be updated programmatically with the
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">add_cloud_credentials()</span></code>
+method in the Management SDK.</p>
+<p>Any cloud credentials uploaded via this method will automatically be used by
+the Teams UI when any user attempts to load media associated with the
+appropriate provider or specific bucket.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>By default, Teams servers refresh their credentials every 120 seconds, so
+you may need to wait up to two minutes after modifying your credentials via
+this page in order for the changes to take effect.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Users cannot access stored credentials directly, either via the Teams UI or
+by using the Teams SDK locally. The credentials are only decrypted and
+used internally by the Teams servers.</p>
+</div>
+</div>
+</div>
+
+
+             </article>
+             
+            </div>
+            <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="api_connection.html" class="btn btn-neutral float-right" title="API Connection" accesskey="n" rel="next">Next <img src="../_static/images/chevron-right-orange.svg" class="next-page"></a>
+      
+      
+        <a href="overview.html" class="btn btn-neutral" title="FiftyOne Teams Overview" accesskey="p" rel="prev"><img src="../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
+      
+    </div>
+  
+</footer>
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              <ul>
+<li><a class="reference internal" href="#">FiftyOne Teams Installation</a><ul>
+<li><a class="reference internal" href="#python-sdk">Python SDK</a><ul>
+<li><a class="reference internal" href="#next-steps">Next Steps</a></li>
+<li><a class="reference internal" href="#installation-with-poetry">Installation with Poetry</a><ul>
+<li><a class="reference internal" href="#add-source">Add source</a></li>
+<li><a class="reference internal" href="#configure-credentials">Configure credentials</a></li>
+<li><a class="reference internal" href="#add-fiftyone-dependency">Add fiftyone dependency</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cloud-credentials">Cloud credentials</a><ul>
+<li><a class="reference internal" href="#cross-origin-resource-sharing-cors">Cross-origin resource sharing (CORS)</a></li>
+<li><a class="reference internal" href="#browser-caching">Browser caching</a></li>
+<li><a class="reference internal" href="#amazon-s3">Amazon S3</a></li>
+<li><a class="reference internal" href="#google-cloud-storage">Google Cloud Storage</a></li>
+<li><a class="reference internal" href="#microsoft-azure">Microsoft Azure</a></li>
+<li><a class="reference internal" href="#minio">MinIO</a></li>
+<li><a class="reference internal" href="#extra-client-arguments">Extra client arguments</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cloud-storage-page">Cloud storage page</a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  
+
+
+  
+
+     
+       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+         <script src="../_static/jquery.js"></script>
+         <script src="../_static/underscore.js"></script>
+         <script src="../_static/doctools.js"></script>
+         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+         <script src="../_static/js/voxel51-website.js"></script>
+         <script src="../_static/js/custom.js"></script>
+     
+
+  
+
+  <script type="text/javascript" src="../_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="../_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+  <!-- Begin Footer -->
+
+
+<footer class="footer-wrapper" id="docs-tutorials-resources">
+  <div class="footer pytorch-container">
+    <div class="footer__logo">
+      <a href="https://voxel51.com/"
+        ><img
+          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
+      /></a>
+    </div>
+
+    <div class="footer__address">
+      330 E Liberty St<br />
+      Ann Arbor, MI 48104<br />
+      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
+    </div>
+
+    <!--
+    <div class="footer__contact">
+      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
+    </div>
+    -->
+
+    <div class="footer__links">
+      <div class="footer__links--col2">
+        <p class="nav__item--brand">Products</p>
+        <a href="https://voxel51.com/fiftyone/">FiftyOne</a>
+        <a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a>
+        <a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a>
+        <a href="https://voxel51.com/success-stories/">Success Stories</a>
+      </div>
+      <div class="footer__links--col3">
+        <p class="nav__item--brand">Resources</p>
+        <a href="https://voxel51.com/blog/">Blog</a>
+        <a href="https://docs.voxel51.com/">Docs</a>
+        <a href="https://github.com/voxel51/">GitHub</a>
+        <a href="https://community.voxel51.com">Discord</a>
+        <a href="https://voxel51.com/ourstory/">About Us</a>
+        <a href="https://voxel51.com/computer-vision-events/">Events</a>
+        <a href="https://voxel51.com/jobs/">Careers</a>
+        <a href="https://voxel51.com/press/">Press</a>
+      </div>
+    </div>
+
+    <div class="footer__icons">
+      <ul class="list-inline">
+        <li>
+          <a href="https://www.linkedin.com/company/voxel51/">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/voxel51/">
+            <i class="fa-brands fa-github"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/voxel51">
+            <i class="fa-brands fa-twitter"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/voxel51/">
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="footer__copyright">
+      <ul class="list-inline">
+        <li>&copy; 2024 Voxel51 Inc.</li>
+        <li>
+          <a href="https://voxel51.com/privacy/">Privacy Policy</a>
+        </li>
+        <li>
+          <a href="https://voxel51.com/terms/">Terms of Service</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<!-- https://buttons.github.io -->
+<script async defer src="https://buttons.github.io/buttons.js" ></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XD15NFRY3M" ></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+  gtag("config", "G-XD15NFRY3M");
+</script>
+
+<script>
+  function open_modal(modal_id, modal_closer_id) {
+    // Get the modal
+    let the_modal = document.getElementById(modal_id);
+
+    the_modal.style.display = "flex";
+    document.body.style.overflow = "hidden";
+
+    let the_modal_closer = document.getElementById(modal_closer_id);
+
+    // When the user clicks on <span> (x), close the modal
+    the_modal_closer &&
+      (the_modal_closer.onclick = function () {
+        the_modal.style.display = "none";
+      });
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+      if (event.target == the_modal) {
+        the_modal.style.display = "none";
+        document.body.style.overflow = "unset";
+        window.onclick = undefined;
+      }
+    };
+  }
+</script>
+
+<!-- bigpicture.io -->
+<script>
+  !(function (e, t, i) {
+    var r = (e.bigPicture = e.bigPicture || []);
+    if (!r.initialized)
+      if (r.invoked)
+        e.console &&
+          console.error &&
+          console.error("BigPicture.io snippet included twice.");
+      else {
+        (r.invoked = !0),
+          (r.SNIPPET_VERSION = 1.5),
+          (r.handler = function (e) {
+            if (void 0 !== r.callback)
+              try {
+                return r.callback(e);
+              } catch (e) {}
+          }),
+          (r.eventList = ["mousedown", "mouseup", "click", "submit"]),
+          (r.methods = [
+            "track",
+            "identify",
+            "page",
+            "group",
+            "alias",
+            "integration",
+            "ready",
+            "intelReady",
+            "consentReady",
+            "on",
+            "off",
+          ]),
+          (r.factory = function (e) {
+            return function () {
+              var t = Array.prototype.slice.call(arguments);
+              return t.unshift(e), r.push(t), r;
+            };
+          });
+        for (var n = 0; n < r.methods.length; n++) {
+          var o = r.methods[n];
+          r[o] = r.factory(o);
+        }
+        r.getCookie = function (e) {
+          var i = ("; " + t.cookie).split("; " + e + "=");
+          return 2 == i.length && i.pop().split(";").shift();
+        };
+        var c = (r.isEditor = (function () {
+          try {
+            return (
+              e.self !== e.top &&
+              (new RegExp("app" + i, "ig").test(t.referrer) ||
+                "edit" == r.getCookie("_bpr_edit"))
+            );
+          } catch (e) {
+            return !1;
+          }
+        })());
+        r.init = function (n, o) {
+          if (((r.projectId = n), (r._config = o), !c))
+            for (var a = 0; a < r.eventList.length; a++)
+              e.addEventListener(r.eventList[a], r.handler, !0);
+          var s = t.createElement("script");
+          s.async = !0;
+          var d = c ? "/editor/editor" : "/public-" + n;
+          (s.src = "//cdn" + i + d + ".js"),
+            t.getElementsByTagName("head")[0].appendChild(s);
+        };
+      }
+  })(window, document, ".bigpicture.io");
+  bigPicture.init("1646");
+</script>
+
+
+  
+
+  <!-- End Footer -->
+
+  <!-- Begin Mobile Menu -->
+
+  
+
+  <!-- End Mobile Menu -->
+
+  <script type="text/javascript" src="../_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function(e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+</body>
+</html>

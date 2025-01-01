@@ -1,0 +1,765 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Model Zoo API Reference &mdash; FiftyOne 1.3.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <link rel="stylesheet" href="../_static/css/voxel51-website.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="FiftyOne Brain" href="../brain.html" />
+    <link rel="prev" title="Model Interface" href="design.html" />
+<meta property="og:image" content="https://voxel51.com/wp-content/uploads/2024/03/3.24_webpages_Home_AV.png" />
+
+<link
+  href="https://fonts.googleapis.com/css?family=Palanquin:400,600,700,800"
+  rel="stylesheet"
+/>
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+  rel="stylesheet"
+/>
+<script src="https://tag.clearbitscripts.com/v1/pk_b9ed71c8234edd4f77326bcbfab5a4ca/tags.js"></script>
+
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+  
+</head>
+
+
+<div class="container-fluid header-holder tutorials-header" id="header-holder">
+  <nav id="nav__main" class="nav__main">
+    <div class="nav__main__logo">
+      <a href="https://voxel51.com/">
+        <img
+          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
+        />
+      </a>
+    </div>
+
+    <div class="nav__spacer desktop_only"></div>
+
+    <div id="nav__main__mobilebutton--on">
+      <a href="javascript:void(0);" onclick="navMobileButton()">
+        <i class="fa-solid fa-bars"></i>
+      </a>
+    </div>
+
+    <div id="nav__main__mobilebutton--off">
+      <a href="javascript:void(0);" onclick="navMobileButton()">
+        <i class="fa-solid fa-times"></i>
+      </a>
+    </div>
+
+    <div id="nav__main__items">
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Products</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://voxel51.com/fiftyone/">Open Source</a></li>
+            <li><a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a></li>
+            <li><a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a></li>
+            <li><a href="https://voxel51.com/success-stories/">Success Stories</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Learn</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://community.voxel51.com">Community Discord</a></li>
+            <li><a href="https://voxel51.com/blog/">Blog</a></li>
+            <li><a href="https://voxel51.com/computer-vision-events/">Events</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item">
+        <a href="https://docs.voxel51.com/">Docs</a>
+      </div>
+
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Company</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://voxel51.com/ourstory/">About Us</a></li>
+            <li><a href="https://voxel51.com/jobs/">Careers</a></li>
+            <li><a href="https://voxel51.com/talk-to-sales/">Talk to Sales</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item mobile_only">
+        <a href="https://github.com/voxel51/fiftyone">GitHub</a>
+      </div>
+
+      <div class="nav__item desktop_only" id="octocat">
+        <!-- https://buttons.github.io -->
+        <a
+          class="github-button"
+          href="https://github.com/voxel51/fiftyone"
+          data-color-scheme="no-preference: dark_high_contrast; light: dark_high_contrast; dark: dark_high_contrast;"
+          data-size="large"
+          data-show-count="true"
+          aria-label="Star voxel51/fiftyone on GitHub"
+          >Star</a
+        >
+      </div>
+
+      <div class="nav__item full_nav_only">
+        <a class="button-primary" href="https://voxel51.com/schedule-teams-workshop/" target="_blank"
+          >Schedule a workshop</a
+        >
+      </div>
+    </div>
+  </nav>
+</div>
+
+
+
+<body class="pytorch-body">
+
+   
+
+    
+
+    <div class="table-of-contents-link-wrapper">
+      <span>Table of Contents</span>
+      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+    </div>
+
+    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+      <div class="pytorch-side-scroll">
+        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          <div class="pytorch-left-menu-search">
+            
+
+            
+              
+              
+            
+
+            
+
+
+  
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+            
+          </div>
+
+           <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../teams/index.html">FiftyOne Teams 🚀</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../environments/index.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../recipes/index.html">Recipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheat_sheets/index.html">Cheat Sheets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dataset_zoo/index.html">Dataset Zoo</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Model Zoo</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="models.html">Built-in models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="remote.html">Remote models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="design.html">Model interface</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">API reference</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../brain.html">FiftyOne Brain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/index.html">Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plugins/index.html">Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli/index.html">CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/fiftyone.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deprecation.html">Deprecation Notices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a></li>
+</ul>
+ 
+        </div>
+      </div>
+    </nav>
+
+    <div class="pytorch-container">
+      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+        <div class="pytorch-breadcrumbs-wrapper">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="../index.html">
+          
+            Docs
+          
+        </a> &gt;
+      </li>
+
+        
+          <li><a href="index.html">FiftyOne Model Zoo</a> &gt;</li>
+        
+      <li>Model Zoo API Reference</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+        </div>
+
+        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+          Contents
+        </div>
+      </div>
+
+      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+        <div class="pytorch-content-left">
+
+        
+          
+          <div class="rst-content style-external-links">
+          
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+              
+  <div class="section" id="model-zoo-api-reference">
+<span id="model-zoo-api"></span><h1>Model Zoo API Reference<a class="headerlink" href="#model-zoo-api-reference" title="Permalink to this headline">¶</a></h1>
+<p>You can interact with the Model Zoo either via the Python library or the CLI.</p>
+<div class="section" id="listing-zoo-models">
+<span id="model-zoo-list"></span><h2>Listing zoo models<a class="headerlink" href="#listing-zoo-models" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="getting-information-about-zoo-models">
+<span id="model-zoo-info"></span><h2>Getting information about zoo models<a class="headerlink" href="#getting-information-about-zoo-models" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="downloading-zoo-models">
+<span id="model-zoo-download"></span><h2>Downloading zoo models<a class="headerlink" href="#downloading-zoo-models" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="installing-zoo-model-requirements">
+<span id="model-zoo-requirements"></span><h2>Installing zoo model requirements<a class="headerlink" href="#installing-zoo-model-requirements" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="loading-zoo-models">
+<span id="model-zoo-load"></span><h2>Loading zoo models<a class="headerlink" href="#loading-zoo-models" title="Permalink to this headline">¶</a></h2>
+<p>You can load a zoo model via
+<a class="reference internal" href="../api/fiftyone.zoo.models.html#fiftyone.zoo.models.load_zoo_model" title="fiftyone.zoo.models.load_zoo_model"><code class="xref py py-meth docutils literal notranslate"><span class="pre">load_zoo_model()</span></code></a>.</p>
+<p>By default, the model will be automatically downloaded from the web the first
+time you access it if it is not already downloaded:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="c1"># The model will be downloaded from the web the first time you access it</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_model</span><span class="p">(</span><span class="s2">&quot;faster-rcnn-resnet50-fpn-coco-torch&quot;</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>You can also provide additional arguments to
+<a class="reference internal" href="../api/fiftyone.zoo.models.html#fiftyone.zoo.models.load_zoo_model" title="fiftyone.zoo.models.load_zoo_model"><code class="xref py py-meth docutils literal notranslate"><span class="pre">load_zoo_model()</span></code></a> to customize
+the import behavior:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># Load the zoo model and install any necessary requirements in order to</span>
+<span class="c1"># use it (logging warnings if any issues arise)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_model</span><span class="p">(</span>
+    <span class="s2">&quot;faster-rcnn-resnet50-fpn-coco-torch&quot;</span><span class="p">,</span>
+    <span class="n">install_requirements</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">error_level</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>By default, FiftyOne will attempt to ensure that any requirements such as
+Python packages or CUDA versions are satisfied before loading the model,
+and an error will be raised if a requirement is not satisfied.</p>
+<p>You can customize this behavior via the <code class="docutils literal notranslate"><span class="pre">error_level</span></code> argument to
+<a class="reference internal" href="../api/fiftyone.zoo.models.html#fiftyone.zoo.models.load_zoo_model" title="fiftyone.zoo.models.load_zoo_model"><code class="xref py py-meth docutils literal notranslate"><span class="pre">load_zoo_model()</span></code></a>, or you can
+permanently adjust this behavior by setting the <code class="docutils literal notranslate"><span class="pre">requirement_error_level</span></code>
+parameter of your <a class="reference internal" href="../user_guide/config.html#configuring-fiftyone"><span class="std std-ref">FiftyOne config</span></a>.</p>
+<p>An <code class="docutils literal notranslate"><span class="pre">error_level</span></code> of <code class="docutils literal notranslate"><span class="pre">0</span></code> will raise an error if a requirement is not
+satisfied, <code class="docutils literal notranslate"><span class="pre">1</span></code> will log a warning if the requirement is not satisfied,
+and <code class="docutils literal notranslate"><span class="pre">2</span></code> will ignore unsatisfied requirements.</p>
+<p>If you are using a <code class="docutils literal notranslate"><span class="pre">conda</span></code> environment, it is recommended you use an
+<code class="docutils literal notranslate"><span class="pre">error_level</span></code> of <code class="docutils literal notranslate"><span class="pre">1</span></code> or <code class="docutils literal notranslate"><span class="pre">2</span></code>, since FiftyOne uses <code class="docutils literal notranslate"><span class="pre">pip</span></code> to check for
+requirements.</p>
+</div>
+</div>
+<div class="section" id="applying-zoo-models">
+<span id="model-zoo-apply"></span><h2>Applying zoo models<a class="headerlink" href="#applying-zoo-models" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="generating-embeddings-with-zoo-models">
+<span id="model-zoo-embed"></span><h2>Generating embeddings with zoo models<a class="headerlink" href="#generating-embeddings-with-zoo-models" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="controlling-where-zoo-models-are-downloaded">
+<span id="model-zoo-custom-dir"></span><h2>Controlling where zoo models are downloaded<a class="headerlink" href="#controlling-where-zoo-models-are-downloaded" title="Permalink to this headline">¶</a></h2>
+<p>By default, zoo models are downloaded into subdirectories of
+<code class="docutils literal notranslate"><span class="pre">fiftyone.config.model_zoo_dir</span></code> corresponding to their names.</p>
+<p>You can customize this backend by modifying the <code class="docutils literal notranslate"><span class="pre">model_zoo_dir</span></code> setting of
+your <a class="reference internal" href="../user_guide/config.html#configuring-fiftyone"><span class="std std-ref">FiftyOne config</span></a>.</p>
+</div>
+<div class="section" id="deleting-zoo-models">
+<span id="model-zoo-delete"></span><h2>Deleting zoo models<a class="headerlink" href="#deleting-zoo-models" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="adding-models-to-the-zoo">
+<span id="model-zoo-add"></span><h2>Adding models to the zoo<a class="headerlink" href="#adding-models-to-the-zoo" title="Permalink to this headline">¶</a></h2>
+<p>We frequently add new models to the Model Zoo, which will automatically become
+accessible to you when you update your FiftyOne package.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>FiftyOne is open source! You are welcome to contribute models to the public
+model zoo by submitting a pull request to
+<a class="reference external" href="https://github.com/voxel51/fiftyone">the GitHub repository</a>.</p>
+</div>
+<p>You can also add your own models to your local model zoo, enabling you to work
+with these models via the <a class="reference internal" href="../api/fiftyone.zoo.html#module-fiftyone.zoo" title="fiftyone.zoo"><code class="xref py py-mod docutils literal notranslate"><span class="pre">fiftyone.zoo</span></code></a> package and the CLI using the
+same syntax that you would with publicly available models.</p>
+<p>To add model(s) to your local zoo, you simply write a JSON manifest file in
+the format below to tell FiftyOne about the model(s). For example, the manifest
+below adds a second copy of the <code class="docutils literal notranslate"><span class="pre">yolo-v2-coco-tf1</span></code> model to the zoo under the
+alias <code class="docutils literal notranslate"><span class="pre">yolo-v2-coco-tf1-high-conf</span></code> that only returns predictions whose
+confidence is at least 0.5:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;models&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;base_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;yolo-v2-coco-tf1-high-conf&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;base_filename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;yolo-v2-coco-high-conf.weights&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;A YOLOv2 model with confidence threshold set to 0.5&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;manager&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;fiftyone.core.models.ModelManager&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;config&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;google_drive_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1ajuPZws47SOw3xJc4Wvk1yuiB3qv8ycr&quot;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;default_deployment_config_dict&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;fiftyone.utils.eta.ETAModel&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;config&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eta.detectors.YOLODetector&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;config&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;config_dir&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;{{eta}}/tensorflow/darkflow/cfg/&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;config_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;{{eta}}/tensorflow/darkflow/cfg/yolo.cfg&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;confidence_thresh&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;requirements&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;cpu&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;support&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;packages&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;tensorflow&lt;2&quot;</span><span class="p">]</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="nt">&quot;gpu&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;support&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;packages&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;tensorflow-gpu&lt;2&quot;</span><span class="p">]</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;tags&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;detection&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;coco&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;tf1&quot;</span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;date_added&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2020-12-11 13:45:51&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Adjusting the hard-coded threshold of the above model is possible via
+JSON-only changes in this case because the underlying
+<a class="reference external" href="https://github.com/voxel51/eta/blob/develop/eta/detectors/yolo.py">eta.detectors.YOLODetector</a>
+class exposes this as a parameter.</p>
+<p>In practice, there is no need to hard-code confidence thresholds in models,
+since the
+<a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.apply_model" title="fiftyone.core.collections.SampleCollection.apply_model"><code class="xref py py-meth docutils literal notranslate"><span class="pre">apply_model()</span></code></a>
+method supports supplying an optional confidence threshold that is applied
+post-facto to the predictions generated by any model.</p>
+</div>
+<p>Models manifest JSON files should have a <code class="docutils literal notranslate"><span class="pre">models</span></code> key that contains a list
+of serialized
+<a class="reference internal" href="../api/fiftyone.zoo.models.html#fiftyone.zoo.models.ZooModel" title="fiftyone.zoo.models.ZooModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">ZooModel</span> <span class="pre">class</span> <span class="pre">definitions</span></code></a> that
+describe how to download and load the model.</p>
+<p>Finally, expose your new models(s) to FiftyOne by adding your manifest to the
+<code class="docutils literal notranslate"><span class="pre">model_zoo_manifest_paths</span></code> parameter of your
+<a class="reference internal" href="../user_guide/config.html#configuring-fiftyone"><span class="std std-ref">FiftyOne config</span></a>. One way to do this is to set the
+<code class="docutils literal notranslate"><span class="pre">FIFTYONE_MODEL_ZOO_MANIFEST_PATHS</span></code> environment variable:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">FIFTYONE_MODEL_ZOO_MANIFEST_PATHS</span><span class="o">=</span>/path/to/custom/manifest.json
+</pre></div>
+</div>
+<p>Now you can load and apply the <code class="docutils literal notranslate"><span class="pre">yolo-v2-coco-tf1-high-conf</span></code> model as you
+would any other zoo model:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="c1"># Load custom model</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_model</span><span class="p">(</span><span class="s2">&quot;yolo-v2-coco-tf1-high-conf&quot;</span><span class="p">)</span>
+
+<span class="c1"># Apply model to a dataset</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">apply_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;predictions&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+             </article>
+             
+            </div>
+            <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../brain.html" class="btn btn-neutral float-right" title="FiftyOne Brain" accesskey="n" rel="next">Next <img src="../_static/images/chevron-right-orange.svg" class="next-page"></a>
+      
+      
+        <a href="design.html" class="btn btn-neutral" title="Model Interface" accesskey="p" rel="prev"><img src="../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
+      
+    </div>
+  
+</footer>
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              <ul>
+<li><a class="reference internal" href="#">Model Zoo API Reference</a><ul>
+<li><a class="reference internal" href="#listing-zoo-models">Listing zoo models</a></li>
+<li><a class="reference internal" href="#getting-information-about-zoo-models">Getting information about zoo models</a></li>
+<li><a class="reference internal" href="#downloading-zoo-models">Downloading zoo models</a></li>
+<li><a class="reference internal" href="#installing-zoo-model-requirements">Installing zoo model requirements</a></li>
+<li><a class="reference internal" href="#loading-zoo-models">Loading zoo models</a></li>
+<li><a class="reference internal" href="#applying-zoo-models">Applying zoo models</a></li>
+<li><a class="reference internal" href="#generating-embeddings-with-zoo-models">Generating embeddings with zoo models</a></li>
+<li><a class="reference internal" href="#controlling-where-zoo-models-are-downloaded">Controlling where zoo models are downloaded</a></li>
+<li><a class="reference internal" href="#deleting-zoo-models">Deleting zoo models</a></li>
+<li><a class="reference internal" href="#adding-models-to-the-zoo">Adding models to the zoo</a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  
+
+
+  
+
+     
+       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+         <script src="../_static/jquery.js"></script>
+         <script src="../_static/underscore.js"></script>
+         <script src="../_static/doctools.js"></script>
+         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+         <script src="../_static/js/voxel51-website.js"></script>
+         <script src="../_static/js/custom.js"></script>
+     
+
+  
+
+  <script type="text/javascript" src="../_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="../_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+  <!-- Begin Footer -->
+
+
+<footer class="footer-wrapper" id="docs-tutorials-resources">
+  <div class="footer pytorch-container">
+    <div class="footer__logo">
+      <a href="https://voxel51.com/"
+        ><img
+          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
+      /></a>
+    </div>
+
+    <div class="footer__address">
+      330 E Liberty St<br />
+      Ann Arbor, MI 48104<br />
+      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
+    </div>
+
+    <!--
+    <div class="footer__contact">
+      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
+    </div>
+    -->
+
+    <div class="footer__links">
+      <div class="footer__links--col2">
+        <p class="nav__item--brand">Products</p>
+        <a href="https://voxel51.com/fiftyone/">FiftyOne</a>
+        <a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a>
+        <a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a>
+        <a href="https://voxel51.com/success-stories/">Success Stories</a>
+      </div>
+      <div class="footer__links--col3">
+        <p class="nav__item--brand">Resources</p>
+        <a href="https://voxel51.com/blog/">Blog</a>
+        <a href="https://docs.voxel51.com/">Docs</a>
+        <a href="https://github.com/voxel51/">GitHub</a>
+        <a href="https://community.voxel51.com">Discord</a>
+        <a href="https://voxel51.com/ourstory/">About Us</a>
+        <a href="https://voxel51.com/computer-vision-events/">Events</a>
+        <a href="https://voxel51.com/jobs/">Careers</a>
+        <a href="https://voxel51.com/press/">Press</a>
+      </div>
+    </div>
+
+    <div class="footer__icons">
+      <ul class="list-inline">
+        <li>
+          <a href="https://www.linkedin.com/company/voxel51/">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/voxel51/">
+            <i class="fa-brands fa-github"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/voxel51">
+            <i class="fa-brands fa-twitter"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/voxel51/">
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="footer__copyright">
+      <ul class="list-inline">
+        <li>&copy; 2024 Voxel51 Inc.</li>
+        <li>
+          <a href="https://voxel51.com/privacy/">Privacy Policy</a>
+        </li>
+        <li>
+          <a href="https://voxel51.com/terms/">Terms of Service</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<!-- https://buttons.github.io -->
+<script async defer src="https://buttons.github.io/buttons.js" ></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XD15NFRY3M" ></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+  gtag("config", "G-XD15NFRY3M");
+</script>
+
+<script>
+  function open_modal(modal_id, modal_closer_id) {
+    // Get the modal
+    let the_modal = document.getElementById(modal_id);
+
+    the_modal.style.display = "flex";
+    document.body.style.overflow = "hidden";
+
+    let the_modal_closer = document.getElementById(modal_closer_id);
+
+    // When the user clicks on <span> (x), close the modal
+    the_modal_closer &&
+      (the_modal_closer.onclick = function () {
+        the_modal.style.display = "none";
+      });
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+      if (event.target == the_modal) {
+        the_modal.style.display = "none";
+        document.body.style.overflow = "unset";
+        window.onclick = undefined;
+      }
+    };
+  }
+</script>
+
+<!-- bigpicture.io -->
+<script>
+  !(function (e, t, i) {
+    var r = (e.bigPicture = e.bigPicture || []);
+    if (!r.initialized)
+      if (r.invoked)
+        e.console &&
+          console.error &&
+          console.error("BigPicture.io snippet included twice.");
+      else {
+        (r.invoked = !0),
+          (r.SNIPPET_VERSION = 1.5),
+          (r.handler = function (e) {
+            if (void 0 !== r.callback)
+              try {
+                return r.callback(e);
+              } catch (e) {}
+          }),
+          (r.eventList = ["mousedown", "mouseup", "click", "submit"]),
+          (r.methods = [
+            "track",
+            "identify",
+            "page",
+            "group",
+            "alias",
+            "integration",
+            "ready",
+            "intelReady",
+            "consentReady",
+            "on",
+            "off",
+          ]),
+          (r.factory = function (e) {
+            return function () {
+              var t = Array.prototype.slice.call(arguments);
+              return t.unshift(e), r.push(t), r;
+            };
+          });
+        for (var n = 0; n < r.methods.length; n++) {
+          var o = r.methods[n];
+          r[o] = r.factory(o);
+        }
+        r.getCookie = function (e) {
+          var i = ("; " + t.cookie).split("; " + e + "=");
+          return 2 == i.length && i.pop().split(";").shift();
+        };
+        var c = (r.isEditor = (function () {
+          try {
+            return (
+              e.self !== e.top &&
+              (new RegExp("app" + i, "ig").test(t.referrer) ||
+                "edit" == r.getCookie("_bpr_edit"))
+            );
+          } catch (e) {
+            return !1;
+          }
+        })());
+        r.init = function (n, o) {
+          if (((r.projectId = n), (r._config = o), !c))
+            for (var a = 0; a < r.eventList.length; a++)
+              e.addEventListener(r.eventList[a], r.handler, !0);
+          var s = t.createElement("script");
+          s.async = !0;
+          var d = c ? "/editor/editor" : "/public-" + n;
+          (s.src = "//cdn" + i + d + ".js"),
+            t.getElementsByTagName("head")[0].appendChild(s);
+        };
+      }
+  })(window, document, ".bigpicture.io");
+  bigPicture.init("1646");
+</script>
+
+
+  
+
+  <!-- End Footer -->
+
+  <!-- Begin Mobile Menu -->
+
+  
+
+  <!-- End Mobile Menu -->
+
+  <script type="text/javascript" src="../_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function(e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+</body>
+</html>

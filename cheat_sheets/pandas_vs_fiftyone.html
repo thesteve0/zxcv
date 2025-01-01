@@ -1,0 +1,942 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>pandas vs FiftyOne &mdash; FiftyOne 1.3.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <link rel="stylesheet" href="../_static/css/voxel51-website.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="FiftyOne User Guide" href="../user_guide/index.html" />
+    <link rel="prev" title="Views Cheat Sheet" href="views_cheat_sheet.html" />
+<meta property="og:image" content="https://voxel51.com/wp-content/uploads/2024/03/3.24_webpages_Home_AV.png" />
+
+<link
+  href="https://fonts.googleapis.com/css?family=Palanquin:400,600,700,800"
+  rel="stylesheet"
+/>
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+  rel="stylesheet"
+/>
+<script src="https://tag.clearbitscripts.com/v1/pk_b9ed71c8234edd4f77326bcbfab5a4ca/tags.js"></script>
+
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+  
+</head>
+
+
+<div class="container-fluid header-holder tutorials-header" id="header-holder">
+  <nav id="nav__main" class="nav__main">
+    <div class="nav__main__logo">
+      <a href="https://voxel51.com/">
+        <img
+          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
+        />
+      </a>
+    </div>
+
+    <div class="nav__spacer desktop_only"></div>
+
+    <div id="nav__main__mobilebutton--on">
+      <a href="javascript:void(0);" onclick="navMobileButton()">
+        <i class="fa-solid fa-bars"></i>
+      </a>
+    </div>
+
+    <div id="nav__main__mobilebutton--off">
+      <a href="javascript:void(0);" onclick="navMobileButton()">
+        <i class="fa-solid fa-times"></i>
+      </a>
+    </div>
+
+    <div id="nav__main__items">
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Products</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://voxel51.com/fiftyone/">Open Source</a></li>
+            <li><a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a></li>
+            <li><a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a></li>
+            <li><a href="https://voxel51.com/success-stories/">Success Stories</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Learn</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://community.voxel51.com">Community Discord</a></li>
+            <li><a href="https://voxel51.com/blog/">Blog</a></li>
+            <li><a href="https://voxel51.com/computer-vision-events/">Events</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item">
+        <a href="https://docs.voxel51.com/">Docs</a>
+      </div>
+
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Company</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://voxel51.com/ourstory/">About Us</a></li>
+            <li><a href="https://voxel51.com/jobs/">Careers</a></li>
+            <li><a href="https://voxel51.com/talk-to-sales/">Talk to Sales</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item mobile_only">
+        <a href="https://github.com/voxel51/fiftyone">GitHub</a>
+      </div>
+
+      <div class="nav__item desktop_only" id="octocat">
+        <!-- https://buttons.github.io -->
+        <a
+          class="github-button"
+          href="https://github.com/voxel51/fiftyone"
+          data-color-scheme="no-preference: dark_high_contrast; light: dark_high_contrast; dark: dark_high_contrast;"
+          data-size="large"
+          data-show-count="true"
+          aria-label="Star voxel51/fiftyone on GitHub"
+          >Star</a
+        >
+      </div>
+
+      <div class="nav__item full_nav_only">
+        <a class="button-primary" href="https://voxel51.com/schedule-teams-workshop/" target="_blank"
+          >Schedule a workshop</a
+        >
+      </div>
+    </div>
+  </nav>
+</div>
+
+
+
+<body class="pytorch-body">
+
+   
+
+    
+
+    <div class="table-of-contents-link-wrapper">
+      <span>Table of Contents</span>
+      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+    </div>
+
+    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+      <div class="pytorch-side-scroll">
+        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          <div class="pytorch-left-menu-search">
+            
+
+            
+              
+              
+            
+
+            
+
+
+  
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+            
+          </div>
+
+           <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../teams/index.html">FiftyOne Teams 🚀</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../environments/index.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../recipes/index.html">Recipes</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Cheat Sheets</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="fiftyone_terminology.html">FiftyOne terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filtering_cheat_sheet.html">Filtering cheat sheet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="views_cheat_sheet.html">Views cheat sheet</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">pandas vs FiftyOne</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dataset_zoo/index.html">Dataset Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_zoo/index.html">Model Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brain.html">FiftyOne Brain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/index.html">Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plugins/index.html">Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli/index.html">CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/fiftyone.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deprecation.html">Deprecation Notices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a></li>
+</ul>
+ 
+        </div>
+      </div>
+    </nav>
+
+    <div class="pytorch-container">
+      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+        <div class="pytorch-breadcrumbs-wrapper">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="../index.html">
+          
+            Docs
+          
+        </a> &gt;
+      </li>
+
+        
+          <li><a href="index.html">FiftyOne Cheat Sheets</a> &gt;</li>
+        
+      <li>pandas vs FiftyOne</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+        </div>
+
+        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+          Contents
+        </div>
+      </div>
+
+      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+        <div class="pytorch-content-left">
+
+        
+          
+          <div class="rst-content style-external-links">
+          
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+              
+  <div class="section" id="pandas-vs-fiftyone">
+<span id="pandas-cheat-sheet"></span><h1>pandas vs FiftyOne<a class="headerlink" href="#pandas-vs-fiftyone" title="Permalink to this headline">¶</a></h1>
+<p>This cheat sheet shows how to translate common
+<a class="reference external" href="https://pandas.pydata.org">pandas</a> operations into FiftyOne.</p>
+<div class="section" id="nomenclature">
+<h2>Nomenclature<a class="headerlink" href="#nomenclature" title="Permalink to this headline">¶</a></h2>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>pandas</p></th>
+<th class="head"><p>FiftyOne</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>DataFrame (<code class="docutils literal notranslate"><span class="pre">df</span></code>)</p></td>
+<td><p>Dataset (<code class="docutils literal notranslate"><span class="pre">ds</span></code>)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Row</p></td>
+<td><p>Sample</p></td>
+</tr>
+<tr class="row-even"><td><p>Column</p></td>
+<td><p>Field</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="getting-started">
+<h2>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 40%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head stub"></th>
+<th class="head"><p>pandas</p></th>
+<th class="head"><p>FiftyOne</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>Importing the packages</p></th>
+<td><p><code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">pandas</span> <span class="pre">as</span> <span class="pre">pd</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">fiftyone</span> <span class="pre">as</span> <span class="pre">fo</span></code></p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Create empty dataset</p></th>
+<td><p><code class="docutils literal notranslate"><span class="pre">df</span> <span class="pre">=</span> <span class="pre">pd.DataFrame()</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ds</span> <span class="pre">=</span> <span class="pre">fo.Dataset()</span></code></p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Load dataset</p></th>
+<td><p><code class="docutils literal notranslate"><span class="pre">df</span> <span class="pre">=</span> <span class="pre">pd.read_csv(*)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ds</span> <span class="pre">=</span> <span class="pre">fo.Dataset.from_dir(*)</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="basics">
+<h2>Basics<a class="headerlink" href="#basics" title="Permalink to this headline">¶</a></h2>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 40%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head stub"></th>
+<th class="head"><p>pandas</p></th>
+<th class="head"><p>FiftyOne</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>First row/sample</p></th>
+<td><p><code class="docutils literal notranslate"><span class="pre">df.iloc[0]</span></code> or <code class="docutils literal notranslate"><span class="pre">df.head(1)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ds.first()</span></code> or <code class="docutils literal notranslate"><span class="pre">ds.head(1)</span></code></p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Last row/sample</p></th>
+<td><p><code class="docutils literal notranslate"><span class="pre">df.iloc[-1]</span></code> or <code class="docutils literal notranslate"><span class="pre">df.tail(1)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ds.last()</span></code> or <code class="docutils literal notranslate"><span class="pre">ds.tail(1)</span></code></p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>First few rows/samples</p></th>
+<td><p><code class="docutils literal notranslate"><span class="pre">df.head()</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ds.head()</span></code></p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Last few rows/samples</p></th>
+<td><p><code class="docutils literal notranslate"><span class="pre">df.tail()</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ds.tail()</span></code></p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Get specific row/sample</p></th>
+<td><p><code class="docutils literal notranslate"><span class="pre">df.loc[j]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ds[sample_id]</span></code></p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Number of rows/samples</p></th>
+<td><p><code class="docutils literal notranslate"><span class="pre">len(df)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">len(ds)</span></code></p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Column names/field schema</p></th>
+<td><p><code class="docutils literal notranslate"><span class="pre">df.columns</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ds.get_field_schema()</span></code></p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Get all values in column/field</p></th>
+<td><p><code class="docutils literal notranslate"><span class="pre">df[*].tolist()</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ds.values(*)</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="view-stages">
+<h2>View stages<a class="headerlink" href="#view-stages" title="Permalink to this headline">¶</a></h2>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 40%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head stub"></th>
+<th class="head"><p>pandas</p></th>
+<th class="head"><p>FiftyOne</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>Make a copy</p></th>
+<td><p><code class="docutils literal notranslate"><span class="pre">df.copy()</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ds.clone()</span></code></p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Slice</p></th>
+<td><p><code class="docutils literal notranslate"><span class="pre">df[start:end]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ds[start:end]</span></code></p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Random sample</p></th>
+<td><p><code class="docutils literal notranslate"><span class="pre">df.sample(n=n)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ds.take(n)</span></code></p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Shuffle data</p></th>
+<td><p><code class="docutils literal notranslate"><span class="pre">df.sample(frac=1)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ds.shuffle()</span></code></p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Filter by column/field value</p></th>
+<td><p><code class="docutils literal notranslate"><span class="pre">df[df[*]</span> <span class="pre">&gt;</span> <span class="pre">threshold]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ds.match(F(*)</span> <span class="pre">&gt;</span> <span class="pre">threshold)</span></code></p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Sort values</p></th>
+<td><p><code class="docutils literal notranslate"><span class="pre">df.sort_values()</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ds.sort_by(*)</span></code></p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Delete all</p></th>
+<td><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">gc</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">del</span> <span class="pre">df;</span> <span class="pre">gc.collect()</span></code></div>
+</div>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ds.delete()</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="aggregations">
+<h2>Aggregations<a class="headerlink" href="#aggregations" title="Permalink to this headline">¶</a></h2>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 40%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head stub"></th>
+<th class="head"><p>pandas</p></th>
+<th class="head"><p>FiftyOne</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>Count</p></th>
+<td><p><code class="docutils literal notranslate"><span class="pre">df[*].count()</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ds.count(*)</span></code></p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Sum</p></th>
+<td><p><code class="docutils literal notranslate"><span class="pre">df[*].sum()</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ds.sum(*)</span></code></p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Unique values</p></th>
+<td><p><code class="docutils literal notranslate"><span class="pre">df[*].unique()</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ds.distinct(*)</span></code></p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Bounds</p></th>
+<td><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">min</span> <span class="pre">=</span> <span class="pre">df[*].min()</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">max</span> <span class="pre">=</span> <span class="pre">df[*].max()</span></code></div>
+</div>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">min,</span> <span class="pre">max</span> <span class="pre">=</span> <span class="pre">ds.bounds(*)</span></code></p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Mean</p></th>
+<td><p><code class="docutils literal notranslate"><span class="pre">df[*].mean()</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ds.mean(*)</span></code></p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Standard deviation</p></th>
+<td><p><code class="docutils literal notranslate"><span class="pre">df[*].std()</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ds.std(*)</span></code></p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Quantile</p></th>
+<td><p><code class="docutils literal notranslate"><span class="pre">df[*].quantile(values)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ds.quantiles(*,</span> <span class="pre">values))</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="structural-changes">
+<h2>Structural changes<a class="headerlink" href="#structural-changes" title="Permalink to this headline">¶</a></h2>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 40%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head stub"></th>
+<th class="head"><p>pandas</p></th>
+<th class="head"><p>FiftyOne</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>New column/field as constant value</p></th>
+<td><p><code class="docutils literal notranslate"><span class="pre">df[&quot;col&quot;]</span> <span class="pre">=</span> <span class="pre">value</span></code></p></td>
+<td><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">ds.add_sample_field(&quot;field&quot;,</span> <span class="pre">fo.StringField)</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">ds.set_field(&quot;field&quot;,</span> <span class="pre">value).save()</span></code></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>New column/field from external data</p></th>
+<td><p><code class="docutils literal notranslate"><span class="pre">df[&quot;col&quot;]</span> <span class="pre">=</span> <span class="pre">data</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ds.set_values(&quot;field&quot;,</span> <span class="pre">data)</span></code></p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>New column/field from existing columns/fields</p></th>
+<td><p><code class="docutils literal notranslate"><span class="pre">df[&quot;col&quot;]</span> <span class="pre">=</span> <span class="pre">df.apply(fcn,</span> <span class="pre">axis=1)</span></code></p></td>
+<td><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">ds.add_sample_field(&quot;field&quot;,</span> <span class="pre">fo.FloatField)</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">ds.set_field(&quot;field&quot;,</span> <span class="pre">expression).save()</span></code></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Remove a column/field</p></th>
+<td><p><code class="docutils literal notranslate"><span class="pre">df</span> <span class="pre">=</span> <span class="pre">df.drop([&quot;col&quot;],</span> <span class="pre">axis=1)</span></code></p></td>
+<td><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">ds.delete_sample_fields([&quot;field&quot;])</span></code> or</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">ds.exclude_fields([&quot;field&quot;]).keep_fields()</span></code></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Keep only specified columns/fields</p></th>
+<td><p><code class="docutils literal notranslate"><span class="pre">df[&quot;col1&quot;,</span> <span class="pre">&quot;col2&quot;]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ds.select_fields([&quot;field1&quot;,</span> <span class="pre">&quot;field2&quot;])</span></code></p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Concatenate DataFrames or DatasetViews</p></th>
+<td><p><code class="docutils literal notranslate"><span class="pre">pd.concat([df1,</span> <span class="pre">df2])</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">view1.concat(view2)</span></code></p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Add a single row/sample</p></th>
+<td><p><code class="docutils literal notranslate"><span class="pre">df.append(row,</span> <span class="pre">ignore_index=True)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ds.add_sample(sample)</span></code></p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Remove rows/samples</p></th>
+<td><p><code class="docutils literal notranslate"><span class="pre">df.drop(rows)</span></code></p></td>
+<td><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">ds.delete_samples(sample_ids)</span></code> or</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">ds.exclude(samples).keep()</span></code></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Keep only specified rows/samples</p></th>
+<td><p><code class="docutils literal notranslate"><span class="pre">df.iloc[rows]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ds.select(sample_ids)</span></code></p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Rename column/field</p></th>
+<td><p><code class="docutils literal notranslate"><span class="pre">df.rename(columns={&quot;old&quot;:</span> <span class="pre">&quot;new&quot;})</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ds.rename_sample_field(&quot;old&quot;,</span> <span class="pre">&quot;new&quot;)</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="expressions">
+<h2>Expressions<a class="headerlink" href="#expressions" title="Permalink to this headline">¶</a></h2>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 40%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head stub"></th>
+<th class="head"><p>pandas</p></th>
+<th class="head"><p>FiftyOne</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>Exact equality</p></th>
+<td><p><code class="docutils literal notranslate"><span class="pre">df[df[*]</span> <span class="pre">==</span> <span class="pre">value]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ds.match(F(*)</span> <span class="pre">==</span> <span class="pre">value)</span></code></p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Less than or equal to</p></th>
+<td><p><code class="docutils literal notranslate"><span class="pre">new_df</span> <span class="pre">=</span> <span class="pre">df[df[*]</span> <span class="pre">&lt;=</span> <span class="pre">value]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">new_view</span> <span class="pre">=</span> <span class="pre">ds.match(F(*)</span> <span class="pre">&lt;=</span> <span class="pre">value)</span></code></p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Logical complement</p></th>
+<td><p><code class="docutils literal notranslate"><span class="pre">new_df</span> <span class="pre">=</span> <span class="pre">df[~(df[*]</span> <span class="pre">&lt;=</span> <span class="pre">value)]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">new_view</span> <span class="pre">=</span> <span class="pre">ds.match(~(F(*)</span> <span class="pre">&lt;=</span> <span class="pre">value))</span></code></p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Logical AND</p></th>
+<td><p><code class="docutils literal notranslate"><span class="pre">df[pd_cond1</span> <span class="pre">&amp;</span> <span class="pre">pd_cond2]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ds.match(fo_cond1</span> <span class="pre">&amp;</span> <span class="pre">fo_cond2)</span></code></p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Logical OR</p></th>
+<td><p><code class="docutils literal notranslate"><span class="pre">df[pd_cond1</span> <span class="pre">|</span> <span class="pre">pd_cond2]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ds.match(fo_cond1</span> <span class="pre">|</span> <span class="pre">fo_cond2)</span></code></p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Is in</p></th>
+<td><p><code class="docutils literal notranslate"><span class="pre">df[*].isin(cols)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ds.filter_labels(*,</span> <span class="pre">F(&quot;label&quot;).is_in(fields))</span></code></p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Contains string</p></th>
+<td><p><code class="docutils literal notranslate"><span class="pre">df[*].str.contains(substr)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ds.filter_labels(*,</span> <span class="pre">F(&quot;label&quot;).contains_str(substr))</span></code></p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Check for numerics</p></th>
+<td><p><code class="docutils literal notranslate"><span class="pre">pdt.is_numeric_dtype(df[*])</span></code></p></td>
+<td><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">isinstance(ds.get_field_schema()[*],</span> <span class="pre">(fo.FloatField,</span> <span class="pre">fo.IntField))</span></code> or</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">len(ds.match(F(*).is_number()))</span> <span class="pre">&gt;</span> <span class="pre">0</span></code></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Check for strings</p></th>
+<td><p><code class="docutils literal notranslate"><span class="pre">pdt.is_string_dtype(df[*])</span></code></p></td>
+<td><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">isinstance(ds.get_field_schema()[*],</span> <span class="pre">fo.StringField)</span></code> or</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">len(ds.match(F(*).is_string()))</span> <span class="pre">&gt;</span> <span class="pre">0</span></code></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Check for null entries</p></th>
+<td><p><code class="docutils literal notranslate"><span class="pre">df.isna().any()</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">len(ds.match(F(*)</span> <span class="pre">==</span> <span class="pre">None))</span> <span class="pre">&gt;</span> <span class="pre">0</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The table above assumes you have imported:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas.api.types</span> <span class="k">as</span> <span class="nn">pdt</span>
+<span class="kn">from</span> <span class="nn">fiftyone</span> <span class="kn">import</span> <span class="n">ViewField</span> <span class="k">as</span> <span class="n">F</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+             </article>
+             
+            </div>
+            <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../user_guide/index.html" class="btn btn-neutral float-right" title="FiftyOne User Guide" accesskey="n" rel="next">Next <img src="../_static/images/chevron-right-orange.svg" class="next-page"></a>
+      
+      
+        <a href="views_cheat_sheet.html" class="btn btn-neutral" title="Views Cheat Sheet" accesskey="p" rel="prev"><img src="../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
+      
+    </div>
+  
+</footer>
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              <ul>
+<li><a class="reference internal" href="#">pandas vs FiftyOne</a><ul>
+<li><a class="reference internal" href="#nomenclature">Nomenclature</a></li>
+<li><a class="reference internal" href="#getting-started">Getting started</a></li>
+<li><a class="reference internal" href="#basics">Basics</a></li>
+<li><a class="reference internal" href="#view-stages">View stages</a></li>
+<li><a class="reference internal" href="#aggregations">Aggregations</a></li>
+<li><a class="reference internal" href="#structural-changes">Structural changes</a></li>
+<li><a class="reference internal" href="#expressions">Expressions</a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  
+
+
+  
+
+     
+       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+         <script src="../_static/jquery.js"></script>
+         <script src="../_static/underscore.js"></script>
+         <script src="../_static/doctools.js"></script>
+         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+         <script src="../_static/js/voxel51-website.js"></script>
+         <script src="../_static/js/custom.js"></script>
+     
+
+  
+
+  <script type="text/javascript" src="../_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="../_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+  <!-- Begin Footer -->
+
+
+<footer class="footer-wrapper" id="docs-tutorials-resources">
+  <div class="footer pytorch-container">
+    <div class="footer__logo">
+      <a href="https://voxel51.com/"
+        ><img
+          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
+      /></a>
+    </div>
+
+    <div class="footer__address">
+      330 E Liberty St<br />
+      Ann Arbor, MI 48104<br />
+      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
+    </div>
+
+    <!--
+    <div class="footer__contact">
+      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
+    </div>
+    -->
+
+    <div class="footer__links">
+      <div class="footer__links--col2">
+        <p class="nav__item--brand">Products</p>
+        <a href="https://voxel51.com/fiftyone/">FiftyOne</a>
+        <a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a>
+        <a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a>
+        <a href="https://voxel51.com/success-stories/">Success Stories</a>
+      </div>
+      <div class="footer__links--col3">
+        <p class="nav__item--brand">Resources</p>
+        <a href="https://voxel51.com/blog/">Blog</a>
+        <a href="https://docs.voxel51.com/">Docs</a>
+        <a href="https://github.com/voxel51/">GitHub</a>
+        <a href="https://community.voxel51.com">Discord</a>
+        <a href="https://voxel51.com/ourstory/">About Us</a>
+        <a href="https://voxel51.com/computer-vision-events/">Events</a>
+        <a href="https://voxel51.com/jobs/">Careers</a>
+        <a href="https://voxel51.com/press/">Press</a>
+      </div>
+    </div>
+
+    <div class="footer__icons">
+      <ul class="list-inline">
+        <li>
+          <a href="https://www.linkedin.com/company/voxel51/">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/voxel51/">
+            <i class="fa-brands fa-github"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/voxel51">
+            <i class="fa-brands fa-twitter"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/voxel51/">
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="footer__copyright">
+      <ul class="list-inline">
+        <li>&copy; 2024 Voxel51 Inc.</li>
+        <li>
+          <a href="https://voxel51.com/privacy/">Privacy Policy</a>
+        </li>
+        <li>
+          <a href="https://voxel51.com/terms/">Terms of Service</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<!-- https://buttons.github.io -->
+<script async defer src="https://buttons.github.io/buttons.js" ></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XD15NFRY3M" ></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+  gtag("config", "G-XD15NFRY3M");
+</script>
+
+<script>
+  function open_modal(modal_id, modal_closer_id) {
+    // Get the modal
+    let the_modal = document.getElementById(modal_id);
+
+    the_modal.style.display = "flex";
+    document.body.style.overflow = "hidden";
+
+    let the_modal_closer = document.getElementById(modal_closer_id);
+
+    // When the user clicks on <span> (x), close the modal
+    the_modal_closer &&
+      (the_modal_closer.onclick = function () {
+        the_modal.style.display = "none";
+      });
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+      if (event.target == the_modal) {
+        the_modal.style.display = "none";
+        document.body.style.overflow = "unset";
+        window.onclick = undefined;
+      }
+    };
+  }
+</script>
+
+<!-- bigpicture.io -->
+<script>
+  !(function (e, t, i) {
+    var r = (e.bigPicture = e.bigPicture || []);
+    if (!r.initialized)
+      if (r.invoked)
+        e.console &&
+          console.error &&
+          console.error("BigPicture.io snippet included twice.");
+      else {
+        (r.invoked = !0),
+          (r.SNIPPET_VERSION = 1.5),
+          (r.handler = function (e) {
+            if (void 0 !== r.callback)
+              try {
+                return r.callback(e);
+              } catch (e) {}
+          }),
+          (r.eventList = ["mousedown", "mouseup", "click", "submit"]),
+          (r.methods = [
+            "track",
+            "identify",
+            "page",
+            "group",
+            "alias",
+            "integration",
+            "ready",
+            "intelReady",
+            "consentReady",
+            "on",
+            "off",
+          ]),
+          (r.factory = function (e) {
+            return function () {
+              var t = Array.prototype.slice.call(arguments);
+              return t.unshift(e), r.push(t), r;
+            };
+          });
+        for (var n = 0; n < r.methods.length; n++) {
+          var o = r.methods[n];
+          r[o] = r.factory(o);
+        }
+        r.getCookie = function (e) {
+          var i = ("; " + t.cookie).split("; " + e + "=");
+          return 2 == i.length && i.pop().split(";").shift();
+        };
+        var c = (r.isEditor = (function () {
+          try {
+            return (
+              e.self !== e.top &&
+              (new RegExp("app" + i, "ig").test(t.referrer) ||
+                "edit" == r.getCookie("_bpr_edit"))
+            );
+          } catch (e) {
+            return !1;
+          }
+        })());
+        r.init = function (n, o) {
+          if (((r.projectId = n), (r._config = o), !c))
+            for (var a = 0; a < r.eventList.length; a++)
+              e.addEventListener(r.eventList[a], r.handler, !0);
+          var s = t.createElement("script");
+          s.async = !0;
+          var d = c ? "/editor/editor" : "/public-" + n;
+          (s.src = "//cdn" + i + d + ".js"),
+            t.getElementsByTagName("head")[0].appendChild(s);
+        };
+      }
+  })(window, document, ".bigpicture.io");
+  bigPicture.init("1646");
+</script>
+
+
+  
+
+  <!-- End Footer -->
+
+  <!-- Begin Mobile Menu -->
+
+  
+
+  <!-- End Mobile Menu -->
+
+  <script type="text/javascript" src="../_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function(e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+</body>
+</html>

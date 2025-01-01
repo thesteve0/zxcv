@@ -1,0 +1,1556 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Using Plugins &mdash; FiftyOne 1.3.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <link rel="stylesheet" href="../_static/css/voxel51-website.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Developing Plugins" href="developing_plugins.html" />
+    <link rel="prev" title="Plugins Overview" href="index.html" />
+<meta property="og:image" content="https://voxel51.com/wp-content/uploads/2024/03/3.24_webpages_Home_AV.png" />
+
+<link
+  href="https://fonts.googleapis.com/css?family=Palanquin:400,600,700,800"
+  rel="stylesheet"
+/>
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+  rel="stylesheet"
+/>
+<script src="https://tag.clearbitscripts.com/v1/pk_b9ed71c8234edd4f77326bcbfab5a4ca/tags.js"></script>
+
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+  
+</head>
+
+
+<div class="container-fluid header-holder tutorials-header" id="header-holder">
+  <nav id="nav__main" class="nav__main">
+    <div class="nav__main__logo">
+      <a href="https://voxel51.com/">
+        <img
+          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
+        />
+      </a>
+    </div>
+
+    <div class="nav__spacer desktop_only"></div>
+
+    <div id="nav__main__mobilebutton--on">
+      <a href="javascript:void(0);" onclick="navMobileButton()">
+        <i class="fa-solid fa-bars"></i>
+      </a>
+    </div>
+
+    <div id="nav__main__mobilebutton--off">
+      <a href="javascript:void(0);" onclick="navMobileButton()">
+        <i class="fa-solid fa-times"></i>
+      </a>
+    </div>
+
+    <div id="nav__main__items">
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Products</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://voxel51.com/fiftyone/">Open Source</a></li>
+            <li><a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a></li>
+            <li><a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a></li>
+            <li><a href="https://voxel51.com/success-stories/">Success Stories</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Learn</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://community.voxel51.com">Community Discord</a></li>
+            <li><a href="https://voxel51.com/blog/">Blog</a></li>
+            <li><a href="https://voxel51.com/computer-vision-events/">Events</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item">
+        <a href="https://docs.voxel51.com/">Docs</a>
+      </div>
+
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Company</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://voxel51.com/ourstory/">About Us</a></li>
+            <li><a href="https://voxel51.com/jobs/">Careers</a></li>
+            <li><a href="https://voxel51.com/talk-to-sales/">Talk to Sales</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item mobile_only">
+        <a href="https://github.com/voxel51/fiftyone">GitHub</a>
+      </div>
+
+      <div class="nav__item desktop_only" id="octocat">
+        <!-- https://buttons.github.io -->
+        <a
+          class="github-button"
+          href="https://github.com/voxel51/fiftyone"
+          data-color-scheme="no-preference: dark_high_contrast; light: dark_high_contrast; dark: dark_high_contrast;"
+          data-size="large"
+          data-show-count="true"
+          aria-label="Star voxel51/fiftyone on GitHub"
+          >Star</a
+        >
+      </div>
+
+      <div class="nav__item full_nav_only">
+        <a class="button-primary" href="https://voxel51.com/schedule-teams-workshop/" target="_blank"
+          >Schedule a workshop</a
+        >
+      </div>
+    </div>
+  </nav>
+</div>
+
+
+
+<body class="pytorch-body">
+
+   
+
+    
+
+    <div class="table-of-contents-link-wrapper">
+      <span>Table of Contents</span>
+      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+    </div>
+
+    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+      <div class="pytorch-side-scroll">
+        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          <div class="pytorch-left-menu-search">
+            
+
+            
+              
+              
+            
+
+            
+
+
+  
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+            
+          </div>
+
+           <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../teams/index.html">FiftyOne Teams 🚀</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../environments/index.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../recipes/index.html">Recipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheat_sheets/index.html">Cheat Sheets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dataset_zoo/index.html">Dataset Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_zoo/index.html">Model Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brain.html">FiftyOne Brain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/index.html">Integrations</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Plugins</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html">Overview</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Using plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developing_plugins.html">Developing plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ts-api.html">TypeScript API reference</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../cli/index.html">CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/fiftyone.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deprecation.html">Deprecation Notices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a></li>
+</ul>
+ 
+        </div>
+      </div>
+    </nav>
+
+    <div class="pytorch-container">
+      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+        <div class="pytorch-breadcrumbs-wrapper">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="../index.html">
+          
+            Docs
+          
+        </a> &gt;
+      </li>
+
+        
+          <li><a href="index.html">Plugins Overview</a> &gt;</li>
+        
+      <li>Using Plugins</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+        </div>
+
+        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+          Contents
+        </div>
+      </div>
+
+      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+        <div class="pytorch-content-left">
+
+        
+          
+          <div class="rst-content style-external-links">
+          
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+              
+  <div class="section" id="using-plugins">
+<span id="id1"></span><h1>Using Plugins<a class="headerlink" href="#using-plugins" title="Permalink to this headline">¶</a></h1>
+<p>Every plugin that you <a class="reference internal" href="#plugins-download"><span class="std std-ref">download</span></a> exposes one or more
+<a class="reference internal" href="#using-panels"><span class="std std-ref">Panels</span></a> and/or <a class="reference internal" href="#using-operators"><span class="std std-ref">Operators</span></a> that you
+can access from within the App.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Check out the
+<a class="reference external" href="https://github.com/voxel51/fiftyone-plugins">FiftyOne plugins</a>
+repository for a growing collection of plugins that you can easily
+<a class="reference internal" href="#plugins-download"><span class="std std-ref">download</span></a> and use locally.</p>
+<p>Then, after you get comfortable using prebuilt plugins, try your hand at
+<a class="reference internal" href="developing_plugins.html#developing-plugins"><span class="std std-ref">writing your own</span></a>!</p>
+</div>
+<div class="section" id="downloading-plugins">
+<span id="plugins-download"></span><h2>Downloading plugins<a class="headerlink" href="#downloading-plugins" title="Permalink to this headline">¶</a></h2>
+<p>To download and use a plugin, all you need is the plugin’s GitHub repository or
+a link to a ZIP archive of the plugin’s source code.</p>
+<p>You can download plugins using any of the methods described below:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A GitHub repository may contain multiple plugins. By default, all plugins
+that are found within the first three directory levels are installed, but
+you can select specific ones if desired as shown above.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>All plugins are downloaded to your
+<a class="reference internal" href="#plugins-directory"><span class="std std-ref">plugins directory</span></a>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can download plugins from private GitHub repositories that you have
+access to by providing your GitHub personal access token via the
+<code class="code docutils literal notranslate"><span class="pre">GITHUB_TOKEN</span></code> environment variable.</p>
+</div>
+</div>
+<div class="section" id="your-plugins-directory">
+<span id="plugins-directory"></span><h2>Your plugins directory<a class="headerlink" href="#your-plugins-directory" title="Permalink to this headline">¶</a></h2>
+<p>All plugins must be stored and are automatically
+<a class="reference internal" href="#plugins-download"><span class="std std-ref">downloaded to</span></a> your plugins directory in order for
+FiftyOne to find them.</p>
+<p>By default, plugins are downloaded to <code class="code docutils literal notranslate"><span class="pre">~/fiftyone/__plugins__</span></code>, but you can
+customize this directory by setting the <code class="code docutils literal notranslate"><span class="pre">FIFTYONE_PLUGINS_DIR</span></code> environment
+variable:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">FIFTYONE_PLUGINS_DIR</span><span class="o">=</span>/path/to/your/plugins
+</pre></div>
+</div>
+<p>You can also permanently configure this directory by adding it to your
+<a class="reference internal" href="../user_guide/config.html#configuring-fiftyone"><span class="std std-ref">FiftyOne config</span></a>.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;plugins_dir&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/path/to/your/plugins&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>You can locate your current plugins directory by running the following command:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>fiftyone<span class="w"> </span>config<span class="w"> </span>plugins_dir
+<span class="c1"># ~/fiftyone/__plugins__</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Your plugins directory must be readable by the FiftyOne server.</p>
+</div>
+</div>
+<div class="section" id="managing-plugins">
+<span id="plugins-managing"></span><h2>Managing plugins<a class="headerlink" href="#managing-plugins" title="Permalink to this headline">¶</a></h2>
+<p>You can use the <a class="reference internal" href="../cli/index.html#cli-fiftyone-plugins"><span class="std std-ref">fiftyone plugins</span></a> and
+<a class="reference internal" href="../cli/index.html#cli-fiftyone-operators"><span class="std std-ref">fiftyone operators</span></a> CLI methods to perform a
+variety of plugin-related actions.</p>
+<div class="section" id="listing-plugins">
+<h3>Listing plugins<a class="headerlink" href="#listing-plugins" title="Permalink to this headline">¶</a></h3>
+<p>You can use the <a class="reference internal" href="../cli/index.html#cli-fiftyone-plugins-list"><span class="std std-ref">fiftyone plugins list</span></a>
+command to list the plugins that you’ve downloaded or created locally:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># List all locally available plugins</span>
+fiftyone<span class="w"> </span>plugins<span class="w"> </span>list
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># List enabled plugins</span>
+fiftyone<span class="w"> </span>plugins<span class="w"> </span>list<span class="w"> </span>--enabled
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># List disabled plugins</span>
+fiftyone<span class="w"> </span>plugins<span class="w"> </span>list<span class="w"> </span>--disabled
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>plugin               version   enabled  directory
+-------------------  -------  -------  ----------------------------------------------------------
+@voxel51/annotation  1.0.0    ✓        ~/fiftyone/__plugins__/fiftyone-plugins/plugins/annotation
+@voxel51/brain       1.0.0    ✓        ~/fiftyone/__plugins__/fiftyone-plugins/plugins/brain
+@voxel51/evaluation  1.0.0    ✓        ~/fiftyone/__plugins__/fiftyone-plugins/plugins/evaluation
+@voxel51/indexes     1.0.0    ✓        ~/fiftyone/__plugins__/fiftyone-plugins/plugins/indexes
+@voxel51/io          1.0.0    ✓        ~/fiftyone/__plugins__/fiftyone-plugins/plugins/io
+@voxel51/utils       1.0.0    ✓        ~/fiftyone/__plugins__/fiftyone-plugins/plugins/utils
+@voxel51/voxelgpt    1.0.0    ✓        ~/fiftyone/__plugins__/voxelgpt
+@voxel51/zoo         1.0.0    ✓        ~/fiftyone/__plugins__/fiftyone-plugins/plugins/zoo
+</pre></div>
+</div>
+</div>
+<div class="section" id="listing-operators">
+<h3>Listing operators<a class="headerlink" href="#listing-operators" title="Permalink to this headline">¶</a></h3>
+<p>You can use the <a class="reference internal" href="../cli/index.html#cli-fiftyone-operators-list"><span class="std std-ref">fiftyone operators list</span></a>
+command to list the individual operators and panels within the plugins that
+you’ve installed locally:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># List all available operators and panels</span>
+fiftyone<span class="w"> </span>operators<span class="w"> </span>list
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># List enabled operators and panels</span>
+fiftyone<span class="w"> </span>operators<span class="w"> </span>list<span class="w"> </span>--enabled
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># List disabled operators and panels</span>
+fiftyone<span class="w"> </span>operators<span class="w"> </span>list<span class="w"> </span>--disabled
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Only list panels</span>
+fiftyone<span class="w"> </span>operators<span class="w"> </span>list<span class="w"> </span>--panels-only
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>uri                                          enabled   builtin   panel   unlisted
+-------------------------------------------  --------  --------  ------  ---------
+@voxel51/annotation/request_annotations      ✓
+@voxel51/annotation/load_annotations         ✓
+@voxel51/annotation/get_annotation_info      ✓
+@voxel51/annotation/load_annotation_view     ✓
+@voxel51/annotation/rename_annotation_run    ✓
+@voxel51/annotation/delete_annotation_run    ✓
+@voxel51/brain/compute_visualization         ✓
+@voxel51/brain/compute_similarity            ✓
+@voxel51/brain/compute_uniqueness            ✓
+@voxel51/brain/compute_mistakenness          ✓
+@voxel51/brain/compute_hardness              ✓
+@voxel51/brain/get_brain_info                ✓
+@voxel51/brain/load_brain_view               ✓
+@voxel51/brain/rename_brain_run              ✓
+@voxel51/brain/delete_brain_run              ✓
+@voxel51/evaluation/evaluate_model           ✓
+@voxel51/evaluation/get_evaluation_info      ✓
+@voxel51/evaluation/load_evaluation_view     ✓
+@voxel51/evaluation/rename_evaluation        ✓
+@voxel51/evaluation/delete_evaluation        ✓
+@voxel51/io/import_samples                   ✓
+@voxel51/io/merge_samples                    ✓
+@voxel51/io/merge_labels                     ✓
+@voxel51/io/export_samples                   ✓
+@voxel51/io/draw_labels                      ✓
+@voxel51/operators/clone_selected_samples    ✓          ✓
+@voxel51/operators/clone_sample_field        ✓          ✓
+@voxel51/operators/rename_sample_field       ✓          ✓
+@voxel51/operators/delete_selected_samples   ✓          ✓
+@voxel51/operators/delete_sample_field       ✓          ✓
+@voxel51/operators/print_stdout              ✓          ✓                 ✓
+@voxel51/operators/list_files                ✓          ✓                 ✓
+@voxel51/utils/create_dataset                ✓
+@voxel51/utils/load_dataset                  ✓
+@voxel51/utils/edit_dataset_info             ✓
+@voxel51/utils/rename_dataset                ✓
+@voxel51/utils/delete_dataset                ✓
+@voxel51/utils/compute_metadata              ✓
+@voxel51/utils/generate_thumbnails           ✓
+@voxel51/utils/manage_plugins                ✓
+@voxel51/zoo/load_zoo_dataset                ✓
+@voxel51/zoo/apply_zoo_model                 ✓
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h3>Downloading plugins<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>You can use the
+<a class="reference internal" href="../cli/index.html#cli-fiftyone-plugins-download"><span class="std std-ref">fiftyone plugins download</span></a> command to
+list the plugins that you’ve downloaded or created locally:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Download plugins from a GitHub repository URL</span>
+fiftyone<span class="w"> </span>plugins<span class="w"> </span>download<span class="w"> </span>&lt;github-repo-url&gt;
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Download plugins by specifying the GitHub repository details</span>
+fiftyone<span class="w"> </span>plugins<span class="w"> </span>download<span class="w"> </span>&lt;user&gt;/&lt;repo&gt;<span class="o">[</span>/&lt;ref&gt;<span class="o">]</span>
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Download specific plugins from a URL with a custom search depth</span>
+fiftyone<span class="w"> </span>plugins<span class="w"> </span>download<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>&lt;url&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--plugin-names<span class="w"> </span>&lt;name1&gt;<span class="w"> </span>&lt;name2&gt;<span class="w"> </span>&lt;name3&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--max-depth<span class="w"> </span><span class="m">2</span><span class="w">  </span><span class="c1"># search nested directories for plugins</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="getting-plugin-info">
+<h3>Getting plugin info<a class="headerlink" href="#getting-plugin-info" title="Permalink to this headline">¶</a></h3>
+<p>You can use the
+<a class="reference internal" href="../cli/index.html#cli-fiftyone-plugins-info"><span class="std std-ref">fiftyone plugins info</span></a> command to view the
+available metadata about a plugin:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>fiftyone<span class="w"> </span>plugins<span class="w"> </span>info<span class="w"> </span>@voxel51/annotation
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>key                     value
+----------------------  --------------------------------------------------------------------
+name                    @voxel51/annotation
+author
+version                 1.0.0
+url                     https://github.com/voxel51/fiftyone-plugins/.../annotation/README.md
+license                 Apache 2.0
+description             Utilities for integrating FiftyOne with annotation tools
+fiftyone_compatibility  &gt;=0.22
+operators               request_annotations
+                        load_annotations
+                        get_annotation_info
+                        load_annotation_view
+                        rename_annotation_run
+                        delete_annotation_run
+js_bundle               dist/index.umd.js
+py_entry                __init__.py
+js_bundle_exists        False
+js_bundle_server_path
+has_py                  True
+has_js                  False
+server_path             /plugins/fiftyone-plugins/plugins/annotation
+secrets                 FIFTYONE_CVAT_URL
+                        FIFTYONE_CVAT_USERNAME
+                        FIFTYONE_CVAT_PASSWORD
+                        FIFTYONE_CVAT_EMAIL
+                        FIFTYONE_LABELBOX_URL
+                        FIFTYONE_LABELBOX_API_KEY
+                        FIFTYONE_LABELSTUDIO_URL
+                        FIFTYONE_LABELSTUDIO_API_KEY
+directory               ~/fiftyone/__plugins__/fiftyone-plugins/plugins/annotation
+</pre></div>
+</div>
+</div>
+<div class="section" id="getting-operator-info">
+<h3>Getting operator info<a class="headerlink" href="#getting-operator-info" title="Permalink to this headline">¶</a></h3>
+<p>You can use the <a class="reference internal" href="../cli/index.html#cli-fiftyone-operators-info"><span class="std std-ref">fiftyone operators info</span></a> to
+view the available metadata about an individual operator or panel within a
+plugin:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>fiftyone<span class="w"> </span>operators<span class="w"> </span>info<span class="w"> </span>@voxel51/io/import_samples
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>key                                  value
+-----------------------------------  ----------------------
+name                                 import_samples
+label                                Import samples
+description
+execute_as_generator                 True
+unlisted                             False
+dynamic                              True
+on_startup                           False
+on_dataset_open                      False
+disable_schema_validation            False
+delegation_target
+icon
+dark_icon                            /assets/icon-dark.svg
+light_icon                           /assets/icon-light.svg
+allow_immediate_execution            True
+allow_delegated_execution            False
+default_choice_to_delegated          False
+resolve_execution_options_on_change  True
+</pre></div>
+</div>
+</div>
+<div class="section" id="installing-plugin-requirements">
+<h3>Installing plugin requirements<a class="headerlink" href="#installing-plugin-requirements" title="Permalink to this headline">¶</a></h3>
+<p>You can use the
+<a class="reference internal" href="../cli/index.html#cli-fiftyone-plugins-requirements"><span class="std std-ref">fiftyone plugins requirements</span></a>
+command to view, install, and ensure installation of a plugin’s requirements:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print requirements for a plugin</span>
+fiftyone<span class="w"> </span>plugins<span class="w"> </span>requirements<span class="w"> </span>&lt;name&gt;<span class="w"> </span>--print
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install any requirements for the plugin</span>
+fiftyone<span class="w"> </span>plugins<span class="w"> </span>requirements<span class="w"> </span>&lt;name&gt;<span class="w"> </span>--install
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ensures that the requirements for the plugin are satisfied</span>
+fiftyone<span class="w"> </span>plugins<span class="w"> </span>requirements<span class="w"> </span>&lt;name&gt;<span class="w"> </span>--ensure
+</pre></div>
+</div>
+</div>
+<div class="section" id="enabling-and-disabling-plugins">
+<h3>Enabling and disabling plugins<a class="headerlink" href="#enabling-and-disabling-plugins" title="Permalink to this headline">¶</a></h3>
+<p>You can use the
+<a class="reference internal" href="../cli/index.html#cli-fiftyone-plugins-enable"><span class="std std-ref">fiftyone plugins enable</span></a> and
+<a class="reference internal" href="../cli/index.html#cli-fiftyone-plugins-disable"><span class="std std-ref">fiftyone plugins disable</span></a> commands to
+enable and disable plugins that you’ve downloaded:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Enable a plugin</span>
+fiftyone<span class="w"> </span>plugins<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>&lt;name&gt;
+
+<span class="c1"># Enable multiple plugins</span>
+fiftyone<span class="w"> </span>plugins<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>&lt;name1&gt;<span class="w"> </span>&lt;name2&gt;<span class="w"> </span>...
+
+<span class="c1"># Enable all plugins</span>
+fiftyone<span class="w"> </span>plugins<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--all
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Disable a plugin</span>
+fiftyone<span class="w"> </span>plugins<span class="w"> </span>disable<span class="w"> </span>&lt;name&gt;
+
+<span class="c1"># Disable multiple plugins</span>
+fiftyone<span class="w"> </span>plugins<span class="w"> </span>disable<span class="w"> </span>&lt;name1&gt;<span class="w"> </span>&lt;name2&gt;<span class="w"> </span>...
+
+<span class="c1"># Disable all plugins</span>
+fiftyone<span class="w"> </span>plugins<span class="w"> </span>disable<span class="w"> </span>--all
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Operators associated with disabled plugins will not appear in the App’s
+<a class="reference internal" href="#using-operators"><span class="std std-ref">operator browser</span></a>.</p>
+</div>
+<p>Plugin disablement is stored as an <code class="code docutils literal notranslate"><span class="pre">enabled:</span> <span class="pre">false</span></code> entry in the plugin’s
+<a class="reference internal" href="#plugins-configuration"><span class="std std-ref">config settings</span></a>.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>fiftyone<span class="w"> </span>plugins<span class="w"> </span>disable<span class="w"> </span>@voxel51/zoo
+fiftyone<span class="w"> </span>app<span class="w"> </span>config<span class="w"> </span>plugins
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
+    &quot;map&quot;: {
+        &quot;mapboxAccessToken&quot;: &quot;XXXXXXXX&quot;
+    },
+    &quot;@voxel51/zoo&quot;: {
+        &quot;enabled&quot;: false
+    },
+    ...
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="deleting-plugins">
+<h3>Deleting plugins<a class="headerlink" href="#deleting-plugins" title="Permalink to this headline">¶</a></h3>
+<p>You can use the
+<a class="reference internal" href="../cli/index.html#cli-fiftyone-plugins-delete"><span class="std std-ref">fiftyone plugins delete</span></a> command to delete
+plugins from your local machine.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Delete a plugin from local disk</span>
+fiftyone<span class="w"> </span>plugins<span class="w"> </span>delete<span class="w"> </span>&lt;name&gt;
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Delete multiple plugins from local disk</span>
+fiftyone<span class="w"> </span>plugins<span class="w"> </span>delete<span class="w"> </span>&lt;name1&gt;<span class="w"> </span>&lt;name2&gt;<span class="w"> </span>...
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Delete all plugins from local disk</span>
+fiftyone<span class="w"> </span>plugins<span class="w"> </span>delete<span class="w"> </span>--all
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="configuring-plugins">
+<span id="plugins-configuration"></span><h2>Configuring plugins<a class="headerlink" href="#configuring-plugins" title="Permalink to this headline">¶</a></h2>
+<p>Certain plugins support configuration. For those plugins, you can store:</p>
+<ul class="simple">
+<li><p>System-wide plugin settings under the <code class="code docutils literal notranslate"><span class="pre">plugins</span></code> key of your
+<a class="reference internal" href="../user_guide/config.html#configuring-fiftyone-app"><span class="std std-ref">App config</span></a></p></li>
+<li><p>Dataset-specific plugin settings for any subset of the above values on a
+<a class="reference internal" href="../user_guide/using_datasets.html#dataset-app-config"><span class="std std-ref">dataset’s App config</span></a>.</p></li>
+</ul>
+<p>See the <a class="reference internal" href="../user_guide/config.html#configuring-plugins"><span class="std std-ref">configuring plugins</span></a> page for more
+information.</p>
+</div>
+<div class="section" id="plugin-secrets">
+<span id="plugins-secrets"></span><h2>Plugin secrets<a class="headerlink" href="#plugin-secrets" title="Permalink to this headline">¶</a></h2>
+<p>Some plugins may require sensitive information such as API tokens and login
+credentials in order to function. Any secrets that a plugin requires are
+documented under the <code class="code docutils literal notranslate"><span class="pre">secrets</span></code> key of its <code class="code docutils literal notranslate"><span class="pre">fiftyone.yml</span></code> file.</p>
+<p>For example, the
+<a class="reference external" href="https://github.com/voxel51/fiftyone-plugins/blob/main/plugins/annotation/fiftyone.yml">&#64;voxel51/annotation</a>
+plugin declares the following secrets:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><span class="nt">secrets</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FIFTYONE_CVAT_URL</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FIFTYONE_CVAT_USERNAME</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FIFTYONE_CVAT_PASSWORD</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FIFTYONE_CVAT_EMAIL</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FIFTYONE_LABELBOX_URL</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FIFTYONE_LABELBOX_API_KEY</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FIFTYONE_LABELSTUDIO_URL</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FIFTYONE_LABELSTUDIO_API_KEY</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can use the <a class="reference internal" href="../cli/index.html#cli-fiftyone-plugins-info"><span class="std std-ref">fiftyone plugins info</span></a>
+CLI command to print information about a plugin, including its required
+secrets.</p>
+</div>
+<p>As the naming convention implies, any necessary secrets are provided by setting
+environment variables with the appropriate names. For example, if you want to
+use the CVAT backend with the
+<a class="reference external" href="https://github.com/voxel51/fiftyone-plugins/blob/main/plugins/annotation/fiftyone.yml">&#64;voxel51/annotation</a>
+plugin, you would set:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nv">FIFTYONE_CVAT_URL</span><span class="o">=</span>...
+<span class="nv">FIFTYONE_CVAT_USERNAME</span><span class="o">=</span>...
+<span class="nv">FIFTYONE_CVAT_PASSWORD</span><span class="o">=</span>...
+<span class="nv">FIFTYONE_CVAT_EMAIL</span><span class="o">=</span>...
+</pre></div>
+</div>
+<p>At runtime, the plugin’s execution context will automatically be hydrated with
+any available secrets that are declared by the plugin. Operators access these
+secrets via the <code class="code docutils literal notranslate"><span class="pre">ctx.secrets</span></code> dict:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ctx</span><span class="p">):</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="n">secrets</span><span class="p">[</span><span class="s2">&quot;FIFTYONE_CVAT_URL&quot;</span><span class="p">]</span>
+    <span class="n">username</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="n">secrets</span><span class="p">[</span><span class="s2">&quot;FIFTYONE_CVAT_USERNAME&quot;</span><span class="p">]</span>
+    <span class="n">password</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="n">secrets</span><span class="p">[</span><span class="s2">&quot;FIFTYONE_CVAT_PASSWORD&quot;</span><span class="p">]</span>
+    <span class="n">email</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="n">secrets</span><span class="p">[</span><span class="s2">&quot;FIFTYONE_CVAT_EMAIL&quot;</span><span class="p">]</span>
+</pre></div></td></tr></table></div>
+</div>
+</div>
+<div class="section" id="using-panels">
+<span id="id4"></span><h2>Using panels<a class="headerlink" href="#using-panels" title="Permalink to this headline">¶</a></h2>
+<p>Panels are miniature full-featured data applications that you can open in
+<a class="reference internal" href="../user_guide/app.html#app-spaces"><span class="std std-ref">App Spaces</span></a> and interactively manipulate to explore your
+dataset and update/respond to updates from other spaces that are currently open
+in the App.</p>
+<p>FiftyOne natively includes the following Panels:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../user_guide/app.html#app-samples-panel"><span class="std std-ref">Samples panel</span></a>: the media grid that loads by
+default when you launch the App</p></li>
+<li><p><a class="reference internal" href="../user_guide/app.html#app-histograms-panel"><span class="std std-ref">Histograms panel</span></a>: a dashboard of histograms
+for the fields of your dataset</p></li>
+<li><p><a class="reference internal" href="../user_guide/app.html#app-embeddings-panel"><span class="std std-ref">Embeddings panel</span></a>: a canvas for working with
+<a class="reference internal" href="../brain.html#brain-embeddings-visualization"><span class="std std-ref">embeddings visualizations</span></a></p></li>
+<li><p><a class="reference internal" href="../user_guide/app.html#app-map-panel"><span class="std std-ref">Map panel</span></a>: visualizes the geolocation data of
+datasets that have a <a class="reference internal" href="../api/fiftyone.core.labels.html#fiftyone.core.labels.GeoLocation" title="fiftyone.core.labels.GeoLocation"><code class="xref py py-class docutils literal notranslate"><span class="pre">GeoLocation</span></code></a> field</p></li>
+</ul>
+<p>Any plugins that you’ve installed may expose additional panels too.</p>
+<p>Click the <code class="code docutils literal notranslate"><span class="pre">+</span></code> icon next to the “Samples” tab to open a new panel:</p>
+<img alt="../_images/app-map-panel.gif" class="align-center" src="../_images/app-map-panel.gif" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Did you know? You can also programmatically configure spaces
+<a class="reference internal" href="../user_guide/app.html#app-spaces-python"><span class="std std-ref">in Python</span></a>.</p>
+</div>
+</div>
+<div class="section" id="using-operators">
+<span id="id5"></span><h2>Using operators<a class="headerlink" href="#using-operators" title="Permalink to this headline">¶</a></h2>
+<p>Operators are a powerful feature in FiftyOne that allow plugin developers to
+define custom operations that can be executed from within the App.</p>
+<p>Some operators may expose themselves as custom buttons, icons, or menu items
+throughout the App. However, the Operator Browser allows users to search
+through all available (enabled) operators.</p>
+<p>You can open the Operator Browser by clicking on the Operator Browser icon
+above the sample grid or by typing backtick (<code class="docutils literal notranslate"><span class="pre">`</span></code>):</p>
+<img alt="../_images/operator-browser.gif" class="align-center" src="../_images/operator-browser.gif" />
+<p>Operators provide dynamic input forms that collect the necessary user inputs.
+The actual operation is then performed by pressing the <code class="code docutils literal notranslate"><span class="pre">Execute</span></code>/<code class="code docutils literal notranslate"><span class="pre">Schedule</span></code>
+button at the bottom of the form.</p>
+<p>Some Operators perform an immediate action when executed, while other Operators
+<a class="reference internal" href="#delegated-operations"><span class="std std-ref">delegate</span></a> their execution to another process.</p>
+</div>
+<div class="section" id="executing-operators-via-sdk">
+<span id="executing-operators-sdk"></span><h2>Executing operators via SDK<a class="headerlink" href="#executing-operators-via-sdk" title="Permalink to this headline">¶</a></h2>
+<p>Many operators are intended to be executed programmatically via the SDK rather
+than (or in addition to) executing them by filling out their input form in the
+App.</p>
+<div class="section" id="calling-operators">
+<span id="id6"></span><h3>Calling operators<a class="headerlink" href="#calling-operators" title="Permalink to this headline">¶</a></h3>
+<p>By convention, operators that are intended to be executed programmatically
+should implement <code class="code docutils literal notranslate"><span class="pre">__call__()</span></code> so that users have a well-documented interface
+for invoking the operator as a function.</p>
+<p>For example, the
+<a class="reference external" href="https://github.com/voxel51/fiftyone-plugins/tree/main/plugins/utils">&#64;voxel51/utils/compute_metadata</a>
+operator can be invoked like so:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.operators</span> <span class="k">as</span> <span class="nn">foo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+<span class="n">compute_metadata</span> <span class="o">=</span> <span class="n">foo</span><span class="o">.</span><span class="n">get_operator</span><span class="p">(</span><span class="s2">&quot;@voxel51/utils/compute_metadata&quot;</span><span class="p">)</span>
+
+<span class="c1"># (Re)compute the dataset&#39;s metadata</span>
+<span class="n">compute_metadata</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Notice that <a class="reference internal" href="../api/fiftyone.operators.html#fiftyone.operators.get_operator" title="fiftyone.operators.get_operator"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_operator()</span></code></a> is
+used to retrieve the operator by its URI.</p>
+</div>
+<p>Behind the scenes, the operator’s <code class="code docutils literal notranslate"><span class="pre">__call__()</span></code> method is implemented as
+follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><span class="k">class</span> <span class="nc">ComputeMetadata</span><span class="p">(</span><span class="n">foo</span><span class="o">.</span><span class="n">Operator</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">sample_collection</span><span class="p">,</span>
+        <span class="n">overwrite</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">num_workers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="n">ctx</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">view</span><span class="o">=</span><span class="n">sample_collection</span><span class="o">.</span><span class="n">view</span><span class="p">())</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+            <span class="n">overwrite</span><span class="o">=</span><span class="n">overwrite</span><span class="p">,</span>
+            <span class="n">num_workers</span><span class="o">=</span><span class="n">num_workers</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">foo</span><span class="o">.</span><span class="n">execute_operator</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">uri</span><span class="p">,</span> <span class="n">ctx</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>which simply packages up the provided keyword arguments into the correct format
+for the operator’s <code class="code docutils literal notranslate"><span class="pre">ctx.params</span></code> and then passes them to
+<a class="reference internal" href="../api/fiftyone.operators.html#fiftyone.operators.execute_operator" title="fiftyone.operators.execute_operator"><code class="xref py py-func docutils literal notranslate"><span class="pre">execute_operator()</span></code></a>, which
+performs the execution.</p>
+<p>For operators whose
+<a class="reference internal" href="../api/fiftyone.operators.operator.html#fiftyone.operators.operator.Operator.execute" title="fiftyone.operators.operator.Operator.execute"><code class="xref py py-meth docutils literal notranslate"><span class="pre">execute()</span></code></a> method returns
+data, you can access it via the <code class="docutils literal notranslate"><span class="pre">result</span></code> property of the returned
+<a class="reference internal" href="../api/fiftyone.operators.executor.html#fiftyone.operators.executor.ExecutionResult" title="fiftyone.operators.executor.ExecutionResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionResult</span></code></a> object:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">op</span> <span class="o">=</span> <span class="n">foo</span><span class="o">.</span><span class="n">get_operator</span><span class="p">(</span><span class="s2">&quot;@an-operator/with-results&quot;</span><span class="p">)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">op</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">result</span><span class="p">)</span> <span class="c1"># {...}</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When working in notebook contexts, executing operators returns an
+<code class="docutils literal notranslate"><span class="pre">asyncio.Task</span></code> that you can <code class="docutils literal notranslate"><span class="pre">await</span></code> to retrieve the
+<a class="reference internal" href="../api/fiftyone.operators.executor.html#fiftyone.operators.executor.ExecutionResult" title="fiftyone.operators.executor.ExecutionResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionResult</span></code></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">op</span> <span class="o">=</span> <span class="n">foo</span><span class="o">.</span><span class="n">get_operator</span><span class="p">(</span><span class="s2">&quot;@an-operator/with-results&quot;</span><span class="p">)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">op</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">result</span><span class="p">)</span> <span class="c1"># {...}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="requesting-delegation">
+<h4>Requesting delegation<a class="headerlink" href="#requesting-delegation" title="Permalink to this headline">¶</a></h4>
+<p>Operators that support <a class="reference internal" href="#delegated-operations"><span class="std std-ref">delegated execution</span></a> can
+support this via the <code class="code docutils literal notranslate"><span class="pre">__call__()</span></code> syntax by passing the
+<code class="code docutils literal notranslate"><span class="pre">request_delegation=True</span></code> flag to
+<a class="reference internal" href="../api/fiftyone.operators.html#fiftyone.operators.execute_operator" title="fiftyone.operators.execute_operator"><code class="xref py py-func docutils literal notranslate"><span class="pre">execute_operator()</span></code></a>.</p>
+<p>In fact, the
+<a class="reference external" href="https://github.com/voxel51/fiftyone-plugins/tree/main/plugins/utils">&#64;voxel51/utils/compute_metadata</a>
+operator does just that:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span></pre></div></td><td class="code"><div><pre><span></span><span class="k">class</span> <span class="nc">ComputeMetadata</span><span class="p">(</span><span class="n">foo</span><span class="o">.</span><span class="n">Operator</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">foo</span><span class="o">.</span><span class="n">OperatorConfig</span><span class="p">(</span>
+        <span class="o">...</span>
+        <span class="n">allow_immediate_execution</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">allow_delegated_execution</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">sample_collection</span><span class="p">,</span>
+        <span class="n">overwrite</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">num_workers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">delegate</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="n">ctx</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">view</span><span class="o">=</span><span class="n">sample_collection</span><span class="o">.</span><span class="n">view</span><span class="p">())</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+            <span class="n">overwrite</span><span class="o">=</span><span class="n">overwrite</span><span class="p">,</span>
+            <span class="n">num_workers</span><span class="o">=</span><span class="n">num_workers</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">foo</span><span class="o">.</span><span class="n">execute_operator</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">uri</span><span class="p">,</span>
+            <span class="n">ctx</span><span class="p">,</span>
+            <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span>
+            <span class="n">request_delegation</span><span class="o">=</span><span class="n">delegate</span><span class="p">,</span>
+        <span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>which means that it can be invoked like so:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">compute_metadata</span> <span class="o">=</span> <span class="n">foo</span><span class="o">.</span><span class="n">get_operator</span><span class="p">(</span><span class="s2">&quot;@voxel51/utils/compute_metadata&quot;</span><span class="p">)</span>
+
+<span class="c1"># Schedule a delegated operation to (re)compute metadata</span>
+<span class="n">compute_metadata</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">delegate</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
+<div class="section" id="direct-execution">
+<span id="direct-operator-execution"></span><h3>Direct execution<a class="headerlink" href="#direct-execution" title="Permalink to this headline">¶</a></h3>
+<p>You can programmatically execute any operator by directly calling
+<a class="reference internal" href="../api/fiftyone.operators.html#fiftyone.operators.execute_operator" title="fiftyone.operators.execute_operator"><code class="xref py py-func docutils literal notranslate"><span class="pre">execute_operator()</span></code></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.operators</span> <span class="k">as</span> <span class="nn">foo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+
+<span class="n">ctx</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;view&quot;</span><span class="p">:</span> <span class="n">dataset</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span>
+    <span class="s2">&quot;params&quot;</span><span class="p">:</span> <span class="nb">dict</span><span class="p">(</span>
+        <span class="n">export_type</span><span class="o">=</span><span class="s2">&quot;LABELS_ONLY&quot;</span><span class="p">,</span>
+        <span class="n">dataset_type</span><span class="o">=</span><span class="s2">&quot;COCO&quot;</span><span class="p">,</span>
+        <span class="n">labels_path</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">absolute_path</span><span class="o">=</span><span class="s2">&quot;/tmp/coco/labels.json&quot;</span><span class="p">),</span>
+        <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">foo</span><span class="o">.</span><span class="n">execute_operator</span><span class="p">(</span><span class="s2">&quot;@voxel51/io/export_samples&quot;</span><span class="p">,</span> <span class="n">ctx</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In general, to use
+<a class="reference internal" href="../api/fiftyone.operators.html#fiftyone.operators.execute_operator" title="fiftyone.operators.execute_operator"><code class="xref py py-func docutils literal notranslate"><span class="pre">execute_operator()</span></code></a> you must
+inspect the operator’s
+<a class="reference internal" href="../api/fiftyone.operators.operator.html#fiftyone.operators.operator.Operator.execute" title="fiftyone.operators.operator.Operator.execute"><code class="xref py py-meth docutils literal notranslate"><span class="pre">execute()</span></code></a>
+implementation to understand what parameters are required.</p>
+</div>
+<p>For operators whose
+<a class="reference internal" href="../api/fiftyone.operators.operator.html#fiftyone.operators.operator.Operator.execute" title="fiftyone.operators.operator.Operator.execute"><code class="xref py py-meth docutils literal notranslate"><span class="pre">execute()</span></code></a> method returns
+data, you can access it via the <code class="docutils literal notranslate"><span class="pre">result</span></code> property of the returned
+<a class="reference internal" href="../api/fiftyone.operators.executor.html#fiftyone.operators.executor.ExecutionResult" title="fiftyone.operators.executor.ExecutionResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionResult</span></code></a> object:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">foo</span><span class="o">.</span><span class="n">execute_operator</span><span class="p">(</span><span class="s2">&quot;@an-operator/with-results&quot;</span><span class="p">,</span> <span class="n">ctx</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># {...}</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When working in notebook contexts, executing operators returns an
+<code class="docutils literal notranslate"><span class="pre">asyncio.Task</span></code> that you can <code class="docutils literal notranslate"><span class="pre">await</span></code> to retrieve the
+<a class="reference internal" href="../api/fiftyone.operators.executor.html#fiftyone.operators.executor.ExecutionResult" title="fiftyone.operators.executor.ExecutionResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExecutionResult</span></code></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">foo</span><span class="o">.</span><span class="n">execute_operator</span><span class="p">(</span><span class="s2">&quot;@an-operator/with-results&quot;</span><span class="p">,</span> <span class="n">ctx</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># {...}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id8">
+<h4>Requesting delegation<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h4>
+<p>If an operation supports both immediate and
+<a class="reference internal" href="#delegated-operations"><span class="std std-ref">delegated execution</span></a> as specified by its
+<a class="reference internal" href="developing_plugins.html#operator-execution-options"><span class="std std-ref">execution options</span></a>, you can request
+delegated execution by passing the <code class="code docutils literal notranslate"><span class="pre">request_delegation=True</span></code> flag to
+<a class="reference internal" href="../api/fiftyone.operators.html#fiftyone.operators.execute_operator" title="fiftyone.operators.execute_operator"><code class="xref py py-func docutils literal notranslate"><span class="pre">execute_operator()</span></code></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">foo</span><span class="o">.</span><span class="n">execute_operator</span><span class="p">(</span><span class="n">operator_uri</span><span class="p">,</span> <span class="n">ctx</span><span class="o">=</span><span class="n">ctx</span><span class="p">,</span> <span class="n">request_delegation</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>This has the same effect as choosing <code class="code docutils literal notranslate"><span class="pre">Schedule</span></code> from the dropdown in the
+operator’s input modal when executing it from within the App:</p>
+<img alt="../_images/operator-execute-button.png" class="align-center" src="../_images/operator-execute-button.png" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference internal" href="../teams/index.html#fiftyone-teams"><span class="std std-ref">FiftyOne Teams</span></a> users can also specify an optional
+delegation target for their delegated operations:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">foo</span><span class="o">.</span><span class="n">execute_operator</span><span class="p">(</span>
+    <span class="n">operator_uri</span><span class="p">,</span>
+    <span class="n">ctx</span><span class="o">=</span><span class="n">ctx</span><span class="p">,</span>
+    <span class="n">request_delegation</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">delegation_target</span><span class="o">=</span><span class="s2">&quot;overnight&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="delegating-function-calls">
+<span id="id9"></span><h3>Delegating function calls<a class="headerlink" href="#delegating-function-calls" title="Permalink to this headline">¶</a></h3>
+<p>The
+<a class="reference external" href="https://github.com/voxel51/fiftyone-plugins/tree/main/plugins/utils">&#64;voxel51/utils/delegate</a>
+operator provides a general purpose utility for
+<a class="reference internal" href="#delegated-operations"><span class="std std-ref">delegating execution</span></a> of an arbitrary function
+call that can be expressed in any of the following forms:</p>
+<ul class="simple">
+<li><p>Execute an arbitrary function: <code class="code docutils literal notranslate"><span class="pre">fcn(*args,</span> <span class="pre">**kwargs)</span></code></p></li>
+<li><p>Apply a function to a dataset or view:
+<code class="code docutils literal notranslate"><span class="pre">fcn(dataset_or_view,</span> <span class="pre">*args,</span> <span class="pre">**kwargs)</span></code></p></li>
+<li><p>Call an instance method of a dataset or view:
+<code class="code docutils literal notranslate"><span class="pre">dataset_or_view.fcn(*args,</span> <span class="pre">**kwargs)</span></code></p></li>
+</ul>
+<p>Here’s some examples of delegating common tasks that can be expressed in the
+above forms:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.operators</span> <span class="k">as</span> <span class="nn">foo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+<span class="n">delegate</span> <span class="o">=</span> <span class="n">foo</span><span class="o">.</span><span class="n">get_operator</span><span class="p">(</span><span class="s2">&quot;@voxel51/utils/delegate&quot;</span><span class="p">)</span>
+
+<span class="c1"># Compute metadata</span>
+<span class="n">delegate</span><span class="p">(</span><span class="s2">&quot;compute_metadata&quot;</span><span class="p">,</span> <span class="n">dataset</span><span class="o">=</span><span class="n">dataset</span><span class="p">)</span>
+
+<span class="c1"># Compute visualization</span>
+<span class="n">delegate</span><span class="p">(</span>
+    <span class="s2">&quot;fiftyone.brain.compute_visualization&quot;</span><span class="p">,</span>
+    <span class="n">dataset</span><span class="o">=</span><span class="n">dataset</span><span class="p">,</span>
+    <span class="n">brain_key</span><span class="o">=</span><span class="s2">&quot;img_viz&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># Export a view</span>
+<span class="n">delegate</span><span class="p">(</span>
+    <span class="s2">&quot;export&quot;</span><span class="p">,</span>
+    <span class="n">view</span><span class="o">=</span><span class="n">dataset</span><span class="o">.</span><span class="n">to_patches</span><span class="p">(</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">),</span>
+    <span class="n">export_dir</span><span class="o">=</span><span class="s2">&quot;/tmp/patches&quot;</span><span class="p">,</span>
+    <span class="n">dataset_type</span><span class="o">=</span><span class="s2">&quot;fiftyone.types.ImageClassificationDirectoryTree&quot;</span><span class="p">,</span>
+    <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># Load the exported patches into a new dataset</span>
+<span class="n">delegate</span><span class="p">(</span>
+    <span class="s2">&quot;fiftyone.Dataset.from_dir&quot;</span><span class="p">,</span>
+    <span class="n">dataset_dir</span><span class="o">=</span><span class="s2">&quot;/tmp/patches&quot;</span><span class="p">,</span>
+    <span class="n">dataset_type</span><span class="o">=</span><span class="s2">&quot;fiftyone.types.ImageClassificationDirectoryTree&quot;</span><span class="p">,</span>
+    <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;patches&quot;</span><span class="p">,</span>
+    <span class="n">persistent</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
+<div class="section" id="delegated-operations">
+<span id="id10"></span><h2>Delegated operations<a class="headerlink" href="#delegated-operations" title="Permalink to this headline">¶</a></h2>
+<p>Delegated operations are a powerful feature of FiftyOne’s plugin framework that
+allows you to schedule potentially long-running tasks from within the App that
+are executed in the background while you continue to work.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference internal" href="../teams/teams_plugins.html#teams-delegated-operations"><span class="std std-ref">FiftyOne Teams</span></a> deployments come out of
+the box with a connected compute cluster for executing delegated operations
+at scale.</p>
+<p>In FiftyOne Open Source, you can use delegated operations at small scale
+by <a class="reference internal" href="#delegated-orchestrator-open-source"><span class="std std-ref">running them locally</span></a>.</p>
+</div>
+<p>For example, have model predictions on your dataset that you want to evaluate?
+The <a class="reference external" href="https://github.com/voxel51/fiftyone-plugins/blob/main/plugins/evaluation/README.md">&#64;voxel51/evaluation</a>
+plugin makes it easy:</p>
+<img alt="../_images/evaluation.gif" src="../_images/evaluation.gif" />
+<p>Need to compute embedding for your dataset so you can visualize them in the
+<a class="reference internal" href="../user_guide/app.html#app-embeddings-panel"><span class="std std-ref">Embeddings panel</span></a>? Kick off the task with the
+<a class="reference external" href="https://github.com/voxel51/fiftyone-plugins/blob/main/plugins/brain/README.md">&#64;voxel51/brain</a>
+plugin and proceed with other work while the execution happens in the background:</p>
+<img alt="../_images/embeddings.gif" src="../_images/embeddings.gif" />
+<p>Why is this awesome? Your AI stack needs a flexible data-centric component that
+enables you to organize and compute on your data. With delegated operations,
+FiftyOne becomes both a dataset management/visualization tool and a workflow
+automation tool that defines how your data-centric workflows like ingestion,
+curation, and evaluation are performed.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Want to run delegated operations at scale?
+<a class="reference external" href="https://voxel51.com/get-fiftyone-teams">Contact us</a> about
+<a class="reference internal" href="../teams/index.html#fiftyone-teams"><span class="std std-ref">FiftyOne Teams</span></a>, an open source-compatible
+enterprise deployment of FiftyOne with multiuser collaboration features,
+native cloud dataset support, and much more!</p>
+<p>Think of FiftyOne Teams as the single source of truth on which you
+co-develop your data and models together 📈</p>
+</div>
+</div>
+<div class="section" id="setting-up-an-orchestrator">
+<span id="delegated-orchestrator"></span><h2>Setting up an orchestrator<a class="headerlink" href="#setting-up-an-orchestrator" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="fiftyone-open-source">
+<span id="delegated-orchestrator-open-source"></span><h3>FiftyOne Open Source<a class="headerlink" href="#fiftyone-open-source" title="Permalink to this headline">¶</a></h3>
+<p>FiftyOne Open Source users can run delegated operations via the
+<a class="reference internal" href="../cli/index.html#cli-fiftyone-delegated-launch"><span class="std std-ref">fiftyone delegated launch</span></a> CLI command:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>fiftyone<span class="w"> </span>delegated<span class="w"> </span>launch
+</pre></div>
+</div>
+<p>This command starts a service that will continuously check for any queued
+delegated operations and execute them serially in its process.</p>
+<p>You must also ensure that the
+<a class="reference internal" href="../user_guide/config.html#configuring-fiftyone"><span class="std std-ref">allow_legacy_orchestrators</span></a> config flag is set
+in the environment where you run the App/SDK, e.g. by setting:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">FIFTYONE_ALLOW_LEGACY_ORCHESTRATORS</span><span class="o">=</span><span class="nb">true</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="fiftyone-teams">
+<span id="delegated-orchestrator-teamas"></span><h3>FiftyOne Teams<a class="headerlink" href="#fiftyone-teams" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="../teams/teams_plugins.html#teams-delegated-operations"><span class="std std-ref">FiftyOne Teams</span></a> deployments come out of the
+box with a connected compute cluster for executing delegated operations at
+scale.</p>
+<p>This powerful feature allows users to install/build plugins that execute
+potentially long-running tasks in the background while users continue with
+other work in the App.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Want to take advantage of this functionality?
+<a class="reference external" href="https://voxel51.com/get-fiftyone-teams">Contact us</a> about
+<a class="reference internal" href="../teams/index.html#fiftyone-teams"><span class="std std-ref">FiftyOne Teams</span></a>, an open source-compatible
+enterprise deployment of FiftyOne with multiuser collaboration features,
+native cloud dataset support, and much more!</p>
+<p>Think of FiftyOne Teams as the single source of truth on which you
+co-develop your data and models together 📈</p>
+</div>
+</div>
+</div>
+<div class="section" id="managing-delegated-operations">
+<span id="id12"></span><h2>Managing delegated operations<a class="headerlink" href="#managing-delegated-operations" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference internal" href="../cli/index.html#cli-fiftyone-delegated"><span class="std std-ref">fiftyone delegated</span></a> CLI command contains a
+number of useful utilities for viewing the status of your delegated operations.</p>
+<div class="section" id="listing-delegated-operations">
+<h3>Listing delegated operations<a class="headerlink" href="#listing-delegated-operations" title="Permalink to this headline">¶</a></h3>
+<p>You can use the <a class="reference internal" href="../cli/index.html#cli-fiftyone-delegated-list"><span class="std std-ref">fiftyone delegated list</span></a>
+command to list the delegated operations that you’ve run:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># List all delegated operations</span>
+fiftyone<span class="w"> </span>delegated<span class="w"> </span>list
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># List some specific delegated operations</span>
+fiftyone<span class="w"> </span>delegated<span class="w"> </span>list<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--dataset<span class="w"> </span>quickstart<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--operator<span class="w"> </span>@voxel51/io/export_samples<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--state<span class="w"> </span>COMPLETED<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--sort-by<span class="w"> </span>COMPLETED_AT<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--limit<span class="w"> </span><span class="m">10</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="getting-delegated-operation-info">
+<h3>Getting delegated operation info<a class="headerlink" href="#getting-delegated-operation-info" title="Permalink to this headline">¶</a></h3>
+<p>You can use the
+<a class="reference internal" href="../cli/index.html#cli-fiftyone-delegated-info"><span class="std std-ref">fiftyone delegated info</span></a> command to view
+the available metadata about a delegated operation, including its inputs,
+execution status, and error stack trace, if applicable.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span># Print information about a delegated operation
+fiftyone delegated info &lt;id&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="cleaning-up-delegated-operations">
+<h3>Cleaning up delegated operations<a class="headerlink" href="#cleaning-up-delegated-operations" title="Permalink to this headline">¶</a></h3>
+<p>You can use the
+<a class="reference internal" href="../cli/index.html#cli-fiftyone-delegated-cleanup"><span class="std std-ref">fiftyone delegated cleanup</span></a> command to
+cleanup delegated operations:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Delete all failed operations associated with a given dataset</span>
+fiftyone<span class="w"> </span>delegated<span class="w"> </span>cleanup<span class="w"> </span>--dataset<span class="w"> </span>quickstart<span class="w"> </span>--state<span class="w"> </span>FAILED
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Delete all delegated operations associated with non-existent datasets</span>
+fiftyone<span class="w"> </span>delegated<span class="w"> </span>cleanup<span class="w"> </span>--orphan
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print information about operations rather than actually deleting them</span>
+fiftyone<span class="w"> </span>delegated<span class="w"> </span>cleanup<span class="w"> </span>--orphan<span class="w"> </span>--dry-run
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+             </article>
+             
+            </div>
+            <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="developing_plugins.html" class="btn btn-neutral float-right" title="Developing Plugins" accesskey="n" rel="next">Next <img src="../_static/images/chevron-right-orange.svg" class="next-page"></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Plugins Overview" accesskey="p" rel="prev"><img src="../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
+      
+    </div>
+  
+</footer>
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              <ul>
+<li><a class="reference internal" href="#">Using Plugins</a><ul>
+<li><a class="reference internal" href="#downloading-plugins">Downloading plugins</a></li>
+<li><a class="reference internal" href="#your-plugins-directory">Your plugins directory</a></li>
+<li><a class="reference internal" href="#managing-plugins">Managing plugins</a><ul>
+<li><a class="reference internal" href="#listing-plugins">Listing plugins</a></li>
+<li><a class="reference internal" href="#listing-operators">Listing operators</a></li>
+<li><a class="reference internal" href="#id2">Downloading plugins</a></li>
+<li><a class="reference internal" href="#getting-plugin-info">Getting plugin info</a></li>
+<li><a class="reference internal" href="#getting-operator-info">Getting operator info</a></li>
+<li><a class="reference internal" href="#installing-plugin-requirements">Installing plugin requirements</a></li>
+<li><a class="reference internal" href="#enabling-and-disabling-plugins">Enabling and disabling plugins</a></li>
+<li><a class="reference internal" href="#deleting-plugins">Deleting plugins</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#configuring-plugins">Configuring plugins</a></li>
+<li><a class="reference internal" href="#plugin-secrets">Plugin secrets</a></li>
+<li><a class="reference internal" href="#using-panels">Using panels</a></li>
+<li><a class="reference internal" href="#using-operators">Using operators</a></li>
+<li><a class="reference internal" href="#executing-operators-via-sdk">Executing operators via SDK</a><ul>
+<li><a class="reference internal" href="#calling-operators">Calling operators</a><ul>
+<li><a class="reference internal" href="#requesting-delegation">Requesting delegation</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#direct-execution">Direct execution</a><ul>
+<li><a class="reference internal" href="#id8">Requesting delegation</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#delegating-function-calls">Delegating function calls</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#delegated-operations">Delegated operations</a></li>
+<li><a class="reference internal" href="#setting-up-an-orchestrator">Setting up an orchestrator</a><ul>
+<li><a class="reference internal" href="#fiftyone-open-source">FiftyOne Open Source</a></li>
+<li><a class="reference internal" href="#fiftyone-teams">FiftyOne Teams</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#managing-delegated-operations">Managing delegated operations</a><ul>
+<li><a class="reference internal" href="#listing-delegated-operations">Listing delegated operations</a></li>
+<li><a class="reference internal" href="#getting-delegated-operation-info">Getting delegated operation info</a></li>
+<li><a class="reference internal" href="#cleaning-up-delegated-operations">Cleaning up delegated operations</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  
+
+
+  
+
+     
+       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+         <script src="../_static/jquery.js"></script>
+         <script src="../_static/underscore.js"></script>
+         <script src="../_static/doctools.js"></script>
+         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+         <script src="../_static/js/voxel51-website.js"></script>
+         <script src="../_static/js/custom.js"></script>
+     
+
+  
+
+  <script type="text/javascript" src="../_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="../_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+  <!-- Begin Footer -->
+
+
+<footer class="footer-wrapper" id="docs-tutorials-resources">
+  <div class="footer pytorch-container">
+    <div class="footer__logo">
+      <a href="https://voxel51.com/"
+        ><img
+          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
+      /></a>
+    </div>
+
+    <div class="footer__address">
+      330 E Liberty St<br />
+      Ann Arbor, MI 48104<br />
+      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
+    </div>
+
+    <!--
+    <div class="footer__contact">
+      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
+    </div>
+    -->
+
+    <div class="footer__links">
+      <div class="footer__links--col2">
+        <p class="nav__item--brand">Products</p>
+        <a href="https://voxel51.com/fiftyone/">FiftyOne</a>
+        <a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a>
+        <a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a>
+        <a href="https://voxel51.com/success-stories/">Success Stories</a>
+      </div>
+      <div class="footer__links--col3">
+        <p class="nav__item--brand">Resources</p>
+        <a href="https://voxel51.com/blog/">Blog</a>
+        <a href="https://docs.voxel51.com/">Docs</a>
+        <a href="https://github.com/voxel51/">GitHub</a>
+        <a href="https://community.voxel51.com">Discord</a>
+        <a href="https://voxel51.com/ourstory/">About Us</a>
+        <a href="https://voxel51.com/computer-vision-events/">Events</a>
+        <a href="https://voxel51.com/jobs/">Careers</a>
+        <a href="https://voxel51.com/press/">Press</a>
+      </div>
+    </div>
+
+    <div class="footer__icons">
+      <ul class="list-inline">
+        <li>
+          <a href="https://www.linkedin.com/company/voxel51/">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/voxel51/">
+            <i class="fa-brands fa-github"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/voxel51">
+            <i class="fa-brands fa-twitter"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/voxel51/">
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="footer__copyright">
+      <ul class="list-inline">
+        <li>&copy; 2024 Voxel51 Inc.</li>
+        <li>
+          <a href="https://voxel51.com/privacy/">Privacy Policy</a>
+        </li>
+        <li>
+          <a href="https://voxel51.com/terms/">Terms of Service</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<!-- https://buttons.github.io -->
+<script async defer src="https://buttons.github.io/buttons.js" ></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XD15NFRY3M" ></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+  gtag("config", "G-XD15NFRY3M");
+</script>
+
+<script>
+  function open_modal(modal_id, modal_closer_id) {
+    // Get the modal
+    let the_modal = document.getElementById(modal_id);
+
+    the_modal.style.display = "flex";
+    document.body.style.overflow = "hidden";
+
+    let the_modal_closer = document.getElementById(modal_closer_id);
+
+    // When the user clicks on <span> (x), close the modal
+    the_modal_closer &&
+      (the_modal_closer.onclick = function () {
+        the_modal.style.display = "none";
+      });
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+      if (event.target == the_modal) {
+        the_modal.style.display = "none";
+        document.body.style.overflow = "unset";
+        window.onclick = undefined;
+      }
+    };
+  }
+</script>
+
+<!-- bigpicture.io -->
+<script>
+  !(function (e, t, i) {
+    var r = (e.bigPicture = e.bigPicture || []);
+    if (!r.initialized)
+      if (r.invoked)
+        e.console &&
+          console.error &&
+          console.error("BigPicture.io snippet included twice.");
+      else {
+        (r.invoked = !0),
+          (r.SNIPPET_VERSION = 1.5),
+          (r.handler = function (e) {
+            if (void 0 !== r.callback)
+              try {
+                return r.callback(e);
+              } catch (e) {}
+          }),
+          (r.eventList = ["mousedown", "mouseup", "click", "submit"]),
+          (r.methods = [
+            "track",
+            "identify",
+            "page",
+            "group",
+            "alias",
+            "integration",
+            "ready",
+            "intelReady",
+            "consentReady",
+            "on",
+            "off",
+          ]),
+          (r.factory = function (e) {
+            return function () {
+              var t = Array.prototype.slice.call(arguments);
+              return t.unshift(e), r.push(t), r;
+            };
+          });
+        for (var n = 0; n < r.methods.length; n++) {
+          var o = r.methods[n];
+          r[o] = r.factory(o);
+        }
+        r.getCookie = function (e) {
+          var i = ("; " + t.cookie).split("; " + e + "=");
+          return 2 == i.length && i.pop().split(";").shift();
+        };
+        var c = (r.isEditor = (function () {
+          try {
+            return (
+              e.self !== e.top &&
+              (new RegExp("app" + i, "ig").test(t.referrer) ||
+                "edit" == r.getCookie("_bpr_edit"))
+            );
+          } catch (e) {
+            return !1;
+          }
+        })());
+        r.init = function (n, o) {
+          if (((r.projectId = n), (r._config = o), !c))
+            for (var a = 0; a < r.eventList.length; a++)
+              e.addEventListener(r.eventList[a], r.handler, !0);
+          var s = t.createElement("script");
+          s.async = !0;
+          var d = c ? "/editor/editor" : "/public-" + n;
+          (s.src = "//cdn" + i + d + ".js"),
+            t.getElementsByTagName("head")[0].appendChild(s);
+        };
+      }
+  })(window, document, ".bigpicture.io");
+  bigPicture.init("1646");
+</script>
+
+
+  
+
+  <!-- End Footer -->
+
+  <!-- Begin Mobile Menu -->
+
+  
+
+  <!-- End Mobile Menu -->
+
+  <script type="text/javascript" src="../_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function(e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+</body>
+</html>

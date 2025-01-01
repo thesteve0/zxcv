@@ -1,0 +1,2262 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>FiftyOne Brain &mdash; FiftyOne 1.3.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="_static/pygments.css" type="text/css" /> -->
+  <link rel="stylesheet" href="_static/css/voxel51-website.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="FiftyOne Integrations" href="integrations/index.html" />
+    <link rel="prev" title="Model Zoo API Reference" href="model_zoo/api.html" />
+<meta property="og:image" content="https://voxel51.com/wp-content/uploads/2024/03/3.24_webpages_Home_AV.png" />
+
+<link
+  href="https://fonts.googleapis.com/css?family=Palanquin:400,600,700,800"
+  rel="stylesheet"
+/>
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+  rel="stylesheet"
+/>
+<script src="https://tag.clearbitscripts.com/v1/pk_b9ed71c8234edd4f77326bcbfab5a4ca/tags.js"></script>
+
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+  
+</head>
+
+
+<div class="container-fluid header-holder tutorials-header" id="header-holder">
+  <nav id="nav__main" class="nav__main">
+    <div class="nav__main__logo">
+      <a href="https://voxel51.com/">
+        <img
+          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
+        />
+      </a>
+    </div>
+
+    <div class="nav__spacer desktop_only"></div>
+
+    <div id="nav__main__mobilebutton--on">
+      <a href="javascript:void(0);" onclick="navMobileButton()">
+        <i class="fa-solid fa-bars"></i>
+      </a>
+    </div>
+
+    <div id="nav__main__mobilebutton--off">
+      <a href="javascript:void(0);" onclick="navMobileButton()">
+        <i class="fa-solid fa-times"></i>
+      </a>
+    </div>
+
+    <div id="nav__main__items">
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Products</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://voxel51.com/fiftyone/">Open Source</a></li>
+            <li><a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a></li>
+            <li><a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a></li>
+            <li><a href="https://voxel51.com/success-stories/">Success Stories</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Learn</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://community.voxel51.com">Community Discord</a></li>
+            <li><a href="https://voxel51.com/blog/">Blog</a></li>
+            <li><a href="https://voxel51.com/computer-vision-events/">Events</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item">
+        <a href="https://docs.voxel51.com/">Docs</a>
+      </div>
+
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Company</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://voxel51.com/ourstory/">About Us</a></li>
+            <li><a href="https://voxel51.com/jobs/">Careers</a></li>
+            <li><a href="https://voxel51.com/talk-to-sales/">Talk to Sales</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item mobile_only">
+        <a href="https://github.com/voxel51/fiftyone">GitHub</a>
+      </div>
+
+      <div class="nav__item desktop_only" id="octocat">
+        <!-- https://buttons.github.io -->
+        <a
+          class="github-button"
+          href="https://github.com/voxel51/fiftyone"
+          data-color-scheme="no-preference: dark_high_contrast; light: dark_high_contrast; dark: dark_high_contrast;"
+          data-size="large"
+          data-show-count="true"
+          aria-label="Star voxel51/fiftyone on GitHub"
+          >Star</a
+        >
+      </div>
+
+      <div class="nav__item full_nav_only">
+        <a class="button-primary" href="https://voxel51.com/schedule-teams-workshop/" target="_blank"
+          >Schedule a workshop</a
+        >
+      </div>
+    </div>
+  </nav>
+</div>
+
+
+
+<body class="pytorch-body">
+
+   
+
+    
+
+    <div class="table-of-contents-link-wrapper">
+      <span>Table of Contents</span>
+      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+    </div>
+
+    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+      <div class="pytorch-side-scroll">
+        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          <div class="pytorch-left-menu-search">
+            
+
+            
+              
+              
+            
+
+            
+
+
+  
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+            
+          </div>
+
+           <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="teams/index.html">FiftyOne Teams 🚀</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="environments/index.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="recipes/index.html">Recipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat_sheets/index.html">Cheat Sheets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dataset_zoo/index.html">Dataset Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_zoo/index.html">Model Zoo</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">FiftyOne Brain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integrations/index.html">Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plugins/index.html">Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cli/index.html">CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/fiftyone.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deprecation.html">Deprecation Notices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq/index.html">FAQ</a></li>
+</ul>
+ 
+        </div>
+      </div>
+    </nav>
+
+    <div class="pytorch-container">
+      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+        <div class="pytorch-breadcrumbs-wrapper">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="index.html">
+          
+            Docs
+          
+        </a> &gt;
+      </li>
+
+        
+      <li>FiftyOne Brain</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+        </div>
+
+        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+          Contents
+        </div>
+      </div>
+
+      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+        <div class="pytorch-content-left">
+
+        
+          
+          <div class="rst-content style-external-links">
+          
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+              
+  <div class="section" id="fiftyone-brain">
+<span id="id1"></span><h1>FiftyOne Brain<a class="headerlink" href="#fiftyone-brain" title="Permalink to this headline">¶</a></h1>
+<p>The <a class="reference external" href="https://github.com/voxel51/fiftyone-brain">FiftyOne Brain</a> provides
+powerful machine learning techniques that are designed to transform how you
+curate your data from an art into a measurable science.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Did you know? You can execute Brain methods from the FiftyOne App by
+installing the
+<a class="reference external" href="https://github.com/voxel51/fiftyone-plugins/tree/main/plugins/brain">&#64;voxel51/brain</a>
+plugin!</p>
+</div>
+<p>The FiftyOne Brain methods are useful across the stages of the machine learning
+workflow:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#brain-embeddings-visualization"><span class="std std-ref">Visualizing embeddings</span></a>:
+Tired of combing through individual images/videos
+and staring at aggregate performance metrics trying to figure out how to
+improve the performance of your model? Using FiftyOne to visualize your
+dataset in a <em>low-dimensional embedding space</em> can reveal patterns and
+clusters in your data that can help you answer many important questions about
+your data, from identifying the most critical failure modes of your model, to
+isolating examples of critical scenarios, to recommending new samples to add
+to your training dataset, and more!</p></li>
+<li><p><a class="reference internal" href="#brain-similarity"><span class="std std-ref">Similarity</span></a>: When constructing a dataset or training
+a model, have you ever wanted to find similar examples to an image or object
+of interest? For example, you may have found a failure case of your model and
+now want to search for similar scenarios in your evaluation set to diagnose
+the issue, or you want to mine your data lake to augment your training set to
+fix the issue. Use the FiftyOne Brain to index your data by <em>similarity</em> and
+you can easily query and sort your datasets to find similar examples, both
+programmatically and via point-and-click in the App.</p></li>
+<li><p><a class="reference internal" href="#brain-leaky-splits"><span class="std std-ref">Leaky splits</span></a>:
+Often when sourcing data en masse, duplicates and near duplicates can slip
+through the cracks. The FiftyOne Brain offers a <em>leaky splits analysis</em> that
+can be used to find potential leaks between dataset splits. Such leaks can
+be misleading when evaluating a model, giving an overly optimistic measure
+for the quality of training.</p></li>
+<li><p><a class="reference internal" href="#brain-near-duplicates"><span class="std std-ref">Near duplicates</span></a>:
+When curating massive datasets, you may inadvertently add near duplicate data
+to your datasets, which can bias or otherwise confuse your models. The
+FiftyOne Brain offers a <em>near duplicate detection</em> algorithm that
+automatically surfaces such data quality issues and prompts you to take
+action to resolve them.</p></li>
+<li><p><a class="reference internal" href="#brain-exact-duplicates"><span class="std std-ref">Exact duplicates</span></a>:
+Despite your best efforts, you may accidentally add duplicate data to a
+dataset. The FiftyOne Brain provides an <em>exact duplicate detection</em> method
+that scans your data and alerts you if a dataset contains duplicate samples,
+either under the same or different filenames.</p></li>
+<li><p><a class="reference internal" href="#brain-image-uniqueness"><span class="std std-ref">Uniqueness</span></a>:
+During the training loop for a model, the best results will
+be seen when training on unique data. The FiftyOne Brain provides a
+<em>uniqueness measure</em> for images that compare the content of every image in a
+dataset with all other images. Uniqueness operates on raw images and does not
+require any prior annotation on the data. It is hence very useful in the
+early stages of the machine learning workflow when you are likely asking
+“What data should I select to annotate?”</p></li>
+<li><p><a class="reference internal" href="#brain-label-mistakes"><span class="std std-ref">Mistakenness</span></a>:
+Annotations mistakes create an artificial ceiling on the performance of your
+models. However, finding these mistakes by hand is at least as arduous as the
+original annotation was, especially in cases of larger datasets. The FiftyOne
+Brain provides a quantitative <em>mistakenness measure</em> to identify possible
+label mistakes. Mistakenness operates on labeled images and requires the
+logit-output of your model predictions in order to provide maximum efficacy.
+It also works on detection datasets to find missed objects, incorrect
+annotations, and localization issues.</p></li>
+<li><p><a class="reference internal" href="#brain-sample-hardness"><span class="std std-ref">Hardness</span></a>:
+While a model is training, it will learn to understand attributes of certain
+samples faster than others. The FiftyOne Brain provides a <em>hardness measure</em>
+that calculates how easy or difficult it is for your model to understand any
+given sample. Mining hard samples is a tried and true measure of mature
+machine learning processes. Use your current model instance to compute
+predictions on unlabeled samples to determine which are the most valuable to
+have annotated and fed back into the system as training samples, for example.</p></li>
+<li><p><a class="reference internal" href="#brain-image-representativeness"><span class="std std-ref">Representativeness</span></a>:
+When working with large datasets, it can be hard to determine what samples
+within it are outliers and which are more typical. The FiftyOne Brain offers
+a <em>representativeness measure</em> that can be used to find the most common
+types of images in your dataset. This is especially helpful to find easy
+examples to train on in your data and for visualizing common modes of the
+data.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Check out the <a class="reference internal" href="tutorials/index.html#tutorials"><span class="std std-ref">tutorials page</span></a> for detailed examples
+demonstrating the use of many Brain capabilities.</p>
+</div>
+<div class="section" id="visualizing-embeddings">
+<span id="brain-embeddings-visualization"></span><h2>Visualizing embeddings<a class="headerlink" href="#visualizing-embeddings" title="Permalink to this headline">¶</a></h2>
+<p>The FiftyOne Brain provides a powerful
+<a class="reference internal" href="api/fiftyone.brain.html#fiftyone.brain.compute_visualization" title="fiftyone.brain.compute_visualization"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_visualization()</span></code></a> method
+that you can use to generate low-dimensional representations of the samples
+and/or individual objects in your datasets.</p>
+<p>These representations can be visualized natively in the App’s
+<a class="reference internal" href="user_guide/app.html#app-embeddings-panel"><span class="std std-ref">Embeddings panel</span></a>, where you can interactively
+select points of interest and view the corresponding samples/labels of interest
+in the <a class="reference internal" href="user_guide/app.html#app-samples-panel"><span class="std std-ref">Samples panel</span></a>, and vice versa.</p>
+<img alt="mnist" class="align-center" src="_images/brain-mnist.png" />
+<p>There are two primary components to an embedding visualization: the method used
+to generate the embeddings, and the dimensionality reduction method used to
+compute a low-dimensional representation of the embeddings.</p>
+<div class="section" id="embedding-methods">
+<h3>Embedding methods<a class="headerlink" href="#embedding-methods" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="code docutils literal notranslate"><span class="pre">embeddings</span></code> and <code class="code docutils literal notranslate"><span class="pre">model</span></code> parameters of
+<a class="reference internal" href="api/fiftyone.brain.html#fiftyone.brain.compute_visualization" title="fiftyone.brain.compute_visualization"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_visualization()</span></code></a>
+support a variety of ways to generate embeddings for your data:</p>
+<ul class="simple">
+<li><p>Provide nothing, in which case a default general purpose model is used to
+embed your data</p></li>
+<li><p>Provide a <a class="reference internal" href="api/fiftyone.core.models.html#fiftyone.core.models.Model" title="fiftyone.core.models.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></a> instance or the name of any model from the
+<a class="reference internal" href="model_zoo/index.html#model-zoo"><span class="std std-ref">Model Zoo</span></a> that supports embeddings</p></li>
+<li><p>Provide your own precomputed embeddings in array form</p></li>
+<li><p>Provide the name of a <a class="reference internal" href="api/fiftyone.core.fields.html#fiftyone.core.fields.VectorField" title="fiftyone.core.fields.VectorField"><code class="xref py py-class docutils literal notranslate"><span class="pre">VectorField</span></code></a> or <a class="reference internal" href="api/fiftyone.core.fields.html#fiftyone.core.fields.ArrayField" title="fiftyone.core.fields.ArrayField"><code class="xref py py-class docutils literal notranslate"><span class="pre">ArrayField</span></code></a> of your dataset in
+which precomputed embeddings are stored</p></li>
+</ul>
+</div>
+<div class="section" id="dimensionality-reduction-methods">
+<h3>Dimensionality reduction methods<a class="headerlink" href="#dimensionality-reduction-methods" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="code docutils literal notranslate"><span class="pre">method</span></code> parameter of
+<a class="reference internal" href="api/fiftyone.brain.html#fiftyone.brain.compute_visualization" title="fiftyone.brain.compute_visualization"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_visualization()</span></code></a> allows
+you to specify the dimensionality reduction method to use. The supported
+methods are:</p>
+<ul class="simple">
+<li><p><strong>umap</strong> (<em>default</em>): Uniform Manifold Approximation and Projection
+(<a class="reference external" href="https://github.com/lmcinnes/umap">UMAP</a>)</p></li>
+<li><p><strong>tsne</strong>: t-distributed Stochastic Neighbor Embedding
+(<a class="reference external" href="https://lvdmaaten.github.io/tsne">t-SNE</a>)</p></li>
+<li><p><strong>pca</strong>: Principal Component Analysis
+(<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html">PCA</a>)</p></li>
+<li><p><strong>manual</strong>: provide a manually computed low-dimensional representation</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone.brain</span> <span class="k">as</span> <span class="nn">fob</span>
+
+<span class="n">results</span> <span class="o">=</span> <span class="n">fob</span><span class="o">.</span><span class="n">compute_visualization</span><span class="p">(</span>
+    <span class="n">dataset</span><span class="p">,</span>
+    <span class="n">method</span><span class="o">=</span><span class="s2">&quot;umap&quot;</span><span class="p">,</span>  <span class="c1"># &quot;umap&quot;, &quot;tsne&quot;, &quot;pca&quot;, etc</span>
+    <span class="n">brain_key</span><span class="o">=</span><span class="s2">&quot;...&quot;</span><span class="p">,</span>
+    <span class="o">...</span>
+<span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When you use the default <a class="reference external" href="https://github.com/lmcinnes/umap">UMAP</a> method
+for the first time, you will be prompted to install the
+<a class="reference external" href="https://github.com/lmcinnes/umap">umap-learn</a> package.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Refer to <a class="reference internal" href="#brain-visualization-api"><span class="std std-ref">this section</span></a> for more information
+about creating visualization runs.</p>
+</div>
+</div>
+<div class="section" id="applications">
+<h3>Applications<a class="headerlink" href="#applications" title="Permalink to this headline">¶</a></h3>
+<p>How can embedding-based visualization of your data be used in practice? These
+visualizations often uncover hidden structure in you data that has important
+semantic meaning depending on the data you use to color/size the points.</p>
+<p>Here are a few of the many possible applications:</p>
+<ul class="simple">
+<li><p>Identifying anomalous and/or visually similar examples</p></li>
+<li><p>Uncovering patterns in incorrect/spurious predictions</p></li>
+<li><p>Finding examples of target scenarios in your data lake</p></li>
+<li><p>Mining hard examples for your evaluation pipeline</p></li>
+<li><p>Recommending samples from your data lake for classes that need additional
+training data</p></li>
+<li><p>Unsupervised pre-annotation of training data</p></li>
+</ul>
+<p>The best part about embedding visualizations is that you will likely discover
+more applications specific to your use case when you try it out on your data!</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Check out the
+<a class="reference internal" href="tutorials/image_embeddings.html"><span class="doc">image embeddings tutorial</span></a> to see
+example uses of the Brain’s embeddings-powered visualization methods to
+uncover hidden structure in datasets.</p>
+</div>
+</div>
+<div class="section" id="image-embeddings-example">
+<h3>Image embeddings example<a class="headerlink" href="#image-embeddings-example" title="Permalink to this headline">¶</a></h3>
+<p>The following example gives a taste of the powers of visual embeddings in
+FiftyOne using the <a class="reference internal" href="dataset_zoo/datasets.html#dataset-zoo-bdd100k"><span class="std std-ref">BDD100K dataset</span></a> from the
+dataset zoo, embeddings generated by a
+<a class="reference internal" href="model_zoo/models.html#model-zoo-mobilenet-v2-imagenet-torch"><span class="std std-ref">mobilenet model</span></a> from the model
+zoo, and the default <a class="reference external" href="https://github.com/lmcinnes/umap">UMAP</a> dimensionality
+reduction method.</p>
+<p>In this setup, the scatterpoints in the
+<a class="reference internal" href="user_guide/app.html#app-embeddings-panel"><span class="std std-ref">Embeddings panel</span></a> correspond to images in the
+validation split colored by the <code class="code docutils literal notranslate"><span class="pre">time</span> <span class="pre">of</span> <span class="pre">day</span></code> labels provided by the BDD100K
+dataset. When points are lasso-ed in the plot, the corresponding samples are
+automatically selected in the <a class="reference internal" href="user_guide/app.html#app-samples-panel"><span class="std std-ref">Samples panel</span></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.brain</span> <span class="k">as</span> <span class="nn">fob</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="c1"># The BDD dataset must be manually downloaded. See the zoo docs for details</span>
+<span class="n">source_dir</span> <span class="o">=</span> <span class="s2">&quot;/path/to/dir-with-bdd100k-files&quot;</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span>
+    <span class="s2">&quot;bdd100k&quot;</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="s2">&quot;validation&quot;</span><span class="p">,</span> <span class="n">source_dir</span><span class="o">=</span><span class="n">source_dir</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># Compute embeddings</span>
+<span class="c1"># You will likely want to run this on a machine with GPU, as this requires</span>
+<span class="c1"># running inference on 10,000 images</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_model</span><span class="p">(</span><span class="s2">&quot;mobilenet-v2-imagenet-torch&quot;</span><span class="p">)</span>
+<span class="n">embeddings</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">compute_embeddings</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+
+<span class="c1"># Compute visualization</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">fob</span><span class="o">.</span><span class="n">compute_visualization</span><span class="p">(</span>
+    <span class="n">dataset</span><span class="p">,</span> <span class="n">embeddings</span><span class="o">=</span><span class="n">embeddings</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">51</span><span class="p">,</span> <span class="n">brain_key</span><span class="o">=</span><span class="s2">&quot;img_viz&quot;</span>
+<span class="p">)</span>
+
+<span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Did you know? You can <a class="reference internal" href="user_guide/app.html#app-spaces-python"><span class="std std-ref">programmatically configure</span></a>
+your Spaces layout!</p>
+</div>
+<img alt="image-visualization" class="align-center" src="_images/brain-image-visualization.gif" />
+<p>The GIF shows the variety of insights that are revealed by running this simple
+protocol:</p>
+<ul class="simple">
+<li><p>The first cluster of points selected reveals a set of samples whose field
+of view is corrupted by hardware gradients at the top and bottom of the
+image</p></li>
+<li><p>The second cluster of points reveals a set of images in rainy conditions
+with water droplets on the windshield</p></li>
+<li><p>Hiding the primary cluster of <code class="code docutils literal notranslate"><span class="pre">daytime</span></code> points and selecting the
+remaining <code class="code docutils literal notranslate"><span class="pre">night</span></code> points reveals that the <code class="code docutils literal notranslate"><span class="pre">night</span></code> points have incorrect
+labels</p></li>
+</ul>
+</div>
+<div class="section" id="object-embeddings-example">
+<h3>Object embeddings example<a class="headerlink" href="#object-embeddings-example" title="Permalink to this headline">¶</a></h3>
+<p>The following example demonstrates how embeddings can be used to visualize the
+ground truth objects in the <a class="reference internal" href="dataset_zoo/datasets.html#dataset-zoo-quickstart"><span class="std std-ref">quickstart dataset</span></a>
+using the
+<a class="reference internal" href="api/fiftyone.brain.html#fiftyone.brain.compute_visualization" title="fiftyone.brain.compute_visualization"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_visualization()</span></code></a> method’s
+default embeddings model and dimensionality method.</p>
+<p>In this setup, we generate a visualization for all ground truth objects, but
+then we create a <a class="reference internal" href="user_guide/using_views.html#view-filtering"><span class="std std-ref">view</span></a> that restricts the visualization
+to only objects in a subset of the classes. The scatterpoints in the
+<a class="reference internal" href="user_guide/app.html#app-embeddings-panel"><span class="std std-ref">Embeddings panel</span></a> correspond to objects, colored
+by their <code class="code docutils literal notranslate"><span class="pre">label</span></code>. When points are lasso-ed in the plot, the corresponding
+object patches are automatically selected in the
+<a class="reference internal" href="user_guide/app.html#app-samples-panel"><span class="std std-ref">Samples panel</span></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.brain</span> <span class="k">as</span> <span class="nn">fob</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+<span class="kn">from</span> <span class="nn">fiftyone</span> <span class="kn">import</span> <span class="n">ViewField</span> <span class="k">as</span> <span class="n">F</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+
+<span class="c1"># Generate visualization for `ground_truth` objects</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">fob</span><span class="o">.</span><span class="n">compute_visualization</span><span class="p">(</span>
+    <span class="n">dataset</span><span class="p">,</span> <span class="n">patches_field</span><span class="o">=</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span> <span class="n">brain_key</span><span class="o">=</span><span class="s2">&quot;gt_viz&quot;</span>
+<span class="p">)</span>
+
+<span class="c1"># Restrict to the 10 most common classes</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">count_values</span><span class="p">(</span><span class="s2">&quot;ground_truth.detections.label&quot;</span><span class="p">)</span>
+<span class="n">classes</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">counts</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">counts</span><span class="o">.</span><span class="n">get</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)[:</span><span class="mi">10</span><span class="p">]</span>
+<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span> <span class="n">F</span><span class="p">(</span><span class="s2">&quot;label&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">is_in</span><span class="p">(</span><span class="n">classes</span><span class="p">))</span>
+
+<span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">view</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Did you know? You can <a class="reference internal" href="user_guide/app.html#app-spaces-python"><span class="std std-ref">programmatically configure</span></a>
+your Spaces layout!</p>
+</div>
+<img alt="object-visualization" class="align-center" src="_images/brain-object-visualization.gif" />
+<p>As you can see, the coloring of the scatterpoints allows you to discover
+natural clusters of objects, such as visually similar carrots or kites in the
+air.</p>
+</div>
+<div class="section" id="visualization-api">
+<span id="brain-visualization-api"></span><h3>Visualization API<a class="headerlink" href="#visualization-api" title="Permalink to this headline">¶</a></h3>
+<p>This section describes how to setup, create, and manage visualizations in
+detail.</p>
+<div class="section" id="changing-your-visualization-method">
+<h4>Changing your visualization method<a class="headerlink" href="#changing-your-visualization-method" title="Permalink to this headline">¶</a></h4>
+<p>You can use a specific dimensionality reduction method for a particular
+visualization run by passing the <code class="code docutils literal notranslate"><span class="pre">method</span></code> parameter to
+<a class="reference internal" href="api/fiftyone.brain.html#fiftyone.brain.compute_visualization" title="fiftyone.brain.compute_visualization"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_visualization()</span></code></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">index</span> <span class="o">=</span> <span class="n">fob</span><span class="o">.</span><span class="n">compute_visualization</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;&lt;method&gt;&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>Alternatively, you can change your default dimensionality reduction method for
+an entire session by setting the <code class="code docutils literal notranslate"><span class="pre">FIFTYONE_BRAIN_DEFAULT_VISUALIZATION_METHOD</span></code>
+environment variable:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">FIFTYONE_BRAIN_DEFAULT_VISUALIZATION_METHOD</span><span class="o">=</span>&lt;method&gt;
+</pre></div>
+</div>
+<p>Finally, you can permanently change your default dimensionality reduction
+method by updating the <code class="code docutils literal notranslate"><span class="pre">default_visualization_method</span></code> key of your
+<a class="reference internal" href="#brain-config"><span class="std std-ref">brain config</span></a> at <code class="code docutils literal notranslate"><span class="pre">~/.fiftyone/brain_config.json</span></code>:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
+    &quot;default_visualization_method&quot;: &quot;&lt;method&gt;&quot;,
+    &quot;visualization_methods&quot;: {
+        &quot;&lt;method&gt;&quot;: {...},
+        ...
+    }
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="configuring-your-visualization-method">
+<h4>Configuring your visualization method<a class="headerlink" href="#configuring-your-visualization-method" title="Permalink to this headline">¶</a></h4>
+<p>Dimensionality reduction methods may be configured in a variety of
+method-specific ways, which you can see by inspecting the parameters of a
+method’s associated <a class="reference internal" href="api/fiftyone.brain.visualization.html#fiftyone.brain.visualization.VisualizationConfig" title="fiftyone.brain.visualization.VisualizationConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">VisualizationConfig</span></code></a> class.</p>
+<p>The relevant classes for the builtin dimensionality reduction methods are:</p>
+<ul class="simple">
+<li><p><strong>umap</strong>: <a class="reference internal" href="api/fiftyone.brain.visualization.html#fiftyone.brain.visualization.UMAPVisualizationConfig" title="fiftyone.brain.visualization.UMAPVisualizationConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">fiftyone.brain.visualization.UMAPVisualizationConfig</span></code></a></p></li>
+<li><p><strong>tsne</strong>: <a class="reference internal" href="api/fiftyone.brain.visualization.html#fiftyone.brain.visualization.TSNEVisualizationConfig" title="fiftyone.brain.visualization.TSNEVisualizationConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">fiftyone.brain.visualization.TSNEVisualizationConfig</span></code></a></p></li>
+<li><p><strong>pca</strong>: <a class="reference internal" href="api/fiftyone.brain.visualization.html#fiftyone.brain.visualization.PCAVisualizationConfig" title="fiftyone.brain.visualization.PCAVisualizationConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">fiftyone.brain.visualization.PCAVisualizationConfig</span></code></a></p></li>
+<li><p><strong>manual</strong>: <a class="reference internal" href="api/fiftyone.brain.visualization.html#fiftyone.brain.visualization.ManualVisualizationConfig" title="fiftyone.brain.visualization.ManualVisualizationConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">fiftyone.brain.visualization.ManualVisualizationConfig</span></code></a></p></li>
+</ul>
+<p>You can configure a dimensionality reduction method’s parameters for a specific
+run by simply passing supported config parameters as keyword arguments each
+time you call
+<a class="reference internal" href="api/fiftyone.brain.html#fiftyone.brain.compute_visualization" title="fiftyone.brain.compute_visualization"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_visualization()</span></code></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">index</span> <span class="o">=</span> <span class="n">fob</span><span class="o">.</span><span class="n">compute_visualization</span><span class="p">(</span>
+    <span class="o">...</span>
+    <span class="n">method</span><span class="o">=</span><span class="s2">&quot;umap&quot;</span><span class="p">,</span>
+    <span class="n">min_dist</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>Alternatively, you can more permanently configure your dimensionality reduction
+method(s) via your <a class="reference internal" href="#brain-config"><span class="std std-ref">brain config</span></a>.</p>
+</div>
+</div>
+</div>
+<div class="section" id="similarity">
+<span id="brain-similarity"></span><h2>Similarity<a class="headerlink" href="#similarity" title="Permalink to this headline">¶</a></h2>
+<p>The FiftyOne Brain provides a
+<a class="reference internal" href="api/fiftyone.brain.html#fiftyone.brain.compute_similarity" title="fiftyone.brain.compute_similarity"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_similarity()</span></code></a> method that
+you can use to index the images or object patches in a dataset by similarity.</p>
+<p>Once you’ve indexed a dataset by similarity, you can use the
+<a class="reference internal" href="api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.sort_by_similarity" title="fiftyone.core.collections.SampleCollection.sort_by_similarity"><code class="xref py py-meth docutils literal notranslate"><span class="pre">sort_by_similarity()</span></code></a>
+view stage to programmatically sort your dataset by similarity to any image(s)
+or object patch(es) of your choice in your dataset. In addition, the App
+provides a convenient <a class="reference internal" href="user_guide/app.html#app-similarity"><span class="std std-ref">point-and-click interface</span></a> for
+sorting by similarity with respect to an index on a dataset.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Did you know? You can
+<a class="reference internal" href="#brain-similarity-text"><span class="std std-ref">search by natural language</span></a> using similarity
+indexes!</p>
+</div>
+<div class="section" id="id5">
+<h3>Embedding methods<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>Like <a class="reference internal" href="#brain-embeddings-visualization"><span class="std std-ref">embeddings visualization</span></a>,
+similarity leverages deep embeddings to generate an index for a dataset.</p>
+<p>The <code class="code docutils literal notranslate"><span class="pre">embeddings</span></code> and <code class="code docutils literal notranslate"><span class="pre">model</span></code> parameters of
+<a class="reference internal" href="api/fiftyone.brain.html#fiftyone.brain.compute_similarity" title="fiftyone.brain.compute_similarity"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_similarity()</span></code></a> support a
+variety of ways to generate embeddings for your data:</p>
+<ul class="simple">
+<li><p>Provide nothing, in which case a default general purpose model is used to
+index your data</p></li>
+<li><p>Provide a <a class="reference internal" href="api/fiftyone.core.models.html#fiftyone.core.models.Model" title="fiftyone.core.models.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></a> instance or the name of any model from the
+<a class="reference internal" href="model_zoo/index.html#model-zoo"><span class="std std-ref">Model Zoo</span></a> that supports embeddings</p></li>
+<li><p>Provide your own precomputed embeddings in array form</p></li>
+<li><p>Provide the name of a <a class="reference internal" href="api/fiftyone.core.fields.html#fiftyone.core.fields.VectorField" title="fiftyone.core.fields.VectorField"><code class="xref py py-class docutils literal notranslate"><span class="pre">VectorField</span></code></a> or <a class="reference internal" href="api/fiftyone.core.fields.html#fiftyone.core.fields.ArrayField" title="fiftyone.core.fields.ArrayField"><code class="xref py py-class docutils literal notranslate"><span class="pre">ArrayField</span></code></a> of your dataset in
+which precomputed embeddings are stored</p></li>
+</ul>
+</div>
+<div class="section" id="similarity-backends">
+<span id="brain-similarity-backends"></span><h3>Similarity backends<a class="headerlink" href="#similarity-backends" title="Permalink to this headline">¶</a></h3>
+<p>By default, all similarity indexes are served using a builtin
+<a class="reference external" href="https://scikit-learn.org">scikit-learn</a> backend, but you can pass the
+optional <code class="code docutils literal notranslate"><span class="pre">backend</span></code> parameter to
+<a class="reference internal" href="api/fiftyone.brain.html#fiftyone.brain.compute_similarity" title="fiftyone.brain.compute_similarity"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_similarity()</span></code></a> to switch to
+another supported backend:</p>
+<ul class="simple">
+<li><p><strong>sklearn</strong> (<em>default</em>): a <a class="reference external" href="https://scikit-learn.org">scikit-learn</a> backend</p></li>
+<li><p><strong>qdrant</strong>: a <a class="reference internal" href="integrations/qdrant.html#qdrant-integration"><span class="std std-ref">Qdrant backend</span></a></p></li>
+<li><p><strong>redis</strong>: a <a class="reference internal" href="integrations/redis.html#redis-integration"><span class="std std-ref">Redis backend</span></a></p></li>
+<li><p><strong>pinecone</strong>: a <a class="reference internal" href="integrations/pinecone.html#pinecone-integration"><span class="std std-ref">Pinecone backend</span></a></p></li>
+<li><p><strong>mongodb</strong>: a <a class="reference internal" href="integrations/mongodb.html#mongodb-integration"><span class="std std-ref">MongoDB backend</span></a></p></li>
+<li><p><strong>elasticsearch</strong>: a <a class="reference internal" href="integrations/elasticsearch.html#elasticsearch-integration"><span class="std std-ref">Elasticsearch backend</span></a></p></li>
+<li><p><strong>milvus</strong>: a <a class="reference internal" href="integrations/milvus.html#milvus-integration"><span class="std std-ref">Milvus backend</span></a></p></li>
+<li><p><strong>lancedb</strong>: a <a class="reference internal" href="integrations/lancedb.html#lancedb-integration"><span class="std std-ref">LanceDB backend</span></a></p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone.brain</span> <span class="k">as</span> <span class="nn">fob</span>
+
+<span class="n">results</span> <span class="o">=</span> <span class="n">fob</span><span class="o">.</span><span class="n">compute_similarity</span><span class="p">(</span>
+    <span class="n">dataset</span><span class="p">,</span>
+    <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;sklearn&quot;</span><span class="p">,</span>  <span class="c1"># &quot;sklearn&quot;, &quot;qdrant&quot;, &quot;redis&quot;, etc</span>
+    <span class="n">brain_key</span><span class="o">=</span><span class="s2">&quot;...&quot;</span><span class="p">,</span>
+    <span class="o">...</span>
+<span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Refer to <a class="reference internal" href="#brain-similarity-api"><span class="std std-ref">this section</span></a> for more information
+about creating, managing and deleting similarity indexes.</p>
+</div>
+</div>
+<div class="section" id="image-similarity">
+<span id="brain-image-similarity"></span><h3>Image similarity<a class="headerlink" href="#image-similarity" title="Permalink to this headline">¶</a></h3>
+<p>This section demonstrates the basic workflow of:</p>
+<ul class="simple">
+<li><p>Indexing an image dataset by similarity</p></li>
+<li><p>Using the App’s <a class="reference internal" href="user_guide/app.html#app-image-similarity"><span class="std std-ref">image similarity</span></a> UI to query
+by visual similarity</p></li>
+<li><p>Using the SDK’s
+<a class="reference internal" href="api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.sort_by_similarity" title="fiftyone.core.collections.SampleCollection.sort_by_similarity"><code class="xref py py-meth docutils literal notranslate"><span class="pre">sort_by_similarity()</span></code></a>
+view stage to programmatically query the index</p></li>
+</ul>
+<p>To index a dataset by image similarity, pass the <a class="reference internal" href="api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset" title="fiftyone.core.dataset.Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dataset</span></code></a> or <a class="reference internal" href="api/fiftyone.core.view.html#fiftyone.core.view.DatasetView" title="fiftyone.core.view.DatasetView"><code class="xref py py-class docutils literal notranslate"><span class="pre">DatasetView</span></code></a> of
+interest to <a class="reference internal" href="api/fiftyone.brain.html#fiftyone.brain.compute_similarity" title="fiftyone.brain.compute_similarity"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_similarity()</span></code></a>
+along with a name for the index via the <code class="code docutils literal notranslate"><span class="pre">brain_key</span></code> argument.</p>
+<p>Next load the dataset in the App and select some image(s). Whenever there is
+an active selection in the App, a <a class="reference internal" href="user_guide/app.html#app-image-similarity"><span class="std std-ref">similarity icon</span></a>
+will appear above the grid, enabling you to sort by similarity to your current
+selection.</p>
+<p>You can use the advanced settings menu to choose between multiple brain keys
+and optionally specify a maximum number of matches to return (<code class="code docutils literal notranslate"><span class="pre">k</span></code>) and whether
+to query by greatest or least similarity (if supported).</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.brain</span> <span class="k">as</span> <span class="nn">fob</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+
+<span class="c1"># Index images by similarity</span>
+<span class="n">fob</span><span class="o">.</span><span class="n">compute_similarity</span><span class="p">(</span>
+    <span class="n">dataset</span><span class="p">,</span>
+    <span class="n">model</span><span class="o">=</span><span class="s2">&quot;clip-vit-base32-torch&quot;</span><span class="p">,</span>
+    <span class="n">brain_key</span><span class="o">=</span><span class="s2">&quot;img_sim&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In the example above, we specify a <a class="reference internal" href="model_zoo/index.html#model-zoo"><span class="std std-ref">zoo model</span></a> with which
+to generate embeddings, but you can also provide
+<a class="reference internal" href="#brain-similarity-api"><span class="std std-ref">precomputed embeddings</span></a>.</p>
+</div>
+<img alt="image-similarity" class="align-center" src="_images/brain-image-similarity.gif" />
+<p>Alternatively, you can use the
+<a class="reference internal" href="api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.sort_by_similarity" title="fiftyone.core.collections.SampleCollection.sort_by_similarity"><code class="xref py py-meth docutils literal notranslate"><span class="pre">sort_by_similarity()</span></code></a>
+view stage to programmatically <a class="reference internal" href="user_guide/using_views.html#using-views"><span class="std std-ref">construct a view</span></a> that
+contains the sorted results:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># Choose a random image from the dataset</span>
+<span class="n">query_id</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">id</span>
+
+<span class="c1"># Programmatically construct a view containing the 15 most similar images</span>
+<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">sort_by_similarity</span><span class="p">(</span><span class="n">query_id</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">brain_key</span><span class="o">=</span><span class="s2">&quot;img_sim&quot;</span><span class="p">)</span>
+
+<span class="n">session</span><span class="o">.</span><span class="n">view</span> <span class="o">=</span> <span class="n">view</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Performing a similarity search on a <a class="reference internal" href="api/fiftyone.core.view.html#fiftyone.core.view.DatasetView" title="fiftyone.core.view.DatasetView"><code class="xref py py-class docutils literal notranslate"><span class="pre">DatasetView</span></code></a> will <strong>only</strong> return
+results from the view; if the view contains samples that were not included
+in the index, they will never be included in the result.</p>
+<p>This means that you can index an entire <a class="reference internal" href="api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset" title="fiftyone.core.dataset.Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dataset</span></code></a> once and then perform
+searches on subsets of the dataset by
+<a class="reference internal" href="user_guide/using_views.html#using-views"><span class="std std-ref">constructing views</span></a> that contain the images of
+interest.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For large datasets, you may notice longer load times the first time you use
+a similarity index in a session. Subsequent similarity searches will use
+cached results and will be faster!</p>
+</div>
+</div>
+<div class="section" id="object-similarity">
+<span id="brain-object-similarity"></span><h3>Object similarity<a class="headerlink" href="#object-similarity" title="Permalink to this headline">¶</a></h3>
+<p>This section demonstrates the basic workflow of:</p>
+<ul class="simple">
+<li><p>Indexing a dataset of objects by similarity</p></li>
+<li><p>Using the App’s <a class="reference internal" href="user_guide/app.html#app-object-similarity"><span class="std std-ref">object similarity</span></a> UI to
+query by visual similarity</p></li>
+<li><p>Using the SDK’s
+<a class="reference internal" href="api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.sort_by_similarity" title="fiftyone.core.collections.SampleCollection.sort_by_similarity"><code class="xref py py-meth docutils literal notranslate"><span class="pre">sort_by_similarity()</span></code></a>
+view stage to programmatically query the index</p></li>
+</ul>
+<p>You can index any objects stored on datasets in <a class="reference internal" href="api/fiftyone.core.labels.html#fiftyone.core.labels.Detection" title="fiftyone.core.labels.Detection"><code class="xref py py-class docutils literal notranslate"><span class="pre">Detection</span></code></a>, <a class="reference internal" href="api/fiftyone.core.labels.html#fiftyone.core.labels.Detections" title="fiftyone.core.labels.Detections"><code class="xref py py-class docutils literal notranslate"><span class="pre">Detections</span></code></a>,
+<a class="reference internal" href="api/fiftyone.core.labels.html#fiftyone.core.labels.Polyline" title="fiftyone.core.labels.Polyline"><code class="xref py py-class docutils literal notranslate"><span class="pre">Polyline</span></code></a>, or <a class="reference internal" href="api/fiftyone.core.labels.html#fiftyone.core.labels.Polylines" title="fiftyone.core.labels.Polylines"><code class="xref py py-class docutils literal notranslate"><span class="pre">Polylines</span></code></a> format. See <a class="reference internal" href="user_guide/using_datasets.html#using-labels"><span class="std std-ref">this section</span></a> for
+more information about adding labels to your datasets.</p>
+<p>To index by object patches, simply pass the <a class="reference internal" href="api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset" title="fiftyone.core.dataset.Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dataset</span></code></a> or <a class="reference internal" href="api/fiftyone.core.view.html#fiftyone.core.view.DatasetView" title="fiftyone.core.view.DatasetView"><code class="xref py py-class docutils literal notranslate"><span class="pre">DatasetView</span></code></a> of
+interest to <a class="reference internal" href="api/fiftyone.brain.html#fiftyone.brain.compute_similarity" title="fiftyone.brain.compute_similarity"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_similarity()</span></code></a>
+along with the name of the patches field and a name for the index via the
+<code class="code docutils literal notranslate"><span class="pre">brain_key</span></code> argument.</p>
+<p>Next load the dataset in the App and switch to
+<a class="reference internal" href="user_guide/app.html#app-object-patches"><span class="std std-ref">object patches view</span></a> by clicking the patches icon
+above the grid and choosing the label field of interest from the dropdown.</p>
+<p>Now whenever you have selected one or more patches in the App, a
+<a class="reference internal" href="user_guide/app.html#app-object-similarity"><span class="std std-ref">similarity icon</span></a> will appear above the grid,
+enabling you to sort by similarity to your current selection.</p>
+<p>You can use the advanced settings menu to choose between multiple brain keys
+and optionally specify a maximum number of matches to return (<code class="code docutils literal notranslate"><span class="pre">k</span></code>) and whether
+to query by greatest or least similarity (if supported).</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.brain</span> <span class="k">as</span> <span class="nn">fob</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+
+<span class="c1"># Index ground truth objects by similarity</span>
+<span class="n">fob</span><span class="o">.</span><span class="n">compute_similarity</span><span class="p">(</span>
+    <span class="n">dataset</span><span class="p">,</span>
+    <span class="n">patches_field</span><span class="o">=</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span>
+    <span class="n">model</span><span class="o">=</span><span class="s2">&quot;clip-vit-base32-torch&quot;</span><span class="p">,</span>
+    <span class="n">brain_key</span><span class="o">=</span><span class="s2">&quot;gt_sim&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In the example above, we specify a <a class="reference internal" href="model_zoo/index.html#model-zoo"><span class="std std-ref">zoo model</span></a> with which
+to generate embeddings, but you can also provide
+<a class="reference internal" href="#brain-similarity-api"><span class="std std-ref">precomputed embeddings</span></a>.</p>
+</div>
+<img alt="object-similarity" class="align-center" src="_images/brain-object-similarity.gif" />
+<p>Alternatively, you can directly use the
+<a class="reference internal" href="api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.sort_by_similarity" title="fiftyone.core.collections.SampleCollection.sort_by_similarity"><code class="xref py py-meth docutils literal notranslate"><span class="pre">sort_by_similarity()</span></code></a>
+view stage to programmatically <a class="reference internal" href="user_guide/using_views.html#using-views"><span class="std std-ref">construct a view</span></a> that
+contains the sorted results:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># Convert to patches view</span>
+<span class="n">patches</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">to_patches</span><span class="p">(</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">)</span>
+
+<span class="c1"># Choose a random patch object from the dataset</span>
+<span class="n">query_id</span> <span class="o">=</span> <span class="n">patches</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">id</span>
+
+<span class="c1"># Programmatically construct a view containing the 15 most similar objects</span>
+<span class="n">view</span> <span class="o">=</span> <span class="n">patches</span><span class="o">.</span><span class="n">sort_by_similarity</span><span class="p">(</span><span class="n">query_id</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">brain_key</span><span class="o">=</span><span class="s2">&quot;gt_sim&quot;</span><span class="p">)</span>
+
+<span class="n">session</span><span class="o">.</span><span class="n">view</span> <span class="o">=</span> <span class="n">view</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Performing a similarity search on a <a class="reference internal" href="api/fiftyone.core.view.html#fiftyone.core.view.DatasetView" title="fiftyone.core.view.DatasetView"><code class="xref py py-class docutils literal notranslate"><span class="pre">DatasetView</span></code></a> will <strong>only</strong> return
+results from the view; if the view contains objects that were not included
+in the index, they will never be included in the result.</p>
+<p>This means that you can index an entire <a class="reference internal" href="api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset" title="fiftyone.core.dataset.Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dataset</span></code></a> once and then perform
+searches on subsets of the dataset by
+<a class="reference internal" href="user_guide/using_views.html#using-views"><span class="std std-ref">constructing views</span></a> that contain the objects of
+interest.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For large datasets, you may notice longer load times the first time you use
+a similarity index in a session. Subsequent similarity searches will use
+cached results and will be faster!</p>
+</div>
+</div>
+<div class="section" id="text-similarity">
+<span id="brain-similarity-text"></span><h3>Text similarity<a class="headerlink" href="#text-similarity" title="Permalink to this headline">¶</a></h3>
+<p>When you create a similarity index powered by the
+<a class="reference internal" href="model_zoo/models.html#model-zoo-clip-vit-base32-torch"><span class="std std-ref">CLIP model</span></a>, you can also search by
+arbitrary natural language queries
+<a class="reference internal" href="user_guide/app.html#app-text-similarity"><span class="std std-ref">natively in the App</span></a>!</p>
+<img alt="text-similarity" class="align-center" src="_images/brain-text-similarity.gif" />
+<p>You can also perform text queries via the SDK by passing a prompt directly to
+<a class="reference internal" href="api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.sort_by_similarity" title="fiftyone.core.collections.SampleCollection.sort_by_similarity"><code class="xref py py-meth docutils literal notranslate"><span class="pre">sort_by_similarity()</span></code></a>
+along with the <code class="code docutils literal notranslate"><span class="pre">brain_key</span></code> of a compatible similarity index:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In general, any custom model that is made available via the
+<a class="reference internal" href="model_zoo/api.html#model-zoo-add"><span class="std std-ref">model zoo interface</span></a> that implements the
+<a class="reference internal" href="api/fiftyone.core.models.html#fiftyone.core.models.PromptMixin" title="fiftyone.core.models.PromptMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">PromptMixin</span></code></a> interface can
+support text similarity queries!</p>
+</div>
+</div>
+<div class="section" id="similarity-api">
+<span id="brain-similarity-api"></span><h3>Similarity API<a class="headerlink" href="#similarity-api" title="Permalink to this headline">¶</a></h3>
+<p>This section describes how to setup, create, and manage similarity indexes in
+detail.</p>
+<div class="section" id="changing-your-similarity-backend">
+<h4>Changing your similarity backend<a class="headerlink" href="#changing-your-similarity-backend" title="Permalink to this headline">¶</a></h4>
+<p>You can use a specific backend for a particular similarity index by passing the
+<code class="code docutils literal notranslate"><span class="pre">backend</span></code> parameter to
+<a class="reference internal" href="api/fiftyone.brain.html#fiftyone.brain.compute_similarity" title="fiftyone.brain.compute_similarity"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_similarity()</span></code></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">index</span> <span class="o">=</span> <span class="n">fob</span><span class="o">.</span><span class="n">compute_similarity</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;&lt;backend&gt;&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>Alternatively, you can change your default similarity backend for an entire
+session by setting the <code class="code docutils literal notranslate"><span class="pre">FIFTYONE_BRAIN_DEFAULT_SIMILARITY_BACKEND</span></code> environment
+variable.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">FIFTYONE_BRAIN_DEFAULT_SIMILARITY_BACKEND</span><span class="o">=</span>&lt;backend&gt;
+</pre></div>
+</div>
+<p>Finally, you can permanently change your default similarity backend by
+updating the <code class="code docutils literal notranslate"><span class="pre">default_similarity_backend</span></code> key of your
+<a class="reference internal" href="#brain-config"><span class="std std-ref">brain config</span></a> at <code class="code docutils literal notranslate"><span class="pre">~/.fiftyone/brain_config.json</span></code>:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
+    &quot;default_similarity_backend&quot;: &quot;&lt;backend&gt;&quot;,
+    &quot;similarity_backends&quot;: {
+        &quot;&lt;backend&gt;&quot;: {...},
+        ...
+    }
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="configuring-your-backend">
+<h4>Configuring your backend<a class="headerlink" href="#configuring-your-backend" title="Permalink to this headline">¶</a></h4>
+<p>Similarity backends may be configured in a variety of backend-specific ways,
+which you can see by inspecting the parameters of a backend’s associated
+<a class="reference internal" href="api/fiftyone.brain.similarity.html#fiftyone.brain.similarity.SimilarityConfig" title="fiftyone.brain.similarity.SimilarityConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">SimilarityConfig</span></code></a> class.</p>
+<p>The relevant classes for the builtin similarity backends are:</p>
+<ul class="simple">
+<li><p><strong>sklearn</strong>: <a class="reference internal" href="api/fiftyone.brain.internal.core.sklearn.html#fiftyone.brain.internal.core.sklearn.SklearnSimilarityConfig" title="fiftyone.brain.internal.core.sklearn.SklearnSimilarityConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">fiftyone.brain.internal.core.sklearn.SklearnSimilarityConfig</span></code></a></p></li>
+<li><p><strong>qdrant</strong>: <code class="xref py py-class docutils literal notranslate"><span class="pre">fiftyone.brain.internal.core.qdrant.QdrantSimilarityConfig</span></code></p></li>
+<li><p><strong>redis</strong>: <a class="reference internal" href="api/fiftyone.brain.internal.core.redis.html#fiftyone.brain.internal.core.redis.RedisSimilarityConfig" title="fiftyone.brain.internal.core.redis.RedisSimilarityConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">fiftyone.brain.internal.core.redis.RedisSimilarityConfig</span></code></a></p></li>
+<li><p><strong>pinecone</strong>: <a class="reference internal" href="api/fiftyone.brain.internal.core.pinecone.html#fiftyone.brain.internal.core.pinecone.PineconeSimilarityConfig" title="fiftyone.brain.internal.core.pinecone.PineconeSimilarityConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">fiftyone.brain.internal.core.pinecone.PineconeSimilarityConfig</span></code></a></p></li>
+<li><p><strong>mongodb</strong>: <a class="reference internal" href="api/fiftyone.brain.internal.core.mongodb.html#fiftyone.brain.internal.core.mongodb.MongoDBSimilarityConfig" title="fiftyone.brain.internal.core.mongodb.MongoDBSimilarityConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">fiftyone.brain.internal.core.mongodb.MongoDBSimilarityConfig</span></code></a></p></li>
+<li><p><strong>elasticsearch</strong>: a <span class="xref std std-ref">fiftyone.brain.internal.core.elasticsearch.ElasticsearchSimilarityConfig</span></p></li>
+<li><p><strong>milvus</strong>: <a class="reference internal" href="api/fiftyone.brain.internal.core.milvus.html#fiftyone.brain.internal.core.milvus.MilvusSimilarityConfig" title="fiftyone.brain.internal.core.milvus.MilvusSimilarityConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">fiftyone.brain.internal.core.milvus.MilvusSimilarityConfig</span></code></a></p></li>
+<li><p><strong>lancedb</strong>: <a class="reference internal" href="api/fiftyone.brain.internal.core.lancedb.html#fiftyone.brain.internal.core.lancedb.LanceDBSimilarityConfig" title="fiftyone.brain.internal.core.lancedb.LanceDBSimilarityConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">fiftyone.brain.internal.core.lancedb.LanceDBSimilarityConfig</span></code></a></p></li>
+</ul>
+<p>You can configure a similarity backend’s parameters for a specific index by
+simply passing supported config parameters as keyword arguments each time you
+call <a class="reference internal" href="api/fiftyone.brain.html#fiftyone.brain.compute_similarity" title="fiftyone.brain.compute_similarity"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_similarity()</span></code></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">index</span> <span class="o">=</span> <span class="n">fob</span><span class="o">.</span><span class="n">compute_similarity</span><span class="p">(</span>
+    <span class="o">...</span>
+    <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;qdrant&quot;</span><span class="p">,</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;http://localhost:6333&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>Alternatively, you can more permanently configure your backend(s) via your
+<a class="reference internal" href="#brain-config"><span class="std std-ref">brain config</span></a>.</p>
+</div>
+<div class="section" id="creating-an-index">
+<h4>Creating an index<a class="headerlink" href="#creating-an-index" title="Permalink to this headline">¶</a></h4>
+<p>The <a class="reference internal" href="api/fiftyone.brain.html#fiftyone.brain.compute_similarity" title="fiftyone.brain.compute_similarity"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_similarity()</span></code></a> method
+provides a number of different syntaxes for initializing a similarity index.
+Let’s see some common patterns on the quickstart dataset:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.brain</span> <span class="k">as</span> <span class="nn">fob</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="section" id="default-behavior">
+<h5>Default behavior<a class="headerlink" href="#default-behavior" title="Permalink to this headline">¶</a></h5>
+<p>With no arguments, embeddings will be automatically computed for all images or
+patches in the dataset using a default model and added to a new index in your
+default backend:</p>
+</div>
+<div class="section" id="custom-model-custom-backend-add-embeddings-later">
+<h5>Custom model, custom backend, add embeddings later<a class="headerlink" href="#custom-model-custom-backend-add-embeddings-later" title="Permalink to this headline">¶</a></h5>
+<p>With the syntax below, we’re specifying a similarity backend of our choice,
+specifying a custom model from the <a class="reference internal" href="model_zoo/index.html#model-zoo"><span class="std std-ref">Model Zoo</span></a> to use to
+generate embeddings, and using the <code class="code docutils literal notranslate"><span class="pre">embeddings=False</span></code> syntax to create
+the index without initially adding any embeddings to it:</p>
+</div>
+<div class="section" id="precomputed-embeddings">
+<h5>Precomputed embeddings<a class="headerlink" href="#precomputed-embeddings" title="Permalink to this headline">¶</a></h5>
+<p>You can pass precomputed image or object embeddings to
+<a class="reference internal" href="api/fiftyone.brain.html#fiftyone.brain.compute_similarity" title="fiftyone.brain.compute_similarity"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_similarity()</span></code></a> via the
+<code class="code docutils literal notranslate"><span class="pre">embeddings</span></code> argument:</p>
+</div>
+</div>
+<div class="section" id="adding-embeddings-to-an-index">
+<h4>Adding embeddings to an index<a class="headerlink" href="#adding-embeddings-to-an-index" title="Permalink to this headline">¶</a></h4>
+<p>You can use
+<a class="reference internal" href="api/fiftyone.brain.similarity.html#fiftyone.brain.similarity.SimilarityIndex.add_to_index" title="fiftyone.brain.similarity.SimilarityIndex.add_to_index"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_to_index()</span></code></a>
+to add new embeddings or overwrite existing embeddings in an index at any time:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When using the default <code class="docutils literal notranslate"><span class="pre">sklearn</span></code> backend, you must manually call
+<a class="reference internal" href="api/fiftyone.brain.similarity.html#fiftyone.brain.similarity.SimilarityIndex.save" title="fiftyone.brain.similarity.SimilarityIndex.save"><code class="xref py py-meth docutils literal notranslate"><span class="pre">save()</span></code></a> after
+adding or removing embeddings from an index in order to save the index to
+the database. This is not required when using external vector databases
+like <a class="reference internal" href="integrations/qdrant.html#qdrant-integration"><span class="std std-ref">Qdrant</span></a>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Did you know? If you provided the name of a <a class="reference internal" href="model_zoo/index.html#model-zoo"><span class="std std-ref">zoo model</span></a>
+when creating the similarity index, you can use
+<a class="reference internal" href="api/fiftyone.brain.similarity.html#fiftyone.brain.similarity.SimilarityIndex.get_model" title="fiftyone.brain.similarity.SimilarityIndex.get_model"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_model()</span></code></a>
+to load the model later. Or, you can use
+<a class="reference internal" href="api/fiftyone.brain.similarity.html#fiftyone.brain.similarity.SimilarityIndex.compute_embeddings" title="fiftyone.brain.similarity.SimilarityIndex.compute_embeddings"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_embeddings()</span></code></a>
+to conveniently generate embeddings for new samples/objects using the
+index’s model.</p>
+</div>
+</div>
+<div class="section" id="retrieving-embeddings-in-an-index">
+<h4>Retrieving embeddings in an index<a class="headerlink" href="#retrieving-embeddings-in-an-index" title="Permalink to this headline">¶</a></h4>
+<p>You can use
+<a class="reference internal" href="api/fiftyone.brain.similarity.html#fiftyone.brain.similarity.SimilarityIndex.get_embeddings" title="fiftyone.brain.similarity.SimilarityIndex.get_embeddings"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_embeddings()</span></code></a>
+to retrieve the embeddings for any or all IDs of interest from an existing
+index:</p>
+</div>
+<div class="section" id="removing-embeddings-from-an-index">
+<h4>Removing embeddings from an index<a class="headerlink" href="#removing-embeddings-from-an-index" title="Permalink to this headline">¶</a></h4>
+<p>You can use
+<a class="reference internal" href="api/fiftyone.brain.similarity.html#fiftyone.brain.similarity.SimilarityIndex.remove_from_index" title="fiftyone.brain.similarity.SimilarityIndex.remove_from_index"><code class="xref py py-meth docutils literal notranslate"><span class="pre">remove_from_index()</span></code></a>
+to delete embeddings from an index by their ID:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When using the default <code class="docutils literal notranslate"><span class="pre">sklearn</span></code> backend, you must manually call
+<a class="reference internal" href="api/fiftyone.brain.similarity.html#fiftyone.brain.similarity.SimilarityIndex.save" title="fiftyone.brain.similarity.SimilarityIndex.save"><code class="xref py py-meth docutils literal notranslate"><span class="pre">save()</span></code></a> after
+adding or removing embeddings from an index in order to save the index to
+the database.</p>
+<p>This is not required when using external vector databases like
+<a class="reference internal" href="integrations/qdrant.html#qdrant-integration"><span class="std std-ref">Qdrant</span></a>.</p>
+</div>
+</div>
+<div class="section" id="deleting-an-index">
+<h4>Deleting an index<a class="headerlink" href="#deleting-an-index" title="Permalink to this headline">¶</a></h4>
+<p>When working with backends like <a class="reference internal" href="integrations/qdrant.html#qdrant-integration"><span class="std std-ref">Qdrant</span></a> that
+leverage external vector databases, you can call
+<a class="reference internal" href="api/fiftyone.brain.similarity.html#fiftyone.brain.similarity.SimilarityIndex.cleanup" title="fiftyone.brain.similarity.SimilarityIndex.cleanup"><code class="xref py py-meth docutils literal notranslate"><span class="pre">cleanup()</span></code></a> to delete
+the external index/collection:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Calling
+<a class="reference internal" href="api/fiftyone.brain.similarity.html#fiftyone.brain.similarity.SimilarityIndex.cleanup" title="fiftyone.brain.similarity.SimilarityIndex.cleanup"><code class="xref py py-meth docutils literal notranslate"><span class="pre">cleanup()</span></code></a> has
+no effect when working with the default sklearn backend. The index is
+deleted only when you call
+<a class="reference internal" href="api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.delete_brain_run" title="fiftyone.core.collections.SampleCollection.delete_brain_run"><code class="xref py py-meth docutils literal notranslate"><span class="pre">delete_brain_run()</span></code></a>.</p>
+</div>
+</div>
+</div>
+<div class="section" id="brain-similarity-applications">
+<span id="id7"></span><h3>Applications<a class="headerlink" href="#brain-similarity-applications" title="Permalink to this headline">¶</a></h3>
+<p>How can similarity be used in practice? A common pattern is to mine your
+dataset for similar examples to certain images or object patches of interest,
+e.g., those that represent failure modes of a model that need to be studied in
+more detail or underrepresented classes that need more training examples.</p>
+<p>Here are a few of the many possible applications:</p>
+<ul class="simple">
+<li><p>Pruning <a class="reference internal" href="#brain-near-duplicates"><span class="std std-ref">near-duplicate images</span></a> from your
+training dataset</p></li>
+<li><p>Identifying failure patterns of a model</p></li>
+<li><p>Finding examples of target scenarios in your data lake</p></li>
+<li><p>Mining hard examples for your evaluation pipeline</p></li>
+<li><p>Recommending samples from your data lake for classes that need additional
+training data</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="leaky-splits">
+<span id="brain-leaky-splits"></span><h2>Leaky splits<a class="headerlink" href="#leaky-splits" title="Permalink to this headline">¶</a></h2>
+<p>Despite our best efforts, duplicates and other forms of non-IID samples
+show up in our data. When these samples end up in different splits, this
+can have consequences when evaluating a model. It can often be easy to
+overestimate model capability due to this issue. The FiftyOne Brain offers a
+way to identify such cases in dataset splits.</p>
+<p>The leaks of a dataset can be computed directly without the need for the
+predictions of a pre-trained model via the
+<a class="reference internal" href="api/fiftyone.brain.html#fiftyone.brain.compute_leaky_splits" title="fiftyone.brain.compute_leaky_splits"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_leaky_splits()</span></code></a> method:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.brain</span> <span class="k">as</span> <span class="nn">fob</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+
+<span class="c1"># Splits defined via tags</span>
+<span class="n">split_tags</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;train&quot;</span><span class="p">,</span> <span class="s2">&quot;test&quot;</span><span class="p">]</span>
+<span class="n">index</span> <span class="o">=</span> <span class="n">fob</span><span class="o">.</span><span class="n">compute_leaky_splits</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">splits</span><span class="o">=</span><span class="n">split_tags</span><span class="p">)</span>
+<span class="n">leaks</span> <span class="o">=</span> <span class="n">index</span><span class="o">.</span><span class="n">leaks_view</span><span class="p">()</span>
+
+<span class="c1"># Splits defined via field</span>
+<span class="n">split_field</span> <span class="o">=</span> <span class="s2">&quot;split&quot;</span>  <span class="c1"># holds split values e.g. &#39;train&#39; or &#39;test&#39;</span>
+<span class="n">index</span> <span class="o">=</span> <span class="n">fob</span><span class="o">.</span><span class="n">compute_leaky_splits</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">splits</span><span class="o">=</span><span class="n">split_field</span><span class="p">)</span>
+<span class="n">leaks</span> <span class="o">=</span> <span class="n">index</span><span class="o">.</span><span class="n">leaks_view</span><span class="p">()</span>
+
+<span class="c1"># Splits defined via views</span>
+<span class="n">split_views</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;train&quot;</span><span class="p">:</span> <span class="n">train_view</span><span class="p">,</span> <span class="s2">&quot;test&quot;</span><span class="p">:</span> <span class="n">test_view</span><span class="p">}</span>
+<span class="n">index</span> <span class="o">=</span> <span class="n">fob</span><span class="o">.</span><span class="n">compute_leaky_splits</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">splits</span><span class="o">=</span><span class="n">split_views</span><span class="p">)</span>
+<span class="n">leaks</span> <span class="o">=</span> <span class="n">index</span><span class="o">.</span><span class="n">leaks_view</span><span class="p">()</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>Notice how the splits of the dataset can be defined in three ways: through
+sample tags, through a string field that assigns each split a unique value in
+the field, or by directly providing views that define the splits.</p>
+<p><strong>Input</strong>: A <a class="reference internal" href="api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset" title="fiftyone.core.dataset.Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dataset</span></code></a> or <a class="reference internal" href="api/fiftyone.core.view.html#fiftyone.core.view.DatasetView" title="fiftyone.core.view.DatasetView"><code class="xref py py-class docutils literal notranslate"><span class="pre">DatasetView</span></code></a>, and a definition of splits through one
+of tags, a field, or views.</p>
+<p><strong>Output</strong>: An index that will allow you to look through your leaks with
+<a class="reference internal" href="api/fiftyone.brain.internal.core.leaky_splits.html#fiftyone.brain.internal.core.leaky_splits.LeakySplitsIndex.leaks_view" title="fiftyone.brain.internal.core.leaky_splits.LeakySplitsIndex.leaks_view"><code class="xref py py-meth docutils literal notranslate"><span class="pre">leaks_view()</span></code></a>
+and also provides some useful actions once they are discovered such as
+automatically cleaning the dataset with
+<a class="reference internal" href="api/fiftyone.brain.internal.core.leaky_splits.html#fiftyone.brain.internal.core.leaky_splits.LeakySplitsIndex.no_leaks_view" title="fiftyone.brain.internal.core.leaky_splits.LeakySplitsIndex.no_leaks_view"><code class="xref py py-meth docutils literal notranslate"><span class="pre">no_leaks_view()</span></code></a>
+or tagging the leaks for the future action with
+<a class="reference internal" href="api/fiftyone.brain.internal.core.leaky_splits.html#fiftyone.brain.internal.core.leaky_splits.LeakySplitsIndex.tag_leaks" title="fiftyone.brain.internal.core.leaky_splits.LeakySplitsIndex.tag_leaks"><code class="xref py py-meth docutils literal notranslate"><span class="pre">tag_leaks()</span></code></a>.</p>
+<p><strong>What to expect</strong>: Leaky splits works by embedding samples with a powerful
+model and finding very close samples in different splits in this space. Large,
+powerful models that were <em>not</em> trained on a dataset can provide insight into
+visual and semantic similarity between images, without creating further leaks
+in the process.</p>
+<p><strong>Similarity index</strong>: Under the hood, leaky splits leverages the brain’s
+<a class="reference internal" href="api/fiftyone.brain.similarity.html#fiftyone.brain.similarity.SimilarityIndex" title="fiftyone.brain.similarity.SimilarityIndex"><code class="xref py py-class docutils literal notranslate"><span class="pre">SimilarityIndex</span></code></a> to detect
+leaks. Any <a class="reference internal" href="#brain-similarity-backends"><span class="std std-ref">similarity backend</span></a> that
+implements the
+<a class="reference internal" href="api/fiftyone.brain.similarity.html#fiftyone.brain.similarity.DuplicatesMixin" title="fiftyone.brain.similarity.DuplicatesMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">DuplicatesMixin</span></code></a> can be
+used to compute leaky splits. You can either pass an existing similarity index
+by passing its brain key to the argument <code class="code docutils literal notranslate"><span class="pre">similarity_index</span></code>, or have the
+method create one on the fly for you.</p>
+<p><strong>Embeddings</strong>: You can customize the model used to compute embeddings via the
+<code class="code docutils literal notranslate"><span class="pre">model</span></code> argument of
+<a class="reference internal" href="api/fiftyone.brain.html#fiftyone.brain.compute_leaky_splits" title="fiftyone.brain.compute_leaky_splits"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_leaky_splits()</span></code></a>. You can
+also precompute embeddings and tell leaky splits to use them by passing them
+via the <code class="code docutils literal notranslate"><span class="pre">embeddings</span></code> argument.</p>
+<p><strong>Thresholds</strong>: Leaky splits uses a threshold to decide what samples are
+too close and thus mark them as potential leaks. This threshold can be
+customized either by passing a value to the <code class="code docutils literal notranslate"><span class="pre">threshold</span></code> argument of
+<a class="reference internal" href="api/fiftyone.brain.html#fiftyone.brain.compute_leaky_splits" title="fiftyone.brain.compute_leaky_splits"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_leaky_splits()</span></code></a>. The best
+value for your use case may vary depending on your dataset, as well as the
+embeddings used. A threshold that’s too big may have a lot of false positives,
+while a threshold that’s too small may have a lot of false negatives.</p>
+<p>The example code below runs leaky splits analysis on the
+<a class="reference external" href="https://cocodataset.org/#home">COCO dataset</a>. Try it for yourself and see
+what you find!</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.brain</span> <span class="k">as</span> <span class="nn">fob</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+<span class="kn">import</span> <span class="nn">fiftyone.utils.random</span> <span class="k">as</span> <span class="nn">four</span>
+
+<span class="c1"># Load some COCO data</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;coco-2017&quot;</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="s2">&quot;test&quot;</span><span class="p">)</span>
+
+<span class="c1"># Set up splits via tags</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">untag_samples</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">distinct</span><span class="p">(</span><span class="s2">&quot;tags&quot;</span><span class="p">))</span>
+<span class="n">four</span><span class="o">.</span><span class="n">random_split</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;train&quot;</span><span class="p">:</span> <span class="mf">0.7</span><span class="p">,</span> <span class="s2">&quot;test&quot;</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">})</span>
+
+<span class="c1"># Find leaks</span>
+<span class="n">index</span> <span class="o">=</span> <span class="n">fob</span><span class="o">.</span><span class="n">compute_leaky_splits</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">splits</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;train&quot;</span><span class="p">,</span> <span class="s2">&quot;test&quot;</span><span class="p">])</span>
+<span class="n">leaks</span> <span class="o">=</span> <span class="n">index</span><span class="o">.</span><span class="n">leaks_view</span><span class="p">()</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>The
+<a class="reference internal" href="api/fiftyone.brain.internal.core.leaky_splits.html#fiftyone.brain.internal.core.leaky_splits.LeakySplitsIndex.leaks_view" title="fiftyone.brain.internal.core.leaky_splits.LeakySplitsIndex.leaks_view"><code class="xref py py-meth docutils literal notranslate"><span class="pre">leaks_view()</span></code></a>
+method returns a view that contains only the leaks in the input splits. Once
+you have these leaks, it is wise to look through them. You may gain some
+insight into the source of the leaks:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">leaks</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>Before evaluating your model on your test set, consider getting a version of it
+with the leaks removed. This can be easily done via
+<a class="reference internal" href="api/fiftyone.brain.internal.core.leaky_splits.html#fiftyone.brain.internal.core.leaky_splits.LeakySplitsIndex.no_leaks_view" title="fiftyone.brain.internal.core.leaky_splits.LeakySplitsIndex.no_leaks_view"><code class="xref py py-meth docutils literal notranslate"><span class="pre">no_leaks_view()</span></code></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># The original test split</span>
+<span class="n">test_set</span> <span class="o">=</span> <span class="n">index</span><span class="o">.</span><span class="n">split_views</span><span class="p">[</span><span class="s2">&quot;test&quot;</span><span class="p">]</span>
+
+<span class="c1"># The test set with leaks removed</span>
+<span class="n">test_set_no_leaks</span> <span class="o">=</span> <span class="n">index</span><span class="o">.</span><span class="n">no_leaks_view</span><span class="p">(</span><span class="n">test_set</span><span class="p">)</span>
+
+<span class="n">session</span><span class="o">.</span><span class="n">view</span> <span class="o">=</span> <span class="n">test_set_no_leaks</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>Performance on the clean test set will can be closer to the performance of the
+model in the wild. If you found some leaks in your dataset, consider comparing
+performance on the base test set against the clean test set.</p>
+<img alt="leaky-splits" class="align-center" src="_images/brain-leaky-splits.png" />
+</div>
+<div class="section" id="near-duplicates">
+<span id="brain-near-duplicates"></span><h2>Near duplicates<a class="headerlink" href="#near-duplicates" title="Permalink to this headline">¶</a></h2>
+<p>When curating massive datasets, you may inadvertently add near duplicate data
+to your datasets, which can bias or otherwise confuse your models.</p>
+<p>The <a class="reference internal" href="api/fiftyone.brain.html#fiftyone.brain.compute_near_duplicates" title="fiftyone.brain.compute_near_duplicates"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_near_duplicates()</span></code></a>
+method leverages embeddings to automatically surface near-duplicate samples in
+your dataset:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.brain</span> <span class="k">as</span> <span class="nn">fob</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+
+<span class="n">index</span> <span class="o">=</span> <span class="n">fob</span><span class="o">.</span><span class="n">compute_near_duplicates</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">index</span><span class="o">.</span><span class="n">duplicate_ids</span><span class="p">)</span>
+
+<span class="n">dups_view</span> <span class="o">=</span> <span class="n">index</span><span class="o">.</span><span class="n">duplicates_view</span><span class="p">()</span>
+<span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dups_view</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<p><strong>Input</strong>: An unlabeled (or labeled) dataset. There are
+<a class="reference internal" href="recipes/index.html#recipes"><span class="std std-ref">recipes</span></a> for building datasets from a wide variety of image
+formats, ranging from a simple directory of images to complicated dataset
+structures like <a class="reference external" href="https://cocodataset.org/#home">COCO</a>.</p>
+<p><strong>Output</strong>: A <a class="reference internal" href="api/fiftyone.brain.similarity.html#fiftyone.brain.similarity.SimilarityIndex" title="fiftyone.brain.similarity.SimilarityIndex"><code class="xref py py-class docutils literal notranslate"><span class="pre">SimilarityIndex</span></code></a> object that provides powerful methods such as
+<a class="reference internal" href="api/fiftyone.brain.similarity.html#fiftyone.brain.similarity.DuplicatesMixin.duplicate_ids" title="fiftyone.brain.similarity.DuplicatesMixin.duplicate_ids"><code class="xref py py-meth docutils literal notranslate"><span class="pre">duplicate_ids</span></code></a>,
+<a class="reference internal" href="api/fiftyone.brain.similarity.html#fiftyone.brain.similarity.DuplicatesMixin.neighbors_map" title="fiftyone.brain.similarity.DuplicatesMixin.neighbors_map"><code class="xref py py-meth docutils literal notranslate"><span class="pre">neighbors_map</span></code></a>
+and
+<a class="reference internal" href="api/fiftyone.brain.similarity.html#fiftyone.brain.similarity.DuplicatesMixin.duplicates_view" title="fiftyone.brain.similarity.DuplicatesMixin.duplicates_view"><code class="xref py py-meth docutils literal notranslate"><span class="pre">duplicates_view()</span></code></a>
+to analyze potential near duplicates as demonstrated below</p>
+<p><strong>What to expect</strong>: Near duplicates analysis leverages embeddings to identify
+samples  that are too close to their nearest neighbors. You can provide
+pre-computed embeddings, specify a <a class="reference internal" href="model_zoo/index.html#model-zoo"><span class="std std-ref">zoo model</span></a> of your choice
+to use to compute embeddings, or provide nothing and rely on the method’s
+default model to generate embeddings.</p>
+<p><strong>Thresholds</strong>: When using custom embeddings/models, you may need to adjust the
+distance threshold used to detect potential duplicates. You can do this by
+passing a value to the <code class="code docutils literal notranslate"><span class="pre">threshold</span></code> argument of
+<a class="reference internal" href="api/fiftyone.brain.html#fiftyone.brain.compute_near_duplicates" title="fiftyone.brain.compute_near_duplicates"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_near_duplicates()</span></code></a>. The
+best value for your use case may vary depending on your dataset, as well as the
+embeddings used. A threshold that’s too big may have a lot of false positives,
+while a threshold that’s too small may have a lot of false negatives.</p>
+<p>The following example demonstrates how to use
+<a class="reference internal" href="api/fiftyone.brain.html#fiftyone.brain.compute_near_duplicates" title="fiftyone.brain.compute_near_duplicates"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_near_duplicates()</span></code></a> to
+detect near duplicate images on the
+<a class="reference internal" href="dataset_zoo/datasets.html#dataset-zoo-cifar10"><span class="std std-ref">CIFAR-10 dataset</span></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;cifar10&quot;</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="s2">&quot;test&quot;</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>To proceed, we first need some suitable image embeddings for the dataset.
+Although the <a class="reference internal" href="api/fiftyone.brain.html#fiftyone.brain.compute_near_duplicates" title="fiftyone.brain.compute_near_duplicates"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_near_duplicates()</span></code></a>
+method is equipped with a default general-purpose model to generate embeddings
+if none are provided, you’ll typically find higher-quality insights when a
+domain-specific model is used to generate embeddings.</p>
+<p>In this case, we’ll use a classifier that has been fine-tuned on CIFAR-10 to
+pre-compute embeddings and them feed them to
+<a class="reference internal" href="api/fiftyone.brain.html#fiftyone.brain.compute_near_duplicates" title="fiftyone.brain.compute_near_duplicates"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_near_duplicates()</span></code></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone.brain</span> <span class="k">as</span> <span class="nn">fob</span>
+<span class="kn">import</span> <span class="nn">fiftyone.brain.internal.models</span> <span class="k">as</span> <span class="nn">fbm</span>
+
+<span class="c1"># Compute embeddings via a pre-trained CIFAR-10 classifier</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">fbm</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="s2">&quot;simple-resnet-cifar10&quot;</span><span class="p">)</span>
+<span class="n">embeddings</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">compute_embeddings</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+
+<span class="c1"># Scan for near-duplicates</span>
+<span class="n">index</span> <span class="o">=</span> <span class="n">fob</span><span class="o">.</span><span class="n">compute_near_duplicates</span><span class="p">(</span>
+    <span class="n">dataset</span><span class="p">,</span>
+    <span class="n">embeddings</span><span class="o">=</span><span class="n">embeddings</span><span class="p">,</span>
+    <span class="n">thresh</span><span class="o">=</span><span class="mf">0.02</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="section" id="finding-near-duplicate-samples">
+<h3>Finding near-duplicate samples<a class="headerlink" href="#finding-near-duplicate-samples" title="Permalink to this headline">¶</a></h3>
+<p>The
+<a class="reference internal" href="api/fiftyone.brain.similarity.html#fiftyone.brain.similarity.DuplicatesMixin.neighbors_map" title="fiftyone.brain.similarity.DuplicatesMixin.neighbors_map"><code class="xref py py-meth docutils literal notranslate"><span class="pre">neighbors_map</span></code></a>
+property of the index provides a data structure that summarizes the findings.
+The keys of the dictionary are the sample IDs of each non-duplicate sample, and
+the values are lists of <code class="code docutils literal notranslate"><span class="pre">(id,</span> <span class="pre">distance)</span></code> tuples listing the sample IDs of the
+duplicate samples for each reference sample together with the embedding
+distance between the two samples:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">index</span><span class="o">.</span><span class="n">neighbors_map</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
+    &#39;61143408db40df926c571a6b&#39;: [
+        (&#39;61143409db40df926c573075&#39;, 5.667297674385298),
+        (&#39;61143408db40df926c572ab6&#39;, 6.231051661334058)
+    ],
+    &#39;6114340cdb40df926c577f2a&#39;: [
+        (&#39;61143408db40df926c572b54&#39;, 6.042934361555487)
+    ],
+    &#39;61143408db40df926c572aa3&#39;: [
+        (&#39;6114340bdb40df926c5772e9&#39;, 5.88984758067434),
+        (&#39;61143408db40df926c572b64&#39;, 6.063986454046798),
+        (&#39;61143409db40df926c574571&#39;, 6.10303338363576),
+        (&#39;6114340adb40df926c5749a2&#39;, 6.161749290179865)
+    ],
+    ...
+}
+</pre></div>
+</div>
+<p>We can conveniently visualize this information in the App via the
+<a class="reference internal" href="api/fiftyone.brain.similarity.html#fiftyone.brain.similarity.DuplicatesMixin.duplicates_view" title="fiftyone.brain.similarity.DuplicatesMixin.duplicates_view"><code class="xref py py-meth docutils literal notranslate"><span class="pre">duplicates_view()</span></code></a>
+method of the index, which constructs a view with the duplicate samples
+arranged directly after their corresponding reference sample, with optional
+additional fields recording the type and nearest reference sample ID/distance:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">duplicates_view</span> <span class="o">=</span> <span class="n">index</span><span class="o">.</span><span class="n">duplicates_view</span><span class="p">(</span>
+    <span class="n">type_field</span><span class="o">=</span><span class="s2">&quot;dup_type&quot;</span><span class="p">,</span>
+    <span class="n">id_field</span><span class="o">=</span><span class="s2">&quot;dup_id&quot;</span><span class="p">,</span>
+    <span class="n">dist_field</span><span class="o">=</span><span class="s2">&quot;dup_dist&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">duplicates_view</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<img alt="cifar10-duplicate-view" class="align-center" src="_images/brain-cifar10-duplicate-view.png" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can also use the
+<a class="reference internal" href="api/fiftyone.brain.similarity.html#fiftyone.brain.similarity.DuplicatesMixin.find_duplicates" title="fiftyone.brain.similarity.DuplicatesMixin.find_duplicates"><code class="xref py py-meth docutils literal notranslate"><span class="pre">find_duplicates()</span></code></a>
+method of the index to rerun the duplicate detection with a different
+<code class="code docutils literal notranslate"><span class="pre">threshold</span></code> without calling
+<a class="reference internal" href="api/fiftyone.brain.html#fiftyone.brain.compute_near_duplicates" title="fiftyone.brain.compute_near_duplicates"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_near_duplicates()</span></code></a>
+again.</p>
+</div>
+</div>
+<div class="section" id="finding-maximally-unique-samples">
+<h3>Finding maximally unique samples<a class="headerlink" href="#finding-maximally-unique-samples" title="Permalink to this headline">¶</a></h3>
+<p>You can also use the
+<a class="reference internal" href="api/fiftyone.brain.similarity.html#fiftyone.brain.similarity.DuplicatesMixin.find_unique" title="fiftyone.brain.similarity.DuplicatesMixin.find_unique"><code class="xref py py-meth docutils literal notranslate"><span class="pre">find_unique()</span></code></a>
+method of the index to identify a set of samples of any desired size that are
+maximally unique with respect to each other:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># Use the similarity index to identify 500 maximally unique samples</span>
+<span class="n">index</span><span class="o">.</span><span class="n">find_unique</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">index</span><span class="o">.</span><span class="n">unique_ids</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>We can also conveniently visualize the results of this operation via the
+<a class="reference internal" href="api/fiftyone.brain.similarity.html#fiftyone.brain.similarity.DuplicatesMixin.visualize_unique" title="fiftyone.brain.similarity.DuplicatesMixin.visualize_unique"><code class="xref py py-meth docutils literal notranslate"><span class="pre">visualize_unique()</span></code></a>
+method of the index, which generates a scatterplot with the unique samples
+colored separately:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># Generate a 2D visualization</span>
+<span class="n">viz_results</span> <span class="o">=</span> <span class="n">fob</span><span class="o">.</span><span class="n">compute_visualization</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">embeddings</span><span class="o">=</span><span class="n">embeddings</span><span class="p">)</span>
+
+<span class="c1"># Visualize the unique samples in embeddings space</span>
+<span class="n">plot</span> <span class="o">=</span> <span class="n">index</span><span class="o">.</span><span class="n">visualize_unique</span><span class="p">(</span><span class="n">viz_results</span><span class="p">)</span>
+<span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">height</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">yaxis_scaleanchor</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<img alt="cifar10-unique-viz" class="align-center" src="_images/brain-cifar10-unique-viz.png" />
+<p>And of course we can load a view containing the unique samples in the App to
+explore the results in detail:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># Visualize the unique images in the App</span>
+<span class="n">unique_view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">index</span><span class="o">.</span><span class="n">unique_ids</span><span class="p">)</span>
+<span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">view</span><span class="o">=</span><span class="n">unique_view</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<img alt="cifar10-unique-view" class="align-center" src="_images/brain-cifar10-unique-view.png" />
+</div>
+</div>
+<div class="section" id="exact-duplicates">
+<span id="brain-exact-duplicates"></span><h2>Exact duplicates<a class="headerlink" href="#exact-duplicates" title="Permalink to this headline">¶</a></h2>
+<p>Despite your best efforts, you may accidentally add duplicate data to a
+dataset. Left unmitigated, such quality issues can bias your models and
+confound your analysis.</p>
+<p>The <a class="reference internal" href="api/fiftyone.brain.html#fiftyone.brain.compute_exact_duplicates" title="fiftyone.brain.compute_exact_duplicates"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_exact_duplicates()</span></code></a>
+method scans your dataset and determines if you have duplicate data either
+under the same or different filenames:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.brain</span> <span class="k">as</span> <span class="nn">fob</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+
+<span class="n">duplicates_map</span> <span class="o">=</span> <span class="n">fob</span><span class="o">.</span><span class="n">compute_exact_duplicates</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">duplicates_map</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<p><strong>Input</strong>: An unlabeled (or labeled) dataset. There are
+<a class="reference internal" href="recipes/index.html#recipes"><span class="std std-ref">recipes</span></a> for building datasets from a wide variety of image
+formats, ranging from a simple directory of images to complicated dataset
+structures like <a class="reference external" href="https://cocodataset.org/#home">COCO</a>.</p>
+<p><strong>Output</strong>: A dictionary mapping IDs of samples with exact duplicates to lists
+of IDs of the duplicates for the corresponding sample</p>
+<p><strong>What to expect</strong>: Exact duplicates analysis uses filehases to identify
+duplicate data, regardless of whether they are stored under the same or
+different filepaths in your dataset.</p>
+</div>
+<div class="section" id="image-uniqueness">
+<span id="brain-image-uniqueness"></span><h2>Image uniqueness<a class="headerlink" href="#image-uniqueness" title="Permalink to this headline">¶</a></h2>
+<p>The FiftyOne Brain allows for the computation of the uniqueness of an image,
+in comparison with other images in a dataset; it does so without requiring
+any model from you. One good use of uniqueness is in the early stages of the
+machine learning workflow when you are deciding what subset of data with which
+to bootstrap your models. Unique samples are vital in creating training
+batches that help your model learn as efficiently and effectively as possible.</p>
+<p>The uniqueness of a <a class="reference internal" href="api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset" title="fiftyone.core.dataset.Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dataset</span></code></a> can be computed directly without need the
+predictions of a pre-trained model via the
+<a class="reference internal" href="api/fiftyone.brain.html#fiftyone.brain.compute_uniqueness" title="fiftyone.brain.compute_uniqueness"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_uniqueness()</span></code></a> method:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.brain</span> <span class="k">as</span> <span class="nn">fob</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+
+<span class="n">fob</span><span class="o">.</span><span class="n">compute_uniqueness</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<p><strong>Input</strong>: An unlabeled (or labeled) image dataset. There are
+<a class="reference internal" href="recipes/index.html#recipes"><span class="std std-ref">recipes</span></a> for building datasets from a wide variety of image
+formats, ranging from a simple directory of images to complicated dataset
+structures like <a class="reference external" href="https://cocodataset.org/#home">COCO</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Did you know? Instead of using FiftyOne’s default model to generate
+embeddings, you can provide your own embeddings or specify a model from the
+<a class="reference internal" href="model_zoo/index.html#model-zoo"><span class="std std-ref">Model Zoo</span></a> to use to generate embeddings via the optional
+<code class="code docutils literal notranslate"><span class="pre">embeddings</span></code> and <code class="code docutils literal notranslate"><span class="pre">model</span></code> argument to
+<a class="reference internal" href="api/fiftyone.brain.html#fiftyone.brain.compute_uniqueness" title="fiftyone.brain.compute_uniqueness"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_uniqueness()</span></code></a>.</p>
+</div>
+<p><strong>Output</strong>: A scalar-valued <code class="code docutils literal notranslate"><span class="pre">uniqueness</span></code> field is populated on each sample
+that ranks the uniqueness of that sample (higher value means more unique).
+The uniqueness values for a dataset are normalized to <code class="code docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code>, with the most
+unique sample in the collection having a uniqueness value of <code class="code docutils literal notranslate"><span class="pre">1</span></code>.</p>
+<p>You can customize the name of this field by passing the optional
+<code class="code docutils literal notranslate"><span class="pre">uniqueness_field</span></code> argument to
+<a class="reference internal" href="api/fiftyone.brain.html#fiftyone.brain.compute_uniqueness" title="fiftyone.brain.compute_uniqueness"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_uniqueness()</span></code></a>.</p>
+<p><strong>What to expect</strong>: Uniqueness uses a tuned algorithm that measures the
+distribution of each <a class="reference internal" href="api/fiftyone.core.sample.html#fiftyone.core.sample.Sample" title="fiftyone.core.sample.Sample"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sample</span></code></a> in the <a class="reference internal" href="api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset" title="fiftyone.core.dataset.Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dataset</span></code></a>. Using this distribution, it
+ranks each sample based on its relative <em>similarity</em> to other samples. Those
+that are close to other samples are not unique whereas those that are far from
+most other samples are more unique.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Did you know? You can specify a region of interest within each image to use
+to compute uniqueness by providing the optional <code class="code docutils literal notranslate"><span class="pre">roi_field</span></code> argument to
+<a class="reference internal" href="api/fiftyone.brain.html#fiftyone.brain.compute_uniqueness" title="fiftyone.brain.compute_uniqueness"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_uniqueness()</span></code></a>, which
+contains <a class="reference internal" href="api/fiftyone.core.labels.html#fiftyone.core.labels.Detections" title="fiftyone.core.labels.Detections"><code class="xref py py-class docutils literal notranslate"><span class="pre">Detections</span></code></a> or <a class="reference internal" href="api/fiftyone.core.labels.html#fiftyone.core.labels.Polylines" title="fiftyone.core.labels.Polylines"><code class="xref py py-class docutils literal notranslate"><span class="pre">Polylines</span></code></a> that define the ROI for each sample.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Check out the <a class="reference internal" href="tutorials/uniqueness.html"><span class="doc">uniqueness tutorial</span></a> to see
+an example use case of the Brain’s uniqueness method to detect
+near-duplicate images in a dataset.</p>
+</div>
+<img alt="uniqueness" class="align-center" src="_images/brain-uniqueness.gif" />
+</div>
+<div class="section" id="label-mistakes">
+<span id="brain-label-mistakes"></span><h2>Label mistakes<a class="headerlink" href="#label-mistakes" title="Permalink to this headline">¶</a></h2>
+<p>Label mistakes can be calculated for both classification and detection
+datasets.</p>
+<img alt="mistakenness" class="align-center" src="_images/brain-mistakenness.png" />
+</div>
+<div class="section" id="sample-hardness">
+<span id="brain-sample-hardness"></span><h2>Sample hardness<a class="headerlink" href="#sample-hardness" title="Permalink to this headline">¶</a></h2>
+<p>During training, it is useful to identify samples that are more difficult for a
+model to learn so that training can be more focused around these hard samples.
+These hard samples are also useful as seeds when considering what other new
+samples to add to a training dataset.</p>
+<p>In order to compute hardness, all you need to do is add your model predictions
+and their logits to your FiftyOne <a class="reference internal" href="api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset" title="fiftyone.core.dataset.Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dataset</span></code></a> and then run the
+<a class="reference internal" href="api/fiftyone.brain.html#fiftyone.brain.compute_hardness" title="fiftyone.brain.compute_hardness"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_hardness()</span></code></a> method:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.brain</span> <span class="k">as</span> <span class="nn">fob</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+
+<span class="n">fob</span><span class="o">.</span><span class="n">compute_hardness</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="s2">&quot;predictions&quot;</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<p><strong>Input</strong>: A <a class="reference internal" href="api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset" title="fiftyone.core.dataset.Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dataset</span></code></a> or <a class="reference internal" href="api/fiftyone.core.view.html#fiftyone.core.view.DatasetView" title="fiftyone.core.view.DatasetView"><code class="xref py py-class docutils literal notranslate"><span class="pre">DatasetView</span></code></a> on which predictions have been
+computed and are stored in the <code class="code docutils literal notranslate"><span class="pre">&quot;predictions&quot;</span></code> argument. Ground truth
+annotations are not required for hardness.</p>
+<p><strong>Output</strong>: A scalar-valued <code class="code docutils literal notranslate"><span class="pre">hardness</span></code> field is populated on each sample that
+ranks the hardness of the sample. You can customize the name of this field via
+the <code class="code docutils literal notranslate"><span class="pre">hardness_field</span></code> argument of
+<a class="reference internal" href="api/fiftyone.brain.html#fiftyone.brain.compute_hardness" title="fiftyone.brain.compute_hardness"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_hardness()</span></code></a>.</p>
+<p><strong>What to expect</strong>: Hardness is computed in the context of a prediction model.
+The FiftyOne Brain hardness measure defines hard samples as those for which the
+prediction model is unsure about what label to assign. This measure
+incorporates prediction confidence and logits in a tuned model that has
+demonstrated empirical value in many model training exercises.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Check out the
+<a class="reference internal" href="tutorials/evaluate_classifications.html"><span class="doc">classification evaluation tutorial</span></a>
+to see example uses of the Brain’s hardness method to uncover annotation
+mistakes in a dataset.</p>
+</div>
+<img alt="hardness" class="align-center" src="_images/brain-hardness.png" />
+</div>
+<div class="section" id="image-representativeness">
+<span id="brain-image-representativeness"></span><h2>Image representativeness<a class="headerlink" href="#image-representativeness" title="Permalink to this headline">¶</a></h2>
+<p>During the early stages of the ML workflow it can be useful to find
+prototypical samples in your data that accurately describe all the different
+aspects of your data. FiftyOne Brain provides a representativeness method that
+finds samples which are very similar to large clusters of your data. Highly
+representative samples are great for finding modes or easy examples in your
+dataset.</p>
+<p>The representativeness of a <a class="reference internal" href="api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset" title="fiftyone.core.dataset.Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dataset</span></code></a> can be computed directly without the need
+for the predictions of a pre-trained model via the
+<a class="reference internal" href="api/fiftyone.brain.html#fiftyone.brain.compute_representativeness" title="fiftyone.brain.compute_representativeness"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_representativeness()</span></code></a>
+method:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.brain</span> <span class="k">as</span> <span class="nn">fob</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+
+<span class="n">fob</span><span class="o">.</span><span class="n">compute_representativeness</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<p><strong>Input</strong>: An unlabeled (or labeled) image dataset. There are
+<a class="reference internal" href="recipes/index.html#recipes"><span class="std std-ref">recipes</span></a> for building datasets from a wide variety of image
+formats, ranging from a simple directory of images to complicated dataset
+structures like <a class="reference external" href="https://cocodataset.org/#home">COCO</a>.</p>
+<p><strong>Output</strong>: A scalar-valued <code class="code docutils literal notranslate"><span class="pre">representativeness</span></code> field is populated for each
+sample that ranks the representativeness of that sample (higher value means
+more representative). The representativeness values for a dataset are
+normalized to <code class="code docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code>, with the most representative samples in the collection
+having a representativeness value of <code class="code docutils literal notranslate"><span class="pre">1</span></code>.</p>
+<p>You can customize the name of this field by passing the optional
+<code class="code docutils literal notranslate"><span class="pre">representativeness_field</span></code> argument to
+<a class="reference internal" href="api/fiftyone.brain.html#fiftyone.brain.compute_representativeness" title="fiftyone.brain.compute_representativeness"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_representativeness()</span></code></a>
+.</p>
+<p><strong>What to expect</strong>: Representativeness uses a clustering algorithm to find
+similar looking groups of samples. The representativeness is then computed
+based on each sample’s proximity to the computed cluster centers, farther
+samples being less representative and closer samples being more representative.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Did you know? You can specify a region of interest within each image to use
+to compute representativeness by providing the optional <code class="code docutils literal notranslate"><span class="pre">roi_field</span></code>
+argument to
+<a class="reference internal" href="api/fiftyone.brain.html#fiftyone.brain.compute_representativeness" title="fiftyone.brain.compute_representativeness"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_representativeness()</span></code></a>,
+which contains <a class="reference internal" href="api/fiftyone.core.labels.html#fiftyone.core.labels.Detections" title="fiftyone.core.labels.Detections"><code class="xref py py-class docutils literal notranslate"><span class="pre">Detections</span></code></a> or <a class="reference internal" href="api/fiftyone.core.labels.html#fiftyone.core.labels.Polylines" title="fiftyone.core.labels.Polylines"><code class="xref py py-class docutils literal notranslate"><span class="pre">Polylines</span></code></a> that define the ROI for each
+sample.</p>
+</div>
+<img alt="representativeness" class="align-center" src="_images/brain-representativeness.png" />
+</div>
+<div class="section" id="managing-brain-runs">
+<span id="brain-managing-runs"></span><h2>Managing brain runs<a class="headerlink" href="#managing-brain-runs" title="Permalink to this headline">¶</a></h2>
+<p>When you run a brain method with a <code class="docutils literal notranslate"><span class="pre">brain_key</span></code> argument, the run is recorded
+on the dataset and you can retrieve information about it later, rename it,
+delete it (along with any modifications to your dataset that were performed by
+it), and even retrieve the view that you computed on using the following
+methods on your dataset:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.list_brain_runs" title="fiftyone.core.collections.SampleCollection.list_brain_runs"><code class="xref py py-meth docutils literal notranslate"><span class="pre">list_brain_runs()</span></code></a></p></li>
+<li><p><a class="reference internal" href="api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.get_brain_info" title="fiftyone.core.collections.SampleCollection.get_brain_info"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_brain_info()</span></code></a></p></li>
+<li><p><a class="reference internal" href="api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.load_brain_results" title="fiftyone.core.collections.SampleCollection.load_brain_results"><code class="xref py py-meth docutils literal notranslate"><span class="pre">load_brain_results()</span></code></a></p></li>
+<li><p><a class="reference internal" href="api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.load_brain_view" title="fiftyone.core.collections.SampleCollection.load_brain_view"><code class="xref py py-meth docutils literal notranslate"><span class="pre">load_brain_view()</span></code></a></p></li>
+<li><p><a class="reference internal" href="api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.rename_brain_run" title="fiftyone.core.collections.SampleCollection.rename_brain_run"><code class="xref py py-meth docutils literal notranslate"><span class="pre">rename_brain_run()</span></code></a></p></li>
+<li><p><a class="reference internal" href="api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.delete_brain_run" title="fiftyone.core.collections.SampleCollection.delete_brain_run"><code class="xref py py-meth docutils literal notranslate"><span class="pre">delete_brain_run()</span></code></a></p></li>
+</ul>
+<p>The example below demonstrates the basic interface:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.brain</span> <span class="k">as</span> <span class="nn">fob</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+
+<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="c1"># Run a brain method that returns results</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">fob</span><span class="o">.</span><span class="n">compute_visualization</span><span class="p">(</span><span class="n">view</span><span class="p">,</span> <span class="n">brain_key</span><span class="o">=</span><span class="s2">&quot;visualization&quot;</span><span class="p">)</span>
+
+<span class="c1"># Run a brain method that populates a new sample field on the dataset</span>
+<span class="n">fob</span><span class="o">.</span><span class="n">compute_uniqueness</span><span class="p">(</span><span class="n">view</span><span class="p">)</span>
+
+<span class="c1"># List the brain methods that have been run</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">list_brain_runs</span><span class="p">())</span>
+<span class="c1"># [&#39;visualization&#39;, &#39;uniqueness&#39;]</span>
+
+<span class="c1"># Print information about a brain run</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">get_brain_info</span><span class="p">(</span><span class="s2">&quot;visualization&quot;</span><span class="p">))</span>
+
+<span class="c1"># Load the results of a previous brain run</span>
+<span class="n">also_results</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">load_brain_results</span><span class="p">(</span><span class="s2">&quot;visualization&quot;</span><span class="p">)</span>
+
+<span class="c1"># Load the view on which a brain run was performed</span>
+<span class="n">same_view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">load_brain_view</span><span class="p">(</span><span class="s2">&quot;visualization&quot;</span><span class="p">)</span>
+
+<span class="c1"># Rename a brain run</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">rename_brain_run</span><span class="p">(</span><span class="s2">&quot;visualization&quot;</span><span class="p">,</span> <span class="s2">&quot;still_visualization&quot;</span><span class="p">)</span>
+
+<span class="c1"># Delete brain runs</span>
+<span class="c1"># This will delete any stored results and fields that were populated</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">delete_brain_run</span><span class="p">(</span><span class="s2">&quot;still_visualization&quot;</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">delete_brain_run</span><span class="p">(</span><span class="s2">&quot;uniqueness&quot;</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+</div>
+<div class="section" id="brain-config">
+<span id="id11"></span><h2>Brain config<a class="headerlink" href="#brain-config" title="Permalink to this headline">¶</a></h2>
+<p>FiftyOne provides a brain config that you can use to either temporarily
+or permanently configure the behavior of brain methods.</p>
+<div class="section" id="viewing-your-config">
+<h3>Viewing your config<a class="headerlink" href="#viewing-your-config" title="Permalink to this headline">¶</a></h3>
+<p>You can print your current brain config at any time via the Python library
+and the CLI:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you have customized your brain config via any of the methods described
+below, printing your config is a convenient way to ensure that the changes
+you made have taken effect as you expected.</p>
+</div>
+</div>
+<div class="section" id="modifying-your-config">
+<h3>Modifying your config<a class="headerlink" href="#modifying-your-config" title="Permalink to this headline">¶</a></h3>
+<p>You can modify your brain config in a variety of ways. The following sections
+describe these options in detail.</p>
+<div class="section" id="order-of-precedence">
+<h4>Order of precedence<a class="headerlink" href="#order-of-precedence" title="Permalink to this headline">¶</a></h4>
+<p>The following order of precedence is used to assign values to your brain
+config settings as runtime:</p>
+<ol class="arabic simple">
+<li><p>Config settings applied at runtime by directly editing
+<code class="code docutils literal notranslate"><span class="pre">fiftyone.brain.brain_config</span></code></p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">FIFTYONE_BRAIN_XXX</span></code> environment variables</p></li>
+<li><p>Settings in your JSON config (<code class="code docutils literal notranslate"><span class="pre">~/.fiftyone/brain_config.json</span></code>)</p></li>
+<li><p>The default config values</p></li>
+</ol>
+</div>
+<div class="section" id="editing-your-json-config">
+<h4>Editing your JSON config<a class="headerlink" href="#editing-your-json-config" title="Permalink to this headline">¶</a></h4>
+<p>You can permanently customize your brain config by creating a
+<code class="code docutils literal notranslate"><span class="pre">~/.fiftyone/brain_config.json</span></code> file on your machine. The JSON file may contain
+any desired subset of config fields that you wish to customize.</p>
+<p>For example, the following config JSON file customizes the URL of your
+<a class="reference internal" href="integrations/qdrant.html#qdrant-integration"><span class="std std-ref">Qdrant server</span></a> without changing any other default
+config settings:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;similarity_backends&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;qdrant&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://localhost:8080&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>When <code class="code docutils literal notranslate"><span class="pre">fiftyone.brain</span></code> is imported, any options from your JSON config are merged
+into the default config, as per the order of precedence described above.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can customize the location from which your JSON config is read by
+setting the <code class="code docutils literal notranslate"><span class="pre">FIFTYONE_BRAIN_CONFIG_PATH</span></code> environment variable.</p>
+</div>
+</div>
+<div class="section" id="setting-environment-variables">
+<h4>Setting environment variables<a class="headerlink" href="#setting-environment-variables" title="Permalink to this headline">¶</a></h4>
+<p>Brain config settings may be customized on a per-session basis by setting the
+<code class="code docutils literal notranslate"><span class="pre">FIFTYONE_BRAIN_XXX</span></code> environment variable(s) for the desired config settings.</p>
+<p>The <code class="code docutils literal notranslate"><span class="pre">FIFTYONE_BRAIN_DEFAULT_SIMILARITY_BACKEND</span></code> environment variable allows you
+to configure your default similarity backend:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">FIFTYONE_BRAIN_DEFAULT_SIMILARITY_BACKEND</span><span class="o">=</span>qdrant
+</pre></div>
+</div>
+<p><strong>Similarity backends</strong></p>
+<p>You can declare parameters for specific similarity backends by setting
+environment variables of the form
+<code class="code docutils literal notranslate"><span class="pre">FIFTYONE_BRAIN_SIMILARITY_&lt;BACKEND&gt;_&lt;PARAMETER&gt;</span></code>. Any settings that you
+declare in this way will be passed as keyword arguments to methods like
+<a class="reference internal" href="api/fiftyone.brain.html#fiftyone.brain.compute_similarity" title="fiftyone.brain.compute_similarity"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_similarity()</span></code></a> whenever the
+corresponding backend is in use. For example, you can configure the URL of your
+<a class="reference internal" href="integrations/qdrant.html#qdrant-integration"><span class="std std-ref">Qdrant server</span></a> as follows:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">FIFTYONE_BRAIN_SIMILARITY_QDRANT_URL</span><span class="o">=</span>http://localhost:8080
+</pre></div>
+</div>
+<p>The <code class="code docutils literal notranslate"><span class="pre">FIFTYONE_BRAIN_SIMILARITY_BACKENDS</span></code> environment variable can be set to a
+<code class="code docutils literal notranslate"><span class="pre">list,of,backends</span></code> that you want to expose in your session, which may exclude
+native backends and/or declare additional custom backends whose parameters are
+defined via additional config modifications of any kind:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">FIFTYONE_BRAIN_SIMILARITY_BACKENDS</span><span class="o">=</span>custom,sklearn,qdrant
+</pre></div>
+</div>
+<p>When declaring new backends, you can include <code class="code docutils literal notranslate"><span class="pre">*</span></code> to append new backend(s)
+without omitting or explicitly enumerating the builtin backends. For example,
+you can add a <code class="code docutils literal notranslate"><span class="pre">custom</span></code> similarity backend as follows:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">FIFTYONE_BRAIN_SIMILARITY_BACKENDS</span><span class="o">=</span>*,custom
+<span class="nb">export</span><span class="w"> </span><span class="nv">FIFTYONE_BRAIN_SIMILARITY_CUSTOM_CONFIG_CLS</span><span class="o">=</span>your.custom.SimilarityConfig
+</pre></div>
+</div>
+<p><strong>Visualization methods</strong></p>
+<p>You can declare parameters for specific visualization methods by setting
+environment variables of the form
+<code class="code docutils literal notranslate"><span class="pre">FIFTYONE_BRAIN_VISUALIZATION_&lt;METHOD&gt;_&lt;PARAMETER&gt;</span></code>. Any settings that you
+declare in this way will be passed as keyword arguments to methods like
+<a class="reference internal" href="api/fiftyone.brain.html#fiftyone.brain.compute_visualization" title="fiftyone.brain.compute_visualization"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_visualization()</span></code></a> whenever
+the corresponding method is in use. For example, you can suppress logging
+messages for the UMAP method as follows:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">FIFTYONE_BRAIN_VISUALIZATION_UMAP_VERBOSE</span><span class="o">=</span><span class="nb">false</span>
+</pre></div>
+</div>
+<p>The <code class="code docutils literal notranslate"><span class="pre">FIFTYONE_BRAIN_VISUALIZATION_METHODS</span></code> environment variable can be set to a
+<code class="code docutils literal notranslate"><span class="pre">list,of,methods</span></code> that you want to expose in your session, which may exclude
+native methods and/or declare additional custom methods whose parameters are
+defined via additional config modifications of any kind:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">FIFTYONE_BRAIN_VISUALIZATION_METHODS</span><span class="o">=</span>custom,umap,tsne
+</pre></div>
+</div>
+<p>When declaring new methods, you can include <code class="code docutils literal notranslate"><span class="pre">*</span></code> to append new method(s)
+without omitting or explicitly enumerating the builtin methods. For example,
+you can add a <code class="code docutils literal notranslate"><span class="pre">custom</span></code> visualization method as follows:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">FIFTYONE_BRAIN_VISUALIZATION_METHODS</span><span class="o">=</span>*,custom
+<span class="nb">export</span><span class="w"> </span><span class="nv">FIFTYONE_BRAIN_VISUALIZATION_CUSTOM_CONFIG_CLS</span><span class="o">=</span>your.custom.VisualzationConfig
+</pre></div>
+</div>
+</div>
+<div class="section" id="modifying-your-config-in-code">
+<h4>Modifying your config in code<a class="headerlink" href="#modifying-your-config-in-code" title="Permalink to this headline">¶</a></h4>
+<p>You can dynamically modify your brain config at runtime by directly
+editing the <code class="code docutils literal notranslate"><span class="pre">fiftyone.brain.brain_config</span></code> object.</p>
+<p>Any changes to your brain config applied via this manner will immediately
+take effect in all subsequent calls to <code class="code docutils literal notranslate"><span class="pre">fiftyone.brain.brain_config</span></code> during
+your current session.</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone.brain</span> <span class="k">as</span> <span class="nn">fob</span>
+
+<span class="n">fob</span><span class="o">.</span><span class="n">brain_config</span><span class="o">.</span><span class="n">default_similarity_backend</span> <span class="o">=</span> <span class="s2">&quot;qdrant&quot;</span>
+<span class="n">fob</span><span class="o">.</span><span class="n">brain_config</span><span class="o">.</span><span class="n">default_visualization_method</span> <span class="o">=</span> <span class="s2">&quot;tsne&quot;</span>
+</pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+             </article>
+             
+            </div>
+            <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="integrations/index.html" class="btn btn-neutral float-right" title="FiftyOne Integrations" accesskey="n" rel="next">Next <img src="_static/images/chevron-right-orange.svg" class="next-page"></a>
+      
+      
+        <a href="model_zoo/api.html" class="btn btn-neutral" title="Model Zoo API Reference" accesskey="p" rel="prev"><img src="_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
+      
+    </div>
+  
+</footer>
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              <ul>
+<li><a class="reference internal" href="#">FiftyOne Brain</a><ul>
+<li><a class="reference internal" href="#visualizing-embeddings">Visualizing embeddings</a><ul>
+<li><a class="reference internal" href="#embedding-methods">Embedding methods</a></li>
+<li><a class="reference internal" href="#dimensionality-reduction-methods">Dimensionality reduction methods</a></li>
+<li><a class="reference internal" href="#applications">Applications</a></li>
+<li><a class="reference internal" href="#image-embeddings-example">Image embeddings example</a></li>
+<li><a class="reference internal" href="#object-embeddings-example">Object embeddings example</a></li>
+<li><a class="reference internal" href="#visualization-api">Visualization API</a><ul>
+<li><a class="reference internal" href="#changing-your-visualization-method">Changing your visualization method</a></li>
+<li><a class="reference internal" href="#configuring-your-visualization-method">Configuring your visualization method</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#similarity">Similarity</a><ul>
+<li><a class="reference internal" href="#id5">Embedding methods</a></li>
+<li><a class="reference internal" href="#similarity-backends">Similarity backends</a></li>
+<li><a class="reference internal" href="#image-similarity">Image similarity</a></li>
+<li><a class="reference internal" href="#object-similarity">Object similarity</a></li>
+<li><a class="reference internal" href="#text-similarity">Text similarity</a></li>
+<li><a class="reference internal" href="#similarity-api">Similarity API</a><ul>
+<li><a class="reference internal" href="#changing-your-similarity-backend">Changing your similarity backend</a></li>
+<li><a class="reference internal" href="#configuring-your-backend">Configuring your backend</a></li>
+<li><a class="reference internal" href="#creating-an-index">Creating an index</a><ul>
+<li><a class="reference internal" href="#default-behavior">Default behavior</a></li>
+<li><a class="reference internal" href="#custom-model-custom-backend-add-embeddings-later">Custom model, custom backend, add embeddings later</a></li>
+<li><a class="reference internal" href="#precomputed-embeddings">Precomputed embeddings</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#adding-embeddings-to-an-index">Adding embeddings to an index</a></li>
+<li><a class="reference internal" href="#retrieving-embeddings-in-an-index">Retrieving embeddings in an index</a></li>
+<li><a class="reference internal" href="#removing-embeddings-from-an-index">Removing embeddings from an index</a></li>
+<li><a class="reference internal" href="#deleting-an-index">Deleting an index</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#brain-similarity-applications">Applications</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#leaky-splits">Leaky splits</a></li>
+<li><a class="reference internal" href="#near-duplicates">Near duplicates</a><ul>
+<li><a class="reference internal" href="#finding-near-duplicate-samples">Finding near-duplicate samples</a></li>
+<li><a class="reference internal" href="#finding-maximally-unique-samples">Finding maximally unique samples</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#exact-duplicates">Exact duplicates</a></li>
+<li><a class="reference internal" href="#image-uniqueness">Image uniqueness</a></li>
+<li><a class="reference internal" href="#label-mistakes">Label mistakes</a></li>
+<li><a class="reference internal" href="#sample-hardness">Sample hardness</a></li>
+<li><a class="reference internal" href="#image-representativeness">Image representativeness</a></li>
+<li><a class="reference internal" href="#managing-brain-runs">Managing brain runs</a></li>
+<li><a class="reference internal" href="#brain-config">Brain config</a><ul>
+<li><a class="reference internal" href="#viewing-your-config">Viewing your config</a></li>
+<li><a class="reference internal" href="#modifying-your-config">Modifying your config</a><ul>
+<li><a class="reference internal" href="#order-of-precedence">Order of precedence</a></li>
+<li><a class="reference internal" href="#editing-your-json-config">Editing your JSON config</a></li>
+<li><a class="reference internal" href="#setting-environment-variables">Setting environment variables</a></li>
+<li><a class="reference internal" href="#modifying-your-config-in-code">Modifying your config in code</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  
+
+
+  
+
+     
+       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+         <script src="_static/jquery.js"></script>
+         <script src="_static/underscore.js"></script>
+         <script src="_static/doctools.js"></script>
+         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+         <script src="_static/js/voxel51-website.js"></script>
+         <script src="_static/js/custom.js"></script>
+     
+
+  
+
+  <script type="text/javascript" src="_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+  <!-- Begin Footer -->
+
+
+<footer class="footer-wrapper" id="docs-tutorials-resources">
+  <div class="footer pytorch-container">
+    <div class="footer__logo">
+      <a href="https://voxel51.com/"
+        ><img
+          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
+      /></a>
+    </div>
+
+    <div class="footer__address">
+      330 E Liberty St<br />
+      Ann Arbor, MI 48104<br />
+      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
+    </div>
+
+    <!--
+    <div class="footer__contact">
+      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
+    </div>
+    -->
+
+    <div class="footer__links">
+      <div class="footer__links--col2">
+        <p class="nav__item--brand">Products</p>
+        <a href="https://voxel51.com/fiftyone/">FiftyOne</a>
+        <a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a>
+        <a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a>
+        <a href="https://voxel51.com/success-stories/">Success Stories</a>
+      </div>
+      <div class="footer__links--col3">
+        <p class="nav__item--brand">Resources</p>
+        <a href="https://voxel51.com/blog/">Blog</a>
+        <a href="https://docs.voxel51.com/">Docs</a>
+        <a href="https://github.com/voxel51/">GitHub</a>
+        <a href="https://community.voxel51.com">Discord</a>
+        <a href="https://voxel51.com/ourstory/">About Us</a>
+        <a href="https://voxel51.com/computer-vision-events/">Events</a>
+        <a href="https://voxel51.com/jobs/">Careers</a>
+        <a href="https://voxel51.com/press/">Press</a>
+      </div>
+    </div>
+
+    <div class="footer__icons">
+      <ul class="list-inline">
+        <li>
+          <a href="https://www.linkedin.com/company/voxel51/">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/voxel51/">
+            <i class="fa-brands fa-github"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/voxel51">
+            <i class="fa-brands fa-twitter"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/voxel51/">
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="footer__copyright">
+      <ul class="list-inline">
+        <li>&copy; 2024 Voxel51 Inc.</li>
+        <li>
+          <a href="https://voxel51.com/privacy/">Privacy Policy</a>
+        </li>
+        <li>
+          <a href="https://voxel51.com/terms/">Terms of Service</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<!-- https://buttons.github.io -->
+<script async defer src="https://buttons.github.io/buttons.js" ></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XD15NFRY3M" ></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+  gtag("config", "G-XD15NFRY3M");
+</script>
+
+<script>
+  function open_modal(modal_id, modal_closer_id) {
+    // Get the modal
+    let the_modal = document.getElementById(modal_id);
+
+    the_modal.style.display = "flex";
+    document.body.style.overflow = "hidden";
+
+    let the_modal_closer = document.getElementById(modal_closer_id);
+
+    // When the user clicks on <span> (x), close the modal
+    the_modal_closer &&
+      (the_modal_closer.onclick = function () {
+        the_modal.style.display = "none";
+      });
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+      if (event.target == the_modal) {
+        the_modal.style.display = "none";
+        document.body.style.overflow = "unset";
+        window.onclick = undefined;
+      }
+    };
+  }
+</script>
+
+<!-- bigpicture.io -->
+<script>
+  !(function (e, t, i) {
+    var r = (e.bigPicture = e.bigPicture || []);
+    if (!r.initialized)
+      if (r.invoked)
+        e.console &&
+          console.error &&
+          console.error("BigPicture.io snippet included twice.");
+      else {
+        (r.invoked = !0),
+          (r.SNIPPET_VERSION = 1.5),
+          (r.handler = function (e) {
+            if (void 0 !== r.callback)
+              try {
+                return r.callback(e);
+              } catch (e) {}
+          }),
+          (r.eventList = ["mousedown", "mouseup", "click", "submit"]),
+          (r.methods = [
+            "track",
+            "identify",
+            "page",
+            "group",
+            "alias",
+            "integration",
+            "ready",
+            "intelReady",
+            "consentReady",
+            "on",
+            "off",
+          ]),
+          (r.factory = function (e) {
+            return function () {
+              var t = Array.prototype.slice.call(arguments);
+              return t.unshift(e), r.push(t), r;
+            };
+          });
+        for (var n = 0; n < r.methods.length; n++) {
+          var o = r.methods[n];
+          r[o] = r.factory(o);
+        }
+        r.getCookie = function (e) {
+          var i = ("; " + t.cookie).split("; " + e + "=");
+          return 2 == i.length && i.pop().split(";").shift();
+        };
+        var c = (r.isEditor = (function () {
+          try {
+            return (
+              e.self !== e.top &&
+              (new RegExp("app" + i, "ig").test(t.referrer) ||
+                "edit" == r.getCookie("_bpr_edit"))
+            );
+          } catch (e) {
+            return !1;
+          }
+        })());
+        r.init = function (n, o) {
+          if (((r.projectId = n), (r._config = o), !c))
+            for (var a = 0; a < r.eventList.length; a++)
+              e.addEventListener(r.eventList[a], r.handler, !0);
+          var s = t.createElement("script");
+          s.async = !0;
+          var d = c ? "/editor/editor" : "/public-" + n;
+          (s.src = "//cdn" + i + d + ".js"),
+            t.getElementsByTagName("head")[0].appendChild(s);
+        };
+      }
+  })(window, document, ".bigpicture.io");
+  bigPicture.init("1646");
+</script>
+
+
+  
+
+  <!-- End Footer -->
+
+  <!-- Begin Mobile Menu -->
+
+  
+
+  <!-- End Mobile Menu -->
+
+  <script type="text/javascript" src="_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function(e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+</body>
+</html>

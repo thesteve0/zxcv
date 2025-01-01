@@ -1,0 +1,1187 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>FiftyOne Teams Plugins &mdash; FiftyOne 1.3.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <link rel="stylesheet" href="../_static/css/voxel51-website.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="FiftyOne Teams Secrets" href="secrets.html" />
+    <link rel="prev" title="Query Performance" href="query_performance.html" />
+<meta property="og:image" content="https://voxel51.com/wp-content/uploads/2024/03/3.24_webpages_Home_AV.png" />
+
+<link
+  href="https://fonts.googleapis.com/css?family=Palanquin:400,600,700,800"
+  rel="stylesheet"
+/>
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+  rel="stylesheet"
+/>
+<script src="https://tag.clearbitscripts.com/v1/pk_b9ed71c8234edd4f77326bcbfab5a4ca/tags.js"></script>
+
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+  
+</head>
+
+
+<div class="container-fluid header-holder tutorials-header" id="header-holder">
+  <nav id="nav__main" class="nav__main">
+    <div class="nav__main__logo">
+      <a href="https://voxel51.com/">
+        <img
+          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
+        />
+      </a>
+    </div>
+
+    <div class="nav__spacer desktop_only"></div>
+
+    <div id="nav__main__mobilebutton--on">
+      <a href="javascript:void(0);" onclick="navMobileButton()">
+        <i class="fa-solid fa-bars"></i>
+      </a>
+    </div>
+
+    <div id="nav__main__mobilebutton--off">
+      <a href="javascript:void(0);" onclick="navMobileButton()">
+        <i class="fa-solid fa-times"></i>
+      </a>
+    </div>
+
+    <div id="nav__main__items">
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Products</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://voxel51.com/fiftyone/">Open Source</a></li>
+            <li><a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a></li>
+            <li><a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a></li>
+            <li><a href="https://voxel51.com/success-stories/">Success Stories</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Learn</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://community.voxel51.com">Community Discord</a></li>
+            <li><a href="https://voxel51.com/blog/">Blog</a></li>
+            <li><a href="https://voxel51.com/computer-vision-events/">Events</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item">
+        <a href="https://docs.voxel51.com/">Docs</a>
+      </div>
+
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Company</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://voxel51.com/ourstory/">About Us</a></li>
+            <li><a href="https://voxel51.com/jobs/">Careers</a></li>
+            <li><a href="https://voxel51.com/talk-to-sales/">Talk to Sales</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item mobile_only">
+        <a href="https://github.com/voxel51/fiftyone">GitHub</a>
+      </div>
+
+      <div class="nav__item desktop_only" id="octocat">
+        <!-- https://buttons.github.io -->
+        <a
+          class="github-button"
+          href="https://github.com/voxel51/fiftyone"
+          data-color-scheme="no-preference: dark_high_contrast; light: dark_high_contrast; dark: dark_high_contrast;"
+          data-size="large"
+          data-show-count="true"
+          aria-label="Star voxel51/fiftyone on GitHub"
+          >Star</a
+        >
+      </div>
+
+      <div class="nav__item full_nav_only">
+        <a class="button-primary" href="https://voxel51.com/schedule-teams-workshop/" target="_blank"
+          >Schedule a workshop</a
+        >
+      </div>
+    </div>
+  </nav>
+</div>
+
+
+
+<body class="pytorch-body">
+
+   
+
+    
+
+    <div class="table-of-contents-link-wrapper">
+      <span>Table of Contents</span>
+      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+    </div>
+
+    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+      <div class="pytorch-side-scroll">
+        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          <div class="pytorch-left-menu-search">
+            
+
+            
+              
+              
+            
+
+            
+
+
+  
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+            
+          </div>
+
+           <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Overview</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">FiftyOne Teams 🚀</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_connection.html">API connection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloud_media.html">Cloud-backed media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="roles_and_permissions.html">Roles and permissions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dataset_versioning.html">Dataset Versioning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="teams_app.html">FiftyOne Teams App</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_lens.html">Data Lens <strong style="color: hsl(25, 100%, 51%); font-size: 0.85em; vertical-align: top">NEW</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_quality.html">Data Quality <strong style="color: hsl(25, 100%, 51%); font-size: 0.85em; vertical-align: top">NEW</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="query_performance.html">Query Performance <strong style="color: hsl(25, 100%, 51%); font-size: 0.85em; vertical-align: top">NEW</strong></a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="secrets.html">Secrets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="management_sdk.html">Management SDK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migrations.html">Migrations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pluggable_auth.html">Pluggable Auth</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../environments/index.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../recipes/index.html">Recipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheat_sheets/index.html">Cheat Sheets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dataset_zoo/index.html">Dataset Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_zoo/index.html">Model Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brain.html">FiftyOne Brain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/index.html">Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plugins/index.html">Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli/index.html">CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/fiftyone.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deprecation.html">Deprecation Notices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a></li>
+</ul>
+ 
+        </div>
+      </div>
+    </nav>
+
+    <div class="pytorch-container">
+      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+        <div class="pytorch-breadcrumbs-wrapper">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="../index.html">
+          
+            Docs
+          
+        </a> &gt;
+      </li>
+
+        
+          <li><a href="index.html">FiftyOne Teams</a> &gt;</li>
+        
+      <li>FiftyOne Teams Plugins</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+        </div>
+
+        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+          Contents
+        </div>
+      </div>
+
+      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+        <div class="pytorch-content-left">
+
+        
+          
+          <div class="rst-content style-external-links">
+          
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+              
+  <div class="section" id="fiftyone-teams-plugins">
+<span id="teams-plugins"></span><h1>FiftyOne Teams Plugins<a class="headerlink" href="#fiftyone-teams-plugins" title="Permalink to this headline">¶</a></h1>
+<p>FiftyOne Teams provides native support for installing and running
+<a class="reference internal" href="../plugins/index.html#fiftyone-plugins"><span class="std std-ref">FiftyOne plugins</span></a>, which offers powerful opportunities
+to extend and customize the functionality of your Teams deployment to suit your
+needs.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>What can you do with plugins? Check out
+<a class="reference internal" href="#teams-delegated-operations"><span class="std std-ref">delegated operations</span></a> to see some quick
+examples, then check out the
+<a class="reference external" href="https://github.com/voxel51/fiftyone-plugins">FiftyOne plugins</a>
+repository for a growing collection of prebuilt plugins that you can add to
+your Teams deployment!</p>
+</div>
+<div class="section" id="plugins-page">
+<span id="teams-plugins-page"></span><h2>Plugins page<a class="headerlink" href="#plugins-page" title="Permalink to this headline">¶</a></h2>
+<p>Admins can use the plugins page to upload, manage, and configure permissions
+for plugins that are made available to users of your Teams deployment.</p>
+<p>Admins can access the plugins page under Settings &gt; Plugins. It displays a
+list of all installed plugins and their operators, as well as the enablement
+and permissions of each.</p>
+<img alt="teams-plugins-page" class="align-center" src="../_images/plugins_page.png" />
+</div>
+<div class="section" id="installing-a-plugin">
+<span id="teams-plugins-install"></span><h2>Installing a plugin<a class="headerlink" href="#installing-a-plugin" title="Permalink to this headline">¶</a></h2>
+<p>Admins can install plugins via the Teams UI or Management SDK.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A plugin is a directory (or ZIP of it) that contains a top-level
+<code class="docutils literal notranslate"><span class="pre">fiftyone.yml</span></code> file.</p>
+</div>
+<div class="section" id="teams-ui">
+<h3>Teams UI<a class="headerlink" href="#teams-ui" title="Permalink to this headline">¶</a></h3>
+<p>To install a plugin, click the “Install plugin” button on the plugins page.</p>
+<img alt="teams-plugins-page-install-button" class="align-center" src="../_images/plugins_install_btn.png" />
+<p>Then upload or drag and drop the plugin contents as a ZIP file and click
+install.</p>
+<img alt="teams-plugins-page-install-page" class="align-center" src="../_images/plugins_install.png" />
+<p>You should then see a success message and the newly installed plugin listed on
+the plugins page.</p>
+<img alt="teams-plugins-page-install-success-page" class="align-center" src="../_images/plugins_install_success.png" />
+</div>
+<div class="section" id="sdk">
+<h3>SDK<a class="headerlink" href="#sdk" title="Permalink to this headline">¶</a></h3>
+<p>Admins can also use the
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">upload_plugin()</span></code> method from
+the Management SDK:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone.management</span> <span class="k">as</span> <span class="nn">fom</span>
+
+<span class="c1"># You can pass the directory or an already zipped version of it</span>
+<span class="n">fom</span><span class="o">.</span><span class="n">upload_plugin</span><span class="p">(</span><span class="s2">&quot;/path/to/plugin_dir&quot;</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
+<div class="section" id="upgrading-a-plugin">
+<span id="teams-plugins-upgrade"></span><h2>Upgrading a plugin<a class="headerlink" href="#upgrading-a-plugin" title="Permalink to this headline">¶</a></h2>
+<p>Admins can upgrade plugins at any time through the Teams UI or Management SDK.</p>
+<div class="section" id="id1">
+<h3>Teams UI<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>To upgrade a plugin, click the plugin’s dropdown and select “Upgrade plugin”.</p>
+<img alt="teams-plugins-page-upgrade-btn" class="align-center" src="../_images/plugins_upgrade_btn.png" />
+<p>Then upload or drag and drop the upgraded plugin as a ZIP file and click
+upgrade.</p>
+<img alt="teams-plugins-page-upgrade-page" class="align-center" src="../_images/plugins_upgrade_page.png" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the <code class="code docutils literal notranslate"><span class="pre">name</span></code> attribute within the uploaded plugin’s <code class="code docutils literal notranslate"><span class="pre">fiftyone.yml</span></code> file
+doesn’t match the existing plugin, a new plugin will be created. Simply
+delete the old one.</p>
+</div>
+<p>You should then see a success message and the updated information about the
+plugin on the plugins page.</p>
+<img alt="teams-plugins-page-upgrade-success-page" class="align-center" src="../_images/plugins_upgrade_success_page.png" />
+</div>
+<div class="section" id="id2">
+<h3>SDK<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>Admins can also use the
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">upload_plugin()</span></code> method from
+the Management SDK with the <code class="code docutils literal notranslate"><span class="pre">overwrite=True</span></code> option:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone.management</span> <span class="k">as</span> <span class="nn">fom</span>
+
+<span class="c1"># You can pass the directory or an already zipped version of it</span>
+<span class="n">fom</span><span class="o">.</span><span class="n">upload_plugin</span><span class="p">(</span><span class="s2">&quot;/path/to/plugin_dir&quot;</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
+<div class="section" id="uninstalling-a-plugin">
+<span id="teams-plugins-uninstall"></span><h2>Uninstalling a plugin<a class="headerlink" href="#uninstalling-a-plugin" title="Permalink to this headline">¶</a></h2>
+<p>Admins can uninstall plugins at any time through the Teams UI or Management
+SDK.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Did you know? You can
+<a class="reference internal" href="#teams-plugins-enable-disable"><span class="std std-ref">enable/disable plugins</span></a> rather than
+permanently uninstalling them.</p>
+</div>
+<div class="section" id="id3">
+<h3>Teams UI<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>To uninstall a plugin, click the plugin’s dropdown and select
+“Uninstall plugin”.</p>
+<img alt="teams-plugins-page-uninstall-btn" class="align-center" src="../_images/plugins_uninstall_btn.png" />
+</div>
+<div class="section" id="id4">
+<h3>SDK<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>Admins can also use the
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">delete_plugin()</span></code> method from
+the Management SDK:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone.management</span> <span class="k">as</span> <span class="nn">fom</span>
+
+<span class="n">fom</span><span class="o">.</span><span class="n">delete_plugin</span><span class="p">(</span><span class="n">plugin_name</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
+<div class="section" id="enabling-disabling-plugins">
+<span id="teams-plugins-enable-disable"></span><h2>Enabling/disabling plugins<a class="headerlink" href="#enabling-disabling-plugins" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id5">
+<h3>Teams UI<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>When plugins are first installed into Teams, they are enabled by default, along
+with any operators they contain.</p>
+<p>Admins can enable/disable a plugin and all of its operators by toggling the
+enabled/disabled switch.</p>
+<img alt="teams-plugins-page-disable" class="align-center" src="../_images/plugins_disable.png" />
+<p>Admins can also disable/enable specific operators within an (enabled) plugin
+by clicking on the plugin’s operators link.</p>
+<img alt="teams-plugins-page-operators-btn" class="align-center" src="../_images/plugins_operators_btn.png" />
+<p>and then toggling the enabled/disabled switch for each operator as necessary.</p>
+<img alt="teams-plugins-page-operators-disable" class="align-center" src="../_images/plugins_operators_disable.png" />
+</div>
+<div class="section" id="id6">
+<h3>SDK<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>Admins can also use the
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">set_plugin_enabled()</span></code>
+and
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">set_plugin_operator_enabled()</span></code>
+methods from the management SDK:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone.management</span> <span class="k">as</span> <span class="nn">fom</span>
+
+<span class="c1"># Disable a plugin</span>
+<span class="n">fom</span><span class="o">.</span><span class="n">set_plugin_enabled</span><span class="p">(</span><span class="n">plugin_name</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># Disable a particular operator</span>
+<span class="n">fom</span><span class="o">.</span><span class="n">set_plugin_operator_enabled</span><span class="p">(</span><span class="n">plugin_name</span><span class="p">,</span> <span class="n">operator_name</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
+<div class="section" id="plugin-permissions">
+<span id="teams-plugins-permissions"></span><h2>Plugin permissions<a class="headerlink" href="#plugin-permissions" title="Permalink to this headline">¶</a></h2>
+<p>Admins can optionally configure access to plugins and individual operators
+within them via any combination of the permissions described below:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 29%" />
+<col style="width: 71%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Permission</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Minimum Role</p></td>
+<td><p>The minimum role a user must have to execute the operation.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Minimum Dataset Permission</p></td>
+<td><p>The minimum dataset permission a user must have to perform the operation
+on a particular dataset.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="id7">
+<h3>Teams UI<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<p>To configure the permissions for an operator, first click on the plugin’s
+operators link.</p>
+<img alt="teams-plugins-page-operators-btn" class="align-center" src="../_images/plugins_operators_btn.png" />
+<p>Then change the dropdown for the operator to reflect the desired permission
+level.</p>
+<a class="reference internal image-reference" href="../_images/plugins_operators_perms.png"><img alt="teams-plugins-page-operators-perms" class="align-left" src="../_images/plugins_operators_perms.png" style="width: 49%;" /></a>
+<a class="reference internal image-reference" href="../_images/plugins_operators_perms2.png"><img alt="teams-plugins-page-operators-perms2" class="align-right" src="../_images/plugins_operators_perms2.png" style="width: 49%;" /></a>
+</div>
+<div class="section" id="id8">
+<h3>SDK<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<p>Admins can also use the
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">set_plugin_operator_permissions()</span></code>
+method from the Management SDK:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone.management</span> <span class="k">as</span> <span class="nn">fom</span>
+
+<span class="c1"># Set minimum role permission only</span>
+<span class="n">fom</span><span class="o">.</span><span class="n">set_plugin_operator_enabled</span><span class="p">(</span>
+    <span class="n">plugin_name</span><span class="p">,</span>
+    <span class="n">operator_name</span><span class="p">,</span>
+    <span class="n">minimum_role</span><span class="o">=</span><span class="n">fom</span><span class="o">.</span><span class="n">MEMBER</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># Set minimum dataset permission only</span>
+<span class="n">fom</span><span class="o">.</span><span class="n">set_plugin_operator_enabled</span><span class="p">(</span>
+    <span class="n">plugin_name</span><span class="p">,</span>
+    <span class="n">operator_name</span><span class="p">,</span>
+    <span class="n">minimum_dataset_permission</span><span class="o">=</span><span class="n">fom</span><span class="o">.</span><span class="n">EDIT</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># Set both minimum role and minimum dataset permissions</span>
+<span class="n">fom</span><span class="o">.</span><span class="n">set_plugin_operator_enabled</span><span class="p">(</span>
+    <span class="n">plugin_name</span><span class="p">,</span>
+    <span class="n">operator_name</span><span class="p">,</span>
+    <span class="n">minimum_role</span><span class="o">=</span><span class="n">fom</span><span class="o">.</span><span class="n">EDIT</span><span class="p">,</span>
+    <span class="n">minimum_dataset_permission</span><span class="o">=</span><span class="n">fom</span><span class="o">.</span><span class="n">EDIT</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+</div>
+<div class="section" id="default-permissions">
+<h3>Default permissions<a class="headerlink" href="#default-permissions" title="Permalink to this headline">¶</a></h3>
+<p>When new plugins are installed, any operators they contain are initialized with
+the default permissions for your deployment.</p>
+<p>By default, the initial permissions are:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 67%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Permission</p></th>
+<th class="head"><p>Default</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Minimum Role</p></td>
+<td><p>Member</p></td>
+</tr>
+<tr class="row-odd"><td><p>Minimum Dataset Permission</p></td>
+<td><p>Edit</p></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="id9">
+<h4>Teams UI<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h4>
+<p>Default operator permissions can be configured by navigating to the page at
+Settings &gt; Security and looking under the Plugins header. Click the dropdown
+for the permission you want to change and select the new value.</p>
+<img alt="teams-plugins-page-org-settings" class="align-center" src="../_images/plugins_org_settings.png" />
+</div>
+<div class="section" id="id10">
+<h4>SDK<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h4>
+<p>Admins can also use the
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">set_organization_settings()</span></code>
+method from the Management SDK:</p>
+<div class="highlight-python notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone.management</span> <span class="k">as</span> <span class="nn">fom</span>
+
+<span class="n">fom</span><span class="o">.</span><span class="n">set_organization_settings</span><span class="p">(</span>
+    <span class="n">default_operator_minimum_role</span><span class="o">=</span><span class="n">fom</span><span class="o">.</span><span class="n">MEMBER</span><span class="p">,</span>
+    <span class="n">default_operator_minimum_dataset_permission</span><span class="o">=</span><span class="n">fom</span><span class="o">.</span><span class="n">EDIT</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="delegated-operations">
+<span id="teams-delegated-operations"></span><h2>Delegated operations<a class="headerlink" href="#delegated-operations" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="../plugins/using_plugins.html#delegated-operations"><span class="std std-ref">Delegated operations</span></a> are a powerful feature of
+FiftyOne’s plugin framework that allows users to schedule tasks from within the
+App that are executed in the background on a connected compute cluster.</p>
+<p>With FiftyOne Teams, your team can
+<a class="reference internal" href="#teams-plugins-page"><span class="std std-ref">upload and permission</span></a> custom operations that your
+users can execute from the Teams App, all of which run against a central
+orchestrator <a class="reference internal" href="#teams-delegated-orchestrator"><span class="std std-ref">configured by</span></a> your admins.</p>
+<p>Why is this awesome? Your AI stack needs a flexible data-centric component that
+enables you to organize and compute on your data. With delegated operations,
+FiftyOne Teams becomes both a dataset management/visualization tool and a
+workflow automation tool that defines how your data-centric workflows like
+ingestion, curation, and evaluation are performed. In short, think of FiftyOne
+Teams as the single source of truth on which you co-develop your data and
+models together.</p>
+<p>What can delegated operations do for you? Get started by installing any of
+these plugins available in the
+<a class="reference external" href="https://github.com/voxel51/fiftyone-plugins">FiftyOne Plugins</a> repository:</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 35%" />
+<col style="width: 65%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/voxel51/fiftyone-plugins/blob/main/plugins/annotation/README.md">&#64;voxel51/annotation</a></p></td>
+<td><p>✏️ Utilities for integrating FiftyOne with annotation tools</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/voxel51/fiftyone-plugins/blob/main/plugins/brain/README.md">&#64;voxel51/brain</a></p></td>
+<td><p>🧠 Utilities for working with the FiftyOne Brain</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/voxel51/fiftyone-plugins/blob/main/plugins/evaluation/README.md">&#64;voxel51/evaluation</a></p></td>
+<td><p>✅ Utilities for evaluating models with FiftyOne</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/voxel51/fiftyone-plugins/blob/main/plugins/io/README.md">&#64;voxel51/io</a></p></td>
+<td><p>📁 A collection of import/export utilities</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/voxel51/fiftyone-plugins/blob/main/plugins/indexes/README.md">&#64;voxel51/indexes</a></p></td>
+<td><p>📈 Utilities working with FiftyOne database indexes</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/voxel51/fiftyone-plugins/blob/main/plugins/utils/README.md">&#64;voxel51/utils</a></p></td>
+<td><p>⚒️ Call your favorite SDK utilities from the App</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/voxel51/voxelgpt">&#64;voxel51/voxelgpt</a></p></td>
+<td><p>🤖 An AI assistant that can query visual datasets, search the FiftyOne docs, and answer general computer vision questions</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/voxel51/fiftyone-plugins/blob/main/plugins/zoo/README.md">&#64;voxel51/zoo</a></p></td>
+<td><p>🌎 Download datasets and run inference with models from the FiftyOne Zoo, all without leaving the App</p></td>
+</tr>
+</tbody>
+</table>
+<p>For example, wish you could import data from within the App? With the
+<a class="reference external" href="https://github.com/voxel51/fiftyone-plugins/blob/main/plugins/io/README.md">&#64;voxel51/io</a>,
+plugin you can!</p>
+<img alt="../_images/import.gif" src="../_images/import.gif" />
+<p>Want to send data for annotation from within the App? Sure thing, just install the
+<a class="reference external" href="https://github.com/voxel51/fiftyone-plugins/blob/main/plugins/annotation/README.md">&#64;voxel51/annotation</a>
+plugin:</p>
+<img alt="../_images/annotation.gif" src="../_images/annotation.gif" />
+<p>Have model predictions on your dataset that you want to evaluate? The
+<a class="reference external" href="https://github.com/voxel51/fiftyone-plugins/blob/main/plugins/evaluation/README.md">&#64;voxel51/evaluation</a>
+plugin makes it easy:</p>
+<img alt="../_images/evaluation.gif" src="../_images/evaluation.gif" />
+<p>Need to compute embedding for your dataset so you can visualize them in the
+<a class="reference internal" href="../user_guide/app.html#app-embeddings-panel"><span class="std std-ref">Embeddings panel</span></a>? Kick off the task with the
+<a class="reference external" href="https://github.com/voxel51/fiftyone-plugins/blob/main/plugins/brain/README.md">&#64;voxel51/brain</a>
+plugin and proceed with other work while the execution happens in the background:</p>
+<img alt="../_images/embeddings.gif" src="../_images/embeddings.gif" />
+<p>When you choose delegated execution in the App, these tasks are automatically
+scheduled for execution on your
+<a class="reference internal" href="#teams-delegated-orchestrator"><span class="std std-ref">connected orchestrator</span></a> and you can
+continue with other work. Meanwhile, all datasets have a
+<a class="reference internal" href="#teams-managing-delegated-operations"><span class="std std-ref">Runs tab</span></a> in the App where you can
+browse a history of all delegated operations that have been run on the dataset
+and their status.</p>
+</div>
+<div class="section" id="configuring-your-orchestrator-s">
+<span id="teams-delegated-orchestrator"></span><h2>Configuring your orchestrator(s)<a class="headerlink" href="#configuring-your-orchestrator-s" title="Permalink to this headline">¶</a></h2>
+<p>FiftyOne Teams offers a builtin orchestrator that is configured as part of your
+team’s deployment with a default level of compute capacity.</p>
+<p>It is also possible to connect your FiftyOne Teams deployment to an externally
+managed workflow orchestration tool (<a class="reference external" href="https://airflow.apache.org">Airflow</a>,
+<a class="reference external" href="https://flyte.org">Flyte</a>,
+<a class="reference external" href="https://www.databricks.com/product/spark">Spark</a>, etc).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Contact your Voxel51 support team to scale your deployment’s compute
+capacity or if you’d like to use an external orchestrator.</p>
+</div>
+</div>
+<div class="section" id="managing-delegated-operations">
+<span id="teams-managing-delegated-operations"></span><h2>Managing delegated operations<a class="headerlink" href="#managing-delegated-operations" title="Permalink to this headline">¶</a></h2>
+<p>Every dataset in FiftyOne Teams has a Runs page that allows users with access
+to monitor and explore delegated operations scheduled against that dataset.</p>
+<p>All scheduled operations are maintained in a queue and will be automatically
+executed as resources are available on the targeted orchestrator.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Runs page only tracks operations that are <strong>scheduled</strong> for delegated
+execution, not operations that are executed immediately in the App.</p>
+</div>
+<div class="section" id="runs-page">
+<span id="teams-runs-page"></span><h3>Runs page<a class="headerlink" href="#runs-page" title="Permalink to this headline">¶</a></h3>
+<p>The Runs page is accessible to all users with Can view access to the dataset.</p>
+<p>You can access the Runs page by clicking on the “Runs” tab from the
+<a class="reference internal" href="teams_app.html#teams-using-datasets"><span class="std std-ref">Samples tab</span></a>.</p>
+<p>Once you are on the Runs page, you will see a table with the list of all
+operators scheduled by any user of your organization on the dataset. You can
+sort, search and filter runs listed to refine the list as you like:</p>
+<img alt="../_images/runs_page.png" src="../_images/runs_page.png" />
+<div class="section" id="sorting">
+<span id="teams-runs-sorting"></span><h4>Sorting<a class="headerlink" href="#sorting" title="Permalink to this headline">¶</a></h4>
+<p>By default, the runs table is sorted by recency, but you can use the dropdown
+menu in the upper left of table to sort by other fields like update time or the
+name of the operator:</p>
+<img alt="../_images/sort.png" src="../_images/sort.png" />
+</div>
+<div class="section" id="filtering">
+<span id="teams-runs-filtering"></span><h4>Filtering<a class="headerlink" href="#filtering" title="Permalink to this headline">¶</a></h4>
+<p>You can also filter the runs table to see a subset of runs.</p>
+<p>Use the “My runs” radio button to see only the runs that you scheduled:</p>
+<img alt="../_images/my_runs.png" src="../_images/my_runs.png" />
+<p>You can further refine the list of runs using the status dropdown to select one
+or more status you would like to filter by:</p>
+<img alt="../_images/filter_by_status.png" src="../_images/filter_by_status.png" />
+</div>
+<div class="section" id="searching">
+<span id="teams-runs-searching"></span><h4>Searching<a class="headerlink" href="#searching" title="Permalink to this headline">¶</a></h4>
+<p>You can also use the search functionality to filter the list of runs by
+keyword. As you type your query in the search box, the list of runs will be
+updated to show only the runs matching your query:</p>
+<img alt="../_images/search_by_name.png" src="../_images/search_by_name.png" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Search is case-sensitive and you can currently only search by operator
+name, not label. For example, searches will not match against
+<strong>Demo: Export to GCP</strong> in the image above.</p>
+</div>
+</div>
+<div class="section" id="re-running">
+<span id="teams-runs-re-running"></span><h4>Re-running<a class="headerlink" href="#re-running" title="Permalink to this headline">¶</a></h4>
+<p>From the Runs page, you can trigger a re-run of any listed run by clicking the
+three-dots to open actions menu and then clicking “Re-run”:</p>
+<img alt="../_images/re_run.png" src="../_images/re_run.png" />
+</div>
+<div class="section" id="pinning">
+<span id="teams-runs-pinning"></span><h4>Pinning<a class="headerlink" href="#pinning" title="Permalink to this headline">¶</a></h4>
+<p>Pinned runs are displayed to the right of the runs table. By default, five
+pinned runs will be displayed. However, if there are more than five pinned
+runs, you will see a button to expand the list.</p>
+<p>To pin a run, hover over its row in the runs table and click the pin icon that
+appears beside the operator label:</p>
+<img alt="../_images/pinning.png" src="../_images/pinning.png" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Pinned runs are stored at the dataset-level and will be visible to all
+users with access to the dataset.</p>
+</div>
+</div>
+<div class="section" id="renaming">
+<span id="teams-runs-renaming"></span><h4>Renaming<a class="headerlink" href="#renaming" title="Permalink to this headline">¶</a></h4>
+<p>When delegating an operator multiple times on the same dataset, you may wish to
+give the runs custom labels so that you can easily identify each run later.</p>
+<p>To edit the label of an operator run, move your mouse cursor over the label of
+interest and click the pencil button as indicated by “1” below. This will
+present an input field indicated by “2” where you can update label to text of
+your choice. Once you are ready to apply changes, click the save button
+indicated by “3”.</p>
+<img alt="../_images/edit_label.png" src="../_images/edit_label.png" />
+</div>
+<div class="section" id="mark-as-failed">
+<span id="teams-runs-mark-as-failed"></span><h4>Mark as failed<a class="headerlink" href="#mark-as-failed" title="Permalink to this headline">¶</a></h4>
+<p>If a delegated operation run terminates unexpectedly without reporting failure,
+you can manually mark it as failed from the Runs page.</p>
+<p>To mark a run as failed, click the three dots indicated by “1”. Then, in the
+menu, click “Mark as failed” as indicated by “2”. The run status will be
+updated and will now display as failed.</p>
+<img alt="../_images/mark_as_failed.png" src="../_images/mark_as_failed.png" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the delegated operation is, in fact, still in progress in your
+orchestrator, marking the run as failed will <strong>not</strong> terminate the
+execution of operation.</p>
+</div>
+</div>
+<div class="section" id="monitoring-progress">
+<span id="teams-runs-monitoring-progress"></span><h4>Monitoring progress<a class="headerlink" href="#monitoring-progress" title="Permalink to this headline">¶</a></h4>
+<p>Delegated operations can optionally
+<a class="reference internal" href="../plugins/developing_plugins.html#operator-reporting-progress"><span class="std std-ref">report their progress</span></a> during execution.</p>
+<p>If a progress is available for a run, it will be displayed in the Runs table
+as indicated by “2”. By default, the progress of running operations is
+automatically refreshed. You can disable auto-refresh of running operations by
+toggling the auto refresh setting indicated by “1”.</p>
+<img alt="../_images/run_progress.png" src="../_images/run_progress.png" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Only the progress of running operations is automatically refreshed.</p>
+</div>
+</div>
+</div>
+<div class="section" id="run-page">
+<span id="teams-run-page"></span><h3>Run page<a class="headerlink" href="#run-page" title="Permalink to this headline">¶</a></h3>
+<p>The Run page allows you to see information about a specific run such as inputs,
+outputs, and errors.</p>
+<p>You can visit the Run page for a run by clicking on a run in the runs table,
+the Pinned runs, or Recent runs widgets.</p>
+<div class="section" id="input">
+<h4>Input<a class="headerlink" href="#input" title="Permalink to this headline">¶</a></h4>
+<p>The Input tab on the Run page lets you see the input parameters that were
+provided when the run was scheduled:</p>
+<img alt="../_images/input.png" src="../_images/input.png" />
+<p><strong>Raw input</strong></p>
+<p>By default, a rendered version (similar to what is displayed when invoking an
+operator) of input parameters is displayed. However, you can switch to raw view
+by clicking the “Show raw” toggle button:</p>
+<img alt="../_images/raw_input.png" src="../_images/raw_input.png" />
+</div>
+<div class="section" id="output">
+<h4>Output<a class="headerlink" href="#output" title="Permalink to this headline">¶</a></h4>
+<p>The Output tab on the Run page lets you see the preview of the result of a
+completed run:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Output tab is only available for completed run.</p>
+</div>
+<img alt="../_images/output.png" src="../_images/output.png" />
+</div>
+<div class="section" id="errors">
+<h4>Errors<a class="headerlink" href="#errors" title="Permalink to this headline">¶</a></h4>
+<p>The Errors tab on the Run page will appear if the run failed and lets you see
+the errors that occurred:</p>
+<img alt="../_images/errors.png" src="../_images/errors.png" />
+</div>
+<div class="section" id="view">
+<h4>View<a class="headerlink" href="#view" title="Permalink to this headline">¶</a></h4>
+<p>The View tab on the Run page lets you see the dataset view on which the run was
+scheduled:</p>
+<img alt="../_images/view.png" src="../_images/view.png" />
+</div>
+</div>
+</div>
+</div>
+
+
+             </article>
+             
+            </div>
+            <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="secrets.html" class="btn btn-neutral float-right" title="FiftyOne Teams Secrets" accesskey="n" rel="next">Next <img src="../_static/images/chevron-right-orange.svg" class="next-page"></a>
+      
+      
+        <a href="query_performance.html" class="btn btn-neutral" title="Query Performance" accesskey="p" rel="prev"><img src="../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
+      
+    </div>
+  
+</footer>
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              <ul>
+<li><a class="reference internal" href="#">FiftyOne Teams Plugins</a><ul>
+<li><a class="reference internal" href="#plugins-page">Plugins page</a></li>
+<li><a class="reference internal" href="#installing-a-plugin">Installing a plugin</a><ul>
+<li><a class="reference internal" href="#teams-ui">Teams UI</a></li>
+<li><a class="reference internal" href="#sdk">SDK</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#upgrading-a-plugin">Upgrading a plugin</a><ul>
+<li><a class="reference internal" href="#id1">Teams UI</a></li>
+<li><a class="reference internal" href="#id2">SDK</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#uninstalling-a-plugin">Uninstalling a plugin</a><ul>
+<li><a class="reference internal" href="#id3">Teams UI</a></li>
+<li><a class="reference internal" href="#id4">SDK</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#enabling-disabling-plugins">Enabling/disabling plugins</a><ul>
+<li><a class="reference internal" href="#id5">Teams UI</a></li>
+<li><a class="reference internal" href="#id6">SDK</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#plugin-permissions">Plugin permissions</a><ul>
+<li><a class="reference internal" href="#id7">Teams UI</a></li>
+<li><a class="reference internal" href="#id8">SDK</a></li>
+<li><a class="reference internal" href="#default-permissions">Default permissions</a><ul>
+<li><a class="reference internal" href="#id9">Teams UI</a></li>
+<li><a class="reference internal" href="#id10">SDK</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#delegated-operations">Delegated operations</a></li>
+<li><a class="reference internal" href="#configuring-your-orchestrator-s">Configuring your orchestrator(s)</a></li>
+<li><a class="reference internal" href="#managing-delegated-operations">Managing delegated operations</a><ul>
+<li><a class="reference internal" href="#runs-page">Runs page</a><ul>
+<li><a class="reference internal" href="#sorting">Sorting</a></li>
+<li><a class="reference internal" href="#filtering">Filtering</a></li>
+<li><a class="reference internal" href="#searching">Searching</a></li>
+<li><a class="reference internal" href="#re-running">Re-running</a></li>
+<li><a class="reference internal" href="#pinning">Pinning</a></li>
+<li><a class="reference internal" href="#renaming">Renaming</a></li>
+<li><a class="reference internal" href="#mark-as-failed">Mark as failed</a></li>
+<li><a class="reference internal" href="#monitoring-progress">Monitoring progress</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#run-page">Run page</a><ul>
+<li><a class="reference internal" href="#input">Input</a></li>
+<li><a class="reference internal" href="#output">Output</a></li>
+<li><a class="reference internal" href="#errors">Errors</a></li>
+<li><a class="reference internal" href="#view">View</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  
+
+
+  
+
+     
+       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+         <script src="../_static/jquery.js"></script>
+         <script src="../_static/underscore.js"></script>
+         <script src="../_static/doctools.js"></script>
+         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+         <script src="../_static/js/voxel51-website.js"></script>
+         <script src="../_static/js/custom.js"></script>
+     
+
+  
+
+  <script type="text/javascript" src="../_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="../_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+  <!-- Begin Footer -->
+
+
+<footer class="footer-wrapper" id="docs-tutorials-resources">
+  <div class="footer pytorch-container">
+    <div class="footer__logo">
+      <a href="https://voxel51.com/"
+        ><img
+          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
+      /></a>
+    </div>
+
+    <div class="footer__address">
+      330 E Liberty St<br />
+      Ann Arbor, MI 48104<br />
+      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
+    </div>
+
+    <!--
+    <div class="footer__contact">
+      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
+    </div>
+    -->
+
+    <div class="footer__links">
+      <div class="footer__links--col2">
+        <p class="nav__item--brand">Products</p>
+        <a href="https://voxel51.com/fiftyone/">FiftyOne</a>
+        <a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a>
+        <a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a>
+        <a href="https://voxel51.com/success-stories/">Success Stories</a>
+      </div>
+      <div class="footer__links--col3">
+        <p class="nav__item--brand">Resources</p>
+        <a href="https://voxel51.com/blog/">Blog</a>
+        <a href="https://docs.voxel51.com/">Docs</a>
+        <a href="https://github.com/voxel51/">GitHub</a>
+        <a href="https://community.voxel51.com">Discord</a>
+        <a href="https://voxel51.com/ourstory/">About Us</a>
+        <a href="https://voxel51.com/computer-vision-events/">Events</a>
+        <a href="https://voxel51.com/jobs/">Careers</a>
+        <a href="https://voxel51.com/press/">Press</a>
+      </div>
+    </div>
+
+    <div class="footer__icons">
+      <ul class="list-inline">
+        <li>
+          <a href="https://www.linkedin.com/company/voxel51/">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/voxel51/">
+            <i class="fa-brands fa-github"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/voxel51">
+            <i class="fa-brands fa-twitter"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/voxel51/">
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="footer__copyright">
+      <ul class="list-inline">
+        <li>&copy; 2024 Voxel51 Inc.</li>
+        <li>
+          <a href="https://voxel51.com/privacy/">Privacy Policy</a>
+        </li>
+        <li>
+          <a href="https://voxel51.com/terms/">Terms of Service</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<!-- https://buttons.github.io -->
+<script async defer src="https://buttons.github.io/buttons.js" ></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XD15NFRY3M" ></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+  gtag("config", "G-XD15NFRY3M");
+</script>
+
+<script>
+  function open_modal(modal_id, modal_closer_id) {
+    // Get the modal
+    let the_modal = document.getElementById(modal_id);
+
+    the_modal.style.display = "flex";
+    document.body.style.overflow = "hidden";
+
+    let the_modal_closer = document.getElementById(modal_closer_id);
+
+    // When the user clicks on <span> (x), close the modal
+    the_modal_closer &&
+      (the_modal_closer.onclick = function () {
+        the_modal.style.display = "none";
+      });
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+      if (event.target == the_modal) {
+        the_modal.style.display = "none";
+        document.body.style.overflow = "unset";
+        window.onclick = undefined;
+      }
+    };
+  }
+</script>
+
+<!-- bigpicture.io -->
+<script>
+  !(function (e, t, i) {
+    var r = (e.bigPicture = e.bigPicture || []);
+    if (!r.initialized)
+      if (r.invoked)
+        e.console &&
+          console.error &&
+          console.error("BigPicture.io snippet included twice.");
+      else {
+        (r.invoked = !0),
+          (r.SNIPPET_VERSION = 1.5),
+          (r.handler = function (e) {
+            if (void 0 !== r.callback)
+              try {
+                return r.callback(e);
+              } catch (e) {}
+          }),
+          (r.eventList = ["mousedown", "mouseup", "click", "submit"]),
+          (r.methods = [
+            "track",
+            "identify",
+            "page",
+            "group",
+            "alias",
+            "integration",
+            "ready",
+            "intelReady",
+            "consentReady",
+            "on",
+            "off",
+          ]),
+          (r.factory = function (e) {
+            return function () {
+              var t = Array.prototype.slice.call(arguments);
+              return t.unshift(e), r.push(t), r;
+            };
+          });
+        for (var n = 0; n < r.methods.length; n++) {
+          var o = r.methods[n];
+          r[o] = r.factory(o);
+        }
+        r.getCookie = function (e) {
+          var i = ("; " + t.cookie).split("; " + e + "=");
+          return 2 == i.length && i.pop().split(";").shift();
+        };
+        var c = (r.isEditor = (function () {
+          try {
+            return (
+              e.self !== e.top &&
+              (new RegExp("app" + i, "ig").test(t.referrer) ||
+                "edit" == r.getCookie("_bpr_edit"))
+            );
+          } catch (e) {
+            return !1;
+          }
+        })());
+        r.init = function (n, o) {
+          if (((r.projectId = n), (r._config = o), !c))
+            for (var a = 0; a < r.eventList.length; a++)
+              e.addEventListener(r.eventList[a], r.handler, !0);
+          var s = t.createElement("script");
+          s.async = !0;
+          var d = c ? "/editor/editor" : "/public-" + n;
+          (s.src = "//cdn" + i + d + ".js"),
+            t.getElementsByTagName("head")[0].appendChild(s);
+        };
+      }
+  })(window, document, ".bigpicture.io");
+  bigPicture.init("1646");
+</script>
+
+
+  
+
+  <!-- End Footer -->
+
+  <!-- Begin Mobile Menu -->
+
+  
+
+  <!-- End Mobile Menu -->
+
+  <script type="text/javascript" src="../_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function(e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+</body>
+</html>

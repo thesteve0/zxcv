@@ -1,0 +1,1083 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Clustering Images with Embeddings &mdash; FiftyOne 1.3.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <link rel="stylesheet" href="../_static/css/voxel51-website.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Detecting Small Objects with SAHI" href="small_object_detection.html" />
+    <link rel="prev" title="Augmenting Datasets with Albumentations" href="data_augmentation.html" />
+<meta property="og:image" content="https://voxel51.com/wp-content/uploads/2024/03/3.24_webpages_Home_AV.png" />
+
+<link
+  href="https://fonts.googleapis.com/css?family=Palanquin:400,600,700,800"
+  rel="stylesheet"
+/>
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+  rel="stylesheet"
+/>
+<script src="https://tag.clearbitscripts.com/v1/pk_b9ed71c8234edd4f77326bcbfab5a4ca/tags.js"></script>
+
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+  
+</head>
+
+
+<div class="container-fluid header-holder tutorials-header" id="header-holder">
+  <nav id="nav__main" class="nav__main">
+    <div class="nav__main__logo">
+      <a href="https://voxel51.com/">
+        <img
+          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
+        />
+      </a>
+    </div>
+
+    <div class="nav__spacer desktop_only"></div>
+
+    <div id="nav__main__mobilebutton--on">
+      <a href="javascript:void(0);" onclick="navMobileButton()">
+        <i class="fa-solid fa-bars"></i>
+      </a>
+    </div>
+
+    <div id="nav__main__mobilebutton--off">
+      <a href="javascript:void(0);" onclick="navMobileButton()">
+        <i class="fa-solid fa-times"></i>
+      </a>
+    </div>
+
+    <div id="nav__main__items">
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Products</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://voxel51.com/fiftyone/">Open Source</a></li>
+            <li><a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a></li>
+            <li><a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a></li>
+            <li><a href="https://voxel51.com/success-stories/">Success Stories</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Learn</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://community.voxel51.com">Community Discord</a></li>
+            <li><a href="https://voxel51.com/blog/">Blog</a></li>
+            <li><a href="https://voxel51.com/computer-vision-events/">Events</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item">
+        <a href="https://docs.voxel51.com/">Docs</a>
+      </div>
+
+      <div class="nav__item nav__dropdown">
+        <div class="nav__dropdown__trigger">Company</div>
+        <div class="nav__item nav__dropdown__menu has-arrows">
+          <div class="arrow-up--light-primary arrow-left20"></div>
+          <ul>
+            <li><a href="https://voxel51.com/ourstory/">About Us</a></li>
+            <li><a href="https://voxel51.com/jobs/">Careers</a></li>
+            <li><a href="https://voxel51.com/talk-to-sales/">Talk to Sales</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav__item mobile_only">
+        <a href="https://github.com/voxel51/fiftyone">GitHub</a>
+      </div>
+
+      <div class="nav__item desktop_only" id="octocat">
+        <!-- https://buttons.github.io -->
+        <a
+          class="github-button"
+          href="https://github.com/voxel51/fiftyone"
+          data-color-scheme="no-preference: dark_high_contrast; light: dark_high_contrast; dark: dark_high_contrast;"
+          data-size="large"
+          data-show-count="true"
+          aria-label="Star voxel51/fiftyone on GitHub"
+          >Star</a
+        >
+      </div>
+
+      <div class="nav__item full_nav_only">
+        <a class="button-primary" href="https://voxel51.com/schedule-teams-workshop/" target="_blank"
+          >Schedule a workshop</a
+        >
+      </div>
+    </div>
+  </nav>
+</div>
+
+
+
+<body class="pytorch-body">
+
+   
+
+    
+
+    <div class="table-of-contents-link-wrapper">
+      <span>Table of Contents</span>
+      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+    </div>
+
+    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+      <div class="pytorch-side-scroll">
+        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          <div class="pytorch-left-menu-search">
+            
+
+            
+              
+              
+            
+
+            
+
+
+  
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+            
+          </div>
+
+           <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../teams/index.html">FiftyOne Teams 🚀</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../environments/index.html">Environments</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="pandas_comparison.html">pandas and FiftyOne</a></li>
+<li class="toctree-l2"><a class="reference internal" href="evaluate_detections.html">Evaluating object detections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="evaluate_classifications.html">Evaluating a classifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="image_embeddings.html">Using image embeddings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cvat_annotation.html">Annotating with CVAT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="labelbox_annotation.html">Annotating with Labelbox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open_images.html">Working with Open Images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="detectron2.html">Training with Detectron2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uniqueness.html">Exploring image uniqueness</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classification_mistakes.html">Finding class mistakes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="detection_mistakes.html">Finding detection mistakes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qdrant.html">Embeddings with Qdrant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="yolov8.html">Fine-tuning YOLOv8 models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pointe.html">3D point clouds with Point-E</a></li>
+<li class="toctree-l2"><a class="reference internal" href="monocular_depth_estimation.html">Monocular depth estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dimension_reduction.html">Dimensionality reduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="zero_shot_classification.html">Zero-shot classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_augmentation.html">Data augmentation</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Clustering images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="small_object_detection.html">Detecting small objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="anomaly_detection.html">Anomaly detection</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../recipes/index.html">Recipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheat_sheets/index.html">Cheat Sheets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dataset_zoo/index.html">Dataset Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_zoo/index.html">Model Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brain.html">FiftyOne Brain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integrations/index.html">Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plugins/index.html">Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli/index.html">CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/fiftyone.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deprecation.html">Deprecation Notices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a></li>
+</ul>
+ 
+        </div>
+      </div>
+    </nav>
+
+    <div class="pytorch-container">
+      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+        <div class="pytorch-breadcrumbs-wrapper">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="../index.html">
+          
+            Docs
+          
+        </a> &gt;
+      </li>
+
+        
+          <li><a href="index.html">FiftyOne Tutorials</a> &gt;</li>
+        
+      <li>Clustering Images with Embeddings</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+        </div>
+
+        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+          Contents
+        </div>
+      </div>
+
+      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+        <div class="pytorch-content-left">
+
+        
+          
+          <div class="rst-content style-external-links">
+          
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+              
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    /*background: #f5f5f5;*/
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+    margin: 0;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt .copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+</style>
+<table class="fo-notebook-links" align="left">
+    <td>
+        <a target="_blank" href="https://colab.research.google.com/github/voxel51/fiftyone/blob/v1.3.0/docs/source/tutorials/clustering.ipynb">
+            <img src="../_static/images/icons/colab-logo-256px.png"> &nbsp; Run in Google Colab
+        </a>
+    </td>
+    <td>
+        <a target="_blank" href="https://github.com/voxel51/fiftyone/blob/v1.3.0/docs/source/tutorials/clustering.ipynb">
+            <img src="../_static/images/icons/github-logo-256px.png"> &nbsp; View source on GitHub
+        </a>
+    </td>
+    <td>
+        <a target="_blank" href="https://raw.githubusercontent.com/voxel51/fiftyone/v1.3.0/docs/source/tutorials/clustering.ipynb" download>
+            <img src="../_static/images/icons/cloud-icon-256px.png"> &nbsp; Download notebook
+        </a>
+    </td>
+</table><div class="section" id="Clustering-Images-with-Embeddings">
+<h1>Clustering Images with Embeddings<a class="headerlink" href="#Clustering-Images-with-Embeddings" title="Permalink to this headline">¶</a></h1>
+<p><img alt="Clustering" src="../_images/clustering_preview.jpg" /></p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Cluster_analysis">Clustering</a> is an essential unsupervised learning technique that can help you discover hidden patterns in your data. This walkthrough, you’ll learn how to bring structure your visual data using Scikit-learn and FiftyOne!</p>
+<p>It covers the following:</p>
+<ul class="simple">
+<li><p>What is clustering?</p></li>
+<li><p>Generating features to cluster images</p></li>
+<li><p>Clustering images using the FiftyOne Clustering Plugin</p></li>
+<li><p>Keeping track of clustering runs in the FiftyOne App</p></li>
+<li><p>Assigning labels to clusters using GPT-4V</p></li>
+</ul>
+<div class="section" id="What-is-Clustering?">
+<h2>What is Clustering?<a class="headerlink" href="#What-is-Clustering?" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="The-Building-Blocks-of-Clustering">
+<h3>The Building Blocks of Clustering<a class="headerlink" href="#The-Building-Blocks-of-Clustering" title="Permalink to this headline">¶</a></h3>
+<p>Imagine you have a ton of Lego blocks of all shapes and sizes spread out on the floor. It’s time to put the legos away, and you realize you don’t have a large enough bin to store all of them. Luckily, you find four smaller bins that can each hold roughly the same number of pieces. You <em>could</em> dump a random assortment of Legos in each bin and call it a day. But then, the next time you went to find a specific piece, you’d have quite the time digging around for it.</p>
+<p>Instead, you have a better idea: putting similar pieces in the same bin would save you a lot of time and trouble later. But what <em>criterion</em> are you going to use to put Legos in bins? Are you going to assign bins for different colors? Or put all the square pieces in one bin and the circular pieces in another? It really depends on what Legos you have! This, in a nutshell, is clustering.</p>
+<p>More formally, <a class="reference external" href="https://en.wikipedia.org/wiki/Cluster_analysis">clustering</a>, or <em>cluster analysis</em>, is a set of techniques for <em>grouping</em> data points. Clustering algorithms take in a bunch of objects, and spit out assignments for each object. Unlike classification, however, clustering does not start with a list of classes to categorize the objects, forcing objects to fall into preset buckets. Rather, clustering attempts to <em>discover</em> the buckets given the data. In other words, clustering is
+about <em>uncovering</em> structure in data, not predicting labels in a preexisting structure.</p>
+<p>This last point merits repeating: <em>clustering is not about predicting labels</em>. Unlike classification, detection, and segmentation tasks, there are no ground truth labels for clustering tasks. We call algorithms like this <a class="reference external" href="https://cloud.google.com/discover/what-is-unsupervised-learning">unsupervised</a>, contrasting with <a class="reference external" href="https://cloud.google.com/discover/what-is-supervised-learning">supervised</a> and <a class="reference external" href="https://en.wikipedia.org/wiki/Self-supervised_learning">self-supervised</a> learning tasks.</p>
+<p>To hammer it home, clustering is <em>training-free</em>. A clustering algorithm will take in features of your data points (the objects) and use those features to split your objects into groups. When successful, those groups highlight unique characteristics, giving you a view into the structure of your data.</p>
+<p>💡 This means that clustering is an extremely powerful tool for exploring your data—especially when your data is unlabeled!</p>
+</div>
+<div class="section" id="How-Clustering-Works">
+<h3>How Clustering Works<a class="headerlink" href="#How-Clustering-Works" title="Permalink to this headline">¶</a></h3>
+<p>If you’ve been paying close attention, you may have noticed the distinction subtly drawn between <em>clustering</em> and <em>clustering algorithms</em>. This is because clustering is an umbrella term encompassing various techniques!</p>
+<p>Clustering algorithms come in a few flavors, distinguished by the criterion they use to assign cluster membership. A few of the most common flavors of clustering are:</p>
+<p><strong>Centroid-based clustering</strong>: for example, techniques like <a class="reference external" href="https://scikit-learn.org/stable/modules/clustering.html#k-means">K-means</a> and <a class="reference external" href="https://scikit-learn.org/stable/modules/clustering.html#mean-shift">Mean Shift</a> clustering. These methods try to find central points by which to define each cluster, called <em>centroids</em>, which seek to maximize some notion of coherence between points <em>within</em> a cluster. This flavor of clustering scales well to large datasets but is sensitive to outliers
+and random initialization. Often, multiple runs are performed, and the best one is chosen. You may find that techniques like K-means struggle with high-dimensional data — “the curse of dimensionality” — and can better uncover structure when paired with dimensionality reduction techniques like uniform manifold approximation &amp; projection (<a class="reference external" href="https://umap-learn.readthedocs.io/en/latest/">UMAP</a>). We’ll explain how to pair the two below.</p>
+<p><strong>Density-based clustering</strong>: techniques like <a class="reference external" href="https://scikit-learn.org/stable/modules/clustering.html#dbscan">DBSCAN</a>, <a class="reference external" href="https://scikit-learn.org/stable/modules/clustering.html#hdbscan">HDBSCAN</a>, and <a class="reference external" href="https://scikit-learn.org/stable/modules/clustering.html#optics">OPTICS</a> select clusters based on how sparsely or densely populated the feature space is. Conceptually, these algorithms treat high-density regions as clusters, breaking the clusters off when the points become sufficiently
+spread out in feature space. Simple density-based techniques like DBSCAN can have difficulty working with high-dimensional data, where data may not be densely colocated. However, more sophisticated techniques like HDBSCAN can overcome some of these limitations and uncover remarkable structure from high dimensional features.</p>
+<p><strong>Hierarchical clustering</strong>: These techniques seek to either:</p>
+<ol class="arabic simple">
+<li><p><em>Construct</em> clusters by starting with individual points and iteratively combining clusters into larger composites or</p></li>
+<li><p><em>Deconstruct</em> clusters, starting with all objects in one cluster and iteratively diving clusters into smaller components.</p></li>
+</ol>
+<p>Constructive techniques like <a class="reference external" href="https://scikit-learn.org/stable/modules/clustering.html#hierarchical-clustering">Agglomerative Clustering</a> become computationally expensive as the dataset grows, but performance can be quite impressive for small-to-medium datasets and low-dimensional features.</p>
+<p>📚 For a comprehensive discussion on 10+ of the most commonly used clustering algorithms, check out this intuitive, <a class="reference external" href="https://scikit-learn.org/stable/modules/clustering.html">well-written guide from Scikit-learn</a>!</p>
+</div>
+<div class="section" id="What-Features-Do-I-Cluster-On?">
+<h3>What Features Do I Cluster On?<a class="headerlink" href="#What-Features-Do-I-Cluster-On?" title="Permalink to this headline">¶</a></h3>
+<p>For the Lego bricks we started this discussion with, the features (length, width, height, curvature, etc.) are independent entities we can view as columns in a data table. After normalizing this data so that no one feature dominates the others, we could pass a row of numerical values as a <em>feature vector</em> into our clustering algorithm for each Lego block. Historically, clustering has had many applications like this, operating on lightly preprocessed numerical values from data tables or time
+series.</p>
+<p>Unstructured data like images don’t fit quite as nicely into this framework for a few simple reasons:</p>
+<ol class="arabic simple">
+<li><p>Images can vary in size (aspect ratio and resolution)</p></li>
+<li><p>Raw pixel values can be very noisy</p></li>
+<li><p>Correlations between pixels can be highly nonlinear</p></li>
+</ol>
+<p>If we were to go through the trouble of reshaping and standardizing all of our image sizes, normalizing pixel values, denoising, and flattening the multidimensional arrays into “feature vectors”, treating these processed pixel arrays as features would put a tremendous amount of stress on the <em>unsupervised</em> clustering algorithm to uncover structure. This can work for simple datasets like <a class="reference external" href="https://docs.voxel51.com/user_guide/dataset_zoo/datasets.html#mnist">MNIST</a>, but it is often not an option
+in practice.</p>
+<p>Fortunately, we have <a class="reference external" href="https://en.wikipedia.org/wiki/Universal_approximation_theorem">powerful nonlinear function approximation tools</a> called deep neural networks! Restricting our attention to the image domain, we have models like <a class="reference external" href="https://docs.voxel51.com/user_guide/model_zoo/models.html#clip-vit-base32-torch">CLIP</a> and <a class="reference external" href="https://docs.voxel51.com/user_guide/model_zoo/models.html#dinov2-vitl14-torch">DINOv2</a> whose output is a meaningful representation of the input data, and we have models
+trained for specific tasks like image classification, from which we typically take the <a class="reference external" href="https://medium.com/vector-database/how-to-get-the-right-vector-embeddings-83295ced7f35">outputs of the second to last layer</a> of the network. There are also variational autoencoder (VAE) networks, from which it is common to take the representation at the middle layer!</p>
+<p>💡Different models have different architectures, and were trained on different datasets and towards different tasks. All of these elements inform the types of features a model learns. Do your homework 📚:)</p>
+</div>
+</div>
+<div class="section" id="Clustering-Images-with-FiftyOne-and-Scikit-learn">
+<h2>Clustering Images with FiftyOne and Scikit-learn<a class="headerlink" href="#Clustering-Images-with-FiftyOne-and-Scikit-learn" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Setup-and-Installation">
+<h3>Setup and Installation<a class="headerlink" href="#Setup-and-Installation" title="Permalink to this headline">¶</a></h3>
+<p>With all that background out of the way, let’s turn theory into practice and learn how to use clustering to structure our unstructured data. We’ll be leveraging two open-source machine learning libraries: <a class="reference external" href="https://scikit-learn.org/stable/index.html">scikit-learn</a>, which comes pre-packaged with <a class="reference external" href="https://scikit-learn.org/stable/modules/clustering.html">implementations of most common clustering algorithms</a>, and fiftyone, which streamlines the management and visualization of unstructured data:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span>scikit-learn<span class="w"> </span>fiftyone
+</pre></div>
+</div>
+</div>
+<p>The <a class="reference external" href="https://github.com/jacobmarks/clustering-runs-plugin">FiftyOne Clustering Plugin</a> makes our lives even easier. It provides the connective tissue between scikit-learn’s clustering algorithms and our images and wraps all of this in a simple UI within the <a class="reference external" href="https://docs.voxel51.com/user_guide/app.html">FiftyOne App</a>. We can install the plugin from the CLI:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>fiftyone<span class="w"> </span>plugins<span class="w"> </span>download<span class="w"> </span>https://github.com/jacobmarks/clustering-plugin
+</pre></div>
+</div>
+</div>
+<p>We will also need two more libraries: <a class="reference external" href="https://github.com/openai/CLIP">OpenAI’s CLIP GitHub repo</a>, enabling us to generate image features with the CLIP model, and the <a class="reference external" href="https://umap-learn.readthedocs.io/en/latest/">umap-learn</a> library, which will let us apply a dimensionality reduction technique called Uniform Manifold Approximation and Projection (UMAP) to those features to visualize them in 2D:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>umap-learn<span class="w"> </span>git+https://github.com/openai/CLIP.git
+</pre></div>
+</div>
+</div>
+<p>Note that neither of these two libraries is strictly necessary — you could generate features with any model from the <a class="reference external" href="https://docs.voxel51.com/user_guide/model_zoo/index.html">FiftyOne Model Zoo</a> that exposes embeddings, and can perform <a class="reference external" href="https://docs.voxel51.com/tutorials/dimension_reduction.html">dimensionality reduction</a> with alternative techniques like PCA or tSNE.</p>
+<p>Once you have all of the necessary libraries installed, in a Python process, import the relevant FiftyOne modules, and load a dataset from the <a class="reference external" href="https://docs.voxel51.com/user_guide/dataset_zoo/index.html">FiftyOne Dataset Zoo</a> (or your data if you’d like!). For this walkthrough, we’ll be using the validation split (5,000 samples) from the <a class="reference external" href="https://docs.voxel51.com/user_guide/dataset_zoo/datasets.html#dataset-zoo-coco-2017">MS COCO</a> dataset:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
+<span class="kn">import</span> <span class="nn">fiftyone.brain</span> <span class="k">as</span> <span class="nn">fob</span>
+<span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
+<span class="kn">from</span> <span class="nn">fiftyone</span> <span class="kn">import</span> <span class="n">ViewField</span> <span class="k">as</span> <span class="n">F</span>
+
+<span class="c1"># load dataset from the zoo, rename, and persist to database</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;coco-2017&quot;</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="s2">&quot;validation&quot;</span><span class="p">)</span>
+<span class="c1"># delete labels to simulate starting with unlabeled data</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">select_fields</span><span class="p">()</span><span class="o">.</span><span class="n">keep_fields</span><span class="p">()</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;clustering-demo&quot;</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">persistent</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="c1"># launch the app to visualize the dataset</span>
+<span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>If you’re working in a Jupyter Notebook, you can pass auto=False and then open a tab in your browser to wherever <code class="docutils literal notranslate"><span class="pre">session.url</span></code> is pointing (typically ​​<a class="reference external" href="​​http://localhost:5151/">http://localhost:5151/</a>) to see the app in its full glory.</p>
+<p><img alt="FiftyOne App" src="../_images/clustering_dataset_in_app.jpg" /></p>
+</div>
+<div class="section" id="Generating-Features">
+<h3>Generating Features<a class="headerlink" href="#Generating-Features" title="Permalink to this headline">¶</a></h3>
+<p>Now that we have our data, we must generate the features we will use to cluster. For this walkthrough, we will look at two different features: the 512-dimensional vectors generated by our CLIP Vision Transformer and the two-dimensional vectors generated by running these high-dimensional vectors through a UMAP dimensionality reduction routine.</p>
+<p>To run dimensionality reduction on a FiftyOne sample collection, we will use the FiftyOne Brain’s <code class="docutils literal notranslate"><span class="pre">compute_visualization()</span></code> function, which supports UMAP, PCA, and tSNE via the method keyword argument. We could generate the CLIP embeddings using our dataset’s <code class="docutils literal notranslate"><span class="pre">compute_embeddings()</span></code> method and then explicitly pass this into our dimensionality reduction routine. But instead, we can kill two birds with one stone by implicitly telling <code class="docutils literal notranslate"><span class="pre">compute_visualization()</span></code> to compute embeddings using CLIP
+and store these embeddings in a field <code class="docutils literal notranslate"><span class="pre">”clip_embeddings”</span></code>, then use these to get 2D representations:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">fob</span><span class="o">.</span><span class="n">compute_visualization</span><span class="p">(</span>
+    <span class="n">dataset</span><span class="p">,</span>
+    <span class="n">model</span><span class="o">=</span><span class="s2">&quot;clip-vit-base32-torch&quot;</span><span class="p">,</span>
+    <span class="n">embeddings</span><span class="o">=</span><span class="s2">&quot;clip_embeddings&quot;</span><span class="p">,</span>
+    <span class="n">method</span><span class="o">=</span><span class="s2">&quot;umap&quot;</span><span class="p">,</span>
+    <span class="n">brain_key</span><span class="o">=</span><span class="s2">&quot;clip_vis&quot;</span><span class="p">,</span>
+    <span class="n">batch_size</span><span class="o">=</span><span class="mi">10</span>
+<span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">set_values</span><span class="p">(</span><span class="s2">&quot;clip_umap&quot;</span><span class="p">,</span> <span class="n">res</span><span class="o">.</span><span class="n">current_points</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">brain_key</span></code> argument allows us to access these results by name, either programmatically or in the FiftyOne App moving forward. The last line takes the array of 2D vectors we generated and stores them in a new field <code class="docutils literal notranslate"><span class="pre">”clip_umap”</span></code> on our dataset.</p>
+<p>Refreshing the app and opening an <a class="reference external" href="https://docs.voxel51.com/user_guide/app.html#embeddings-panel">Embeddings Panel</a>, we should see a 2D representation of our dataset, where each point in the plot corresponds to a single image:</p>
+<p><img alt="Embeddings Panel" src="../_images/clustering_open_embeddings_panel.gif" /></p>
+</div>
+<div class="section" id="Computing-and-Visualizing-Clusters">
+<h3>Computing and Visualizing Clusters<a class="headerlink" href="#Computing-and-Visualizing-Clusters" title="Permalink to this headline">¶</a></h3>
+<p>With our feature vectors in hand, we can use the FiftyOne Clustering Plugin to bring structure to our data. In the FiftyOne App, press the backtick key on your keyboard and type <code class="docutils literal notranslate"><span class="pre">compute_clusters</span></code>. Click on the entry in the dropdown to open the clustering modal.</p>
+<p><img alt="Compute Clusters" src="../_images/clustering_compute_clusters_operator.gif" /></p>
+<p>Enter a <code class="docutils literal notranslate"><span class="pre">run_key</span></code> (similar to the <code class="docutils literal notranslate"><span class="pre">brain_key</span></code> above) to access the clustering run’s results. As you do so, watch the input form dynamically update. At this point, you have two key decisions to make: what features to cluster on and which clustering algorithm to employ!</p>
+<p>Select <code class="docutils literal notranslate"><span class="pre">”kmeans”</span></code> as your clustering method and <code class="docutils literal notranslate"><span class="pre">”clip_umap”</span></code> as your feature vectors. Set the number of clusters to 20, using the default values for all other parameters. Hit enter and let the clustering algorithm run. It should only take a few seconds.</p>
+<p>Once the computation finishes, notice the new field on your samples containing string representations of integers, which signify which cluster a given sample was assigned to. You can filter on these values directly and view one cluster at a time in the sample grid:</p>
+<p><img alt="Filtering Clusters" src="../_images/clustering_filter_by_cluster_number.gif" /></p>
+<p>What is <em>even more</em> interesting is coloring by these cluster labels in our embeddings plot:</p>
+<p><img alt="Coloring by Clusters" src="../_images/clustering_color_by_cluster.gif" /></p>
+<p>Visualizing your clusters like this allows you to sanity check the clustering routine and can provide an intuitive view into the structure of your data. In this example, we can see a cluster of teddy bears which is fairly well separated from the rest of our data. This clustering routine also uncovered a boundary between farm animals and more exotic animals like elephants and zebras.</p>
+<p>Now, create a new clustering run, increasing the number of clusters to 30 (don’t forget to color the embeddings in this new field). Depending on a bit of randomness (all of the routine’s initializations are random), there’s a strong chance that elephants and zebras will now occupy their own clusters.</p>
+<p>Returning to the initial set of clusters, let’s dig into one final area in the embeddings plot. Notice how a few images of people playing soccer got lumped into a cluster of primarily tennis images. This is because we passed 2D dimensionality reduced vectors into our clustering routine rather than the embedding vectors themselves. While 2D projections are helpful for visualization, and techniques like UMAP are fairly good at retaining structure, relative distances are not exactly preserved, and
+some information is lost. Suppose we instead pass our CLIP embeddings directly into our clustering computation with the same hyperparameters. In that case, these soccer images are assigned to the same cluster as the rest of the soccer images, along with other field sports like frisbee and baseball:</p>
+<p><img alt="UMAP Limitations" src="../_images/clustering_umap_limitation.gif" /></p>
+<p>💡 The key takeaway is that high-dimensional features are not better than low-dimensional ones or vice versa. Every choice comes with a trade-off. This is why you should experiment with different techniques, hyperparameters, and features.</p>
+<p>To make this even more apparent, let’s use HDBSCAN as our clustering algorithm, which does not allow us to specify the number of clusters, replacing this with parameters like <code class="docutils literal notranslate"><span class="pre">min_cluster_size</span></code> and <code class="docutils literal notranslate"><span class="pre">max_cluster_size</span></code> along with criteria on which to merge clusters. We’ll use our CLIP embeddings as features, and as a rough starting point, we’ll say we only want clusters between 10 and 300 elements. If the cluster is too large, it may not be helpful; if it is too small, it may pick up on noise
+rather than signal. The specific values are, of course, dataset-dependent!</p>
+<p>When we color by our cluster labels, the results look a bit messy. However, when we look at the images for each cluster individually, we see that we identified some very interesting collections of samples in our dataset.</p>
+<p><img alt="HDSCAN Clusters" src="../_images/clustering_hdbscan.gif" /></p>
+<p>Note that for HDBSCAN, label <code class="docutils literal notranslate"><span class="pre">-1</span></code> is given to all background images. These images are not merged into any of the final clusters.</p>
+</div>
+<div class="section" id="Keeping-Track-of-Clustering-Runs">
+<h3>Keeping Track of Clustering Runs<a class="headerlink" href="#Keeping-Track-of-Clustering-Runs" title="Permalink to this headline">¶</a></h3>
+<p>As you test out various combinations of features, clustering techniques, and hyperparameters, you may want to keep track of what “configuration” you used to generate a specific set of clusters. Fortunately, the FiftyOne Clustering Plugin handles all of this for you, using <a class="reference external" href="https://docs.voxel51.com/plugins/developing_plugins.html#storing-custom-runs">custom runs</a>. The plugin exposes an operator <code class="docutils literal notranslate"><span class="pre">get_clustering_run_info</span></code>, which lets you select a run by run_key and view a nicely formatted
+printout of all of the run’s parameters in the app:</p>
+<p><img alt="Clustering Run Info" src="../_images/clustering_get_clustering_info.jpg" /></p>
+<p>You can also access this information programmatically by passing the <code class="docutils literal notranslate"><span class="pre">run_key</span></code> to the dataset’s <code class="docutils literal notranslate"><span class="pre">get_run_info()</span></code> method!</p>
+</div>
+<div class="section" id="Labeling-Clusters-with-GPT-4V">
+<h3>Labeling Clusters with GPT-4V<a class="headerlink" href="#Labeling-Clusters-with-GPT-4V" title="Permalink to this headline">¶</a></h3>
+<p>Until now, our clusters have only had numbers, which we have used as a glorified housekeeping device. However, if we cluster for some specific characteristic in our dataset, we should be able to identify that and use it to label our samples loosely. Naively, we could go through our clusters individually, select and visualize just the images in a given cluster, and try to tag the cluster ourselves.</p>
+<p>Or…we could use a multimodal large language model to do this for us! The FiftyOne Clustering Plugin provides this functionality, leveraging <a class="reference external" href="https://openai.com/research/gpt-4v-system-card">GPT-4V</a>’s multimodal understanding capabilities to give each cluster a conceptual label.</p>
+<p>To use this functionality, you must have an OpenAI API key environment variable (creating an account if necessary), which you can set as follows:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="nb">export</span><span class="w"> </span><span class="nv">OPENAI_API_KEY</span><span class="o">=</span>sk-...
+</pre></div>
+</div>
+</div>
+<p>This functionality is provided via the <code class="docutils literal notranslate"><span class="pre">label_clusters_with_gpt4v</span></code> operator, which randomly selects five images from each cluster, feeds them into GPT-4V with a task-specific prompt, and processes the results.</p>
+<p>Depending on the number of clusters you have (GPT-4V can be slow, and this scales linearly in the number of clusters), you may want to <a class="reference external" href="https://docs.voxel51.com/plugins/using_plugins.html#delegated-operations">delegate execution</a> of the operation by checking the box in the operator’s modal and then launch the job from the command line with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>fiftyone<span class="w"> </span>delegated<span class="w"> </span>launch
+</pre></div>
+</div>
+<p><img alt="Labeling Clusters with GPT-4V" src="../_images/clustering_gpt4v_labeling.gif" /></p>
+</div>
+</div>
+<div class="section" id="Conclusion">
+<h2>Conclusion<a class="headerlink" href="#Conclusion" title="Permalink to this headline">¶</a></h2>
+<p>In this walkthrough, we covered how to combine deep neural networks with popular clustering algorithms to bring structure to unstructured data using scikit-learn and FiftyOne. Along the way, we saw that the feature vectors, the algorithm, and the hyperparameter you choose can greatly impact the final results of clustering computations, both in terms of what the clusters select for and how well they identify structure in your data.</p>
+<p>Once you have run these clustering routines on your data, a few key questions arise:</p>
+<ol class="arabic simple">
+<li><p>How do I quantitatively compare and contrast these clustering runs?</p></li>
+<li><p>How do I synthesize the insights from multiple clustering runs to better understand my data?</p></li>
+<li><p>How do I leverage these insights to train better models?</p></li>
+</ol>
+<p>Answering these questions will help you reap the rewards of clustering.</p>
+<p>If you want to dive deeper into the world of clustering, here are a few avenues that you may want to explore:</p>
+<ul class="simple">
+<li><p><strong>Choice of embedding model</strong>: We used CLIP, a semantic foundation model for this walkthrough. See how things change when you use other semantic models from <a class="reference external" href="https://docs.voxel51.com/integrations/huggingface.html#image-embeddings">Hugging Face’s Transformers library</a>, or <a class="reference external" href="https://docs.voxel51.com/integrations/openclip.html">OpenCLIP</a>. Now see how the picture changes when you use a “pixels-and-patches” computer vision model like
+<a class="reference external" href="https://docs.voxel51.com/user_guide/model_zoo/models.html#resnet50-imagenet-torch">ResNet50</a>, or a self–supervised model like <a class="reference external" href="https://docs.voxel51.com/user_guide/model_zoo/models.html#dinov2-vitl14-torch">DINOv2</a>.</p></li>
+<li><p><strong>Clustering Hyperparameters</strong>: We barely touched the number of clusters in this walkthrough. Your results may vary as you increase or decrease this number. For some techniques, like k-means clustering, there are heuristics you can use to <a class="reference external" href="https://www.analyticsvidhya.com/blog/2021/05/k-mean-getting-the-optimal-number-of-clusters/">estimate the optimal number of clusters</a>. Don’t stop there; experiment with other hyperparameters as well!</p></li>
+<li><p><strong>Concept Modeling Techniques</strong>: the built-in concept modeling technique in this walkthrough uses GPT-4V and some light prompting to identify each cluster’s core concept. This is but one way to approach an open-ended problem. Try using <a class="reference external" href="https://github.com/jacobmarks/image-captioning">image captioning</a> and <a class="reference external" href="https://en.wikipedia.org/wiki/Topic_model">topic modeling</a>, or create your own technique!</p></li>
+</ul>
+</div>
+</div>
+
+
+             </article>
+             
+            </div>
+            <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="small_object_detection.html" class="btn btn-neutral float-right" title="Detecting Small Objects with SAHI" accesskey="n" rel="next">Next <img src="../_static/images/chevron-right-orange.svg" class="next-page"></a>
+      
+      
+        <a href="data_augmentation.html" class="btn btn-neutral" title="Augmenting Datasets with Albumentations" accesskey="p" rel="prev"><img src="../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
+      
+    </div>
+  
+</footer>
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              <ul>
+<li><a class="reference internal" href="#">Clustering Images with Embeddings</a><ul>
+<li><a class="reference internal" href="#What-is-Clustering?">What is Clustering?</a><ul>
+<li><a class="reference internal" href="#The-Building-Blocks-of-Clustering">The Building Blocks of Clustering</a></li>
+<li><a class="reference internal" href="#How-Clustering-Works">How Clustering Works</a></li>
+<li><a class="reference internal" href="#What-Features-Do-I-Cluster-On?">What Features Do I Cluster On?</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#Clustering-Images-with-FiftyOne-and-Scikit-learn">Clustering Images with FiftyOne and Scikit-learn</a><ul>
+<li><a class="reference internal" href="#Setup-and-Installation">Setup and Installation</a></li>
+<li><a class="reference internal" href="#Generating-Features">Generating Features</a></li>
+<li><a class="reference internal" href="#Computing-and-Visualizing-Clusters">Computing and Visualizing Clusters</a></li>
+<li><a class="reference internal" href="#Keeping-Track-of-Clustering-Runs">Keeping Track of Clustering Runs</a></li>
+<li><a class="reference internal" href="#Labeling-Clusters-with-GPT-4V">Labeling Clusters with GPT-4V</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#Conclusion">Conclusion</a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  
+
+
+  
+
+     
+       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+         <script src="../_static/jquery.js"></script>
+         <script src="../_static/underscore.js"></script>
+         <script src="../_static/doctools.js"></script>
+         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+         <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+         <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+         <script src="../_static/js/voxel51-website.js"></script>
+         <script src="../_static/js/custom.js"></script>
+     
+
+  
+
+  <script type="text/javascript" src="../_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="../_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+  <!-- Begin Footer -->
+
+
+<footer class="footer-wrapper" id="docs-tutorials-resources">
+  <div class="footer pytorch-container">
+    <div class="footer__logo">
+      <a href="https://voxel51.com/"
+        ><img
+          src="https://voxel51.com/images/logo/voxel51-logo-horz-color-600dpi.png"
+      /></a>
+    </div>
+
+    <div class="footer__address">
+      330 E Liberty St<br />
+      Ann Arbor, MI 48104<br />
+      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
+    </div>
+
+    <!--
+    <div class="footer__contact">
+      <a href="mailto:info@voxel51.com">info@voxel51.com</a>
+    </div>
+    -->
+
+    <div class="footer__links">
+      <div class="footer__links--col2">
+        <p class="nav__item--brand">Products</p>
+        <a href="https://voxel51.com/fiftyone/">FiftyOne</a>
+        <a href="https://voxel51.com/fiftyone-teams/">FiftyOne Teams</a>
+        <a href="https://voxel51.com/computer-vision-use-cases/">Use Cases</a>
+        <a href="https://voxel51.com/success-stories/">Success Stories</a>
+      </div>
+      <div class="footer__links--col3">
+        <p class="nav__item--brand">Resources</p>
+        <a href="https://voxel51.com/blog/">Blog</a>
+        <a href="https://docs.voxel51.com/">Docs</a>
+        <a href="https://github.com/voxel51/">GitHub</a>
+        <a href="https://community.voxel51.com">Discord</a>
+        <a href="https://voxel51.com/ourstory/">About Us</a>
+        <a href="https://voxel51.com/computer-vision-events/">Events</a>
+        <a href="https://voxel51.com/jobs/">Careers</a>
+        <a href="https://voxel51.com/press/">Press</a>
+      </div>
+    </div>
+
+    <div class="footer__icons">
+      <ul class="list-inline">
+        <li>
+          <a href="https://www.linkedin.com/company/voxel51/">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/voxel51/">
+            <i class="fa-brands fa-github"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/voxel51">
+            <i class="fa-brands fa-twitter"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/voxel51/">
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="footer__copyright">
+      <ul class="list-inline">
+        <li>&copy; 2024 Voxel51 Inc.</li>
+        <li>
+          <a href="https://voxel51.com/privacy/">Privacy Policy</a>
+        </li>
+        <li>
+          <a href="https://voxel51.com/terms/">Terms of Service</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<!-- https://buttons.github.io -->
+<script async defer src="https://buttons.github.io/buttons.js" ></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XD15NFRY3M" ></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+  gtag("config", "G-XD15NFRY3M");
+</script>
+
+<script>
+  function open_modal(modal_id, modal_closer_id) {
+    // Get the modal
+    let the_modal = document.getElementById(modal_id);
+
+    the_modal.style.display = "flex";
+    document.body.style.overflow = "hidden";
+
+    let the_modal_closer = document.getElementById(modal_closer_id);
+
+    // When the user clicks on <span> (x), close the modal
+    the_modal_closer &&
+      (the_modal_closer.onclick = function () {
+        the_modal.style.display = "none";
+      });
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+      if (event.target == the_modal) {
+        the_modal.style.display = "none";
+        document.body.style.overflow = "unset";
+        window.onclick = undefined;
+      }
+    };
+  }
+</script>
+
+<!-- bigpicture.io -->
+<script>
+  !(function (e, t, i) {
+    var r = (e.bigPicture = e.bigPicture || []);
+    if (!r.initialized)
+      if (r.invoked)
+        e.console &&
+          console.error &&
+          console.error("BigPicture.io snippet included twice.");
+      else {
+        (r.invoked = !0),
+          (r.SNIPPET_VERSION = 1.5),
+          (r.handler = function (e) {
+            if (void 0 !== r.callback)
+              try {
+                return r.callback(e);
+              } catch (e) {}
+          }),
+          (r.eventList = ["mousedown", "mouseup", "click", "submit"]),
+          (r.methods = [
+            "track",
+            "identify",
+            "page",
+            "group",
+            "alias",
+            "integration",
+            "ready",
+            "intelReady",
+            "consentReady",
+            "on",
+            "off",
+          ]),
+          (r.factory = function (e) {
+            return function () {
+              var t = Array.prototype.slice.call(arguments);
+              return t.unshift(e), r.push(t), r;
+            };
+          });
+        for (var n = 0; n < r.methods.length; n++) {
+          var o = r.methods[n];
+          r[o] = r.factory(o);
+        }
+        r.getCookie = function (e) {
+          var i = ("; " + t.cookie).split("; " + e + "=");
+          return 2 == i.length && i.pop().split(";").shift();
+        };
+        var c = (r.isEditor = (function () {
+          try {
+            return (
+              e.self !== e.top &&
+              (new RegExp("app" + i, "ig").test(t.referrer) ||
+                "edit" == r.getCookie("_bpr_edit"))
+            );
+          } catch (e) {
+            return !1;
+          }
+        })());
+        r.init = function (n, o) {
+          if (((r.projectId = n), (r._config = o), !c))
+            for (var a = 0; a < r.eventList.length; a++)
+              e.addEventListener(r.eventList[a], r.handler, !0);
+          var s = t.createElement("script");
+          s.async = !0;
+          var d = c ? "/editor/editor" : "/public-" + n;
+          (s.src = "//cdn" + i + d + ".js"),
+            t.getElementsByTagName("head")[0].appendChild(s);
+        };
+      }
+  })(window, document, ".bigpicture.io");
+  bigPicture.init("1646");
+</script>
+
+
+  
+
+  <!-- End Footer -->
+
+  <!-- Begin Mobile Menu -->
+
+  
+
+  <!-- End Mobile Menu -->
+
+  <script type="text/javascript" src="../_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function(e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+</body>
+</html>
