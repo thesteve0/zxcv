@@ -1,183 +1,45 @@
 
-
-
 <!DOCTYPE html>
+
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>Fine-tune YOLOv8 models for custom use cases with the help of FiftyOne &mdash; FiftyOne 1.3.0 documentation</title>
-  
-
-  
-  
-    <link rel="shortcut icon" href="../_static/favicon.ico"/>
-  
-  
-  
-
-  
-
-  
-  
-    
-
-  
-
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
-  <link rel="stylesheet" href="../_static/css/voxel51-website.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Build a 3D self-driving dataset from scratch with OpenAI’s Point-E and FiftyOne" href="pointe.html" />
-    <link rel="prev" title="Nearest Neighbor Embeddings Classification with Qdrant" href="qdrant.html" />
-<meta property="og:image" content="https://voxel51.com/wp-content/uploads/2024/03/3.24_webpages_Home_AV.png" />
-
-<link
-  href="https://fonts.googleapis.com/css?family=Palanquin:400,600,700,800"
-  rel="stylesheet"
-/>
-<link
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
-  rel="stylesheet"
-/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Fine-tune YOLOv8 models for custom use cases with the help of FiftyOne — FiftyOne 1.3.0 documentation</title>
+<link href="../_static/favicon.ico" rel="shortcut icon"/>
+<link href="../_static/css/theme.css" rel="stylesheet" type="text/css"/>
+<!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+<link href="../_static/css/voxel51-website.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/css/custom.css" rel="stylesheet" type="text/css"/>
+<link href="../genindex.html" rel="index" title="Index"/>
+<link href="../search.html" rel="search" title="Search"/>
+<link href="pointe.html" rel="next" title="Build a 3D self-driving dataset from scratch with OpenAI’s Point-E and FiftyOne"/>
+<link href="qdrant.html" rel="prev" title="Nearest Neighbor Embeddings Classification with Qdrant"/>
+<meta content="https://voxel51.com/wp-content/uploads/2024/03/3.24_webpages_Home_AV.png" property="og:image"/>
+<link href="https://fonts.googleapis.com/css?family=Palanquin:400,600,700,800" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet"/>
 <script src="https://tag.clearbitscripts.com/v1/pk_b9ed71c8234edd4f77326bcbfab5a4ca/tags.js"></script>
-
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
-  
+<script src="../_static/js/modernizr.min.js"></script>
 </head>
-
-
-<div class="container-fluid header-holder tutorials-header" id="header-holder">
-  <div class="container">
-    <div class="header-container">
-      <a class="header-logo" href="https://pytorch.org/" aria-label="PyTorch"></a>
-
-      <div class="main-menu">
-        <ul>
-          <li>
-            <a href="https://pytorch.org/get-started">Get Started</a>
-          </li>
-
-          <li>
-            <div class="ecosystem-dropdown">
-              <a id="dropdownMenuButton" data-toggle="ecosystem-dropdown">
-                Ecosystem
-              </a>
-              <div class="ecosystem-dropdown-menu">
-                <a class="nav-dropdown-item" href="https://pytorch.org/hub"">
-                  <span class=dropdown-title>Models (Beta)</span>
-                  <p>Discover, publish, and reuse pre-trained models</p>
-                </a>
-                <a class="nav-dropdown-item" href="https://pytorch.org/ecosystem">
-                  <span class=dropdown-title>Tools & Libraries</span>
-                  <p>Explore the ecosystem of tools and libraries</p>
-                </a>
-              </div>
-            </div>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/mobile">Mobile</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/blog/">Blog</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/tutorials">Tutorials</a>
-          </li>
-
-          <li class="active">
-            <a href="https://pytorch.org/docs/stable/index.html">Docs</a>
-          </li>
-
-          <li>
-            <div class="resources-dropdown">
-              <a id="resourcesDropdownButton" data-toggle="resources-dropdown">
-                Resources
-              </a>
-              <div class="resources-dropdown-menu">
-                <a class="nav-dropdown-item" href="https://pytorch.org/resources"">
-                  <span class=dropdown-title>Developer Resources</span>
-                  <p>Find resources and get questions answered</p>
-                </a>
-                <a class="nav-dropdown-item" href="https://pytorch.org/features">
-                  <span class=dropdown-title>About</span>
-                  <p>Learn about PyTorch’s features and capabilities</p>
-                </a>
-              </div>
-            </div>
-          </li>
-
-          <li>
-            <a href="https://github.com/pytorch/pytorch">Github</a>
-          </li>
-        </ul>
-      </div>
-
-      <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
-    </div>
-
-  </div>
-</div>
-
-
-
 <body class="pytorch-body">
-
-   
-
-    
-
-    <div class="table-of-contents-link-wrapper">
-      <span>Table of Contents</span>
-      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
-    </div>
-
-    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
-      <div class="pytorch-side-scroll">
-        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          <div class="pytorch-left-menu-search">
-            
-
-            
-              
-              
-            
-
-            
-
-
-  
-
-
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search Docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
+<div class="table-of-contents-link-wrapper">
+<span>Table of Contents</span>
+<a class="toggle-table-of-contents" data-behavior="toggle-table-of-contents" href="#"></a>
 </div>
-
-            
-          </div>
-
-          
-            
-            
-              
-            
-            
-              <ul class="current">
+<nav class="pytorch-left-menu" data-toggle="wy-nav-shift" id="pytorch-left-menu">
+<div class="pytorch-side-scroll">
+<div aria-label="main navigation" class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation">
+<div class="pytorch-left-menu-search">
+<div role="search">
+<form action="../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input name="q" placeholder="Search Docs" type="text"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../teams/index.html">FiftyOne Teams 🚀</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/install.html">Installation</a></li>
@@ -197,78 +59,37 @@
 <li class="toctree-l1"><a class="reference internal" href="../deprecation.html">Deprecation Notices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a></li>
 </ul>
-
-            
-          
-        </div>
-      </div>
-    </nav>
-
-    <div class="pytorch-container">
-      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
-        <div class="pytorch-breadcrumbs-wrapper">
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
-  <ul class="pytorch-breadcrumbs">
-    
-      <li>
-        <a href="../index.html">
+</div>
+</div>
+</nav>
+<div class="pytorch-container">
+<div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+<div class="pytorch-breadcrumbs-wrapper">
+<div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="pytorch-breadcrumbs">
+<li>
+<a href="../index.html">
           
             Docs
           
         </a> &gt;
       </li>
-
-        
-          <li><a href="index.html">FiftyOne Tutorials</a> &gt;</li>
-        
-      <li>Fine-tune YOLOv8 models for custom use cases with the help of FiftyOne</li>
-    
-    
-      <li class="pytorch-breadcrumbs-aside">
-        
-            
-        
-      </li>
-    
-  </ul>
-
-  
+<li><a href="index.html">FiftyOne Tutorials</a> &gt;</li>
+<li>Fine-tune YOLOv8 models for custom use cases with the help of FiftyOne</li>
+<li class="pytorch-breadcrumbs-aside">
+</li>
+</ul>
 </div>
-        </div>
-
-        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+</div>
+<div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
           Contents
         </div>
-      </div>
-
-      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
-        <div class="pytorch-content-left">
-
-        
-          
-          <div class="rst-content style-external-links">
-          
-            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
-             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
-              
-  
+</div>
+<section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+<div class="pytorch-content-left">
+<div class="rst-content style-external-links">
+<div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
 <style>
 /* CSS for nbsphinx extension */
 
@@ -571,18 +392,18 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ultralytics</span> <span class="kn">import</span> <span class="n">YOLO</span>
 
-<span class="n">detection_model</span> <span class="o">=</span> <span class="n">YOLO</span><span class="p">(</span><span class="s2">&quot;yolov8n.pt&quot;</span><span class="p">)</span>
-<span class="n">seg_model</span> <span class="o">=</span> <span class="n">YOLO</span><span class="p">(</span><span class="s2">&quot;yolov8n-seg.pt&quot;</span><span class="p">)</span>
+<span class="n">detection_model</span> <span class="o">=</span> <span class="n">YOLO</span><span class="p">(</span><span class="s2">"yolov8n.pt"</span><span class="p">)</span>
+<span class="n">seg_model</span> <span class="o">=</span> <span class="n">YOLO</span><span class="p">(</span><span class="s2">"yolov8n-seg.pt"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<p>In Python, we can apply a YOLOv8 model to an individual image by passing the file path into the model call. For an image with file path <code class="docutils literal notranslate"><span class="pre">path/to/image.jpg</span></code>, running <code class="docutils literal notranslate"><span class="pre">detection_model(&quot;path/to/image.jpg&quot;)</span></code> will generate a list containing a single <code class="docutils literal notranslate"><span class="pre">ultralytics.yolo.engine.results.Results</span></code> object.</p>
+<p>In Python, we can apply a YOLOv8 model to an individual image by passing the file path into the model call. For an image with file path <code class="docutils literal notranslate"><span class="pre">path/to/image.jpg</span></code>, running <code class="docutils literal notranslate"><span class="pre">detection_model("path/to/image.jpg")</span></code> will generate a list containing a single <code class="docutils literal notranslate"><span class="pre">ultralytics.yolo.engine.results.Results</span></code> object.</p>
 <p>We can see this by applying the detection model to Ultralytics’ test image:</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="n">detection_model</span><span class="p">(</span><span class="s2">&quot;https://ultralytics.com/images/bus.jpg&quot;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="n">detection_model</span><span class="p">(</span><span class="s2">"https://ultralytics.com/images/bus.jpg"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -595,14 +416,14 @@ div.rendered_html tbody tr:hover {
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
 <span class="c1"># Load a dataset</span>
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"quickstart"</span><span class="p">)</span>
 
 <span class="c1"># Load a YOLOv8 model</span>
 <span class="kn">from</span> <span class="nn">ultralytics</span> <span class="kn">import</span> <span class="n">YOLO</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">YOLO</span><span class="p">(</span><span class="s2">&quot;yolov8l.pt&quot;</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">YOLO</span><span class="p">(</span><span class="s2">"yolov8l.pt"</span><span class="p">)</span>
 
 <span class="c1"># Apply the model to the dataset</span>
-<span class="n">dataset</span><span class="o">.</span><span class="n">apply_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;yolov8l&quot;</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">apply_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">label_field</span><span class="o">=</span><span class="s2">"yolov8l"</span><span class="p">)</span>
 
 <span class="c1"># Launch the App to visualize the results</span>
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
@@ -619,8 +440,8 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span>
-    <span class="s1">&#39;coco-2017&#39;</span><span class="p">,</span>
-    <span class="n">split</span><span class="o">=</span><span class="s1">&#39;validation&#39;</span><span class="p">,</span>
+    <span class="s1">'coco-2017'</span><span class="p">,</span>
+    <span class="n">split</span><span class="o">=</span><span class="s1">'validation'</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -645,7 +466,7 @@ div.rendered_html tbody tr:hover {
     <span class="n">samples</span><span class="p">,</span>
     <span class="n">export_dir</span><span class="p">,</span>
     <span class="n">classes</span><span class="p">,</span>
-    <span class="n">label_field</span> <span class="o">=</span> <span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span>
+    <span class="n">label_field</span> <span class="o">=</span> <span class="s2">"ground_truth"</span><span class="p">,</span>
     <span class="n">split</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="p">):</span>
 
@@ -662,7 +483,7 @@ div.rendered_html tbody tr:hover {
     <span class="k">else</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">split</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">split_view</span> <span class="o">=</span> <span class="n">samples</span>
-            <span class="n">split</span> <span class="o">=</span> <span class="s2">&quot;val&quot;</span>
+            <span class="n">split</span> <span class="o">=</span> <span class="s2">"val"</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">split_view</span> <span class="o">=</span> <span class="n">samples</span><span class="o">.</span><span class="n">match_tags</span><span class="p">(</span><span class="n">split</span><span class="p">)</span>
 
@@ -680,7 +501,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coco_val_dir</span> <span class="o">=</span> <span class="s2">&quot;coco_val&quot;</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coco_val_dir</span> <span class="o">=</span> <span class="s2">"coco_val"</span>
 <span class="n">export_yolo_data</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">coco_val_dir</span><span class="p">,</span> <span class="n">coco_classes</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -700,7 +521,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">label_file</span> <span class="o">=</span> <span class="s2">&quot;runs/detect/predict/labels/000000000139.txt&quot;</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">label_file</span> <span class="o">=</span> <span class="s2">"runs/detect/predict/labels/000000000139.txt"</span>
 
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">label_file</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
@@ -742,7 +563,7 @@ div.rendered_html tbody tr:hover {
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([])</span>
 
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-        <span class="n">lines</span> <span class="o">=</span> <span class="p">[</span><span class="n">line</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">]</span>
+        <span class="n">lines</span> <span class="o">=</span> <span class="p">[</span><span class="n">line</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">' '</span><span class="p">)</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">]</span>
 
     <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
         <span class="n">detection</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">l</span><span class="p">)</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">line</span><span class="p">]</span>
@@ -758,7 +579,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">_uncenter_boxes</span><span class="p">(</span><span class="n">boxes</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;convert from center coords to corner coords&#39;&#39;&#39;</span>
+<span class="w">    </span><span class="sd">'''convert from center coords to corner coords'''</span>
     <span class="n">boxes</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">-=</span> <span class="n">boxes</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span><span class="o">/</span><span class="mf">2.</span>
     <span class="n">boxes</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-=</span> <span class="n">boxes</span><span class="p">[:,</span> <span class="mi">3</span><span class="p">]</span><span class="o">/</span><span class="mf">2.</span>
 </pre></div>
@@ -815,11 +636,11 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_prediction_filepath</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="n">run_number</span> <span class="o">=</span> <span class="mi">1</span><span class="p">):</span>
-    <span class="n">run_num_string</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">run_num_string</span> <span class="o">=</span> <span class="s2">""</span>
     <span class="k">if</span> <span class="n">run_number</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
         <span class="n">run_num_string</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">run_number</span><span class="p">)</span>
-    <span class="n">filename</span> <span class="o">=</span> <span class="n">filepath</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;runs/detect/predict</span><span class="si">{</span><span class="n">run_num_string</span><span class="si">}</span><span class="s2">/labels/</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">.txt&quot;</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="n">filepath</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"/"</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"."</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">"runs/detect/predict</span><span class="si">{</span><span class="n">run_num_string</span><span class="si">}</span><span class="s2">/labels/</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">.txt"</span>
 </pre></div>
 </div>
 </div>
@@ -848,17 +669,17 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filepaths</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;filepath&quot;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filepaths</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">"filepath"</span><span class="p">)</span>
 <span class="n">prediction_filepaths</span> <span class="o">=</span> <span class="p">[</span><span class="n">get_prediction_filepath</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span> <span class="k">for</span> <span class="n">fp</span> <span class="ow">in</span> <span class="n">filepaths</span><span class="p">]</span>
 <span class="n">dataset</span><span class="o">.</span><span class="n">set_values</span><span class="p">(</span>
-    <span class="s2">&quot;yolov8n_det_filepath&quot;</span><span class="p">,</span>
+    <span class="s2">"yolov8n_det_filepath"</span><span class="p">,</span>
     <span class="n">prediction_filepaths</span>
 <span class="p">)</span>
 
 <span class="n">add_yolo_detections</span><span class="p">(</span>
     <span class="n">dataset</span><span class="p">,</span>
-    <span class="s2">&quot;yolov8n&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;yolov8n_det_filepath&quot;</span><span class="p">,</span>
+    <span class="s2">"yolov8n"</span><span class="p">,</span>
+    <span class="s2">"yolov8n_det_filepath"</span><span class="p">,</span>
     <span class="n">coco_classes</span>
 <span class="p">)</span>
 </pre></div>
@@ -873,7 +694,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-<p><img alt="yolov8-base-predictions" src="../_images/yolov8_coco_val_predictions.png" /></p>
+<p><img alt="yolov8-base-predictions" src="../_images/yolov8_coco_val_predictions.png"/></p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
@@ -942,7 +763,7 @@ bounding box.</p>
 </pre></div>
 </div>
 </div>
-<p><img alt="yolov8-segmentation" src="../_images/yolov8_coco_val_segmentation.png" /></p>
+<p><img alt="yolov8-segmentation" src="../_images/yolov8_coco_val_segmentation.png"/></p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
@@ -962,10 +783,10 @@ bounding box.</p>
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">detection_results</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">evaluate_detections</span><span class="p">(</span>
-    <span class="s2">&quot;yolov8n&quot;</span><span class="p">,</span>
-    <span class="n">eval_key</span><span class="o">=</span><span class="s2">&quot;eval&quot;</span><span class="p">,</span>
+    <span class="s2">"yolov8n"</span><span class="p">,</span>
+    <span class="n">eval_key</span><span class="o">=</span><span class="s2">"eval"</span><span class="p">,</span>
     <span class="n">compute_mAP</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">gt_field</span><span class="o">=</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span>
+    <span class="n">gt_field</span><span class="o">=</span><span class="s2">"ground_truth"</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -978,7 +799,7 @@ bounding box.</p>
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mAP</span> <span class="o">=</span> <span class="n">detection_results</span><span class="o">.</span><span class="n">mAP</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;mAP = </span><span class="si">{</span><span class="n">mAP</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"mAP = </span><span class="si">{</span><span class="n">mAP</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -995,7 +816,7 @@ mAP = 0.3121319189417518
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[45]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">counts</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">count_values</span><span class="p">(</span><span class="s2">&quot;ground_truth.detections.label&quot;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">counts</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">count_values</span><span class="p">(</span><span class="s2">"ground_truth.detections.label"</span><span class="p">)</span>
 
 <span class="n">top20_classes</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span>
     <span class="n">counts</span><span class="p">,</span>
@@ -1046,7 +867,7 @@ traffic light       0.66      0.36      0.46       638
 <div class="section" id="Inspect-individual-predictions">
 <h3>Inspect individual predictions<a class="headerlink" href="#Inspect-individual-predictions" title="Permalink to this headline">¶</a></h3>
 <p>Fortunately, we can dig deeper into these results with FiftyOne. Using the FiftyOne App, we can for instance filter by class for both ground truth and predicted detections so that only <code class="docutils literal notranslate"><span class="pre">book</span></code> detections appear in the samples.</p>
-<p><img alt="yolov8-book-predictions" src="../_images/yolov8_coco_val_books_modal.png" /></p>
+<p><img alt="yolov8-book-predictions" src="../_images/yolov8_coco_val_books_modal.png"/></p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
@@ -1059,7 +880,7 @@ traffic light       0.66      0.36      0.46       638
 quality of the model. After all, the quality of a model is limited by the quality of the data it is trained on - this is why data-centric approaches to computer vision are so important!</p>
 <p>For other classes like the <code class="docutils literal notranslate"><span class="pre">bird</span></code> class, however, there appear to be challenges. One way to see this is to filter for <code class="docutils literal notranslate"><span class="pre">bird</span></code> ground truth detections and then convert to an <a class="reference external" href="https://docs.voxel51.com/api/fiftyone.core.patches.html#fiftyone.core.patches.EvaluationPatchesView">EvaluationPatchesView</a>. Some of these recall errors appear to be related to small features, where the resolution is poor.</p>
 <p>In other cases though, quick inspection confirms that the object is clearly a bird. This means that there is likely room for improvement.</p>
-<p><img alt="yolov8-base-bird_patches" src="../_images/yolov8_coco_val_bird_patch_view.png" /></p>
+<p><img alt="yolov8-base-bird_patches" src="../_images/yolov8_coco_val_bird_patch_view.png"/></p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
@@ -1081,19 +902,19 @@ quality of the model. After all, the quality of a model is limited by the qualit
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_dataset</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span>
-    <span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span>
-    <span class="n">F</span><span class="p">(</span><span class="s2">&quot;label&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;bird&quot;</span>
+    <span class="s2">"ground_truth"</span><span class="p">,</span>
+    <span class="n">F</span><span class="p">(</span><span class="s2">"label"</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"bird"</span>
 <span class="p">)</span><span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span>
-    <span class="s2">&quot;yolov8n&quot;</span><span class="p">,</span>
-    <span class="n">F</span><span class="p">(</span><span class="s2">&quot;label&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;bird&quot;</span><span class="p">,</span>
+    <span class="s2">"yolov8n"</span><span class="p">,</span>
+    <span class="n">F</span><span class="p">(</span><span class="s2">"label"</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"bird"</span><span class="p">,</span>
     <span class="n">only_matches</span><span class="o">=</span><span class="kc">False</span>
 <span class="p">)</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
 
-<span class="n">test_dataset</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;birds-test-dataset&quot;</span>
+<span class="n">test_dataset</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"birds-test-dataset"</span>
 <span class="n">test_dataset</span><span class="o">.</span><span class="n">persistent</span> <span class="o">=</span> <span class="kc">True</span>
 
 <span class="c1">## set classes to just include birds</span>
-<span class="n">classes</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;bird&quot;</span><span class="p">]</span>
+<span class="n">classes</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"bird"</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1106,7 +927,7 @@ quality of the model. After all, the quality of a model is limited by the qualit
 </pre></div>
 </div>
 </div>
-<p><img alt="yolov8-birds-test-view" src="../_images/yolov8_bird_test_view.png" /></p>
+<p><img alt="yolov8-birds-test-view" src="../_images/yolov8_bird_test_view.png"/></p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
@@ -1121,8 +942,8 @@ quality of the model. After all, the quality of a model is limited by the qualit
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">base_bird_results</span> <span class="o">=</span> <span class="n">test_dataset</span><span class="o">.</span><span class="n">evaluate_detections</span><span class="p">(</span>
-    <span class="s2">&quot;yolov8n&quot;</span><span class="p">,</span>
-    <span class="n">eval_key</span><span class="o">=</span><span class="s2">&quot;base&quot;</span><span class="p">,</span>
+    <span class="s2">"yolov8n"</span><span class="p">,</span>
+    <span class="n">eval_key</span><span class="o">=</span><span class="s2">"base"</span><span class="p">,</span>
     <span class="n">compute_mAP</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
@@ -1144,7 +965,7 @@ Performing IoU sweep...
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mAP</span> <span class="o">=</span> <span class="n">base_bird_results</span><span class="o">.</span><span class="n">mAP</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Base mAP = </span><span class="si">{</span><span class="n">mAP</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Base mAP = </span><span class="si">{</span><span class="n">mAP</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1187,7 +1008,7 @@ weighted avg       0.87      0.39      0.54       451
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">export_yolo_data</span><span class="p">(</span>
     <span class="n">test_dataset</span><span class="p">,</span>
-    <span class="s2">&quot;birds_test&quot;</span><span class="p">,</span>
+    <span class="s2">"birds_test"</span><span class="p">,</span>
     <span class="n">classes</span>
 <span class="p">)</span>
 </pre></div>
@@ -1212,12 +1033,12 @@ weighted avg       0.87      0.39      0.54       451
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span>
-    <span class="s1">&#39;coco-2017&#39;</span><span class="p">,</span>
-    <span class="n">split</span><span class="o">=</span><span class="s1">&#39;train&#39;</span><span class="p">,</span>
+    <span class="s1">'coco-2017'</span><span class="p">,</span>
+    <span class="n">split</span><span class="o">=</span><span class="s1">'train'</span><span class="p">,</span>
     <span class="n">classes</span><span class="o">=</span><span class="n">classes</span>
 <span class="p">)</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
 
-<span class="n">train_dataset</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;birds-train-data&quot;</span>
+<span class="n">train_dataset</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"birds-train-data"</span>
 <span class="n">train_dataset</span><span class="o">.</span><span class="n">persistent</span> <span class="o">=</span> <span class="kc">True</span>
 <span class="n">train_dataset</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 </pre></div>
@@ -1229,13 +1050,13 @@ weighted avg       0.87      0.39      0.54       451
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">oi_samples</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span>
-    <span class="s2">&quot;open-images-v6&quot;</span><span class="p">,</span>
-    <span class="n">classes</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Bird&quot;</span><span class="p">],</span>
+    <span class="s2">"open-images-v6"</span><span class="p">,</span>
+    <span class="n">classes</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"Bird"</span><span class="p">],</span>
     <span class="n">only_matching</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">label_types</span><span class="o">=</span><span class="s2">&quot;detections&quot;</span>
+    <span class="n">label_types</span><span class="o">=</span><span class="s2">"detections"</span>
 <span class="p">)</span><span class="o">.</span><span class="n">map_labels</span><span class="p">(</span>
-    <span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span>
-    <span class="p">{</span><span class="s2">&quot;Bird&quot;</span><span class="p">:</span><span class="s2">&quot;bird&quot;</span><span class="p">}</span>
+    <span class="s2">"ground_truth"</span><span class="p">,</span>
+    <span class="p">{</span><span class="s2">"Bird"</span><span class="p">:</span><span class="s2">"bird"</span><span class="p">}</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -1262,20 +1083,20 @@ weighted avg       0.87      0.39      0.54       451
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone.utils.random</span> <span class="k">as</span> <span class="nn">four</span>
 
 <span class="c1">## delete existing tags to start fresh</span>
-<span class="n">train_dataset</span><span class="o">.</span><span class="n">untag_samples</span><span class="p">(</span><span class="n">train_dataset</span><span class="o">.</span><span class="n">distinct</span><span class="p">(</span><span class="s2">&quot;tags&quot;</span><span class="p">))</span>
+<span class="n">train_dataset</span><span class="o">.</span><span class="n">untag_samples</span><span class="p">(</span><span class="n">train_dataset</span><span class="o">.</span><span class="n">distinct</span><span class="p">(</span><span class="s2">"tags"</span><span class="p">))</span>
 
 <span class="c1">## split into train and val</span>
 <span class="n">four</span><span class="o">.</span><span class="n">random_split</span><span class="p">(</span>
     <span class="n">train_dataset</span><span class="p">,</span>
-    <span class="p">{</span><span class="s2">&quot;train&quot;</span><span class="p">:</span> <span class="mf">0.8</span><span class="p">,</span> <span class="s2">&quot;val&quot;</span><span class="p">:</span> <span class="mf">0.2</span><span class="p">}</span>
+    <span class="p">{</span><span class="s2">"train"</span><span class="p">:</span> <span class="mf">0.8</span><span class="p">,</span> <span class="s2">"val"</span><span class="p">:</span> <span class="mf">0.2</span><span class="p">}</span>
 <span class="p">)</span>
 
 <span class="c1">## export in YOLO format</span>
 <span class="n">export_yolo_data</span><span class="p">(</span>
     <span class="n">train_dataset</span><span class="p">,</span>
-    <span class="s2">&quot;birds_train&quot;</span><span class="p">,</span>
+    <span class="s2">"birds_train"</span><span class="p">,</span>
     <span class="n">classes</span><span class="p">,</span>
-    <span class="n">split</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;train&quot;</span><span class="p">,</span> <span class="s2">&quot;val&quot;</span><span class="p">]</span>
+    <span class="n">split</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"train"</span><span class="p">,</span> <span class="s2">"val"</span><span class="p">]</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -1342,18 +1163,18 @@ weighted avg       0.87      0.39      0.54       451
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filepaths</span> <span class="o">=</span> <span class="n">test_dataset</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;filepath&quot;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filepaths</span> <span class="o">=</span> <span class="n">test_dataset</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">"filepath"</span><span class="p">)</span>
 <span class="n">prediction_filepaths</span> <span class="o">=</span> <span class="p">[</span><span class="n">get_prediction_filepath</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="n">run_number</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">fp</span> <span class="ow">in</span> <span class="n">filepaths</span><span class="p">]</span>
 
 <span class="n">test_dataset</span><span class="o">.</span><span class="n">set_values</span><span class="p">(</span>
-    <span class="s2">&quot;yolov8n_bird_det_filepath&quot;</span><span class="p">,</span>
+    <span class="s2">"yolov8n_bird_det_filepath"</span><span class="p">,</span>
     <span class="n">prediction_filepaths</span>
 <span class="p">)</span>
 
 <span class="n">add_yolo_detections</span><span class="p">(</span>
     <span class="n">birds_test_dataset</span><span class="p">,</span>
-    <span class="s2">&quot;yolov8n_bird&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;yolov8n_bird_det_filepath&quot;</span><span class="p">,</span>
+    <span class="s2">"yolov8n_bird"</span><span class="p">,</span>
+    <span class="s2">"yolov8n_bird_det_filepath"</span><span class="p">,</span>
     <span class="n">classes</span>
 <span class="p">)</span>
 </pre></div>
@@ -1367,7 +1188,7 @@ weighted avg       0.87      0.39      0.54       451
 </pre></div>
 </div>
 </div>
-<p><img alt="yolov8-finetune-predictions" src="../_images/yolov8_finetune_predictions_app.png" /></p>
+<p><img alt="yolov8-finetune-predictions" src="../_images/yolov8_finetune_predictions_app.png"/></p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
@@ -1385,8 +1206,8 @@ weighted avg       0.87      0.39      0.54       451
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">finetune_bird_results</span> <span class="o">=</span> <span class="n">test_dataset</span><span class="o">.</span><span class="n">evaluate_detections</span><span class="p">(</span>
-    <span class="s2">&quot;yolov8n_bird&quot;</span><span class="p">,</span>
-    <span class="n">eval_key</span><span class="o">=</span><span class="s2">&quot;finetune&quot;</span><span class="p">,</span>
+    <span class="s2">"yolov8n_bird"</span><span class="p">,</span>
+    <span class="n">eval_key</span><span class="o">=</span><span class="s2">"finetune"</span><span class="p">,</span>
     <span class="n">compute_mAP</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
@@ -1408,8 +1229,8 @@ Performing IoU sweep...
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;yolov8n mAP: </span><span class="si">{}</span><span class="s2">.format(base_bird_results.mAP()))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;fine-tuned mAP: </span><span class="si">{}</span><span class="s2">.format(finetune_bird_results.mAP()))</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"yolov8n mAP: </span><span class="si">{}</span><span class="s2">.format(base_bird_results.mAP()))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"fine-tuned mAP: </span><span class="si">{}</span><span class="s2">.format(finetune_bird_results.mAP()))</span>
 </pre></div>
 </div>
 </div>
@@ -1451,12 +1272,12 @@ weighted avg       0.81      0.56      0.67       506
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fn_view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">sort_by</span><span class="p">(</span><span class="s2">&quot;eval_fn&quot;</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fn_view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">sort_by</span><span class="p">(</span><span class="s2">"eval_fn"</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">session</span><span class="o">.</span><span class="n">view</span> <span class="o">=</span> <span class="n">fn_view</span>
 </pre></div>
 </div>
 </div>
-<p><img alt="yolov8-finetune-fp" src="../_images/yolov8_finetune_fp_predictions.png" /></p>
+<p><img alt="yolov8-finetune-fp" src="../_images/yolov8_finetune_fp_predictions.png"/></p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
@@ -1469,12 +1290,12 @@ weighted avg       0.81      0.56      0.67       506
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fp_view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">sort_by</span><span class="p">(</span><span class="s2">&quot;eval_fp&quot;</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fp_view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">sort_by</span><span class="p">(</span><span class="s2">"eval_fp"</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">session</span><span class="o">.</span><span class="n">view</span> <span class="o">=</span> <span class="n">fp_view</span>
 </pre></div>
 </div>
 </div>
-<p><img alt="yolov8-finetune_fn" src="../_images/yolov8_finetune_fn_predictions.png" /></p>
+<p><img alt="yolov8-finetune_fn" src="../_images/yolov8_finetune_fn_predictions.png"/></p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
@@ -1497,30 +1318,14 @@ weighted avg       0.81      0.56      0.67       506
 <p>You can use FiftyOne to visualize, evaluate, and better understand YOLOv8 model predictions. After all, while YOLO may only look once, a conscientious computer vision engineer or researcher certainly looks twice (or more)!</p>
 </div>
 </div>
-
-
-             </article>
-             
-            </div>
-            <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="pointe.html" class="btn btn-neutral float-right" title="Build a 3D self-driving dataset from scratch with OpenAI’s Point-E and FiftyOne" accesskey="n" rel="next">Next <img src="../_static/images/chevron-right-orange.svg" class="next-page"></a>
-      
-      
-        <a href="qdrant.html" class="btn btn-neutral" title="Nearest Neighbor Embeddings Classification with Qdrant" accesskey="p" rel="prev"><img src="../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
-      
-    </div>
-  
-</footer>
-          </div>
-        </div>
-
-        <div class="pytorch-content-right" id="pytorch-content-right">
-          <div class="pytorch-right-menu" id="pytorch-right-menu">
-            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
-              <ul>
+</article>
+</div>
+</div>
+</div>
+<div class="pytorch-content-right" id="pytorch-content-right">
+<div class="pytorch-right-menu" id="pytorch-right-menu">
+<div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+<ul>
 <li><a class="reference internal" href="#">Fine-tune YOLOv8 models for custom use cases with the help of FiftyOne</a><ul>
 <li><a class="reference internal" href="#Setup">Setup</a></li>
 <li><a class="reference internal" href="#Load-YOLOv8-predictions-in-FiftyOne">Load YOLOv8 predictions in FiftyOne</a><ul>
@@ -1545,216 +1350,35 @@ weighted avg       0.81      0.56      0.67       506
 </ul>
 </li>
 </ul>
-
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
-
-  
-
-
-  
-
-     
-       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-         <script src="../_static/jquery.js"></script>
-         <script src="../_static/underscore.js"></script>
-         <script src="../_static/doctools.js"></script>
-         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
-         <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-         <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
-         <script src="../_static/js/voxel51-website.js"></script>
-         <script src="../_static/js/custom.js"></script>
-     
-
-  
-
-  <script type="text/javascript" src="../_static/js/vendor/popper.min.js"></script>
-  <script type="text/javascript" src="../_static/js/vendor/bootstrap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-  <script type="text/javascript">
+</div>
+</div>
+</div>
+</section>
+</div>
+<script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js" type="text/javascript"></script>
+<script src="../_static/jquery.js"></script>
+<script src="../_static/underscore.js"></script>
+<script src="../_static/doctools.js"></script>
+<script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+<script src="../_static/js/voxel51-website.js"></script>
+<script src="../_static/js/custom.js"></script>
+<script src="../_static/js/vendor/popper.min.js" type="text/javascript"></script>
+<script src="../_static/js/vendor/bootstrap.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+<script src="../_static/js/theme.js" type="text/javascript"></script>
+<script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
-
-  <!-- Begin Footer -->
-
-
-  <div class="container-fluid docs-tutorials-resources" id="docs-tutorials-resources">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4 text-center">
-          <h2>Docs</h2>
-          <p>Access comprehensive developer documentation for PyTorch</p>
-          <a class="with-right-arrow" href="https://pytorch.org/docs/stable/index.html">View Docs</a>
-        </div>
-
-        <div class="col-md-4 text-center">
-          <h2>Tutorials</h2>
-          <p>Get in-depth tutorials for beginners and advanced developers</p>
-          <a class="with-right-arrow" href="https://pytorch.org/tutorials">View Tutorials</a>
-        </div>
-
-        <div class="col-md-4 text-center">
-          <h2>Resources</h2>
-          <p>Find development resources and get your questions answered</p>
-          <a class="with-right-arrow" href="https://pytorch.org/resources">View Resources</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <footer class="site-footer">
-    <div class="container footer-container">
-      <div class="footer-logo-wrapper">
-        <a href="https://pytorch.org/" class="footer-logo"></a>
-      </div>
-
-      <div class="footer-links-wrapper">
-        <div class="footer-links-col">
-          <ul>
-            <li class="list-title"><a href="https://pytorch.org/">PyTorch</a></li>
-            <li><a href="https://pytorch.org/get-started">Get Started</a></li>
-            <li><a href="https://pytorch.org/features">Features</a></li>
-            <li><a href="https://pytorch.org/ecosystem">Ecosystem</a></li>
-            <li><a href="https://pytorch.org/blog/">Blog</a></li>
-            <li><a href="https://github.com/pytorch/pytorch/blob/master/CONTRIBUTING.md">Contributing</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-links-col">
-          <ul>
-            <li class="list-title"><a href="https://pytorch.org/resources">Resources</a></li>
-            <li><a href="https://pytorch.org/tutorials">Tutorials</a></li>
-            <li><a href="https://pytorch.org/docs/stable/index.html">Docs</a></li>
-            <li><a href="https://discuss.pytorch.org" target="_blank">Discuss</a></li>
-            <li><a href="https://github.com/pytorch/pytorch/issues" target="_blank">Github Issues</a></li>
-            <li><a href="https://pytorch.org/assets/brand-guidelines/PyTorch-Brand-Guidelines.pdf" target="_blank">Brand Guidelines</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-links-col follow-us-col">
-          <ul>
-            <li class="list-title">Stay Connected</li>
-            <li>
-              <div id="mc_embed_signup">
-                <form
-                  action="https://twitter.us14.list-manage.com/subscribe/post?u=75419c71fe0a935e53dfa4a3f&id=91d0dccd39"
-                  method="post"
-                  id="mc-embedded-subscribe-form"
-                  name="mc-embedded-subscribe-form"
-                  class="email-subscribe-form validate"
-                  target="_blank"
-                  novalidate>
-                  <div id="mc_embed_signup_scroll" class="email-subscribe-form-fields-wrapper">
-                    <div class="mc-field-group">
-                      <label for="mce-EMAIL" style="display:none;">Email Address</label>
-                      <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="Email Address">
-                    </div>
-
-                    <div id="mce-responses" class="clear">
-                      <div class="response" id="mce-error-response" style="display:none"></div>
-                      <div class="response" id="mce-success-response" style="display:none"></div>
-                    </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-
-                    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_75419c71fe0a935e53dfa4a3f_91d0dccd39" tabindex="-1" value=""></div>
-
-                    <div class="clear">
-                      <input type="submit" value="" name="subscribe" id="mc-embedded-subscribe" class="button email-subscribe-button">
-                    </div>
-                  </div>
-                </form>
-              </div>
-
-            </li>
-          </ul>
-
-          <div class="footer-social-icons">
-            <a href="https://www.facebook.com/pytorch" target="_blank" class="facebook"></a>
-            <a href="https://twitter.com/pytorch" target="_blank" class="twitter"></a>
-            <a href="https://www.youtube.com/pytorch" target="_blank" class="youtube"></a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-
-  
-
-  <!-- End Footer -->
-
-  <!-- Begin Mobile Menu -->
-
-
-  <div class="mobile-main-menu">
-    <div class="container-fluid">
-      <div class="container">
-        <div class="mobile-main-menu-header-container">
-          <a class="header-logo" href="https://pytorch.org/" aria-label="PyTorch"></a>
-          <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
-        </div>
-      </div>
-    </div>
-
-    <div class="mobile-main-menu-links-container">
-      <div class="main-menu">
-        <ul>
-          <li>
-            <a href="https://pytorch.org/get-started">Get Started</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/features">Features</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/ecosystem">Ecosystem</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/mobile">Mobile</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/hub">PyTorch Hub</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/blog/">Blog</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/tutorials">Tutorials</a>
-          </li>
-
-          <li class="active">
-            <a href="https://pytorch.org/docs/stable/index.html">Docs</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/resources">Resources</a>
-          </li>
-
-          <li>
-            <a href="https://github.com/pytorch/pytorch">Github</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-
-  <!-- End Mobile Menu -->
-
-  <script type="text/javascript" src="../_static/js/vendor/anchor.min.js"></script>
-
-  <script type="text/javascript">
+  </script>
+<!-- Begin Footer -->
+<!-- End Footer -->
+<!-- Begin Mobile Menu -->
+<!-- End Mobile Menu -->
+<script src="../_static/js/vendor/anchor.min.js" type="text/javascript"></script>
+<script type="text/javascript">
     $(document).ready(function() {
       mobileMenu.bind();
       mobileTOC.bind();

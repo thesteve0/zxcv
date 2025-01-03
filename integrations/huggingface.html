@@ -1,183 +1,46 @@
 
-
-
 <!DOCTYPE html>
+
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>Hugging Face Integration &mdash; FiftyOne 1.3.0 documentation</title>
-  
-
-  
-  
-    <link rel="shortcut icon" href="../_static/favicon.ico"/>
-  
-  
-  
-
-  
-
-  
-  
-    
-
-  
-
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
-  <link rel="stylesheet" href="../_static/css/voxel51-website.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Ultralytics Integration" href="ultralytics.html" />
-    <link rel="prev" title="LanceDB Integration" href="lancedb.html" />
-<meta property="og:image" content="https://voxel51.com/wp-content/uploads/2024/03/3.24_webpages_Home_AV.png" />
-
-<link
-  href="https://fonts.googleapis.com/css?family=Palanquin:400,600,700,800"
-  rel="stylesheet"
-/>
-<link
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
-  rel="stylesheet"
-/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Hugging Face Integration — FiftyOne 1.3.0 documentation</title>
+<link href="../_static/favicon.ico" rel="shortcut icon"/>
+<link href="../_static/css/theme.css" rel="stylesheet" type="text/css"/>
+<!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+<link href="../_static/css/voxel51-website.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/css/custom.css" rel="stylesheet" type="text/css"/>
+<link href="../genindex.html" rel="index" title="Index"/>
+<link href="../search.html" rel="search" title="Search"/>
+<link href="ultralytics.html" rel="next" title="Ultralytics Integration"/>
+<link href="lancedb.html" rel="prev" title="LanceDB Integration"/>
+<meta content="https://voxel51.com/wp-content/uploads/2024/03/3.24_webpages_Home_AV.png" property="og:image">
+<link href="https://fonts.googleapis.com/css?family=Palanquin:400,600,700,800" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet"/>
 <script src="https://tag.clearbitscripts.com/v1/pk_b9ed71c8234edd4f77326bcbfab5a4ca/tags.js"></script>
-
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
-  
-</head>
-
-
-<div class="container-fluid header-holder tutorials-header" id="header-holder">
-  <div class="container">
-    <div class="header-container">
-      <a class="header-logo" href="https://pytorch.org/" aria-label="PyTorch"></a>
-
-      <div class="main-menu">
-        <ul>
-          <li>
-            <a href="https://pytorch.org/get-started">Get Started</a>
-          </li>
-
-          <li>
-            <div class="ecosystem-dropdown">
-              <a id="dropdownMenuButton" data-toggle="ecosystem-dropdown">
-                Ecosystem
-              </a>
-              <div class="ecosystem-dropdown-menu">
-                <a class="nav-dropdown-item" href="https://pytorch.org/hub"">
-                  <span class=dropdown-title>Models (Beta)</span>
-                  <p>Discover, publish, and reuse pre-trained models</p>
-                </a>
-                <a class="nav-dropdown-item" href="https://pytorch.org/ecosystem">
-                  <span class=dropdown-title>Tools & Libraries</span>
-                  <p>Explore the ecosystem of tools and libraries</p>
-                </a>
-              </div>
-            </div>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/mobile">Mobile</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/blog/">Blog</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/tutorials">Tutorials</a>
-          </li>
-
-          <li class="active">
-            <a href="https://pytorch.org/docs/stable/index.html">Docs</a>
-          </li>
-
-          <li>
-            <div class="resources-dropdown">
-              <a id="resourcesDropdownButton" data-toggle="resources-dropdown">
-                Resources
-              </a>
-              <div class="resources-dropdown-menu">
-                <a class="nav-dropdown-item" href="https://pytorch.org/resources"">
-                  <span class=dropdown-title>Developer Resources</span>
-                  <p>Find resources and get questions answered</p>
-                </a>
-                <a class="nav-dropdown-item" href="https://pytorch.org/features">
-                  <span class=dropdown-title>About</span>
-                  <p>Learn about PyTorch’s features and capabilities</p>
-                </a>
-              </div>
-            </div>
-          </li>
-
-          <li>
-            <a href="https://github.com/pytorch/pytorch">Github</a>
-          </li>
-        </ul>
-      </div>
-
-      <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
-    </div>
-
-  </div>
-</div>
-
-
+<script src="../_static/js/modernizr.min.js"></script>
+</meta></head>
 
 <body class="pytorch-body">
-
-   
-
-    
-
-    <div class="table-of-contents-link-wrapper">
-      <span>Table of Contents</span>
-      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
-    </div>
-
-    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
-      <div class="pytorch-side-scroll">
-        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          <div class="pytorch-left-menu-search">
-            
-
-            
-              
-              
-            
-
-            
-
-
-  
-
-
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search Docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
+<div class="table-of-contents-link-wrapper">
+<span>Table of Contents</span>
+<a class="toggle-table-of-contents" data-behavior="toggle-table-of-contents" href="#"></a>
 </div>
-
-            
-          </div>
-
-          
-            
-            
-              
-            
-            
-              <ul class="current">
+<nav class="pytorch-left-menu" data-toggle="wy-nav-shift" id="pytorch-left-menu">
+<div class="pytorch-side-scroll">
+<div aria-label="main navigation" class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation">
+<div class="pytorch-left-menu-search">
+<div role="search">
+<form action="../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input name="q" placeholder="Search Docs" type="text"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../teams/index.html">FiftyOne Teams 🚀</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/install.html">Installation</a></li>
@@ -197,78 +60,38 @@
 <li class="toctree-l1"><a class="reference internal" href="../deprecation.html">Deprecation Notices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a></li>
 </ul>
-
-            
-          
-        </div>
-      </div>
-    </nav>
-
-    <div class="pytorch-container">
-      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
-        <div class="pytorch-breadcrumbs-wrapper">
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
-  <ul class="pytorch-breadcrumbs">
-    
-      <li>
-        <a href="../index.html">
+</div>
+</div>
+</nav>
+<div class="pytorch-container">
+<div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+<div class="pytorch-breadcrumbs-wrapper">
+<div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="pytorch-breadcrumbs">
+<li>
+<a href="../index.html">
           
             Docs
           
         </a> &gt;
       </li>
-
-        
-          <li><a href="index.html">FiftyOne Integrations</a> &gt;</li>
-        
-      <li>Hugging Face Integration</li>
-    
-    
-      <li class="pytorch-breadcrumbs-aside">
-        
-            
-        
-      </li>
-    
-  </ul>
-
-  
+<li><a href="index.html">FiftyOne Integrations</a> &gt;</li>
+<li>Hugging Face Integration</li>
+<li class="pytorch-breadcrumbs-aside">
+</li>
+</ul>
 </div>
-        </div>
-
-        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+</div>
+<div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
           Contents
         </div>
-      </div>
-
-      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
-        <div class="pytorch-content-left">
-
-        
-          
-          <div class="rst-content style-external-links">
-          
-            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
-             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
-              
-  <div class="section" id="hugging-face-integration">
+</div>
+<section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+<div class="pytorch-content-left">
+<div class="rst-content style-external-links">
+<div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+<div class="section" id="hugging-face-integration">
 <span id="huggingface-integration"></span><h1>Hugging Face Integration<a class="headerlink" href="#hugging-face-integration" title="Permalink to this headline">¶</a></h1>
 <p>FiftyOne integrates natively with Hugging Face’s
 <a class="reference external" href="https://huggingface.co/docs/transformers">Transformers</a> library, so
@@ -301,7 +124,7 @@ on the following sample dataset:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">,</span> <span class="n">max_samples</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"quickstart"</span><span class="p">,</span> <span class="n">max_samples</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
 <span class="n">dataset</span><span class="o">.</span><span class="n">select_fields</span><span class="p">()</span><span class="o">.</span><span class="n">keep_fields</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -314,53 +137,53 @@ method:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># BeiT</span>
 <span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">BeitForImageClassification</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">BeitForImageClassification</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span>
-    <span class="s2">&quot;microsoft/beit-base-patch16-224&quot;</span>
+    <span class="s2">"microsoft/beit-base-patch16-224"</span>
 <span class="p">)</span>
 
 <span class="c1"># DeiT</span>
 <span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">DeiTForImageClassification</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">DeiTForImageClassification</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span>
-    <span class="s2">&quot;facebook/deit-base-distilled-patch16-224&quot;</span>
+    <span class="s2">"facebook/deit-base-distilled-patch16-224"</span>
 <span class="p">)</span>
 
 <span class="c1"># DINOv2</span>
 <span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">Dinov2ForImageClassification</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">Dinov2ForImageClassification</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span>
-    <span class="s2">&quot;facebook/dinov2-small-imagenet1k-1-layer&quot;</span>
+    <span class="s2">"facebook/dinov2-small-imagenet1k-1-layer"</span>
 <span class="p">)</span>
 
 <span class="c1"># MobileNetV2</span>
 <span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">MobileNetV2ForImageClassification</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">MobileNetV2ForImageClassification</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span>
-    <span class="s2">&quot;google/mobilenet_v2_1.0_224&quot;</span>
+    <span class="s2">"google/mobilenet_v2_1.0_224"</span>
 <span class="p">)</span>
 
 <span class="c1"># Swin Transformer</span>
 <span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">SwinForImageClassification</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">SwinForImageClassification</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span>
-    <span class="s2">&quot;microsoft/swin-tiny-patch4-window7-224&quot;</span>
+    <span class="s2">"microsoft/swin-tiny-patch4-window7-224"</span>
 <span class="p">)</span>
 
 <span class="c1"># ViT</span>
 <span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">ViTForImageClassification</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">ViTForImageClassification</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span>
-    <span class="s2">&quot;google/vit-base-patch16-224&quot;</span>
+    <span class="s2">"google/vit-base-patch16-224"</span>
 <span class="p">)</span>
 
 <span class="c1"># ViT-Hybrid</span>
 <span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">ViTHybridForImageClassification</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">ViTHybridForImageClassification</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span>
-    <span class="s2">&quot;google/vit-hybrid-base-bit-384&quot;</span>
+    <span class="s2">"google/vit-hybrid-base-bit-384"</span>
 <span class="p">)</span>
 
 <span class="c1"># Any auto model</span>
 <span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">AutoModelForImageClassification</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">AutoModelForImageClassification</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span>
-    <span class="s2">&quot;facebook/levit-128S&quot;</span>
+    <span class="s2">"facebook/levit-128S"</span>
 <span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">apply_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;classif_predictions&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">apply_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">label_field</span><span class="o">=</span><span class="s2">"classif_predictions"</span><span class="p">)</span>
 
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
 </pre></div>
@@ -375,34 +198,34 @@ utility to convert the predictions to <a class="reference internal" href="../use
 
 <span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">ViTHybridForImageClassification</span><span class="p">,</span> <span class="n">AutoProcessor</span>
 <span class="n">transformers_model</span> <span class="o">=</span> <span class="n">ViTHybridForImageClassification</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span>
-    <span class="s2">&quot;google/vit-hybrid-base-bit-384&quot;</span>
+    <span class="s2">"google/vit-hybrid-base-bit-384"</span>
 <span class="p">)</span>
-<span class="n">processor</span> <span class="o">=</span> <span class="n">AutoProcessor</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">&quot;google/vit-hybrid-base-bit-384&quot;</span><span class="p">)</span>
+<span class="n">processor</span> <span class="o">=</span> <span class="n">AutoProcessor</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">"google/vit-hybrid-base-bit-384"</span><span class="p">)</span>
 <span class="n">id2label</span> <span class="o">=</span> <span class="n">transformers_model</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">id2label</span>
 
 <span class="k">for</span> <span class="n">sample</span> <span class="ow">in</span> <span class="n">dataset</span><span class="o">.</span><span class="n">iter_samples</span><span class="p">(</span><span class="n">progress</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
     <span class="n">image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">sample</span><span class="o">.</span><span class="n">filepath</span><span class="p">)</span>
-    <span class="n">inputs</span> <span class="o">=</span> <span class="n">processor</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s2">&quot;pt&quot;</span><span class="p">)</span>
+    <span class="n">inputs</span> <span class="o">=</span> <span class="n">processor</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s2">"pt"</span><span class="p">)</span>
     <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
         <span class="n">result</span> <span class="o">=</span> <span class="n">transformers_model</span><span class="p">(</span><span class="o">**</span><span class="n">inputs</span><span class="p">)</span>
 
-    <span class="n">sample</span><span class="p">[</span><span class="s2">&quot;classif_predictions&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fout</span><span class="o">.</span><span class="n">to_classification</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">id2label</span><span class="p">)</span>
+    <span class="n">sample</span><span class="p">[</span><span class="s2">"classif_predictions"</span><span class="p">]</span> <span class="o">=</span> <span class="n">fout</span><span class="o">.</span><span class="n">to_classification</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">id2label</span><span class="p">)</span>
     <span class="n">sample</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Finally, you can load <code class="code docutils literal notranslate"><span class="pre">transformers</span></code> models directly from the
 <a class="reference internal" href="../model_zoo/index.html#model-zoo"><span class="std std-ref">FiftyOne Model Zoo</span></a>!</p>
 <p>To load a <code class="code docutils literal notranslate"><span class="pre">transformers</span></code> classification model from the zoo, specify
-<code class="code docutils literal notranslate"><span class="pre">&quot;classification-transformer-torch&quot;</span></code> as the first argument, and pass in the
+<code class="code docutils literal notranslate"><span class="pre">"classification-transformer-torch"</span></code> as the first argument, and pass in the
 model’s name or path as a keyword argument:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
 <span class="n">model</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_model</span><span class="p">(</span>
-    <span class="s2">&quot;classification-transformer-torch&quot;</span><span class="p">,</span>
-    <span class="n">name_or_path</span><span class="o">=</span><span class="s2">&quot;facebook/levit-128S&quot;</span><span class="p">,</span>  <span class="c1"># HF model name or path</span>
+    <span class="s2">"classification-transformer-torch"</span><span class="p">,</span>
+    <span class="n">name_or_path</span><span class="o">=</span><span class="s2">"facebook/levit-128S"</span><span class="p">,</span>  <span class="c1"># HF model name or path</span>
 <span class="p">)</span>
 
-<span class="n">dataset</span><span class="o">.</span><span class="n">apply_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;levit&quot;</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">apply_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">label_field</span><span class="o">=</span><span class="s2">"levit"</span><span class="p">)</span>
 
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
 </pre></div>
@@ -417,41 +240,41 @@ method:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># DETA</span>
 <span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">DetaForObjectDetection</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">DetaForObjectDetection</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span>
-    <span class="s2">&quot;jozhang97/deta-swin-large&quot;</span>
+    <span class="s2">"jozhang97/deta-swin-large"</span>
 <span class="p">)</span>
 
 <span class="c1"># DETR</span>
 <span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">DetrForObjectDetection</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">DetrForObjectDetection</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span>
-    <span class="s2">&quot;facebook/detr-resnet-50&quot;</span>
+    <span class="s2">"facebook/detr-resnet-50"</span>
 <span class="p">)</span>
 
 <span class="c1"># DeformableDETR</span>
 <span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">DeformableDetrForObjectDetection</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">DeformableDetrForObjectDetection</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span>
-    <span class="s2">&quot;SenseTime/deformable-detr&quot;</span>
+    <span class="s2">"SenseTime/deformable-detr"</span>
 <span class="p">)</span>
 
 <span class="c1"># Table Transformer</span>
 <span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">TableTransformerForObjectDetection</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">TableTransformerForObjectDetection</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span>
-    <span class="s2">&quot;microsoft/table-transformer-detection&quot;</span>
+    <span class="s2">"microsoft/table-transformer-detection"</span>
 <span class="p">)</span>
 
 <span class="c1"># YOLOS</span>
 <span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">YolosForObjectDetection</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">YolosForObjectDetection</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span>
-    <span class="s2">&quot;hustvl/yolos-tiny&quot;</span>
+    <span class="s2">"hustvl/yolos-tiny"</span>
 <span class="p">)</span>
 
 <span class="c1"># Any auto model</span>
 <span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">AutoModelForObjectDetection</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">AutoModelForObjectDetection</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span>
-    <span class="s2">&quot;microsoft/conditional-detr-resnet-50&quot;</span>
+    <span class="s2">"microsoft/conditional-detr-resnet-50"</span>
 <span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">apply_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;det_predictions&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">apply_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">label_field</span><span class="o">=</span><span class="s2">"det_predictions"</span><span class="p">)</span>
 
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
 </pre></div>
@@ -467,16 +290,16 @@ convert the predictions to <a class="reference internal" href="../user_guide/usi
 
 <span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">AutoModelForObjectDetection</span><span class="p">,</span> <span class="n">AutoProcessor</span>
 <span class="n">transformers_model</span> <span class="o">=</span> <span class="n">AutoModelForObjectDetection</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span>
-    <span class="s2">&quot;microsoft/conditional-detr-resnet-50&quot;</span>
+    <span class="s2">"microsoft/conditional-detr-resnet-50"</span>
 <span class="p">)</span>
 <span class="n">processor</span> <span class="o">=</span> <span class="n">AutoProcessor</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span>
-    <span class="s2">&quot;microsoft/conditional-detr-resnet-50&quot;</span>
+    <span class="s2">"microsoft/conditional-detr-resnet-50"</span>
 <span class="p">)</span>
 <span class="n">id2label</span> <span class="o">=</span> <span class="n">transformers_model</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">id2label</span>
 
 <span class="k">for</span> <span class="n">sample</span> <span class="ow">in</span> <span class="n">dataset</span><span class="o">.</span><span class="n">iter_samples</span><span class="p">(</span><span class="n">progress</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
     <span class="n">image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">sample</span><span class="o">.</span><span class="n">filepath</span><span class="p">)</span>
-    <span class="n">inputs</span> <span class="o">=</span> <span class="n">processor</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s2">&quot;pt&quot;</span><span class="p">)</span>
+    <span class="n">inputs</span> <span class="o">=</span> <span class="n">processor</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s2">"pt"</span><span class="p">)</span>
     <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
         <span class="n">outputs</span> <span class="o">=</span> <span class="n">transformers_model</span><span class="p">(</span><span class="o">**</span><span class="n">inputs</span><span class="p">)</span>
 
@@ -484,7 +307,7 @@ convert the predictions to <a class="reference internal" href="../user_guide/usi
     <span class="n">result</span> <span class="o">=</span> <span class="n">processor</span><span class="o">.</span><span class="n">post_process_object_detection</span><span class="p">(</span>
         <span class="n">outputs</span><span class="p">,</span> <span class="n">target_sizes</span><span class="o">=</span><span class="n">target_sizes</span>
     <span class="p">)</span>
-    <span class="n">sample</span><span class="p">[</span><span class="s2">&quot;det_predictions&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fout</span><span class="o">.</span><span class="n">to_detections</span><span class="p">(</span>
+    <span class="n">sample</span><span class="p">[</span><span class="s2">"det_predictions"</span><span class="p">]</span> <span class="o">=</span> <span class="n">fout</span><span class="o">.</span><span class="n">to_detections</span><span class="p">(</span>
         <span class="n">result</span><span class="p">,</span> <span class="n">id2label</span><span class="p">,</span> <span class="p">[</span><span class="n">image</span><span class="o">.</span><span class="n">size</span><span class="p">]</span>
     <span class="p">)</span>
     <span class="n">sample</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
@@ -493,16 +316,16 @@ convert the predictions to <a class="reference internal" href="../user_guide/usi
 <p>Finally, you can load <code class="code docutils literal notranslate"><span class="pre">transformers</span></code> models directly from the
 <a class="reference internal" href="../model_zoo/index.html#model-zoo"><span class="std std-ref">FiftyOne Model Zoo</span></a>!</p>
 <p>To load a <code class="code docutils literal notranslate"><span class="pre">transformers</span></code> detection model from the zoo, specify
-<code class="code docutils literal notranslate"><span class="pre">&quot;detection-transformer-torch&quot;</span></code> as the first argument, and pass in the model’s
+<code class="code docutils literal notranslate"><span class="pre">"detection-transformer-torch"</span></code> as the first argument, and pass in the model’s
 name or path as a keyword argument:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
 <span class="n">model</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_model</span><span class="p">(</span>
-    <span class="s2">&quot;detection-transformer-torch&quot;</span><span class="p">,</span>
-    <span class="n">name_or_path</span><span class="o">=</span><span class="s2">&quot;facebook/detr-resnet-50&quot;</span><span class="p">,</span>  <span class="c1"># HF model name or path</span>
+    <span class="s2">"detection-transformer-torch"</span><span class="p">,</span>
+    <span class="n">name_or_path</span><span class="o">=</span><span class="s2">"facebook/detr-resnet-50"</span><span class="p">,</span>  <span class="c1"># HF model name or path</span>
 <span class="p">)</span>
 
-<span class="n">dataset</span><span class="o">.</span><span class="n">apply_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;detr&quot;</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">apply_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">label_field</span><span class="o">=</span><span class="s2">"detr"</span><span class="p">)</span>
 
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
 </pre></div>
@@ -517,29 +340,29 @@ method:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mask2Former</span>
 <span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">Mask2FormerForUniversalSegmentation</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">Mask2FormerForUniversalSegmentation</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span>
-    <span class="s2">&quot;facebook/mask2former-swin-small-coco-instance&quot;</span>
+    <span class="s2">"facebook/mask2former-swin-small-coco-instance"</span>
 <span class="p">)</span>
 
 <span class="c1"># Mask2Former</span>
 <span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">MaskFormerForInstanceSegmentation</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">MaskFormerForInstanceSegmentation</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span>
-    <span class="s2">&quot;facebook/maskformer-swin-base-ade&quot;</span>
+    <span class="s2">"facebook/maskformer-swin-base-ade"</span>
 <span class="p">)</span>
 
 <span class="c1"># Segformer</span>
 <span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">SegformerForSemanticSegmentation</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">SegformerForSemanticSegmentation</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span>
-    <span class="s2">&quot;nvidia/segformer-b0-finetuned-ade-512-512&quot;</span>
+    <span class="s2">"nvidia/segformer-b0-finetuned-ade-512-512"</span>
 <span class="p">)</span>
 
 <span class="c1"># Any auto model</span>
 <span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">AutoModelForSemanticSegmentation</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">AutoModelForSemanticSegmentation</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span>
-    <span class="s2">&quot;Intel/dpt-large-ade&quot;</span>
+    <span class="s2">"Intel/dpt-large-ade"</span>
 <span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">apply_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;seg_predictions&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">apply_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">label_field</span><span class="o">=</span><span class="s2">"seg_predictions"</span><span class="p">)</span>
 <span class="n">dataset</span><span class="o">.</span><span class="n">default_mask_targets</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">id2label</span>
 
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
@@ -554,13 +377,13 @@ to convert the predictions to <a class="reference internal" href="../user_guide/
 
 <span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">AutoModelForSemanticSegmentation</span><span class="p">,</span> <span class="n">AutoProcessor</span>
 <span class="n">transformers_model</span> <span class="o">=</span> <span class="n">AutoModelForSemanticSegmentation</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span>
-    <span class="s2">&quot;Intel/dpt-large-ade&quot;</span>
+    <span class="s2">"Intel/dpt-large-ade"</span>
 <span class="p">)</span>
-<span class="n">processor</span> <span class="o">=</span> <span class="n">AutoProcessor</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">&quot;Intel/dpt-large-ade&quot;</span><span class="p">)</span>
+<span class="n">processor</span> <span class="o">=</span> <span class="n">AutoProcessor</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">"Intel/dpt-large-ade"</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">sample</span> <span class="ow">in</span> <span class="n">dataset</span><span class="o">.</span><span class="n">iter_samples</span><span class="p">(</span><span class="n">progress</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
     <span class="n">image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">sample</span><span class="o">.</span><span class="n">filepath</span><span class="p">)</span>
-    <span class="n">inputs</span> <span class="o">=</span> <span class="n">processor</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s2">&quot;pt&quot;</span><span class="p">)</span>
+    <span class="n">inputs</span> <span class="o">=</span> <span class="n">processor</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s2">"pt"</span><span class="p">)</span>
     <span class="n">target_size</span> <span class="o">=</span> <span class="p">[</span><span class="n">image</span><span class="o">.</span><span class="n">size</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
     <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
         <span class="n">output</span> <span class="o">=</span> <span class="n">transformers_model</span><span class="p">(</span><span class="o">**</span><span class="n">inputs</span><span class="p">)</span>
@@ -568,23 +391,23 @@ to convert the predictions to <a class="reference internal" href="../user_guide/
     <span class="n">result</span> <span class="o">=</span> <span class="n">processor</span><span class="o">.</span><span class="n">post_process_semantic_segmentation</span><span class="p">(</span>
         <span class="n">output</span><span class="p">,</span> <span class="n">target_sizes</span><span class="o">=</span><span class="n">target_size</span>
     <span class="p">)</span>
-    <span class="n">sample</span><span class="p">[</span><span class="s2">&quot;seg_predictions&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fout</span><span class="o">.</span><span class="n">to_segmentation</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+    <span class="n">sample</span><span class="p">[</span><span class="s2">"seg_predictions"</span><span class="p">]</span> <span class="o">=</span> <span class="n">fout</span><span class="o">.</span><span class="n">to_segmentation</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
     <span class="n">sample</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Finally, you can load <code class="code docutils literal notranslate"><span class="pre">transformers</span></code> models directly from the
 <a class="reference internal" href="../model_zoo/index.html#model-zoo"><span class="std std-ref">FiftyOne Model Zoo</span></a>!</p>
 <p>To load a <code class="code docutils literal notranslate"><span class="pre">transformers</span></code> semantic segmentation model from the zoo, specify
-<code class="code docutils literal notranslate"><span class="pre">&quot;segmentation-transformer-torch&quot;</span></code> as the first argument, and pass in the
+<code class="code docutils literal notranslate"><span class="pre">"segmentation-transformer-torch"</span></code> as the first argument, and pass in the
 model’s name or path as a keyword argument:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
 <span class="n">model</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_model</span><span class="p">(</span>
-    <span class="s2">&quot;segmentation-transformer-torch&quot;</span><span class="p">,</span>
-    <span class="n">name_or_path</span><span class="o">=</span><span class="s2">&quot;nvidia/segformer-b0-finetuned-ade-512-512&quot;</span><span class="p">,</span>
+    <span class="s2">"segmentation-transformer-torch"</span><span class="p">,</span>
+    <span class="n">name_or_path</span><span class="o">=</span><span class="s2">"nvidia/segformer-b0-finetuned-ade-512-512"</span><span class="p">,</span>
 <span class="p">)</span>
 
-<span class="n">dataset</span><span class="o">.</span><span class="n">apply_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;segformer&quot;</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">apply_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">label_field</span><span class="o">=</span><span class="s2">"segformer"</span><span class="p">)</span>
 
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
 </pre></div>
@@ -597,22 +420,22 @@ FiftyOne dataset’s <a class="reference internal" href="../api/fiftyone.core.co
 method:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># DPT</span>
 <span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">DPTForDepthEstimation</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">DPTForDepthEstimation</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">&quot;Intel/dpt-large&quot;</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">DPTForDepthEstimation</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">"Intel/dpt-large"</span><span class="p">)</span>
 
 <span class="c1"># GLPN</span>
 <span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">GLPNForDepthEstimation</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">GLPNForDepthEstimation</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">&quot;vinvino02/glpn-kitti&quot;</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">GLPNForDepthEstimation</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">"vinvino02/glpn-kitti"</span><span class="p">)</span>
 
 <span class="c1"># Depth Anything</span>
 <span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">AutoModelForDepthEstimation</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">AutoModelForDepthEstimation</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">&quot;LiheYoung/depth-anything-small-hf&quot;</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">AutoModelForDepthEstimation</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">"LiheYoung/depth-anything-small-hf"</span><span class="p">)</span>
 
 <span class="c1"># Depth Anything-V2</span>
 <span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">AutoModelForDepthEstimation</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">AutoModelForDepthEstimation</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">&quot;depth-anything/Depth-Anything-V2-Small-hf&quot;</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">AutoModelForDepthEstimation</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">"depth-anything/Depth-Anything-V2-Small-hf"</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">apply_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;depth_predictions&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">apply_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">label_field</span><span class="o">=</span><span class="s2">"depth_predictions"</span><span class="p">)</span>
 
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
 </pre></div>
@@ -620,16 +443,16 @@ method:</p>
 <p>Alternatively, you can load <code class="code docutils literal notranslate"><span class="pre">transformers</span></code> depth estimation models directly from
 the <a class="reference internal" href="../model_zoo/index.html#model-zoo"><span class="std std-ref">FiftyOne Model Zoo</span></a>!</p>
 <p>To load a <code class="code docutils literal notranslate"><span class="pre">transformers</span></code> depth estimation model from the zoo, specify
-<code class="code docutils literal notranslate"><span class="pre">&quot;depth-estimation-transformer-torch&quot;</span></code> as the first argument, and pass in the
+<code class="code docutils literal notranslate"><span class="pre">"depth-estimation-transformer-torch"</span></code> as the first argument, and pass in the
 model’s name or path as a keyword argument:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
 <span class="n">model</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_model</span><span class="p">(</span>
-    <span class="s2">&quot;depth-estimation-transformer-torch&quot;</span><span class="p">,</span>
-    <span class="n">name_or_path</span><span class="o">=</span><span class="s2">&quot;Intel/dpt-hybrid-midas&quot;</span><span class="p">,</span>
+    <span class="s2">"depth-estimation-transformer-torch"</span><span class="p">,</span>
+    <span class="n">name_or_path</span><span class="o">=</span><span class="s2">"Intel/dpt-hybrid-midas"</span><span class="p">,</span>
 <span class="p">)</span>
 
-<span class="n">dataset</span><span class="o">.</span><span class="n">apply_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;dpt_hybrid_midas&quot;</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">apply_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">label_field</span><span class="o">=</span><span class="s2">"dpt_hybrid_midas"</span><span class="p">)</span>
 
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
 </pre></div>
@@ -640,21 +463,21 @@ model’s name or path as a keyword argument:</p>
 <p>Zero-shot image classification models from <code class="code docutils literal notranslate"><span class="pre">transformers</span></code> can be loaded
 directly from the <a class="reference internal" href="../model_zoo/index.html#model-zoo"><span class="std std-ref">FiftyOne Model Zoo</span></a>!</p>
 <p>To load a  <code class="code docutils literal notranslate"><span class="pre">transformers</span></code> zero-shot classification model from the zoo, specify
-<code class="code docutils literal notranslate"><span class="pre">&quot;zero-shot-classification-transformer-torch&quot;</span></code> as the first argument, and pass
+<code class="code docutils literal notranslate"><span class="pre">"zero-shot-classification-transformer-torch"</span></code> as the first argument, and pass
 in the model’s name or path as a keyword argument:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
 <span class="n">model</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_model</span><span class="p">(</span>
-    <span class="s2">&quot;zero-shot-classification-transformer-torch&quot;</span><span class="p">,</span>
-    <span class="n">name_or_path</span><span class="o">=</span><span class="s2">&quot;BAAI/AltCLIP&quot;</span><span class="p">,</span>  <span class="c1"># HF model name or path</span>
-    <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;cat&quot;</span><span class="p">,</span> <span class="s2">&quot;dog&quot;</span><span class="p">,</span> <span class="s2">&quot;bird&quot;</span><span class="p">,</span> <span class="s2">&quot;fish&quot;</span><span class="p">,</span> <span class="s2">&quot;turtle&quot;</span><span class="p">],</span>  <span class="c1"># optional</span>
+    <span class="s2">"zero-shot-classification-transformer-torch"</span><span class="p">,</span>
+    <span class="n">name_or_path</span><span class="o">=</span><span class="s2">"BAAI/AltCLIP"</span><span class="p">,</span>  <span class="c1"># HF model name or path</span>
+    <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">"cat"</span><span class="p">,</span> <span class="s2">"dog"</span><span class="p">,</span> <span class="s2">"bird"</span><span class="p">,</span> <span class="s2">"fish"</span><span class="p">,</span> <span class="s2">"turtle"</span><span class="p">],</span>  <span class="c1"># optional</span>
 <span class="p">)</span>
 </pre></div>
 </div>
 <p>Once loaded, you can pass the model directly to your FiftyOne dataset’s
 <a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.apply_model" title="fiftyone.core.collections.SampleCollection.apply_model"><code class="xref py py-meth docutils literal notranslate"><span class="pre">apply_model()</span></code></a>
 method:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">apply_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;altclip&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">apply_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">label_field</span><span class="o">=</span><span class="s2">"altclip"</span><span class="p">)</span>
 
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
 </pre></div>
@@ -664,20 +487,20 @@ models as follows:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
 <span class="n">model</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_model</span><span class="p">(</span>
-    <span class="s2">&quot;zero-shot-classification-transformer-torch&quot;</span><span class="p">,</span>
-    <span class="n">name_or_path</span><span class="o">=</span><span class="s2">&quot;BAAI/AltCLIP&quot;</span><span class="p">,</span>  <span class="c1"># HF model name or path</span>
+    <span class="s2">"zero-shot-classification-transformer-torch"</span><span class="p">,</span>
+    <span class="n">name_or_path</span><span class="o">=</span><span class="s2">"BAAI/AltCLIP"</span><span class="p">,</span>  <span class="c1"># HF model name or path</span>
 <span class="p">)</span>
 
-<span class="n">dataset</span><span class="o">.</span><span class="n">compute_embeddings</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">embeddings_field</span><span class="o">=</span><span class="s2">&quot;altclip_embeddings&quot;</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">compute_embeddings</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">embeddings_field</span><span class="o">=</span><span class="s2">"altclip_embeddings"</span><span class="p">)</span>
 
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>You can also change the label classes of zero shot models any time by setting
 the <code class="code docutils literal notranslate"><span class="pre">classes</span></code> attribute of the model:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">classes</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;cat&quot;</span><span class="p">,</span> <span class="s2">&quot;dog&quot;</span><span class="p">,</span> <span class="s2">&quot;bird&quot;</span><span class="p">,</span> <span class="s2">&quot;fish&quot;</span><span class="p">,</span> <span class="s2">&quot;turtle&quot;</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">classes</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"cat"</span><span class="p">,</span> <span class="s2">"dog"</span><span class="p">,</span> <span class="s2">"bird"</span><span class="p">,</span> <span class="s2">"fish"</span><span class="p">,</span> <span class="s2">"turtle"</span><span class="p">]</span>
 
-<span class="n">dataset</span><span class="o">.</span><span class="n">apply_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;altclip&quot;</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">apply_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">label_field</span><span class="o">=</span><span class="s2">"altclip"</span><span class="p">)</span>
 
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
 </pre></div>
@@ -690,12 +513,12 @@ FiftyOne format:</p>
 
 <span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">CLIPSegModel</span>
 <span class="n">transformers_model</span> <span class="o">=</span> <span class="n">CLIPSegModel</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span>
-    <span class="s2">&quot;CIDAS/clipseg-rd64-refined&quot;</span>
+    <span class="s2">"CIDAS/clipseg-rd64-refined"</span>
 <span class="p">)</span>
 
 <span class="n">model</span> <span class="o">=</span> <span class="n">fout</span><span class="o">.</span><span class="n">convert_transformers_model</span><span class="p">(</span>
     <span class="n">transformers_model</span><span class="p">,</span>
-    <span class="n">task</span><span class="o">=</span><span class="s2">&quot;image-classification&quot;</span><span class="p">,</span>  <span class="c1"># or &quot;semantic-segmentation&quot;</span>
+    <span class="n">task</span><span class="o">=</span><span class="s2">"image-classification"</span><span class="p">,</span>  <span class="c1"># or "semantic-segmentation"</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -710,15 +533,15 @@ recommended that you specify the task type when converting the model.</p>
 <p>Zero-shot object detection models from <code class="code docutils literal notranslate"><span class="pre">transformers</span></code> can be loaded directly
 from the <a class="reference internal" href="../model_zoo/index.html#model-zoo"><span class="std std-ref">FiftyOne Model Zoo</span></a>!</p>
 <p>To load a <code class="code docutils literal notranslate"><span class="pre">transformers</span></code> zero-shot object detection model from the zoo, specify
-<code class="code docutils literal notranslate"><span class="pre">&quot;zero-shot-detection-transformer-torch&quot;</span></code> as the first argument, and pass
+<code class="code docutils literal notranslate"><span class="pre">"zero-shot-detection-transformer-torch"</span></code> as the first argument, and pass
 in the model’s name or path as a keyword argument. You can optionally pass in a
 list of label classes as a keyword argument <code class="code docutils literal notranslate"><span class="pre">classes</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
 <span class="n">model</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_model</span><span class="p">(</span>
-    <span class="s2">&quot;zero-shot-detection-transformer-torch&quot;</span><span class="p">,</span>
-    <span class="n">name_or_path</span><span class="o">=</span><span class="s2">&quot;google/owlvit-base-patch32&quot;</span><span class="p">,</span>  <span class="c1"># HF model name or path</span>
-    <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;cat&quot;</span><span class="p">,</span> <span class="s2">&quot;dog&quot;</span><span class="p">,</span> <span class="s2">&quot;bird&quot;</span><span class="p">,</span> <span class="s2">&quot;fish&quot;</span><span class="p">,</span> <span class="s2">&quot;turtle&quot;</span><span class="p">],</span>  <span class="c1"># optional</span>
+    <span class="s2">"zero-shot-detection-transformer-torch"</span><span class="p">,</span>
+    <span class="n">name_or_path</span><span class="o">=</span><span class="s2">"google/owlvit-base-patch32"</span><span class="p">,</span>  <span class="c1"># HF model name or path</span>
+    <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">"cat"</span><span class="p">,</span> <span class="s2">"dog"</span><span class="p">,</span> <span class="s2">"bird"</span><span class="p">,</span> <span class="s2">"fish"</span><span class="p">,</span> <span class="s2">"turtle"</span><span class="p">],</span>  <span class="c1"># optional</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -730,12 +553,12 @@ FiftyOne format:</p>
 
 <span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">OwlViTForObjectDetection</span>
 <span class="n">transformers_model</span> <span class="o">=</span> <span class="n">OwlViTForObjectDetection</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span>
-    <span class="s2">&quot;google/owlvit-base-patch32&quot;</span>
+    <span class="s2">"google/owlvit-base-patch32"</span>
 <span class="p">)</span>
 
 <span class="n">model</span> <span class="o">=</span> <span class="n">fout</span><span class="o">.</span><span class="n">convert_transformers_model</span><span class="p">(</span>
     <span class="n">transformers_model</span><span class="p">,</span>
-    <span class="n">task</span><span class="o">=</span><span class="s2">&quot;object-detection&quot;</span><span class="p">,</span>
+    <span class="n">task</span><span class="o">=</span><span class="s2">"object-detection"</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -750,12 +573,12 @@ models for zero-shot object detection:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
 <span class="n">model</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_model</span><span class="p">(</span>
-    <span class="s2">&quot;zero-shot-detection-transformer-torch&quot;</span><span class="p">,</span>
-    <span class="n">name_or_path</span><span class="o">=</span><span class="s2">&quot;IDEA-Research/grounding-dino-tiny&quot;</span><span class="p">,</span>
-    <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;cat&quot;</span><span class="p">],</span>
+    <span class="s2">"zero-shot-detection-transformer-torch"</span><span class="p">,</span>
+    <span class="n">name_or_path</span><span class="o">=</span><span class="s2">"IDEA-Research/grounding-dino-tiny"</span><span class="p">,</span>
+    <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">"cat"</span><span class="p">],</span>
 <span class="p">)</span>
 
-<span class="n">dataset</span><span class="o">.</span><span class="n">apply_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;cats&quot;</span><span class="p">,</span> <span class="n">confidence_thresh</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">apply_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">label_field</span><span class="o">=</span><span class="s2">"cats"</span><span class="p">,</span> <span class="n">confidence_thresh</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -772,7 +595,7 @@ models only accept a single class.</p>
 <p>When using
 <a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.apply_model" title="fiftyone.core.collections.SampleCollection.apply_model"><code class="xref py py-meth docutils literal notranslate"><span class="pre">apply_model()</span></code></a>,
 you can request batch inference by passing the optional <code class="code docutils literal notranslate"><span class="pre">batch_size</span></code> parameter:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">apply_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;det_predictions&quot;</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">apply_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">label_field</span><span class="o">=</span><span class="s2">"det_predictions"</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The manual inference loops can be also executed using batch inference via the
@@ -783,12 +606,12 @@ pattern below:</p>
 <span class="c1"># Load a detection model and its corresponding processor</span>
 <span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">YolosForObjectDetection</span><span class="p">,</span> <span class="n">AutoProcessor</span>
 <span class="n">transformers_model</span> <span class="o">=</span> <span class="n">YolosForObjectDetection</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span>
-    <span class="s2">&quot;hustvl/yolos-tiny&quot;</span>
+    <span class="s2">"hustvl/yolos-tiny"</span>
 <span class="p">)</span>
-<span class="n">processor</span> <span class="o">=</span> <span class="n">AutoProcessor</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">&quot;hustvl/yolos-tiny&quot;</span><span class="p">)</span>
+<span class="n">processor</span> <span class="o">=</span> <span class="n">AutoProcessor</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">"hustvl/yolos-tiny"</span><span class="p">)</span>
 <span class="n">id2label</span> <span class="o">=</span> <span class="n">transformers_model</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">id2label</span>
 
-<span class="n">filepaths</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;filepath&quot;</span><span class="p">)</span>
+<span class="n">filepaths</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">"filepath"</span><span class="p">)</span>
 <span class="n">batch_size</span> <span class="o">=</span> <span class="mi">16</span>
 
 <span class="n">predictions</span> <span class="o">=</span> <span class="p">[]</span>
@@ -796,7 +619,7 @@ pattern below:</p>
     <span class="n">images</span> <span class="o">=</span> <span class="p">[</span><span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">paths</span><span class="p">]</span>
     <span class="n">image_sizes</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">.</span><span class="n">size</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">images</span><span class="p">]</span>
     <span class="n">target_sizes</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="n">image</span><span class="o">.</span><span class="n">size</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">image</span> <span class="ow">in</span> <span class="n">images</span><span class="p">])</span>
-    <span class="n">inputs</span> <span class="o">=</span> <span class="n">processor</span><span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s2">&quot;pt&quot;</span><span class="p">)</span>
+    <span class="n">inputs</span> <span class="o">=</span> <span class="n">processor</span><span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s2">"pt"</span><span class="p">)</span>
     <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
         <span class="n">outputs</span> <span class="o">=</span> <span class="n">transformers_model</span><span class="p">(</span><span class="o">**</span><span class="n">inputs</span><span class="p">)</span>
 
@@ -805,7 +628,7 @@ pattern below:</p>
     <span class="p">)</span>
     <span class="n">predictions</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">fout</span><span class="o">.</span><span class="n">to_detections</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">id2label</span><span class="p">,</span> <span class="n">image_sizes</span><span class="p">))</span>
 
-<span class="n">dataset</span><span class="o">.</span><span class="n">set_values</span><span class="p">(</span><span class="s2">&quot;det_predictions&quot;</span><span class="p">,</span> <span class="n">predictions</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">set_values</span><span class="p">(</span><span class="s2">"det_predictions"</span><span class="p">,</span> <span class="n">predictions</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -837,41 +660,41 @@ method:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Embeddings from base model</span>
 <span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">BeitModel</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">BeitModel</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span>
-    <span class="s2">&quot;microsoft/beit-base-patch16-224-pt22k&quot;</span>
+    <span class="s2">"microsoft/beit-base-patch16-224-pt22k"</span>
 <span class="p">)</span>
 
 <span class="c1"># Embeddings from classification model</span>
 <span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">BeitForImageClassification</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">BeitForImageClassification</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span>
-    <span class="s2">&quot;microsoft/beit-base-patch16-224&quot;</span>
+    <span class="s2">"microsoft/beit-base-patch16-224"</span>
 <span class="p">)</span>
 
 <span class="c1"># Embeddings from detection model</span>
 <span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">DetaForObjectDetection</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">DetaForObjectDetection</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span>
-    <span class="s2">&quot;jozhang97/deta-swin-large-o365&quot;</span>
+    <span class="s2">"jozhang97/deta-swin-large-o365"</span>
 <span class="p">)</span>
 
 <span class="c1"># Embeddings from zero-shot classification model</span>
 <span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">AltCLIPModel</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">AltCLIPModel</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span>
-    <span class="s2">&quot;BAAI/AltCLIP&quot;</span>
+    <span class="s2">"BAAI/AltCLIP"</span>
 <span class="p">)</span>
 
 <span class="c1"># Embeddings from zero-shot detection model</span>
 <span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">OwlViTForObjectDetection</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">OwlViTForObjectDetection</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span>
-    <span class="s2">&quot;google/owlvit-base-patch32&quot;</span>
+    <span class="s2">"google/owlvit-base-patch32"</span>
 <span class="p">)</span>
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">,</span> <span class="n">max_samples</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"quickstart"</span><span class="p">,</span> <span class="n">max_samples</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
 <span class="n">dataset</span><span class="o">.</span><span class="n">select_fields</span><span class="p">()</span><span class="o">.</span><span class="n">keep_fields</span><span class="p">()</span>
 
-<span class="n">dataset</span><span class="o">.</span><span class="n">compute_embeddings</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">embeddings_field</span><span class="o">=</span><span class="s2">&quot;embeddings&quot;</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">compute_embeddings</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">embeddings_field</span><span class="o">=</span><span class="s2">"embeddings"</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Alternatively, you can use the
@@ -886,7 +709,7 @@ see if the model can be used to generate embeddings:</p>
 
 <span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">BeitModel</span>
 <span class="n">transformers_model</span> <span class="o">=</span> <span class="n">BeitModel</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span>
-    <span class="s2">&quot;microsoft/beit-base-patch16-224-pt22k&quot;</span>
+    <span class="s2">"microsoft/beit-base-patch16-224-pt22k"</span>
 <span class="p">)</span>
 
 <span class="n">model</span> <span class="o">=</span> <span class="n">fout</span><span class="o">.</span><span class="n">convert_transformers_model</span><span class="p">(</span><span class="n">transformers_model</span><span class="p">)</span>
@@ -905,15 +728,15 @@ can also be used to compute embeddings for text:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">,</span> <span class="n">max_samples</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"quickstart"</span><span class="p">,</span> <span class="n">max_samples</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
 <span class="n">dataset</span><span class="o">.</span><span class="n">select_fields</span><span class="p">()</span><span class="o">.</span><span class="n">keep_fields</span><span class="p">()</span>
 
 <span class="n">model</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_model</span><span class="p">(</span>
-    <span class="s2">&quot;zero-shot-classification-transformer-torch&quot;</span><span class="p">,</span>
-    <span class="n">name_or_path</span><span class="o">=</span><span class="s2">&quot;BAAI/AltCLIP&quot;</span><span class="p">,</span>
+    <span class="s2">"zero-shot-classification-transformer-torch"</span><span class="p">,</span>
+    <span class="n">name_or_path</span><span class="o">=</span><span class="s2">"BAAI/AltCLIP"</span><span class="p">,</span>
 <span class="p">)</span>
 
-<span class="n">embedding</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">embed_prompt</span><span class="p">(</span><span class="s2">&quot;a photo of a dog&quot;</span><span class="p">)</span>
+<span class="n">embedding</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">embed_prompt</span><span class="p">(</span><span class="s2">"a photo of a dog"</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>You can check whether a model supports text embeddings by checking the
@@ -923,15 +746,15 @@ property:</p>
 
 <span class="c1"># A zero-shot model that supports text embeddings</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_model</span><span class="p">(</span>
-    <span class="s2">&quot;zero-shot-classification-transformer-torch&quot;</span><span class="p">,</span>
-    <span class="n">name_or_path</span><span class="o">=</span><span class="s2">&quot;BAAI/AltCLIP&quot;</span><span class="p">,</span>
+    <span class="s2">"zero-shot-classification-transformer-torch"</span><span class="p">,</span>
+    <span class="n">name_or_path</span><span class="o">=</span><span class="s2">"BAAI/AltCLIP"</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">can_embed_prompts</span><span class="p">)</span>  <span class="c1"># True</span>
 
 <span class="c1"># A classification model that does not support text embeddings</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_model</span><span class="p">(</span>
-    <span class="s2">&quot;classification-transformer-torch&quot;</span><span class="p">,</span>
-    <span class="n">name_or_path</span><span class="o">=</span><span class="s2">&quot;microsoft/beit-base-patch16-224&quot;</span><span class="p">,</span>
+    <span class="s2">"classification-transformer-torch"</span><span class="p">,</span>
+    <span class="n">name_or_path</span><span class="o">=</span><span class="s2">"microsoft/beit-base-patch16-224"</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">can_embed_prompts</span><span class="p">)</span>  <span class="c1"># False</span>
 </pre></div>
@@ -942,7 +765,7 @@ property:</p>
 <p>You can request batch inference by passing the optional <code class="code docutils literal notranslate"><span class="pre">batch_size</span></code> parameter
 to
 <a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.compute_embeddings" title="fiftyone.core.collections.SampleCollection.compute_embeddings"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_embeddings()</span></code></a>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">compute_embeddings</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">embeddings_field</span><span class="o">=</span><span class="s2">&quot;embeddings&quot;</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">compute_embeddings</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">embeddings_field</span><span class="o">=</span><span class="s2">"embeddings"</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -956,17 +779,17 @@ method:</p>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 <span class="kn">import</span> <span class="nn">fiftyone.utils.transformers</span> <span class="k">as</span> <span class="nn">fout</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">,</span> <span class="n">max_samples</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"quickstart"</span><span class="p">,</span> <span class="n">max_samples</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
 
 <span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">BeitModel</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">BeitModel</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span>
-    <span class="s2">&quot;microsoft/beit-base-patch16-224-pt22k&quot;</span>
+    <span class="s2">"microsoft/beit-base-patch16-224-pt22k"</span>
 <span class="p">)</span>
 
 <span class="n">dataset</span><span class="o">.</span><span class="n">compute_patch_embeddings</span><span class="p">(</span>
     <span class="n">model</span><span class="p">,</span>
-    <span class="n">patches_field</span><span class="o">=</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span>
-    <span class="n">embeddings_field</span><span class="o">=</span><span class="s2">&quot;embeddings&quot;</span><span class="p">,</span>
+    <span class="n">patches_field</span><span class="o">=</span><span class="s2">"ground_truth"</span><span class="p">,</span>
+    <span class="n">embeddings_field</span><span class="o">=</span><span class="s2">"embeddings"</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -982,43 +805,43 @@ passed to <a class="reference internal" href="../brain.html#fiftyone-brain"><spa
 <span class="kn">import</span> <span class="nn">fiftyone.brain</span> <span class="k">as</span> <span class="nn">fob</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">,</span> <span class="n">max_samples</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"quickstart"</span><span class="p">,</span> <span class="n">max_samples</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
 
 <span class="c1"># Classification model</span>
 <span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">BeitModel</span>
 <span class="n">transformers_model</span> <span class="o">=</span> <span class="n">BeitModel</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span>
-    <span class="s2">&quot;microsoft/beit-base-patch16-224-pt22k&quot;</span>
+    <span class="s2">"microsoft/beit-base-patch16-224-pt22k"</span>
 <span class="p">)</span>
 
 <span class="c1"># Detection model</span>
 <span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">DetaForObjectDetection</span>
 <span class="n">transformers_model</span> <span class="o">=</span> <span class="n">DetaForObjectDetection</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span>
-    <span class="s2">&quot;jozhang97/deta-swin-large&quot;</span>
+    <span class="s2">"jozhang97/deta-swin-large"</span>
 <span class="p">)</span>
 
 <span class="c1"># Zero-shot classification model</span>
 <span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">AutoModelForImageClassification</span>
 <span class="n">transformers_model</span> <span class="o">=</span> <span class="n">AutoModelForImageClassification</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span>
-    <span class="s2">&quot;BAAI/AltCLIP&quot;</span>
+    <span class="s2">"BAAI/AltCLIP"</span>
 <span class="p">)</span>
 
 <span class="c1"># Zero-shot detection model</span>
 <span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">OwlViTForObjectDetection</span>
 <span class="n">transformers_model</span> <span class="o">=</span> <span class="n">OwlViTForObjectDetection</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span>
-    <span class="s2">&quot;google/owlvit-base-patch32&quot;</span>
+    <span class="s2">"google/owlvit-base-patch32"</span>
 <span class="p">)</span>
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Option 1: directly pass `transformers` model</span>
-<span class="n">fob</span><span class="o">.</span><span class="n">compute_similarity</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">transformers_model</span><span class="p">,</span> <span class="n">brain_key</span><span class="o">=</span><span class="s2">&quot;sim1&quot;</span><span class="p">)</span>
-<span class="n">fob</span><span class="o">.</span><span class="n">compute_visualization</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">transformers_model</span><span class="p">,</span> <span class="n">brain_key</span><span class="o">=</span><span class="s2">&quot;vis1&quot;</span><span class="p">)</span>
+<span class="n">fob</span><span class="o">.</span><span class="n">compute_similarity</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">transformers_model</span><span class="p">,</span> <span class="n">brain_key</span><span class="o">=</span><span class="s2">"sim1"</span><span class="p">)</span>
+<span class="n">fob</span><span class="o">.</span><span class="n">compute_visualization</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">transformers_model</span><span class="p">,</span> <span class="n">brain_key</span><span class="o">=</span><span class="s2">"vis1"</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Option 2: pass pre-computed embeddings</span>
-<span class="n">dataset</span><span class="o">.</span><span class="n">compute_embeddings</span><span class="p">(</span><span class="n">transformers_model</span><span class="p">,</span> <span class="n">embeddings_field</span><span class="o">=</span><span class="s2">&quot;embeddings&quot;</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">compute_embeddings</span><span class="p">(</span><span class="n">transformers_model</span><span class="p">,</span> <span class="n">embeddings_field</span><span class="o">=</span><span class="s2">"embeddings"</span><span class="p">)</span>
 
-<span class="n">fob</span><span class="o">.</span><span class="n">compute_similarity</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">embeddings</span><span class="o">=</span><span class="s2">&quot;embeddings&quot;</span><span class="p">,</span> <span class="n">brain_key</span><span class="o">=</span><span class="s2">&quot;sim2&quot;</span><span class="p">)</span>
-<span class="n">fob</span><span class="o">.</span><span class="n">compute_visualization</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">embeddings</span><span class="o">=</span><span class="s2">&quot;embeddings&quot;</span><span class="p">,</span> <span class="n">brain_key</span><span class="o">=</span><span class="s2">&quot;vis2&quot;</span><span class="p">)</span>
+<span class="n">fob</span><span class="o">.</span><span class="n">compute_similarity</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">embeddings</span><span class="o">=</span><span class="s2">"embeddings"</span><span class="p">,</span> <span class="n">brain_key</span><span class="o">=</span><span class="s2">"sim2"</span><span class="p">)</span>
+<span class="n">fob</span><span class="o">.</span><span class="n">compute_visualization</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">embeddings</span><span class="o">=</span><span class="s2">"embeddings"</span><span class="p">,</span> <span class="n">brain_key</span><span class="o">=</span><span class="s2">"vis2"</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Because <code class="code docutils literal notranslate"><span class="pre">transformers</span></code> zero-shot models can be used to embed text, they can
@@ -1032,16 +855,16 @@ model:</p>
 <span class="kn">import</span> <span class="nn">fiftyone.brain</span> <span class="k">as</span> <span class="nn">fob</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">,</span> <span class="n">max_samples</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"quickstart"</span><span class="p">,</span> <span class="n">max_samples</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
 
 <span class="n">fob</span><span class="o">.</span><span class="n">compute_similarity</span><span class="p">(</span>
     <span class="n">dataset</span><span class="p">,</span>
-    <span class="n">brain_key</span><span class="o">=</span><span class="s2">&quot;zero_shot_sim&quot;</span><span class="p">,</span>
-    <span class="n">model</span><span class="o">=</span><span class="s2">&quot;zero-shot-classification-transformer-torch&quot;</span><span class="p">,</span>
-    <span class="n">name_or_path</span><span class="o">=</span><span class="s2">&quot;BAAI/AltCLIP&quot;</span><span class="p">,</span>
+    <span class="n">brain_key</span><span class="o">=</span><span class="s2">"zero_shot_sim"</span><span class="p">,</span>
+    <span class="n">model</span><span class="o">=</span><span class="s2">"zero-shot-classification-transformer-torch"</span><span class="p">,</span>
+    <span class="n">name_or_path</span><span class="o">=</span><span class="s2">"BAAI/AltCLIP"</span><span class="p">,</span>
 <span class="p">)</span>
 
-<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">sort_by_similarity</span><span class="p">(</span><span class="s2">&quot;A photo of a dog&quot;</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">sort_by_similarity</span><span class="p">(</span><span class="s2">"A photo of a dog"</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
 
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">view</span><span class="p">)</span>
 </pre></div>
@@ -1062,7 +885,7 @@ of the most popular vision and multimodal datasets available!</p>
 <a class="reference external" href="https://huggingface.co/docs/hub/index">Hugging Face Hub</a>, you will need the
 <a class="reference external" href="https://github.com/huggingface/huggingface_hub">Hugging Face Hub Python client</a>,
 which you can install via PyPI:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">&quot;huggingface_hub&gt;=0.20.0&quot;</span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">"huggingface_hub&gt;=0.20.0"</span>
 </pre></div>
 </div>
 <p>To push a dataset to the Hub, and in some cases, to access a dataset on
@@ -1074,7 +897,7 @@ logging into your account and navigating to the
 profile. At the bottom of this page, you can create a new token with write or
 read access to the Hub. Once you have your token, you can set it as an
 environment variable:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">HF_TOKEN</span><span class="o">=</span><span class="s2">&quot;&lt;your-token-here&gt;&quot;</span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">HF_TOKEN</span><span class="o">=</span><span class="s2">"&lt;your-token-here&gt;"</span>
 </pre></div>
 </div>
 </div>
@@ -1102,7 +925,7 @@ code. As a starting point, let’s use the example
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"quickstart"</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>To push the dataset to the Hugging Face Hub, all you need to do is call
@@ -1110,7 +933,7 @@ code. As a starting point, let’s use the example
 and the desired <code class="code docutils literal notranslate"><span class="pre">repo_name</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fiftyone.utils.huggingface</span> <span class="kn">import</span> <span class="n">push_to_hub</span>
 
-<span class="n">push_to_hub</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="s2">&quot;my-quickstart-dataset&quot;</span><span class="p">)</span>
+<span class="n">push_to_hub</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="s2">"my-quickstart-dataset"</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>When you run this code, a few things happen:</p>
@@ -1138,10 +961,10 @@ and then passing that in to
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fiftyone.utils.huggingface</span> <span class="kn">import</span> <span class="n">push_to_hub</span>
 
 <span class="c1"># Create view with high confidence predictions</span>
-<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span><span class="s2">&quot;predictions&quot;</span><span class="p">,</span> <span class="n">F</span><span class="p">(</span><span class="s2">&quot;confidence&quot;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">0.95</span><span class="p">)</span>
+<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span><span class="s2">"predictions"</span><span class="p">,</span> <span class="n">F</span><span class="p">(</span><span class="s2">"confidence"</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">0.95</span><span class="p">)</span>
 
 <span class="c1"># Push view to the Hub as a new dataset</span>
-<span class="n">push_to_hub</span><span class="p">(</span><span class="n">view</span><span class="p">,</span> <span class="s2">&quot;my-quickstart-high-conf&quot;</span><span class="p">)</span>
+<span class="n">push_to_hub</span><span class="p">(</span><span class="n">view</span><span class="p">,</span> <span class="s2">"my-quickstart-high-conf"</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>When you do so, note that the view is exported as a new dataset, and other
@@ -1156,7 +979,7 @@ either a relative or absolute path to the preview file on your local machine:</p
 
 <span class="kn">from</span> <span class="nn">fiftyone.utils.huggingface</span> <span class="kn">import</span> <span class="n">push_to_hub</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"quickstart"</span><span class="p">)</span>
 
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
 
@@ -1164,14 +987,14 @@ either a relative or absolute path to the preview file on your local machine:</p
 
 <span class="n">push_to_hub</span><span class="p">(</span>
     <span class="n">dataset</span><span class="p">,</span>
-    <span class="s2">&quot;my-quickstart-with-preview&quot;</span><span class="p">,</span>
-    <span class="n">preview_path</span><span class="o">=</span><span class="s2">&quot;/path/to/preview.jpg&quot;</span>
+    <span class="s2">"my-quickstart-with-preview"</span><span class="p">,</span>
+    <span class="n">preview_path</span><span class="o">=</span><span class="s2">"/path/to/preview.jpg"</span>
 <span class="p">)</span>
 </pre></div>
 </div>
 <p>The preview file will be uploaded to the Hub along with the dataset, and will be
 displayed on the dataset card!</p>
-<img alt="Pushing a dataset to the Hugging Face Hub with a preview image" class="align-center" src="../_images/hf_data_card_preview.jpg" />
+<img alt="Pushing a dataset to the Hugging Face Hub with a preview image" class="align-center" src="../_images/hf_data_card_preview.jpg"/>
 </div>
 <div class="section" id="pushing-large-datasets">
 <span id="huggingface-hub-push-large-dataset"></span><h4>Pushing large datasets<a class="headerlink" href="#pushing-large-datasets" title="Permalink to this headline">¶</a></h4>
@@ -1185,7 +1008,7 @@ argument to <a class="reference internal" href="../api/fiftyone.utils.huggingfac
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fiftyone.utils.huggingface</span> <span class="kn">import</span> <span class="n">push_to_hub</span>
 
 <span class="c1"># Limit to 100 images per directory</span>
-<span class="n">push_to_hub</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="s2">&quot;my-large-dataset&quot;</span><span class="p">,</span> <span class="n">chunk_size</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">push_to_hub</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="s2">"my-large-dataset"</span><span class="p">,</span> <span class="n">chunk_size</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -1217,7 +1040,7 @@ exists. Defaults to <code class="code docutils literal notranslate"><span class=
 <p>For example, to push a dataset to the Hub as private, you can do the following:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fiftyone.utils.huggingface</span> <span class="kn">import</span> <span class="n">push_to_hub</span>
 
-<span class="n">push_to_hub</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="s2">&quot;my-private-dataset&quot;</span><span class="p">,</span> <span class="n">private</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">push_to_hub</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="s2">"my-private-dataset"</span><span class="p">,</span> <span class="n">private</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>You can also specify the <code class="code docutils literal notranslate"><span class="pre">tags</span></code>, <code class="code docutils literal notranslate"><span class="pre">license</span></code>, and <code class="code docutils literal notranslate"><span class="pre">description</span></code> of the dataset,
@@ -1228,20 +1051,20 @@ an MIT license and a description, you can do the following:</p>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 <span class="kn">from</span> <span class="nn">fiftyone.utils.huggingface</span> <span class="kn">import</span> <span class="n">push_to_hub</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart-video&quot;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"quickstart-video"</span><span class="p">)</span>
 
 <span class="n">push_to_hub</span><span class="p">(</span>
     <span class="n">dataset</span><span class="p">,</span>
-    <span class="s2">&quot;my-action-recognition-dataset&quot;</span><span class="p">,</span>
-    <span class="n">tags</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;video&quot;</span><span class="p">,</span> <span class="s2">&quot;action-recognition&quot;</span><span class="p">],</span>
-    <span class="n">license</span><span class="o">=</span><span class="s2">&quot;mit&quot;</span><span class="p">,</span>
-    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;A dataset of videos for action recognition tasks&quot;</span><span class="p">,</span>
+    <span class="s2">"my-action-recognition-dataset"</span><span class="p">,</span>
+    <span class="n">tags</span><span class="o">=</span><span class="p">[</span><span class="s2">"video"</span><span class="p">,</span> <span class="s2">"action-recognition"</span><span class="p">],</span>
+    <span class="n">license</span><span class="o">=</span><span class="s2">"mit"</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">"A dataset of videos for action recognition tasks"</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
 <p>The pushed dataset will be available on the Hub and the dataset page will look
 like this:</p>
-<img alt="Pushing a dataset to the Hugging Face Hub with advanced options" class="align-center" src="../_images/hf_push_advanced_example.jpg" />
+<img alt="Pushing a dataset to the Hugging Face Hub with advanced options" class="align-center" src="../_images/hf_push_advanced_example.jpg"/>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The <code class="code docutils literal notranslate"><span class="pre">tags</span></code> argument can be a string or a list of strings. The tag <code class="code docutils literal notranslate"><span class="pre">fiftyone</span></code>
@@ -1265,15 +1088,15 @@ Creative Commons Attribution 4.0 license, you can do the following:</p>
 <span class="kn">from</span> <span class="nn">fiftyone.utils.huggingface</span> <span class="kn">import</span> <span class="n">push_to_hub</span>
 <span class="kn">import</span> <span class="nn">fiftyone.types</span> <span class="k">as</span> <span class="nn">fot</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"quickstart"</span><span class="p">)</span>
 <span class="n">dataset_type</span> <span class="o">=</span> <span class="n">fot</span><span class="o">.</span><span class="n">dataset_types</span><span class="o">.</span><span class="n">COCODetectionDataset</span>
 
 <span class="n">push_to_hub</span><span class="p">(</span>
     <span class="n">dataset</span><span class="p">,</span>
-    <span class="s2">&quot;quickstart-coco&quot;</span><span class="p">,</span>
+    <span class="s2">"quickstart-coco"</span><span class="p">,</span>
     <span class="n">dataset_type</span><span class="o">=</span><span class="n">dataset_type</span><span class="p">,</span>
-    <span class="n">license</span><span class="o">=</span><span class="s2">&quot;cc-by-4.0&quot;</span><span class="p">,</span>
-    <span class="n">label_fields</span><span class="o">=</span><span class="s2">&quot;*&quot;</span><span class="p">,</span>  <span class="c1"># convert all label fields, not just ground truth</span>
+    <span class="n">license</span><span class="o">=</span><span class="s2">"cc-by-4.0"</span><span class="p">,</span>
+    <span class="n">label_fields</span><span class="o">=</span><span class="s2">"*"</span><span class="p">,</span>  <span class="c1"># convert all label fields, not just ground truth</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -1282,7 +1105,7 @@ Creative Commons Attribution 4.0 license, you can do the following:</p>
 <p>The <code class="code docutils literal notranslate"><span class="pre">label_fields</span></code> argument is used to specify which label fields to convert
 to the specified dataset type. By default when using some dataset formats,
 only the <code class="code docutils literal notranslate"><span class="pre">ground_truth</span></code> label field is converted. If you want to convert all
-label fields, you can set <code class="code docutils literal notranslate"><span class="pre">label_fields=&quot;*&quot;</span></code>. If you want to convert specific
+label fields, you can set <code class="code docutils literal notranslate"><span class="pre">label_fields="*"</span></code>. If you want to convert specific
 label fields, you can pass a list of field names.</p>
 </div>
 <p>Additionally, you can specify the minimum version of FiftyOne required to load
@@ -1293,12 +1116,12 @@ release. For example, to specify that the dataset requires <code class="code doc
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 <span class="kn">from</span> <span class="nn">fiftyone.utils.huggingface</span> <span class="kn">import</span> <span class="n">push_to_hub</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"quickstart"</span><span class="p">)</span>
 
 <span class="n">push_to_hub</span><span class="p">(</span>
     <span class="n">dataset</span><span class="p">,</span>
-    <span class="s2">&quot;quickstart-min-version&quot;</span><span class="p">,</span>
-    <span class="n">min_fiftyone_version</span><span class="o">=</span><span class="s2">&quot;0.23.0&quot;</span><span class="p">,</span>
+    <span class="s2">"quickstart-min-version"</span><span class="p">,</span>
+    <span class="n">min_fiftyone_version</span><span class="o">=</span><span class="s2">"0.23.0"</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -1322,7 +1145,7 @@ load the <a class="reference internal" href="#huggingface-hub-push-dataset-advan
 pushed to the Hub earlier, you can do the following:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fiftyone.utils.huggingface</span> <span class="kn">import</span> <span class="n">load_from_hub</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">load_from_hub</span><span class="p">(</span><span class="s2">&quot;&lt;username-or-org&gt;/my-private-dataset&quot;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">load_from_hub</span><span class="p">(</span><span class="s2">"&lt;username-or-org&gt;/my-private-dataset"</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -1345,7 +1168,7 @@ additional arguments.</p>
 <p>For example, to load the <code class="code docutils literal notranslate"><span class="pre">quickstart</span></code> dataset that we pushed to the Hub earlier,</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fiftyone.utils.huggingface</span> <span class="kn">import</span> <span class="n">load_from_hub</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">load_from_hub</span><span class="p">(</span><span class="s2">&quot;&lt;username&gt;/my-quickstart-dataset&quot;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">load_from_hub</span><span class="p">(</span><span class="s2">"&lt;username&gt;/my-quickstart-dataset"</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>where <code class="code docutils literal notranslate"><span class="pre">&lt;username&gt;</span></code> is your Hugging Face username or organization name.</p>
@@ -1372,8 +1195,8 @@ the path to the local yaml config file:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fiftyone.utils.huggingface</span> <span class="kn">import</span> <span class="n">load_from_hub</span>
 
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">load_from_hub</span><span class="p">(</span>
-    <span class="s2">&quot;ylecun/mnist&quot;</span><span class="p">,</span>
-    <span class="n">config_file</span><span class="o">=</span><span class="s2">&quot;/path/to/mnist.yml&quot;</span><span class="p">,</span>
+    <span class="s2">"ylecun/mnist"</span><span class="p">,</span>
+    <span class="n">config_file</span><span class="o">=</span><span class="s2">"/path/to/mnist.yml"</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -1393,9 +1216,9 @@ and <code class="code docutils literal notranslate"><span class="pre">classifica
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fiftyone.utils.huggingface</span> <span class="kn">import</span> <span class="n">load_from_hub</span>
 
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">load_from_hub</span><span class="p">(</span>
-    <span class="s2">&quot;ylecun/mnist&quot;</span><span class="p">,</span>
-    <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;ParquetFilesDataset&quot;</span><span class="p">,</span>
-    <span class="n">classification_fields</span><span class="o">=</span><span class="s2">&quot;label&quot;</span><span class="p">,</span>
+    <span class="s2">"ylecun/mnist"</span><span class="p">,</span>
+    <span class="nb">format</span><span class="o">=</span><span class="s2">"ParquetFilesDataset"</span><span class="p">,</span>
+    <span class="n">classification_fields</span><span class="o">=</span><span class="s2">"label"</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -1416,27 +1239,27 @@ media field specification, and label field specification.</p>
 <a class="reference internal" href="../user_guide/dataset_creation/datasets.html#supported-import-formats"><span class="std std-ref">common formats</span></a> supported by FiftyOne — just
 pass the name of the format as a string. For example, to load a dataset in the
 <a class="reference internal" href="../user_guide/dataset_creation/datasets.html#cocodetectiondataset-import"><span class="std std-ref">COCO</span></a> format, you can pass
-<code class="code docutils literal notranslate"><span class="pre">format=&quot;COCODetectionDataset&quot;</span></code>. To specify that the dataset is stored in
-Parquet files, you can pass <code class="code docutils literal notranslate"><span class="pre">format=&quot;ParquetFilesDataset&quot;</span></code> (or simply
-<code class="code docutils literal notranslate"><span class="pre">format=&quot;parquet&quot;</span></code> for short). This is the only required field.</p></li>
+<code class="code docutils literal notranslate"><span class="pre">format="COCODetectionDataset"</span></code>. To specify that the dataset is stored in
+Parquet files, you can pass <code class="code docutils literal notranslate"><span class="pre">format="ParquetFilesDataset"</span></code> (or simply
+<code class="code docutils literal notranslate"><span class="pre">format="parquet"</span></code> for short). This is the only required field.</p></li>
 <li><p><strong>name</strong> <em>(str)</em>: The name of the FiftyOne <a class="reference internal" href="../api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset" title="fiftyone.core.dataset.Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dataset</span></code></a> to be created. If the
 <code class="code docutils literal notranslate"><span class="pre">repo_id</span></code> is cumbersome, this can be used to specify a simpler default name.
 For example, for this <a class="reference external" href="https://huggingface.co/datasets/keremberke/aerial-sheep-object-detection">sheep dataset</a>
 rather than using the <code class="code docutils literal notranslate"><span class="pre">repo_id</span></code> <code class="code docutils literal notranslate"><span class="pre">keremberke/aerial-sheep-object-detection</span></code>, you
-can specify <code class="code docutils literal notranslate"><span class="pre">name=&quot;sheep-detection&quot;</span></code>.</p></li>
+can specify <code class="code docutils literal notranslate"><span class="pre">name="sheep-detection"</span></code>.</p></li>
 <li><p><strong>subsets</strong> <em>(str or list)</em>: The subset or subsets of the Hugging Face
 dataset that are <em>compatible</em> with this config, and are <em>available</em> to be
 loaded. In Hugging Face, the “dataset” in a repo can contain multiple
 “subsets”, which may or may not have the same schema. Take the
 <a class="reference external" href="https://huggingface.co/datasets/ufldl-stanford/svhn">Street View House Numbers</a> dataset for
-example. This dataset has two subsets: <code class="code docutils literal notranslate"><span class="pre">&quot;cropped_digits&quot;</span></code> and <code class="code docutils literal notranslate"><span class="pre">&quot;full_numbers&quot;</span></code>.
+example. This dataset has two subsets: <code class="code docutils literal notranslate"><span class="pre">"cropped_digits"</span></code> and <code class="code docutils literal notranslate"><span class="pre">"full_numbers"</span></code>.
 The <code class="code docutils literal notranslate"><span class="pre">cropped_digits</span></code> subset contains classification labels, while the
 <code class="code docutils literal notranslate"><span class="pre">full_numbers</span></code> subset contains detection labels. A single config would not be
 able to specify the schema for both subsets, so you can specify the subset you
 want to load (or if you are the dataset author, which subset you want to <em>allow</em>
 people to load in this way) with the <code class="code docutils literal notranslate"><span class="pre">subsets</span></code> field. For example, to load the
 <code class="code docutils literal notranslate"><span class="pre">cropped_digits</span></code> subset of the SVHN dataset, you can pass
-<code class="code docutils literal notranslate"><span class="pre">subsets=&quot;cropped_digits&quot;</span></code>. Note that this is not a required field, and by
+<code class="code docutils literal notranslate"><span class="pre">subsets="cropped_digits"</span></code>. Note that this is not a required field, and by
 default all subsets are loaded. Also note that subsets are distinct from splits
 in the dataset, which are handled by the <code class="code docutils literal notranslate"><span class="pre">splits</span></code> field (see below).</p></li>
 <li><p><strong>splits</strong> <em>(str or list)</em>: The split or splits of the Hugging Face dataset that
@@ -1448,8 +1271,8 @@ identifies the names of all splits and by default, will assume that all of
 these splits are to be loaded. If you only want to load a specific split or
 splits, you can specify them with the <code class="code docutils literal notranslate"><span class="pre">splits</span></code> field. For example, to load the
 training split of the <a class="reference external" href="https://huggingface.co/datasets//uoft-cs/cifar10">CIFAR10</a>
-dataset, you can pass <code class="code docutils literal notranslate"><span class="pre">splits=&quot;train&quot;</span></code>. If you want to load multiple splits,
-you can pass them as a list, e.g., <code class="code docutils literal notranslate"><span class="pre">splits=[&quot;train&quot;,</span> <span class="pre">&quot;test&quot;]</span></code>. Note that this
+dataset, you can pass <code class="code docutils literal notranslate"><span class="pre">splits="train"</span></code>. If you want to load multiple splits,
+you can pass them as a list, e.g., <code class="code docutils literal notranslate"><span class="pre">splits=["train",</span> <span class="pre">"test"]</span></code>. Note that this
 is not a required field, and by default all splits are loaded.</p></li>
 </ul>
 <p><strong>Media field specification</strong>:</p>
@@ -1468,7 +1291,7 @@ looks by default. If the primary media field is stored in a different column,
 you can specify the column name with the key <code class="code docutils literal notranslate"><span class="pre">filepath</span></code>. For example, the
 <a class="reference external" href="https://huggingface.co/datasets/kakaobrain/coyo-700m">COYO-700M dataset</a>
 has the primary media field referenced in the <code class="code docutils literal notranslate"><span class="pre">url</span></code> column. Specifying
-<code class="code docutils literal notranslate"><span class="pre">filepath=&quot;url&quot;</span></code> will tell FiftyOne to look in the <code class="code docutils literal notranslate"><span class="pre">url</span></code> column for the
+<code class="code docutils literal notranslate"><span class="pre">filepath="url"</span></code> will tell FiftyOne to look in the <code class="code docutils literal notranslate"><span class="pre">url</span></code> column for the
 primary media file path. Images will be downloaded from the corresponding URLs
 and saved to disk.</p></li>
 <li><p><strong>thumbnail_path</strong> <em>(str)</em>: The field containing the path to a thumbnail image
@@ -1495,17 +1318,17 @@ FiftyOne label fields:</p>
 Face dataset that should be converted to FiftyOne <a class="reference internal" href="../api/fiftyone.core.labels.html#fiftyone.core.labels.Classification" title="fiftyone.core.labels.Classification"><code class="xref py py-class docutils literal notranslate"><span class="pre">Classification</span></code></a> label fields.
 contain classification labels. For example, if the dataset contains a <code class="code docutils literal notranslate"><span class="pre">label</span></code>
 field that contains classification labels, you can specify
-<code class="code docutils literal notranslate"><span class="pre">classification_fields=&quot;label&quot;</span></code>. If the dataset contains multiple
+<code class="code docutils literal notranslate"><span class="pre">classification_fields="label"</span></code>. If the dataset contains multiple
 classification fields, you can specify them as a list, e.g.,
-<code class="code docutils literal notranslate"><span class="pre">classification_fields=[&quot;label1&quot;,</span> <span class="pre">&quot;label2&quot;]</span></code>. This is not a required field,
+<code class="code docutils literal notranslate"><span class="pre">classification_fields=["label1",</span> <span class="pre">"label2"]</span></code>. This is not a required field,
 and if the dataset does not contain classification labels, you can omit it.</p></li>
 <li><p><strong>detection_fields</strong> <em>(str or list)</em>: The column or columns in the Hugging Face
 dataset that should be converted to FiftyOne <a class="reference internal" href="../api/fiftyone.core.labels.html#fiftyone.core.labels.Detections" title="fiftyone.core.labels.Detections"><code class="xref py py-class docutils literal notranslate"><span class="pre">Detections</span></code></a> label fields. If the
 dataset contains detection labels, you can specify the column name or names
 here. For example, if the dataset contains a <code class="code docutils literal notranslate"><span class="pre">detections</span></code> field that contains
-detection labels, you can specify <code class="code docutils literal notranslate"><span class="pre">detection_fields=&quot;detections&quot;</span></code>. If the
+detection labels, you can specify <code class="code docutils literal notranslate"><span class="pre">detection_fields="detections"</span></code>. If the
 dataset contains multiple detection fields, you can specify them as a list,
-e.g., <code class="code docutils literal notranslate"><span class="pre">detection_fields=[&quot;detections1&quot;,</span> <span class="pre">&quot;detections2&quot;]</span></code>. This is not a required
+e.g., <code class="code docutils literal notranslate"><span class="pre">detection_fields=["detections1",</span> <span class="pre">"detections2"]</span></code>. This is not a required
 field, and if the dataset does not contain detection labels, you can omit it.</p></li>
 <li><p><strong>mask_fields</strong> <em>(str or list)</em>: The column or columns in the Hugging Face dataset
 that should be converted to FiftyOne <a class="reference internal" href="../api/fiftyone.core.labels.html#fiftyone.core.labels.Segmentation" title="fiftyone.core.labels.Segmentation"><code class="xref py py-class docutils literal notranslate"><span class="pre">Segmentation</span></code></a> label fields. The column
@@ -1513,7 +1336,7 @@ in the Hugging Face dataset must contain an image or the URL for an image that
 can be used as a segmentation mask. If necessary, the images will be downloaded
 and saved to disk. If the dataset contains mask labels, you can specify the
 column name or names here. For example, if the dataset contains a <code class="code docutils literal notranslate"><span class="pre">masks</span></code> field
-that contains mask labels, you can specify <code class="code docutils literal notranslate"><span class="pre">mask_fields=&quot;masks&quot;</span></code>. This is not
+that contains mask labels, you can specify <code class="code docutils literal notranslate"><span class="pre">mask_fields="masks"</span></code>. This is not
 a required field, and if the dataset does not contain mask labels, you can
 omit it.</p></li>
 </ul>
@@ -1574,15 +1397,15 @@ the dataset. If you like what you see, you can always download more samples!</p>
 <p><strong>Classification Datasets</strong></p>
 <p>Let’s start by loading the
 <a class="reference external" href="https://huggingface.co/datasets/ylecun/mnist">MNIST</a> dataset into FiftyOne. All you
-need to do is pass the <code class="code docutils literal notranslate"><span class="pre">repo_id</span></code> of the dataset — in this case <code class="code docutils literal notranslate"><span class="pre">&quot;ylecun/mnist&quot;</span></code> — to
+need to do is pass the <code class="code docutils literal notranslate"><span class="pre">repo_id</span></code> of the dataset — in this case <code class="code docutils literal notranslate"><span class="pre">"ylecun/mnist"</span></code> — to
 <a class="reference internal" href="../api/fiftyone.utils.huggingface.html#fiftyone.utils.huggingface.load_from_hub" title="fiftyone.utils.huggingface.load_from_hub"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_from_hub()</span></code></a>, specify the
-format as <code class="code docutils literal notranslate"><span class="pre">&quot;parquet&quot;</span></code>, and specify the <code class="code docutils literal notranslate"><span class="pre">classification_fields</span></code> as <code class="code docutils literal notranslate"><span class="pre">&quot;label&quot;</span></code>:</p>
+format as <code class="code docutils literal notranslate"><span class="pre">"parquet"</span></code>, and specify the <code class="code docutils literal notranslate"><span class="pre">classification_fields</span></code> as <code class="code docutils literal notranslate"><span class="pre">"label"</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fiftyone.utils.huggingface</span> <span class="kn">import</span> <span class="n">load_from_hub</span>
 
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">load_from_hub</span><span class="p">(</span>
-    <span class="s2">&quot;ylecun/mnist&quot;</span><span class="p">,</span>
-    <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;parquet&quot;</span><span class="p">,</span>
-    <span class="n">classification_fields</span><span class="o">=</span><span class="s2">&quot;label&quot;</span><span class="p">,</span>
+    <span class="s2">"ylecun/mnist"</span><span class="p">,</span>
+    <span class="nb">format</span><span class="o">=</span><span class="s2">"parquet"</span><span class="p">,</span>
+    <span class="n">classification_fields</span><span class="o">=</span><span class="s2">"label"</span><span class="p">,</span>
     <span class="n">max_samples</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
 <span class="p">)</span>
 
@@ -1595,29 +1418,29 @@ which are also available on the Hub. In fact, you can load any of the following
 classification datasets from the Hub using the same syntax, just by changing the
 <code class="code docutils literal notranslate"><span class="pre">repo_id</span></code>:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://huggingface.co/datasets/uoft-cs/cifar10">CIFAR-10</a> (use <code class="code docutils literal notranslate"><span class="pre">&quot;uoft-cs/cifar10&quot;</span></code>)</p></li>
-<li><p><a class="reference external" href="https://huggingface.co/datasets/ILSVRC/imagenet-1k">ImageNet</a> (use <code class="code docutils literal notranslate"><span class="pre">&quot;ILSVRC/imagenet-1k&quot;</span></code>)</p></li>
-<li><p><a class="reference external" href="https://huggingface.co/datasets/zalando-datasets/fashion_mnist">FashionMNIST</a> (use <code class="code docutils literal notranslate"><span class="pre">&quot;zalando-datasets/fashion_mnist&quot;</span></code>)</p></li>
-<li><p><a class="reference external" href="https://huggingface.co/datasets/zh-plus/tiny-imagenet">Tiny ImageNet</a> (use <code class="code docutils literal notranslate"><span class="pre">&quot;zh-plus/tiny-imagenet&quot;</span></code>)</p></li>
-<li><p><a class="reference external" href="https://huggingface.co/datasets/ethz/food101">Food-101</a> (use <code class="code docutils literal notranslate"><span class="pre">&quot;ethz/food101&quot;</span></code>)</p></li>
-<li><p><a class="reference external" href="https://huggingface.co/datasets/sasha/dog-food">Dog Food</a> (use <code class="code docutils literal notranslate"><span class="pre">&quot;sasha/dog-food&quot;</span></code>)</p></li>
-<li><p><a class="reference external" href="https://huggingface.co/datasets/songweig/imagenet_sketch">ImageNet-Sketch</a> (use <code class="code docutils literal notranslate"><span class="pre">&quot;songweig/imagenet_sketch&quot;</span></code>)</p></li>
-<li><p><a class="reference external" href="https://huggingface.co/datasets/nelorth/oxford-flowers">Oxford Flowers</a> (use <code class="code docutils literal notranslate"><span class="pre">&quot;nelorth/oxford-flowers&quot;</span></code>)</p></li>
-<li><p><a class="reference external" href="https://huggingface.co/datasets/microsoft/cats_vs_dogs">Cats vs. Dogs</a> (use <code class="code docutils literal notranslate"><span class="pre">&quot;microsoft/cats_vs_dogs&quot;</span></code>)</p></li>
-<li><p><a class="reference external" href="https://huggingface.co/datasets/timm/objectnet">ObjectNet-1.0</a> (use <code class="code docutils literal notranslate"><span class="pre">&quot;timm/objectnet&quot;</span></code>)</p></li>
+<li><p><a class="reference external" href="https://huggingface.co/datasets/uoft-cs/cifar10">CIFAR-10</a> (use <code class="code docutils literal notranslate"><span class="pre">"uoft-cs/cifar10"</span></code>)</p></li>
+<li><p><a class="reference external" href="https://huggingface.co/datasets/ILSVRC/imagenet-1k">ImageNet</a> (use <code class="code docutils literal notranslate"><span class="pre">"ILSVRC/imagenet-1k"</span></code>)</p></li>
+<li><p><a class="reference external" href="https://huggingface.co/datasets/zalando-datasets/fashion_mnist">FashionMNIST</a> (use <code class="code docutils literal notranslate"><span class="pre">"zalando-datasets/fashion_mnist"</span></code>)</p></li>
+<li><p><a class="reference external" href="https://huggingface.co/datasets/zh-plus/tiny-imagenet">Tiny ImageNet</a> (use <code class="code docutils literal notranslate"><span class="pre">"zh-plus/tiny-imagenet"</span></code>)</p></li>
+<li><p><a class="reference external" href="https://huggingface.co/datasets/ethz/food101">Food-101</a> (use <code class="code docutils literal notranslate"><span class="pre">"ethz/food101"</span></code>)</p></li>
+<li><p><a class="reference external" href="https://huggingface.co/datasets/sasha/dog-food">Dog Food</a> (use <code class="code docutils literal notranslate"><span class="pre">"sasha/dog-food"</span></code>)</p></li>
+<li><p><a class="reference external" href="https://huggingface.co/datasets/songweig/imagenet_sketch">ImageNet-Sketch</a> (use <code class="code docutils literal notranslate"><span class="pre">"songweig/imagenet_sketch"</span></code>)</p></li>
+<li><p><a class="reference external" href="https://huggingface.co/datasets/nelorth/oxford-flowers">Oxford Flowers</a> (use <code class="code docutils literal notranslate"><span class="pre">"nelorth/oxford-flowers"</span></code>)</p></li>
+<li><p><a class="reference external" href="https://huggingface.co/datasets/microsoft/cats_vs_dogs">Cats vs. Dogs</a> (use <code class="code docutils literal notranslate"><span class="pre">"microsoft/cats_vs_dogs"</span></code>)</p></li>
+<li><p><a class="reference external" href="https://huggingface.co/datasets/timm/objectnet">ObjectNet-1.0</a> (use <code class="code docutils literal notranslate"><span class="pre">"timm/objectnet"</span></code>)</p></li>
 </ul>
 <p>A very similar syntax can be used to load classification datasets that contain
 <em>multiple</em> classification fields, such as
 <a class="reference external" href="https://huggingface.co/datasets/uoft-cs/cifar100">CIFAR-100</a> and the
 <a class="reference external" href="https://huggingface.co/datasets/huggan/wikiart">WikiArt</a> dataset. For example,
 to load the CIFAR-100 dataset, you can specify the <code class="code docutils literal notranslate"><span class="pre">classification_fields</span></code> as
-<code class="code docutils literal notranslate"><span class="pre">[&quot;coarse_label&quot;,</span> <span class="pre">&quot;fine_label&quot;]</span></code>:</p>
+<code class="code docutils literal notranslate"><span class="pre">["coarse_label",</span> <span class="pre">"fine_label"]</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fiftyone.utils.huggingface</span> <span class="kn">import</span> <span class="n">load_from_hub</span>
 
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">load_from_hub</span><span class="p">(</span>
-    <span class="s2">&quot;uoft-cs/cifar100&quot;</span><span class="p">,</span>
-    <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;parquet&quot;</span><span class="p">,</span>
-    <span class="n">classification_fields</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;coarse_label&quot;</span><span class="p">,</span> <span class="s2">&quot;fine_label&quot;</span><span class="p">],</span>
+    <span class="s2">"uoft-cs/cifar100"</span><span class="p">,</span>
+    <span class="nb">format</span><span class="o">=</span><span class="s2">"parquet"</span><span class="p">,</span>
+    <span class="n">classification_fields</span><span class="o">=</span><span class="p">[</span><span class="s2">"coarse_label"</span><span class="p">,</span> <span class="s2">"fine_label"</span><span class="p">],</span>
     <span class="n">max_samples</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
 <span class="p">)</span>
 
@@ -1625,13 +1448,13 @@ to load the CIFAR-100 dataset, you can specify the <code class="code docutils li
 </pre></div>
 </div>
 <p>To load the <a class="reference external" href="https://huggingface.co/datasets/huggan/wikiart">WikiArt</a> dataset,
-you can specify the <code class="code docutils literal notranslate"><span class="pre">classification_fields</span></code> as <code class="code docutils literal notranslate"><span class="pre">[&quot;artist&quot;,</span> <span class="pre">&quot;genre&quot;,</span> <span class="pre">&quot;style&quot;]</span></code>:</p>
+you can specify the <code class="code docutils literal notranslate"><span class="pre">classification_fields</span></code> as <code class="code docutils literal notranslate"><span class="pre">["artist",</span> <span class="pre">"genre",</span> <span class="pre">"style"]</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fiftyone.utils.huggingface</span> <span class="kn">import</span> <span class="n">load_from_hub</span>
 
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">load_from_hub</span><span class="p">(</span>
-    <span class="s2">&quot;huggan/wikiart&quot;</span><span class="p">,</span>
-    <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;parquet&quot;</span><span class="p">,</span>
-    <span class="n">classification_fields</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;artist&quot;</span><span class="p">,</span> <span class="s2">&quot;genre&quot;</span><span class="p">,</span> <span class="s2">&quot;style&quot;</span><span class="p">],</span>
+    <span class="s2">"huggan/wikiart"</span><span class="p">,</span>
+    <span class="nb">format</span><span class="o">=</span><span class="s2">"parquet"</span><span class="p">,</span>
+    <span class="n">classification_fields</span><span class="o">=</span><span class="p">[</span><span class="s2">"artist"</span><span class="p">,</span> <span class="s2">"genre"</span><span class="p">,</span> <span class="s2">"style"</span><span class="p">],</span>
     <span class="n">max_samples</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
 <span class="p">)</span>
 
@@ -1644,10 +1467,10 @@ dataset. For example, to load the <code class="code docutils literal notranslate
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fiftyone.utils.huggingface</span> <span class="kn">import</span> <span class="n">load_from_hub</span>
 
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">load_from_hub</span><span class="p">(</span>
-    <span class="s2">&quot;ufldl-stanford/svhn&quot;</span><span class="p">,</span>
-    <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;parquet&quot;</span><span class="p">,</span>
-    <span class="n">classification_fields</span><span class="o">=</span><span class="s2">&quot;label&quot;</span><span class="p">,</span>
-    <span class="n">subsets</span><span class="o">=</span><span class="s2">&quot;cropped_digits&quot;</span><span class="p">,</span>
+    <span class="s2">"ufldl-stanford/svhn"</span><span class="p">,</span>
+    <span class="nb">format</span><span class="o">=</span><span class="s2">"parquet"</span><span class="p">,</span>
+    <span class="n">classification_fields</span><span class="o">=</span><span class="s2">"label"</span><span class="p">,</span>
+    <span class="n">subsets</span><span class="o">=</span><span class="s2">"cropped_digits"</span><span class="p">,</span>
     <span class="n">max_samples</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
 <span class="p">)</span>
 
@@ -1657,14 +1480,14 @@ dataset. For example, to load the <code class="code docutils literal notranslate
 <p><strong>Detection Datasets</strong></p>
 <p>Loading detection datasets from the Hub is just as easy. For example, to load
 the <a class="reference external" href="https://huggingface.co/datasets/detection-datasets/coco">MS COCO</a>
-dataset, you can specify the <code class="code docutils literal notranslate"><span class="pre">detection_fields</span></code> as <code class="code docutils literal notranslate"><span class="pre">&quot;objects&quot;</span></code>, which is the
+dataset, you can specify the <code class="code docutils literal notranslate"><span class="pre">detection_fields</span></code> as <code class="code docutils literal notranslate"><span class="pre">"objects"</span></code>, which is the
 standard column name for detection features in Hugging Face datasets:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fiftyone.utils.huggingface</span> <span class="kn">import</span> <span class="n">load_from_hub</span>
 
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">load_from_hub</span><span class="p">(</span>
-    <span class="s2">&quot;detection-datasets/coco&quot;</span><span class="p">,</span>
-    <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;parquet&quot;</span><span class="p">,</span>
-    <span class="n">detection_fields</span><span class="o">=</span><span class="s2">&quot;objects&quot;</span><span class="p">,</span>
+    <span class="s2">"detection-datasets/coco"</span><span class="p">,</span>
+    <span class="nb">format</span><span class="o">=</span><span class="s2">"parquet"</span><span class="p">,</span>
+    <span class="n">detection_fields</span><span class="o">=</span><span class="s2">"objects"</span><span class="p">,</span>
     <span class="n">max_samples</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
 <span class="p">)</span>
 
@@ -1674,25 +1497,25 @@ standard column name for detection features in Hugging Face datasets:</p>
 <p>The same syntax works for many other popular detection datasets on the Hub,
 including:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://huggingface.co/datasets/rishitdagli/cppe-5">CPPE - 5</a> (use <code class="code docutils literal notranslate"><span class="pre">&quot;rishitdagli/cppe-5&quot;</span></code>)</p></li>
-<li><p><a class="reference external" href="https://huggingface.co/datasets/CUHK-CSE/wider_face">WIDER FACE</a> (use <code class="code docutils literal notranslate"><span class="pre">&quot;CUHK-CSE/wider_face&quot;</span></code>)</p></li>
+<li><p><a class="reference external" href="https://huggingface.co/datasets/rishitdagli/cppe-5">CPPE - 5</a> (use <code class="code docutils literal notranslate"><span class="pre">"rishitdagli/cppe-5"</span></code>)</p></li>
+<li><p><a class="reference external" href="https://huggingface.co/datasets/CUHK-CSE/wider_face">WIDER FACE</a> (use <code class="code docutils literal notranslate"><span class="pre">"CUHK-CSE/wider_face"</span></code>)</p></li>
 <li><p><a class="reference external" href="https://huggingface.co/datasets/keremberke/license-plate-object-detection">License Plate Object Detection</a>
-(use <code class="code docutils literal notranslate"><span class="pre">&quot;keremberke/license-plate-object-detection&quot;</span></code>)</p></li>
+(use <code class="code docutils literal notranslate"><span class="pre">"keremberke/license-plate-object-detection"</span></code>)</p></li>
 <li><p><a class="reference external" href="https://huggingface.co/datasets/keremberke/aerial-sheep-object-detection">Aerial Sheep Object Detection</a>
-(use <code class="code docutils literal notranslate"><span class="pre">&quot;keremberke/aerial-sheep-object-detection&quot;</span></code>)</p></li>
+(use <code class="code docutils literal notranslate"><span class="pre">"keremberke/aerial-sheep-object-detection"</span></code>)</p></li>
 </ul>
 <p>Some detection datasets have their detections stored under a column with a
 different name. For example, the <code class="code docutils literal notranslate"><span class="pre">full_numbers</span></code> subset of the
 <a class="reference external" href="https://huggingface.co/datasets/ufldl-stanford/svhn">Street View House Numbers</a> dataset
 stores its detections under the column <code class="code docutils literal notranslate"><span class="pre">digits</span></code>. To load this subset, you can
-specify the <code class="code docutils literal notranslate"><span class="pre">detection_fields</span></code> as <code class="code docutils literal notranslate"><span class="pre">&quot;digits&quot;</span></code>:</p>
+specify the <code class="code docutils literal notranslate"><span class="pre">detection_fields</span></code> as <code class="code docutils literal notranslate"><span class="pre">"digits"</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fiftyone.utils.huggingface</span> <span class="kn">import</span> <span class="n">load_from_hub</span>
 
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">load_from_hub</span><span class="p">(</span>
-    <span class="s2">&quot;ufldl-stanford/svhn&quot;</span><span class="p">,</span>
-    <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;parquet&quot;</span><span class="p">,</span>
-    <span class="n">detection_fields</span><span class="o">=</span><span class="s2">&quot;digits&quot;</span><span class="p">,</span>
-    <span class="n">subsets</span><span class="o">=</span><span class="s2">&quot;full_numbers&quot;</span><span class="p">,</span>
+    <span class="s2">"ufldl-stanford/svhn"</span><span class="p">,</span>
+    <span class="nb">format</span><span class="o">=</span><span class="s2">"parquet"</span><span class="p">,</span>
+    <span class="n">detection_fields</span><span class="o">=</span><span class="s2">"digits"</span><span class="p">,</span>
+    <span class="n">subsets</span><span class="o">=</span><span class="s2">"full_numbers"</span><span class="p">,</span>
     <span class="n">max_samples</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
 <span class="p">)</span>
 
@@ -1711,14 +1534,14 @@ Hugging Face format</a>.</p>
 <p>Loading segmentation datasets from the Hub is also a breeze. For example, to
 load the “instance_segmentation” subset from
 <a class="reference external" href="https://huggingface.co/datasets/zhoubolei/scene_parse_150">SceneParse150</a>, all you
-need to do is specify the <code class="code docutils literal notranslate"><span class="pre">mask_fields</span></code> as <code class="code docutils literal notranslate"><span class="pre">&quot;annotation&quot;</span></code>:</p>
+need to do is specify the <code class="code docutils literal notranslate"><span class="pre">mask_fields</span></code> as <code class="code docutils literal notranslate"><span class="pre">"annotation"</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fiftyone.utils.huggingface</span> <span class="kn">import</span> <span class="n">load_from_hub</span>
 
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">load_from_hub</span><span class="p">(</span>
-    <span class="s2">&quot;zhoubolei/scene_parse150&quot;</span><span class="p">,</span>
-    <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;parquet&quot;</span><span class="p">,</span>
-    <span class="n">subsets</span><span class="o">=</span><span class="s2">&quot;instance_segmentation&quot;</span><span class="p">,</span>
-    <span class="n">mask_fields</span><span class="o">=</span><span class="s2">&quot;annotation&quot;</span><span class="p">,</span>
+    <span class="s2">"zhoubolei/scene_parse150"</span><span class="p">,</span>
+    <span class="nb">format</span><span class="o">=</span><span class="s2">"parquet"</span><span class="p">,</span>
+    <span class="n">subsets</span><span class="o">=</span><span class="s2">"instance_segmentation"</span><span class="p">,</span>
+    <span class="n">mask_fields</span><span class="o">=</span><span class="s2">"annotation"</span><span class="p">,</span>
     <span class="n">max_samples</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
 <span class="p">)</span>
 
@@ -1730,9 +1553,9 @@ as <a class="reference external" href="https://huggingface.co/datasets/nateraw/a
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fiftyone.utils.huggingface</span> <span class="kn">import</span> <span class="n">load_from_hub</span>
 
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">load_from_hub</span><span class="p">(</span>
-    <span class="s2">&quot;nateraw/ade20k-tiny&quot;</span><span class="p">,</span>
-    <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;parquet&quot;</span><span class="p">,</span>
-    <span class="n">mask_fields</span><span class="o">=</span><span class="s2">&quot;label&quot;</span><span class="p">,</span>
+    <span class="s2">"nateraw/ade20k-tiny"</span><span class="p">,</span>
+    <span class="nb">format</span><span class="o">=</span><span class="s2">"parquet"</span><span class="p">,</span>
+    <span class="n">mask_fields</span><span class="o">=</span><span class="s2">"label"</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="c1"># only 20 samples in the dataset</span>
@@ -1751,10 +1574,10 @@ dataset:</p>
 <span class="c1"># Note: you need access to the dataset to load it!</span>
 
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">load_from_hub</span><span class="p">(</span>
-    <span class="s2">&quot;segments/sidewalk-semantic&quot;</span><span class="p">,</span>
-    <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;parquet&quot;</span><span class="p">,</span>
-    <span class="n">filepath</span><span class="o">=</span><span class="s2">&quot;pixel_values&quot;</span><span class="p">,</span>
-    <span class="n">mask_fields</span><span class="o">=</span><span class="s2">&quot;label&quot;</span><span class="p">,</span>
+    <span class="s2">"segments/sidewalk-semantic"</span><span class="p">,</span>
+    <span class="nb">format</span><span class="o">=</span><span class="s2">"parquet"</span><span class="p">,</span>
+    <span class="n">filepath</span><span class="o">=</span><span class="s2">"pixel_values"</span><span class="p">,</span>
+    <span class="n">mask_fields</span><span class="o">=</span><span class="s2">"label"</span><span class="p">,</span>
     <span class="n">max_samples</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
 <span class="p">)</span>
 
@@ -1780,8 +1603,8 @@ can load the dataset as follows:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fiftyone.utils.huggingface</span> <span class="kn">import</span> <span class="n">load_from_hub</span>
 
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">load_from_hub</span><span class="p">(</span>
-    <span class="s2">&quot;poloclub/diffusiondb&quot;</span><span class="p">,</span>
-    <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;parquet&quot;</span><span class="p">,</span>
+    <span class="s2">"poloclub/diffusiondb"</span><span class="p">,</span>
+    <span class="nb">format</span><span class="o">=</span><span class="s2">"parquet"</span><span class="p">,</span>
     <span class="n">max_samples</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
 <span class="p">)</span>
 
@@ -1791,27 +1614,27 @@ can load the dataset as follows:</p>
 <p>Here are some other popular datasets on the Hub that can be loaded following the
 same syntax:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://huggingface.co/datasets/m1guelpf/nouns">Nouns</a>: (use <code class="code docutils literal notranslate"><span class="pre">&quot;m1guelpf/nouns&quot;</span></code>)</p></li>
+<li><p><a class="reference external" href="https://huggingface.co/datasets/m1guelpf/nouns">Nouns</a>: (use <code class="code docutils literal notranslate"><span class="pre">"m1guelpf/nouns"</span></code>)</p></li>
 <li><p><a class="reference external" href="https://huggingface.co/datasets/jmhessel/newyorker_caption_contest">New Yorker Caption Contest</a>:
-(use <code class="code docutils literal notranslate"><span class="pre">&quot;jmhessel/newyorker_caption_contest&quot;</span></code>)</p></li>
+(use <code class="code docutils literal notranslate"><span class="pre">"jmhessel/newyorker_caption_contest"</span></code>)</p></li>
 <li><p><a class="reference external" href="https://huggingface.co/datasets/project-sloth/captcha-images">Captcha Dataset</a>:
-(use <code class="code docutils literal notranslate"><span class="pre">&quot;project-sloth/captcha-images&quot;</span></code>)</p></li>
-<li><p><a class="reference external" href="https://huggingface.co/datasets/AI4Math/MathVista">MathVista</a>: (use <code class="code docutils literal notranslate"><span class="pre">&quot;AI4Math/MathVista&quot;</span></code>)</p></li>
-<li><p><a class="reference external" href="https://huggingface.co/datasets/TextVQA">TextVQA</a>: (use <code class="code docutils literal notranslate"><span class="pre">&quot;textvqa&quot;</span></code>)</p></li>
-<li><p><a class="reference external" href="https://huggingface.co/datasets/flaviagiammarino/vqa-rad">VQA-RAD</a>: (use <code class="code docutils literal notranslate"><span class="pre">&quot;flaviagiammarino/vqa-rad&quot;</span></code>)</p></li>
-<li><p><a class="reference external" href="https://huggingface.co/datasets/derek-thomas/ScienceQA">ScienceQA</a>: (use <code class="code docutils literal notranslate"><span class="pre">&quot;derek-thomas/ScienceQA&quot;</span></code>)</p></li>
-<li><p><a class="reference external" href="https://huggingface.co/datasets/flaviagiammarino/path-vqa">PathVQA</a>: (use <code class="code docutils literal notranslate"><span class="pre">&quot;flaviagiammarino/path-vqa&quot;</span></code>)</p></li>
+(use <code class="code docutils literal notranslate"><span class="pre">"project-sloth/captcha-images"</span></code>)</p></li>
+<li><p><a class="reference external" href="https://huggingface.co/datasets/AI4Math/MathVista">MathVista</a>: (use <code class="code docutils literal notranslate"><span class="pre">"AI4Math/MathVista"</span></code>)</p></li>
+<li><p><a class="reference external" href="https://huggingface.co/datasets/TextVQA">TextVQA</a>: (use <code class="code docutils literal notranslate"><span class="pre">"textvqa"</span></code>)</p></li>
+<li><p><a class="reference external" href="https://huggingface.co/datasets/flaviagiammarino/vqa-rad">VQA-RAD</a>: (use <code class="code docutils literal notranslate"><span class="pre">"flaviagiammarino/vqa-rad"</span></code>)</p></li>
+<li><p><a class="reference external" href="https://huggingface.co/datasets/derek-thomas/ScienceQA">ScienceQA</a>: (use <code class="code docutils literal notranslate"><span class="pre">"derek-thomas/ScienceQA"</span></code>)</p></li>
+<li><p><a class="reference external" href="https://huggingface.co/datasets/flaviagiammarino/path-vqa">PathVQA</a>: (use <code class="code docutils literal notranslate"><span class="pre">"flaviagiammarino/path-vqa"</span></code>)</p></li>
 </ul>
 <p>Many other popular datasets on the Hub can be loaded in the same way, with slight
 modifications to <code class="code docutils literal notranslate"><span class="pre">filepath</span></code> or other arguments as needed. Here are a few examples:</p>
 <p>For <a class="reference external" href="https://huggingface.co/datasets/kakaobrain/coyo-700m">COYO-700M</a>, we just
-need to specify the <code class="code docutils literal notranslate"><span class="pre">filepath</span></code> as <code class="code docutils literal notranslate"><span class="pre">&quot;url&quot;</span></code>:</p>
+need to specify the <code class="code docutils literal notranslate"><span class="pre">filepath</span></code> as <code class="code docutils literal notranslate"><span class="pre">"url"</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fiftyone.utils.huggingface</span> <span class="kn">import</span> <span class="n">load_from_hub</span>
 
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">load_from_hub</span><span class="p">(</span>
-    <span class="s2">&quot;kakaobrain/coyo-700m&quot;</span><span class="p">,</span>
-    <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;parquet&quot;</span><span class="p">,</span>
-    <span class="n">filepath</span><span class="o">=</span><span class="s2">&quot;url&quot;</span><span class="p">,</span>
+    <span class="s2">"kakaobrain/coyo-700m"</span><span class="p">,</span>
+    <span class="nb">format</span><span class="o">=</span><span class="s2">"parquet"</span><span class="p">,</span>
+    <span class="n">filepath</span><span class="o">=</span><span class="s2">"url"</span><span class="p">,</span>
     <span class="n">max_samples</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
 <span class="p">)</span>
 
@@ -1819,13 +1642,13 @@ need to specify the <code class="code docutils literal notranslate"><span class=
 </pre></div>
 </div>
 <p>For <a class="reference external" href="https://huggingface.co/datasets/kdexd/red_caps">RedCaps</a>, we instead use
-<code class="code docutils literal notranslate"><span class="pre">&quot;image_url&quot;</span></code> as the <code class="code docutils literal notranslate"><span class="pre">filepath</span></code>:</p>
+<code class="code docutils literal notranslate"><span class="pre">"image_url"</span></code> as the <code class="code docutils literal notranslate"><span class="pre">filepath</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fiftyone.utils.huggingface</span> <span class="kn">import</span> <span class="n">load_from_hub</span>
 
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">load_from_hub</span><span class="p">(</span>
-    <span class="s2">&quot;kdexd/red_caps&quot;</span><span class="p">,</span>
-    <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;parquet&quot;</span><span class="p">,</span>
-    <span class="n">filepath</span><span class="o">=</span><span class="s2">&quot;image_url&quot;</span><span class="p">,</span>
+    <span class="s2">"kdexd/red_caps"</span><span class="p">,</span>
+    <span class="nb">format</span><span class="o">=</span><span class="s2">"parquet"</span><span class="p">,</span>
+    <span class="n">filepath</span><span class="o">=</span><span class="s2">"image_url"</span><span class="p">,</span>
     <span class="n">max_samples</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
 <span class="p">)</span>
 
@@ -1834,13 +1657,13 @@ need to specify the <code class="code docutils literal notranslate"><span class=
 </div>
 <p>For <a class="reference external" href="https://huggingface.co/datasets/MMMU/MMMU">MMMU</a>
 (A Massive Multi-discipline Multimodal Understanding and Reasoning Benchmark for
-Expert AGI), we use <code class="code docutils literal notranslate"><span class="pre">&quot;image_1&quot;</span></code> as the <code class="code docutils literal notranslate"><span class="pre">filepath</span></code>:</p>
+Expert AGI), we use <code class="code docutils literal notranslate"><span class="pre">"image_1"</span></code> as the <code class="code docutils literal notranslate"><span class="pre">filepath</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fiftyone.utils.huggingface</span> <span class="kn">import</span> <span class="n">load_from_hub</span>
 
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">load_from_hub</span><span class="p">(</span>
-    <span class="s2">&quot;MMMU/MMMU&quot;</span><span class="p">,</span>
-    <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;parquet&quot;</span><span class="p">,</span>
-    <span class="n">filepath</span><span class="o">=</span><span class="s2">&quot;image_1&quot;</span><span class="p">,</span>
+    <span class="s2">"MMMU/MMMU"</span><span class="p">,</span>
+    <span class="nb">format</span><span class="o">=</span><span class="s2">"parquet"</span><span class="p">,</span>
+    <span class="n">filepath</span><span class="o">=</span><span class="s2">"image_1"</span><span class="p">,</span>
     <span class="n">max_samples</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
 <span class="p">)</span>
 
@@ -1862,11 +1685,11 @@ revision of DiffusionDB before NSFW scores were added, you can specify this via:
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fiftyone.utils.huggingface</span> <span class="kn">import</span> <span class="n">load_from_hub</span>
 
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">load_from_hub</span><span class="p">(</span>
-    <span class="s2">&quot;poloclub/diffusiondb&quot;</span><span class="p">,</span>
-    <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;parquet&quot;</span><span class="p">,</span>
-    <span class="n">subset</span><span class="o">=</span><span class="s2">&quot;2m_random_1k&quot;</span><span class="p">,</span> <span class="c1">## just one of the subsets</span>
+    <span class="s2">"poloclub/diffusiondb"</span><span class="p">,</span>
+    <span class="nb">format</span><span class="o">=</span><span class="s2">"parquet"</span><span class="p">,</span>
+    <span class="n">subset</span><span class="o">=</span><span class="s2">"2m_random_1k"</span><span class="p">,</span> <span class="c1">## just one of the subsets</span>
     <span class="n">max_samples</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
-    <span class="n">revision</span><span class="o">=</span><span class="s2">&quot;5fa48ba66a44822d82d024d195fbe918e6c42ca6&quot;</span><span class="p">,</span>
+    <span class="n">revision</span><span class="o">=</span><span class="s2">"5fa48ba66a44822d82d024d195fbe918e6c42ca6"</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
@@ -1875,9 +1698,9 @@ revision of DiffusionDB before NSFW scores were added, you can specify this via:
 <p><strong>Loading Datasets with Multiple Media Fields</strong></p>
 <p>Some datasets on the Hub contain multiple media fields for each sample. Take
 <a class="reference external" href="https://huggingface.co/datasets/magicbrush">MagicBrush</a> for example, which
-contains a <code class="code docutils literal notranslate"><span class="pre">&quot;source_img&quot;</span></code> and a <code class="code docutils literal notranslate"><span class="pre">&quot;target_img&quot;</span></code> for each sample, in addition
+contains a <code class="code docutils literal notranslate"><span class="pre">"source_img"</span></code> and a <code class="code docutils literal notranslate"><span class="pre">"target_img"</span></code> for each sample, in addition
 to a segmentation mask denoting the area of the source image to be modified. To
-load this dataset, you can specify the <code class="code docutils literal notranslate"><span class="pre">filepath</span></code> as <code class="code docutils literal notranslate"><span class="pre">&quot;source_img&quot;</span></code> and the
+load this dataset, you can specify the <code class="code docutils literal notranslate"><span class="pre">filepath</span></code> as <code class="code docutils literal notranslate"><span class="pre">"source_img"</span></code> and the
 target image via <code class="code docutils literal notranslate"><span class="pre">additional_media_fields</span></code>. Because this is getting a bit more
 complex, we’ll create a local yaml config file to specify the dataset format:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ParquetFilesDataset</span>
@@ -1892,8 +1715,8 @@ complex, we’ll create a local yaml config file to specify the dataset format:<
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fiftyone.utils.huggingface</span> <span class="kn">import</span> <span class="n">load_from_hub</span>
 
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">load_from_hub</span><span class="p">(</span>
-    <span class="s2">&quot;osunlp/MagicBrush&quot;</span><span class="p">,</span>
-    <span class="n">config_file</span><span class="o">=</span><span class="s2">&quot;/path/to/magicbrush.yml&quot;</span><span class="p">,</span>
+    <span class="s2">"osunlp/MagicBrush"</span><span class="p">,</span>
+    <span class="n">config_file</span><span class="o">=</span><span class="s2">"/path/to/magicbrush.yml"</span><span class="p">,</span>
     <span class="n">max_samples</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
 <span class="p">)</span>
 
@@ -1908,10 +1731,10 @@ workers, you can do the following:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fiftyone.utils.huggingface</span> <span class="kn">import</span> <span class="n">load_from_hub</span>
 
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">load_from_hub</span><span class="p">(</span>
-    <span class="s2">&quot;ufldl-stanford/svhn&quot;</span><span class="p">,</span>
-    <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;parquet&quot;</span><span class="p">,</span>
-    <span class="n">detection_fields</span><span class="o">=</span><span class="s2">&quot;digits&quot;</span><span class="p">,</span>
-    <span class="n">subsets</span><span class="o">=</span><span class="s2">&quot;full_numbers&quot;</span><span class="p">,</span>
+    <span class="s2">"ufldl-stanford/svhn"</span><span class="p">,</span>
+    <span class="nb">format</span><span class="o">=</span><span class="s2">"parquet"</span><span class="p">,</span>
+    <span class="n">detection_fields</span><span class="o">=</span><span class="s2">"digits"</span><span class="p">,</span>
+    <span class="n">subsets</span><span class="o">=</span><span class="s2">"full_numbers"</span><span class="p">,</span>
     <span class="n">max_samples</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
     <span class="n">batch_size</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
     <span class="n">num_workers</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
@@ -1930,8 +1753,8 @@ You can do so following this recipe:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fiftyone.utils.huggingface</span> <span class="kn">import</span> <span class="n">load_from_hub</span>
 
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">load_from_hub</span><span class="p">(</span>
-    <span class="s2">&quot;my-private-dataset-repo-id&quot;</span><span class="p">,</span>
-    <span class="n">token</span><span class="o">=</span><span class="s2">&quot;&lt;my-secret-token&gt;&quot;</span><span class="p">,</span>
+    <span class="s2">"my-private-dataset-repo-id"</span><span class="p">,</span>
+    <span class="n">token</span><span class="o">=</span><span class="s2">"&lt;my-secret-token&gt;"</span><span class="p">,</span>
     <span class="o">...</span>
 <span class="p">)</span>
 
@@ -1942,30 +1765,15 @@ You can do so following this recipe:</p>
 </div>
 </div>
 </div>
+</article>
+</div>
 
-
-             </article>
-             
-            </div>
-            <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="ultralytics.html" class="btn btn-neutral float-right" title="Ultralytics Integration" accesskey="n" rel="next">Next <img src="../_static/images/chevron-right-orange.svg" class="next-page"></a>
-      
-      
-        <a href="lancedb.html" class="btn btn-neutral" title="LanceDB Integration" accesskey="p" rel="prev"><img src="../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
-      
-    </div>
-  
-</footer>
-          </div>
-        </div>
-
-        <div class="pytorch-content-right" id="pytorch-content-right">
-          <div class="pytorch-right-menu" id="pytorch-right-menu">
-            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
-              <ul>
+</div>
+</div>
+<div class="pytorch-content-right" id="pytorch-content-right">
+<div class="pytorch-right-menu" id="pytorch-right-menu">
+<div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+<ul>
 <li><a class="reference internal" href="#">Hugging Face Integration</a><ul>
 <li><a class="reference internal" href="#transformers-library">Transformers Library</a><ul>
 <li><a class="reference internal" href="#setup">Setup</a></li>
@@ -2012,214 +1820,36 @@ You can do so following this recipe:</p>
 </ul>
 </li>
 </ul>
-
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
-
-  
-
-
-  
-
-     
-       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-         <script src="../_static/jquery.js"></script>
-         <script src="../_static/underscore.js"></script>
-         <script src="../_static/doctools.js"></script>
-         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
-         <script src="../_static/js/voxel51-website.js"></script>
-         <script src="../_static/js/custom.js"></script>
-     
-
-  
-
-  <script type="text/javascript" src="../_static/js/vendor/popper.min.js"></script>
-  <script type="text/javascript" src="../_static/js/vendor/bootstrap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-  <script type="text/javascript">
+</div>
+</div>
+</div>
+</section>
+</div>
+<script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js" type="text/javascript"></script>
+<script src="../_static/jquery.js"></script>
+<script src="../_static/underscore.js"></script>
+<script src="../_static/doctools.js"></script>
+<script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+<script src="../_static/js/voxel51-website.js"></script>
+<script src="../_static/js/custom.js"></script>
+<script src="../_static/js/vendor/popper.min.js" type="text/javascript"></script>
+<script src="../_static/js/vendor/bootstrap.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+<script src="../_static/js/theme.js" type="text/javascript"></script>
+<script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
-
-  <!-- Begin Footer -->
-
-
-  <div class="container-fluid docs-tutorials-resources" id="docs-tutorials-resources">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4 text-center">
-          <h2>Docs</h2>
-          <p>Access comprehensive developer documentation for PyTorch</p>
-          <a class="with-right-arrow" href="https://pytorch.org/docs/stable/index.html">View Docs</a>
-        </div>
-
-        <div class="col-md-4 text-center">
-          <h2>Tutorials</h2>
-          <p>Get in-depth tutorials for beginners and advanced developers</p>
-          <a class="with-right-arrow" href="https://pytorch.org/tutorials">View Tutorials</a>
-        </div>
-
-        <div class="col-md-4 text-center">
-          <h2>Resources</h2>
-          <p>Find development resources and get your questions answered</p>
-          <a class="with-right-arrow" href="https://pytorch.org/resources">View Resources</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <footer class="site-footer">
-    <div class="container footer-container">
-      <div class="footer-logo-wrapper">
-        <a href="https://pytorch.org/" class="footer-logo"></a>
-      </div>
-
-      <div class="footer-links-wrapper">
-        <div class="footer-links-col">
-          <ul>
-            <li class="list-title"><a href="https://pytorch.org/">PyTorch</a></li>
-            <li><a href="https://pytorch.org/get-started">Get Started</a></li>
-            <li><a href="https://pytorch.org/features">Features</a></li>
-            <li><a href="https://pytorch.org/ecosystem">Ecosystem</a></li>
-            <li><a href="https://pytorch.org/blog/">Blog</a></li>
-            <li><a href="https://github.com/pytorch/pytorch/blob/master/CONTRIBUTING.md">Contributing</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-links-col">
-          <ul>
-            <li class="list-title"><a href="https://pytorch.org/resources">Resources</a></li>
-            <li><a href="https://pytorch.org/tutorials">Tutorials</a></li>
-            <li><a href="https://pytorch.org/docs/stable/index.html">Docs</a></li>
-            <li><a href="https://discuss.pytorch.org" target="_blank">Discuss</a></li>
-            <li><a href="https://github.com/pytorch/pytorch/issues" target="_blank">Github Issues</a></li>
-            <li><a href="https://pytorch.org/assets/brand-guidelines/PyTorch-Brand-Guidelines.pdf" target="_blank">Brand Guidelines</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-links-col follow-us-col">
-          <ul>
-            <li class="list-title">Stay Connected</li>
-            <li>
-              <div id="mc_embed_signup">
-                <form
-                  action="https://twitter.us14.list-manage.com/subscribe/post?u=75419c71fe0a935e53dfa4a3f&id=91d0dccd39"
-                  method="post"
-                  id="mc-embedded-subscribe-form"
-                  name="mc-embedded-subscribe-form"
-                  class="email-subscribe-form validate"
-                  target="_blank"
-                  novalidate>
-                  <div id="mc_embed_signup_scroll" class="email-subscribe-form-fields-wrapper">
-                    <div class="mc-field-group">
-                      <label for="mce-EMAIL" style="display:none;">Email Address</label>
-                      <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="Email Address">
-                    </div>
-
-                    <div id="mce-responses" class="clear">
-                      <div class="response" id="mce-error-response" style="display:none"></div>
-                      <div class="response" id="mce-success-response" style="display:none"></div>
-                    </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-
-                    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_75419c71fe0a935e53dfa4a3f_91d0dccd39" tabindex="-1" value=""></div>
-
-                    <div class="clear">
-                      <input type="submit" value="" name="subscribe" id="mc-embedded-subscribe" class="button email-subscribe-button">
-                    </div>
-                  </div>
-                </form>
-              </div>
-
-            </li>
-          </ul>
-
-          <div class="footer-social-icons">
-            <a href="https://www.facebook.com/pytorch" target="_blank" class="facebook"></a>
-            <a href="https://twitter.com/pytorch" target="_blank" class="twitter"></a>
-            <a href="https://www.youtube.com/pytorch" target="_blank" class="youtube"></a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
+  </script>
+<!-- Begin Footer -->
 
 
-  
+<!-- End Footer -->
+<!-- Begin Mobile Menu -->
 
-  <!-- End Footer -->
-
-  <!-- Begin Mobile Menu -->
-
-
-  <div class="mobile-main-menu">
-    <div class="container-fluid">
-      <div class="container">
-        <div class="mobile-main-menu-header-container">
-          <a class="header-logo" href="https://pytorch.org/" aria-label="PyTorch"></a>
-          <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
-        </div>
-      </div>
-    </div>
-
-    <div class="mobile-main-menu-links-container">
-      <div class="main-menu">
-        <ul>
-          <li>
-            <a href="https://pytorch.org/get-started">Get Started</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/features">Features</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/ecosystem">Ecosystem</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/mobile">Mobile</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/hub">PyTorch Hub</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/blog/">Blog</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/tutorials">Tutorials</a>
-          </li>
-
-          <li class="active">
-            <a href="https://pytorch.org/docs/stable/index.html">Docs</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/resources">Resources</a>
-          </li>
-
-          <li>
-            <a href="https://github.com/pytorch/pytorch">Github</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-
-  <!-- End Mobile Menu -->
-
-  <script type="text/javascript" src="../_static/js/vendor/anchor.min.js"></script>
-
-  <script type="text/javascript">
+<!-- End Mobile Menu -->
+<script src="../_static/js/vendor/anchor.min.js" type="text/javascript"></script>
+<script type="text/javascript">
     $(document).ready(function() {
       mobileMenu.bind();
       mobileTOC.bind();

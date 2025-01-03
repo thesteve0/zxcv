@@ -1,183 +1,46 @@
 
-
-
 <!DOCTYPE html>
+
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>@fiftyone/utilities &mdash; FiftyOne 1.3.0 documentation</title>
-  
-
-  
-  
-    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
-  
-  
-  
-
-  
-
-  
-  
-    
-
-  
-
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <!-- <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" /> -->
-  <link rel="stylesheet" href="../../_static/css/voxel51-website.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
-    <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="FiftyOne Command-Line Interface (CLI)" href="../../cli/index.html" />
-    <link rel="prev" title="@fiftyone/relay" href="plugins.fiftyone.relay.html" />
-<meta property="og:image" content="https://voxel51.com/wp-content/uploads/2024/03/3.24_webpages_Home_AV.png" />
-
-<link
-  href="https://fonts.googleapis.com/css?family=Palanquin:400,600,700,800"
-  rel="stylesheet"
-/>
-<link
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
-  rel="stylesheet"
-/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>@fiftyone/utilities — FiftyOne 1.3.0 documentation</title>
+<link href="../../_static/favicon.ico" rel="shortcut icon"/>
+<link href="../../_static/css/theme.css" rel="stylesheet" type="text/css"/>
+<!-- <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" /> -->
+<link href="../../_static/css/voxel51-website.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/css/custom.css" rel="stylesheet" type="text/css"/>
+<link href="../../genindex.html" rel="index" title="Index"/>
+<link href="../../search.html" rel="search" title="Search"/>
+<link href="../../cli/index.html" rel="next" title="FiftyOne Command-Line Interface (CLI)"/>
+<link href="plugins.fiftyone.relay.html" rel="prev" title="@fiftyone/relay"/>
+<meta content="https://voxel51.com/wp-content/uploads/2024/03/3.24_webpages_Home_AV.png" property="og:image">
+<link href="https://fonts.googleapis.com/css?family=Palanquin:400,600,700,800" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet"/>
 <script src="https://tag.clearbitscripts.com/v1/pk_b9ed71c8234edd4f77326bcbfab5a4ca/tags.js"></script>
-
-
-  
-  <script src="../../_static/js/modernizr.min.js"></script>
-
-  
-</head>
-
-
-<div class="container-fluid header-holder tutorials-header" id="header-holder">
-  <div class="container">
-    <div class="header-container">
-      <a class="header-logo" href="https://pytorch.org/" aria-label="PyTorch"></a>
-
-      <div class="main-menu">
-        <ul>
-          <li>
-            <a href="https://pytorch.org/get-started">Get Started</a>
-          </li>
-
-          <li>
-            <div class="ecosystem-dropdown">
-              <a id="dropdownMenuButton" data-toggle="ecosystem-dropdown">
-                Ecosystem
-              </a>
-              <div class="ecosystem-dropdown-menu">
-                <a class="nav-dropdown-item" href="https://pytorch.org/hub"">
-                  <span class=dropdown-title>Models (Beta)</span>
-                  <p>Discover, publish, and reuse pre-trained models</p>
-                </a>
-                <a class="nav-dropdown-item" href="https://pytorch.org/ecosystem">
-                  <span class=dropdown-title>Tools & Libraries</span>
-                  <p>Explore the ecosystem of tools and libraries</p>
-                </a>
-              </div>
-            </div>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/mobile">Mobile</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/blog/">Blog</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/tutorials">Tutorials</a>
-          </li>
-
-          <li class="active">
-            <a href="https://pytorch.org/docs/stable/index.html">Docs</a>
-          </li>
-
-          <li>
-            <div class="resources-dropdown">
-              <a id="resourcesDropdownButton" data-toggle="resources-dropdown">
-                Resources
-              </a>
-              <div class="resources-dropdown-menu">
-                <a class="nav-dropdown-item" href="https://pytorch.org/resources"">
-                  <span class=dropdown-title>Developer Resources</span>
-                  <p>Find resources and get questions answered</p>
-                </a>
-                <a class="nav-dropdown-item" href="https://pytorch.org/features">
-                  <span class=dropdown-title>About</span>
-                  <p>Learn about PyTorch’s features and capabilities</p>
-                </a>
-              </div>
-            </div>
-          </li>
-
-          <li>
-            <a href="https://github.com/pytorch/pytorch">Github</a>
-          </li>
-        </ul>
-      </div>
-
-      <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
-    </div>
-
-  </div>
-</div>
-
-
+<script src="../../_static/js/modernizr.min.js"></script>
+</meta></head>
 
 <body class="pytorch-body">
-
-   
-
-    
-
-    <div class="table-of-contents-link-wrapper">
-      <span>Table of Contents</span>
-      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
-    </div>
-
-    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
-      <div class="pytorch-side-scroll">
-        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          <div class="pytorch-left-menu-search">
-            
-
-            
-              
-              
-            
-
-            
-
-
-  
-
-
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search Docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
+<div class="table-of-contents-link-wrapper">
+<span>Table of Contents</span>
+<a class="toggle-table-of-contents" data-behavior="toggle-table-of-contents" href="#"></a>
 </div>
-
-            
-          </div>
-
-          
-            
-            
-              
-            
-            
-              <ul class="current">
+<nav class="pytorch-left-menu" data-toggle="wy-nav-shift" id="pytorch-left-menu">
+<div class="pytorch-side-scroll">
+<div aria-label="main navigation" class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation">
+<div class="pytorch-left-menu-search">
+<div role="search">
+<form action="../../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input name="q" placeholder="Search Docs" type="text"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../index.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../teams/index.html">FiftyOne Teams 🚀</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../getting_started/install.html">Installation</a></li>
@@ -197,88 +60,47 @@
 <li class="toctree-l1"><a class="reference internal" href="../../deprecation.html">Deprecation Notices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq/index.html">FAQ</a></li>
 </ul>
-
-            
-          
-        </div>
-      </div>
-    </nav>
-
-    <div class="pytorch-container">
-      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
-        <div class="pytorch-breadcrumbs-wrapper">
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
-  <ul class="pytorch-breadcrumbs">
-    
-      <li>
-        <a href="../../index.html">
+</div>
+</div>
+</nav>
+<div class="pytorch-container">
+<div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+<div class="pytorch-breadcrumbs-wrapper">
+<div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="pytorch-breadcrumbs">
+<li>
+<a href="../../index.html">
           
             Docs
           
         </a> &gt;
       </li>
-
-        
-          <li><a href="../index.html">Plugins Overview</a> &gt;</li>
-        
-          <li><a href="../ts-api.html">TypeScript API Reference</a> &gt;</li>
-        
-      <li>&#64;fiftyone/utilities</li>
-    
-    
-      <li class="pytorch-breadcrumbs-aside">
-        
-            
-        
-      </li>
-    
-  </ul>
-
-  
+<li><a href="../index.html">Plugins Overview</a> &gt;</li>
+<li><a href="../ts-api.html">TypeScript API Reference</a> &gt;</li>
+<li>@fiftyone/utilities</li>
+<li class="pytorch-breadcrumbs-aside">
+</li>
+</ul>
 </div>
-        </div>
-
-        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+</div>
+<div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
           Contents
         </div>
-      </div>
-
-      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
-        <div class="pytorch-content-left">
-
-        
-          
-          <div class="rst-content style-external-links">
-          
-            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
-             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
-              
-  <div class="section" id="module-fiftyone-utilities">
-<span id="module-@fiftyone/utilities"></span><span id="fiftyone-utilities"></span><h1>&#64;fiftyone/utilities<a class="headerlink" href="#module-fiftyone-utilities" title="Permalink to this headline">¶</a></h1>
+</div>
+<section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+<div class="pytorch-content-left">
+<div class="rst-content style-external-links">
+<div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+<div class="section" id="module-fiftyone-utilities">
+<span id="module-@fiftyone/utilities"></span><span id="fiftyone-utilities"></span><h1>@fiftyone/utilities<a class="headerlink" href="#module-fiftyone-utilities" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="hooks">
 <h2>Hooks<a class="headerlink" href="#hooks" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="useexternallink">
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-useexternallink"></span><h3>useExternalLink<a class="headerlink" href="#useexternallink" title="Permalink to this headline">¶</a></h3>
 <dl class="js function">
 <dt id="fiftyone-utilities.useExternalLink">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">useExternalLink</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">href</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.useExternalLink" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">useExternalLink</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">href</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.useExternalLink" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Arguments</dt>
 <dd class="field-odd"><ul class="simple">
@@ -287,13 +109,12 @@
 </dd>
 </dl>
 </dd></dl>
-
 </div>
 <div class="section" id="useitemswithorderpersistence">
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-useitemswithorderpersistence"></span><h3>useItemsWithOrderPersistence<a class="headerlink" href="#useitemswithorderpersistence" title="Permalink to this headline">¶</a></h3>
 <dl class="js function">
 <dt id="fiftyone-utilities.useItemsWithOrderPersistence">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">useItemsWithOrderPersistence</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">items</span></em>, <em class="sig-param"><span class="pre">key</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.useItemsWithOrderPersistence" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">useItemsWithOrderPersistence</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">items</span></em>, <em class="sig-param"><span class="pre">key</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.useItemsWithOrderPersistence" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Arguments</dt>
 <dd class="field-odd"><ul class="simple">
@@ -306,7 +127,6 @@
 </dd>
 </dl>
 </dd></dl>
-
 </div>
 </div>
 <div class="section" id="functions">
@@ -315,7 +135,7 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-applyalpha"></span><h3>applyAlpha<a class="headerlink" href="#applyalpha" title="Permalink to this headline">¶</a></h3>
 <dl class="js function">
 <dt id="fiftyone-utilities.applyAlpha">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">applyAlpha</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">color</span></em>, <em class="sig-param"><span class="pre">alpha</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.applyAlpha" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">applyAlpha</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">color</span></em>, <em class="sig-param"><span class="pre">alpha</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.applyAlpha" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Arguments</dt>
 <dd class="field-odd"><ul class="simple">
@@ -328,13 +148,12 @@
 </dd>
 </dl>
 </dd></dl>
-
 </div>
 <div class="section" id="clone">
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-clone"></span><h3>clone<a class="headerlink" href="#clone" title="Permalink to this headline">¶</a></h3>
 <dl class="js function">
 <dt id="fiftyone-utilities.clone">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">clone</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.clone" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">clone</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.clone" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Arguments</dt>
 <dd class="field-odd"><ul class="simple">
@@ -346,13 +165,12 @@
 </dd>
 </dl>
 </dd></dl>
-
 </div>
 <div class="section" id="createcolorgenerator">
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-createcolorgenerator"></span><h3>createColorGenerator<a class="headerlink" href="#createcolorgenerator" title="Permalink to this headline">¶</a></h3>
 <dl class="js function">
 <dt id="fiftyone-utilities.createColorGenerator">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">createColorGenerator</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">colorPool</span></em>, <em class="sig-param"><span class="pre">seed</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.createColorGenerator" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">createColorGenerator</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">colorPool</span></em>, <em class="sig-param"><span class="pre">seed</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.createColorGenerator" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Arguments</dt>
 <dd class="field-odd"><ul class="simple">
@@ -362,16 +180,15 @@
 </dd>
 </dl>
 </dd></dl>
-
 </div>
 <div class="section" id="createresourcegroup">
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-createresourcegroup"></span><h3>createResourceGroup<a class="headerlink" href="#createresourcegroup" title="Permalink to this headline">¶</a></h3>
 <dl class="js function">
 <dt id="fiftyone-utilities.createResourceGroup">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">createResourceGroup</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.createResourceGroup" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">createResourceGroup</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.createResourceGroup" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="js function">
 <dt id="id1">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">createResourceGroup</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id1" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">createResourceGroup</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id1" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Arguments</dt>
 <dd class="field-odd"><ul class="simple">
@@ -384,15 +201,13 @@
 </dd>
 </dl>
 </dd></dl>
-
 </dd></dl>
-
 </div>
 <div class="section" id="determinepathtype">
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-determinepathtype"></span><h3>determinePathType<a class="headerlink" href="#determinepathtype" title="Permalink to this headline">¶</a></h3>
 <dl class="js function">
 <dt id="fiftyone-utilities.determinePathType">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">determinePathType</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">path</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.determinePathType" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">determinePathType</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">path</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.determinePathType" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Arguments</dt>
 <dd class="field-odd"><ul class="simple">
@@ -404,13 +219,12 @@
 </dd>
 </dl>
 </dd></dl>
-
 </div>
 <div class="section" id="doesschemacontainembeddeddoctype">
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-doesschemacontainembeddeddoctype"></span><h3>doesSchemaContainEmbeddedDocType<a class="headerlink" href="#doesschemacontainembeddeddoctype" title="Permalink to this headline">¶</a></h3>
 <dl class="js function">
 <dt id="fiftyone-utilities.doesSchemaContainEmbeddedDocType">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">doesSchemaContainEmbeddedDocType</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">schema</span></em>, <em class="sig-param"><span class="pre">embeddedDocType</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.doesSchemaContainEmbeddedDocType" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">doesSchemaContainEmbeddedDocType</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">schema</span></em>, <em class="sig-param"><span class="pre">embeddedDocType</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.doesSchemaContainEmbeddedDocType" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Arguments</dt>
 <dd class="field-odd"><ul class="simple">
@@ -423,26 +237,24 @@
 </dd>
 </dl>
 </dd></dl>
-
 </div>
 <div class="section" id="env">
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-env"></span><h3>env<a class="headerlink" href="#env" title="Permalink to this headline">¶</a></h3>
 <dl class="js function">
 <dt id="fiftyone-utilities.env">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">env</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.env" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">env</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.env" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">ImportMetaEnv</span></code></p>
 </dd>
 </dl>
 </dd></dl>
-
 </div>
 <div class="section" id="formatdate">
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-formatdate"></span><h3>formatDate<a class="headerlink" href="#formatdate" title="Permalink to this headline">¶</a></h3>
 <dl class="js function">
 <dt id="fiftyone-utilities.formatDate">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">formatDate</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">timeStamp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.formatDate" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">formatDate</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">timeStamp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.formatDate" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Arguments</dt>
 <dd class="field-odd"><ul class="simple">
@@ -454,13 +266,12 @@
 </dd>
 </dl>
 </dd></dl>
-
 </div>
 <div class="section" id="formatdatetime">
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-formatdatetime"></span><h3>formatDateTime<a class="headerlink" href="#formatdatetime" title="Permalink to this headline">¶</a></h3>
 <dl class="js function">
 <dt id="fiftyone-utilities.formatDateTime">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">formatDateTime</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">timeStamp</span></em>, <em class="sig-param"><span class="pre">timeZone</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.formatDateTime" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">formatDateTime</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">timeStamp</span></em>, <em class="sig-param"><span class="pre">timeZone</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.formatDateTime" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Arguments</dt>
 <dd class="field-odd"><ul class="simple">
@@ -473,13 +284,12 @@
 </dd>
 </dl>
 </dd></dl>
-
 </div>
 <div class="section" id="formatprimitive">
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-formatprimitive"></span><h3>formatPrimitive<a class="headerlink" href="#formatprimitive" title="Permalink to this headline">¶</a></h3>
 <dl class="js function">
 <dt id="fiftyone-utilities.formatPrimitive">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">formatPrimitive</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">__namedParameters</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.formatPrimitive" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">formatPrimitive</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">__namedParameters</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.formatPrimitive" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Arguments</dt>
 <dd class="field-odd"><ul class="simple">
@@ -494,13 +304,12 @@
 </dd>
 </dl>
 </dd></dl>
-
 </div>
 <div class="section" id="get32bitcolor">
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-get32bitcolor"></span><h3>get32BitColor<a class="headerlink" href="#get32bitcolor" title="Permalink to this headline">¶</a></h3>
 <dl class="js function">
 <dt id="fiftyone-utilities.get32BitColor">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">get32BitColor</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">color</span></em>, <em class="sig-param"><span class="pre">alpha</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.get32BitColor" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">get32BitColor</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">color</span></em>, <em class="sig-param"><span class="pre">alpha</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.get32BitColor" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Arguments</dt>
 <dd class="field-odd"><ul class="simple">
@@ -513,26 +322,24 @@
 </dd>
 </dl>
 </dd></dl>
-
 </div>
 <div class="section" id="getapi">
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-getapi"></span><h3>getAPI<a class="headerlink" href="#getapi" title="Permalink to this headline">¶</a></h3>
 <dl class="js function">
 <dt id="fiftyone-utilities.getAPI">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">getAPI</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.getAPI" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">getAPI</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.getAPI" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">any</span></code></p>
 </dd>
 </dl>
 </dd></dl>
-
 </div>
 <div class="section" id="getbasename">
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-getbasename"></span><h3>getBasename<a class="headerlink" href="#getbasename" title="Permalink to this headline">¶</a></h3>
 <dl class="js function">
 <dt id="fiftyone-utilities.getBasename">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">getBasename</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">path</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.getBasename" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">getBasename</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">path</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.getBasename" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Arguments</dt>
 <dd class="field-odd"><ul class="simple">
@@ -544,13 +351,12 @@
 </dd>
 </dl>
 </dd></dl>
-
 </div>
 <div class="section" id="getcls">
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-getcls"></span><h3>getCls<a class="headerlink" href="#getcls" title="Permalink to this headline">¶</a></h3>
 <dl class="js function">
 <dt id="fiftyone-utilities.getCls">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">getCls</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">fieldPath</span></em>, <em class="sig-param"><span class="pre">schema</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.getCls" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">getCls</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">fieldPath</span></em>, <em class="sig-param"><span class="pre">schema</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.getCls" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Arguments</dt>
 <dd class="field-odd"><ul class="simple">
@@ -563,13 +369,12 @@
 </dd>
 </dl>
 </dd></dl>
-
 </div>
 <div class="section" id="getcolor">
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-getcolor"></span><h3>getColor<a class="headerlink" href="#getcolor" title="Permalink to this headline">¶</a></h3>
 <dl class="js function">
 <dt id="fiftyone-utilities.getColor">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">getColor</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">pool</span></em>, <em class="sig-param"><span class="pre">seed</span></em>, <em class="sig-param"><span class="pre">fieldOrValue</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.getColor" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">getColor</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">pool</span></em>, <em class="sig-param"><span class="pre">seed</span></em>, <em class="sig-param"><span class="pre">fieldOrValue</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.getColor" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Arguments</dt>
 <dd class="field-odd"><ul class="simple">
@@ -583,13 +388,12 @@
 </dd>
 </dl>
 </dd></dl>
-
 </div>
 <div class="section" id="getcolorscalearray">
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-getcolorscalearray"></span><h3>getColorscaleArray<a class="headerlink" href="#getcolorscalearray" title="Permalink to this headline">¶</a></h3>
 <dl class="js function">
 <dt id="fiftyone-utilities.getColorscaleArray">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">getColorscaleArray</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">colorscale</span></em>, <em class="sig-param"><span class="pre">alpha</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.getColorscaleArray" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">getColorscaleArray</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">colorscale</span></em>, <em class="sig-param"><span class="pre">alpha</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.getColorscaleArray" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Arguments</dt>
 <dd class="field-odd"><ul class="simple">
@@ -602,13 +406,12 @@
 </dd>
 </dl>
 </dd></dl>
-
 </div>
 <div class="section" id="geteventsource">
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-geteventsource"></span><h3>getEventSource<a class="headerlink" href="#geteventsource" title="Permalink to this headline">¶</a></h3>
 <dl class="js function">
 <dt id="fiftyone-utilities.getEventSource">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">getEventSource</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">path</span></em>, <em class="sig-param"><span class="pre">events</span></em>, <em class="sig-param"><span class="pre">signal</span></em>, <em class="sig-param"><span class="pre">body</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.getEventSource" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">getEventSource</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">path</span></em>, <em class="sig-param"><span class="pre">events</span></em>, <em class="sig-param"><span class="pre">signal</span></em>, <em class="sig-param"><span class="pre">body</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.getEventSource" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Arguments</dt>
 <dd class="field-odd"><ul class="simple">
@@ -627,78 +430,72 @@
 </dd>
 </dl>
 </dd></dl>
-
 </div>
 <div class="section" id="getfetchfunction">
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-getfetchfunction"></span><h3>getFetchFunction<a class="headerlink" href="#getfetchfunction" title="Permalink to this headline">¶</a></h3>
 <dl class="js function">
 <dt id="fiftyone-utilities.getFetchFunction">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">getFetchFunction</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.getFetchFunction" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">getFetchFunction</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.getFetchFunction" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref js js-class docutils literal notranslate"><span class="pre">plugins.fiftyone.utilities.FetchFunction()</span></code></p>
 </dd>
 </dl>
 </dd></dl>
-
 </div>
 <div class="section" id="getfetchheaders">
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-getfetchheaders"></span><h3>getFetchHeaders<a class="headerlink" href="#getfetchheaders" title="Permalink to this headline">¶</a></h3>
 <dl class="js function">
 <dt id="fiftyone-utilities.getFetchHeaders">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">getFetchHeaders</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.getFetchHeaders" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">getFetchHeaders</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.getFetchHeaders" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">HeadersInit</span></code></p>
 </dd>
 </dl>
 </dd></dl>
-
 </div>
 <div class="section" id="getfetchorigin">
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-getfetchorigin"></span><h3>getFetchOrigin<a class="headerlink" href="#getfetchorigin" title="Permalink to this headline">¶</a></h3>
 <dl class="js function">
 <dt id="fiftyone-utilities.getFetchOrigin">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">getFetchOrigin</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.getFetchOrigin" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">getFetchOrigin</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.getFetchOrigin" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">any</span></code></p>
 </dd>
 </dl>
 </dd></dl>
-
 </div>
 <div class="section" id="getfetchparameters">
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-getfetchparameters"></span><h3>getFetchParameters<a class="headerlink" href="#getfetchparameters" title="Permalink to this headline">¶</a></h3>
 <dl class="js function">
 <dt id="fiftyone-utilities.getFetchParameters">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">getFetchParameters</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.getFetchParameters" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">getFetchParameters</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.getFetchParameters" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">Object</span></code></p>
 </dd>
 </dl>
 </dd></dl>
-
 </div>
 <div class="section" id="getfetchpathprefix">
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-getfetchpathprefix"></span><h3>getFetchPathPrefix<a class="headerlink" href="#getfetchpathprefix" title="Permalink to this headline">¶</a></h3>
 <dl class="js function">
 <dt id="fiftyone-utilities.getFetchPathPrefix">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">getFetchPathPrefix</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.getFetchPathPrefix" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">getFetchPathPrefix</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.getFetchPathPrefix" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p>
 </dd>
 </dl>
 </dd></dl>
-
 </div>
 <div class="section" id="getfieldinfo">
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-getfieldinfo"></span><h3>getFieldInfo<a class="headerlink" href="#getfieldinfo" title="Permalink to this headline">¶</a></h3>
 <dl class="js function">
 <dt id="fiftyone-utilities.getFieldInfo">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">getFieldInfo</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">fieldPath</span></em>, <em class="sig-param"><span class="pre">schema</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.getFieldInfo" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">getFieldInfo</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">fieldPath</span></em>, <em class="sig-param"><span class="pre">schema</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.getFieldInfo" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Arguments</dt>
 <dd class="field-odd"><ul class="simple">
@@ -711,13 +508,12 @@
 </dd>
 </dl>
 </dd></dl>
-
 </div>
 <div class="section" id="getfieldswithembeddeddoctype">
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-getfieldswithembeddeddoctype"></span><h3>getFieldsWithEmbeddedDocType<a class="headerlink" href="#getfieldswithembeddeddoctype" title="Permalink to this headline">¶</a></h3>
 <dl class="js function">
 <dt id="fiftyone-utilities.getFieldsWithEmbeddedDocType">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">getFieldsWithEmbeddedDocType</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">schema</span></em>, <em class="sig-param"><span class="pre">embeddedDocType</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.getFieldsWithEmbeddedDocType" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">getFieldsWithEmbeddedDocType</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">schema</span></em>, <em class="sig-param"><span class="pre">embeddedDocType</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.getFieldsWithEmbeddedDocType" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Arguments</dt>
 <dd class="field-odd"><ul class="simple">
@@ -730,13 +526,12 @@
 </dd>
 </dl>
 </dd></dl>
-
 </div>
 <div class="section" id="getmimetype">
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-getmimetype"></span><h3>getMimeType<a class="headerlink" href="#getmimetype" title="Permalink to this headline">¶</a></h3>
 <dl class="js function">
 <dt id="fiftyone-utilities.getMimeType">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">getMimeType</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">sample</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.getMimeType" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">getMimeType</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">sample</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.getMimeType" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Arguments</dt>
 <dd class="field-odd"><ul class="simple">
@@ -748,13 +543,12 @@
 </dd>
 </dl>
 </dd></dl>
-
 </div>
 <div class="section" id="getprotocol">
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-getprotocol"></span><h3>getProtocol<a class="headerlink" href="#getprotocol" title="Permalink to this headline">¶</a></h3>
 <dl class="js function">
 <dt id="fiftyone-utilities.getProtocol">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">getProtocol</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">path</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.getProtocol" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">getProtocol</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">path</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.getProtocol" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Arguments</dt>
 <dd class="field-odd"><ul class="simple">
@@ -766,13 +560,12 @@
 </dd>
 </dl>
 </dd></dl>
-
 </div>
 <div class="section" id="getrgb">
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-getrgb"></span><h3>getRGB<a class="headerlink" href="#getrgb" title="Permalink to this headline">¶</a></h3>
 <dl class="js function">
 <dt id="fiftyone-utilities.getRGB">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">getRGB</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">color</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.getRGB" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">getRGB</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">color</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.getRGB" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Arguments</dt>
 <dd class="field-odd"><ul class="simple">
@@ -784,13 +577,12 @@
 </dd>
 </dl>
 </dd></dl>
-
 </div>
 <div class="section" id="getrgba">
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-getrgba"></span><h3>getRGBA<a class="headerlink" href="#getrgba" title="Permalink to this headline">¶</a></h3>
 <dl class="js function">
 <dt id="fiftyone-utilities.getRGBA">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">getRGBA</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.getRGBA" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">getRGBA</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.getRGBA" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Arguments</dt>
 <dd class="field-odd"><ul class="simple">
@@ -802,13 +594,12 @@
 </dd>
 </dl>
 </dd></dl>
-
 </div>
 <div class="section" id="getrgbacolor">
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-getrgbacolor"></span><h3>getRGBAColor<a class="headerlink" href="#getrgbacolor" title="Permalink to this headline">¶</a></h3>
 <dl class="js function">
 <dt id="fiftyone-utilities.getRGBAColor">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">getRGBAColor</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">__namedParameters</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.getRGBAColor" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">getRGBAColor</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">__namedParameters</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.getRGBAColor" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Arguments</dt>
 <dd class="field-odd"><ul class="simple">
@@ -820,13 +611,12 @@
 </dd>
 </dl>
 </dd></dl>
-
 </div>
 <div class="section" id="getrootorprotocol">
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-getrootorprotocol"></span><h3>getRootOrProtocol<a class="headerlink" href="#getrootorprotocol" title="Permalink to this headline">¶</a></h3>
 <dl class="js function">
 <dt id="fiftyone-utilities.getRootOrProtocol">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">getRootOrProtocol</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">path</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.getRootOrProtocol" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">getRootOrProtocol</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">path</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.getRootOrProtocol" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Arguments</dt>
 <dd class="field-odd"><ul class="simple">
@@ -838,13 +628,12 @@
 </dd>
 </dl>
 </dd></dl>
-
 </div>
 <div class="section" id="getseparator">
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-getseparator"></span><h3>getSeparator<a class="headerlink" href="#getseparator" title="Permalink to this headline">¶</a></h3>
 <dl class="js function">
 <dt id="fiftyone-utilities.getSeparator">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">getSeparator</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">pathType</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.getSeparator" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">getSeparator</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">pathType</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.getSeparator" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Arguments</dt>
 <dd class="field-odd"><ul class="simple">
@@ -856,13 +645,12 @@
 </dd>
 </dl>
 </dd></dl>
-
 </div>
 <div class="section" id="hextorgb">
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-hextorgb"></span><h3>hexToRgb<a class="headerlink" href="#hextorgb" title="Permalink to this headline">¶</a></h3>
 <dl class="js function">
 <dt id="fiftyone-utilities.hexToRgb">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">hexToRgb</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">hex</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.hexToRgb" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">hexToRgb</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">hex</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.hexToRgb" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Arguments</dt>
 <dd class="field-odd"><ul class="simple">
@@ -874,13 +662,12 @@
 </dd>
 </dl>
 </dd></dl>
-
 </div>
 <div class="section" id="humanreadablebytes">
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-humanreadablebytes"></span><h3>humanReadableBytes<a class="headerlink" href="#humanreadablebytes" title="Permalink to this headline">¶</a></h3>
 <dl class="js function">
 <dt id="fiftyone-utilities.humanReadableBytes">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">humanReadableBytes</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">bytes</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.humanReadableBytes" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">humanReadableBytes</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">bytes</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.humanReadableBytes" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Arguments</dt>
 <dd class="field-odd"><ul class="simple">
@@ -892,13 +679,12 @@
 </dd>
 </dl>
 </dd></dl>
-
 </div>
 <div class="section" id="ishex">
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-ishex"></span><h3>isHex<a class="headerlink" href="#ishex" title="Permalink to this headline">¶</a></h3>
 <dl class="js function">
 <dt id="fiftyone-utilities.isHex">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">isHex</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.isHex" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">isHex</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.isHex" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Arguments</dt>
 <dd class="field-odd"><ul class="simple">
@@ -910,26 +696,24 @@
 </dd>
 </dl>
 </dd></dl>
-
 </div>
 <div class="section" id="isnotebook">
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-isnotebook"></span><h3>isNotebook<a class="headerlink" href="#isnotebook" title="Permalink to this headline">¶</a></h3>
 <dl class="js function">
 <dt id="fiftyone-utilities.isNotebook">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">isNotebook</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.isNotebook" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">isNotebook</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.isNotebook" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">boolean</span></code></p>
 </dd>
 </dl>
 </dd></dl>
-
 </div>
 <div class="section" id="isnullish">
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-isnullish"></span><h3>isNullish<a class="headerlink" href="#isnullish" title="Permalink to this headline">¶</a></h3>
 <dl class="js function">
 <dt id="fiftyone-utilities.isNullish">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">isNullish</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.isNullish" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">isNullish</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.isNullish" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Arguments</dt>
 <dd class="field-odd"><ul class="simple">
@@ -941,13 +725,12 @@
 </dd>
 </dl>
 </dd></dl>
-
 </div>
 <div class="section" id="isobjectidstring">
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-isobjectidstring"></span><h3>isObjectIdString<a class="headerlink" href="#isobjectidstring" title="Permalink to this headline">¶</a></h3>
 <dl class="js function">
 <dt id="fiftyone-utilities.isObjectIdString">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">isObjectIdString</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.isObjectIdString" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">isObjectIdString</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.isObjectIdString" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Arguments</dt>
 <dd class="field-odd"><ul class="simple">
@@ -959,13 +742,12 @@
 </dd>
 </dl>
 </dd></dl>
-
 </div>
 <div class="section" id="isprimitivestring">
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-isprimitivestring"></span><h3>isPrimitiveString<a class="headerlink" href="#isprimitivestring" title="Permalink to this headline">¶</a></h3>
 <dl class="js function">
 <dt id="fiftyone-utilities.isPrimitiveString">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">isPrimitiveString</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.isPrimitiveString" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">isPrimitiveString</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.isPrimitiveString" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Arguments</dt>
 <dd class="field-odd"><ul class="simple">
@@ -977,13 +759,12 @@
 </dd>
 </dl>
 </dd></dl>
-
 </div>
 <div class="section" id="isprimitivetype">
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-isprimitivetype"></span><h3>isPrimitiveType<a class="headerlink" href="#isprimitivetype" title="Permalink to this headline">¶</a></h3>
 <dl class="js function">
 <dt id="fiftyone-utilities.isPrimitiveType">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">isPrimitiveType</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">type</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.isPrimitiveType" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">isPrimitiveType</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">type</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.isPrimitiveType" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Arguments</dt>
 <dd class="field-odd"><ul class="simple">
@@ -995,13 +776,12 @@
 </dd>
 </dl>
 </dd></dl>
-
 </div>
 <div class="section" id="joinpaths">
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-joinpaths"></span><h3>joinPaths<a class="headerlink" href="#joinpaths" title="Permalink to this headline">¶</a></h3>
 <dl class="js function">
 <dt id="fiftyone-utilities.joinPaths">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">joinPaths</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">paths</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.joinPaths" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">joinPaths</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">paths</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.joinPaths" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Arguments</dt>
 <dd class="field-odd"><ul class="simple">
@@ -1013,13 +793,12 @@
 </dd>
 </dl>
 </dd></dl>
-
 </div>
 <div class="section" id="makepseudofield">
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-makepseudofield"></span><h3>makePseudoField<a class="headerlink" href="#makepseudofield" title="Permalink to this headline">¶</a></h3>
 <dl class="js function">
 <dt id="fiftyone-utilities.makePseudoField">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">makePseudoField</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">path</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.makePseudoField" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">makePseudoField</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">path</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.makePseudoField" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Arguments</dt>
 <dd class="field-odd"><ul class="simple">
@@ -1031,13 +810,12 @@
 </dd>
 </dl>
 </dd></dl>
-
 </div>
 <div class="section" id="meetsfieldtype">
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-meetsfieldtype"></span><h3>meetsFieldType<a class="headerlink" href="#meetsfieldtype" title="Permalink to this headline">¶</a></h3>
 <dl class="js function">
 <dt id="fiftyone-utilities.meetsFieldType">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">meetsFieldType</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">field</span></em>, <em class="sig-param"><span class="pre">__namedParameters</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.meetsFieldType" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">meetsFieldType</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">field</span></em>, <em class="sig-param"><span class="pre">__namedParameters</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.meetsFieldType" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Arguments</dt>
 <dd class="field-odd"><ul class="simple">
@@ -1053,13 +831,12 @@
 </dd>
 </dl>
 </dd></dl>
-
 </div>
 <div class="section" id="move">
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-move"></span><h3>move<a class="headerlink" href="#move" title="Permalink to this headline">¶</a></h3>
 <dl class="js function">
 <dt id="fiftyone-utilities.move">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">move</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">array</span></em>, <em class="sig-param"><span class="pre">moveIndex</span></em>, <em class="sig-param"><span class="pre">toIndex</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.move" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">move</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">array</span></em>, <em class="sig-param"><span class="pre">moveIndex</span></em>, <em class="sig-param"><span class="pre">toIndex</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.move" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Arguments</dt>
 <dd class="field-odd"><ul class="simple">
@@ -1073,13 +850,12 @@
 </dd>
 </dl>
 </dd></dl>
-
 </div>
 <div class="section" id="pluralize">
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-pluralize"></span><h3>pluralize<a class="headerlink" href="#pluralize" title="Permalink to this headline">¶</a></h3>
 <dl class="js function">
 <dt id="fiftyone-utilities.pluralize">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">pluralize</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">number</span></em>, <em class="sig-param"><span class="pre">singular</span></em>, <em class="sig-param"><span class="pre">plural</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.pluralize" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">pluralize</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">number</span></em>, <em class="sig-param"><span class="pre">singular</span></em>, <em class="sig-param"><span class="pre">plural</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.pluralize" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Arguments</dt>
 <dd class="field-odd"><ul class="simple">
@@ -1093,13 +869,12 @@
 </dd>
 </dl>
 </dd></dl>
-
 </div>
 <div class="section" id="prettify">
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-prettify"></span><h3>prettify<a class="headerlink" href="#prettify" title="Permalink to this headline">¶</a></h3>
 <dl class="js function">
 <dt id="fiftyone-utilities.prettify">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">prettify</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">v</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.prettify" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">prettify</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">v</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.prettify" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Arguments</dt>
 <dd class="field-odd"><ul class="simple">
@@ -1111,13 +886,12 @@
 </dd>
 </dl>
 </dd></dl>
-
 </div>
 <div class="section" id="removekeys">
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-removekeys"></span><h3>removeKeys<a class="headerlink" href="#removekeys" title="Permalink to this headline">¶</a></h3>
 <dl class="js function">
 <dt id="fiftyone-utilities.removeKeys">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">removeKeys</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">obj</span></em>, <em class="sig-param"><span class="pre">keys</span></em>, <em class="sig-param"><span class="pre">startsWith</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.removeKeys" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">removeKeys</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">obj</span></em>, <em class="sig-param"><span class="pre">keys</span></em>, <em class="sig-param"><span class="pre">startsWith</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.removeKeys" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Arguments</dt>
 <dd class="field-odd"><ul class="simple">
@@ -1131,13 +905,12 @@
 </dd>
 </dl>
 </dd></dl>
-
 </div>
 <div class="section" id="resolveancestors">
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-resolveancestors"></span><h3>resolveAncestors<a class="headerlink" href="#resolveancestors" title="Permalink to this headline">¶</a></h3>
 <dl class="js function">
 <dt id="fiftyone-utilities.resolveAncestors">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">resolveAncestors</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">path</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.resolveAncestors" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">resolveAncestors</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">path</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.resolveAncestors" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Arguments</dt>
 <dd class="field-odd"><ul class="simple">
@@ -1149,13 +922,12 @@
 </dd>
 </dl>
 </dd></dl>
-
 </div>
 <div class="section" id="resolveparent">
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-resolveparent"></span><h3>resolveParent<a class="headerlink" href="#resolveparent" title="Permalink to this headline">¶</a></h3>
 <dl class="js function">
 <dt id="fiftyone-utilities.resolveParent">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">resolveParent</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">path</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.resolveParent" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">resolveParent</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">path</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.resolveParent" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Arguments</dt>
 <dd class="field-odd"><ul class="simple">
@@ -1167,13 +939,12 @@
 </dd>
 </dl>
 </dd></dl>
-
 </div>
 <div class="section" id="rgbtohexcached">
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-rgbtohexcached"></span><h3>rgbToHexCached<a class="headerlink" href="#rgbtohexcached" title="Permalink to this headline">¶</a></h3>
 <dl class="js function">
 <dt id="fiftyone-utilities.rgbToHexCached">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">rgbToHexCached</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">color</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.rgbToHexCached" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">rgbToHexCached</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">color</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.rgbToHexCached" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Arguments</dt>
 <dd class="field-odd"><ul class="simple">
@@ -1185,13 +956,12 @@
 </dd>
 </dl>
 </dd></dl>
-
 </div>
 <div class="section" id="sendevent">
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-sendevent"></span><h3>sendEvent<a class="headerlink" href="#sendevent" title="Permalink to this headline">¶</a></h3>
 <dl class="js function">
 <dt id="fiftyone-utilities.sendEvent">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">sendEvent</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.sendEvent" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">sendEvent</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.sendEvent" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Arguments</dt>
 <dd class="field-odd"><ul class="simple">
@@ -1203,13 +973,12 @@
 </dd>
 </dl>
 </dd></dl>
-
 </div>
 <div class="section" id="setfetchfunction">
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-setfetchfunction"></span><h3>setFetchFunction<a class="headerlink" href="#setfetchfunction" title="Permalink to this headline">¶</a></h3>
 <dl class="js function">
 <dt id="fiftyone-utilities.setFetchFunction">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">setFetchFunction</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">origin</span></em>, <em class="sig-param"><span class="pre">headers</span></em>, <em class="sig-param"><span class="pre">pathPrefix</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.setFetchFunction" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">setFetchFunction</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">origin</span></em>, <em class="sig-param"><span class="pre">headers</span></em>, <em class="sig-param"><span class="pre">pathPrefix</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.setFetchFunction" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Arguments</dt>
 <dd class="field-odd"><ul class="simple">
@@ -1223,13 +992,12 @@
 </dd>
 </dl>
 </dd></dl>
-
 </div>
 <div class="section" id="setfetchparameters">
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-setfetchparameters"></span><h3>setFetchParameters<a class="headerlink" href="#setfetchparameters" title="Permalink to this headline">¶</a></h3>
 <dl class="js function">
 <dt id="fiftyone-utilities.setFetchParameters">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">setFetchParameters</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">origin</span></em>, <em class="sig-param"><span class="pre">headers</span></em>, <em class="sig-param"><span class="pre">pathPrefix</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.setFetchParameters" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">setFetchParameters</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">origin</span></em>, <em class="sig-param"><span class="pre">headers</span></em>, <em class="sig-param"><span class="pre">pathPrefix</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.setFetchParameters" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Arguments</dt>
 <dd class="field-odd"><ul class="simple">
@@ -1243,13 +1011,12 @@
 </dd>
 </dl>
 </dd></dl>
-
 </div>
 <div class="section" id="sizebytesestimate">
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-sizebytesestimate"></span><h3>sizeBytesEstimate<a class="headerlink" href="#sizebytesestimate" title="Permalink to this headline">¶</a></h3>
 <dl class="js function">
 <dt id="fiftyone-utilities.sizeBytesEstimate">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">sizeBytesEstimate</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">object</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.sizeBytesEstimate" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">sizeBytesEstimate</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">object</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.sizeBytesEstimate" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Arguments</dt>
 <dd class="field-odd"><ul class="simple">
@@ -1261,13 +1028,12 @@
 </dd>
 </dl>
 </dd></dl>
-
 </div>
 <div class="section" id="tocamelcase">
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-tocamelcase"></span><h3>toCamelCase<a class="headerlink" href="#tocamelcase" title="Permalink to this headline">¶</a></h3>
 <dl class="js function">
 <dt id="fiftyone-utilities.toCamelCase">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">toCamelCase</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">obj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.toCamelCase" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">toCamelCase</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">obj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.toCamelCase" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Arguments</dt>
 <dd class="field-odd"><ul class="simple">
@@ -1279,13 +1045,12 @@
 </dd>
 </dl>
 </dd></dl>
-
 </div>
 <div class="section" id="toslug">
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-toslug"></span><h3>toSlug<a class="headerlink" href="#toslug" title="Permalink to this headline">¶</a></h3>
 <dl class="js function">
 <dt id="fiftyone-utilities.toSlug">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">toSlug</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.toSlug" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">toSlug</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.toSlug" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Arguments</dt>
 <dd class="field-odd"><ul class="simple">
@@ -1297,13 +1062,12 @@
 </dd>
 </dl>
 </dd></dl>
-
 </div>
 <div class="section" id="tosnakecase">
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-tosnakecase"></span><h3>toSnakeCase<a class="headerlink" href="#tosnakecase" title="Permalink to this headline">¶</a></h3>
 <dl class="js function">
 <dt id="fiftyone-utilities.toSnakeCase">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">toSnakeCase</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">obj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.toSnakeCase" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">toSnakeCase</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">obj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.toSnakeCase" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Arguments</dt>
 <dd class="field-odd"><ul class="simple">
@@ -1315,13 +1079,12 @@
 </dd>
 </dl>
 </dd></dl>
-
 </div>
 <div class="section" id="withpath">
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-withpath"></span><h3>withPath<a class="headerlink" href="#withpath" title="Permalink to this headline">¶</a></h3>
 <dl class="js function">
 <dt id="fiftyone-utilities.withPath">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">withPath</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">path</span></em>, <em class="sig-param"><span class="pre">types</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.withPath" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">withPath</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">path</span></em>, <em class="sig-param"><span class="pre">types</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.withPath" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Arguments</dt>
 <dd class="field-odd"><ul class="simple">
@@ -1334,10 +1097,9 @@
 </dd>
 </dl>
 </dd></dl>
-
 <dl class="js function">
 <dt id="id2">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">withPath</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">path</span></em>, <em class="sig-param"><span class="pre">types</span></em><span class="sig-paren">)</span><a class="headerlink" href="#id2" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">withPath</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">path</span></em>, <em class="sig-param"><span class="pre">types</span></em><span class="sig-paren">)</span><a class="headerlink" href="#id2" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Arguments</dt>
 <dd class="field-odd"><ul class="simple">
@@ -1350,7 +1112,6 @@
 </dd>
 </dl>
 </dd></dl>
-
 </div>
 </div>
 <div class="section" id="types">
@@ -1359,9 +1120,9 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-constants-app-mode"></span><h3>APP_MODE<a class="headerlink" href="#app-mode" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -1381,9 +1142,9 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-constants-array-field"></span><h3>ARRAY_FIELD<a class="headerlink" href="#array-field" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -1403,9 +1164,9 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-constants-book-a-demo-link"></span><h3>BOOK_A_DEMO_LINK<a class="headerlink" href="#book-a-demo-link" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -1425,9 +1186,9 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-constants-boolean-field"></span><h3>BOOLEAN_FIELD<a class="headerlink" href="#boolean-field" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -1447,9 +1208,9 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-constants-classifications-field"></span><h3>CLASSIFICATIONS_FIELD<a class="headerlink" href="#classifications-field" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -1469,9 +1230,9 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-constants-classification-field"></span><h3>CLASSIFICATION_FIELD<a class="headerlink" href="#classification-field" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -1491,9 +1252,9 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-constants-date-field"></span><h3>DATE_FIELD<a class="headerlink" href="#date-field" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -1513,9 +1274,9 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-constants-date-time-field"></span><h3>DATE_TIME_FIELD<a class="headerlink" href="#date-time-field" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -1535,9 +1296,9 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-constants-detections-field"></span><h3>DETECTIONS_FIELD<a class="headerlink" href="#detections-field" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -1557,9 +1318,9 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-constants-detection-field"></span><h3>DETECTION_FIELD<a class="headerlink" href="#detection-field" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -1579,9 +1340,9 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-constants-detection-filed"></span><h3>DETECTION_FILED<a class="headerlink" href="#detection-filed" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -1601,9 +1362,9 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-constants-dict-field"></span><h3>DICT_FIELD<a class="headerlink" href="#dict-field" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -1623,9 +1384,9 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-constants-dynamic-embedded-document-field"></span><h3>DYNAMIC_EMBEDDED_DOCUMENT_FIELD<a class="headerlink" href="#dynamic-embedded-document-field" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -1645,9 +1406,9 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-constants-dynamic-embedded-document-path"></span><h3>DYNAMIC_EMBEDDED_DOCUMENT_PATH<a class="headerlink" href="#dynamic-embedded-document-path" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -1667,9 +1428,9 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-constants-embedded-document-field"></span><h3>EMBEDDED_DOCUMENT_FIELD<a class="headerlink" href="#embedded-document-field" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -1689,9 +1450,9 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-constants-float-field"></span><h3>FLOAT_FIELD<a class="headerlink" href="#float-field" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -1711,9 +1472,9 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-constants-frame-number-field"></span><h3>FRAME_NUMBER_FIELD<a class="headerlink" href="#frame-number-field" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -1733,9 +1494,9 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-constants-frame-support-field"></span><h3>FRAME_SUPPORT_FIELD<a class="headerlink" href="#frame-support-field" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -1755,9 +1516,9 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-constants-geo-locations-field"></span><h3>GEO_LOCATIONS_FIELD<a class="headerlink" href="#geo-locations-field" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -1777,9 +1538,9 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-constants-geo-location-field"></span><h3>GEO_LOCATION_FIELD<a class="headerlink" href="#geo-location-field" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -1799,9 +1560,9 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-constants-group"></span><h3>GROUP<a class="headerlink" href="#group" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -1821,9 +1582,9 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-constants-heatmap-field"></span><h3>HEATMAP_FIELD<a class="headerlink" href="#heatmap-field" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -1843,9 +1604,9 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-constants-int-field"></span><h3>INT_FIELD<a class="headerlink" href="#int-field" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -1865,9 +1626,9 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-constants-is-app-mode-fiftyone"></span><h3>IS_APP_MODE_FIFTYONE<a class="headerlink" href="#is-app-mode-fiftyone" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -1887,9 +1648,9 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-constants-just-field"></span><h3>JUST_FIELD<a class="headerlink" href="#just-field" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -1909,9 +1670,9 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-constants-keypoints-field"></span><h3>KEYPOINTS_FIELD<a class="headerlink" href="#keypoints-field" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -1931,9 +1692,9 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-constants-keypoints-points-field"></span><h3>KEYPOINTS_POINTS_FIELD<a class="headerlink" href="#keypoints-points-field" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -1953,9 +1714,9 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-constants-keypoint-field"></span><h3>KEYPOINT_FIELD<a class="headerlink" href="#keypoint-field" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -1975,9 +1736,9 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-constants-list-field"></span><h3>LIST_FIELD<a class="headerlink" href="#list-field" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -1997,9 +1758,9 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-constants-object-id-field"></span><h3>OBJECT_ID_FIELD<a class="headerlink" href="#object-id-field" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -2019,9 +1780,9 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-constants-polylines-field"></span><h3>POLYLINES_FIELD<a class="headerlink" href="#polylines-field" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -2041,9 +1802,9 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-constants-polyline-field"></span><h3>POLYLINE_FIELD<a class="headerlink" href="#polyline-field" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -2063,9 +1824,9 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-constants-regression-field"></span><h3>REGRESSION_FIELD<a class="headerlink" href="#regression-field" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -2085,9 +1846,9 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-constants-segmentation-field"></span><h3>SEGMENTATION_FIELD<a class="headerlink" href="#segmentation-field" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -2107,9 +1868,9 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-constants-string-field"></span><h3>STRING_FIELD<a class="headerlink" href="#string-field" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -2129,9 +1890,9 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-constants-temporal-detections-field"></span><h3>TEMPORAL_DETECTIONS_FIELD<a class="headerlink" href="#temporal-detections-field" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -2151,9 +1912,9 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-constants-temporal-detection-field"></span><h3>TEMPORAL_DETECTION_FIELD<a class="headerlink" href="#temporal-detection-field" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -2173,9 +1934,9 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-constants-try-in-browser-link"></span><h3>TRY_IN_BROWSER_LINK<a class="headerlink" href="#try-in-browser-link" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -2195,9 +1956,9 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-constants-vector-field"></span><h3>VECTOR_FIELD<a class="headerlink" href="#vector-field" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -2217,9 +1978,9 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-styles-scrollbarstyles"></span><h3>scrollbarStyles<a class="headerlink" href="#scrollbarstyles" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -2228,7 +1989,7 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">'\n--scrollbar-color:</span> <span class="pre">var(--fo-palette-text-tertiary);\n\n&#64;-moz-document</span> <span class="pre">url-prefix()</span> <span class="pre">{\n</span>&#160; <span class="pre">&amp;</span> <span class="pre">{\n</span>&#160;&#160;&#160; <span class="pre">scrollbar-color:</span> <span class="pre">var(--scrollbar-color)</span> <span class="pre">transparent;\n</span>&#160;&#160;&#160; <span class="pre">scrollbar-width:</span> <span class="pre">thin;\n</span>&#160; <span class="pre">}\n}\n\n&amp;::-webkit-scrollbar</span> <span class="pre">{\n</span>&#160; <span class="pre">height:</span> <span class="pre">14px;\n</span>&#160; <span class="pre">width:</span> <span class="pre">14px;\n}\n\n&amp;::-webkit-scrollbar-corner</span> <span class="pre">{\n</span>&#160; <span class="pre">background:</span> <span class="pre">transparent;\n}\n\n&amp;::-webkit-scrollbar-track</span> <span class="pre">{\n</span>&#160; <span class="pre">box-shadow:</span> <span class="pre">inset</span> <span class="pre">0</span> <span class="pre">0</span> <span class="pre">14px</span> <span class="pre">14px</span> <span class="pre">transparent;\n</span>&#160; <span class="pre">height:</span> <span class="pre">14px;\n</span>&#160; <span class="pre">width:</span> <span class="pre">14px;\n}\n\n&amp;::-webkit-scrollbar-thumb</span> <span class="pre">{\n</span>&#160; <span class="pre">border:</span> <span class="pre">solid</span> <span class="pre">3px</span> <span class="pre">transparent;\n</span>&#160; <span class="pre">border-radius:</span> <span class="pre">0;\n</span>&#160; <span class="pre">box-shadow:</span> <span class="pre">inset</span> <span class="pre">0</span> <span class="pre">0</span> <span class="pre">8px</span> <span class="pre">8px</span> <span class="pre">var(--scrollbar-color);\n}\n'</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">'\n--scrollbar-color:</span> <span class="pre">var(--fo-palette-text-tertiary);\n\n@-moz-document</span> <span class="pre">url-prefix()</span> <span class="pre">{\n</span>  <span class="pre">&amp;</span> <span class="pre">{\n</span>    <span class="pre">scrollbar-color:</span> <span class="pre">var(--scrollbar-color)</span> <span class="pre">transparent;\n</span>    <span class="pre">scrollbar-width:</span> <span class="pre">thin;\n</span>  <span class="pre">}\n}\n\n&amp;::-webkit-scrollbar</span> <span class="pre">{\n</span>  <span class="pre">height:</span> <span class="pre">14px;\n</span>  <span class="pre">width:</span> <span class="pre">14px;\n}\n\n&amp;::-webkit-scrollbar-corner</span> <span class="pre">{\n</span>  <span class="pre">background:</span> <span class="pre">transparent;\n}\n\n&amp;::-webkit-scrollbar-track</span> <span class="pre">{\n</span>  <span class="pre">box-shadow:</span> <span class="pre">inset</span> <span class="pre">0</span> <span class="pre">0</span> <span class="pre">14px</span> <span class="pre">14px</span> <span class="pre">transparent;\n</span>  <span class="pre">height:</span> <span class="pre">14px;\n</span>  <span class="pre">width:</span> <span class="pre">14px;\n}\n\n&amp;::-webkit-scrollbar-thumb</span> <span class="pre">{\n</span>  <span class="pre">border:</span> <span class="pre">solid</span> <span class="pre">3px</span> <span class="pre">transparent;\n</span>  <span class="pre">border-radius:</span> <span class="pre">0;\n</span>  <span class="pre">box-shadow:</span> <span class="pre">inset</span> <span class="pre">0</span> <span class="pre">0</span> <span class="pre">8px</span> <span class="pre">8px</span> <span class="pre">var(--scrollbar-color);\n}\n'</span></code></p></td>
 <td></td>
 <td></td>
 </tr>
@@ -2239,24 +2000,22 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-fetchfunction"></span><h3>FetchFunction<a class="headerlink" href="#fetchfunction" title="Permalink to this headline">¶</a></h3>
 <dl class="js class">
 <dt id="fiftyone-utilities.FetchFunction">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">FetchFunction</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.FetchFunction" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">@fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">FetchFunction</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.FetchFunction" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 </div>
 <div class="section" id="field">
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-field"></span><h3>Field<a class="headerlink" href="#field" title="Permalink to this headline">¶</a></h3>
 <dl class="js class">
 <dt id="fiftyone-utilities.Field">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">Field</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.Field" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">@fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">Field</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.Field" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="section" id="properties">
 <h4>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h4>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -2313,16 +2072,15 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-gqlerror"></span><h3>GQLError<a class="headerlink" href="#gqlerror" title="Permalink to this headline">¶</a></h3>
 <dl class="js class">
 <dt id="fiftyone-utilities.GQLError">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">GQLError</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.GQLError" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">@fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">GQLError</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.GQLError" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="section" id="id3">
 <h4>Properties<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -2351,14 +2109,13 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-schema"></span><h3>Schema<a class="headerlink" href="#schema" title="Permalink to this headline">¶</a></h3>
 <dl class="js class">
 <dt id="fiftyone-utilities.Schema">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">Schema</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.Schema" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">@fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">Schema</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.Schema" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -2378,16 +2135,15 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-stage"></span><h3>Stage<a class="headerlink" href="#stage" title="Permalink to this headline">¶</a></h3>
 <dl class="js class">
 <dt id="fiftyone-utilities.Stage">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">Stage</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.Stage" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">@fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">Stage</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.Stage" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="section" id="id4">
 <h4>Properties<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -2408,16 +2164,15 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-strictfield"></span><h3>StrictField<a class="headerlink" href="#strictfield" title="Permalink to this headline">¶</a></h3>
 <dl class="js class">
 <dt id="fiftyone-utilities.StrictField">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">StrictField</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.StrictField" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">@fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">StrictField</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.StrictField" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <div class="section" id="id5">
 <h4>Properties<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -2470,18 +2225,17 @@
 </table>
 <span class="target" id="fos-fiftyone-fiftyone-fiftyone-utilities-bufferrange"></span><dl class="js class">
 <dt id="fiftyone-utilities.BufferRange">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">BufferRange</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.BufferRange" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">@fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">BufferRange</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.BufferRange" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 </div>
 </div>
 <div class="section" id="bufferrange">
 <h3>BufferRange<a class="headerlink" href="#bufferrange" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -2491,50 +2245,46 @@
 </thead>
 <tbody>
 <tr class="row-even"><td><p>BufferRange</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">Readonly</span> <span class="pre">&lt;</span>&#160; <span class="pre">&gt;</span></code> <code class="docutils literal notranslate"><span class="pre">&lt;</span></code> <code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">number</span> <span class="pre">,</span> <span class="pre">number</span> <span class="pre">]</span></code> <code class="docutils literal notranslate"><span class="pre">&gt;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Readonly</span> <span class="pre">&lt;</span>  <span class="pre">&gt;</span></code> <code class="docutils literal notranslate"><span class="pre">&lt;</span></code> <code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">number</span> <span class="pre">,</span> <span class="pre">number</span> <span class="pre">]</span></code> <code class="docutils literal notranslate"><span class="pre">&gt;</span></code></p></td>
 <td></td>
 </tr>
 </tbody>
 </table>
 <span class="target" id="fos-fiftyone-fiftyone-fiftyone-utilities-buffers"></span><dl class="js class">
 <dt id="fiftyone-utilities.Buffers">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">Buffers</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.Buffers" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">@fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">Buffers</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.Buffers" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 </div>
 <div class="section" id="buffers">
 <h3>Buffers<a class="headerlink" href="#buffers" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="fos-fiftyone-fiftyone-fiftyone-utilities-numberkeyobjecttype"></span><dl class="js class">
 <dt id="fiftyone-utilities.NumberKeyObjectType">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">NumberKeyObjectType</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.NumberKeyObjectType" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">@fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">NumberKeyObjectType</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.NumberKeyObjectType" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 </div>
 <div class="section" id="numberkeyobjecttype">
 <h3>NumberKeyObjectType<a class="headerlink" href="#numberkeyobjecttype" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="fos-fiftyone-fiftyone-fiftyone-utilities-primitive"></span><dl class="js class">
 <dt id="fiftyone-utilities.Primitive">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">Primitive</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.Primitive" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">@fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">Primitive</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.Primitive" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 </div>
 <div class="section" id="primitive">
 <h3>Primitive<a class="headerlink" href="#primitive" title="Permalink to this headline">¶</a></h3>
 <p>Union of <code class="xref js js-class docutils literal notranslate"><span class="pre">number()</span></code>, <code class="xref js js-class docutils literal notranslate"><span class="pre">null()</span></code>, <code class="xref js js-class docutils literal notranslate"><span class="pre">string()</span></code>, <code class="xref js js-class docutils literal notranslate"><span class="pre">undefined()</span></code>, <code class="xref js js-class docutils literal notranslate"><span class="pre">Object()</span></code></p>
 <span class="target" id="fos-fiftyone-fiftyone-fiftyone-utilities-rgb"></span><dl class="js class">
 <dt id="fiftyone-utilities.RGB">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">RGB</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.RGB" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">@fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">RGB</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.RGB" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 </div>
 <div class="section" id="rgb">
 <h3>RGB<a class="headerlink" href="#rgb" title="Permalink to this headline">¶</a></h3>
 <p>Copyright 2017-2024, Voxel51, Inc.</p>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -2551,17 +2301,16 @@
 </table>
 <span class="target" id="fos-fiftyone-fiftyone-fiftyone-utilities-rgba"></span><dl class="js class">
 <dt id="fiftyone-utilities.RGBA">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">RGBA</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.RGBA" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">@fiftyone/utilities.</span></code><code class="sig-name descname"><span class="pre">RGBA</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-utilities.RGBA" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 </div>
 <div class="section" id="rgba">
 <h3>RGBA<a class="headerlink" href="#rgba" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -2584,8 +2333,8 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-color-by"></span><h3>COLOR_BY<a class="headerlink" href="#color-by" title="Permalink to this headline">¶</a></h3>
 <table class="colwidths-given docutils align-left">
 <colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
+<col style="width: 50%"/>
+<col style="width: 50%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -2609,8 +2358,8 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-pathtype"></span><h3>PathType<a class="headerlink" href="#pathtype" title="Permalink to this headline">¶</a></h3>
 <table class="colwidths-given docutils align-left">
 <colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
+<col style="width: 50%"/>
+<col style="width: 50%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -2637,9 +2386,9 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-aggs"></span><h3>AGGS<a class="headerlink" href="#aggs" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -2671,9 +2420,9 @@
 <span id="id6"></span><h3>ARRAY_FIELD<a class="headerlink" href="#fos-fiftyone-fiftyone-fiftyone-utilities-array-field" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -2693,9 +2442,9 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-big-endian"></span><h3>BIG_ENDIAN<a class="headerlink" href="#big-endian" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -2715,9 +2464,9 @@
 <span id="id7"></span><h3>BOOLEAN_FIELD<a class="headerlink" href="#fos-fiftyone-fiftyone-fiftyone-utilities-boolean-field" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -2737,9 +2486,9 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-built-in-panel-priority-const"></span><h3>BUILT_IN_PANEL_PRIORITY_CONST<a class="headerlink" href="#built-in-panel-priority-const" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -2759,9 +2508,9 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-classification"></span><h3>CLASSIFICATION<a class="headerlink" href="#classification" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -2781,9 +2530,9 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-classifications"></span><h3>CLASSIFICATIONS<a class="headerlink" href="#classifications" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -2803,9 +2552,9 @@
 <span id="id8"></span><h3>CLASSIFICATIONS_FIELD<a class="headerlink" href="#fos-fiftyone-fiftyone-fiftyone-utilities-classifications-field" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -2828,9 +2577,9 @@
 <span id="id9"></span><h3>CLASSIFICATION_FIELD<a class="headerlink" href="#fos-fiftyone-fiftyone-fiftyone-utilities-classification-field" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -2856,9 +2605,9 @@
 <span id="id10"></span><h3>DATE_FIELD<a class="headerlink" href="#fos-fiftyone-fiftyone-fiftyone-utilities-date-field" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -2878,9 +2627,9 @@
 <span id="id11"></span><h3>DATE_TIME_FIELD<a class="headerlink" href="#fos-fiftyone-fiftyone-fiftyone-utilities-date-time-field" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -2900,9 +2649,9 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-dense-labels"></span><h3>DENSE_LABELS<a class="headerlink" href="#dense-labels" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -2922,9 +2671,9 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-detection"></span><h3>DETECTION<a class="headerlink" href="#detection" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -2944,9 +2693,9 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-detections"></span><h3>DETECTIONS<a class="headerlink" href="#detections" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -2966,9 +2715,9 @@
 <span id="id12"></span><h3>DETECTIONS_FIELD<a class="headerlink" href="#fos-fiftyone-fiftyone-fiftyone-utilities-detections-field" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -2991,9 +2740,9 @@
 <span id="id13"></span><h3>DETECTION_FIELD<a class="headerlink" href="#fos-fiftyone-fiftyone-fiftyone-utilities-detection-field" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -3013,9 +2762,9 @@
 <span id="id14"></span><h3>DETECTION_FILED<a class="headerlink" href="#fos-fiftyone-fiftyone-fiftyone-utilities-detection-filed" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -3035,9 +2784,9 @@
 <span id="id15"></span><h3>DICT_FIELD<a class="headerlink" href="#fos-fiftyone-fiftyone-fiftyone-utilities-dict-field" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -3063,9 +2812,9 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-dynamic-embedded-document"></span><h3>DYNAMIC_EMBEDDED_DOCUMENT<a class="headerlink" href="#dynamic-embedded-document" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -3085,9 +2834,9 @@
 <span id="id16"></span><h3>DYNAMIC_EMBEDDED_DOCUMENT_FIELD<a class="headerlink" href="#fos-fiftyone-fiftyone-fiftyone-utilities-dynamic-embedded-document-field" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -3107,9 +2856,9 @@
 <span id="id17"></span><h3>DYNAMIC_EMBEDDED_DOCUMENT_PATH<a class="headerlink" href="#fos-fiftyone-fiftyone-fiftyone-utilities-dynamic-embedded-document-path" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -3132,9 +2881,9 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-embedded-document"></span><h3>EMBEDDED_DOCUMENT<a class="headerlink" href="#embedded-document" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -3154,9 +2903,9 @@
 <span id="id18"></span><h3>EMBEDDED_DOCUMENT_FIELD<a class="headerlink" href="#fos-fiftyone-fiftyone-fiftyone-utilities-embedded-document-field" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -3176,9 +2925,9 @@
 <span id="id19"></span><h3>FLOAT_FIELD<a class="headerlink" href="#fos-fiftyone-fiftyone-fiftyone-utilities-float-field" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -3198,9 +2947,9 @@
 <span id="id20"></span><h3>FRAME_NUMBER_FIELD<a class="headerlink" href="#fos-fiftyone-fiftyone-fiftyone-utilities-frame-number-field" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -3220,9 +2969,9 @@
 <span id="id21"></span><h3>FRAME_SUPPORT_FIELD<a class="headerlink" href="#fos-fiftyone-fiftyone-fiftyone-utilities-frame-support-field" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -3242,9 +2991,9 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-geolocation"></span><h3>GEOLOCATION<a class="headerlink" href="#geolocation" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -3264,9 +3013,9 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-geolocations"></span><h3>GEOLOCATIONS<a class="headerlink" href="#geolocations" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -3292,9 +3041,9 @@
 <span id="id22"></span><h3>GEO_LOCATIONS_FIELD<a class="headerlink" href="#fos-fiftyone-fiftyone-fiftyone-utilities-geo-locations-field" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -3314,9 +3063,9 @@
 <span id="id23"></span><h3>GEO_LOCATION_FIELD<a class="headerlink" href="#fos-fiftyone-fiftyone-fiftyone-utilities-geo-location-field" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -3336,9 +3085,9 @@
 <span id="id24"></span><h3>GROUP<a class="headerlink" href="#fos-fiftyone-fiftyone-fiftyone-utilities-group" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -3358,9 +3107,9 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-heatmap"></span><h3>HEATMAP<a class="headerlink" href="#heatmap" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -3383,9 +3132,9 @@
 <span id="id25"></span><h3>HEATMAP_FIELD<a class="headerlink" href="#fos-fiftyone-fiftyone-fiftyone-utilities-heatmap-field" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -3405,9 +3154,9 @@
 <span id="id26"></span><h3>INT_FIELD<a class="headerlink" href="#fos-fiftyone-fiftyone-fiftyone-utilities-int-field" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -3427,9 +3176,9 @@
 <span id="id27"></span><h3>JUST_FIELD<a class="headerlink" href="#fos-fiftyone-fiftyone-fiftyone-utilities-just-field" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -3449,9 +3198,9 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-keypoint"></span><h3>KEYPOINT<a class="headerlink" href="#keypoint" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -3471,9 +3220,9 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-keypoints"></span><h3>KEYPOINTS<a class="headerlink" href="#keypoints" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -3493,9 +3242,9 @@
 <span id="id28"></span><h3>KEYPOINTS_FIELD<a class="headerlink" href="#fos-fiftyone-fiftyone-fiftyone-utilities-keypoints-field" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -3515,9 +3264,9 @@
 <span id="id29"></span><h3>KEYPOINTS_POINTS_FIELD<a class="headerlink" href="#fos-fiftyone-fiftyone-fiftyone-utilities-keypoints-points-field" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -3540,9 +3289,9 @@
 <span id="id30"></span><h3>KEYPOINT_FIELD<a class="headerlink" href="#fos-fiftyone-fiftyone-fiftyone-utilities-keypoint-field" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -3565,9 +3314,9 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-labels-map"></span><h3>LABELS_MAP<a class="headerlink" href="#labels-map" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -3643,9 +3392,9 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-labels-path"></span><h3>LABELS_PATH<a class="headerlink" href="#labels-path" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -3668,9 +3417,9 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-label-list"></span><h3>LABEL_LIST<a class="headerlink" href="#label-list" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -3709,9 +3458,9 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-label-lists-map"></span><h3>LABEL_LISTS_MAP<a class="headerlink" href="#label-lists-map" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -3750,9 +3499,9 @@
 <span id="id31"></span><h3>LIST_FIELD<a class="headerlink" href="#fos-fiftyone-fiftyone-fiftyone-utilities-list-field" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -3772,9 +3521,9 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-mask-labels"></span><h3>MASK_LABELS<a class="headerlink" href="#mask-labels" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -3794,9 +3543,9 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-nonfinites"></span><h3>NONFINITES<a class="headerlink" href="#nonfinites" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -3819,9 +3568,9 @@
 <span id="id32"></span><h3>OBJECT_ID_FIELD<a class="headerlink" href="#fos-fiftyone-fiftyone-fiftyone-utilities-object-id-field" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -3844,9 +3593,9 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-polyline"></span><h3>POLYLINE<a class="headerlink" href="#polyline" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -3866,9 +3615,9 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-polylines"></span><h3>POLYLINES<a class="headerlink" href="#polylines" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -3888,9 +3637,9 @@
 <span id="id33"></span><h3>POLYLINES_FIELD<a class="headerlink" href="#fos-fiftyone-fiftyone-fiftyone-utilities-polylines-field" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -3913,9 +3662,9 @@
 <span id="id34"></span><h3>POLYLINE_FIELD<a class="headerlink" href="#fos-fiftyone-fiftyone-fiftyone-utilities-polyline-field" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -3935,9 +3684,9 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-regression"></span><h3>REGRESSION<a class="headerlink" href="#regression" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -3960,9 +3709,9 @@
 <span id="id35"></span><h3>REGRESSION_FIELD<a class="headerlink" href="#fos-fiftyone-fiftyone-fiftyone-utilities-regression-field" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -3985,9 +3734,9 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-segmentation"></span><h3>SEGMENTATION<a class="headerlink" href="#segmentation" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -4010,9 +3759,9 @@
 <span id="id36"></span><h3>SEGMENTATION_FIELD<a class="headerlink" href="#fos-fiftyone-fiftyone-fiftyone-utilities-segmentation-field" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -4035,9 +3784,9 @@
 <span id="id37"></span><h3>STRING_FIELD<a class="headerlink" href="#fos-fiftyone-fiftyone-fiftyone-utilities-string-field" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -4057,9 +3806,9 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-temporal-detection"></span><h3>TEMPORAL_DETECTION<a class="headerlink" href="#temporal-detection" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -4079,9 +3828,9 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-utilities-temporal-detections"></span><h3>TEMPORAL_DETECTIONS<a class="headerlink" href="#temporal-detections" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -4101,9 +3850,9 @@
 <span id="id38"></span><h3>TEMPORAL_DETECTIONS_FIELD<a class="headerlink" href="#fos-fiftyone-fiftyone-fiftyone-utilities-temporal-detections-field" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -4126,9 +3875,9 @@
 <span id="id39"></span><h3>TEMPORAL_DETECTION_FIELD<a class="headerlink" href="#fos-fiftyone-fiftyone-fiftyone-utilities-temporal-detection-field" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -4187,9 +3936,9 @@
 <span id="id40"></span><h3>VECTOR_FIELD<a class="headerlink" href="#fos-fiftyone-fiftyone-fiftyone-utilities-vector-field" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -4210,31 +3959,16 @@
 </div>
 </div>
 </div>
+</article>
+</div>
 
-
-             </article>
-             
-            </div>
-            <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../../cli/index.html" class="btn btn-neutral float-right" title="FiftyOne Command-Line Interface (CLI)" accesskey="n" rel="next">Next <img src="../../_static/images/chevron-right-orange.svg" class="next-page"></a>
-      
-      
-        <a href="plugins.fiftyone.relay.html" class="btn btn-neutral" title="@fiftyone/relay" accesskey="p" rel="prev"><img src="../../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
-      
-    </div>
-  
-</footer>
-          </div>
-        </div>
-
-        <div class="pytorch-content-right" id="pytorch-content-right">
-          <div class="pytorch-right-menu" id="pytorch-right-menu">
-            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
-              <ul>
-<li><a class="reference internal" href="#">&#64;fiftyone/utilities</a><ul>
+</div>
+</div>
+<div class="pytorch-content-right" id="pytorch-content-right">
+<div class="pytorch-right-menu" id="pytorch-right-menu">
+<div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+<ul>
+<li><a class="reference internal" href="#">@fiftyone/utilities</a><ul>
 <li><a class="reference internal" href="#hooks">Hooks</a><ul>
 <li><a class="reference internal" href="#useexternallink">useExternalLink</a></li>
 <li><a class="reference internal" href="#useitemswithorderpersistence">useItemsWithOrderPersistence</a></li>
@@ -4477,214 +4211,36 @@
 </ul>
 </li>
 </ul>
-
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
-
-  
-
-
-  
-
-     
-       <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-         <script src="../../_static/jquery.js"></script>
-         <script src="../../_static/underscore.js"></script>
-         <script src="../../_static/doctools.js"></script>
-         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
-         <script src="../../_static/js/voxel51-website.js"></script>
-         <script src="../../_static/js/custom.js"></script>
-     
-
-  
-
-  <script type="text/javascript" src="../../_static/js/vendor/popper.min.js"></script>
-  <script type="text/javascript" src="../../_static/js/vendor/bootstrap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
-  <script type="text/javascript" src="../../_static/js/theme.js"></script>
-
-  <script type="text/javascript">
+</div>
+</div>
+</div>
+</section>
+</div>
+<script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js" type="text/javascript"></script>
+<script src="../../_static/jquery.js"></script>
+<script src="../../_static/underscore.js"></script>
+<script src="../../_static/doctools.js"></script>
+<script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+<script src="../../_static/js/voxel51-website.js"></script>
+<script src="../../_static/js/custom.js"></script>
+<script src="../../_static/js/vendor/popper.min.js" type="text/javascript"></script>
+<script src="../../_static/js/vendor/bootstrap.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+<script src="../../_static/js/theme.js" type="text/javascript"></script>
+<script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
-
-  <!-- Begin Footer -->
-
-
-  <div class="container-fluid docs-tutorials-resources" id="docs-tutorials-resources">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4 text-center">
-          <h2>Docs</h2>
-          <p>Access comprehensive developer documentation for PyTorch</p>
-          <a class="with-right-arrow" href="https://pytorch.org/docs/stable/index.html">View Docs</a>
-        </div>
-
-        <div class="col-md-4 text-center">
-          <h2>Tutorials</h2>
-          <p>Get in-depth tutorials for beginners and advanced developers</p>
-          <a class="with-right-arrow" href="https://pytorch.org/tutorials">View Tutorials</a>
-        </div>
-
-        <div class="col-md-4 text-center">
-          <h2>Resources</h2>
-          <p>Find development resources and get your questions answered</p>
-          <a class="with-right-arrow" href="https://pytorch.org/resources">View Resources</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <footer class="site-footer">
-    <div class="container footer-container">
-      <div class="footer-logo-wrapper">
-        <a href="https://pytorch.org/" class="footer-logo"></a>
-      </div>
-
-      <div class="footer-links-wrapper">
-        <div class="footer-links-col">
-          <ul>
-            <li class="list-title"><a href="https://pytorch.org/">PyTorch</a></li>
-            <li><a href="https://pytorch.org/get-started">Get Started</a></li>
-            <li><a href="https://pytorch.org/features">Features</a></li>
-            <li><a href="https://pytorch.org/ecosystem">Ecosystem</a></li>
-            <li><a href="https://pytorch.org/blog/">Blog</a></li>
-            <li><a href="https://github.com/pytorch/pytorch/blob/master/CONTRIBUTING.md">Contributing</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-links-col">
-          <ul>
-            <li class="list-title"><a href="https://pytorch.org/resources">Resources</a></li>
-            <li><a href="https://pytorch.org/tutorials">Tutorials</a></li>
-            <li><a href="https://pytorch.org/docs/stable/index.html">Docs</a></li>
-            <li><a href="https://discuss.pytorch.org" target="_blank">Discuss</a></li>
-            <li><a href="https://github.com/pytorch/pytorch/issues" target="_blank">Github Issues</a></li>
-            <li><a href="https://pytorch.org/assets/brand-guidelines/PyTorch-Brand-Guidelines.pdf" target="_blank">Brand Guidelines</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-links-col follow-us-col">
-          <ul>
-            <li class="list-title">Stay Connected</li>
-            <li>
-              <div id="mc_embed_signup">
-                <form
-                  action="https://twitter.us14.list-manage.com/subscribe/post?u=75419c71fe0a935e53dfa4a3f&id=91d0dccd39"
-                  method="post"
-                  id="mc-embedded-subscribe-form"
-                  name="mc-embedded-subscribe-form"
-                  class="email-subscribe-form validate"
-                  target="_blank"
-                  novalidate>
-                  <div id="mc_embed_signup_scroll" class="email-subscribe-form-fields-wrapper">
-                    <div class="mc-field-group">
-                      <label for="mce-EMAIL" style="display:none;">Email Address</label>
-                      <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="Email Address">
-                    </div>
-
-                    <div id="mce-responses" class="clear">
-                      <div class="response" id="mce-error-response" style="display:none"></div>
-                      <div class="response" id="mce-success-response" style="display:none"></div>
-                    </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-
-                    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_75419c71fe0a935e53dfa4a3f_91d0dccd39" tabindex="-1" value=""></div>
-
-                    <div class="clear">
-                      <input type="submit" value="" name="subscribe" id="mc-embedded-subscribe" class="button email-subscribe-button">
-                    </div>
-                  </div>
-                </form>
-              </div>
-
-            </li>
-          </ul>
-
-          <div class="footer-social-icons">
-            <a href="https://www.facebook.com/pytorch" target="_blank" class="facebook"></a>
-            <a href="https://twitter.com/pytorch" target="_blank" class="twitter"></a>
-            <a href="https://www.youtube.com/pytorch" target="_blank" class="youtube"></a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
+  </script>
+<!-- Begin Footer -->
 
 
-  
+<!-- End Footer -->
+<!-- Begin Mobile Menu -->
 
-  <!-- End Footer -->
-
-  <!-- Begin Mobile Menu -->
-
-
-  <div class="mobile-main-menu">
-    <div class="container-fluid">
-      <div class="container">
-        <div class="mobile-main-menu-header-container">
-          <a class="header-logo" href="https://pytorch.org/" aria-label="PyTorch"></a>
-          <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
-        </div>
-      </div>
-    </div>
-
-    <div class="mobile-main-menu-links-container">
-      <div class="main-menu">
-        <ul>
-          <li>
-            <a href="https://pytorch.org/get-started">Get Started</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/features">Features</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/ecosystem">Ecosystem</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/mobile">Mobile</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/hub">PyTorch Hub</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/blog/">Blog</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/tutorials">Tutorials</a>
-          </li>
-
-          <li class="active">
-            <a href="https://pytorch.org/docs/stable/index.html">Docs</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/resources">Resources</a>
-          </li>
-
-          <li>
-            <a href="https://github.com/pytorch/pytorch">Github</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-
-  <!-- End Mobile Menu -->
-
-  <script type="text/javascript" src="../../_static/js/vendor/anchor.min.js"></script>
-
-  <script type="text/javascript">
+<!-- End Mobile Menu -->
+<script src="../../_static/js/vendor/anchor.min.js" type="text/javascript"></script>
+<script type="text/javascript">
     $(document).ready(function() {
       mobileMenu.bind();
       mobileTOC.bind();

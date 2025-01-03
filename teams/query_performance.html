@@ -1,183 +1,46 @@
 
-
-
 <!DOCTYPE html>
+
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>Query Performance &mdash; FiftyOne 1.3.0 documentation</title>
-  
-
-  
-  
-    <link rel="shortcut icon" href="../_static/favicon.ico"/>
-  
-  
-  
-
-  
-
-  
-  
-    
-
-  
-
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
-  <link rel="stylesheet" href="../_static/css/voxel51-website.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="FiftyOne Teams Plugins" href="teams_plugins.html" />
-    <link rel="prev" title="Data Quality" href="data_quality.html" />
-<meta property="og:image" content="https://voxel51.com/wp-content/uploads/2024/03/3.24_webpages_Home_AV.png" />
-
-<link
-  href="https://fonts.googleapis.com/css?family=Palanquin:400,600,700,800"
-  rel="stylesheet"
-/>
-<link
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
-  rel="stylesheet"
-/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Query Performance — FiftyOne 1.3.0 documentation</title>
+<link href="../_static/favicon.ico" rel="shortcut icon"/>
+<link href="../_static/css/theme.css" rel="stylesheet" type="text/css"/>
+<!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+<link href="../_static/css/voxel51-website.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/css/custom.css" rel="stylesheet" type="text/css"/>
+<link href="../genindex.html" rel="index" title="Index"/>
+<link href="../search.html" rel="search" title="Search"/>
+<link href="teams_plugins.html" rel="next" title="FiftyOne Teams Plugins"/>
+<link href="data_quality.html" rel="prev" title="Data Quality"/>
+<meta content="https://voxel51.com/wp-content/uploads/2024/03/3.24_webpages_Home_AV.png" property="og:image">
+<link href="https://fonts.googleapis.com/css?family=Palanquin:400,600,700,800" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet"/>
 <script src="https://tag.clearbitscripts.com/v1/pk_b9ed71c8234edd4f77326bcbfab5a4ca/tags.js"></script>
-
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
-  
-</head>
-
-
-<div class="container-fluid header-holder tutorials-header" id="header-holder">
-  <div class="container">
-    <div class="header-container">
-      <a class="header-logo" href="https://pytorch.org/" aria-label="PyTorch"></a>
-
-      <div class="main-menu">
-        <ul>
-          <li>
-            <a href="https://pytorch.org/get-started">Get Started</a>
-          </li>
-
-          <li>
-            <div class="ecosystem-dropdown">
-              <a id="dropdownMenuButton" data-toggle="ecosystem-dropdown">
-                Ecosystem
-              </a>
-              <div class="ecosystem-dropdown-menu">
-                <a class="nav-dropdown-item" href="https://pytorch.org/hub"">
-                  <span class=dropdown-title>Models (Beta)</span>
-                  <p>Discover, publish, and reuse pre-trained models</p>
-                </a>
-                <a class="nav-dropdown-item" href="https://pytorch.org/ecosystem">
-                  <span class=dropdown-title>Tools & Libraries</span>
-                  <p>Explore the ecosystem of tools and libraries</p>
-                </a>
-              </div>
-            </div>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/mobile">Mobile</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/blog/">Blog</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/tutorials">Tutorials</a>
-          </li>
-
-          <li class="active">
-            <a href="https://pytorch.org/docs/stable/index.html">Docs</a>
-          </li>
-
-          <li>
-            <div class="resources-dropdown">
-              <a id="resourcesDropdownButton" data-toggle="resources-dropdown">
-                Resources
-              </a>
-              <div class="resources-dropdown-menu">
-                <a class="nav-dropdown-item" href="https://pytorch.org/resources"">
-                  <span class=dropdown-title>Developer Resources</span>
-                  <p>Find resources and get questions answered</p>
-                </a>
-                <a class="nav-dropdown-item" href="https://pytorch.org/features">
-                  <span class=dropdown-title>About</span>
-                  <p>Learn about PyTorch’s features and capabilities</p>
-                </a>
-              </div>
-            </div>
-          </li>
-
-          <li>
-            <a href="https://github.com/pytorch/pytorch">Github</a>
-          </li>
-        </ul>
-      </div>
-
-      <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
-    </div>
-
-  </div>
-</div>
-
-
+<script src="../_static/js/modernizr.min.js"></script>
+</meta></head>
 
 <body class="pytorch-body">
-
-   
-
-    
-
-    <div class="table-of-contents-link-wrapper">
-      <span>Table of Contents</span>
-      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
-    </div>
-
-    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
-      <div class="pytorch-side-scroll">
-        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          <div class="pytorch-left-menu-search">
-            
-
-            
-              
-              
-            
-
-            
-
-
-  
-
-
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search Docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
+<div class="table-of-contents-link-wrapper">
+<span>Table of Contents</span>
+<a class="toggle-table-of-contents" data-behavior="toggle-table-of-contents" href="#"></a>
 </div>
-
-            
-          </div>
-
-          
-            
-            
-              
-            
-            
-              <ul class="current">
+<nav class="pytorch-left-menu" data-toggle="wy-nav-shift" id="pytorch-left-menu">
+<div class="pytorch-side-scroll">
+<div aria-label="main navigation" class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation">
+<div class="pytorch-left-menu-search">
+<div role="search">
+<form action="../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input name="q" placeholder="Search Docs" type="text"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Overview</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">FiftyOne Teams 🚀</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/install.html">Installation</a></li>
@@ -197,78 +60,38 @@
 <li class="toctree-l1"><a class="reference internal" href="../deprecation.html">Deprecation Notices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a></li>
 </ul>
-
-            
-          
-        </div>
-      </div>
-    </nav>
-
-    <div class="pytorch-container">
-      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
-        <div class="pytorch-breadcrumbs-wrapper">
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
-  <ul class="pytorch-breadcrumbs">
-    
-      <li>
-        <a href="../index.html">
+</div>
+</div>
+</nav>
+<div class="pytorch-container">
+<div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+<div class="pytorch-breadcrumbs-wrapper">
+<div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="pytorch-breadcrumbs">
+<li>
+<a href="../index.html">
           
             Docs
           
         </a> &gt;
       </li>
-
-        
-          <li><a href="index.html">FiftyOne Teams</a> &gt;</li>
-        
-      <li>Query Performance</li>
-    
-    
-      <li class="pytorch-breadcrumbs-aside">
-        
-            
-        
-      </li>
-    
-  </ul>
-
-  
+<li><a href="index.html">FiftyOne Teams</a> &gt;</li>
+<li>Query Performance</li>
+<li class="pytorch-breadcrumbs-aside">
+</li>
+</ul>
 </div>
-        </div>
-
-        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+</div>
+<div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
           Contents
         </div>
-      </div>
-
-      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
-        <div class="pytorch-content-left">
-
-        
-          
-          <div class="rst-content style-external-links">
-          
-            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
-             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
-              
-  <div class="section" id="query-performance">
+</div>
+<section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+<div class="pytorch-content-left">
+<div class="rst-content style-external-links">
+<div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+<div class="section" id="query-performance">
 <span id="id1"></span><h1>Query Performance<a class="headerlink" href="#query-performance" title="Permalink to this headline">¶</a></h1>
 <p><strong>Available in FiftyOne Teams v2.2+</strong></p>
 <p>Query Performance is a builtin feature of the
@@ -279,7 +102,7 @@ optimize your queries on large-scale datasets.</p>
 <p>The App’s sidebar is optimized to leverage database indexes whenever possible.</p>
 <p>Fields that are indexed are indicated by lightning bolt icons next to their
 field/attribute names:</p>
-<img alt="app-query-performance" class="align-center" src="../_images/app-query-performance.gif" />
+<img alt="app-query-performance" class="align-center" src="../_images/app-query-performance.gif"/>
 <p>The above GIF shows Query Performance in action on the train split of the
 <a class="reference internal" href="../dataset_zoo/datasets.html#dataset-zoo-bdd100k"><span class="std std-ref">BDD100K dataset</span></a> with an index on the
 <code class="code docutils literal notranslate"><span class="pre">detections.detections.label</span></code> field.</p>
@@ -291,7 +114,7 @@ field/attribute names:</p>
 <p>If you perform a filter that could benefit from an index and the query takes
 longer than a few seconds, you’ll see a toast notification that nudges you to
 take the appropriate action to optimize the query:</p>
-<img alt="query-performance-toast" class="align-center" src="../_images/qp_toast.png" />
+<img alt="query-performance-toast" class="align-center" src="../_images/qp_toast.png"/>
 <p>Clicking “Create Index” will open the
 <a class="reference internal" href="#query-performance-panel"><span class="std std-ref">Query Performance panel</span></a> with a preconfigured
 recommendation of an <a class="reference internal" href="#query-performance-index"><span class="std std-ref">index</span></a> or
@@ -307,18 +130,18 @@ remainder of your current App session.</p>
 <p>You can open the Query Performance panel manually either by clicking the “+”
 icon next to the Samples tab or by clicking the yellow lightning bolt in the
 top-right of the sidbar:</p>
-<img alt="query-performance-tooltip" class="align-center" src="../_images/qp_tooltip.png" />
+<img alt="query-performance-tooltip" class="align-center" src="../_images/qp_tooltip.png"/>
 <p>The first time you open the Query Performance panel, you’ll see a welcome page:</p>
-<img alt="query-performance-home-tab" class="align-center" src="../_images/qp_home.png" />
+<img alt="query-performance-home-tab" class="align-center" src="../_images/qp_home.png"/>
 <p>After you’ve created at least one custom index or summary field for a dataset,
 you’ll instead see a list of the indexes and summary fields that exist on the
 dataset:</p>
-<img alt="query-performance-tableview" class="align-center" src="../_images/qp_tableview.png" />
+<img alt="query-performance-tableview" class="align-center" src="../_images/qp_tableview.png"/>
 <div class="section" id="creating-indexes">
 <span id="query-performance-index"></span><h3>Creating indexes<a class="headerlink" href="#creating-indexes" title="Permalink to this headline">¶</a></h3>
 <p>You can create a new index at any time by clicking the <code class="code docutils literal notranslate"><span class="pre">Create</span> <span class="pre">Index</span></code> button
 in the top-right of the panel:</p>
-<img alt="query-performance-create-index" class="align-center" src="../_images/qp_create_index.png" />
+<img alt="query-performance-create-index" class="align-center" src="../_images/qp_create_index.png"/>
 <p>When you click “Execute”, the index will be initiated and you’ll see
 “In progress” in the panel’s summary table.</p>
 <p>After the index creation has finished, the field that you indexed will have a
@@ -347,7 +170,7 @@ that contain specific classes of interest, eg <code class="code docutils literal
 <p>You can create a new summary field at any time by clicking the <code class="code docutils literal notranslate"><span class="pre">Create</span> <span class="pre">Index</span></code>
 button in the top-right of the panel and selecting the “Summary field” type in
 the model:</p>
-<img alt="query-performance-create-summary-field" class="align-center" src="../_images/qp_create_summary_field.png" />
+<img alt="query-performance-create-summary-field" class="align-center" src="../_images/qp_create_summary_field.png"/>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>For large datasets, creating summary fields can take a few minutes.</p>
@@ -381,10 +204,10 @@ label/value counts that are useful but more expensive to compute.</p>
 <p>You can enable/disable Query Performance for a particular dataset for its
 lifetime (in your current browser) via the gear icon in the Samples panel’s
 actions row:</p>
-<img alt="app-query-performance-disabled" class="align-center" src="../_images/app-query-performance-disabled.gif" />
+<img alt="app-query-performance-disabled" class="align-center" src="../_images/app-query-performance-disabled.gif"/>
 <p>You can also enable/disable Query Performance via the status button in the
 upper right corner of the Query Performance panel:</p>
-<img alt="query-performance-config" class="align-center" src="../_images/qp_config.png" />
+<img alt="query-performance-config" class="align-center" src="../_images/qp_config.png"/>
 <p>Deployment admins can also configure the global behavior of Query Performance
 via the following environment variables:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Disable Query Performance by default for all new datasets</span>
@@ -397,30 +220,15 @@ via the following environment variables:</p>
 </div>
 </div>
 </div>
+</article>
+</div>
 
-
-             </article>
-             
-            </div>
-            <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="teams_plugins.html" class="btn btn-neutral float-right" title="FiftyOne Teams Plugins" accesskey="n" rel="next">Next <img src="../_static/images/chevron-right-orange.svg" class="next-page"></a>
-      
-      
-        <a href="data_quality.html" class="btn btn-neutral" title="Data Quality" accesskey="p" rel="prev"><img src="../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
-      
-    </div>
-  
-</footer>
-          </div>
-        </div>
-
-        <div class="pytorch-content-right" id="pytorch-content-right">
-          <div class="pytorch-right-menu" id="pytorch-right-menu">
-            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
-              <ul>
+</div>
+</div>
+<div class="pytorch-content-right" id="pytorch-content-right">
+<div class="pytorch-right-menu" id="pytorch-right-menu">
+<div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+<ul>
 <li><a class="reference internal" href="#">Query Performance</a><ul>
 <li><a class="reference internal" href="#optimizing-query-performance">Optimizing Query Performance</a></li>
 <li><a class="reference internal" href="#query-performance-panel">Query Performance panel</a><ul>
@@ -434,214 +242,36 @@ via the following environment variables:</p>
 </ul>
 </li>
 </ul>
-
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
-
-  
-
-
-  
-
-     
-       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-         <script src="../_static/jquery.js"></script>
-         <script src="../_static/underscore.js"></script>
-         <script src="../_static/doctools.js"></script>
-         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
-         <script src="../_static/js/voxel51-website.js"></script>
-         <script src="../_static/js/custom.js"></script>
-     
-
-  
-
-  <script type="text/javascript" src="../_static/js/vendor/popper.min.js"></script>
-  <script type="text/javascript" src="../_static/js/vendor/bootstrap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-  <script type="text/javascript">
+</div>
+</div>
+</div>
+</section>
+</div>
+<script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js" type="text/javascript"></script>
+<script src="../_static/jquery.js"></script>
+<script src="../_static/underscore.js"></script>
+<script src="../_static/doctools.js"></script>
+<script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+<script src="../_static/js/voxel51-website.js"></script>
+<script src="../_static/js/custom.js"></script>
+<script src="../_static/js/vendor/popper.min.js" type="text/javascript"></script>
+<script src="../_static/js/vendor/bootstrap.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+<script src="../_static/js/theme.js" type="text/javascript"></script>
+<script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
-
-  <!-- Begin Footer -->
-
-
-  <div class="container-fluid docs-tutorials-resources" id="docs-tutorials-resources">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4 text-center">
-          <h2>Docs</h2>
-          <p>Access comprehensive developer documentation for PyTorch</p>
-          <a class="with-right-arrow" href="https://pytorch.org/docs/stable/index.html">View Docs</a>
-        </div>
-
-        <div class="col-md-4 text-center">
-          <h2>Tutorials</h2>
-          <p>Get in-depth tutorials for beginners and advanced developers</p>
-          <a class="with-right-arrow" href="https://pytorch.org/tutorials">View Tutorials</a>
-        </div>
-
-        <div class="col-md-4 text-center">
-          <h2>Resources</h2>
-          <p>Find development resources and get your questions answered</p>
-          <a class="with-right-arrow" href="https://pytorch.org/resources">View Resources</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <footer class="site-footer">
-    <div class="container footer-container">
-      <div class="footer-logo-wrapper">
-        <a href="https://pytorch.org/" class="footer-logo"></a>
-      </div>
-
-      <div class="footer-links-wrapper">
-        <div class="footer-links-col">
-          <ul>
-            <li class="list-title"><a href="https://pytorch.org/">PyTorch</a></li>
-            <li><a href="https://pytorch.org/get-started">Get Started</a></li>
-            <li><a href="https://pytorch.org/features">Features</a></li>
-            <li><a href="https://pytorch.org/ecosystem">Ecosystem</a></li>
-            <li><a href="https://pytorch.org/blog/">Blog</a></li>
-            <li><a href="https://github.com/pytorch/pytorch/blob/master/CONTRIBUTING.md">Contributing</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-links-col">
-          <ul>
-            <li class="list-title"><a href="https://pytorch.org/resources">Resources</a></li>
-            <li><a href="https://pytorch.org/tutorials">Tutorials</a></li>
-            <li><a href="https://pytorch.org/docs/stable/index.html">Docs</a></li>
-            <li><a href="https://discuss.pytorch.org" target="_blank">Discuss</a></li>
-            <li><a href="https://github.com/pytorch/pytorch/issues" target="_blank">Github Issues</a></li>
-            <li><a href="https://pytorch.org/assets/brand-guidelines/PyTorch-Brand-Guidelines.pdf" target="_blank">Brand Guidelines</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-links-col follow-us-col">
-          <ul>
-            <li class="list-title">Stay Connected</li>
-            <li>
-              <div id="mc_embed_signup">
-                <form
-                  action="https://twitter.us14.list-manage.com/subscribe/post?u=75419c71fe0a935e53dfa4a3f&id=91d0dccd39"
-                  method="post"
-                  id="mc-embedded-subscribe-form"
-                  name="mc-embedded-subscribe-form"
-                  class="email-subscribe-form validate"
-                  target="_blank"
-                  novalidate>
-                  <div id="mc_embed_signup_scroll" class="email-subscribe-form-fields-wrapper">
-                    <div class="mc-field-group">
-                      <label for="mce-EMAIL" style="display:none;">Email Address</label>
-                      <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="Email Address">
-                    </div>
-
-                    <div id="mce-responses" class="clear">
-                      <div class="response" id="mce-error-response" style="display:none"></div>
-                      <div class="response" id="mce-success-response" style="display:none"></div>
-                    </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-
-                    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_75419c71fe0a935e53dfa4a3f_91d0dccd39" tabindex="-1" value=""></div>
-
-                    <div class="clear">
-                      <input type="submit" value="" name="subscribe" id="mc-embedded-subscribe" class="button email-subscribe-button">
-                    </div>
-                  </div>
-                </form>
-              </div>
-
-            </li>
-          </ul>
-
-          <div class="footer-social-icons">
-            <a href="https://www.facebook.com/pytorch" target="_blank" class="facebook"></a>
-            <a href="https://twitter.com/pytorch" target="_blank" class="twitter"></a>
-            <a href="https://www.youtube.com/pytorch" target="_blank" class="youtube"></a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
+  </script>
+<!-- Begin Footer -->
 
 
-  
+<!-- End Footer -->
+<!-- Begin Mobile Menu -->
 
-  <!-- End Footer -->
-
-  <!-- Begin Mobile Menu -->
-
-
-  <div class="mobile-main-menu">
-    <div class="container-fluid">
-      <div class="container">
-        <div class="mobile-main-menu-header-container">
-          <a class="header-logo" href="https://pytorch.org/" aria-label="PyTorch"></a>
-          <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
-        </div>
-      </div>
-    </div>
-
-    <div class="mobile-main-menu-links-container">
-      <div class="main-menu">
-        <ul>
-          <li>
-            <a href="https://pytorch.org/get-started">Get Started</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/features">Features</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/ecosystem">Ecosystem</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/mobile">Mobile</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/hub">PyTorch Hub</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/blog/">Blog</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/tutorials">Tutorials</a>
-          </li>
-
-          <li class="active">
-            <a href="https://pytorch.org/docs/stable/index.html">Docs</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/resources">Resources</a>
-          </li>
-
-          <li>
-            <a href="https://github.com/pytorch/pytorch">Github</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-
-  <!-- End Mobile Menu -->
-
-  <script type="text/javascript" src="../_static/js/vendor/anchor.min.js"></script>
-
-  <script type="text/javascript">
+<!-- End Mobile Menu -->
+<script src="../_static/js/vendor/anchor.min.js" type="text/javascript"></script>
+<script type="text/javascript">
     $(document).ready(function() {
       mobileMenu.bind();
       mobileTOC.bind();

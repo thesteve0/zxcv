@@ -1,183 +1,46 @@
 
-
-
 <!DOCTYPE html>
+
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>Cloud-Backed Media &mdash; FiftyOne 1.3.0 documentation</title>
-  
-
-  
-  
-    <link rel="shortcut icon" href="../_static/favicon.ico"/>
-  
-  
-  
-
-  
-
-  
-  
-    
-
-  
-
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
-  <link rel="stylesheet" href="../_static/css/voxel51-website.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Roles and permissions" href="roles_and_permissions.html" />
-    <link rel="prev" title="API Connection" href="api_connection.html" />
-<meta property="og:image" content="https://voxel51.com/wp-content/uploads/2024/03/3.24_webpages_Home_AV.png" />
-
-<link
-  href="https://fonts.googleapis.com/css?family=Palanquin:400,600,700,800"
-  rel="stylesheet"
-/>
-<link
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
-  rel="stylesheet"
-/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cloud-Backed Media — FiftyOne 1.3.0 documentation</title>
+<link href="../_static/favicon.ico" rel="shortcut icon"/>
+<link href="../_static/css/theme.css" rel="stylesheet" type="text/css"/>
+<!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+<link href="../_static/css/voxel51-website.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/css/custom.css" rel="stylesheet" type="text/css"/>
+<link href="../genindex.html" rel="index" title="Index"/>
+<link href="../search.html" rel="search" title="Search"/>
+<link href="roles_and_permissions.html" rel="next" title="Roles and permissions"/>
+<link href="api_connection.html" rel="prev" title="API Connection"/>
+<meta content="https://voxel51.com/wp-content/uploads/2024/03/3.24_webpages_Home_AV.png" property="og:image">
+<link href="https://fonts.googleapis.com/css?family=Palanquin:400,600,700,800" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet"/>
 <script src="https://tag.clearbitscripts.com/v1/pk_b9ed71c8234edd4f77326bcbfab5a4ca/tags.js"></script>
-
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
-  
-</head>
-
-
-<div class="container-fluid header-holder tutorials-header" id="header-holder">
-  <div class="container">
-    <div class="header-container">
-      <a class="header-logo" href="https://pytorch.org/" aria-label="PyTorch"></a>
-
-      <div class="main-menu">
-        <ul>
-          <li>
-            <a href="https://pytorch.org/get-started">Get Started</a>
-          </li>
-
-          <li>
-            <div class="ecosystem-dropdown">
-              <a id="dropdownMenuButton" data-toggle="ecosystem-dropdown">
-                Ecosystem
-              </a>
-              <div class="ecosystem-dropdown-menu">
-                <a class="nav-dropdown-item" href="https://pytorch.org/hub"">
-                  <span class=dropdown-title>Models (Beta)</span>
-                  <p>Discover, publish, and reuse pre-trained models</p>
-                </a>
-                <a class="nav-dropdown-item" href="https://pytorch.org/ecosystem">
-                  <span class=dropdown-title>Tools & Libraries</span>
-                  <p>Explore the ecosystem of tools and libraries</p>
-                </a>
-              </div>
-            </div>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/mobile">Mobile</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/blog/">Blog</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/tutorials">Tutorials</a>
-          </li>
-
-          <li class="active">
-            <a href="https://pytorch.org/docs/stable/index.html">Docs</a>
-          </li>
-
-          <li>
-            <div class="resources-dropdown">
-              <a id="resourcesDropdownButton" data-toggle="resources-dropdown">
-                Resources
-              </a>
-              <div class="resources-dropdown-menu">
-                <a class="nav-dropdown-item" href="https://pytorch.org/resources"">
-                  <span class=dropdown-title>Developer Resources</span>
-                  <p>Find resources and get questions answered</p>
-                </a>
-                <a class="nav-dropdown-item" href="https://pytorch.org/features">
-                  <span class=dropdown-title>About</span>
-                  <p>Learn about PyTorch’s features and capabilities</p>
-                </a>
-              </div>
-            </div>
-          </li>
-
-          <li>
-            <a href="https://github.com/pytorch/pytorch">Github</a>
-          </li>
-        </ul>
-      </div>
-
-      <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
-    </div>
-
-  </div>
-</div>
-
-
+<script src="../_static/js/modernizr.min.js"></script>
+</meta></head>
 
 <body class="pytorch-body">
-
-   
-
-    
-
-    <div class="table-of-contents-link-wrapper">
-      <span>Table of Contents</span>
-      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
-    </div>
-
-    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
-      <div class="pytorch-side-scroll">
-        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          <div class="pytorch-left-menu-search">
-            
-
-            
-              
-              
-            
-
-            
-
-
-  
-
-
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search Docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
+<div class="table-of-contents-link-wrapper">
+<span>Table of Contents</span>
+<a class="toggle-table-of-contents" data-behavior="toggle-table-of-contents" href="#"></a>
 </div>
-
-            
-          </div>
-
-          
-            
-            
-              
-            
-            
-              <ul class="current">
+<nav class="pytorch-left-menu" data-toggle="wy-nav-shift" id="pytorch-left-menu">
+<div class="pytorch-side-scroll">
+<div aria-label="main navigation" class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation">
+<div class="pytorch-left-menu-search">
+<div role="search">
+<form action="../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input name="q" placeholder="Search Docs" type="text"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Overview</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">FiftyOne Teams 🚀</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/install.html">Installation</a></li>
@@ -197,78 +60,38 @@
 <li class="toctree-l1"><a class="reference internal" href="../deprecation.html">Deprecation Notices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a></li>
 </ul>
-
-            
-          
-        </div>
-      </div>
-    </nav>
-
-    <div class="pytorch-container">
-      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
-        <div class="pytorch-breadcrumbs-wrapper">
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
-  <ul class="pytorch-breadcrumbs">
-    
-      <li>
-        <a href="../index.html">
+</div>
+</div>
+</nav>
+<div class="pytorch-container">
+<div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+<div class="pytorch-breadcrumbs-wrapper">
+<div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="pytorch-breadcrumbs">
+<li>
+<a href="../index.html">
           
             Docs
           
         </a> &gt;
       </li>
-
-        
-          <li><a href="index.html">FiftyOne Teams</a> &gt;</li>
-        
-      <li>Cloud-Backed Media</li>
-    
-    
-      <li class="pytorch-breadcrumbs-aside">
-        
-            
-        
-      </li>
-    
-  </ul>
-
-  
+<li><a href="index.html">FiftyOne Teams</a> &gt;</li>
+<li>Cloud-Backed Media</li>
+<li class="pytorch-breadcrumbs-aside">
+</li>
+</ul>
 </div>
-        </div>
-
-        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+</div>
+<div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
           Contents
         </div>
-      </div>
-
-      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
-        <div class="pytorch-content-left">
-
-        
-          
-          <div class="rst-content style-external-links">
-          
-            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
-             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
-              
-  <div class="section" id="cloud-backed-media">
+</div>
+<section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+<div class="pytorch-content-left">
+<div class="rst-content style-external-links">
+<div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+<div class="section" id="cloud-backed-media">
 <span id="teams-cloud-media"></span><h1>Cloud-Backed Media<a class="headerlink" href="#cloud-backed-media" title="Permalink to this headline">¶</a></h1>
 <p>FiftyOne Teams datasets may contain samples whose filepath refers to cloud
 object storage paths and/or publicly available URLs.</p>
@@ -289,10 +112,10 @@ file repeatedly:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.brain</span> <span class="k">as</span> <span class="nn">fob</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;a-teams-dataset&quot;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">"a-teams-dataset"</span><span class="p">)</span>
 
 <span class="c1"># Automatically downloads cloud media to your local cache for processing</span>
-<span class="n">fob</span><span class="o">.</span><span class="n">compute_visualization</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">brain_key</span><span class="o">=</span><span class="s2">&quot;img_viz&quot;</span><span class="p">)</span>
+<span class="n">fob</span><span class="o">.</span><span class="n">compute_visualization</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">brain_key</span><span class="o">=</span><span class="s2">"img_viz"</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>When launching the App locally using the Teams SDK, media will be served from
@@ -300,7 +123,7 @@ your local cache whenever possible; otherwise it will be automatically
 retrieved from the cloud:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;a-teams-dataset&quot;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">"a-teams-dataset"</span><span class="p">)</span>
 
 <span class="c1"># Any media you view will be automatically retrieved from the cloud</span>
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
@@ -345,11 +168,11 @@ following environment variables (default values shown):</p>
 <p>2. Create a media cache config file at <code class="code docutils literal notranslate"><span class="pre">~/.fiftyone/media_cache_config.json</span></code>
 that contains any of the following keys (default values shown):</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;cache_dir&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/path/for/media-cache&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;cache_size_bytes&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">34359738368</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;download_size_bytes&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">134217728</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;num_workers&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;cache_app_images&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">    </span><span class="nt">"cache_dir"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/path/for/media-cache"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"cache_size_bytes"</span><span class="p">:</span><span class="w"> </span><span class="mi">34359738368</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"download_size_bytes"</span><span class="p">:</span><span class="w"> </span><span class="mi">134217728</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"num_workers"</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"cache_app_images"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -365,7 +188,7 @@ datasets, use <code class="code docutils literal notranslate"><span class="pre">
 the location of the locally cached version of a media file:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;a-teams-dataset&quot;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">"a-teams-dataset"</span><span class="p">)</span>
 <span class="n">sample</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">sample</span><span class="o">.</span><span class="n">filepath</span><span class="p">)</span>
@@ -408,7 +231,7 @@ media.</p>
 when iterating over samples in a collection:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;a-teams-dataset&quot;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">"a-teams-dataset"</span><span class="p">)</span>
 
 <span class="c1"># Download media using the default batching strategy</span>
 <span class="k">with</span> <span class="n">dataset</span><span class="o">.</span><span class="n">download_context</span><span class="p">():</span>
@@ -456,7 +279,7 @@ for each sample in a potentially cloud-backed dataset or view:</p>
 <span class="c1"># ex: ~/fiftyone/__cache__/media/s3/voxel51-test/images/000001.jpg</span>
 
 <span class="c1"># Retrieve the possibly-cloud paths for all media in a collection</span>
-<span class="n">cloud_paths</span> <span class="o">=</span> <span class="n">sample_collection</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;filepath&quot;</span><span class="p">)</span>
+<span class="n">cloud_paths</span> <span class="o">=</span> <span class="n">sample_collection</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">"filepath"</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">cloud_paths</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 <span class="c1"># ex: s3://voxel51-test/images/000001.jpg</span>
@@ -468,18 +291,18 @@ collection by calling <code class="code docutils literal notranslate"><span clas
 <span class="n">sample_collection</span><span class="o">.</span><span class="n">cache_stats</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{&#39;cache_dir&#39;: &#39;~/fiftyone/__cache__&#39;,
- &#39;cache_size&#39;: 34359738368,
- &#39;cache_size_str&#39;: &#39;32.0GB&#39;,
- &#39;current_size&#39;: 24412374,
- &#39;current_size_str&#39;: &#39;23.3MB&#39;,
- &#39;current_count&#39;: 200,
- &#39;load_factor&#39;: 0.000710493593942374}
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{'cache_dir': '~/fiftyone/__cache__',
+ 'cache_size': 34359738368,
+ 'cache_size_str': '32.0GB',
+ 'current_size': 24412374,
+ 'current_size_str': '23.3MB',
+ 'current_count': 200,
+ 'load_factor': 0.000710493593942374}
 </pre></div>
 </div>
 <p>and you can call <code class="code docutils literal notranslate"><span class="pre">clear_media()</span></code> to delete any cached copies of media in the
 collection:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Clear this collection&#39;s media from the cache</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Clear this collection's media from the cache</span>
 <span class="n">sample_collection</span><span class="o">.</span><span class="n">clear_media</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -488,13 +311,13 @@ collection:</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">fo</span><span class="o">.</span><span class="n">media_cache</span><span class="o">.</span><span class="n">stats</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{&#39;cache_dir&#39;: &#39;~/fiftyone/__cache__&#39;,
- &#39;cache_size&#39;: 34359738368,
- &#39;cache_size_str&#39;: &#39;32.0GB&#39;,
- &#39;current_size&#39;: 49097587,
- &#39;current_size_str&#39;: &#39;46.8MB&#39;,
- &#39;current_count&#39;: 600,
- &#39;load_factor&#39;: 0.0014289278478827327}
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{'cache_dir': '~/fiftyone/__cache__',
+ 'cache_size': 34359738368,
+ 'cache_size_str': '32.0GB',
+ 'current_size': 49097587,
+ 'current_size_str': '46.8MB',
+ 'current_count': 600,
+ 'load_factor': 0.0014289278478827327}
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Clear the entire cache</span>
@@ -508,12 +331,12 @@ dataset’s media to the cloud:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone.core.storage</span> <span class="k">as</span> <span class="nn">fos</span>
 
 <span class="c1"># Create a dataset from media stored locally</span>
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Dataset</span><span class="o">.</span><span class="n">from_dir</span><span class="p">(</span><span class="s2">&quot;/tmp/local&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Dataset</span><span class="o">.</span><span class="n">from_dir</span><span class="p">(</span><span class="s2">"/tmp/local"</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
 
-<span class="c1"># Upload the dataset&#39;s media to the cloud</span>
+<span class="c1"># Upload the dataset's media to the cloud</span>
 <span class="n">fos</span><span class="o">.</span><span class="n">upload_media</span><span class="p">(</span>
     <span class="n">dataset</span><span class="p">,</span>
-    <span class="s2">&quot;s3://voxel51-test/your-media&quot;</span><span class="p">,</span>
+    <span class="s2">"s3://voxel51-test/your-media"</span><span class="p">,</span>
     <span class="n">update_filepaths</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="n">progress</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 <span class="p">)</span>
@@ -524,28 +347,28 @@ methods that you can use to work with cloud and local assets.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone.core.storage</span> <span class="k">as</span> <span class="nn">fos</span>
 
 <span class="n">s3_paths</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s2">&quot;s3://voxel51-test/images/000001.jpg&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;s3://voxel51-test/images/000002.jpg&quot;</span><span class="p">,</span>
+    <span class="s2">"s3://voxel51-test/images/000001.jpg"</span><span class="p">,</span>
+    <span class="s2">"s3://voxel51-test/images/000002.jpg"</span><span class="p">,</span>
     <span class="o">...</span>
 <span class="p">]</span>
 
 <span class="n">gcs_paths</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s2">&quot;gs://voxel51-test/images/000001.jpg&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;gs://voxel51-test/images/000002.jpg&quot;</span><span class="p">,</span>
+    <span class="s2">"gs://voxel51-test/images/000001.jpg"</span><span class="p">,</span>
+    <span class="s2">"gs://voxel51-test/images/000002.jpg"</span><span class="p">,</span>
     <span class="o">...</span>
 
 <span class="p">]</span>
 
 <span class="n">local_paths</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s2">&quot;/tmp/voxel51-test/images/000001.jpg&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;/tmp/voxel51-test/images/000002.jpg&quot;</span><span class="p">,</span>
+    <span class="s2">"/tmp/voxel51-test/images/000001.jpg"</span><span class="p">,</span>
+    <span class="s2">"/tmp/voxel51-test/images/000002.jpg"</span><span class="p">,</span>
     <span class="o">...</span>
 <span class="p">]</span>
 </pre></div>
 </div>
 <p>For example, you can use <code class="code docutils literal notranslate"><span class="pre">list_files()</span></code> to list the contents of a folder:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cloud_paths</span> <span class="o">=</span> <span class="n">fos</span><span class="o">.</span><span class="n">list_files</span><span class="p">(</span>
-    <span class="s2">&quot;s3://voxel51-test&quot;</span><span class="p">,</span> <span class="n">abs_paths</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">recursive</span><span class="o">=</span><span class="kc">True</span>
+    <span class="s2">"s3://voxel51-test"</span><span class="p">,</span> <span class="n">abs_paths</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">recursive</span><span class="o">=</span><span class="kc">True</span>
 <span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">cloud_paths</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
@@ -602,7 +425,7 @@ fo.Dataset.clear_media?
     <span class="n">skip_failures</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="n">progress</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
 <span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Downloads the source media files for all samples in the collection.</span>
+<span class="w">    </span><span class="sd">"""Downloads the source media files for all samples in the collection.</span>
 
 <span class="sd">    This method is only useful for collections that contain remote media.</span>
 
@@ -611,7 +434,7 @@ fo.Dataset.clear_media?
 
 <span class="sd">    Args:</span>
 <span class="sd">        media_fields (None): a field or iterable of fields containing media</span>
-<span class="sd">            to download. By default, all media fields in the collection&#39;s</span>
+<span class="sd">            to download. By default, all media fields in the collection's</span>
 <span class="sd">            :meth:`app_config` are used</span>
 <span class="sd">        group_slices (None): an optional subset of group slices for which</span>
 <span class="sd">            to download media. Only applicable when the collection contains</span>
@@ -625,7 +448,7 @@ fo.Dataset.clear_media?
 <span class="sd">            progress of any downloads (True/False), use the default value</span>
 <span class="sd">            ``fiftyone.config.show_progress_bars`` (None), or a progress</span>
 <span class="sd">            callback function to invoke instead</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fo</span><span class="o">.</span><span class="n">Dataset</span><span class="o">.</span><span class="n">download_scenes</span><span class="p">(</span>
@@ -634,7 +457,7 @@ fo.Dataset.clear_media?
     <span class="n">skip_failures</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="n">progress</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
 <span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Downloads all ``.fo3d`` files for the samples in the collection.</span>
+<span class="w">    </span><span class="sd">"""Downloads all ``.fo3d`` files for the samples in the collection.</span>
 
 <span class="sd">    This method is only useful for collections that contain remote media.</span>
 
@@ -650,7 +473,7 @@ fo.Dataset.clear_media?
 <span class="sd">            progress of any downloads (True/False), use the default value</span>
 <span class="sd">            ``fiftyone.config.show_progress_bars`` (None), or a progress</span>
 <span class="sd">            callback function to invoke instead</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fo</span><span class="o">.</span><span class="n">Dataset</span><span class="o">.</span><span class="n">download_context</span><span class="p">(</span>
@@ -665,7 +488,7 @@ fo.Dataset.clear_media?
     <span class="n">clear</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
     <span class="n">progress</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
 <span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns a context that can be used to pre-download media in batches</span>
+<span class="w">    </span><span class="sd">"""Returns a context that can be used to pre-download media in batches</span>
 <span class="sd">    when iterating over samples in this collection.</span>
 
 <span class="sd">    This method is only useful for collections that contain remote media.</span>
@@ -683,7 +506,7 @@ fo.Dataset.clear_media?
 <span class="sd">            download batch. If negative, all media is downloaded in one</span>
 <span class="sd">            batch</span>
 <span class="sd">        media_fields (None): a field or iterable of fields containing media</span>
-<span class="sd">            to download. By default, all media fields in the collection&#39;s</span>
+<span class="sd">            to download. By default, all media fields in the collection's</span>
 <span class="sd">            :meth:`app_config` are used</span>
 <span class="sd">        group_slices (None): an optional subset of group slices to download</span>
 <span class="sd">            media for. Only applicable when the collection contains groups</span>
@@ -702,23 +525,23 @@ fo.Dataset.clear_media?
 
 <span class="sd">    Returns:</span>
 <span class="sd">        a :class:`DownloadContext`</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fo</span><span class="o">.</span><span class="n">Dataset</span><span class="o">.</span><span class="n">get_local_paths</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
-    <span class="n">media_field</span><span class="o">=</span><span class="s2">&quot;filepath&quot;</span><span class="p">,</span>
+    <span class="n">media_field</span><span class="o">=</span><span class="s2">"filepath"</span><span class="p">,</span>
     <span class="n">include_assets</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="n">download</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="n">skip_failures</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="n">progress</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
 <span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns a list of local paths to the media files in this collection.</span>
+<span class="w">    </span><span class="sd">"""Returns a list of local paths to the media files in this collection.</span>
 
 <span class="sd">    This method is only useful for collections that contain remote media.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        media_field (&quot;filepath&quot;): the field containing the media paths</span>
+<span class="sd">        media_field ("filepath"): the field containing the media paths</span>
 <span class="sd">        include_assets (True): whether to include 3D scene assets</span>
 <span class="sd">        download (True): whether to download any non-cached media files</span>
 <span class="sd">        skip_failures (True): whether to gracefully continue without</span>
@@ -730,7 +553,7 @@ fo.Dataset.clear_media?
 
 <span class="sd">    Returns:</span>
 <span class="sd">        a list of local filepaths</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fo</span><span class="o">.</span><span class="n">Dataset</span><span class="o">.</span><span class="n">cache_stats</span><span class="p">(</span>
@@ -739,14 +562,14 @@ fo.Dataset.clear_media?
     <span class="n">group_slices</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="n">include_assets</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 <span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns a dictionary of stats about the cached media files in this</span>
+<span class="w">    </span><span class="sd">"""Returns a dictionary of stats about the cached media files in this</span>
 <span class="sd">    collection.</span>
 
 <span class="sd">    This method is only useful for collections that contain remote media.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        media_fields (None): a field or iterable of fields containing media</span>
-<span class="sd">            paths. By default, all media fields in the collection&#39;s</span>
+<span class="sd">            paths. By default, all media fields in the collection's</span>
 <span class="sd">            :meth:`app_config` are included</span>
 <span class="sd">        group_slices (None): an optional subset of group slices to include.</span>
 <span class="sd">            Only applicable when the collection contains groups</span>
@@ -754,7 +577,7 @@ fo.Dataset.clear_media?
 
 <span class="sd">    Returns:</span>
 <span class="sd">        a stats dict</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fo</span><span class="o">.</span><span class="n">Dataset</span><span class="o">.</span><span class="n">clear_media</span><span class="p">(</span>
@@ -763,7 +586,7 @@ fo.Dataset.clear_media?
     <span class="n">group_slices</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="n">include_assets</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 <span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Deletes any local copies of media files in this collection from the</span>
+<span class="w">    </span><span class="sd">"""Deletes any local copies of media files in this collection from the</span>
 <span class="sd">    media cache.</span>
 
 <span class="sd">    This method is only useful for collections that contain remote media.</span>
@@ -771,12 +594,12 @@ fo.Dataset.clear_media?
 <span class="sd">    Args:</span>
 <span class="sd">        media_fields (None): a field or iterable of fields containing media</span>
 <span class="sd">            paths to clear from the cache. By default, all media fields</span>
-<span class="sd">            in the collection&#39;s :meth:`app_config` are cleared</span>
+<span class="sd">            in the collection's :meth:`app_config` are cleared</span>
 <span class="sd">        group_slices (None): an optional subset of group slices for which</span>
 <span class="sd">            to clear media. Only applicable when the collection contains</span>
 <span class="sd">            groups</span>
 <span class="sd">        include_assets (True): whether to include 3D scene assets</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 </pre></div>
 </div>
 </div>
@@ -798,7 +621,7 @@ fos.upload_media?
     <span class="n">include_hidden_files</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
     <span class="n">sort</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 <span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Lists the files in the given directory.</span>
+<span class="w">    </span><span class="sd">"""Lists the files in the given directory.</span>
 
 <span class="sd">    If the directory does not exist, an empty list is returned.</span>
 
@@ -811,11 +634,11 @@ fos.upload_media?
 
 <span class="sd">    Returns:</span>
 <span class="sd">        a list of filepaths</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fos</span><span class="o">.</span><span class="n">copy_files</span><span class="p">(</span><span class="n">inpaths</span><span class="p">,</span> <span class="n">outpaths</span><span class="p">,</span> <span class="n">skip_failures</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">progress</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Copies the files to the given locations.</span>
+<span class="w">    </span><span class="sd">"""Copies the files to the given locations.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        inpaths: a list of input paths</span>
@@ -825,11 +648,11 @@ fos.upload_media?
 <span class="sd">        progress (None): whether to render a progress bar (True/False), use the</span>
 <span class="sd">            default value ``fiftyone.config.show_progress_bars`` (None), or a</span>
 <span class="sd">            progress callback function to invoke instead</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fos</span><span class="o">.</span><span class="n">move_files</span><span class="p">(</span><span class="n">inpaths</span><span class="p">,</span> <span class="n">outpaths</span><span class="p">,</span> <span class="n">skip_failures</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">progress</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Moves the files to the given locations.</span>
+<span class="w">    </span><span class="sd">"""Moves the files to the given locations.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        inpaths: a list of input paths</span>
@@ -839,11 +662,11 @@ fos.upload_media?
 <span class="sd">        progress (None): whether to render a progress bar (True/False), use the</span>
 <span class="sd">            default value ``fiftyone.config.show_progress_bars`` (None), or a</span>
 <span class="sd">            progress callback function to invoke instead</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fos</span><span class="o">.</span><span class="n">delete_files</span><span class="p">(</span><span class="n">paths</span><span class="p">,</span> <span class="n">skip_failures</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">progress</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Deletes the files from the given locations.</span>
+<span class="w">    </span><span class="sd">"""Deletes the files from the given locations.</span>
 
 <span class="sd">    For local paths, any empty directories are also recursively deleted from</span>
 <span class="sd">    the resulting directory tree.</span>
@@ -855,43 +678,43 @@ fos.upload_media?
 <span class="sd">        progress (None): whether to render a progress bar (True/False), use the</span>
 <span class="sd">            default value ``fiftyone.config.show_progress_bars`` (None), or a</span>
 <span class="sd">            progress callback function to invoke instead</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fos</span><span class="o">.</span><span class="n">upload_media</span><span class="p">(</span>
     <span class="n">sample_collection</span><span class="p">,</span>
     <span class="n">remote_dir</span><span class="p">,</span>
     <span class="n">rel_dir</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">media_field</span><span class="o">=</span><span class="s2">&quot;filepath&quot;</span><span class="p">,</span>
+    <span class="n">media_field</span><span class="o">=</span><span class="s2">"filepath"</span><span class="p">,</span>
     <span class="n">update_filepaths</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
     <span class="n">cache</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
     <span class="n">overwrite</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
     <span class="n">skip_failures</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
     <span class="n">progress</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
 <span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Uploads the source media files for the given collection to the given</span>
+<span class="w">    </span><span class="sd">"""Uploads the source media files for the given collection to the given</span>
 <span class="sd">    remote directory.</span>
 
 <span class="sd">    Providing a ``rel_dir`` enables writing nested subfolders within</span>
-<span class="sd">    ``remote_dir`` matching the structure of the input collection&#39;s media. By</span>
+<span class="sd">    ``remote_dir`` matching the structure of the input collection's media. By</span>
 <span class="sd">    default, the files are written directly to ``remote_dir`` using their</span>
 <span class="sd">    basenames.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        sample_collection: a</span>
 <span class="sd">            :class:`fiftyone.core.collections.SampleCollection`</span>
-<span class="sd">        remote_dir: a remote &quot;folder&quot; into which to upload</span>
+<span class="sd">        remote_dir: a remote "folder" into which to upload</span>
 <span class="sd">        rel_dir (None): an optional relative directory to strip from each</span>
 <span class="sd">            filepath when constructing the corresponding remote path</span>
-<span class="sd">        media_field (&quot;filepath&quot;): the field containing the media paths</span>
+<span class="sd">        media_field ("filepath"): the field containing the media paths</span>
 <span class="sd">        update_filepaths (False): whether to update the ``media_field`` of each</span>
 <span class="sd">            sample in the collection to its remote path</span>
 <span class="sd">        cache (False): whether to store the uploaded media in your local media</span>
 <span class="sd">            cache. The supported values are:</span>
 
 <span class="sd">            -   ``False`` (default): do not cache the media</span>
-<span class="sd">            -   ``True`` or ``&quot;copy&quot;``: copy the media into your local cache</span>
-<span class="sd">            -   ``&quot;move&quot;``: move the media into your local cache</span>
+<span class="sd">            -   ``True`` or ``"copy"``: copy the media into your local cache</span>
+<span class="sd">            -   ``"move"``: move the media into your local cache</span>
 <span class="sd">        overwrite (False): whether to overwrite (True) or skip (False) existing</span>
 <span class="sd">            remote files</span>
 <span class="sd">        skip_failures (False): whether to gracefully continue without raising</span>
@@ -902,7 +725,7 @@ fos.upload_media?
 
 <span class="sd">    Returns:</span>
 <span class="sd">        the list of remote paths</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 </pre></div>
 </div>
 </div>
@@ -921,12 +744,12 @@ to attach a cloud storage bucket to CVAT. Then, simply provide the
 <code class="code docutils literal notranslate"><span class="pre">cloud_manifest</span></code> parameter to
 <a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.annotate" title="fiftyone.core.collections.SampleCollection.annotate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">annotate()</span></code></a> to
 specify the URL of the manifest file in your cloud bucket:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">anno_key</span> <span class="o">=</span> <span class="s2">&quot;cloud_annotations&quot;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">anno_key</span> <span class="o">=</span> <span class="s2">"cloud_annotations"</span>
 
 <span class="n">results</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span>
     <span class="n">anno_key</span><span class="p">,</span>
-    <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span>
-    <span class="n">cloud_manifest</span><span class="o">=</span><span class="s2">&quot;s3://voxel51/manifest.jsonl&quot;</span><span class="p">,</span>
+    <span class="n">label_field</span><span class="o">=</span><span class="s2">"ground_truth"</span><span class="p">,</span>
+    <span class="n">cloud_manifest</span><span class="o">=</span><span class="s2">"s3://voxel51/manifest.jsonl"</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -935,7 +758,7 @@ and exists in the root of the bucket containing the data in the sample
 collection being annotated, then you can simply pass <code class="code docutils literal notranslate"><span class="pre">cloud_manifest=True</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span>
     <span class="n">anno_key</span><span class="p">,</span>
-    <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span>
+    <span class="n">label_field</span><span class="o">=</span><span class="s2">"ground_truth"</span><span class="p">,</span>
     <span class="n">cloud_manifest</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
@@ -958,12 +781,12 @@ to configure external storage for V7. Then, simply provide the
 <code class="code docutils literal notranslate"><span class="pre">external_storage</span></code> parameter to
 <a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.annotate" title="fiftyone.core.collections.SampleCollection.annotate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">annotate()</span></code></a> and
 specify the sluggified external storage name:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">anno_key</span> <span class="o">=</span> <span class="s2">&quot;cloud_annotations&quot;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">anno_key</span> <span class="o">=</span> <span class="s2">"cloud_annotations"</span>
 
 <span class="n">results</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span>
     <span class="n">anno_key</span><span class="p">,</span>
-    <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span>
-    <span class="n">external_storage</span><span class="o">=</span><span class="s2">&quot;example-darwin-storage-slug&quot;</span><span class="p">,</span>
+    <span class="n">label_field</span><span class="o">=</span><span class="s2">"ground_truth"</span><span class="p">,</span>
+    <span class="n">external_storage</span><span class="o">=</span><span class="s2">"example-darwin-storage-slug"</span><span class="p">,</span>
     <span class="o">...</span>
 <span class="p">)</span>
 </pre></div>
@@ -982,10 +805,10 @@ the <a class="reference internal" href="../api/fiftyone.core.collections.html#fi
 method to pass URLs for your S3-backed media when creating Labelbox data rows.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span>
     <span class="n">anno_key</span><span class="p">,</span>
-    <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span>
-    <span class="n">label_type</span><span class="o">=</span><span class="s2">&quot;detections&quot;</span><span class="p">,</span>
-    <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;dog&quot;</span><span class="p">,</span> <span class="s2">&quot;cat&quot;</span><span class="p">],</span>
-    <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;labelbox&quot;</span><span class="p">,</span>
+    <span class="n">label_field</span><span class="o">=</span><span class="s2">"ground_truth"</span><span class="p">,</span>
+    <span class="n">label_type</span><span class="o">=</span><span class="s2">"detections"</span><span class="p">,</span>
+    <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">"dog"</span><span class="p">,</span> <span class="s2">"cat"</span><span class="p">],</span>
+    <span class="n">backend</span><span class="o">=</span><span class="s2">"labelbox"</span><span class="p">,</span>
     <span class="n">upload_media</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
@@ -1022,30 +845,15 @@ credentials via runtime environment variables as you normally would, eg:</p>
 </div>
 </div>
 </div>
+</article>
+</div>
 
-
-             </article>
-             
-            </div>
-            <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="roles_and_permissions.html" class="btn btn-neutral float-right" title="Roles and permissions" accesskey="n" rel="next">Next <img src="../_static/images/chevron-right-orange.svg" class="next-page"></a>
-      
-      
-        <a href="api_connection.html" class="btn btn-neutral" title="API Connection" accesskey="p" rel="prev"><img src="../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
-      
-    </div>
-  
-</footer>
-          </div>
-        </div>
-
-        <div class="pytorch-content-right" id="pytorch-content-right">
-          <div class="pytorch-right-menu" id="pytorch-right-menu">
-            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
-              <ul>
+</div>
+</div>
+<div class="pytorch-content-right" id="pytorch-content-right">
+<div class="pytorch-right-menu" id="pytorch-right-menu">
+<div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+<ul>
 <li><a class="reference internal" href="#">Cloud-Backed Media</a><ul>
 <li><a class="reference internal" href="#cloud-media-caching">Cloud media caching</a></li>
 <li><a class="reference internal" href="#media-cache-config">Media cache config</a></li>
@@ -1062,214 +870,36 @@ credentials via runtime environment variables as you normally would, eg:</p>
 </ul>
 </li>
 </ul>
-
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
-
-  
-
-
-  
-
-     
-       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-         <script src="../_static/jquery.js"></script>
-         <script src="../_static/underscore.js"></script>
-         <script src="../_static/doctools.js"></script>
-         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
-         <script src="../_static/js/voxel51-website.js"></script>
-         <script src="../_static/js/custom.js"></script>
-     
-
-  
-
-  <script type="text/javascript" src="../_static/js/vendor/popper.min.js"></script>
-  <script type="text/javascript" src="../_static/js/vendor/bootstrap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-  <script type="text/javascript">
+</div>
+</div>
+</div>
+</section>
+</div>
+<script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js" type="text/javascript"></script>
+<script src="../_static/jquery.js"></script>
+<script src="../_static/underscore.js"></script>
+<script src="../_static/doctools.js"></script>
+<script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+<script src="../_static/js/voxel51-website.js"></script>
+<script src="../_static/js/custom.js"></script>
+<script src="../_static/js/vendor/popper.min.js" type="text/javascript"></script>
+<script src="../_static/js/vendor/bootstrap.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+<script src="../_static/js/theme.js" type="text/javascript"></script>
+<script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
-
-  <!-- Begin Footer -->
-
-
-  <div class="container-fluid docs-tutorials-resources" id="docs-tutorials-resources">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4 text-center">
-          <h2>Docs</h2>
-          <p>Access comprehensive developer documentation for PyTorch</p>
-          <a class="with-right-arrow" href="https://pytorch.org/docs/stable/index.html">View Docs</a>
-        </div>
-
-        <div class="col-md-4 text-center">
-          <h2>Tutorials</h2>
-          <p>Get in-depth tutorials for beginners and advanced developers</p>
-          <a class="with-right-arrow" href="https://pytorch.org/tutorials">View Tutorials</a>
-        </div>
-
-        <div class="col-md-4 text-center">
-          <h2>Resources</h2>
-          <p>Find development resources and get your questions answered</p>
-          <a class="with-right-arrow" href="https://pytorch.org/resources">View Resources</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <footer class="site-footer">
-    <div class="container footer-container">
-      <div class="footer-logo-wrapper">
-        <a href="https://pytorch.org/" class="footer-logo"></a>
-      </div>
-
-      <div class="footer-links-wrapper">
-        <div class="footer-links-col">
-          <ul>
-            <li class="list-title"><a href="https://pytorch.org/">PyTorch</a></li>
-            <li><a href="https://pytorch.org/get-started">Get Started</a></li>
-            <li><a href="https://pytorch.org/features">Features</a></li>
-            <li><a href="https://pytorch.org/ecosystem">Ecosystem</a></li>
-            <li><a href="https://pytorch.org/blog/">Blog</a></li>
-            <li><a href="https://github.com/pytorch/pytorch/blob/master/CONTRIBUTING.md">Contributing</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-links-col">
-          <ul>
-            <li class="list-title"><a href="https://pytorch.org/resources">Resources</a></li>
-            <li><a href="https://pytorch.org/tutorials">Tutorials</a></li>
-            <li><a href="https://pytorch.org/docs/stable/index.html">Docs</a></li>
-            <li><a href="https://discuss.pytorch.org" target="_blank">Discuss</a></li>
-            <li><a href="https://github.com/pytorch/pytorch/issues" target="_blank">Github Issues</a></li>
-            <li><a href="https://pytorch.org/assets/brand-guidelines/PyTorch-Brand-Guidelines.pdf" target="_blank">Brand Guidelines</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-links-col follow-us-col">
-          <ul>
-            <li class="list-title">Stay Connected</li>
-            <li>
-              <div id="mc_embed_signup">
-                <form
-                  action="https://twitter.us14.list-manage.com/subscribe/post?u=75419c71fe0a935e53dfa4a3f&id=91d0dccd39"
-                  method="post"
-                  id="mc-embedded-subscribe-form"
-                  name="mc-embedded-subscribe-form"
-                  class="email-subscribe-form validate"
-                  target="_blank"
-                  novalidate>
-                  <div id="mc_embed_signup_scroll" class="email-subscribe-form-fields-wrapper">
-                    <div class="mc-field-group">
-                      <label for="mce-EMAIL" style="display:none;">Email Address</label>
-                      <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="Email Address">
-                    </div>
-
-                    <div id="mce-responses" class="clear">
-                      <div class="response" id="mce-error-response" style="display:none"></div>
-                      <div class="response" id="mce-success-response" style="display:none"></div>
-                    </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-
-                    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_75419c71fe0a935e53dfa4a3f_91d0dccd39" tabindex="-1" value=""></div>
-
-                    <div class="clear">
-                      <input type="submit" value="" name="subscribe" id="mc-embedded-subscribe" class="button email-subscribe-button">
-                    </div>
-                  </div>
-                </form>
-              </div>
-
-            </li>
-          </ul>
-
-          <div class="footer-social-icons">
-            <a href="https://www.facebook.com/pytorch" target="_blank" class="facebook"></a>
-            <a href="https://twitter.com/pytorch" target="_blank" class="twitter"></a>
-            <a href="https://www.youtube.com/pytorch" target="_blank" class="youtube"></a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
+  </script>
+<!-- Begin Footer -->
 
 
-  
+<!-- End Footer -->
+<!-- Begin Mobile Menu -->
 
-  <!-- End Footer -->
-
-  <!-- Begin Mobile Menu -->
-
-
-  <div class="mobile-main-menu">
-    <div class="container-fluid">
-      <div class="container">
-        <div class="mobile-main-menu-header-container">
-          <a class="header-logo" href="https://pytorch.org/" aria-label="PyTorch"></a>
-          <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
-        </div>
-      </div>
-    </div>
-
-    <div class="mobile-main-menu-links-container">
-      <div class="main-menu">
-        <ul>
-          <li>
-            <a href="https://pytorch.org/get-started">Get Started</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/features">Features</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/ecosystem">Ecosystem</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/mobile">Mobile</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/hub">PyTorch Hub</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/blog/">Blog</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/tutorials">Tutorials</a>
-          </li>
-
-          <li class="active">
-            <a href="https://pytorch.org/docs/stable/index.html">Docs</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/resources">Resources</a>
-          </li>
-
-          <li>
-            <a href="https://github.com/pytorch/pytorch">Github</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-
-  <!-- End Mobile Menu -->
-
-  <script type="text/javascript" src="../_static/js/vendor/anchor.min.js"></script>
-
-  <script type="text/javascript">
+<!-- End Mobile Menu -->
+<script src="../_static/js/vendor/anchor.min.js" type="text/javascript"></script>
+<script type="text/javascript">
     $(document).ready(function() {
       mobileMenu.bind();
       mobileTOC.bind();

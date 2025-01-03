@@ -1,183 +1,46 @@
 
-
-
 <!DOCTYPE html>
+
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>FiftyOne Basics &mdash; FiftyOne 1.3.0 documentation</title>
-  
-
-  
-  
-    <link rel="shortcut icon" href="../_static/favicon.ico"/>
-  
-  
-  
-
-  
-
-  
-  
-    
-
-  
-
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
-  <link rel="stylesheet" href="../_static/css/voxel51-website.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Loading data into FiftyOne" href="dataset_creation/index.html" />
-    <link rel="prev" title="FiftyOne User Guide" href="index.html" />
-<meta property="og:image" content="https://voxel51.com/wp-content/uploads/2024/03/3.24_webpages_Home_AV.png" />
-
-<link
-  href="https://fonts.googleapis.com/css?family=Palanquin:400,600,700,800"
-  rel="stylesheet"
-/>
-<link
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
-  rel="stylesheet"
-/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FiftyOne Basics — FiftyOne 1.3.0 documentation</title>
+<link href="../_static/favicon.ico" rel="shortcut icon"/>
+<link href="../_static/css/theme.css" rel="stylesheet" type="text/css"/>
+<!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+<link href="../_static/css/voxel51-website.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/css/custom.css" rel="stylesheet" type="text/css"/>
+<link href="../genindex.html" rel="index" title="Index"/>
+<link href="../search.html" rel="search" title="Search"/>
+<link href="dataset_creation/index.html" rel="next" title="Loading data into FiftyOne"/>
+<link href="index.html" rel="prev" title="FiftyOne User Guide"/>
+<meta content="https://voxel51.com/wp-content/uploads/2024/03/3.24_webpages_Home_AV.png" property="og:image">
+<link href="https://fonts.googleapis.com/css?family=Palanquin:400,600,700,800" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet"/>
 <script src="https://tag.clearbitscripts.com/v1/pk_b9ed71c8234edd4f77326bcbfab5a4ca/tags.js"></script>
-
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
-  
-</head>
-
-
-<div class="container-fluid header-holder tutorials-header" id="header-holder">
-  <div class="container">
-    <div class="header-container">
-      <a class="header-logo" href="https://pytorch.org/" aria-label="PyTorch"></a>
-
-      <div class="main-menu">
-        <ul>
-          <li>
-            <a href="https://pytorch.org/get-started">Get Started</a>
-          </li>
-
-          <li>
-            <div class="ecosystem-dropdown">
-              <a id="dropdownMenuButton" data-toggle="ecosystem-dropdown">
-                Ecosystem
-              </a>
-              <div class="ecosystem-dropdown-menu">
-                <a class="nav-dropdown-item" href="https://pytorch.org/hub"">
-                  <span class=dropdown-title>Models (Beta)</span>
-                  <p>Discover, publish, and reuse pre-trained models</p>
-                </a>
-                <a class="nav-dropdown-item" href="https://pytorch.org/ecosystem">
-                  <span class=dropdown-title>Tools & Libraries</span>
-                  <p>Explore the ecosystem of tools and libraries</p>
-                </a>
-              </div>
-            </div>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/mobile">Mobile</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/blog/">Blog</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/tutorials">Tutorials</a>
-          </li>
-
-          <li class="active">
-            <a href="https://pytorch.org/docs/stable/index.html">Docs</a>
-          </li>
-
-          <li>
-            <div class="resources-dropdown">
-              <a id="resourcesDropdownButton" data-toggle="resources-dropdown">
-                Resources
-              </a>
-              <div class="resources-dropdown-menu">
-                <a class="nav-dropdown-item" href="https://pytorch.org/resources"">
-                  <span class=dropdown-title>Developer Resources</span>
-                  <p>Find resources and get questions answered</p>
-                </a>
-                <a class="nav-dropdown-item" href="https://pytorch.org/features">
-                  <span class=dropdown-title>About</span>
-                  <p>Learn about PyTorch’s features and capabilities</p>
-                </a>
-              </div>
-            </div>
-          </li>
-
-          <li>
-            <a href="https://github.com/pytorch/pytorch">Github</a>
-          </li>
-        </ul>
-      </div>
-
-      <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
-    </div>
-
-  </div>
-</div>
-
-
+<script src="../_static/js/modernizr.min.js"></script>
+</meta></head>
 
 <body class="pytorch-body">
-
-   
-
-    
-
-    <div class="table-of-contents-link-wrapper">
-      <span>Table of Contents</span>
-      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
-    </div>
-
-    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
-      <div class="pytorch-side-scroll">
-        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          <div class="pytorch-left-menu-search">
-            
-
-            
-              
-              
-            
-
-            
-
-
-  
-
-
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search Docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
+<div class="table-of-contents-link-wrapper">
+<span>Table of Contents</span>
+<a class="toggle-table-of-contents" data-behavior="toggle-table-of-contents" href="#"></a>
 </div>
-
-            
-          </div>
-
-          
-            
-            
-              
-            
-            
-              <ul class="current">
+<nav class="pytorch-left-menu" data-toggle="wy-nav-shift" id="pytorch-left-menu">
+<div class="pytorch-side-scroll">
+<div aria-label="main navigation" class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation">
+<div class="pytorch-left-menu-search">
+<div role="search">
+<form action="../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input name="q" placeholder="Search Docs" type="text"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../teams/index.html">FiftyOne Teams 🚀</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/install.html">Installation</a></li>
@@ -197,78 +60,38 @@
 <li class="toctree-l1"><a class="reference internal" href="../deprecation.html">Deprecation Notices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a></li>
 </ul>
-
-            
-          
-        </div>
-      </div>
-    </nav>
-
-    <div class="pytorch-container">
-      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
-        <div class="pytorch-breadcrumbs-wrapper">
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
-  <ul class="pytorch-breadcrumbs">
-    
-      <li>
-        <a href="../index.html">
+</div>
+</div>
+</nav>
+<div class="pytorch-container">
+<div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+<div class="pytorch-breadcrumbs-wrapper">
+<div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="pytorch-breadcrumbs">
+<li>
+<a href="../index.html">
           
             Docs
           
         </a> &gt;
       </li>
-
-        
-          <li><a href="index.html">FiftyOne User Guide</a> &gt;</li>
-        
-      <li>FiftyOne Basics</li>
-    
-    
-      <li class="pytorch-breadcrumbs-aside">
-        
-            
-        
-      </li>
-    
-  </ul>
-
-  
+<li><a href="index.html">FiftyOne User Guide</a> &gt;</li>
+<li>FiftyOne Basics</li>
+<li class="pytorch-breadcrumbs-aside">
+</li>
+</ul>
 </div>
-        </div>
-
-        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+</div>
+<div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
           Contents
         </div>
-      </div>
-
-      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
-        <div class="pytorch-content-left">
-
-        
-          
-          <div class="rst-content style-external-links">
-          
-            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
-             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
-              
-  <div class="section" id="fiftyone-basics">
+</div>
+<section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+<div class="pytorch-content-left">
+<div class="rst-content style-external-links">
+<div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+<div class="section" id="fiftyone-basics">
 <span id="id1"></span><h1>FiftyOne Basics<a class="headerlink" href="#fiftyone-basics" title="Permalink to this headline">¶</a></h1>
 <p>This page provides a brief overview of FiftyOne’s basic concepts.</p>
 <div class="section" id="datasets">
@@ -310,12 +133,12 @@ from the dataset.</p>
 <a class="reference internal" href="../api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset" title="fiftyone.core.dataset.Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dataset</span></code></a>, which can be filtered, sorted, sampled, etc. along various axes to
 obtain a desired subset of the samples.</p>
 <p><div class="tutorials-callout-container">
-    <a class="btn with-right-arrow callout-button" href="using_datasets.html#using-datasets">Learn more about using datasets</a>
+<a class="btn with-right-arrow callout-button" href="using_datasets.html#using-datasets">Learn more about using datasets</a>
 </div></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 
 <span class="c1"># Create an empty dataset</span>
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="s2">&quot;test-dataset&quot;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="s2">"test-dataset"</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
 </pre></div>
@@ -343,15 +166,15 @@ related to a given piece of data (e.g., an image or video).</p>
 <code class="code docutils literal notranslate"><span class="pre">filepath</span></code> field. Any number of fields can be dynamically added to samples to
 store additional custom information about the sample.</p>
 <p><div class="tutorials-callout-container">
-    <a class="btn with-right-arrow callout-button" href="using_datasets.html#using-samples">Learn more about using samples</a>
+<a class="btn with-right-arrow callout-button" href="using_datasets.html#using-samples">Learn more about using samples</a>
 </div></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 
 <span class="c1"># An image sample</span>
-<span class="n">sample</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Sample</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="s2">&quot;/path/to/image.png&quot;</span><span class="p">)</span>
+<span class="n">sample</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Sample</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="s2">"/path/to/image.png"</span><span class="p">)</span>
 
 <span class="c1"># A video sample</span>
-<span class="n">sample</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Sample</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="s2">&quot;/path/to/video.mp4&quot;</span><span class="p">)</span>
+<span class="n">sample</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Sample</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="s2">"/path/to/video.mp4"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -366,19 +189,19 @@ source data for the sample on disk. By default, samples are also given <code cla
 that store common information:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 
-<span class="n">sample</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Sample</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="s2">&quot;/path/to/image.png&quot;</span><span class="p">)</span>
+<span class="n">sample</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Sample</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="s2">"/path/to/image.png"</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&lt;Sample: {
-    &#39;id&#39;: None,
-    &#39;media_type&#39;: &#39;image&#39;,
-    &#39;filepath&#39;: &#39;path/to/image.png&#39;,
-    &#39;tags&#39;: [],
-    &#39;metadata&#39;: None,
-    &#39;created_at&#39;: None,
-    &#39;last_modified_at&#39;: None,
+    'id': None,
+    'media_type': 'image',
+    'filepath': 'path/to/image.png',
+    'tags': [],
+    'metadata': None,
+    'created_at': None,
+    'last_modified_at': None,
 }&gt;
 </pre></div>
 </div>
@@ -407,17 +230,17 @@ value will be <code class="docutils literal notranslate"><span class="pre">None<
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 
-<span class="n">sample</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Sample</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="s2">&quot;/path/to/image.png&quot;</span><span class="p">)</span>
+<span class="n">sample</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Sample</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="s2">"/path/to/image.png"</span><span class="p">)</span>
 
-<span class="n">sample</span><span class="p">[</span><span class="s2">&quot;quality&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">89.7</span>
-<span class="n">sample</span><span class="p">[</span><span class="s2">&quot;keypoints&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">31</span><span class="p">,</span> <span class="mi">27</span><span class="p">],</span> <span class="p">[</span><span class="mi">63</span><span class="p">,</span> <span class="mi">72</span><span class="p">]]</span>
-<span class="n">sample</span><span class="p">[</span><span class="s2">&quot;geo_json&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Feature&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;geometry&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Point&quot;</span><span class="p">,</span> <span class="s2">&quot;coordinates&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">125.6</span><span class="p">,</span> <span class="mf">10.1</span><span class="p">]},</span>
-    <span class="s2">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;camera&quot;</span><span class="p">},</span>
+<span class="n">sample</span><span class="p">[</span><span class="s2">"quality"</span><span class="p">]</span> <span class="o">=</span> <span class="mf">89.7</span>
+<span class="n">sample</span><span class="p">[</span><span class="s2">"keypoints"</span><span class="p">]</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">31</span><span class="p">,</span> <span class="mi">27</span><span class="p">],</span> <span class="p">[</span><span class="mi">63</span><span class="p">,</span> <span class="mi">72</span><span class="p">]]</span>
+<span class="n">sample</span><span class="p">[</span><span class="s2">"geo_json"</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"Feature"</span><span class="p">,</span>
+    <span class="s2">"geometry"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"type"</span><span class="p">:</span> <span class="s2">"Point"</span><span class="p">,</span> <span class="s2">"coordinates"</span><span class="p">:</span> <span class="p">[</span><span class="mf">125.6</span><span class="p">,</span> <span class="mf">10.1</span><span class="p">]},</span>
+    <span class="s2">"properties"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"name"</span><span class="p">:</span> <span class="s2">"camera"</span><span class="p">},</span>
 <span class="p">}</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="s2">&quot;fields-test&quot;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="s2">"fields-test"</span><span class="p">)</span>
 <span class="n">dataset</span><span class="o">.</span><span class="n">add_sample</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
@@ -441,7 +264,7 @@ Sample fields:
 </pre></div>
 </div>
 <p><div class="tutorials-callout-container">
-    <a class="btn with-right-arrow callout-button" href="using_datasets.html#using-fields">Learn more about sample fields</a>
+<a class="btn with-right-arrow callout-button" href="using_datasets.html#using-fields">Learn more about sample fields</a>
 </div></p>
 </div>
 <div class="section" id="media-type">
@@ -449,7 +272,7 @@ Sample fields:
 <p>When a <a class="reference internal" href="../api/fiftyone.core.sample.html#fiftyone.core.sample.Sample" title="fiftyone.core.sample.Sample"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sample</span></code></a> is created, its media type is inferred from the <code class="code docutils literal notranslate"><span class="pre">filepath</span></code> to
 the source media and exposed via the <code class="code docutils literal notranslate"><span class="pre">media_type</span></code> attribute of the sample.</p>
 <p><div class="tutorials-callout-container">
-    <a class="btn with-right-arrow callout-button" href="using_datasets.html#using-media-type">Learn more about media types</a>
+<a class="btn with-right-arrow callout-button" href="using_datasets.html#using-media-type">Learn more about media types</a>
 </div></p>
 </div>
 <div class="section" id="tags">
@@ -460,15 +283,15 @@ that can be used flexibly to store information about a sample.</p>
 to which the <a class="reference internal" href="../api/fiftyone.core.sample.html#fiftyone.core.sample.Sample" title="fiftyone.core.sample.Sample"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sample</span></code></a> belongs. However, you are free to use tags however you
 like.</p>
 <p><div class="tutorials-callout-container">
-    <a class="btn with-right-arrow callout-button" href="using_datasets.html#using-tags">See more information about using tags</a>
+<a class="btn with-right-arrow callout-button" href="using_datasets.html#using-tags">See more information about using tags</a>
 </div></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 
-<span class="n">sample</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Sample</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="s2">&quot;/path/to/image.png&quot;</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;train&quot;</span><span class="p">])</span>
-<span class="n">sample</span><span class="o">.</span><span class="n">tags</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;my_favorite_samples&quot;</span><span class="p">)</span>
+<span class="n">sample</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Sample</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="s2">"/path/to/image.png"</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="p">[</span><span class="s2">"train"</span><span class="p">])</span>
+<span class="n">sample</span><span class="o">.</span><span class="n">tags</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">"my_favorite_samples"</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">sample</span><span class="o">.</span><span class="n">tags</span><span class="p">)</span>
-<span class="c1"># [&quot;train&quot;, &quot;my_favorite_samples&quot;]</span>
+<span class="c1"># ["train", "my_favorite_samples"]</span>
 </pre></div>
 </div>
 </div>
@@ -477,11 +300,11 @@ like.</p>
 <p>All <a class="reference internal" href="../api/fiftyone.core.sample.html#fiftyone.core.sample.Sample" title="fiftyone.core.sample.Sample"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sample</span></code></a> instances have a <code class="code docutils literal notranslate"><span class="pre">metadata</span></code> attribute that stores type-specific
 metadata about the source media of the sample.</p>
 <p><div class="tutorials-callout-container">
-    <a class="btn with-right-arrow callout-button" href="using_datasets.html#using-metadata">Learn more about adding metadata to your samples</a>
+<a class="btn with-right-arrow callout-button" href="using_datasets.html#using-metadata">Learn more about adding metadata to your samples</a>
 </div></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 
-<span class="n">sample</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Sample</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="s2">&quot;/path/to/image.png&quot;</span><span class="p">)</span>
+<span class="n">sample</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Sample</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="s2">"/path/to/image.png"</span><span class="p">)</span>
 
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Dataset</span><span class="p">()</span>
 <span class="n">dataset</span><span class="o">.</span><span class="n">add_sample</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
@@ -493,19 +316,19 @@ metadata about the source media of the sample.</p>
 </pre></div>
 </div>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&lt;Sample: {
-    &#39;id&#39;: &#39;60302b9dca4a8b5f74e84f16&#39;,
-    &#39;media_type&#39;: &#39;image&#39;,
-    &#39;filepath&#39;: &#39;/path/to/image.png&#39;,
-    &#39;tags&#39;: [],
-    &#39;metadata&#39;: &lt;ImageMetadata: {
-        &#39;size_bytes&#39;: 544559,
-        &#39;mime_type&#39;: &#39;image/png&#39;,
-        &#39;width&#39;: 698,
-        &#39;height&#39;: 664,
-        &#39;num_channels&#39;: 3,
+    'id': '60302b9dca4a8b5f74e84f16',
+    'media_type': 'image',
+    'filepath': '/path/to/image.png',
+    'tags': [],
+    'metadata': &lt;ImageMetadata: {
+        'size_bytes': 544559,
+        'mime_type': 'image/png',
+        'width': 698,
+        'height': 664,
+        'num_channels': 3,
     }&gt;,
-    &#39;created_at&#39;: datetime.datetime(2024, 7, 22, 5, 16, 10, 701907),
-    &#39;last_modified_at&#39;: datetime.datetime(2024, 7, 22, 5, 16, 10, 701907),
+    'created_at': datetime.datetime(2024, 7, 22, 5, 16, 10, 701907),
+    'last_modified_at': datetime.datetime(2024, 7, 22, 5, 16, 10, 701907),
 }&gt;
 </pre></div>
 </div>
@@ -541,17 +364,17 @@ polygon(s)</p></li>
 <p>Using FiftyOne’s <a class="reference internal" href="../api/fiftyone.core.labels.html#fiftyone.core.labels.Label" title="fiftyone.core.labels.Label"><code class="xref py py-class docutils literal notranslate"><span class="pre">Label</span></code></a> types enables you to visualize your labels in the
 <a class="reference internal" href="app.html#fiftyone-app"><span class="std std-ref">the App</span></a>.</p>
 <p><div class="tutorials-callout-container">
-    <a class="btn with-right-arrow callout-button" href="using_datasets.html#using-labels">Learn more about storing labels in your samples</a>
+<a class="btn with-right-arrow callout-button" href="using_datasets.html#using-labels">Learn more about storing labels in your samples</a>
 </div></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 
-<span class="n">sample</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Sample</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="s2">&quot;/path/to/image.png&quot;</span><span class="p">)</span>
+<span class="n">sample</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Sample</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="s2">"/path/to/image.png"</span><span class="p">)</span>
 
-<span class="n">sample</span><span class="p">[</span><span class="s2">&quot;weather&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Classification</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;sunny&quot;</span><span class="p">)</span>
-<span class="n">sample</span><span class="p">[</span><span class="s2">&quot;animals&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Detections</span><span class="p">(</span>
+<span class="n">sample</span><span class="p">[</span><span class="s2">"weather"</span><span class="p">]</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Classification</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">"sunny"</span><span class="p">)</span>
+<span class="n">sample</span><span class="p">[</span><span class="s2">"animals"</span><span class="p">]</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Detections</span><span class="p">(</span>
     <span class="n">detections</span><span class="o">=</span><span class="p">[</span>
-        <span class="n">fo</span><span class="o">.</span><span class="n">Detection</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;cat&quot;</span><span class="p">,</span> <span class="n">bounding_box</span><span class="o">=</span><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">]),</span>
-        <span class="n">fo</span><span class="o">.</span><span class="n">Detection</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;dog&quot;</span><span class="p">,</span> <span class="n">bounding_box</span><span class="o">=</span><span class="p">[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">]),</span>
+        <span class="n">fo</span><span class="o">.</span><span class="n">Detection</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">"cat"</span><span class="p">,</span> <span class="n">bounding_box</span><span class="o">=</span><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">]),</span>
+        <span class="n">fo</span><span class="o">.</span><span class="n">Detection</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">"dog"</span><span class="p">,</span> <span class="n">bounding_box</span><span class="o">=</span><span class="p">[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">]),</span>
     <span class="p">]</span>
 <span class="p">)</span>
 
@@ -559,27 +382,27 @@ polygon(s)</p></li>
 </pre></div>
 </div>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&lt;Sample: {
-    &#39;id&#39;: None,
-    &#39;media_type&#39;: &#39;image&#39;,
-    &#39;filepath&#39;: &#39;path/to/image.png&#39;,
-    &#39;tags&#39;: [],
-    &#39;metadata&#39;: None,
-    &#39;created_at&#39;: None,
-    &#39;last_modified_at&#39;: None,
-    &#39;weather&#39;: &lt;Classification: {&#39;label&#39;: &#39;sunny&#39;, &#39;confidence&#39;: None, &#39;logits&#39;: None}&gt;,
-    &#39;animals&#39;: &lt;Detections: {
-        &#39;detections&#39;: [
+    'id': None,
+    'media_type': 'image',
+    'filepath': 'path/to/image.png',
+    'tags': [],
+    'metadata': None,
+    'created_at': None,
+    'last_modified_at': None,
+    'weather': &lt;Classification: {'label': 'sunny', 'confidence': None, 'logits': None}&gt;,
+    'animals': &lt;Detections: {
+        'detections': [
             &lt;Detection: {
-                &#39;label&#39;: &#39;cat&#39;,
-                &#39;bounding_box&#39;: [0.5, 0.5, 0.4, 0.3],
-                &#39;confidence&#39;: None,
-                &#39;attributes&#39;: {},
+                'label': 'cat',
+                'bounding_box': [0.5, 0.5, 0.4, 0.3],
+                'confidence': None,
+                'attributes': {},
             }&gt;,
             &lt;Detection: {
-                &#39;label&#39;: &#39;dog&#39;,
-                &#39;bounding_box&#39;: [0.2, 0.2, 0.2, 0.4],
-                &#39;confidence&#39;: None,
-                &#39;attributes&#39;: {},
+                'label': 'dog',
+                'bounding_box': [0.2, 0.2, 0.2, 0.4],
+                'confidence': None,
+                'attributes': {},
             }&gt;,
         ],
     }&gt;,
@@ -593,24 +416,24 @@ polygon(s)</p></li>
 <a class="reference internal" href="../api/fiftyone.core.view.html#fiftyone.core.view.DatasetView" title="fiftyone.core.view.DatasetView"><code class="xref py py-class docutils literal notranslate"><span class="pre">DatasetView</span></code></a> instances to search, filter, sort, and manipulate subsets of your
 datasets to perform the analysis that you need.</p>
 <p><div class="tutorials-callout-container">
-    <a class="btn with-right-arrow callout-button" href="using_views.html">Get a full walkthrough of dataset views</a>
+<a class="btn with-right-arrow callout-button" href="using_views.html">Get a full walkthrough of dataset views</a>
 </div></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 <span class="kn">import</span> <span class="nn">fiftyone.brain</span> <span class="k">as</span> <span class="nn">fob</span>
 <span class="kn">from</span> <span class="nn">fiftyone</span> <span class="kn">import</span> <span class="n">ViewField</span> <span class="k">as</span> <span class="n">F</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;cifar10&quot;</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="s2">&quot;test&quot;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"cifar10"</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="s2">"test"</span><span class="p">)</span>
 
-<span class="n">cats</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s2">&quot;ground_truth.label&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;cat&quot;</span><span class="p">)</span>
+<span class="n">cats</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s2">"ground_truth.label"</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"cat"</span><span class="p">)</span>
 <span class="n">fob</span><span class="o">.</span><span class="n">compute_uniqueness</span><span class="p">(</span><span class="n">cats</span><span class="p">)</span>
 
-<span class="n">similar_cats</span> <span class="o">=</span> <span class="n">cats</span><span class="o">.</span><span class="n">sort_by</span><span class="p">(</span><span class="s2">&quot;uniqueness&quot;</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">similar_cats</span> <span class="o">=</span> <span class="n">cats</span><span class="o">.</span><span class="n">sort_by</span><span class="p">(</span><span class="s2">"uniqueness"</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">view</span><span class="o">=</span><span class="n">similar_cats</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="cats-similar" class="align-center" src="../_images/cats-similar.png" />
+<img alt="cats-similar" class="align-center" src="../_images/cats-similar.png"/>
 </div>
 <div class="section" id="aggregations">
 <span id="basics-aggregations"></span><h2>Aggregations<a class="headerlink" href="#aggregations" title="Permalink to this headline">¶</a></h2>
@@ -622,53 +445,38 @@ distributions, and ranges.</p>
 that provides a highly-efficient approach to computing statistics about your
 data.</p>
 <p><div class="tutorials-callout-container">
-    <a class="btn with-right-arrow callout-button" href="using_aggregations.html">Learn more about using aggregations</a>
+<a class="btn with-right-arrow callout-button" href="using_aggregations.html">Learn more about using aggregations</a>
 </div></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 <span class="kn">from</span> <span class="nn">fiftyone</span> <span class="kn">import</span> <span class="n">ViewField</span> <span class="k">as</span> <span class="n">F</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"quickstart"</span><span class="p">)</span>
 
 <span class="c1"># Compute a histogram of the predicted labels in the `predictions` field</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">count_values</span><span class="p">(</span><span class="s2">&quot;predictions.detections.label&quot;</span><span class="p">))</span>
-<span class="c1"># {&#39;bicycle&#39;: 13, &#39;hot dog&#39;: 8, ..., &#39;skis&#39;: 52}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">count_values</span><span class="p">(</span><span class="s2">"predictions.detections.label"</span><span class="p">))</span>
+<span class="c1"># {'bicycle': 13, 'hot dog': 8, ..., 'skis': 52}</span>
 
 <span class="c1"># Compute the range of confidences of `cat` predictions in the dataset</span>
 <span class="nb">print</span><span class="p">(</span>
     <span class="n">dataset</span>
-    <span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span><span class="s2">&quot;predictions&quot;</span><span class="p">,</span> <span class="n">F</span><span class="p">(</span><span class="s2">&quot;label&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;cat&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">bounds</span><span class="p">(</span><span class="s2">&quot;predictions.detections.confidence&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span><span class="s2">"predictions"</span><span class="p">,</span> <span class="n">F</span><span class="p">(</span><span class="s2">"label"</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"cat"</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">bounds</span><span class="p">(</span><span class="s2">"predictions.detections.confidence"</span><span class="p">)</span>
 <span class="p">)</span>
 <span class="c1"># (0.05223553627729416, 0.9965479969978333)</span>
 </pre></div>
 </div>
 </div>
 </div>
+</article>
+</div>
 
-
-             </article>
-             
-            </div>
-            <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="dataset_creation/index.html" class="btn btn-neutral float-right" title="Loading data into FiftyOne" accesskey="n" rel="next">Next <img src="../_static/images/chevron-right-orange.svg" class="next-page"></a>
-      
-      
-        <a href="index.html" class="btn btn-neutral" title="FiftyOne User Guide" accesskey="p" rel="prev"><img src="../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
-      
-    </div>
-  
-</footer>
-          </div>
-        </div>
-
-        <div class="pytorch-content-right" id="pytorch-content-right">
-          <div class="pytorch-right-menu" id="pytorch-right-menu">
-            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
-              <ul>
+</div>
+</div>
+<div class="pytorch-content-right" id="pytorch-content-right">
+<div class="pytorch-right-menu" id="pytorch-right-menu">
+<div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+<ul>
 <li><a class="reference internal" href="#">FiftyOne Basics</a><ul>
 <li><a class="reference internal" href="#datasets">Datasets</a></li>
 <li><a class="reference internal" href="#samples">Samples</a></li>
@@ -682,214 +490,36 @@ data.</p>
 </ul>
 </li>
 </ul>
-
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
-
-  
-
-
-  
-
-     
-       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-         <script src="../_static/jquery.js"></script>
-         <script src="../_static/underscore.js"></script>
-         <script src="../_static/doctools.js"></script>
-         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
-         <script src="../_static/js/voxel51-website.js"></script>
-         <script src="../_static/js/custom.js"></script>
-     
-
-  
-
-  <script type="text/javascript" src="../_static/js/vendor/popper.min.js"></script>
-  <script type="text/javascript" src="../_static/js/vendor/bootstrap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-  <script type="text/javascript">
+</div>
+</div>
+</div>
+</section>
+</div>
+<script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js" type="text/javascript"></script>
+<script src="../_static/jquery.js"></script>
+<script src="../_static/underscore.js"></script>
+<script src="../_static/doctools.js"></script>
+<script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+<script src="../_static/js/voxel51-website.js"></script>
+<script src="../_static/js/custom.js"></script>
+<script src="../_static/js/vendor/popper.min.js" type="text/javascript"></script>
+<script src="../_static/js/vendor/bootstrap.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+<script src="../_static/js/theme.js" type="text/javascript"></script>
+<script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
-
-  <!-- Begin Footer -->
-
-
-  <div class="container-fluid docs-tutorials-resources" id="docs-tutorials-resources">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4 text-center">
-          <h2>Docs</h2>
-          <p>Access comprehensive developer documentation for PyTorch</p>
-          <a class="with-right-arrow" href="https://pytorch.org/docs/stable/index.html">View Docs</a>
-        </div>
-
-        <div class="col-md-4 text-center">
-          <h2>Tutorials</h2>
-          <p>Get in-depth tutorials for beginners and advanced developers</p>
-          <a class="with-right-arrow" href="https://pytorch.org/tutorials">View Tutorials</a>
-        </div>
-
-        <div class="col-md-4 text-center">
-          <h2>Resources</h2>
-          <p>Find development resources and get your questions answered</p>
-          <a class="with-right-arrow" href="https://pytorch.org/resources">View Resources</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <footer class="site-footer">
-    <div class="container footer-container">
-      <div class="footer-logo-wrapper">
-        <a href="https://pytorch.org/" class="footer-logo"></a>
-      </div>
-
-      <div class="footer-links-wrapper">
-        <div class="footer-links-col">
-          <ul>
-            <li class="list-title"><a href="https://pytorch.org/">PyTorch</a></li>
-            <li><a href="https://pytorch.org/get-started">Get Started</a></li>
-            <li><a href="https://pytorch.org/features">Features</a></li>
-            <li><a href="https://pytorch.org/ecosystem">Ecosystem</a></li>
-            <li><a href="https://pytorch.org/blog/">Blog</a></li>
-            <li><a href="https://github.com/pytorch/pytorch/blob/master/CONTRIBUTING.md">Contributing</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-links-col">
-          <ul>
-            <li class="list-title"><a href="https://pytorch.org/resources">Resources</a></li>
-            <li><a href="https://pytorch.org/tutorials">Tutorials</a></li>
-            <li><a href="https://pytorch.org/docs/stable/index.html">Docs</a></li>
-            <li><a href="https://discuss.pytorch.org" target="_blank">Discuss</a></li>
-            <li><a href="https://github.com/pytorch/pytorch/issues" target="_blank">Github Issues</a></li>
-            <li><a href="https://pytorch.org/assets/brand-guidelines/PyTorch-Brand-Guidelines.pdf" target="_blank">Brand Guidelines</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-links-col follow-us-col">
-          <ul>
-            <li class="list-title">Stay Connected</li>
-            <li>
-              <div id="mc_embed_signup">
-                <form
-                  action="https://twitter.us14.list-manage.com/subscribe/post?u=75419c71fe0a935e53dfa4a3f&id=91d0dccd39"
-                  method="post"
-                  id="mc-embedded-subscribe-form"
-                  name="mc-embedded-subscribe-form"
-                  class="email-subscribe-form validate"
-                  target="_blank"
-                  novalidate>
-                  <div id="mc_embed_signup_scroll" class="email-subscribe-form-fields-wrapper">
-                    <div class="mc-field-group">
-                      <label for="mce-EMAIL" style="display:none;">Email Address</label>
-                      <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="Email Address">
-                    </div>
-
-                    <div id="mce-responses" class="clear">
-                      <div class="response" id="mce-error-response" style="display:none"></div>
-                      <div class="response" id="mce-success-response" style="display:none"></div>
-                    </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-
-                    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_75419c71fe0a935e53dfa4a3f_91d0dccd39" tabindex="-1" value=""></div>
-
-                    <div class="clear">
-                      <input type="submit" value="" name="subscribe" id="mc-embedded-subscribe" class="button email-subscribe-button">
-                    </div>
-                  </div>
-                </form>
-              </div>
-
-            </li>
-          </ul>
-
-          <div class="footer-social-icons">
-            <a href="https://www.facebook.com/pytorch" target="_blank" class="facebook"></a>
-            <a href="https://twitter.com/pytorch" target="_blank" class="twitter"></a>
-            <a href="https://www.youtube.com/pytorch" target="_blank" class="youtube"></a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
+  </script>
+<!-- Begin Footer -->
 
 
-  
+<!-- End Footer -->
+<!-- Begin Mobile Menu -->
 
-  <!-- End Footer -->
-
-  <!-- Begin Mobile Menu -->
-
-
-  <div class="mobile-main-menu">
-    <div class="container-fluid">
-      <div class="container">
-        <div class="mobile-main-menu-header-container">
-          <a class="header-logo" href="https://pytorch.org/" aria-label="PyTorch"></a>
-          <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
-        </div>
-      </div>
-    </div>
-
-    <div class="mobile-main-menu-links-container">
-      <div class="main-menu">
-        <ul>
-          <li>
-            <a href="https://pytorch.org/get-started">Get Started</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/features">Features</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/ecosystem">Ecosystem</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/mobile">Mobile</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/hub">PyTorch Hub</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/blog/">Blog</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/tutorials">Tutorials</a>
-          </li>
-
-          <li class="active">
-            <a href="https://pytorch.org/docs/stable/index.html">Docs</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/resources">Resources</a>
-          </li>
-
-          <li>
-            <a href="https://github.com/pytorch/pytorch">Github</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-
-  <!-- End Mobile Menu -->
-
-  <script type="text/javascript" src="../_static/js/vendor/anchor.min.js"></script>
-
-  <script type="text/javascript">
+<!-- End Mobile Menu -->
+<script src="../_static/js/vendor/anchor.min.js" type="text/javascript"></script>
+<script type="text/javascript">
     $(document).ready(function() {
       mobileMenu.bind();
       mobileTOC.bind();

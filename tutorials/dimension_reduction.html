@@ -1,183 +1,45 @@
 
-
-
 <!DOCTYPE html>
+
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>Visualizing Data with Dimensionality Reduction Techniques &mdash; FiftyOne 1.3.0 documentation</title>
-  
-
-  
-  
-    <link rel="shortcut icon" href="../_static/favicon.ico"/>
-  
-  
-  
-
-  
-
-  
-  
-    
-
-  
-
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
-  <link rel="stylesheet" href="../_static/css/voxel51-website.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Zero-Shot Image Classification with Multimodal Models and FiftyOne" href="zero_shot_classification.html" />
-    <link rel="prev" title="Monocular Depth Estimation with FiftyOne" href="monocular_depth_estimation.html" />
-<meta property="og:image" content="https://voxel51.com/wp-content/uploads/2024/03/3.24_webpages_Home_AV.png" />
-
-<link
-  href="https://fonts.googleapis.com/css?family=Palanquin:400,600,700,800"
-  rel="stylesheet"
-/>
-<link
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
-  rel="stylesheet"
-/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Visualizing Data with Dimensionality Reduction Techniques — FiftyOne 1.3.0 documentation</title>
+<link href="../_static/favicon.ico" rel="shortcut icon"/>
+<link href="../_static/css/theme.css" rel="stylesheet" type="text/css"/>
+<!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+<link href="../_static/css/voxel51-website.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/css/custom.css" rel="stylesheet" type="text/css"/>
+<link href="../genindex.html" rel="index" title="Index"/>
+<link href="../search.html" rel="search" title="Search"/>
+<link href="zero_shot_classification.html" rel="next" title="Zero-Shot Image Classification with Multimodal Models and FiftyOne"/>
+<link href="monocular_depth_estimation.html" rel="prev" title="Monocular Depth Estimation with FiftyOne"/>
+<meta content="https://voxel51.com/wp-content/uploads/2024/03/3.24_webpages_Home_AV.png" property="og:image"/>
+<link href="https://fonts.googleapis.com/css?family=Palanquin:400,600,700,800" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet"/>
 <script src="https://tag.clearbitscripts.com/v1/pk_b9ed71c8234edd4f77326bcbfab5a4ca/tags.js"></script>
-
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
-  
+<script src="../_static/js/modernizr.min.js"></script>
 </head>
-
-
-<div class="container-fluid header-holder tutorials-header" id="header-holder">
-  <div class="container">
-    <div class="header-container">
-      <a class="header-logo" href="https://pytorch.org/" aria-label="PyTorch"></a>
-
-      <div class="main-menu">
-        <ul>
-          <li>
-            <a href="https://pytorch.org/get-started">Get Started</a>
-          </li>
-
-          <li>
-            <div class="ecosystem-dropdown">
-              <a id="dropdownMenuButton" data-toggle="ecosystem-dropdown">
-                Ecosystem
-              </a>
-              <div class="ecosystem-dropdown-menu">
-                <a class="nav-dropdown-item" href="https://pytorch.org/hub"">
-                  <span class=dropdown-title>Models (Beta)</span>
-                  <p>Discover, publish, and reuse pre-trained models</p>
-                </a>
-                <a class="nav-dropdown-item" href="https://pytorch.org/ecosystem">
-                  <span class=dropdown-title>Tools & Libraries</span>
-                  <p>Explore the ecosystem of tools and libraries</p>
-                </a>
-              </div>
-            </div>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/mobile">Mobile</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/blog/">Blog</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/tutorials">Tutorials</a>
-          </li>
-
-          <li class="active">
-            <a href="https://pytorch.org/docs/stable/index.html">Docs</a>
-          </li>
-
-          <li>
-            <div class="resources-dropdown">
-              <a id="resourcesDropdownButton" data-toggle="resources-dropdown">
-                Resources
-              </a>
-              <div class="resources-dropdown-menu">
-                <a class="nav-dropdown-item" href="https://pytorch.org/resources"">
-                  <span class=dropdown-title>Developer Resources</span>
-                  <p>Find resources and get questions answered</p>
-                </a>
-                <a class="nav-dropdown-item" href="https://pytorch.org/features">
-                  <span class=dropdown-title>About</span>
-                  <p>Learn about PyTorch’s features and capabilities</p>
-                </a>
-              </div>
-            </div>
-          </li>
-
-          <li>
-            <a href="https://github.com/pytorch/pytorch">Github</a>
-          </li>
-        </ul>
-      </div>
-
-      <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
-    </div>
-
-  </div>
-</div>
-
-
-
 <body class="pytorch-body">
-
-   
-
-    
-
-    <div class="table-of-contents-link-wrapper">
-      <span>Table of Contents</span>
-      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
-    </div>
-
-    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
-      <div class="pytorch-side-scroll">
-        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          <div class="pytorch-left-menu-search">
-            
-
-            
-              
-              
-            
-
-            
-
-
-  
-
-
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search Docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
+<div class="table-of-contents-link-wrapper">
+<span>Table of Contents</span>
+<a class="toggle-table-of-contents" data-behavior="toggle-table-of-contents" href="#"></a>
 </div>
-
-            
-          </div>
-
-          
-            
-            
-              
-            
-            
-              <ul class="current">
+<nav class="pytorch-left-menu" data-toggle="wy-nav-shift" id="pytorch-left-menu">
+<div class="pytorch-side-scroll">
+<div aria-label="main navigation" class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation">
+<div class="pytorch-left-menu-search">
+<div role="search">
+<form action="../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input name="q" placeholder="Search Docs" type="text"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../teams/index.html">FiftyOne Teams 🚀</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/install.html">Installation</a></li>
@@ -197,78 +59,37 @@
 <li class="toctree-l1"><a class="reference internal" href="../deprecation.html">Deprecation Notices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a></li>
 </ul>
-
-            
-          
-        </div>
-      </div>
-    </nav>
-
-    <div class="pytorch-container">
-      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
-        <div class="pytorch-breadcrumbs-wrapper">
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
-  <ul class="pytorch-breadcrumbs">
-    
-      <li>
-        <a href="../index.html">
+</div>
+</div>
+</nav>
+<div class="pytorch-container">
+<div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+<div class="pytorch-breadcrumbs-wrapper">
+<div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="pytorch-breadcrumbs">
+<li>
+<a href="../index.html">
           
             Docs
           
         </a> &gt;
       </li>
-
-        
-          <li><a href="index.html">FiftyOne Tutorials</a> &gt;</li>
-        
-      <li>Visualizing Data with Dimensionality Reduction Techniques</li>
-    
-    
-      <li class="pytorch-breadcrumbs-aside">
-        
-            
-        
-      </li>
-    
-  </ul>
-
-  
+<li><a href="index.html">FiftyOne Tutorials</a> &gt;</li>
+<li>Visualizing Data with Dimensionality Reduction Techniques</li>
+<li class="pytorch-breadcrumbs-aside">
+</li>
+</ul>
 </div>
-        </div>
-
-        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+</div>
+<div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
           Contents
         </div>
-      </div>
-
-      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
-        <div class="pytorch-content-left">
-
-        
-          
-          <div class="rst-content style-external-links">
-          
-            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
-             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
-              
-  
+</div>
+<section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+<div class="pytorch-content-left">
+<div class="rst-content style-external-links">
+<div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
 <style>
 /* CSS for nbsphinx extension */
 
@@ -555,20 +376,20 @@ div.rendered_html tbody tr:hover {
 <span class="kn">import</span> <span class="nn">fiftyone.brain</span> <span class="k">as</span> <span class="nn">fob</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;cifar10&quot;</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="s2">&quot;test&quot;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"cifar10"</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="s2">"test"</span><span class="p">)</span>
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<p><img alt="CIFAR-10" src="../_images/dimension_reduction_cifar10_base_dataset.png" /></p>
+<p><img alt="CIFAR-10" src="../_images/dimension_reduction_cifar10_base_dataset.png"/></p>
 <p>We will compare and contrast our four dimensionality reduction techniques with two image embedding models: <a class="reference external" href="https://pytorch.org/vision/main/models/generated/torchvision.models.resnet101.html">ResNet-101</a> and <a class="reference external" href="https://github.com/openai/CLIP">CLIP</a>. Whereas ResNet-101 is a more traditional vision model, representing the relationships between pixels and patches in images, CLIP captures more of the semantic content of the images.</p>
 <p>We can load both from the <a class="reference external" href="https://docs.voxel51.com/user_guide/model_zoo/index.html">FiftyOne Model Zoo</a>:</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clip</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_model</span><span class="p">(</span><span class="s2">&quot;clip-vit-base32-torch&quot;</span><span class="p">)</span>
-<span class="n">resnet101</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_model</span><span class="p">(</span><span class="s2">&quot;resnet101-imagenet-torch&quot;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clip</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_model</span><span class="p">(</span><span class="s2">"clip-vit-base32-torch"</span><span class="p">)</span>
+<span class="n">resnet101</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_model</span><span class="p">(</span><span class="s2">"resnet101-imagenet-torch"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -580,13 +401,13 @@ div.rendered_html tbody tr:hover {
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## compute and store resnet101 embeddings</span>
 <span class="n">dataset</span><span class="o">.</span><span class="n">compute_embeddings</span><span class="p">(</span>
     <span class="n">resnet101</span><span class="p">,</span>
-    <span class="n">embeddings_field</span><span class="o">=</span><span class="s2">&quot;resnet101_embeddings&quot;</span>
+    <span class="n">embeddings_field</span><span class="o">=</span><span class="s2">"resnet101_embeddings"</span>
 <span class="p">)</span>
 
 <span class="c1">## compute and store clip embeddings</span>
 <span class="n">dataset</span><span class="o">.</span><span class="n">compute_embeddings</span><span class="p">(</span>
     <span class="n">clip</span><span class="p">,</span>
-    <span class="n">embeddings_field</span><span class="o">=</span><span class="s2">&quot;clip_embeddings&quot;</span>
+    <span class="n">embeddings_field</span><span class="o">=</span><span class="s2">"clip_embeddings"</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -601,7 +422,7 @@ div.rendered_html tbody tr:hover {
 <h3>What to reduce the dimensionality of<a class="headerlink" href="#What-to-reduce-the-dimensionality-of" title="Permalink to this headline">¶</a></h3>
 <p>There are multiple ways to specify what you would like dimension-reduced. Here are a few options (but certainly not all of them!):</p>
 <ul class="simple">
-<li><p>You can specify the name of the field containing the embeddings you would like to reduce using the <code class="docutils literal notranslate"><span class="pre">embeddings</span></code> argument. If your embeddings are stored in field “my_embeddings_field” on your samples, you would employ the syntax <code class="docutils literal notranslate"><span class="pre">embeddings=&quot;my_embeddings_field&quot;</span></code>. This is useful if you need to reuse the same embeddings for multiple dimensionality reduction techniques, or for other brain methods.</p></li>
+<li><p>You can specify the name of the field containing the embeddings you would like to reduce using the <code class="docutils literal notranslate"><span class="pre">embeddings</span></code> argument. If your embeddings are stored in field “my_embeddings_field” on your samples, you would employ the syntax <code class="docutils literal notranslate"><span class="pre">embeddings="my_embeddings_field"</span></code>. This is useful if you need to reuse the same embeddings for multiple dimensionality reduction techniques, or for other brain methods.</p></li>
 <li><p>You can pass the embeddings in directly using as numpy array, also via the <code class="docutils literal notranslate"><span class="pre">embeddings</span></code> argument. This is useful if you have already computed your embeddings, and don’t need to store them on your samples.</p></li>
 <li><p>You can specify the <em>model</em> you would like to use to generate embeddings. This can be:</p>
 <ul>
@@ -617,7 +438,7 @@ div.rendered_html tbody tr:hover {
 <p>You can specify the base dimensionality reduction technique to use via the <code class="docutils literal notranslate"><span class="pre">method</span></code> argument. This can be one of the following strings: <code class="docutils literal notranslate"><span class="pre">pca</span></code>, <code class="docutils literal notranslate"><span class="pre">tsne</span></code>, <code class="docutils literal notranslate"><span class="pre">umap</span></code>, or <code class="docutils literal notranslate"><span class="pre">manual</span></code>.</p>
 <p>For <code class="docutils literal notranslate"><span class="pre">pca</span></code>, <code class="docutils literal notranslate"><span class="pre">tsne</span></code>, and <code class="docutils literal notranslate"><span class="pre">umap</span></code>, you can specify the number of dimensions to reduce to via the <code class="docutils literal notranslate"><span class="pre">num_dims</span></code> argument. Additionally, you can specify hyperparameters for each technique as kwargs. For a complete description of available options, check out the visualization configs: <a class="reference external" href="https://docs.voxel51.com/api/fiftyone.brain.visualization.html#fiftyone.brain.visualization.TSNEVisualizationConfig">TSNEVisualizationConfig</a>,
 <a class="reference external" href="https://docs.voxel51.com/api/fiftyone.brain.visualization.html#fiftyone.brain.visualization.UMAPVisualizationConfig">UMAPVisualizationConfig</a>, and <a class="reference external" href="https://docs.voxel51.com/api/fiftyone.brain.visualization.html#fiftyone.brain.visualization.PCAVisualizationConfig">PCAVisualizationConfig</a>.</p>
-<p>You can use <code class="docutils literal notranslate"><span class="pre">method=&quot;manual&quot;</span></code> if you already have the dimensionality-reduced data, and just want to store it on your samples for visualization purposes.</p>
+<p>You can use <code class="docutils literal notranslate"><span class="pre">method="manual"</span></code> if you already have the dimensionality-reduced data, and just want to store it on your samples for visualization purposes.</p>
 </div>
 <div class="section" id="Where-to-store-the-results">
 <h3>Where to store the results<a class="headerlink" href="#Where-to-store-the-results" title="Permalink to this headline">¶</a></h3>
@@ -630,18 +451,18 @@ div.rendered_html tbody tr:hover {
 <span class="kn">import</span> <span class="nn">fiftyone.brain</span> <span class="k">as</span> <span class="nn">fob</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;cifar10&quot;</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="s2">&quot;test&quot;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"cifar10"</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="s2">"test"</span><span class="p">)</span>
 
 <span class="c1">## Compute PCA visualization</span>
 <span class="n">fob</span><span class="o">.</span><span class="n">compute_visualization</span><span class="p">(</span>
     <span class="n">dataset</span><span class="p">,</span>
-    <span class="n">embeddings</span><span class="o">=</span><span class="s2">&quot;resnet101&quot;</span><span class="p">,</span>
-    <span class="n">method</span><span class="o">=</span><span class="s2">&quot;pca&quot;</span><span class="p">,</span>
-    <span class="n">brain_key</span><span class="o">=</span><span class="s2">&quot;pca_resnet101&quot;</span>
+    <span class="n">embeddings</span><span class="o">=</span><span class="s2">"resnet101"</span><span class="p">,</span>
+    <span class="n">method</span><span class="o">=</span><span class="s2">"pca"</span><span class="p">,</span>
+    <span class="n">brain_key</span><span class="o">=</span><span class="s2">"pca_resnet101"</span>
 <span class="p">)</span>
 
 <span class="c1">## Access results</span>
-<span class="n">pca_resnet_results</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">load_brain_results</span><span class="p">(</span><span class="s2">&quot;pca_resnet101&quot;</span><span class="p">)</span>
+<span class="n">pca_resnet_results</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">load_brain_results</span><span class="p">(</span><span class="s2">"pca_resnet101"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -663,7 +484,7 @@ the singular vectors with the smallest eigenvalues.</p>
 </ul>
 <div class="section" id="Running-PCA-on-Embeddings">
 <h3>Running PCA on Embeddings<a class="headerlink" href="#Running-PCA-on-Embeddings" title="Permalink to this headline">¶</a></h3>
-<p>PCA is natively supported by the FiftyOne Brain’s <code class="docutils literal notranslate"><span class="pre">compute_visualization()</span></code>. To reduce dimensionality for a set of embeddings, we can specify the field the embeddings are stored in, and pass in <code class="docutils literal notranslate"><span class="pre">method=&quot;pca&quot;</span></code>. In the app, we can open up an Embeddings panel to view the results:</p>
+<p>PCA is natively supported by the FiftyOne Brain’s <code class="docutils literal notranslate"><span class="pre">compute_visualization()</span></code>. To reduce dimensionality for a set of embeddings, we can specify the field the embeddings are stored in, and pass in <code class="docutils literal notranslate"><span class="pre">method="pca"</span></code>. In the app, we can open up an Embeddings panel to view the results:</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
@@ -671,29 +492,29 @@ the singular vectors with the smallest eigenvalues.</p>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## PCA with ResNet101 embeddings</span>
 <span class="n">fob</span><span class="o">.</span><span class="n">compute_visualization</span><span class="p">(</span>
     <span class="n">dataset</span><span class="p">,</span>
-    <span class="n">embeddings</span><span class="o">=</span><span class="s2">&quot;resnet101_embeddings&quot;</span><span class="p">,</span>
-    <span class="n">method</span><span class="o">=</span><span class="s2">&quot;pca&quot;</span><span class="p">,</span>
-    <span class="n">brain_key</span><span class="o">=</span><span class="s2">&quot;resnet101_pca&quot;</span>
+    <span class="n">embeddings</span><span class="o">=</span><span class="s2">"resnet101_embeddings"</span><span class="p">,</span>
+    <span class="n">method</span><span class="o">=</span><span class="s2">"pca"</span><span class="p">,</span>
+    <span class="n">brain_key</span><span class="o">=</span><span class="s2">"resnet101_pca"</span>
 <span class="p">)</span>
 
 <span class="c1">## PCA with CLIP embeddings</span>
 <span class="n">fob</span><span class="o">.</span><span class="n">compute_visualization</span><span class="p">(</span>
     <span class="n">dataset</span><span class="p">,</span>
-    <span class="n">embeddings</span><span class="o">=</span><span class="s2">&quot;clip_embeddings&quot;</span><span class="p">,</span>
-    <span class="n">method</span><span class="o">=</span><span class="s2">&quot;pca&quot;</span><span class="p">,</span>
-    <span class="n">brain_key</span><span class="o">=</span><span class="s2">&quot;resnet101_pca&quot;</span>
+    <span class="n">embeddings</span><span class="o">=</span><span class="s2">"clip_embeddings"</span><span class="p">,</span>
+    <span class="n">method</span><span class="o">=</span><span class="s2">"pca"</span><span class="p">,</span>
+    <span class="n">brain_key</span><span class="o">=</span><span class="s2">"resnet101_pca"</span>
 <span class="p">)</span>
 
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<p><img alt="Loading visualization" src="../_images/dimension_reduction_load_resnet101_pca.gif" /></p>
+<p><img alt="Loading visualization" src="../_images/dimension_reduction_load_resnet101_pca.gif"/></p>
 <p>We can color by any attribute on our samples — in this case the ground truth label — and filter the contents of the sample grid interactively by selecting regions in the embeddings panel.</p>
-<p><img alt="color-by-label" src="../_images/dimension_reduction_clip_pca.png" /></p>
+<p><img alt="color-by-label" src="../_images/dimension_reduction_clip_pca.png"/></p>
 <p>For both the CLIP and ResNet-101 embeddings, the PCA plot does seem to very loosely retain information from the embeddings (and the original images). However, when we color by label, there is substantial overlap from one class to another.</p>
 <p>Restricting the CLIP PCA view to just automobiles, trucks, and ships, we can see that the distributions for all three classes are essentially identical, aside from the ships extending slightly farther out.</p>
-<p><img alt="PCA-overlap" src="../_images/dimension_reduction_clip_pca_overlap.png" /></p>
+<p><img alt="PCA-overlap" src="../_images/dimension_reduction_clip_pca_overlap.png"/></p>
 </div>
 </div>
 <div class="section" id="Dimensionality-Reduction-with-t-SNE">
@@ -712,7 +533,7 @@ possible. Mathematically, this learning is achieved by minimizing the <a class="
 </ul>
 <div class="section" id="Running-t-SNE-on-Embeddings">
 <h3>Running t-SNE on Embeddings<a class="headerlink" href="#Running-t-SNE-on-Embeddings" title="Permalink to this headline">¶</a></h3>
-<p>Like PCA, t-SNE is natively supported by the FiftyOne Brain’s <code class="docutils literal notranslate"><span class="pre">compute_visualization()</span></code>, so we can run dimensionality reduction on our embeddings by passing <code class="docutils literal notranslate"><span class="pre">method=&quot;tsne&quot;</span></code>:</p>
+<p>Like PCA, t-SNE is natively supported by the FiftyOne Brain’s <code class="docutils literal notranslate"><span class="pre">compute_visualization()</span></code>, so we can run dimensionality reduction on our embeddings by passing <code class="docutils literal notranslate"><span class="pre">method="tsne"</span></code>:</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
@@ -720,17 +541,17 @@ possible. Mathematically, this learning is achieved by minimizing the <a class="
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## t-SNE with ResNet101 embeddings</span>
 <span class="n">fob</span><span class="o">.</span><span class="n">compute_visualization</span><span class="p">(</span>
     <span class="n">dataset</span><span class="p">,</span>
-    <span class="n">embeddings</span><span class="o">=</span><span class="s2">&quot;resnet101_embeddings&quot;</span><span class="p">,</span>
-    <span class="n">method</span><span class="o">=</span><span class="s2">&quot;tsne&quot;</span><span class="p">,</span>
-    <span class="n">brain_key</span><span class="o">=</span><span class="s2">&quot;resnet101_tsne&quot;</span>
+    <span class="n">embeddings</span><span class="o">=</span><span class="s2">"resnet101_embeddings"</span><span class="p">,</span>
+    <span class="n">method</span><span class="o">=</span><span class="s2">"tsne"</span><span class="p">,</span>
+    <span class="n">brain_key</span><span class="o">=</span><span class="s2">"resnet101_tsne"</span>
 <span class="p">)</span>
 
 <span class="c1">## t-SNE with CLIP embeddings</span>
 <span class="n">fob</span><span class="o">.</span><span class="n">compute_visualization</span><span class="p">(</span>
     <span class="n">dataset</span><span class="p">,</span>
-    <span class="n">embeddings</span><span class="o">=</span><span class="s2">&quot;clip_embeddings&quot;</span><span class="p">,</span>
-    <span class="n">method</span><span class="o">=</span><span class="s2">&quot;tsne&quot;</span><span class="p">,</span>
-    <span class="n">brain_key</span><span class="o">=</span><span class="s2">&quot;resnet101_tsne&quot;</span>
+    <span class="n">embeddings</span><span class="o">=</span><span class="s2">"clip_embeddings"</span><span class="p">,</span>
+    <span class="n">method</span><span class="o">=</span><span class="s2">"tsne"</span><span class="p">,</span>
+    <span class="n">brain_key</span><span class="o">=</span><span class="s2">"resnet101_tsne"</span>
 <span class="p">)</span>
 
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
@@ -738,9 +559,9 @@ possible. Mathematically, this learning is achieved by minimizing the <a class="
 </div>
 </div>
 <p>Looking at the results of t-SNE dimensionality reduction on both ResNet-101 and CLIP embeddings, we can see a lot more separation between the distributions of different classes.</p>
-<p><img alt="tsne-resnet101" src="../_images/dimension_reduction_resnet_tsne.png" /></p>
+<p><img alt="tsne-resnet101" src="../_images/dimension_reduction_resnet_tsne.png"/></p>
 <p>In both cases, similar classes are still close to each other — for instance, automobiles and trucks are adjacent — but we can also mostly distinguish a main cluster for almost every class. In other words, t-SNE does a very good job at capturing local structure, and a decent job at capturing global structure.</p>
-<p><img alt="tsne-clip" src="../_images/dimension_reduction_clip_tsne.png" /></p>
+<p><img alt="tsne-clip" src="../_images/dimension_reduction_clip_tsne.png"/></p>
 </div>
 </div>
 <div class="section" id="Dimensionality-Reduction-with-UMAP">
@@ -759,7 +580,7 @@ called a manifold (technically here a <a class="reference external" href="https:
 </ul>
 <div class="section" id="Running-UMAP-on-Embeddings">
 <h3>Running UMAP on Embeddings<a class="headerlink" href="#Running-UMAP-on-Embeddings" title="Permalink to this headline">¶</a></h3>
-<p>Like PCA and t-SNE, UMAP is natively supported by the FiftyOne Brain’s <code class="docutils literal notranslate"><span class="pre">compute_visualization()</span></code>, so we can run dimensionality reduction on our embeddings by passing <code class="docutils literal notranslate"><span class="pre">method=&quot;umap&quot;</span></code>:</p>
+<p>Like PCA and t-SNE, UMAP is natively supported by the FiftyOne Brain’s <code class="docutils literal notranslate"><span class="pre">compute_visualization()</span></code>, so we can run dimensionality reduction on our embeddings by passing <code class="docutils literal notranslate"><span class="pre">method="umap"</span></code>:</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
@@ -767,26 +588,26 @@ called a manifold (technically here a <a class="reference external" href="https:
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## UMAP with ResNet101 embeddings</span>
 <span class="n">fob</span><span class="o">.</span><span class="n">compute_visualization</span><span class="p">(</span>
     <span class="n">dataset</span><span class="p">,</span>
-    <span class="n">embeddings</span><span class="o">=</span><span class="s2">&quot;resnet101_embeddings&quot;</span><span class="p">,</span>
-    <span class="n">method</span><span class="o">=</span><span class="s2">&quot;umap&quot;</span><span class="p">,</span>
-    <span class="n">brain_key</span><span class="o">=</span><span class="s2">&quot;resnet101_umap&quot;</span>
+    <span class="n">embeddings</span><span class="o">=</span><span class="s2">"resnet101_embeddings"</span><span class="p">,</span>
+    <span class="n">method</span><span class="o">=</span><span class="s2">"umap"</span><span class="p">,</span>
+    <span class="n">brain_key</span><span class="o">=</span><span class="s2">"resnet101_umap"</span>
 <span class="p">)</span>
 
 <span class="c1">## UMAP with CLIP embeddings</span>
 <span class="n">fob</span><span class="o">.</span><span class="n">compute_visualization</span><span class="p">(</span>
     <span class="n">dataset</span><span class="p">,</span>
-    <span class="n">embeddings</span><span class="o">=</span><span class="s2">&quot;clip_embeddings&quot;</span><span class="p">,</span>
-    <span class="n">method</span><span class="o">=</span><span class="s2">&quot;umap&quot;</span><span class="p">,</span>
-    <span class="n">brain_key</span><span class="o">=</span><span class="s2">&quot;resnet101_umap&quot;</span>
+    <span class="n">embeddings</span><span class="o">=</span><span class="s2">"clip_embeddings"</span><span class="p">,</span>
+    <span class="n">method</span><span class="o">=</span><span class="s2">"umap"</span><span class="p">,</span>
+    <span class="n">brain_key</span><span class="o">=</span><span class="s2">"resnet101_umap"</span>
 <span class="p">)</span>
 
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<p><img alt="UMAP-resnet101" src="../_images/dimension_reduction_resnet_umap.png" /></p>
+<p><img alt="UMAP-resnet101" src="../_images/dimension_reduction_resnet_umap.png"/></p>
 <p>For both sets of embeddings, the clusters are a lot more spread out than with t-SNE. For ResNet-101, all of the vehicles (automobile, truck, airplane, ship) are in one mega-cluster — or two smaller clusters, depending on how you view it — and all of the animals are in another mega-cluster.</p>
-<p><img alt="UMAP-CLIP" src="../_images/dimension_reduction_clip_umap.png" /></p>
+<p><img alt="UMAP-CLIP" src="../_images/dimension_reduction_clip_umap.png"/></p>
 <p>Interestingly, for the CLIP embeddings, we see that the <code class="docutils literal notranslate"><span class="pre">airplane</span></code> cluster is situated close to both <code class="docutils literal notranslate"><span class="pre">bird</span></code> and <code class="docutils literal notranslate"><span class="pre">ship</span></code>. The <code class="docutils literal notranslate"><span class="pre">car</span></code> and <code class="docutils literal notranslate"><span class="pre">truck</span></code> clusters are very close together; and the <code class="docutils literal notranslate"><span class="pre">cat</span></code> and <code class="docutils literal notranslate"><span class="pre">dog</span></code> clusters are very close together.</p>
 </div>
 </div>
@@ -804,7 +625,7 @@ called a manifold (technically here a <a class="reference external" href="https:
 <span class="kn">from</span> <span class="nn">sklearn.manifold</span> <span class="kn">import</span> <span class="n">Isomap</span>
 
 <span class="c1">## get embeddings from dataset</span>
-<span class="n">embeddings</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;resnet101_embeddings&quot;</span><span class="p">))</span>
+<span class="n">embeddings</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">"resnet101_embeddings"</span><span class="p">))</span>
 
 <span class="c1">## create and fit</span>
 <span class="n">manifold_embedding</span> <span class="o">=</span> <span class="n">Isomap</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
@@ -819,14 +640,14 @@ called a manifold (technically here a <a class="reference external" href="https:
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fob</span><span class="o">.</span><span class="n">compute_visualization</span><span class="p">(</span>
     <span class="n">dataset</span><span class="p">,</span>
-    <span class="n">method</span><span class="o">=</span><span class="s1">&#39;manual&#39;</span><span class="p">,</span>
+    <span class="n">method</span><span class="o">=</span><span class="s1">'manual'</span><span class="p">,</span>
     <span class="n">points</span><span class="o">=</span><span class="n">z</span><span class="p">,</span>
-    <span class="n">brain_key</span><span class="o">=</span><span class="s1">&#39;resnet101_isomap&#39;</span>
+    <span class="n">brain_key</span><span class="o">=</span><span class="s1">'resnet101_isomap'</span>
 <span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<p><img alt="Isomap" src="../_images/dimension_reduction_resnet_isomap.png" /></p>
+<p><img alt="Isomap" src="../_images/dimension_reduction_resnet_isomap.png"/></p>
 <p>Any dimensionality reduction method supported by scikit-learn can be used in analogous fashion.</p>
 </div>
 <div class="section" id="CompressionVAE">
@@ -858,21 +679,21 @@ called a manifold (technically here a <a class="reference external" href="https:
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cvae</span> <span class="kn">import</span> <span class="n">cvae</span>
 
-<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;clip_embeddings&quot;</span><span class="p">))</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">"clip_embeddings"</span><span class="p">))</span>
 <span class="n">embedder</span> <span class="o">=</span> <span class="n">cvae</span><span class="o">.</span><span class="n">CompressionVAE</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 <span class="n">embedder</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
 <span class="n">z</span> <span class="o">=</span> <span class="n">embedder</span><span class="o">.</span><span class="n">embed</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 
 <span class="n">fob</span><span class="o">.</span><span class="n">compute_visualization</span><span class="p">(</span>
     <span class="n">dataset</span><span class="p">,</span>
-    <span class="n">method</span><span class="o">=</span><span class="s1">&#39;manual&#39;</span><span class="p">,</span>
+    <span class="n">method</span><span class="o">=</span><span class="s1">'manual'</span><span class="p">,</span>
     <span class="n">points</span><span class="o">=</span><span class="n">z</span><span class="p">,</span>
-    <span class="n">brain_key</span><span class="o">=</span><span class="s1">&#39;clip_cvae&#39;</span>
+    <span class="n">brain_key</span><span class="o">=</span><span class="s1">'clip_cvae'</span>
 <span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<p><img alt="CompressionVAE" src="../_images/dimension_reduction_cvae_clip.png" /></p>
+<p><img alt="CompressionVAE" src="../_images/dimension_reduction_cvae_clip.png"/></p>
 </div>
 </div>
 <div class="section" id="Advanced-Dimensionality-Reduction-in-FiftyOne">
@@ -913,16 +734,16 @@ called a manifold (technically here a <a class="reference external" href="https:
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"quickstart"</span><span class="p">)</span>
 
-<span class="n">model</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_model</span><span class="p">(</span><span class="s2">&quot;clip-vit-base32-torch&quot;</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_model</span><span class="p">(</span><span class="s2">"clip-vit-base32-torch"</span><span class="p">)</span>
 <span class="n">embeddings</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">compute_embeddings</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
 
 <span class="n">results2</span> <span class="o">=</span> <span class="n">fob</span><span class="o">.</span><span class="n">compute_visualization</span><span class="p">(</span>
     <span class="n">dataset</span><span class="p">,</span>
     <span class="n">embeddings</span><span class="o">=</span><span class="n">embeddings</span><span class="p">,</span>
     <span class="n">method</span><span class="o">=</span><span class="n">IsomapVisualizationConfig</span><span class="p">,</span>
-    <span class="n">brain_key</span><span class="o">=</span><span class="s2">&quot;isomap&quot;</span><span class="p">,</span>
+    <span class="n">brain_key</span><span class="o">=</span><span class="s2">"isomap"</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -940,13 +761,13 @@ called a manifold (technically here a <a class="reference external" href="https:
 <span class="kn">import</span> <span class="nn">fiftyone.brain</span> <span class="k">as</span> <span class="nn">fob</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"quickstart"</span><span class="p">)</span>
 
 <span class="n">fob</span><span class="o">.</span><span class="n">compute_visualization</span><span class="p">(</span>
     <span class="n">dataset</span><span class="p">,</span>
-    <span class="n">patches_field</span><span class="o">=</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span>
-    <span class="n">method</span><span class="o">=</span><span class="s2">&quot;umap&quot;</span><span class="p">,</span>
-    <span class="n">brain_key</span><span class="o">=</span><span class="s2">&quot;gt_umap&quot;</span>
+    <span class="n">patches_field</span><span class="o">=</span><span class="s2">"ground_truth"</span><span class="p">,</span>
+    <span class="n">method</span><span class="o">=</span><span class="s2">"umap"</span><span class="p">,</span>
+    <span class="n">brain_key</span><span class="o">=</span><span class="s2">"gt_umap"</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -958,30 +779,14 @@ called a manifold (technically here a <a class="reference external" href="https:
 <p>Dimensionality reduction is critical to understanding our data, and our models. But it is important to think of dimensionality reduction not just as a single tool, but rather as a collection of techniques. Each technique has its own advantages; and each method projects certain assumptions onto the data, which may or may not hold for your data. I hope this walkthrough helps you to see your data in a new way!</p>
 </div>
 </div>
-
-
-             </article>
-             
-            </div>
-            <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="zero_shot_classification.html" class="btn btn-neutral float-right" title="Zero-Shot Image Classification with Multimodal Models and FiftyOne" accesskey="n" rel="next">Next <img src="../_static/images/chevron-right-orange.svg" class="next-page"></a>
-      
-      
-        <a href="monocular_depth_estimation.html" class="btn btn-neutral" title="Monocular Depth Estimation with FiftyOne" accesskey="p" rel="prev"><img src="../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
-      
-    </div>
-  
-</footer>
-          </div>
-        </div>
-
-        <div class="pytorch-content-right" id="pytorch-content-right">
-          <div class="pytorch-right-menu" id="pytorch-right-menu">
-            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
-              <ul>
+</article>
+</div>
+</div>
+</div>
+<div class="pytorch-content-right" id="pytorch-content-right">
+<div class="pytorch-right-menu" id="pytorch-right-menu">
+<div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+<ul>
 <li><a class="reference internal" href="#">Visualizing Data with Dimensionality Reduction Techniques</a><ul>
 <li><a class="reference internal" href="#Why-Dimensionality-Reduction?">Why Dimensionality Reduction?</a></li>
 <li><a class="reference internal" href="#Setup">Setup</a></li>
@@ -1017,216 +822,35 @@ called a manifold (technically here a <a class="reference external" href="https:
 </ul>
 </li>
 </ul>
-
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
-
-  
-
-
-  
-
-     
-       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-         <script src="../_static/jquery.js"></script>
-         <script src="../_static/underscore.js"></script>
-         <script src="../_static/doctools.js"></script>
-         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
-         <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-         <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
-         <script src="../_static/js/voxel51-website.js"></script>
-         <script src="../_static/js/custom.js"></script>
-     
-
-  
-
-  <script type="text/javascript" src="../_static/js/vendor/popper.min.js"></script>
-  <script type="text/javascript" src="../_static/js/vendor/bootstrap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-  <script type="text/javascript">
+</div>
+</div>
+</div>
+</section>
+</div>
+<script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js" type="text/javascript"></script>
+<script src="../_static/jquery.js"></script>
+<script src="../_static/underscore.js"></script>
+<script src="../_static/doctools.js"></script>
+<script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+<script src="../_static/js/voxel51-website.js"></script>
+<script src="../_static/js/custom.js"></script>
+<script src="../_static/js/vendor/popper.min.js" type="text/javascript"></script>
+<script src="../_static/js/vendor/bootstrap.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+<script src="../_static/js/theme.js" type="text/javascript"></script>
+<script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
-
-  <!-- Begin Footer -->
-
-
-  <div class="container-fluid docs-tutorials-resources" id="docs-tutorials-resources">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4 text-center">
-          <h2>Docs</h2>
-          <p>Access comprehensive developer documentation for PyTorch</p>
-          <a class="with-right-arrow" href="https://pytorch.org/docs/stable/index.html">View Docs</a>
-        </div>
-
-        <div class="col-md-4 text-center">
-          <h2>Tutorials</h2>
-          <p>Get in-depth tutorials for beginners and advanced developers</p>
-          <a class="with-right-arrow" href="https://pytorch.org/tutorials">View Tutorials</a>
-        </div>
-
-        <div class="col-md-4 text-center">
-          <h2>Resources</h2>
-          <p>Find development resources and get your questions answered</p>
-          <a class="with-right-arrow" href="https://pytorch.org/resources">View Resources</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <footer class="site-footer">
-    <div class="container footer-container">
-      <div class="footer-logo-wrapper">
-        <a href="https://pytorch.org/" class="footer-logo"></a>
-      </div>
-
-      <div class="footer-links-wrapper">
-        <div class="footer-links-col">
-          <ul>
-            <li class="list-title"><a href="https://pytorch.org/">PyTorch</a></li>
-            <li><a href="https://pytorch.org/get-started">Get Started</a></li>
-            <li><a href="https://pytorch.org/features">Features</a></li>
-            <li><a href="https://pytorch.org/ecosystem">Ecosystem</a></li>
-            <li><a href="https://pytorch.org/blog/">Blog</a></li>
-            <li><a href="https://github.com/pytorch/pytorch/blob/master/CONTRIBUTING.md">Contributing</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-links-col">
-          <ul>
-            <li class="list-title"><a href="https://pytorch.org/resources">Resources</a></li>
-            <li><a href="https://pytorch.org/tutorials">Tutorials</a></li>
-            <li><a href="https://pytorch.org/docs/stable/index.html">Docs</a></li>
-            <li><a href="https://discuss.pytorch.org" target="_blank">Discuss</a></li>
-            <li><a href="https://github.com/pytorch/pytorch/issues" target="_blank">Github Issues</a></li>
-            <li><a href="https://pytorch.org/assets/brand-guidelines/PyTorch-Brand-Guidelines.pdf" target="_blank">Brand Guidelines</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-links-col follow-us-col">
-          <ul>
-            <li class="list-title">Stay Connected</li>
-            <li>
-              <div id="mc_embed_signup">
-                <form
-                  action="https://twitter.us14.list-manage.com/subscribe/post?u=75419c71fe0a935e53dfa4a3f&id=91d0dccd39"
-                  method="post"
-                  id="mc-embedded-subscribe-form"
-                  name="mc-embedded-subscribe-form"
-                  class="email-subscribe-form validate"
-                  target="_blank"
-                  novalidate>
-                  <div id="mc_embed_signup_scroll" class="email-subscribe-form-fields-wrapper">
-                    <div class="mc-field-group">
-                      <label for="mce-EMAIL" style="display:none;">Email Address</label>
-                      <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="Email Address">
-                    </div>
-
-                    <div id="mce-responses" class="clear">
-                      <div class="response" id="mce-error-response" style="display:none"></div>
-                      <div class="response" id="mce-success-response" style="display:none"></div>
-                    </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-
-                    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_75419c71fe0a935e53dfa4a3f_91d0dccd39" tabindex="-1" value=""></div>
-
-                    <div class="clear">
-                      <input type="submit" value="" name="subscribe" id="mc-embedded-subscribe" class="button email-subscribe-button">
-                    </div>
-                  </div>
-                </form>
-              </div>
-
-            </li>
-          </ul>
-
-          <div class="footer-social-icons">
-            <a href="https://www.facebook.com/pytorch" target="_blank" class="facebook"></a>
-            <a href="https://twitter.com/pytorch" target="_blank" class="twitter"></a>
-            <a href="https://www.youtube.com/pytorch" target="_blank" class="youtube"></a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-
-  
-
-  <!-- End Footer -->
-
-  <!-- Begin Mobile Menu -->
-
-
-  <div class="mobile-main-menu">
-    <div class="container-fluid">
-      <div class="container">
-        <div class="mobile-main-menu-header-container">
-          <a class="header-logo" href="https://pytorch.org/" aria-label="PyTorch"></a>
-          <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
-        </div>
-      </div>
-    </div>
-
-    <div class="mobile-main-menu-links-container">
-      <div class="main-menu">
-        <ul>
-          <li>
-            <a href="https://pytorch.org/get-started">Get Started</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/features">Features</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/ecosystem">Ecosystem</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/mobile">Mobile</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/hub">PyTorch Hub</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/blog/">Blog</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/tutorials">Tutorials</a>
-          </li>
-
-          <li class="active">
-            <a href="https://pytorch.org/docs/stable/index.html">Docs</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/resources">Resources</a>
-          </li>
-
-          <li>
-            <a href="https://github.com/pytorch/pytorch">Github</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-
-  <!-- End Mobile Menu -->
-
-  <script type="text/javascript" src="../_static/js/vendor/anchor.min.js"></script>
-
-  <script type="text/javascript">
+  </script>
+<!-- Begin Footer -->
+<!-- End Footer -->
+<!-- Begin Mobile Menu -->
+<!-- End Mobile Menu -->
+<script src="../_static/js/vendor/anchor.min.js" type="text/javascript"></script>
+<script type="text/javascript">
     $(document).ready(function() {
       mobileMenu.bind();
       mobileTOC.bind();

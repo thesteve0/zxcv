@@ -1,183 +1,45 @@
 
-
-
 <!DOCTYPE html>
+
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>Zero-Shot Image Classification with Multimodal Models and FiftyOne &mdash; FiftyOne 1.3.0 documentation</title>
-  
-
-  
-  
-    <link rel="shortcut icon" href="../_static/favicon.ico"/>
-  
-  
-  
-
-  
-
-  
-  
-    
-
-  
-
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
-  <link rel="stylesheet" href="../_static/css/voxel51-website.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Augmenting Datasets with Albumentations" href="data_augmentation.html" />
-    <link rel="prev" title="Visualizing Data with Dimensionality Reduction Techniques" href="dimension_reduction.html" />
-<meta property="og:image" content="https://voxel51.com/wp-content/uploads/2024/03/3.24_webpages_Home_AV.png" />
-
-<link
-  href="https://fonts.googleapis.com/css?family=Palanquin:400,600,700,800"
-  rel="stylesheet"
-/>
-<link
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
-  rel="stylesheet"
-/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Zero-Shot Image Classification with Multimodal Models and FiftyOne — FiftyOne 1.3.0 documentation</title>
+<link href="../_static/favicon.ico" rel="shortcut icon"/>
+<link href="../_static/css/theme.css" rel="stylesheet" type="text/css"/>
+<!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+<link href="../_static/css/voxel51-website.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/css/custom.css" rel="stylesheet" type="text/css"/>
+<link href="../genindex.html" rel="index" title="Index"/>
+<link href="../search.html" rel="search" title="Search"/>
+<link href="data_augmentation.html" rel="next" title="Augmenting Datasets with Albumentations"/>
+<link href="dimension_reduction.html" rel="prev" title="Visualizing Data with Dimensionality Reduction Techniques"/>
+<meta content="https://voxel51.com/wp-content/uploads/2024/03/3.24_webpages_Home_AV.png" property="og:image"/>
+<link href="https://fonts.googleapis.com/css?family=Palanquin:400,600,700,800" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet"/>
 <script src="https://tag.clearbitscripts.com/v1/pk_b9ed71c8234edd4f77326bcbfab5a4ca/tags.js"></script>
-
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
-  
+<script src="../_static/js/modernizr.min.js"></script>
 </head>
-
-
-<div class="container-fluid header-holder tutorials-header" id="header-holder">
-  <div class="container">
-    <div class="header-container">
-      <a class="header-logo" href="https://pytorch.org/" aria-label="PyTorch"></a>
-
-      <div class="main-menu">
-        <ul>
-          <li>
-            <a href="https://pytorch.org/get-started">Get Started</a>
-          </li>
-
-          <li>
-            <div class="ecosystem-dropdown">
-              <a id="dropdownMenuButton" data-toggle="ecosystem-dropdown">
-                Ecosystem
-              </a>
-              <div class="ecosystem-dropdown-menu">
-                <a class="nav-dropdown-item" href="https://pytorch.org/hub"">
-                  <span class=dropdown-title>Models (Beta)</span>
-                  <p>Discover, publish, and reuse pre-trained models</p>
-                </a>
-                <a class="nav-dropdown-item" href="https://pytorch.org/ecosystem">
-                  <span class=dropdown-title>Tools & Libraries</span>
-                  <p>Explore the ecosystem of tools and libraries</p>
-                </a>
-              </div>
-            </div>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/mobile">Mobile</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/blog/">Blog</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/tutorials">Tutorials</a>
-          </li>
-
-          <li class="active">
-            <a href="https://pytorch.org/docs/stable/index.html">Docs</a>
-          </li>
-
-          <li>
-            <div class="resources-dropdown">
-              <a id="resourcesDropdownButton" data-toggle="resources-dropdown">
-                Resources
-              </a>
-              <div class="resources-dropdown-menu">
-                <a class="nav-dropdown-item" href="https://pytorch.org/resources"">
-                  <span class=dropdown-title>Developer Resources</span>
-                  <p>Find resources and get questions answered</p>
-                </a>
-                <a class="nav-dropdown-item" href="https://pytorch.org/features">
-                  <span class=dropdown-title>About</span>
-                  <p>Learn about PyTorch’s features and capabilities</p>
-                </a>
-              </div>
-            </div>
-          </li>
-
-          <li>
-            <a href="https://github.com/pytorch/pytorch">Github</a>
-          </li>
-        </ul>
-      </div>
-
-      <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
-    </div>
-
-  </div>
-</div>
-
-
-
 <body class="pytorch-body">
-
-   
-
-    
-
-    <div class="table-of-contents-link-wrapper">
-      <span>Table of Contents</span>
-      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
-    </div>
-
-    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
-      <div class="pytorch-side-scroll">
-        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          <div class="pytorch-left-menu-search">
-            
-
-            
-              
-              
-            
-
-            
-
-
-  
-
-
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search Docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
+<div class="table-of-contents-link-wrapper">
+<span>Table of Contents</span>
+<a class="toggle-table-of-contents" data-behavior="toggle-table-of-contents" href="#"></a>
 </div>
-
-            
-          </div>
-
-          
-            
-            
-              
-            
-            
-              <ul class="current">
+<nav class="pytorch-left-menu" data-toggle="wy-nav-shift" id="pytorch-left-menu">
+<div class="pytorch-side-scroll">
+<div aria-label="main navigation" class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation">
+<div class="pytorch-left-menu-search">
+<div role="search">
+<form action="../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input name="q" placeholder="Search Docs" type="text"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../teams/index.html">FiftyOne Teams 🚀</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/install.html">Installation</a></li>
@@ -197,78 +59,37 @@
 <li class="toctree-l1"><a class="reference internal" href="../deprecation.html">Deprecation Notices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a></li>
 </ul>
-
-            
-          
-        </div>
-      </div>
-    </nav>
-
-    <div class="pytorch-container">
-      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
-        <div class="pytorch-breadcrumbs-wrapper">
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
-  <ul class="pytorch-breadcrumbs">
-    
-      <li>
-        <a href="../index.html">
+</div>
+</div>
+</nav>
+<div class="pytorch-container">
+<div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+<div class="pytorch-breadcrumbs-wrapper">
+<div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="pytorch-breadcrumbs">
+<li>
+<a href="../index.html">
           
             Docs
           
         </a> &gt;
       </li>
-
-        
-          <li><a href="index.html">FiftyOne Tutorials</a> &gt;</li>
-        
-      <li>Zero-Shot Image Classification with Multimodal Models and FiftyOne</li>
-    
-    
-      <li class="pytorch-breadcrumbs-aside">
-        
-            
-        
-      </li>
-    
-  </ul>
-
-  
+<li><a href="index.html">FiftyOne Tutorials</a> &gt;</li>
+<li>Zero-Shot Image Classification with Multimodal Models and FiftyOne</li>
+<li class="pytorch-breadcrumbs-aside">
+</li>
+</ul>
 </div>
-        </div>
-
-        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+</div>
+<div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
           Contents
         </div>
-      </div>
-
-      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
-        <div class="pytorch-content-left">
-
-        
-          
-          <div class="rst-content style-external-links">
-          
-            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
-             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
-              
-  
+</div>
+<section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+<div class="pytorch-content-left">
+<div class="rst-content style-external-links">
+<div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
 <style>
 /* CSS for nbsphinx extension */
 
@@ -570,25 +391,25 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span>
-    <span class="s2">&quot;caltech256&quot;</span><span class="p">,</span>
+    <span class="s2">"caltech256"</span><span class="p">,</span>
     <span class="n">max_samples</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
     <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="n">persistent</span><span class="o">=</span><span class="kc">True</span>
 <span class="p">)</span>
-<span class="n">dataset</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;CLIP-Comparison&quot;</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"CLIP-Comparison"</span>
 
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<p><img alt="Initial Dataset" src="../_images/zero_shot_classification_initial_dataset.png" /></p>
+<p><img alt="Initial Dataset" src="../_images/zero_shot_classification_initial_dataset.png"/></p>
 <p>Here, we are using the <code class="docutils literal notranslate"><span class="pre">shuffle=True</span></code> option to randomly select 1000 images from the dataset, and are persisting the dataset to disk so that we can use it in future sessions. We also change the name of the dataset to reflect the experiment we are running.</p>
 <p>Finally, let’s use the dataset’s <code class="docutils literal notranslate"><span class="pre">distinct()</span></code> method to get a list of the distinct categories in the dataset, which we will give to the zero-shot models to predict:</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">classes</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">distinct</span><span class="p">(</span><span class="s2">&quot;ground_truth.label&quot;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">classes</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">distinct</span><span class="p">(</span><span class="s2">"ground_truth.label"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -599,13 +420,13 @@ div.rendered_html tbody tr:hover {
 <p>For simpler scenarios, check out the <a class="reference external" href="https://github.com/jacobmarks/zero-shot-prediction-plugin">FiftyOne Zero-Shot Prediction Plugin</a>, which provides a convenient graphical interface for applying zero-shot models to your dataset. The plugin supports all of the models we are going to use in this walkthrough, and is a great way to quickly experiment with zero-shot models in FiftyOne. In addition to classificaion, the plugin also supports zero-shot object detection, instance segmentation, and
 semantic segmentation.</p>
 <p>If you have the <a class="reference external" href="https://github.com/voxel51/fiftyone-plugins">FiftyOne Plugin Utils Plugin</a> installed, you can install the Zero-Shot Prediction Plugin from the FiftyOne App:</p>
-<p><img alt="Installing Zero-Shot Prediction Plugin" src="../_images/zero_shot_classification_install_plugin.gif" /></p>
+<p><img alt="Installing Zero-Shot Prediction Plugin" src="../_images/zero_shot_classification_install_plugin.gif"/></p>
 <p>If not, you can install the plugin from the command line:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>fiftyone<span class="w"> </span>plugins<span class="w"> </span>download<span class="w"> </span>https://github.com/jacobmarks/zero-shot-prediction-plugin
 </pre></div>
 </div>
 <p>Once the plugin is installed, you can run zero-shot models from the FiftyOne App by pressing the backtick key (‘`’) to open the command palette, selecting <code class="docutils literal notranslate"><span class="pre">zero-shot-predict</span></code> or <code class="docutils literal notranslate"><span class="pre">zero-shot-classify</span></code> from the dropdown, and following the prompts:</p>
-<p><img alt="Running Zero-Shot Prediction Plugin" src="../_images/zero_shot_classification_run_plugin.gif" /></p>
+<p><img alt="Running Zero-Shot Prediction Plugin" src="../_images/zero_shot_classification_run_plugin.gif"/></p>
 </div>
 <div class="section" id="Zero-Shot-Image-Classification-with-the-FiftyOne-Model-Zoo">
 <h2>Zero-Shot Image Classification with the FiftyOne Model Zoo<a class="headerlink" href="#Zero-Shot-Image-Classification-with-the-FiftyOne-Model-Zoo" title="Permalink to this headline">¶</a></h2>
@@ -620,7 +441,7 @@ semantic segmentation.</p>
 <h3>Basic Recipe for Loading a Zero-Shot Model<a class="headerlink" href="#Basic-Recipe-for-Loading-a-Zero-Shot-Model" title="Permalink to this headline">¶</a></h3>
 <p>Regardless of the model you are loading, the basic recipe for loading a zero-shot model is as follows:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_model</span><span class="p">(</span>
-    <span class="s2">&quot;&lt;zoo-model-name&gt;&quot;</span><span class="p">,</span>
+    <span class="s2">"&lt;zoo-model-name&gt;"</span><span class="p">,</span>
     <span class="n">classes</span><span class="o">=</span><span class="n">classes</span><span class="p">,</span>
     <span class="o">**</span><span class="n">kwargs</span>
 <span class="p">)</span>
@@ -628,16 +449,16 @@ semantic segmentation.</p>
 </div>
 <p>The zoo model name is the name under which the model is registered in the FiftyOne Model Zoo.</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">&quot;clip-vit-base32-torch&quot;</span></code> specifies the natively supported CLIP model, CLIP-ViT-B/32</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">&quot;open-clip-torch&quot;</span></code> specifies that you want to load a specific model (architecture and pretrained checkpoint) from the OpenCLIP library. You can then specify the architecture with <code class="docutils literal notranslate"><span class="pre">clip_model=&quot;&lt;clip-architecture&gt;&quot;</span></code> and the checkpoint with <code class="docutils literal notranslate"><span class="pre">pretrained=&quot;&lt;checkpoint-name&gt;&quot;</span></code>. We will see examples of this in a moment. For a list of allowed architecture-checkpoint pairs, check out this <a class="reference external" href="https://github.com/mlfoundations/open_clip/blob/main/docs/openclip_results.csv">results table</a> from the
+<li><p><code class="docutils literal notranslate"><span class="pre">"clip-vit-base32-torch"</span></code> specifies the natively supported CLIP model, CLIP-ViT-B/32</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">"open-clip-torch"</span></code> specifies that you want to load a specific model (architecture and pretrained checkpoint) from the OpenCLIP library. You can then specify the architecture with <code class="docutils literal notranslate"><span class="pre">clip_model="&lt;clip-architecture&gt;"</span></code> and the checkpoint with <code class="docutils literal notranslate"><span class="pre">pretrained="&lt;checkpoint-name&gt;"</span></code>. We will see examples of this in a moment. For a list of allowed architecture-checkpoint pairs, check out this <a class="reference external" href="https://github.com/mlfoundations/open_clip/blob/main/docs/openclip_results.csv">results table</a> from the
 OpenCLIP documentation. The <code class="docutils literal notranslate"><span class="pre">name</span></code> column contains the value for <code class="docutils literal notranslate"><span class="pre">clip_model</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">&quot;zero-shot-classification-transformer-torch&quot;</span></code> specifies that you want to a zero-shot image classification model from the Hugging Face Transformers library. You can then specify the model via the <code class="docutils literal notranslate"><span class="pre">name_or_path</span></code> argument, which should be the repository name or model identifier of the model you want to load. Again, we will see examples of this in a moment.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">"zero-shot-classification-transformer-torch"</span></code> specifies that you want to a zero-shot image classification model from the Hugging Face Transformers library. You can then specify the model via the <code class="docutils literal notranslate"><span class="pre">name_or_path</span></code> argument, which should be the repository name or model identifier of the model you want to load. Again, we will see examples of this in a moment.</p></li>
 </ul>
 <p>💡 While we won’t be exploring this degree of freedom, all of these models accept a <code class="docutils literal notranslate"><span class="pre">text_prompt</span></code> keyword argument, which allows you to override the prompt template used to embed the class names. Zero-shot classification results can vary based on this text!</p>
 <p>Once we have our model loaded (and classes set), we can use it like any other image classification model in FiftyOne by calling the dataset’s <code class="docutils literal notranslate"><span class="pre">apply_model()</span></code> method:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">apply_model</span><span class="p">(</span>
     <span class="n">model</span><span class="p">,</span>
-    <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;&lt;where-to-store-predictions&gt;&quot;</span><span class="p">,</span>
+    <span class="n">label_field</span><span class="o">=</span><span class="s2">"&lt;where-to-store-predictions&gt;"</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -659,11 +480,11 @@ OpenCLIP documentation. The <code class="docutils literal notranslate"><span cla
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clip</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_model</span><span class="p">(</span>
-    <span class="s2">&quot;clip-vit-base32-torch&quot;</span><span class="p">,</span>
+    <span class="s2">"clip-vit-base32-torch"</span><span class="p">,</span>
     <span class="n">classes</span><span class="o">=</span><span class="n">classes</span><span class="p">,</span>
 <span class="p">)</span>
 
-<span class="n">dataset</span><span class="o">.</span><span class="n">apply_model</span><span class="p">(</span><span class="n">clip</span><span class="p">,</span> <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;clip&quot;</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">apply_model</span><span class="p">(</span><span class="n">clip</span><span class="p">,</span> <span class="n">label_field</span><span class="o">=</span><span class="s2">"clip"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -672,9 +493,9 @@ OpenCLIP documentation. The <code class="docutils literal notranslate"><span cla
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">field</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">get_field</span><span class="p">(</span><span class="s2">&quot;clip&quot;</span><span class="p">)</span>
-<span class="n">field</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="s2">&quot;OpenAI CLIP predictions&quot;</span>
-<span class="n">field</span><span class="o">.</span><span class="n">info</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;clip_model&quot;</span><span class="p">:</span> <span class="s2">&quot;CLIP-ViT-B-32&quot;</span><span class="p">}</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">field</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">get_field</span><span class="p">(</span><span class="s2">"clip"</span><span class="p">)</span>
+<span class="n">field</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="s2">"OpenAI CLIP predictions"</span>
+<span class="n">field</span><span class="o">.</span><span class="n">info</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"clip_model"</span><span class="p">:</span> <span class="s2">"CLIP-ViT-B-32"</span><span class="p">}</span>
 <span class="n">field</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -707,25 +528,25 @@ OpenCLIP documentation. The <code class="docutils literal notranslate"><span cla
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">open_clip_args</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;clipa&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;clip_model&quot;</span><span class="p">:</span> <span class="s1">&#39;hf-hub:UCSC-VLAA/ViT-L-14-CLIPA-datacomp1B&#39;</span><span class="p">,</span>
-        <span class="s2">&quot;pretrained&quot;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+    <span class="s2">"clipa"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"clip_model"</span><span class="p">:</span> <span class="s1">'hf-hub:UCSC-VLAA/ViT-L-14-CLIPA-datacomp1B'</span><span class="p">,</span>
+        <span class="s2">"pretrained"</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span>
         <span class="p">},</span>
-    <span class="s2">&quot;dfn&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;clip_model&quot;</span><span class="p">:</span> <span class="s1">&#39;ViT-B-16&#39;</span><span class="p">,</span>
-        <span class="s2">&quot;pretrained&quot;</span><span class="p">:</span> <span class="s1">&#39;dfn2b&#39;</span><span class="p">,</span>
+    <span class="s2">"dfn"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"clip_model"</span><span class="p">:</span> <span class="s1">'ViT-B-16'</span><span class="p">,</span>
+        <span class="s2">"pretrained"</span><span class="p">:</span> <span class="s1">'dfn2b'</span><span class="p">,</span>
         <span class="p">},</span>
-    <span class="s2">&quot;eva02_clip&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;clip_model&quot;</span><span class="p">:</span> <span class="s1">&#39;EVA02-B-16&#39;</span><span class="p">,</span>
-        <span class="s2">&quot;pretrained&quot;</span><span class="p">:</span> <span class="s1">&#39;merged2b_s8b_b131k&#39;</span><span class="p">,</span>
+    <span class="s2">"eva02_clip"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"clip_model"</span><span class="p">:</span> <span class="s1">'EVA02-B-16'</span><span class="p">,</span>
+        <span class="s2">"pretrained"</span><span class="p">:</span> <span class="s1">'merged2b_s8b_b131k'</span><span class="p">,</span>
         <span class="p">},</span>
-    <span class="s2">&quot;metaclip&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;clip_model&quot;</span><span class="p">:</span> <span class="s1">&#39;ViT-B-32-quickgelu&#39;</span><span class="p">,</span>
-        <span class="s2">&quot;pretrained&quot;</span><span class="p">:</span> <span class="s1">&#39;metaclip_400m&#39;</span><span class="p">,</span>
+    <span class="s2">"metaclip"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"clip_model"</span><span class="p">:</span> <span class="s1">'ViT-B-32-quickgelu'</span><span class="p">,</span>
+        <span class="s2">"pretrained"</span><span class="p">:</span> <span class="s1">'metaclip_400m'</span><span class="p">,</span>
         <span class="p">},</span>
-    <span class="s2">&quot;siglip&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;clip_model&quot;</span><span class="p">:</span> <span class="s1">&#39;hf-hub:timm/ViT-B-16-SigLIP&#39;</span><span class="p">,</span>
-        <span class="s2">&quot;pretrained&quot;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+    <span class="s2">"siglip"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"clip_model"</span><span class="p">:</span> <span class="s1">'hf-hub:timm/ViT-B-16-SigLIP'</span><span class="p">,</span>
+        <span class="s2">"pretrained"</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span>
         <span class="p">},</span>
     <span class="p">}</span>
 </pre></div>
@@ -736,10 +557,10 @@ OpenCLIP documentation. The <code class="docutils literal notranslate"><span cla
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">args</span> <span class="ow">in</span> <span class="n">open_clip_args</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-    <span class="n">clip_model</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;clip_model&quot;</span><span class="p">]</span>
-    <span class="n">pretrained</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;pretrained&quot;</span><span class="p">]</span>
+    <span class="n">clip_model</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="s2">"clip_model"</span><span class="p">]</span>
+    <span class="n">pretrained</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="s2">"pretrained"</span><span class="p">]</span>
     <span class="n">model</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_model</span><span class="p">(</span>
-        <span class="s2">&quot;open-clip-torch&quot;</span><span class="p">,</span>
+        <span class="s2">"open-clip-torch"</span><span class="p">,</span>
         <span class="n">clip_model</span><span class="o">=</span><span class="n">clip_model</span><span class="p">,</span>
         <span class="n">pretrained</span><span class="o">=</span><span class="n">pretrained</span><span class="p">,</span>
         <span class="n">classes</span><span class="o">=</span><span class="n">classes</span><span class="p">,</span>
@@ -758,8 +579,8 @@ OpenCLIP documentation. The <code class="docutils literal notranslate"><span cla
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">transformer_model_repo_ids</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;altclip&quot;</span><span class="p">:</span> <span class="s2">&quot;BAAI/AltCLIP&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;align&quot;</span><span class="p">:</span> <span class="s2">&quot;kakaobrain/align-base&quot;</span>
+    <span class="s2">"altclip"</span><span class="p">:</span> <span class="s2">"BAAI/AltCLIP"</span><span class="p">,</span>
+    <span class="s2">"align"</span><span class="p">:</span> <span class="s2">"kakaobrain/align-base"</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -770,7 +591,7 @@ OpenCLIP documentation. The <code class="docutils literal notranslate"><span cla
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">repo_id</span> <span class="ow">in</span> <span class="n">transformer_model_repo_ids</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
     <span class="n">model</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_model</span><span class="p">(</span>
-        <span class="s2">&quot;zero-shot-classification-transformer-torch&quot;</span><span class="p">,</span>
+        <span class="s2">"zero-shot-classification-transformer-torch"</span><span class="p">,</span>
         <span class="n">name_or_path</span><span class="o">=</span><span class="n">repo_id</span><span class="p">,</span>
         <span class="n">classes</span><span class="o">=</span><span class="n">classes</span><span class="p">,</span>
     <span class="p">)</span>
@@ -797,7 +618,7 @@ OpenCLIP documentation. The <code class="docutils literal notranslate"><span cla
     <span class="p">)</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
 <span class="p">)</span>
 
-<span class="n">prediction_fields</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">classification_fields</span> <span class="k">if</span> <span class="n">f</span> <span class="o">!=</span> <span class="s2">&quot;ground_truth&quot;</span><span class="p">]</span>
+<span class="n">prediction_fields</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">classification_fields</span> <span class="k">if</span> <span class="n">f</span> <span class="o">!=</span> <span class="s2">"ground_truth"</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -807,10 +628,10 @@ OpenCLIP documentation. The <code class="docutils literal notranslate"><span cla
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">pf</span> <span class="ow">in</span> <span class="n">prediction_fields</span><span class="p">:</span>
-    <span class="n">eval_key</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">pf</span><span class="si">}</span><span class="s2">_eval&quot;</span>
+    <span class="n">eval_key</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">pf</span><span class="si">}</span><span class="s2">_eval"</span>
     <span class="n">dataset</span><span class="o">.</span><span class="n">evaluate_classifications</span><span class="p">(</span>
         <span class="n">pf</span><span class="p">,</span>
-        <span class="n">gt_field</span><span class="o">=</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span>
+        <span class="n">gt_field</span><span class="o">=</span><span class="s2">"ground_truth"</span><span class="p">,</span>
         <span class="n">eval_key</span><span class="o">=</span><span class="n">eval_key</span><span class="p">,</span>
     <span class="p">)</span>
 </pre></div>
@@ -821,7 +642,7 @@ OpenCLIP documentation. The <code class="docutils literal notranslate"><span cla
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;CLIP-Comparison&quot;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">"CLIP-Comparison"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -829,7 +650,7 @@ OpenCLIP documentation. The <code class="docutils literal notranslate"><span cla
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">siglip_not_clip_view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">match</span><span class="p">((</span><span class="n">F</span><span class="p">(</span><span class="s2">&quot;siglip_eval&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">True</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s2">&quot;clip_eval&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">False</span><span class="p">))</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">siglip_not_clip_view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">match</span><span class="p">((</span><span class="n">F</span><span class="p">(</span><span class="s2">"siglip_eval"</span><span class="p">)</span> <span class="o">==</span> <span class="kc">True</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s2">"clip_eval"</span><span class="p">)</span> <span class="o">==</span> <span class="kc">False</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -838,7 +659,7 @@ OpenCLIP documentation. The <code class="docutils literal notranslate"><span cla
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_siglip_not_clip</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">siglip_not_clip_view</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;There were </span><span class="si">{</span><span class="n">num_siglip_not_clip</span><span class="si">}</span><span class="s2"> samples where the SigLIP model predicted correctly and the CLIP model did not.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"There were </span><span class="si">{</span><span class="n">num_siglip_not_clip</span><span class="si">}</span><span class="s2"> samples where the SigLIP model predicted correctly and the CLIP model did not."</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -851,7 +672,7 @@ There were 57 samples where the SigLIP model predicted correctly and the CLIP mo
 </pre></div></div>
 </div>
 <p>Here is how we would accomplish the same thing in the FiftyOne App:</p>
-<p><img alt="Samples where SigLIP is Right and CLIP isn’t" src="../_images/zero_shot_classification_siglip_not_clip_view.gif" /></p>
+<p><img alt="Samples where SigLIP is Right and CLIP isn’t" src="../_images/zero_shot_classification_siglip_not_clip_view.gif"/></p>
 </div>
 <div class="section" id="High-Level-Insights-using-Aggregations">
 <h3>High-Level Insights using Aggregations<a class="headerlink" href="#High-Level-Insights-using-Aggregations" title="Permalink to this headline">¶</a></h3>
@@ -866,7 +687,7 @@ There were 57 samples where the SigLIP model predicted correctly and the CLIP mo
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">count_values</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;clip_eval&quot;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">count_values</span><span class="p">(</span><span class="sa">f</span><span class="s2">"clip_eval"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -885,9 +706,9 @@ There were 57 samples where the SigLIP model predicted correctly and the CLIP mo
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">pf</span> <span class="ow">in</span> <span class="n">prediction_fields</span><span class="p">:</span>
-    <span class="n">eval_results</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">count_values</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">pf</span><span class="si">}</span><span class="s2">_eval&quot;</span><span class="p">)</span>
+    <span class="n">eval_results</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">count_values</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">pf</span><span class="si">}</span><span class="s2">_eval"</span><span class="p">)</span>
     <span class="n">percent_correct</span> <span class="o">=</span> <span class="n">eval_results</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">/</span> <span class="nb">sum</span><span class="p">(</span><span class="n">eval_results</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">pf</span><span class="si">}</span><span class="s2">:  </span><span class="si">{</span><span class="n">percent_correct</span><span class="si">:</span><span class="s2">.1%</span><span class="si">}</span><span class="s2"> correct&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">pf</span><span class="si">}</span><span class="s2">:  </span><span class="si">{</span><span class="n">percent_correct</span><span class="si">:</span><span class="s2">.1%</span><span class="si">}</span><span class="s2"> correct"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -913,8 +734,8 @@ siglip:  64.9% correct
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">pf</span> <span class="ow">in</span> <span class="n">prediction_fields</span><span class="p">:</span>
-    <span class="n">mean_conf</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">pf</span><span class="si">}</span><span class="s2">.confidence&quot;</span><span class="p">))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean confidence for </span><span class="si">{</span><span class="n">pf</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">mean_conf</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">mean_conf</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">pf</span><span class="si">}</span><span class="s2">.confidence"</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Mean confidence for </span><span class="si">{</span><span class="n">pf</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">mean_conf</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -943,7 +764,7 @@ Mean confidence for siglip: 0.673
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">exprs</span> <span class="o">=</span> <span class="p">[</span><span class="n">F</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">pf</span><span class="si">}</span><span class="s2">_eval&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">True</span> <span class="k">for</span> <span class="n">pf</span> <span class="ow">in</span> <span class="n">prediction_fields</span><span class="p">]</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">exprs</span> <span class="o">=</span> <span class="p">[</span><span class="n">F</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">pf</span><span class="si">}</span><span class="s2">_eval"</span><span class="p">)</span> <span class="o">==</span> <span class="kc">True</span> <span class="k">for</span> <span class="n">pf</span> <span class="ow">in</span> <span class="n">prediction_fields</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -953,7 +774,7 @@ Mean confidence for siglip: 0.673
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_right_view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">F</span><span class="p">()</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">exprs</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">all_right_view</span><span class="p">)</span><span class="si">}</span><span class="s2"> samples were right for all models&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">all_right_view</span><span class="p">)</span><span class="si">}</span><span class="s2"> samples were right for all models"</span><span class="p">)</span>
 
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">all_right_view</span><span class="p">,</span> <span class="n">auto</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
@@ -975,7 +796,7 @@ Session launched. Run `session.show()` to open the App in a cell output.
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_wrong_view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="o">~</span><span class="n">F</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">exprs</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">all_wrong_view</span><span class="p">)</span><span class="si">}</span><span class="s2"> samples were wrong for all models&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">all_wrong_view</span><span class="p">)</span><span class="si">}</span><span class="s2"> samples were wrong for all models"</span><span class="p">)</span>
 
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">all_wrong_view</span><span class="p">,</span> <span class="n">auto</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
@@ -990,10 +811,10 @@ Session launched. Run `session.show()` to open the App in a cell output.
 Session launched. Run `session.show()` to open the App in a cell output.
 </pre></div></div>
 </div>
-<p><img alt="All Wrong View" src="../_images/zero_shot_classification_all_wrong_view.png" /></p>
+<p><img alt="All Wrong View" src="../_images/zero_shot_classification_all_wrong_view.png"/></p>
 <p>The samples where all of the models are supposedly incorrect are interesting and merit further investigation. It could be that the ground truth labels are incorrect, or that the images are ambiguous and difficult to classify. It could also be that the zero-shot models are not well-suited to the dataset, or that the models are not well-suited to the task. In any case, these samples are worth a closer look!</p>
-<p>Looking at some of these samples in the FiftyOne App, we can see that some of the ground truth labels are indeed ambiguous or incorrect. Take the second image, for example. It is labeled as <code class="docutils literal notranslate"><span class="pre">&quot;treadmill&quot;</span></code>, while all but one of the zero-shot models predict <code class="docutils literal notranslate"><span class="pre">&quot;horse&quot;</span></code>. To a human, the image does indeed look like a horse, and the ground truth label is likely incorrect.</p>
-<p>The seventh image is a prime example of ambiguity. The ground truth label is <code class="docutils literal notranslate"><span class="pre">&quot;sneaker&quot;</span></code>, but almost all of the zero-shot models predict <code class="docutils literal notranslate"><span class="pre">&quot;tennis-shoes&quot;</span></code>. It is difficult to say which label is correct, and it is likely that the ground truth label is not specific enough to be useful.</p>
+<p>Looking at some of these samples in the FiftyOne App, we can see that some of the ground truth labels are indeed ambiguous or incorrect. Take the second image, for example. It is labeled as <code class="docutils literal notranslate"><span class="pre">"treadmill"</span></code>, while all but one of the zero-shot models predict <code class="docutils literal notranslate"><span class="pre">"horse"</span></code>. To a human, the image does indeed look like a horse, and the ground truth label is likely incorrect.</p>
+<p>The seventh image is a prime example of ambiguity. The ground truth label is <code class="docutils literal notranslate"><span class="pre">"sneaker"</span></code>, but almost all of the zero-shot models predict <code class="docutils literal notranslate"><span class="pre">"tennis-shoes"</span></code>. It is difficult to say which label is correct, and it is likely that the ground truth label is not specific enough to be useful.</p>
 <p>To get a more precise view into the relative quality of our zero-shot models, we would need to handle these edge cases and re-evaluate on the improved dataset.</p>
 <p>💡 This is a great example of how the combination of zero-shot models and FiftyOne can be used to iteratively improve the quality of your data and your models!</p>
 <p>Before we wrap up, let’s construct one even more nuanced view of our data: the samples where just <em>one</em> of the models was correct. This will really help us understand the strengths and weaknesses of each model.</p>
@@ -1015,10 +836,10 @@ Session launched. Run `session.show()` to open the App in a cell output.
 </pre></div>
 </div>
 </div>
-<p><img alt="One Right View" src="../_images/zero_shot_classification_one_right_view.png" /></p>
+<p><img alt="One Right View" src="../_images/zero_shot_classification_one_right_view.png"/></p>
 <p>Looking at these samples in the FiftyOne App, a few things stand out:</p>
 <ul class="simple">
-<li><p>First, the vast majority of these samples are primarily images of people’s faces. A lot of the “wrong” predictions are related to people, faces, or facial features, like <code class="docutils literal notranslate"><span class="pre">&quot;eye-glasses&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;iris&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;yarmulke&quot;</span></code>, and <code class="docutils literal notranslate"><span class="pre">&quot;human-skeleton&quot;</span></code>. This is a good reminder that zero-shot models are not perfect, and that they are not well-suited to all types of images.</p></li>
+<li><p>First, the vast majority of these samples are primarily images of people’s faces. A lot of the “wrong” predictions are related to people, faces, or facial features, like <code class="docutils literal notranslate"><span class="pre">"eye-glasses"</span></code>, <code class="docutils literal notranslate"><span class="pre">"iris"</span></code>, <code class="docutils literal notranslate"><span class="pre">"yarmulke"</span></code>, and <code class="docutils literal notranslate"><span class="pre">"human-skeleton"</span></code>. This is a good reminder that zero-shot models are not perfect, and that they are not well-suited to all types of images.</p></li>
 <li><p>Second, of all 22 samples where only one model was correct, 11 of them were correctly predicted by the DFN model. This is more validation of the DFN model’s strong performance on this dataset.</p></li>
 </ul>
 </div>
@@ -1036,30 +857,14 @@ Session launched. Run `session.show()` to open the App in a cell output.
 </ul>
 </div>
 </div>
-
-
-             </article>
-             
-            </div>
-            <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="data_augmentation.html" class="btn btn-neutral float-right" title="Augmenting Datasets with Albumentations" accesskey="n" rel="next">Next <img src="../_static/images/chevron-right-orange.svg" class="next-page"></a>
-      
-      
-        <a href="dimension_reduction.html" class="btn btn-neutral" title="Visualizing Data with Dimensionality Reduction Techniques" accesskey="p" rel="prev"><img src="../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
-      
-    </div>
-  
-</footer>
-          </div>
-        </div>
-
-        <div class="pytorch-content-right" id="pytorch-content-right">
-          <div class="pytorch-right-menu" id="pytorch-right-menu">
-            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
-              <ul>
+</article>
+</div>
+</div>
+</div>
+<div class="pytorch-content-right" id="pytorch-content-right">
+<div class="pytorch-right-menu" id="pytorch-right-menu">
+<div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+<ul>
 <li><a class="reference internal" href="#">Zero-Shot Image Classification with Multimodal Models and FiftyOne</a><ul>
 <li><a class="reference internal" href="#Setup">Setup</a></li>
 <li><a class="reference internal" href="#Zero-Shot-Image-Classification-with-the-FiftyOne-Zero-Shot-Prediction-Plugin">Zero-Shot Image Classification with the FiftyOne Zero-Shot Prediction Plugin</a></li>
@@ -1080,216 +885,35 @@ Session launched. Run `session.show()` to open the App in a cell output.
 </ul>
 </li>
 </ul>
-
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
-
-  
-
-
-  
-
-     
-       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-         <script src="../_static/jquery.js"></script>
-         <script src="../_static/underscore.js"></script>
-         <script src="../_static/doctools.js"></script>
-         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
-         <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-         <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
-         <script src="../_static/js/voxel51-website.js"></script>
-         <script src="../_static/js/custom.js"></script>
-     
-
-  
-
-  <script type="text/javascript" src="../_static/js/vendor/popper.min.js"></script>
-  <script type="text/javascript" src="../_static/js/vendor/bootstrap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-  <script type="text/javascript">
+</div>
+</div>
+</div>
+</section>
+</div>
+<script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js" type="text/javascript"></script>
+<script src="../_static/jquery.js"></script>
+<script src="../_static/underscore.js"></script>
+<script src="../_static/doctools.js"></script>
+<script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+<script src="../_static/js/voxel51-website.js"></script>
+<script src="../_static/js/custom.js"></script>
+<script src="../_static/js/vendor/popper.min.js" type="text/javascript"></script>
+<script src="../_static/js/vendor/bootstrap.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+<script src="../_static/js/theme.js" type="text/javascript"></script>
+<script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
-
-  <!-- Begin Footer -->
-
-
-  <div class="container-fluid docs-tutorials-resources" id="docs-tutorials-resources">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4 text-center">
-          <h2>Docs</h2>
-          <p>Access comprehensive developer documentation for PyTorch</p>
-          <a class="with-right-arrow" href="https://pytorch.org/docs/stable/index.html">View Docs</a>
-        </div>
-
-        <div class="col-md-4 text-center">
-          <h2>Tutorials</h2>
-          <p>Get in-depth tutorials for beginners and advanced developers</p>
-          <a class="with-right-arrow" href="https://pytorch.org/tutorials">View Tutorials</a>
-        </div>
-
-        <div class="col-md-4 text-center">
-          <h2>Resources</h2>
-          <p>Find development resources and get your questions answered</p>
-          <a class="with-right-arrow" href="https://pytorch.org/resources">View Resources</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <footer class="site-footer">
-    <div class="container footer-container">
-      <div class="footer-logo-wrapper">
-        <a href="https://pytorch.org/" class="footer-logo"></a>
-      </div>
-
-      <div class="footer-links-wrapper">
-        <div class="footer-links-col">
-          <ul>
-            <li class="list-title"><a href="https://pytorch.org/">PyTorch</a></li>
-            <li><a href="https://pytorch.org/get-started">Get Started</a></li>
-            <li><a href="https://pytorch.org/features">Features</a></li>
-            <li><a href="https://pytorch.org/ecosystem">Ecosystem</a></li>
-            <li><a href="https://pytorch.org/blog/">Blog</a></li>
-            <li><a href="https://github.com/pytorch/pytorch/blob/master/CONTRIBUTING.md">Contributing</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-links-col">
-          <ul>
-            <li class="list-title"><a href="https://pytorch.org/resources">Resources</a></li>
-            <li><a href="https://pytorch.org/tutorials">Tutorials</a></li>
-            <li><a href="https://pytorch.org/docs/stable/index.html">Docs</a></li>
-            <li><a href="https://discuss.pytorch.org" target="_blank">Discuss</a></li>
-            <li><a href="https://github.com/pytorch/pytorch/issues" target="_blank">Github Issues</a></li>
-            <li><a href="https://pytorch.org/assets/brand-guidelines/PyTorch-Brand-Guidelines.pdf" target="_blank">Brand Guidelines</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-links-col follow-us-col">
-          <ul>
-            <li class="list-title">Stay Connected</li>
-            <li>
-              <div id="mc_embed_signup">
-                <form
-                  action="https://twitter.us14.list-manage.com/subscribe/post?u=75419c71fe0a935e53dfa4a3f&id=91d0dccd39"
-                  method="post"
-                  id="mc-embedded-subscribe-form"
-                  name="mc-embedded-subscribe-form"
-                  class="email-subscribe-form validate"
-                  target="_blank"
-                  novalidate>
-                  <div id="mc_embed_signup_scroll" class="email-subscribe-form-fields-wrapper">
-                    <div class="mc-field-group">
-                      <label for="mce-EMAIL" style="display:none;">Email Address</label>
-                      <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="Email Address">
-                    </div>
-
-                    <div id="mce-responses" class="clear">
-                      <div class="response" id="mce-error-response" style="display:none"></div>
-                      <div class="response" id="mce-success-response" style="display:none"></div>
-                    </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-
-                    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_75419c71fe0a935e53dfa4a3f_91d0dccd39" tabindex="-1" value=""></div>
-
-                    <div class="clear">
-                      <input type="submit" value="" name="subscribe" id="mc-embedded-subscribe" class="button email-subscribe-button">
-                    </div>
-                  </div>
-                </form>
-              </div>
-
-            </li>
-          </ul>
-
-          <div class="footer-social-icons">
-            <a href="https://www.facebook.com/pytorch" target="_blank" class="facebook"></a>
-            <a href="https://twitter.com/pytorch" target="_blank" class="twitter"></a>
-            <a href="https://www.youtube.com/pytorch" target="_blank" class="youtube"></a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-
-  
-
-  <!-- End Footer -->
-
-  <!-- Begin Mobile Menu -->
-
-
-  <div class="mobile-main-menu">
-    <div class="container-fluid">
-      <div class="container">
-        <div class="mobile-main-menu-header-container">
-          <a class="header-logo" href="https://pytorch.org/" aria-label="PyTorch"></a>
-          <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
-        </div>
-      </div>
-    </div>
-
-    <div class="mobile-main-menu-links-container">
-      <div class="main-menu">
-        <ul>
-          <li>
-            <a href="https://pytorch.org/get-started">Get Started</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/features">Features</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/ecosystem">Ecosystem</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/mobile">Mobile</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/hub">PyTorch Hub</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/blog/">Blog</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/tutorials">Tutorials</a>
-          </li>
-
-          <li class="active">
-            <a href="https://pytorch.org/docs/stable/index.html">Docs</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/resources">Resources</a>
-          </li>
-
-          <li>
-            <a href="https://github.com/pytorch/pytorch">Github</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-
-  <!-- End Mobile Menu -->
-
-  <script type="text/javascript" src="../_static/js/vendor/anchor.min.js"></script>
-
-  <script type="text/javascript">
+  </script>
+<!-- Begin Footer -->
+<!-- End Footer -->
+<!-- Begin Mobile Menu -->
+<!-- End Mobile Menu -->
+<script src="../_static/js/vendor/anchor.min.js" type="text/javascript"></script>
+<script type="text/javascript">
     $(document).ready(function() {
       mobileMenu.bind();
       mobileTOC.bind();

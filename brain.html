@@ -1,183 +1,45 @@
 
-
-
 <!DOCTYPE html>
+
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>FiftyOne Brain &mdash; FiftyOne 1.3.0 documentation</title>
-  
-
-  
-  
-    <link rel="shortcut icon" href="_static/favicon.ico"/>
-  
-  
-  
-
-  
-
-  
-  
-    
-
-  
-
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <!-- <link rel="stylesheet" href="_static/pygments.css" type="text/css" /> -->
-  <link rel="stylesheet" href="_static/css/voxel51-website.css" type="text/css" />
-  <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="FiftyOne Integrations" href="integrations/index.html" />
-    <link rel="prev" title="Model Zoo API Reference" href="model_zoo/api.html" />
-<meta property="og:image" content="https://voxel51.com/wp-content/uploads/2024/03/3.24_webpages_Home_AV.png" />
-
-<link
-  href="https://fonts.googleapis.com/css?family=Palanquin:400,600,700,800"
-  rel="stylesheet"
-/>
-<link
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
-  rel="stylesheet"
-/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FiftyOne Brain — FiftyOne 1.3.0 documentation</title>
+<link href="_static/favicon.ico" rel="shortcut icon"/>
+<link href="_static/css/theme.css" rel="stylesheet" type="text/css"/>
+<!-- <link rel="stylesheet" href="_static/pygments.css" type="text/css" /> -->
+<link href="_static/css/voxel51-website.css" rel="stylesheet" type="text/css"/>
+<link href="_static/css/custom.css" rel="stylesheet" type="text/css"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="integrations/index.html" rel="next" title="FiftyOne Integrations"/>
+<link href="model_zoo/api.html" rel="prev" title="Model Zoo API Reference"/>
+<meta content="https://voxel51.com/wp-content/uploads/2024/03/3.24_webpages_Home_AV.png" property="og:image"/>
+<link href="https://fonts.googleapis.com/css?family=Palanquin:400,600,700,800" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet"/>
 <script src="https://tag.clearbitscripts.com/v1/pk_b9ed71c8234edd4f77326bcbfab5a4ca/tags.js"></script>
-
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
-  
+<script src="_static/js/modernizr.min.js"></script>
 </head>
-
-
-<div class="container-fluid header-holder tutorials-header" id="header-holder">
-  <div class="container">
-    <div class="header-container">
-      <a class="header-logo" href="https://pytorch.org/" aria-label="PyTorch"></a>
-
-      <div class="main-menu">
-        <ul>
-          <li>
-            <a href="https://pytorch.org/get-started">Get Started</a>
-          </li>
-
-          <li>
-            <div class="ecosystem-dropdown">
-              <a id="dropdownMenuButton" data-toggle="ecosystem-dropdown">
-                Ecosystem
-              </a>
-              <div class="ecosystem-dropdown-menu">
-                <a class="nav-dropdown-item" href="https://pytorch.org/hub"">
-                  <span class=dropdown-title>Models (Beta)</span>
-                  <p>Discover, publish, and reuse pre-trained models</p>
-                </a>
-                <a class="nav-dropdown-item" href="https://pytorch.org/ecosystem">
-                  <span class=dropdown-title>Tools & Libraries</span>
-                  <p>Explore the ecosystem of tools and libraries</p>
-                </a>
-              </div>
-            </div>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/mobile">Mobile</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/blog/">Blog</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/tutorials">Tutorials</a>
-          </li>
-
-          <li class="active">
-            <a href="https://pytorch.org/docs/stable/index.html">Docs</a>
-          </li>
-
-          <li>
-            <div class="resources-dropdown">
-              <a id="resourcesDropdownButton" data-toggle="resources-dropdown">
-                Resources
-              </a>
-              <div class="resources-dropdown-menu">
-                <a class="nav-dropdown-item" href="https://pytorch.org/resources"">
-                  <span class=dropdown-title>Developer Resources</span>
-                  <p>Find resources and get questions answered</p>
-                </a>
-                <a class="nav-dropdown-item" href="https://pytorch.org/features">
-                  <span class=dropdown-title>About</span>
-                  <p>Learn about PyTorch’s features and capabilities</p>
-                </a>
-              </div>
-            </div>
-          </li>
-
-          <li>
-            <a href="https://github.com/pytorch/pytorch">Github</a>
-          </li>
-        </ul>
-      </div>
-
-      <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
-    </div>
-
-  </div>
-</div>
-
-
-
 <body class="pytorch-body">
-
-   
-
-    
-
-    <div class="table-of-contents-link-wrapper">
-      <span>Table of Contents</span>
-      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
-    </div>
-
-    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
-      <div class="pytorch-side-scroll">
-        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          <div class="pytorch-left-menu-search">
-            
-
-            
-              
-              
-            
-
-            
-
-
-  
-
-
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search Docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
+<div class="table-of-contents-link-wrapper">
+<span>Table of Contents</span>
+<a class="toggle-table-of-contents" data-behavior="toggle-table-of-contents" href="#"></a>
 </div>
-
-            
-          </div>
-
-          
-            
-            
-              
-            
-            
-              <ul class="current">
+<nav class="pytorch-left-menu" data-toggle="wy-nav-shift" id="pytorch-left-menu">
+<div class="pytorch-side-scroll">
+<div aria-label="main navigation" class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation">
+<div class="pytorch-left-menu-search">
+<div role="search">
+<form action="search.html" class="wy-form" id="rtd-search-form" method="get">
+<input name="q" placeholder="Search Docs" type="text"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="index.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="teams/index.html">FiftyOne Teams 🚀</a></li>
 <li class="toctree-l1"><a class="reference internal" href="getting_started/install.html">Installation</a></li>
@@ -197,76 +59,37 @@
 <li class="toctree-l1"><a class="reference internal" href="deprecation.html">Deprecation Notices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="faq/index.html">FAQ</a></li>
 </ul>
-
-            
-          
-        </div>
-      </div>
-    </nav>
-
-    <div class="pytorch-container">
-      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
-        <div class="pytorch-breadcrumbs-wrapper">
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
-  <ul class="pytorch-breadcrumbs">
-    
-      <li>
-        <a href="index.html">
+</div>
+</div>
+</nav>
+<div class="pytorch-container">
+<div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+<div class="pytorch-breadcrumbs-wrapper">
+<div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="pytorch-breadcrumbs">
+<li>
+<a href="index.html">
           
             Docs
           
         </a> &gt;
       </li>
-
-        
-      <li>FiftyOne Brain</li>
-    
-    
-      <li class="pytorch-breadcrumbs-aside">
-        
-            
-        
-      </li>
-    
-  </ul>
-
-  
+<li>FiftyOne Brain</li>
+<li class="pytorch-breadcrumbs-aside">
+</li>
+</ul>
 </div>
-        </div>
-
-        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+</div>
+<div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
           Contents
         </div>
-      </div>
-
-      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
-        <div class="pytorch-content-left">
-
-        
-          
-          <div class="rst-content style-external-links">
-          
-            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
-             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
-              
-  <div class="section" id="fiftyone-brain">
+</div>
+<section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+<div class="pytorch-content-left">
+<div class="rst-content style-external-links">
+<div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+<div class="section" id="fiftyone-brain">
 <span id="id1"></span><h1>FiftyOne Brain<a class="headerlink" href="#fiftyone-brain" title="Permalink to this headline">¶</a></h1>
 <p>The <a class="reference external" href="https://github.com/voxel51/fiftyone-brain">FiftyOne Brain</a> provides
 powerful machine learning techniques that are designed to transform how you
@@ -275,7 +98,7 @@ curate your data from an art into a measurable science.</p>
 <p class="admonition-title">Note</p>
 <p>Did you know? You can execute Brain methods from the FiftyOne App by
 installing the
-<a class="reference external" href="https://github.com/voxel51/fiftyone-plugins/tree/main/plugins/brain">&#64;voxel51/brain</a>
+<a class="reference external" href="https://github.com/voxel51/fiftyone-plugins/tree/main/plugins/brain">@voxel51/brain</a>
 plugin!</p>
 </div>
 <p>The FiftyOne Brain methods are useful across the stages of the machine learning
@@ -363,7 +186,7 @@ and/or individual objects in your datasets.</p>
 <a class="reference internal" href="user_guide/app.html#app-embeddings-panel"><span class="std std-ref">Embeddings panel</span></a>, where you can interactively
 select points of interest and view the corresponding samples/labels of interest
 in the <a class="reference internal" href="user_guide/app.html#app-samples-panel"><span class="std std-ref">Samples panel</span></a>, and vice versa.</p>
-<img alt="mnist" class="align-center" src="_images/brain-mnist.png" />
+<img alt="mnist" class="align-center" src="_images/brain-mnist.png"/>
 <p>There are two primary components to an embedding visualization: the method used
 to generate the embeddings, and the dimensionality reduction method used to
 compute a low-dimensional representation of the embeddings.</p>
@@ -401,8 +224,8 @@ methods are:</p>
 
 <span class="n">results</span> <span class="o">=</span> <span class="n">fob</span><span class="o">.</span><span class="n">compute_visualization</span><span class="p">(</span>
     <span class="n">dataset</span><span class="p">,</span>
-    <span class="n">method</span><span class="o">=</span><span class="s2">&quot;umap&quot;</span><span class="p">,</span>  <span class="c1"># &quot;umap&quot;, &quot;tsne&quot;, &quot;pca&quot;, etc</span>
-    <span class="n">brain_key</span><span class="o">=</span><span class="s2">&quot;...&quot;</span><span class="p">,</span>
+    <span class="n">method</span><span class="o">=</span><span class="s2">"umap"</span><span class="p">,</span>  <span class="c1"># "umap", "tsne", "pca", etc</span>
+    <span class="n">brain_key</span><span class="o">=</span><span class="s2">"..."</span><span class="p">,</span>
     <span class="o">...</span>
 <span class="p">)</span>
 </pre></div>
@@ -462,21 +285,21 @@ automatically selected in the <a class="reference internal" href="user_guide/app
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
 <span class="c1"># The BDD dataset must be manually downloaded. See the zoo docs for details</span>
-<span class="n">source_dir</span> <span class="o">=</span> <span class="s2">&quot;/path/to/dir-with-bdd100k-files&quot;</span>
+<span class="n">source_dir</span> <span class="o">=</span> <span class="s2">"/path/to/dir-with-bdd100k-files"</span>
 
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span>
-    <span class="s2">&quot;bdd100k&quot;</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="s2">&quot;validation&quot;</span><span class="p">,</span> <span class="n">source_dir</span><span class="o">=</span><span class="n">source_dir</span><span class="p">,</span>
+    <span class="s2">"bdd100k"</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="s2">"validation"</span><span class="p">,</span> <span class="n">source_dir</span><span class="o">=</span><span class="n">source_dir</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="c1"># Compute embeddings</span>
 <span class="c1"># You will likely want to run this on a machine with GPU, as this requires</span>
 <span class="c1"># running inference on 10,000 images</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_model</span><span class="p">(</span><span class="s2">&quot;mobilenet-v2-imagenet-torch&quot;</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_model</span><span class="p">(</span><span class="s2">"mobilenet-v2-imagenet-torch"</span><span class="p">)</span>
 <span class="n">embeddings</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">compute_embeddings</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
 
 <span class="c1"># Compute visualization</span>
 <span class="n">results</span> <span class="o">=</span> <span class="n">fob</span><span class="o">.</span><span class="n">compute_visualization</span><span class="p">(</span>
-    <span class="n">dataset</span><span class="p">,</span> <span class="n">embeddings</span><span class="o">=</span><span class="n">embeddings</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">51</span><span class="p">,</span> <span class="n">brain_key</span><span class="o">=</span><span class="s2">&quot;img_viz&quot;</span>
+    <span class="n">dataset</span><span class="p">,</span> <span class="n">embeddings</span><span class="o">=</span><span class="n">embeddings</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">51</span><span class="p">,</span> <span class="n">brain_key</span><span class="o">=</span><span class="s2">"img_viz"</span>
 <span class="p">)</span>
 
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
@@ -487,7 +310,7 @@ automatically selected in the <a class="reference internal" href="user_guide/app
 <p>Did you know? You can <a class="reference internal" href="user_guide/app.html#app-spaces-python"><span class="std std-ref">programmatically configure</span></a>
 your Spaces layout!</p>
 </div>
-<img alt="image-visualization" class="align-center" src="_images/brain-image-visualization.gif" />
+<img alt="image-visualization" class="align-center" src="_images/brain-image-visualization.gif"/>
 <p>The GIF shows the variety of insights that are revealed by running this simple
 protocol:</p>
 <ul class="simple">
@@ -520,17 +343,17 @@ object patches are automatically selected in the
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 <span class="kn">from</span> <span class="nn">fiftyone</span> <span class="kn">import</span> <span class="n">ViewField</span> <span class="k">as</span> <span class="n">F</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"quickstart"</span><span class="p">)</span>
 
 <span class="c1"># Generate visualization for `ground_truth` objects</span>
 <span class="n">results</span> <span class="o">=</span> <span class="n">fob</span><span class="o">.</span><span class="n">compute_visualization</span><span class="p">(</span>
-    <span class="n">dataset</span><span class="p">,</span> <span class="n">patches_field</span><span class="o">=</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span> <span class="n">brain_key</span><span class="o">=</span><span class="s2">&quot;gt_viz&quot;</span>
+    <span class="n">dataset</span><span class="p">,</span> <span class="n">patches_field</span><span class="o">=</span><span class="s2">"ground_truth"</span><span class="p">,</span> <span class="n">brain_key</span><span class="o">=</span><span class="s2">"gt_viz"</span>
 <span class="p">)</span>
 
 <span class="c1"># Restrict to the 10 most common classes</span>
-<span class="n">counts</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">count_values</span><span class="p">(</span><span class="s2">&quot;ground_truth.detections.label&quot;</span><span class="p">)</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">count_values</span><span class="p">(</span><span class="s2">"ground_truth.detections.label"</span><span class="p">)</span>
 <span class="n">classes</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">counts</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">counts</span><span class="o">.</span><span class="n">get</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)[:</span><span class="mi">10</span><span class="p">]</span>
-<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span> <span class="n">F</span><span class="p">(</span><span class="s2">&quot;label&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">is_in</span><span class="p">(</span><span class="n">classes</span><span class="p">))</span>
+<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span><span class="s2">"ground_truth"</span><span class="p">,</span> <span class="n">F</span><span class="p">(</span><span class="s2">"label"</span><span class="p">)</span><span class="o">.</span><span class="n">is_in</span><span class="p">(</span><span class="n">classes</span><span class="p">))</span>
 
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">view</span><span class="p">)</span>
 </pre></div>
@@ -540,7 +363,7 @@ object patches are automatically selected in the
 <p>Did you know? You can <a class="reference internal" href="user_guide/app.html#app-spaces-python"><span class="std std-ref">programmatically configure</span></a>
 your Spaces layout!</p>
 </div>
-<img alt="object-visualization" class="align-center" src="_images/brain-object-visualization.gif" />
+<img alt="object-visualization" class="align-center" src="_images/brain-object-visualization.gif"/>
 <p>As you can see, the coloring of the scatterpoints allows you to discover
 natural clusters of objects, such as visually similar carrots or kites in the
 air.</p>
@@ -554,7 +377,7 @@ detail.</p>
 <p>You can use a specific dimensionality reduction method for a particular
 visualization run by passing the <code class="code docutils literal notranslate"><span class="pre">method</span></code> parameter to
 <code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_visualization()</span></code>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">index</span> <span class="o">=</span> <span class="n">fob</span><span class="o">.</span><span class="n">compute_visualization</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;&lt;method&gt;&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">index</span> <span class="o">=</span> <span class="n">fob</span><span class="o">.</span><span class="n">compute_visualization</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">"&lt;method&gt;"</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Alternatively, you can change your default dimensionality reduction method for
@@ -567,9 +390,9 @@ environment variable:</p>
 method by updating the <code class="code docutils literal notranslate"><span class="pre">default_visualization_method</span></code> key of your
 <a class="reference internal" href="#brain-config"><span class="std std-ref">brain config</span></a> at <code class="code docutils literal notranslate"><span class="pre">~/.fiftyone/brain_config.json</span></code>:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
-    &quot;default_visualization_method&quot;: &quot;&lt;method&gt;&quot;,
-    &quot;visualization_methods&quot;: {
-        &quot;&lt;method&gt;&quot;: {...},
+    "default_visualization_method": "&lt;method&gt;",
+    "visualization_methods": {
+        "&lt;method&gt;": {...},
         ...
     }
 }
@@ -594,7 +417,7 @@ time you call
 <code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_visualization()</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">index</span> <span class="o">=</span> <span class="n">fob</span><span class="o">.</span><span class="n">compute_visualization</span><span class="p">(</span>
     <span class="o">...</span>
-    <span class="n">method</span><span class="o">=</span><span class="s2">&quot;umap&quot;</span><span class="p">,</span>
+    <span class="n">method</span><span class="o">=</span><span class="s2">"umap"</span><span class="p">,</span>
     <span class="n">min_dist</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
@@ -659,8 +482,8 @@ another supported backend:</p>
 
 <span class="n">results</span> <span class="o">=</span> <span class="n">fob</span><span class="o">.</span><span class="n">compute_similarity</span><span class="p">(</span>
     <span class="n">dataset</span><span class="p">,</span>
-    <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;sklearn&quot;</span><span class="p">,</span>  <span class="c1"># &quot;sklearn&quot;, &quot;qdrant&quot;, &quot;redis&quot;, etc</span>
-    <span class="n">brain_key</span><span class="o">=</span><span class="s2">&quot;...&quot;</span><span class="p">,</span>
+    <span class="n">backend</span><span class="o">=</span><span class="s2">"sklearn"</span><span class="p">,</span>  <span class="c1"># "sklearn", "qdrant", "redis", etc</span>
+    <span class="n">brain_key</span><span class="o">=</span><span class="s2">"..."</span><span class="p">,</span>
     <span class="o">...</span>
 <span class="p">)</span>
 </pre></div>
@@ -696,13 +519,13 @@ to query by greatest or least similarity (if supported).</p>
 <span class="kn">import</span> <span class="nn">fiftyone.brain</span> <span class="k">as</span> <span class="nn">fob</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"quickstart"</span><span class="p">)</span>
 
 <span class="c1"># Index images by similarity</span>
 <span class="n">fob</span><span class="o">.</span><span class="n">compute_similarity</span><span class="p">(</span>
     <span class="n">dataset</span><span class="p">,</span>
-    <span class="n">model</span><span class="o">=</span><span class="s2">&quot;clip-vit-base32-torch&quot;</span><span class="p">,</span>
-    <span class="n">brain_key</span><span class="o">=</span><span class="s2">&quot;img_sim&quot;</span><span class="p">,</span>
+    <span class="n">model</span><span class="o">=</span><span class="s2">"clip-vit-base32-torch"</span><span class="p">,</span>
+    <span class="n">brain_key</span><span class="o">=</span><span class="s2">"img_sim"</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
@@ -714,7 +537,7 @@ to query by greatest or least similarity (if supported).</p>
 to generate embeddings, but you can also provide
 <a class="reference internal" href="#brain-similarity-api"><span class="std std-ref">precomputed embeddings</span></a>.</p>
 </div>
-<img alt="image-similarity" class="align-center" src="_images/brain-image-similarity.gif" />
+<img alt="image-similarity" class="align-center" src="_images/brain-image-similarity.gif"/>
 <p>Alternatively, you can use the
 <a class="reference internal" href="api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.sort_by_similarity" title="fiftyone.core.collections.SampleCollection.sort_by_similarity"><code class="xref py py-meth docutils literal notranslate"><span class="pre">sort_by_similarity()</span></code></a>
 view stage to programmatically <a class="reference internal" href="user_guide/using_views.html#using-views"><span class="std std-ref">construct a view</span></a> that
@@ -723,7 +546,7 @@ contains the sorted results:</p>
 <span class="n">query_id</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">id</span>
 
 <span class="c1"># Programmatically construct a view containing the 15 most similar images</span>
-<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">sort_by_similarity</span><span class="p">(</span><span class="n">query_id</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">brain_key</span><span class="o">=</span><span class="s2">&quot;img_sim&quot;</span><span class="p">)</span>
+<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">sort_by_similarity</span><span class="p">(</span><span class="n">query_id</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">brain_key</span><span class="o">=</span><span class="s2">"img_sim"</span><span class="p">)</span>
 
 <span class="n">session</span><span class="o">.</span><span class="n">view</span> <span class="o">=</span> <span class="n">view</span>
 </pre></div>
@@ -776,14 +599,14 @@ to query by greatest or least similarity (if supported).</p>
 <span class="kn">import</span> <span class="nn">fiftyone.brain</span> <span class="k">as</span> <span class="nn">fob</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"quickstart"</span><span class="p">)</span>
 
 <span class="c1"># Index ground truth objects by similarity</span>
 <span class="n">fob</span><span class="o">.</span><span class="n">compute_similarity</span><span class="p">(</span>
     <span class="n">dataset</span><span class="p">,</span>
-    <span class="n">patches_field</span><span class="o">=</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span>
-    <span class="n">model</span><span class="o">=</span><span class="s2">&quot;clip-vit-base32-torch&quot;</span><span class="p">,</span>
-    <span class="n">brain_key</span><span class="o">=</span><span class="s2">&quot;gt_sim&quot;</span><span class="p">,</span>
+    <span class="n">patches_field</span><span class="o">=</span><span class="s2">"ground_truth"</span><span class="p">,</span>
+    <span class="n">model</span><span class="o">=</span><span class="s2">"clip-vit-base32-torch"</span><span class="p">,</span>
+    <span class="n">brain_key</span><span class="o">=</span><span class="s2">"gt_sim"</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
@@ -795,19 +618,19 @@ to query by greatest or least similarity (if supported).</p>
 to generate embeddings, but you can also provide
 <a class="reference internal" href="#brain-similarity-api"><span class="std std-ref">precomputed embeddings</span></a>.</p>
 </div>
-<img alt="object-similarity" class="align-center" src="_images/brain-object-similarity.gif" />
+<img alt="object-similarity" class="align-center" src="_images/brain-object-similarity.gif"/>
 <p>Alternatively, you can directly use the
 <a class="reference internal" href="api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.sort_by_similarity" title="fiftyone.core.collections.SampleCollection.sort_by_similarity"><code class="xref py py-meth docutils literal notranslate"><span class="pre">sort_by_similarity()</span></code></a>
 view stage to programmatically <a class="reference internal" href="user_guide/using_views.html#using-views"><span class="std std-ref">construct a view</span></a> that
 contains the sorted results:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Convert to patches view</span>
-<span class="n">patches</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">to_patches</span><span class="p">(</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">)</span>
+<span class="n">patches</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">to_patches</span><span class="p">(</span><span class="s2">"ground_truth"</span><span class="p">)</span>
 
 <span class="c1"># Choose a random patch object from the dataset</span>
 <span class="n">query_id</span> <span class="o">=</span> <span class="n">patches</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">id</span>
 
 <span class="c1"># Programmatically construct a view containing the 15 most similar objects</span>
-<span class="n">view</span> <span class="o">=</span> <span class="n">patches</span><span class="o">.</span><span class="n">sort_by_similarity</span><span class="p">(</span><span class="n">query_id</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">brain_key</span><span class="o">=</span><span class="s2">&quot;gt_sim&quot;</span><span class="p">)</span>
+<span class="n">view</span> <span class="o">=</span> <span class="n">patches</span><span class="o">.</span><span class="n">sort_by_similarity</span><span class="p">(</span><span class="n">query_id</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">brain_key</span><span class="o">=</span><span class="s2">"gt_sim"</span><span class="p">)</span>
 
 <span class="n">session</span><span class="o">.</span><span class="n">view</span> <span class="o">=</span> <span class="n">view</span>
 </pre></div>
@@ -835,7 +658,7 @@ cached results and will be faster!</p>
 <a class="reference internal" href="model_zoo/models.html#model-zoo-clip-vit-base32-torch"><span class="std std-ref">CLIP model</span></a>, you can also search by
 arbitrary natural language queries
 <a class="reference internal" href="user_guide/app.html#app-text-similarity"><span class="std std-ref">natively in the App</span></a>!</p>
-<img alt="text-similarity" class="align-center" src="_images/brain-text-similarity.gif" />
+<img alt="text-similarity" class="align-center" src="_images/brain-text-similarity.gif"/>
 <p>You can also perform text queries via the SDK by passing a prompt directly to
 <a class="reference internal" href="api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.sort_by_similarity" title="fiftyone.core.collections.SampleCollection.sort_by_similarity"><code class="xref py py-meth docutils literal notranslate"><span class="pre">sort_by_similarity()</span></code></a>
 along with the <code class="code docutils literal notranslate"><span class="pre">brain_key</span></code> of a compatible similarity index:</p>
@@ -856,7 +679,7 @@ detail.</p>
 <p>You can use a specific backend for a particular similarity index by passing the
 <code class="code docutils literal notranslate"><span class="pre">backend</span></code> parameter to
 <code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_similarity()</span></code>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">index</span> <span class="o">=</span> <span class="n">fob</span><span class="o">.</span><span class="n">compute_similarity</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;&lt;backend&gt;&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">index</span> <span class="o">=</span> <span class="n">fob</span><span class="o">.</span><span class="n">compute_similarity</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="s2">"&lt;backend&gt;"</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Alternatively, you can change your default similarity backend for an entire
@@ -869,9 +692,9 @@ variable.</p>
 updating the <code class="code docutils literal notranslate"><span class="pre">default_similarity_backend</span></code> key of your
 <a class="reference internal" href="#brain-config"><span class="std std-ref">brain config</span></a> at <code class="code docutils literal notranslate"><span class="pre">~/.fiftyone/brain_config.json</span></code>:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
-    &quot;default_similarity_backend&quot;: &quot;&lt;backend&gt;&quot;,
-    &quot;similarity_backends&quot;: {
-        &quot;&lt;backend&gt;&quot;: {...},
+    "default_similarity_backend": "&lt;backend&gt;",
+    "similarity_backends": {
+        "&lt;backend&gt;": {...},
         ...
     }
 }
@@ -899,8 +722,8 @@ simply passing supported config parameters as keyword arguments each time you
 call <code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_similarity()</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">index</span> <span class="o">=</span> <span class="n">fob</span><span class="o">.</span><span class="n">compute_similarity</span><span class="p">(</span>
     <span class="o">...</span>
-    <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;qdrant&quot;</span><span class="p">,</span>
-    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;http://localhost:6333&quot;</span><span class="p">,</span>
+    <span class="n">backend</span><span class="o">=</span><span class="s2">"qdrant"</span><span class="p">,</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">"http://localhost:6333"</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -916,7 +739,7 @@ Let’s see some common patterns on the quickstart dataset:</p>
 <span class="kn">import</span> <span class="nn">fiftyone.brain</span> <span class="k">as</span> <span class="nn">fob</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"quickstart"</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="section" id="default-behavior">
@@ -1035,17 +858,17 @@ predictions of a pre-trained model via the
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
 
 <span class="c1"># Splits defined via tags</span>
-<span class="n">split_tags</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;train&quot;</span><span class="p">,</span> <span class="s2">&quot;test&quot;</span><span class="p">]</span>
+<span class="n">split_tags</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"train"</span><span class="p">,</span> <span class="s2">"test"</span><span class="p">]</span>
 <span class="n">index</span> <span class="o">=</span> <span class="n">fob</span><span class="o">.</span><span class="n">compute_leaky_splits</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">splits</span><span class="o">=</span><span class="n">split_tags</span><span class="p">)</span>
 <span class="n">leaks</span> <span class="o">=</span> <span class="n">index</span><span class="o">.</span><span class="n">leaks_view</span><span class="p">()</span>
 
 <span class="c1"># Splits defined via field</span>
-<span class="n">split_field</span> <span class="o">=</span> <span class="s2">&quot;split&quot;</span>  <span class="c1"># holds split values e.g. &#39;train&#39; or &#39;test&#39;</span>
+<span class="n">split_field</span> <span class="o">=</span> <span class="s2">"split"</span>  <span class="c1"># holds split values e.g. 'train' or 'test'</span>
 <span class="n">index</span> <span class="o">=</span> <span class="n">fob</span><span class="o">.</span><span class="n">compute_leaky_splits</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">splits</span><span class="o">=</span><span class="n">split_field</span><span class="p">)</span>
 <span class="n">leaks</span> <span class="o">=</span> <span class="n">index</span><span class="o">.</span><span class="n">leaks_view</span><span class="p">()</span>
 
 <span class="c1"># Splits defined via views</span>
-<span class="n">split_views</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;train&quot;</span><span class="p">:</span> <span class="n">train_view</span><span class="p">,</span> <span class="s2">&quot;test&quot;</span><span class="p">:</span> <span class="n">test_view</span><span class="p">}</span>
+<span class="n">split_views</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"train"</span><span class="p">:</span> <span class="n">train_view</span><span class="p">,</span> <span class="s2">"test"</span><span class="p">:</span> <span class="n">test_view</span><span class="p">}</span>
 <span class="n">index</span> <span class="o">=</span> <span class="n">fob</span><span class="o">.</span><span class="n">compute_leaky_splits</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">splits</span><span class="o">=</span><span class="n">split_views</span><span class="p">)</span>
 <span class="n">leaks</span> <span class="o">=</span> <span class="n">index</span><span class="o">.</span><span class="n">leaks_view</span><span class="p">()</span>
 </pre></div>
@@ -1096,14 +919,14 @@ what you find!</p>
 <span class="kn">import</span> <span class="nn">fiftyone.utils.random</span> <span class="k">as</span> <span class="nn">four</span>
 
 <span class="c1"># Load some COCO data</span>
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;coco-2017&quot;</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="s2">&quot;test&quot;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"coco-2017"</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="s2">"test"</span><span class="p">)</span>
 
 <span class="c1"># Set up splits via tags</span>
-<span class="n">dataset</span><span class="o">.</span><span class="n">untag_samples</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">distinct</span><span class="p">(</span><span class="s2">&quot;tags&quot;</span><span class="p">))</span>
-<span class="n">four</span><span class="o">.</span><span class="n">random_split</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;train&quot;</span><span class="p">:</span> <span class="mf">0.7</span><span class="p">,</span> <span class="s2">&quot;test&quot;</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">})</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">untag_samples</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">distinct</span><span class="p">(</span><span class="s2">"tags"</span><span class="p">))</span>
+<span class="n">four</span><span class="o">.</span><span class="n">random_split</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="p">{</span><span class="s2">"train"</span><span class="p">:</span> <span class="mf">0.7</span><span class="p">,</span> <span class="s2">"test"</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">})</span>
 
 <span class="c1"># Find leaks</span>
-<span class="n">index</span> <span class="o">=</span> <span class="n">fob</span><span class="o">.</span><span class="n">compute_leaky_splits</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">splits</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;train&quot;</span><span class="p">,</span> <span class="s2">&quot;test&quot;</span><span class="p">])</span>
+<span class="n">index</span> <span class="o">=</span> <span class="n">fob</span><span class="o">.</span><span class="n">compute_leaky_splits</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">splits</span><span class="o">=</span><span class="p">[</span><span class="s2">"train"</span><span class="p">,</span> <span class="s2">"test"</span><span class="p">])</span>
 <span class="n">leaks</span> <span class="o">=</span> <span class="n">index</span><span class="o">.</span><span class="n">leaks_view</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1119,7 +942,7 @@ insight into the source of the leaks:</p>
 with the leaks removed. This can be easily done via
 <code class="xref py py-meth docutils literal notranslate"><span class="pre">no_leaks_view()</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># The original test split</span>
-<span class="n">test_set</span> <span class="o">=</span> <span class="n">index</span><span class="o">.</span><span class="n">split_views</span><span class="p">[</span><span class="s2">&quot;test&quot;</span><span class="p">]</span>
+<span class="n">test_set</span> <span class="o">=</span> <span class="n">index</span><span class="o">.</span><span class="n">split_views</span><span class="p">[</span><span class="s2">"test"</span><span class="p">]</span>
 
 <span class="c1"># The test set with leaks removed</span>
 <span class="n">test_set_no_leaks</span> <span class="o">=</span> <span class="n">index</span><span class="o">.</span><span class="n">no_leaks_view</span><span class="p">(</span><span class="n">test_set</span><span class="p">)</span>
@@ -1130,7 +953,7 @@ with the leaks removed. This can be easily done via
 <p>Performance on the clean test set will can be closer to the performance of the
 model in the wild. If you found some leaks in your dataset, consider comparing
 performance on the base test set against the clean test set.</p>
-<img alt="leaky-splits" class="align-center" src="_images/brain-leaky-splits.png" />
+<img alt="leaky-splits" class="align-center" src="_images/brain-leaky-splits.png"/>
 </div>
 <div class="section" id="near-duplicates">
 <span id="brain-near-duplicates"></span><h2>Near duplicates<a class="headerlink" href="#near-duplicates" title="Permalink to this headline">¶</a></h2>
@@ -1180,7 +1003,7 @@ detect near duplicate images on the
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;cifar10&quot;</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="s2">&quot;test&quot;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"cifar10"</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="s2">"test"</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>To proceed, we first need some suitable image embeddings for the dataset.
@@ -1195,7 +1018,7 @@ pre-compute embeddings and them feed them to
 <span class="kn">import</span> <span class="nn">fiftyone.brain.internal.models</span> <span class="k">as</span> <span class="nn">fbm</span>
 
 <span class="c1"># Compute embeddings via a pre-trained CIFAR-10 classifier</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">fbm</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="s2">&quot;simple-resnet-cifar10&quot;</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">fbm</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="s2">"simple-resnet-cifar10"</span><span class="p">)</span>
 <span class="n">embeddings</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">compute_embeddings</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
 
 <span class="c1"># Scan for near-duplicates</span>
@@ -1219,18 +1042,18 @@ distance between the two samples:</p>
 </pre></div>
 </div>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
-    &#39;61143408db40df926c571a6b&#39;: [
-        (&#39;61143409db40df926c573075&#39;, 5.667297674385298),
-        (&#39;61143408db40df926c572ab6&#39;, 6.231051661334058)
+    '61143408db40df926c571a6b': [
+        ('61143409db40df926c573075', 5.667297674385298),
+        ('61143408db40df926c572ab6', 6.231051661334058)
     ],
-    &#39;6114340cdb40df926c577f2a&#39;: [
-        (&#39;61143408db40df926c572b54&#39;, 6.042934361555487)
+    '6114340cdb40df926c577f2a': [
+        ('61143408db40df926c572b54', 6.042934361555487)
     ],
-    &#39;61143408db40df926c572aa3&#39;: [
-        (&#39;6114340bdb40df926c5772e9&#39;, 5.88984758067434),
-        (&#39;61143408db40df926c572b64&#39;, 6.063986454046798),
-        (&#39;61143409db40df926c574571&#39;, 6.10303338363576),
-        (&#39;6114340adb40df926c5749a2&#39;, 6.161749290179865)
+    '61143408db40df926c572aa3': [
+        ('6114340bdb40df926c5772e9', 5.88984758067434),
+        ('61143408db40df926c572b64', 6.063986454046798),
+        ('61143409db40df926c574571', 6.10303338363576),
+        ('6114340adb40df926c5749a2', 6.161749290179865)
     ],
     ...
 }
@@ -1242,15 +1065,15 @@ method of the index, which constructs a view with the duplicate samples
 arranged directly after their corresponding reference sample, with optional
 additional fields recording the type and nearest reference sample ID/distance:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">duplicates_view</span> <span class="o">=</span> <span class="n">index</span><span class="o">.</span><span class="n">duplicates_view</span><span class="p">(</span>
-    <span class="n">type_field</span><span class="o">=</span><span class="s2">&quot;dup_type&quot;</span><span class="p">,</span>
-    <span class="n">id_field</span><span class="o">=</span><span class="s2">&quot;dup_id&quot;</span><span class="p">,</span>
-    <span class="n">dist_field</span><span class="o">=</span><span class="s2">&quot;dup_dist&quot;</span><span class="p">,</span>
+    <span class="n">type_field</span><span class="o">=</span><span class="s2">"dup_type"</span><span class="p">,</span>
+    <span class="n">id_field</span><span class="o">=</span><span class="s2">"dup_id"</span><span class="p">,</span>
+    <span class="n">dist_field</span><span class="o">=</span><span class="s2">"dup_dist"</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">duplicates_view</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="cifar10-duplicate-view" class="align-center" src="_images/brain-cifar10-duplicate-view.png" />
+<img alt="cifar10-duplicate-view" class="align-center" src="_images/brain-cifar10-duplicate-view.png"/>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>You can also use the
@@ -1281,10 +1104,10 @@ colored separately:</p>
 
 <span class="c1"># Visualize the unique samples in embeddings space</span>
 <span class="n">plot</span> <span class="o">=</span> <span class="n">index</span><span class="o">.</span><span class="n">visualize_unique</span><span class="p">(</span><span class="n">viz_results</span><span class="p">)</span>
-<span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">height</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">yaxis_scaleanchor</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">height</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">yaxis_scaleanchor</span><span class="o">=</span><span class="s2">"x"</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="cifar10-unique-viz" class="align-center" src="_images/brain-cifar10-unique-viz.png" />
+<img alt="cifar10-unique-viz" class="align-center" src="_images/brain-cifar10-unique-viz.png"/>
 <p>And of course we can load a view containing the unique samples in the App to
 explore the results in detail:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Visualize the unique images in the App</span>
@@ -1292,7 +1115,7 @@ explore the results in detail:</p>
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">view</span><span class="o">=</span><span class="n">unique_view</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="cifar10-unique-view" class="align-center" src="_images/brain-cifar10-unique-view.png" />
+<img alt="cifar10-unique-view" class="align-center" src="_images/brain-cifar10-unique-view.png"/>
 </div>
 </div>
 <div class="section" id="exact-duplicates">
@@ -1378,13 +1201,13 @@ contains <a class="reference internal" href="api/fiftyone.core.labels.html#fifty
 an example use case of the Brain’s uniqueness method to detect
 near-duplicate images in a dataset.</p>
 </div>
-<img alt="uniqueness" class="align-center" src="_images/brain-uniqueness.gif" />
+<img alt="uniqueness" class="align-center" src="_images/brain-uniqueness.gif"/>
 </div>
 <div class="section" id="label-mistakes">
 <span id="brain-label-mistakes"></span><h2>Label mistakes<a class="headerlink" href="#label-mistakes" title="Permalink to this headline">¶</a></h2>
 <p>Label mistakes can be calculated for both classification and detection
 datasets.</p>
-<img alt="mistakenness" class="align-center" src="_images/brain-mistakenness.png" />
+<img alt="mistakenness" class="align-center" src="_images/brain-mistakenness.png"/>
 </div>
 <div class="section" id="sample-hardness">
 <span id="brain-sample-hardness"></span><h2>Sample hardness<a class="headerlink" href="#sample-hardness" title="Permalink to this headline">¶</a></h2>
@@ -1400,11 +1223,11 @@ and their logits to your FiftyOne <a class="reference internal" href="api/fiftyo
 
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
 
-<span class="n">fob</span><span class="o">.</span><span class="n">compute_hardness</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="s2">&quot;predictions&quot;</span><span class="p">)</span>
+<span class="n">fob</span><span class="o">.</span><span class="n">compute_hardness</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="s2">"predictions"</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><strong>Input</strong>: A <a class="reference internal" href="api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset" title="fiftyone.core.dataset.Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dataset</span></code></a> or <a class="reference internal" href="api/fiftyone.core.view.html#fiftyone.core.view.DatasetView" title="fiftyone.core.view.DatasetView"><code class="xref py py-class docutils literal notranslate"><span class="pre">DatasetView</span></code></a> on which predictions have been
-computed and are stored in the <code class="code docutils literal notranslate"><span class="pre">&quot;predictions&quot;</span></code> argument. Ground truth
+computed and are stored in the <code class="code docutils literal notranslate"><span class="pre">"predictions"</span></code> argument. Ground truth
 annotations are not required for hardness.</p>
 <p><strong>Output</strong>: A scalar-valued <code class="code docutils literal notranslate"><span class="pre">hardness</span></code> field is populated on each sample that
 ranks the hardness of the sample. You can customize the name of this field via
@@ -1422,7 +1245,7 @@ demonstrated empirical value in many model training exercises.</p>
 to see example uses of the Brain’s hardness method to uncover annotation
 mistakes in a dataset.</p>
 </div>
-<img alt="hardness" class="align-center" src="_images/brain-hardness.png" />
+<img alt="hardness" class="align-center" src="_images/brain-hardness.png"/>
 </div>
 <div class="section" id="image-representativeness">
 <span id="brain-image-representativeness"></span><h2>Image representativeness<a class="headerlink" href="#image-representativeness" title="Permalink to this headline">¶</a></h2>
@@ -1470,7 +1293,7 @@ argument to
 which contains <a class="reference internal" href="api/fiftyone.core.labels.html#fiftyone.core.labels.Detections" title="fiftyone.core.labels.Detections"><code class="xref py py-class docutils literal notranslate"><span class="pre">Detections</span></code></a> or <a class="reference internal" href="api/fiftyone.core.labels.html#fiftyone.core.labels.Polylines" title="fiftyone.core.labels.Polylines"><code class="xref py py-class docutils literal notranslate"><span class="pre">Polylines</span></code></a> that define the ROI for each
 sample.</p>
 </div>
-<img alt="representativeness" class="align-center" src="_images/brain-representativeness.png" />
+<img alt="representativeness" class="align-center" src="_images/brain-representativeness.png"/>
 </div>
 <div class="section" id="managing-brain-runs">
 <span id="brain-managing-runs"></span><h2>Managing brain runs<a class="headerlink" href="#managing-brain-runs" title="Permalink to this headline">¶</a></h2>
@@ -1492,36 +1315,36 @@ methods on your dataset:</p>
 <span class="kn">import</span> <span class="nn">fiftyone.brain</span> <span class="k">as</span> <span class="nn">fob</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"quickstart"</span><span class="p">)</span>
 
 <span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
 
 <span class="c1"># Run a brain method that returns results</span>
-<span class="n">results</span> <span class="o">=</span> <span class="n">fob</span><span class="o">.</span><span class="n">compute_visualization</span><span class="p">(</span><span class="n">view</span><span class="p">,</span> <span class="n">brain_key</span><span class="o">=</span><span class="s2">&quot;visualization&quot;</span><span class="p">)</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">fob</span><span class="o">.</span><span class="n">compute_visualization</span><span class="p">(</span><span class="n">view</span><span class="p">,</span> <span class="n">brain_key</span><span class="o">=</span><span class="s2">"visualization"</span><span class="p">)</span>
 
 <span class="c1"># Run a brain method that populates a new sample field on the dataset</span>
 <span class="n">fob</span><span class="o">.</span><span class="n">compute_uniqueness</span><span class="p">(</span><span class="n">view</span><span class="p">)</span>
 
 <span class="c1"># List the brain methods that have been run</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">list_brain_runs</span><span class="p">())</span>
-<span class="c1"># [&#39;visualization&#39;, &#39;uniqueness&#39;]</span>
+<span class="c1"># ['visualization', 'uniqueness']</span>
 
 <span class="c1"># Print information about a brain run</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">get_brain_info</span><span class="p">(</span><span class="s2">&quot;visualization&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">get_brain_info</span><span class="p">(</span><span class="s2">"visualization"</span><span class="p">))</span>
 
 <span class="c1"># Load the results of a previous brain run</span>
-<span class="n">also_results</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">load_brain_results</span><span class="p">(</span><span class="s2">&quot;visualization&quot;</span><span class="p">)</span>
+<span class="n">also_results</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">load_brain_results</span><span class="p">(</span><span class="s2">"visualization"</span><span class="p">)</span>
 
 <span class="c1"># Load the view on which a brain run was performed</span>
-<span class="n">same_view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">load_brain_view</span><span class="p">(</span><span class="s2">&quot;visualization&quot;</span><span class="p">)</span>
+<span class="n">same_view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">load_brain_view</span><span class="p">(</span><span class="s2">"visualization"</span><span class="p">)</span>
 
 <span class="c1"># Rename a brain run</span>
-<span class="n">dataset</span><span class="o">.</span><span class="n">rename_brain_run</span><span class="p">(</span><span class="s2">&quot;visualization&quot;</span><span class="p">,</span> <span class="s2">&quot;still_visualization&quot;</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">rename_brain_run</span><span class="p">(</span><span class="s2">"visualization"</span><span class="p">,</span> <span class="s2">"still_visualization"</span><span class="p">)</span>
 
 <span class="c1"># Delete brain runs</span>
 <span class="c1"># This will delete any stored results and fields that were populated</span>
-<span class="n">dataset</span><span class="o">.</span><span class="n">delete_brain_run</span><span class="p">(</span><span class="s2">&quot;still_visualization&quot;</span><span class="p">)</span>
-<span class="n">dataset</span><span class="o">.</span><span class="n">delete_brain_run</span><span class="p">(</span><span class="s2">&quot;uniqueness&quot;</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">delete_brain_run</span><span class="p">(</span><span class="s2">"still_visualization"</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">delete_brain_run</span><span class="p">(</span><span class="s2">"uniqueness"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1565,9 +1388,9 @@ any desired subset of config fields that you wish to customize.</p>
 <a class="reference internal" href="integrations/qdrant.html#qdrant-integration"><span class="std std-ref">Qdrant server</span></a> without changing any other default
 config settings:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;similarity_backends&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;qdrant&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://localhost:8080&quot;</span>
+<span class="w">    </span><span class="nt">"similarity_backends"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"qdrant"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:8080"</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
@@ -1650,38 +1473,22 @@ take effect in all subsequent calls to <code class="code docutils literal notran
 your current session.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone.brain</span> <span class="k">as</span> <span class="nn">fob</span>
 
-<span class="n">fob</span><span class="o">.</span><span class="n">brain_config</span><span class="o">.</span><span class="n">default_similarity_backend</span> <span class="o">=</span> <span class="s2">&quot;qdrant&quot;</span>
-<span class="n">fob</span><span class="o">.</span><span class="n">brain_config</span><span class="o">.</span><span class="n">default_visualization_method</span> <span class="o">=</span> <span class="s2">&quot;tsne&quot;</span>
+<span class="n">fob</span><span class="o">.</span><span class="n">brain_config</span><span class="o">.</span><span class="n">default_similarity_backend</span> <span class="o">=</span> <span class="s2">"qdrant"</span>
+<span class="n">fob</span><span class="o">.</span><span class="n">brain_config</span><span class="o">.</span><span class="n">default_visualization_method</span> <span class="o">=</span> <span class="s2">"tsne"</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 </div>
-
-
-             </article>
-             
-            </div>
-            <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="integrations/index.html" class="btn btn-neutral float-right" title="FiftyOne Integrations" accesskey="n" rel="next">Next <img src="_static/images/chevron-right-orange.svg" class="next-page"></a>
-      
-      
-        <a href="model_zoo/api.html" class="btn btn-neutral" title="Model Zoo API Reference" accesskey="p" rel="prev"><img src="_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
-      
-    </div>
-  
-</footer>
-          </div>
-        </div>
-
-        <div class="pytorch-content-right" id="pytorch-content-right">
-          <div class="pytorch-right-menu" id="pytorch-right-menu">
-            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
-              <ul>
+</article>
+</div>
+</div>
+</div>
+<div class="pytorch-content-right" id="pytorch-content-right">
+<div class="pytorch-right-menu" id="pytorch-right-menu">
+<div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+<ul>
 <li><a class="reference internal" href="#">FiftyOne Brain</a><ul>
 <li><a class="reference internal" href="#visualizing-embeddings">Visualizing embeddings</a><ul>
 <li><a class="reference internal" href="#embedding-methods">Embedding methods</a></li>
@@ -1746,214 +1553,33 @@ your current session.</p>
 </ul>
 </li>
 </ul>
-
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
-
-  
-
-
-  
-
-     
-       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-         <script src="_static/jquery.js"></script>
-         <script src="_static/underscore.js"></script>
-         <script src="_static/doctools.js"></script>
-         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
-         <script src="_static/js/voxel51-website.js"></script>
-         <script src="_static/js/custom.js"></script>
-     
-
-  
-
-  <script type="text/javascript" src="_static/js/vendor/popper.min.js"></script>
-  <script type="text/javascript" src="_static/js/vendor/bootstrap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
-  <script type="text/javascript" src="_static/js/theme.js"></script>
-
-  <script type="text/javascript">
+</div>
+</div>
+</div>
+</section>
+</div>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js" type="text/javascript"></script>
+<script src="_static/jquery.js"></script>
+<script src="_static/underscore.js"></script>
+<script src="_static/doctools.js"></script>
+<script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+<script src="_static/js/voxel51-website.js"></script>
+<script src="_static/js/custom.js"></script>
+<script src="_static/js/vendor/popper.min.js" type="text/javascript"></script>
+<script src="_static/js/vendor/bootstrap.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+<script src="_static/js/theme.js" type="text/javascript"></script>
+<script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
-
-  <!-- Begin Footer -->
-
-
-  <div class="container-fluid docs-tutorials-resources" id="docs-tutorials-resources">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4 text-center">
-          <h2>Docs</h2>
-          <p>Access comprehensive developer documentation for PyTorch</p>
-          <a class="with-right-arrow" href="https://pytorch.org/docs/stable/index.html">View Docs</a>
-        </div>
-
-        <div class="col-md-4 text-center">
-          <h2>Tutorials</h2>
-          <p>Get in-depth tutorials for beginners and advanced developers</p>
-          <a class="with-right-arrow" href="https://pytorch.org/tutorials">View Tutorials</a>
-        </div>
-
-        <div class="col-md-4 text-center">
-          <h2>Resources</h2>
-          <p>Find development resources and get your questions answered</p>
-          <a class="with-right-arrow" href="https://pytorch.org/resources">View Resources</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <footer class="site-footer">
-    <div class="container footer-container">
-      <div class="footer-logo-wrapper">
-        <a href="https://pytorch.org/" class="footer-logo"></a>
-      </div>
-
-      <div class="footer-links-wrapper">
-        <div class="footer-links-col">
-          <ul>
-            <li class="list-title"><a href="https://pytorch.org/">PyTorch</a></li>
-            <li><a href="https://pytorch.org/get-started">Get Started</a></li>
-            <li><a href="https://pytorch.org/features">Features</a></li>
-            <li><a href="https://pytorch.org/ecosystem">Ecosystem</a></li>
-            <li><a href="https://pytorch.org/blog/">Blog</a></li>
-            <li><a href="https://github.com/pytorch/pytorch/blob/master/CONTRIBUTING.md">Contributing</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-links-col">
-          <ul>
-            <li class="list-title"><a href="https://pytorch.org/resources">Resources</a></li>
-            <li><a href="https://pytorch.org/tutorials">Tutorials</a></li>
-            <li><a href="https://pytorch.org/docs/stable/index.html">Docs</a></li>
-            <li><a href="https://discuss.pytorch.org" target="_blank">Discuss</a></li>
-            <li><a href="https://github.com/pytorch/pytorch/issues" target="_blank">Github Issues</a></li>
-            <li><a href="https://pytorch.org/assets/brand-guidelines/PyTorch-Brand-Guidelines.pdf" target="_blank">Brand Guidelines</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-links-col follow-us-col">
-          <ul>
-            <li class="list-title">Stay Connected</li>
-            <li>
-              <div id="mc_embed_signup">
-                <form
-                  action="https://twitter.us14.list-manage.com/subscribe/post?u=75419c71fe0a935e53dfa4a3f&id=91d0dccd39"
-                  method="post"
-                  id="mc-embedded-subscribe-form"
-                  name="mc-embedded-subscribe-form"
-                  class="email-subscribe-form validate"
-                  target="_blank"
-                  novalidate>
-                  <div id="mc_embed_signup_scroll" class="email-subscribe-form-fields-wrapper">
-                    <div class="mc-field-group">
-                      <label for="mce-EMAIL" style="display:none;">Email Address</label>
-                      <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="Email Address">
-                    </div>
-
-                    <div id="mce-responses" class="clear">
-                      <div class="response" id="mce-error-response" style="display:none"></div>
-                      <div class="response" id="mce-success-response" style="display:none"></div>
-                    </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-
-                    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_75419c71fe0a935e53dfa4a3f_91d0dccd39" tabindex="-1" value=""></div>
-
-                    <div class="clear">
-                      <input type="submit" value="" name="subscribe" id="mc-embedded-subscribe" class="button email-subscribe-button">
-                    </div>
-                  </div>
-                </form>
-              </div>
-
-            </li>
-          </ul>
-
-          <div class="footer-social-icons">
-            <a href="https://www.facebook.com/pytorch" target="_blank" class="facebook"></a>
-            <a href="https://twitter.com/pytorch" target="_blank" class="twitter"></a>
-            <a href="https://www.youtube.com/pytorch" target="_blank" class="youtube"></a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-
-  
-
-  <!-- End Footer -->
-
-  <!-- Begin Mobile Menu -->
-
-
-  <div class="mobile-main-menu">
-    <div class="container-fluid">
-      <div class="container">
-        <div class="mobile-main-menu-header-container">
-          <a class="header-logo" href="https://pytorch.org/" aria-label="PyTorch"></a>
-          <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
-        </div>
-      </div>
-    </div>
-
-    <div class="mobile-main-menu-links-container">
-      <div class="main-menu">
-        <ul>
-          <li>
-            <a href="https://pytorch.org/get-started">Get Started</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/features">Features</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/ecosystem">Ecosystem</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/mobile">Mobile</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/hub">PyTorch Hub</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/blog/">Blog</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/tutorials">Tutorials</a>
-          </li>
-
-          <li class="active">
-            <a href="https://pytorch.org/docs/stable/index.html">Docs</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/resources">Resources</a>
-          </li>
-
-          <li>
-            <a href="https://github.com/pytorch/pytorch">Github</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-
-  <!-- End Mobile Menu -->
-
-  <script type="text/javascript" src="_static/js/vendor/anchor.min.js"></script>
-
-  <script type="text/javascript">
+  </script>
+<!-- Begin Footer -->
+<!-- End Footer -->
+<!-- Begin Mobile Menu -->
+<!-- End Mobile Menu -->
+<script src="_static/js/vendor/anchor.min.js" type="text/javascript"></script>
+<script type="text/javascript">
     $(document).ready(function() {
       mobileMenu.bind();
       mobileTOC.bind();

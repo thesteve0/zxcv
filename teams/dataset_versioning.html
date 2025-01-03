@@ -1,183 +1,46 @@
 
-
-
 <!DOCTYPE html>
+
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>Dataset Versioning &mdash; FiftyOne 1.3.0 documentation</title>
-  
-
-  
-  
-    <link rel="shortcut icon" href="../_static/favicon.ico"/>
-  
-  
-  
-
-  
-
-  
-  
-    
-
-  
-
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
-  <link rel="stylesheet" href="../_static/css/voxel51-website.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="FiftyOne Teams App" href="teams_app.html" />
-    <link rel="prev" title="Roles and permissions" href="roles_and_permissions.html" />
-<meta property="og:image" content="https://voxel51.com/wp-content/uploads/2024/03/3.24_webpages_Home_AV.png" />
-
-<link
-  href="https://fonts.googleapis.com/css?family=Palanquin:400,600,700,800"
-  rel="stylesheet"
-/>
-<link
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
-  rel="stylesheet"
-/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dataset Versioning — FiftyOne 1.3.0 documentation</title>
+<link href="../_static/favicon.ico" rel="shortcut icon"/>
+<link href="../_static/css/theme.css" rel="stylesheet" type="text/css"/>
+<!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+<link href="../_static/css/voxel51-website.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/css/custom.css" rel="stylesheet" type="text/css"/>
+<link href="../genindex.html" rel="index" title="Index"/>
+<link href="../search.html" rel="search" title="Search"/>
+<link href="teams_app.html" rel="next" title="FiftyOne Teams App"/>
+<link href="roles_and_permissions.html" rel="prev" title="Roles and permissions"/>
+<meta content="https://voxel51.com/wp-content/uploads/2024/03/3.24_webpages_Home_AV.png" property="og:image">
+<link href="https://fonts.googleapis.com/css?family=Palanquin:400,600,700,800" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet"/>
 <script src="https://tag.clearbitscripts.com/v1/pk_b9ed71c8234edd4f77326bcbfab5a4ca/tags.js"></script>
-
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
-  
-</head>
-
-
-<div class="container-fluid header-holder tutorials-header" id="header-holder">
-  <div class="container">
-    <div class="header-container">
-      <a class="header-logo" href="https://pytorch.org/" aria-label="PyTorch"></a>
-
-      <div class="main-menu">
-        <ul>
-          <li>
-            <a href="https://pytorch.org/get-started">Get Started</a>
-          </li>
-
-          <li>
-            <div class="ecosystem-dropdown">
-              <a id="dropdownMenuButton" data-toggle="ecosystem-dropdown">
-                Ecosystem
-              </a>
-              <div class="ecosystem-dropdown-menu">
-                <a class="nav-dropdown-item" href="https://pytorch.org/hub"">
-                  <span class=dropdown-title>Models (Beta)</span>
-                  <p>Discover, publish, and reuse pre-trained models</p>
-                </a>
-                <a class="nav-dropdown-item" href="https://pytorch.org/ecosystem">
-                  <span class=dropdown-title>Tools & Libraries</span>
-                  <p>Explore the ecosystem of tools and libraries</p>
-                </a>
-              </div>
-            </div>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/mobile">Mobile</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/blog/">Blog</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/tutorials">Tutorials</a>
-          </li>
-
-          <li class="active">
-            <a href="https://pytorch.org/docs/stable/index.html">Docs</a>
-          </li>
-
-          <li>
-            <div class="resources-dropdown">
-              <a id="resourcesDropdownButton" data-toggle="resources-dropdown">
-                Resources
-              </a>
-              <div class="resources-dropdown-menu">
-                <a class="nav-dropdown-item" href="https://pytorch.org/resources"">
-                  <span class=dropdown-title>Developer Resources</span>
-                  <p>Find resources and get questions answered</p>
-                </a>
-                <a class="nav-dropdown-item" href="https://pytorch.org/features">
-                  <span class=dropdown-title>About</span>
-                  <p>Learn about PyTorch’s features and capabilities</p>
-                </a>
-              </div>
-            </div>
-          </li>
-
-          <li>
-            <a href="https://github.com/pytorch/pytorch">Github</a>
-          </li>
-        </ul>
-      </div>
-
-      <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
-    </div>
-
-  </div>
-</div>
-
-
+<script src="../_static/js/modernizr.min.js"></script>
+</meta></head>
 
 <body class="pytorch-body">
-
-   
-
-    
-
-    <div class="table-of-contents-link-wrapper">
-      <span>Table of Contents</span>
-      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
-    </div>
-
-    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
-      <div class="pytorch-side-scroll">
-        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          <div class="pytorch-left-menu-search">
-            
-
-            
-              
-              
-            
-
-            
-
-
-  
-
-
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search Docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
+<div class="table-of-contents-link-wrapper">
+<span>Table of Contents</span>
+<a class="toggle-table-of-contents" data-behavior="toggle-table-of-contents" href="#"></a>
 </div>
-
-            
-          </div>
-
-          
-            
-            
-              
-            
-            
-              <ul class="current">
+<nav class="pytorch-left-menu" data-toggle="wy-nav-shift" id="pytorch-left-menu">
+<div class="pytorch-side-scroll">
+<div aria-label="main navigation" class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation">
+<div class="pytorch-left-menu-search">
+<div role="search">
+<form action="../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input name="q" placeholder="Search Docs" type="text"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Overview</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">FiftyOne Teams 🚀</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/install.html">Installation</a></li>
@@ -197,78 +60,38 @@
 <li class="toctree-l1"><a class="reference internal" href="../deprecation.html">Deprecation Notices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a></li>
 </ul>
-
-            
-          
-        </div>
-      </div>
-    </nav>
-
-    <div class="pytorch-container">
-      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
-        <div class="pytorch-breadcrumbs-wrapper">
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
-  <ul class="pytorch-breadcrumbs">
-    
-      <li>
-        <a href="../index.html">
+</div>
+</div>
+</nav>
+<div class="pytorch-container">
+<div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+<div class="pytorch-breadcrumbs-wrapper">
+<div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="pytorch-breadcrumbs">
+<li>
+<a href="../index.html">
           
             Docs
           
         </a> &gt;
       </li>
-
-        
-          <li><a href="index.html">FiftyOne Teams</a> &gt;</li>
-        
-      <li>Dataset Versioning</li>
-    
-    
-      <li class="pytorch-breadcrumbs-aside">
-        
-            
-        
-      </li>
-    
-  </ul>
-
-  
+<li><a href="index.html">FiftyOne Teams</a> &gt;</li>
+<li>Dataset Versioning</li>
+<li class="pytorch-breadcrumbs-aside">
+</li>
+</ul>
 </div>
-        </div>
-
-        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+</div>
+<div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
           Contents
         </div>
-      </div>
-
-      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
-        <div class="pytorch-content-left">
-
-        
-          
-          <div class="rst-content style-external-links">
-          
-            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
-             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
-              
-  <div class="section" id="dataset-versioning">
+</div>
+<section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+<div class="pytorch-content-left">
+<div class="rst-content style-external-links">
+<div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+<div class="section" id="dataset-versioning">
 <span id="id1"></span><h1>Dataset Versioning<a class="headerlink" href="#dataset-versioning" title="Permalink to this headline">¶</a></h1>
 <p>FiftyOne Teams provides native support for versioning your datasets!</p>
 <p>Dataset Versioning allows you to capture the state of your dataset in time so
@@ -276,8 +99,8 @@ that it can be referenced in the future. This enables workflows like recalling
 particular important events in the dataset’s lifecycle (model trained,
 annotation added, etc) as well as helping to prevent accidental data loss.</p>
 <div style="margin-top: 20px; margin-bottom: 20px">
-  <iframe id="youtube" src="https://www.youtube.com/embed/DKUkiDQVDqA?rel=0" frameborder="0" allowfullscreen>
-  </iframe>
+<iframe allowfullscreen="" frameborder="0" id="youtube" src="https://www.youtube.com/embed/DKUkiDQVDqA?rel=0">
+</iframe>
 </div><div class="section" id="overview">
 <span id="dataset-versioning-overview"></span><h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
 <p>Dataset Versioning in FiftyOne Teams is implemented as a linear sequence of
@@ -435,10 +258,10 @@ recomputed and may be reported as unknown.</p>
 required to perform different Snapshot-related operations:</p>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 47%" />
-<col style="width: 17%" />
-<col style="width: 17%" />
-<col style="width: 20%" />
+<col style="width: 47%"/>
+<col style="width: 17%"/>
+<col style="width: 17%"/>
+<col style="width: 20%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Snapshot Operation</p></th>
@@ -507,10 +330,10 @@ trigger a modification to the stored dataset.</p>
 <h4>Teams UI<a class="headerlink" href="#teams-ui" title="Permalink to this headline">¶</a></h4>
 <p>To access the Snapshot history and management page, click the “History tab” on
 a dataset’s main page.</p>
-<img alt="history-tab-button" class="align-center" src="../_images/history-tab-button.png" />
+<img alt="history-tab-button" class="align-center" src="../_images/history-tab-button.png"/>
 <p>On this page you can see a listing of the Snapshot history for the dataset.
 Each row contains information about a single Snapshot.</p>
-<img alt="snapshot-list" class="align-center" src="../_images/snapshot-list.png" />
+<img alt="snapshot-list" class="align-center" src="../_images/snapshot-list.png"/>
 </div>
 <div class="section" id="sdk">
 <h4>SDK<a class="headerlink" href="#sdk" title="Permalink to this headline">¶</a></h4>
@@ -519,7 +342,7 @@ Each row contains information about a single Snapshot.</p>
 from the Management SDK.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone.management</span> <span class="k">as</span> <span class="nn">fom</span>
 
-<span class="n">dataset_name</span> <span class="o">=</span> <span class="s2">&quot;quickstart&quot;</span>
+<span class="n">dataset_name</span> <span class="o">=</span> <span class="s2">"quickstart"</span>
 <span class="n">fom</span><span class="o">.</span><span class="n">list_snapshots</span><span class="p">(</span><span class="n">dataset_name</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -528,8 +351,8 @@ from the Management SDK.</p>
 method.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone.management</span> <span class="k">as</span> <span class="nn">fom</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="s2">&quot;quickstart&quot;</span>
-<span class="n">snapshot_name</span> <span class="o">=</span> <span class="s2">&quot;v0.1&quot;</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="s2">"quickstart"</span>
+<span class="n">snapshot_name</span> <span class="o">=</span> <span class="s2">"v0.1"</span>
 
 <span class="n">fom</span><span class="o">.</span><span class="n">get_snapshot_info</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">snapshot_name</span><span class="p">)</span>
 </pre></div>
@@ -545,7 +368,7 @@ via the Teams UI or the SDK.</p>
 <p>From the dataset’s History tab, click the “Browse” button next to a Snapshot in
 the <a class="reference internal" href="#dataset-versioning-list-snapshots"><span class="std std-ref">snapshot list</span></a> to load the
 Snapshot in the UI.</p>
-<img alt="history-browse-button" class="align-center" src="../_images/browse-button.png" />
+<img alt="history-browse-button" class="align-center" src="../_images/browse-button.png"/>
 <p>This will open the Snapshot in the normal dataset samples UI with all your
 favorite FiftyOne visualization tools at your fingertips! However, all
 dataset-modification features such as tagging have been removed.</p>
@@ -560,14 +383,14 @@ information about the Snapshot being viewed, and other quick-click operations.
 Clicking the name line drops down a list of the Snapshots where the current one
 is highlighted. Clicking on a Snapshot in the dropdown will navigate to the
 browse page for that Snapshot.</p>
-<img alt="browse-banner-dropdown" class="align-center" src="../_images/browse-banner-dropdown.png" />
+<img alt="browse-banner-dropdown" class="align-center" src="../_images/browse-banner-dropdown.png"/>
 <p>On the right side of the banner, clicking the “Back to the latest version”
 button will take you back to the samples page for the dataset HEAD. You can
 also do this by clicking the “Samples” tab. There is also a convenient dropdown
 from the 3-dot (kebab) menu which gives various
 <a class="reference internal" href="#dataset-versioning-snapshot-management"><span class="std std-ref">management functions</span></a> for the
 current Snapshot.</p>
-<img alt="browse-banner-rightside" class="align-center" src="../_images/browse-banner-right.png" />
+<img alt="browse-banner-rightside" class="align-center" src="../_images/browse-banner-right.png"/>
 </div>
 <div class="section" id="id3">
 <h4>SDK<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
@@ -578,8 +401,8 @@ interacted with as if it is a normal dataset, except for any operations that
 would cause modifications.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 
-<span class="n">dataset_name</span> <span class="o">=</span> <span class="s2">&quot;quickstart&quot;</span>
-<span class="n">existing_snapshot_name</span> <span class="o">=</span> <span class="s2">&quot;v1&quot;</span>
+<span class="n">dataset_name</span> <span class="o">=</span> <span class="s2">"quickstart"</span>
+<span class="n">existing_snapshot_name</span> <span class="o">=</span> <span class="s2">"v1"</span>
 
 <span class="n">snapshot</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="n">dataset_name</span><span class="p">,</span> <span class="n">snapshot</span><span class="o">=</span><span class="n">existing_snapshot_name</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">snapshot</span><span class="p">)</span>
@@ -609,7 +432,7 @@ Snapshot and the current state of the dataset.</p>
 <p>The latest changes summary is not continuously updated; click the “Refresh”
 button to recompute these values.</p>
 </div>
-<img alt="create-refresh-button" class="align-center" src="../_images/create-refresh-button.png" />
+<img alt="create-refresh-button" class="align-center" src="../_images/create-refresh-button.png"/>
 <p>To create a Snapshot, provide a unique name and an optional description, then
 click the “Save new snapshot” button.</p>
 <div class="admonition note">
@@ -618,9 +441,9 @@ click the “Save new snapshot” button.</p>
 used, deployment options chosen, and the size of the dataset, this may take
 some time.</p>
 </div>
-<img alt="create-save-button" class="align-center" src="../_images/create-save-button.png" />
+<img alt="create-save-button" class="align-center" src="../_images/create-save-button.png"/>
 <p>After creation, the new Snapshot will show up in the list!</p>
-<img alt="history-new-snapshot" class="align-center" src="../_images/history-new-snapshot.png" />
+<img alt="history-new-snapshot" class="align-center" src="../_images/history-new-snapshot.png"/>
 </div>
 <div class="section" id="id5">
 <h4>SDK<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
@@ -642,7 +465,7 @@ panel, use
 
 <span class="n">dataset</span><span class="o">.</span><span class="n">delete_samples</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
 
-<span class="c1"># Cached summary hasn&#39;t been updated</span>
+<span class="c1"># Cached summary hasn't been updated</span>
 <span class="k">assert</span> <span class="n">old</span> <span class="o">==</span> <span class="n">fom</span><span class="o">.</span><span class="n">get_dataset_latest_changes_summary</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 
 <span class="n">new</span> <span class="o">=</span> <span class="n">fom</span><span class="o">.</span><span class="n">calculate_dataset_latest_changes_summary</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
@@ -654,9 +477,9 @@ panel, use
 method.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone.management</span> <span class="k">as</span> <span class="nn">fom</span>
 
-<span class="n">dataset_name</span> <span class="o">=</span> <span class="s2">&quot;quickstart&quot;</span>
-<span class="n">snapshot_name</span> <span class="o">=</span> <span class="s2">&quot;v0.1&quot;</span>
-<span class="n">description</span> <span class="o">=</span> <span class="s2">&quot;Version 0.1 in which I have made many awesome changes!&quot;</span>
+<span class="n">dataset_name</span> <span class="o">=</span> <span class="s2">"quickstart"</span>
+<span class="n">snapshot_name</span> <span class="o">=</span> <span class="s2">"v0.1"</span>
+<span class="n">description</span> <span class="o">=</span> <span class="s2">"Version 0.1 in which I have made many awesome changes!"</span>
 <span class="n">snapshot</span> <span class="o">=</span> <span class="n">fom</span><span class="o">.</span><span class="n">create_snapshot</span><span class="p">(</span><span class="n">dataset_name</span><span class="p">,</span> <span class="n">snapshot_name</span><span class="p">,</span> <span class="n">description</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -682,7 +505,7 @@ Snapshot.</p>
 <p>To delete a Snapshot via the App, open the 3-dot (kebab) menu for the Snapshot.
 In the menu, click “Delete snapshot”. This will bring up a confirmation dialog
 to prevent accidental deletions.</p>
-<img alt="delete-snapshot" class="align-center" src="../_images/delete-snapshot.png" />
+<img alt="delete-snapshot" class="align-center" src="../_images/delete-snapshot.png"/>
 </div>
 <div class="section" id="id7">
 <h4>SDK<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
@@ -691,8 +514,8 @@ to prevent accidental deletions.</p>
 in the Management SDK.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone.management</span> <span class="k">as</span> <span class="nn">fom</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="s2">&quot;quickstart&quot;</span>
-<span class="n">snapshot_name</span> <span class="o">=</span> <span class="s2">&quot;v0.1&quot;</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="s2">"quickstart"</span>
+<span class="n">snapshot_name</span> <span class="o">=</span> <span class="s2">"v0.1"</span>
 <span class="n">fom</span><span class="o">.</span><span class="n">delete_snapshot</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">snapshot_name</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -715,7 +538,7 @@ version of the dataset, including all newer Snapshots.</p>
 the History tab for the Snapshot you want to rollback to and select
 “Rollback to this snapshot”. This will bring up a confirmation dialog to
 prevent accidental deletions.</p>
-<img alt="rollback-snapshot" class="align-center" src="../_images/rollback-snapshot.png" />
+<img alt="rollback-snapshot" class="align-center" src="../_images/rollback-snapshot.png"/>
 </div>
 <div class="section" id="id9">
 <h4>SDK<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h4>
@@ -724,13 +547,13 @@ prevent accidental deletions.</p>
 method in the Management SDK.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone.management</span> <span class="k">as</span> <span class="nn">fom</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="s2">&quot;quickstart&quot;</span>
-<span class="n">snapshot_name</span> <span class="o">=</span> <span class="s2">&quot;v0.1&quot;</span>
-<span class="n">description</span> <span class="o">=</span> <span class="s2">&quot;Initial dataset snapshot&quot;</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="s2">"quickstart"</span>
+<span class="n">snapshot_name</span> <span class="o">=</span> <span class="s2">"v0.1"</span>
+<span class="n">description</span> <span class="o">=</span> <span class="s2">"Initial dataset snapshot"</span>
 <span class="n">fom</span><span class="o">.</span><span class="n">create_snapshot</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">snapshot_name</span><span class="p">,</span> <span class="n">description</span><span class="p">)</span>
 
 <span class="c1"># Oops we deleted everything!</span>
-<span class="n">dataset</span><span class="o">.</span><span class="n">delete_samples</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">))</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">delete_samples</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">"id"</span><span class="p">))</span>
 
 <span class="c1"># Phew!</span>
 <span class="n">fom</span><span class="o">.</span><span class="n">revert_dataset_to_snapshot</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">snapshot_name</span><span class="p">)</span>
@@ -758,7 +581,7 @@ The snapshot must first be
 for a snapshot you want to archive and select “Archive snapshot”. This will
 begin the archival process and the browse button will be replaced with an
 “Archiving” spinner”:</p>
-<img alt="archive-snapshot" class="align-center" src="../_images/archive-snapshot.png" />
+<img alt="archive-snapshot" class="align-center" src="../_images/archive-snapshot.png"/>
 </div>
 <div class="section" id="id11">
 <h4>SDK<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h4>
@@ -768,12 +591,12 @@ method in the Management SDK:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.management</span> <span class="k">as</span> <span class="nn">fom</span>
 
-<span class="n">snapshot_name</span> <span class="o">=</span> <span class="s2">&quot;v0.1&quot;</span>
+<span class="n">snapshot_name</span> <span class="o">=</span> <span class="s2">"v0.1"</span>
 
-<span class="c1"># We don&#39;t use this regularly, archive it!</span>
+<span class="c1"># We don't use this regularly, archive it!</span>
 <span class="n">fom</span><span class="o">.</span><span class="n">archive_snapshot</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">snapshot_name</span><span class="p">)</span>
 
-<span class="n">fo</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">snapshot_name</span><span class="p">)</span> <span class="c1"># throws error, can&#39;t load!</span>
+<span class="n">fo</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">snapshot_name</span><span class="p">)</span> <span class="c1"># throws error, can't load!</span>
 </pre></div>
 </div>
 </div>
@@ -787,7 +610,7 @@ permissions to the dataset can unarchive it via the UI or Management SDK.</p>
 <p>To unarchive a snapshot, click the “Unarchive” button in the History tab for a
 snapshot you want to unarchive. This will begin the unarchival process and the
 archive button will be replaced with an “Unarchiving” spinner:</p>
-<img alt="unarchive-snapshot" class="align-center" src="../_images/unarchive-snapshot.png" />
+<img alt="unarchive-snapshot" class="align-center" src="../_images/unarchive-snapshot.png"/>
 </div>
 <div class="section" id="id13">
 <h4>SDK<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h4>
@@ -797,12 +620,12 @@ method in the Management SDK:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.management</span> <span class="k">as</span> <span class="nn">fom</span>
 
-<span class="n">snapshot_name</span> <span class="o">=</span> <span class="s2">&quot;v0.1&quot;</span>
-<span class="n">description</span> <span class="o">=</span> <span class="s2">&quot;Initial dataset snapshot&quot;</span>
+<span class="n">snapshot_name</span> <span class="o">=</span> <span class="s2">"v0.1"</span>
+<span class="n">description</span> <span class="o">=</span> <span class="s2">"Initial dataset snapshot"</span>
 
-<span class="c1"># We don&#39;t use this regularly, archive it!</span>
+<span class="c1"># We don't use this regularly, archive it!</span>
 <span class="n">fom</span><span class="o">.</span><span class="n">archive_snapshot</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">snapshot_name</span><span class="p">)</span>
-<span class="n">fo</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">snapshot_name</span><span class="p">)</span> <span class="c1"># throws error, can&#39;t load!</span>
+<span class="n">fo</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">snapshot_name</span><span class="p">)</span> <span class="c1"># throws error, can't load!</span>
 
 <span class="c1"># Oops we need it now, unarchive it!</span>
 <span class="n">fom</span><span class="o">.</span><span class="n">unarchive_snapshot</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">snapshot_name</span><span class="p">)</span>
@@ -861,8 +684,8 @@ could fill up the database.</p>
 <h4>Strengths<a class="headerlink" href="#strengths" title="Permalink to this headline">¶</a></h4>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 5%" />
-<col style="width: 95%" />
+<col style="width: 5%"/>
+<col style="width: 95%"/>
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p>✅</p></td>
@@ -885,8 +708,8 @@ any backend since materialized and virtual forms are one and the same</p></td>
 <h4>Limitations<a class="headerlink" href="#limitations" title="Permalink to this headline">¶</a></h4>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 5%" />
-<col style="width: 95%" />
+<col style="width: 5%"/>
+<col style="width: 95%"/>
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p>❌</p></td>
@@ -936,10 +759,10 @@ defaults should be done in consideration with the needs of the team and the
 storage requirements necessary.</p>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 19%" />
-<col style="width: 27%" />
-<col style="width: 6%" />
-<col style="width: 48%" />
+<col style="width: 19%"/>
+<col style="width: 27%"/>
+<col style="width: 6%"/>
+<col style="width: 48%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Config name</p></th>
@@ -1006,30 +829,15 @@ datasets alongside your models and media</p></li>
 </ul>
 </div>
 </div>
+</article>
+</div>
 
-
-             </article>
-             
-            </div>
-            <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="teams_app.html" class="btn btn-neutral float-right" title="FiftyOne Teams App" accesskey="n" rel="next">Next <img src="../_static/images/chevron-right-orange.svg" class="next-page"></a>
-      
-      
-        <a href="roles_and_permissions.html" class="btn btn-neutral" title="Roles and permissions" accesskey="p" rel="prev"><img src="../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
-      
-    </div>
-  
-</footer>
-          </div>
-        </div>
-
-        <div class="pytorch-content-right" id="pytorch-content-right">
-          <div class="pytorch-right-menu" id="pytorch-right-menu">
-            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
-              <ul>
+</div>
+</div>
+<div class="pytorch-content-right" id="pytorch-content-right">
+<div class="pytorch-right-menu" id="pytorch-right-menu">
+<div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+<ul>
 <li><a class="reference internal" href="#">Dataset Versioning</a><ul>
 <li><a class="reference internal" href="#overview">Overview</a></li>
 <li><a class="reference internal" href="#snapshots">Snapshots</a><ul>
@@ -1104,214 +912,36 @@ datasets alongside your models and media</p></li>
 </ul>
 </li>
 </ul>
-
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
-
-  
-
-
-  
-
-     
-       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-         <script src="../_static/jquery.js"></script>
-         <script src="../_static/underscore.js"></script>
-         <script src="../_static/doctools.js"></script>
-         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
-         <script src="../_static/js/voxel51-website.js"></script>
-         <script src="../_static/js/custom.js"></script>
-     
-
-  
-
-  <script type="text/javascript" src="../_static/js/vendor/popper.min.js"></script>
-  <script type="text/javascript" src="../_static/js/vendor/bootstrap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-  <script type="text/javascript">
+</div>
+</div>
+</div>
+</section>
+</div>
+<script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js" type="text/javascript"></script>
+<script src="../_static/jquery.js"></script>
+<script src="../_static/underscore.js"></script>
+<script src="../_static/doctools.js"></script>
+<script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+<script src="../_static/js/voxel51-website.js"></script>
+<script src="../_static/js/custom.js"></script>
+<script src="../_static/js/vendor/popper.min.js" type="text/javascript"></script>
+<script src="../_static/js/vendor/bootstrap.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+<script src="../_static/js/theme.js" type="text/javascript"></script>
+<script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
-
-  <!-- Begin Footer -->
-
-
-  <div class="container-fluid docs-tutorials-resources" id="docs-tutorials-resources">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4 text-center">
-          <h2>Docs</h2>
-          <p>Access comprehensive developer documentation for PyTorch</p>
-          <a class="with-right-arrow" href="https://pytorch.org/docs/stable/index.html">View Docs</a>
-        </div>
-
-        <div class="col-md-4 text-center">
-          <h2>Tutorials</h2>
-          <p>Get in-depth tutorials for beginners and advanced developers</p>
-          <a class="with-right-arrow" href="https://pytorch.org/tutorials">View Tutorials</a>
-        </div>
-
-        <div class="col-md-4 text-center">
-          <h2>Resources</h2>
-          <p>Find development resources and get your questions answered</p>
-          <a class="with-right-arrow" href="https://pytorch.org/resources">View Resources</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <footer class="site-footer">
-    <div class="container footer-container">
-      <div class="footer-logo-wrapper">
-        <a href="https://pytorch.org/" class="footer-logo"></a>
-      </div>
-
-      <div class="footer-links-wrapper">
-        <div class="footer-links-col">
-          <ul>
-            <li class="list-title"><a href="https://pytorch.org/">PyTorch</a></li>
-            <li><a href="https://pytorch.org/get-started">Get Started</a></li>
-            <li><a href="https://pytorch.org/features">Features</a></li>
-            <li><a href="https://pytorch.org/ecosystem">Ecosystem</a></li>
-            <li><a href="https://pytorch.org/blog/">Blog</a></li>
-            <li><a href="https://github.com/pytorch/pytorch/blob/master/CONTRIBUTING.md">Contributing</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-links-col">
-          <ul>
-            <li class="list-title"><a href="https://pytorch.org/resources">Resources</a></li>
-            <li><a href="https://pytorch.org/tutorials">Tutorials</a></li>
-            <li><a href="https://pytorch.org/docs/stable/index.html">Docs</a></li>
-            <li><a href="https://discuss.pytorch.org" target="_blank">Discuss</a></li>
-            <li><a href="https://github.com/pytorch/pytorch/issues" target="_blank">Github Issues</a></li>
-            <li><a href="https://pytorch.org/assets/brand-guidelines/PyTorch-Brand-Guidelines.pdf" target="_blank">Brand Guidelines</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-links-col follow-us-col">
-          <ul>
-            <li class="list-title">Stay Connected</li>
-            <li>
-              <div id="mc_embed_signup">
-                <form
-                  action="https://twitter.us14.list-manage.com/subscribe/post?u=75419c71fe0a935e53dfa4a3f&id=91d0dccd39"
-                  method="post"
-                  id="mc-embedded-subscribe-form"
-                  name="mc-embedded-subscribe-form"
-                  class="email-subscribe-form validate"
-                  target="_blank"
-                  novalidate>
-                  <div id="mc_embed_signup_scroll" class="email-subscribe-form-fields-wrapper">
-                    <div class="mc-field-group">
-                      <label for="mce-EMAIL" style="display:none;">Email Address</label>
-                      <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="Email Address">
-                    </div>
-
-                    <div id="mce-responses" class="clear">
-                      <div class="response" id="mce-error-response" style="display:none"></div>
-                      <div class="response" id="mce-success-response" style="display:none"></div>
-                    </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-
-                    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_75419c71fe0a935e53dfa4a3f_91d0dccd39" tabindex="-1" value=""></div>
-
-                    <div class="clear">
-                      <input type="submit" value="" name="subscribe" id="mc-embedded-subscribe" class="button email-subscribe-button">
-                    </div>
-                  </div>
-                </form>
-              </div>
-
-            </li>
-          </ul>
-
-          <div class="footer-social-icons">
-            <a href="https://www.facebook.com/pytorch" target="_blank" class="facebook"></a>
-            <a href="https://twitter.com/pytorch" target="_blank" class="twitter"></a>
-            <a href="https://www.youtube.com/pytorch" target="_blank" class="youtube"></a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
+  </script>
+<!-- Begin Footer -->
 
 
-  
+<!-- End Footer -->
+<!-- Begin Mobile Menu -->
 
-  <!-- End Footer -->
-
-  <!-- Begin Mobile Menu -->
-
-
-  <div class="mobile-main-menu">
-    <div class="container-fluid">
-      <div class="container">
-        <div class="mobile-main-menu-header-container">
-          <a class="header-logo" href="https://pytorch.org/" aria-label="PyTorch"></a>
-          <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
-        </div>
-      </div>
-    </div>
-
-    <div class="mobile-main-menu-links-container">
-      <div class="main-menu">
-        <ul>
-          <li>
-            <a href="https://pytorch.org/get-started">Get Started</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/features">Features</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/ecosystem">Ecosystem</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/mobile">Mobile</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/hub">PyTorch Hub</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/blog/">Blog</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/tutorials">Tutorials</a>
-          </li>
-
-          <li class="active">
-            <a href="https://pytorch.org/docs/stable/index.html">Docs</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/resources">Resources</a>
-          </li>
-
-          <li>
-            <a href="https://github.com/pytorch/pytorch">Github</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-
-  <!-- End Mobile Menu -->
-
-  <script type="text/javascript" src="../_static/js/vendor/anchor.min.js"></script>
-
-  <script type="text/javascript">
+<!-- End Mobile Menu -->
+<script src="../_static/js/vendor/anchor.min.js" type="text/javascript"></script>
+<script type="text/javascript">
     $(document).ready(function() {
       mobileMenu.bind();
       mobileTOC.bind();

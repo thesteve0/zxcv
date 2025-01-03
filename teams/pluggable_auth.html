@@ -1,183 +1,46 @@
 
-
-
 <!DOCTYPE html>
+
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>Pluggable Authentication &mdash; FiftyOne 1.3.0 documentation</title>
-  
-
-  
-  
-    <link rel="shortcut icon" href="../_static/favicon.ico"/>
-  
-  
-  
-
-  
-
-  
-  
-    
-
-  
-
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
-  <link rel="stylesheet" href="../_static/css/voxel51-website.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="FiftyOne Installation" href="../getting_started/install.html" />
-    <link rel="prev" title="Migrations" href="migrations.html" />
-<meta property="og:image" content="https://voxel51.com/wp-content/uploads/2024/03/3.24_webpages_Home_AV.png" />
-
-<link
-  href="https://fonts.googleapis.com/css?family=Palanquin:400,600,700,800"
-  rel="stylesheet"
-/>
-<link
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
-  rel="stylesheet"
-/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Pluggable Authentication — FiftyOne 1.3.0 documentation</title>
+<link href="../_static/favicon.ico" rel="shortcut icon"/>
+<link href="../_static/css/theme.css" rel="stylesheet" type="text/css"/>
+<!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+<link href="../_static/css/voxel51-website.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/css/custom.css" rel="stylesheet" type="text/css"/>
+<link href="../genindex.html" rel="index" title="Index"/>
+<link href="../search.html" rel="search" title="Search"/>
+<link href="../getting_started/install.html" rel="next" title="FiftyOne Installation"/>
+<link href="migrations.html" rel="prev" title="Migrations"/>
+<meta content="https://voxel51.com/wp-content/uploads/2024/03/3.24_webpages_Home_AV.png" property="og:image">
+<link href="https://fonts.googleapis.com/css?family=Palanquin:400,600,700,800" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet"/>
 <script src="https://tag.clearbitscripts.com/v1/pk_b9ed71c8234edd4f77326bcbfab5a4ca/tags.js"></script>
-
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
-  
-</head>
-
-
-<div class="container-fluid header-holder tutorials-header" id="header-holder">
-  <div class="container">
-    <div class="header-container">
-      <a class="header-logo" href="https://pytorch.org/" aria-label="PyTorch"></a>
-
-      <div class="main-menu">
-        <ul>
-          <li>
-            <a href="https://pytorch.org/get-started">Get Started</a>
-          </li>
-
-          <li>
-            <div class="ecosystem-dropdown">
-              <a id="dropdownMenuButton" data-toggle="ecosystem-dropdown">
-                Ecosystem
-              </a>
-              <div class="ecosystem-dropdown-menu">
-                <a class="nav-dropdown-item" href="https://pytorch.org/hub"">
-                  <span class=dropdown-title>Models (Beta)</span>
-                  <p>Discover, publish, and reuse pre-trained models</p>
-                </a>
-                <a class="nav-dropdown-item" href="https://pytorch.org/ecosystem">
-                  <span class=dropdown-title>Tools & Libraries</span>
-                  <p>Explore the ecosystem of tools and libraries</p>
-                </a>
-              </div>
-            </div>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/mobile">Mobile</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/blog/">Blog</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/tutorials">Tutorials</a>
-          </li>
-
-          <li class="active">
-            <a href="https://pytorch.org/docs/stable/index.html">Docs</a>
-          </li>
-
-          <li>
-            <div class="resources-dropdown">
-              <a id="resourcesDropdownButton" data-toggle="resources-dropdown">
-                Resources
-              </a>
-              <div class="resources-dropdown-menu">
-                <a class="nav-dropdown-item" href="https://pytorch.org/resources"">
-                  <span class=dropdown-title>Developer Resources</span>
-                  <p>Find resources and get questions answered</p>
-                </a>
-                <a class="nav-dropdown-item" href="https://pytorch.org/features">
-                  <span class=dropdown-title>About</span>
-                  <p>Learn about PyTorch’s features and capabilities</p>
-                </a>
-              </div>
-            </div>
-          </li>
-
-          <li>
-            <a href="https://github.com/pytorch/pytorch">Github</a>
-          </li>
-        </ul>
-      </div>
-
-      <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
-    </div>
-
-  </div>
-</div>
-
-
+<script src="../_static/js/modernizr.min.js"></script>
+</meta></head>
 
 <body class="pytorch-body">
-
-   
-
-    
-
-    <div class="table-of-contents-link-wrapper">
-      <span>Table of Contents</span>
-      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
-    </div>
-
-    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
-      <div class="pytorch-side-scroll">
-        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          <div class="pytorch-left-menu-search">
-            
-
-            
-              
-              
-            
-
-            
-
-
-  
-
-
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search Docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
+<div class="table-of-contents-link-wrapper">
+<span>Table of Contents</span>
+<a class="toggle-table-of-contents" data-behavior="toggle-table-of-contents" href="#"></a>
 </div>
-
-            
-          </div>
-
-          
-            
-            
-              
-            
-            
-              <ul class="current">
+<nav class="pytorch-left-menu" data-toggle="wy-nav-shift" id="pytorch-left-menu">
+<div class="pytorch-side-scroll">
+<div aria-label="main navigation" class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation">
+<div class="pytorch-left-menu-search">
+<div role="search">
+<form action="../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input name="q" placeholder="Search Docs" type="text"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Overview</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">FiftyOne Teams 🚀</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/install.html">Installation</a></li>
@@ -197,78 +60,38 @@
 <li class="toctree-l1"><a class="reference internal" href="../deprecation.html">Deprecation Notices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a></li>
 </ul>
-
-            
-          
-        </div>
-      </div>
-    </nav>
-
-    <div class="pytorch-container">
-      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
-        <div class="pytorch-breadcrumbs-wrapper">
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
-  <ul class="pytorch-breadcrumbs">
-    
-      <li>
-        <a href="../index.html">
+</div>
+</div>
+</nav>
+<div class="pytorch-container">
+<div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+<div class="pytorch-breadcrumbs-wrapper">
+<div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="pytorch-breadcrumbs">
+<li>
+<a href="../index.html">
           
             Docs
           
         </a> &gt;
       </li>
-
-        
-          <li><a href="index.html">FiftyOne Teams</a> &gt;</li>
-        
-      <li>Pluggable Authentication</li>
-    
-    
-      <li class="pytorch-breadcrumbs-aside">
-        
-            
-        
-      </li>
-    
-  </ul>
-
-  
+<li><a href="index.html">FiftyOne Teams</a> &gt;</li>
+<li>Pluggable Authentication</li>
+<li class="pytorch-breadcrumbs-aside">
+</li>
+</ul>
 </div>
-        </div>
-
-        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+</div>
+<div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
           Contents
         </div>
-      </div>
-
-      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
-        <div class="pytorch-content-left">
-
-        
-          
-          <div class="rst-content style-external-links">
-          
-            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
-             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
-              
-  <div class="section" id="pluggable-authentication">
+</div>
+<section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+<div class="pytorch-content-left">
+<div class="rst-content style-external-links">
+<div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+<div class="section" id="pluggable-authentication">
 <span id="pluggable-auth"></span><h1>Pluggable Authentication<a class="headerlink" href="#pluggable-authentication" title="Permalink to this headline">¶</a></h1>
 <p>FiftyOne Teams v1.6.0 introduces Pluggable Authentication that provides the
 Central Authentication Service (CAS). CAS is a self-contained authentication
@@ -309,7 +132,7 @@ and <a class="reference external" href="https://oauth.net/2/">OAuth2</a>.</p>
 </div>
 <div class="section" id="super-admin-ui">
 <span id="id3"></span><h2>Super Admin UI<a class="headerlink" href="#super-admin-ui" title="Permalink to this headline">¶</a></h2>
-<p><img alt="Super Admin UI" src="../_images/cas_api_docs.png" /></p>
+<p><img alt="Super Admin UI" src="../_images/cas_api_docs.png"/></p>
 <p>The Super Admin UI contains FiftyOne Teams deployment wide configurations. When
 logging into FiftyOne Teams as an admin, you are in the context of an
 organization. Settings are scoped by organization and only apply to that
@@ -319,7 +142,7 @@ global configurations (Identity Providers, Session timeouts, and JS hooks).</p>
 <div><p><strong>NOTE</strong>: In v1.6.0, the Super Admin UI is only available in
 <a class="reference external" href="#internal-mode">internal mode</a></p>
 </div></blockquote>
-<p><img alt="Sign In to CAS" src="../_images/cas_sign_in.png" /></p>
+<p><img alt="Sign In to CAS" src="../_images/cas_sign_in.png"/></p>
 <p>To login to this application navigate to
 <code class="docutils literal notranslate"><span class="pre">https://&lt;YOUR_FIFTYONE_TEAMS_URL&gt;/cas/configurations</span></code>. In the top right of the
 screen, and provide the <code class="docutils literal notranslate"><span class="pre">FIFTYONE_AUTH_SECRET</span></code> to login.</p>
@@ -332,7 +155,7 @@ installation or upgrade.</p>
 <p>As of FiftyOne Teams 2.1.0, onboarding new users can be done via invitation
 links. To do so, “Enable invitation” must be toggled on in the Organizations
 section of the <a class="reference external" href="#super-admin-ui">Super Admin UI</a>.</p>
-<p><img alt="Enable Invitations" src="../_images/org_enable_invitations.png" /></p>
+<p><img alt="Enable Invitations" src="../_images/org_enable_invitations.png"/></p>
 <p>This allows creating invitation links in <a class="reference external" href="#internal-mode">internal mode</a> that
 can be manually sent to users. When those users click the links, they will be
 added to the Organization and prompted to log in.</p>
@@ -348,10 +171,10 @@ existing mail server.</p>
 </div></blockquote>
 <p>To do so, “Send email invitations” must be toggled on in the Organizations
 section of the <a class="reference external" href="#super-admin-ui">Super Admin UI</a></p>
-<p><img alt="Send email invitations" src="../_images/org_send_email_invitations.png" /></p>
+<p><img alt="Send email invitations" src="../_images/org_send_email_invitations.png"/></p>
 <p>To configure your SMTP connection, navigate to the SMTP section of the
 <a class="reference external" href="#super-admin-ui">Super Admin UI</a></p>
-<p><img alt="SMTP Config" src="../_images/SMTP_config.png" /></p>
+<p><img alt="SMTP Config" src="../_images/SMTP_config.png"/></p>
 <p>A notification at the top of the menu will inform if an SMTP configuration is
 already saved. Currently, only one SMTP configuration can be saved per
 Organization.</p>
@@ -361,7 +184,7 @@ a preliminary check to ensure that the SMTP server is reachable at the host
 provided. The configuration will not save otherwise.</p>
 <p>Additionally, users can enter a valid email address and click Send Test Email
 to test the connection.</p>
-<p><img alt="SMTP Config test email" src="../_images/SMTP_config_test_email.png" /></p>
+<p><img alt="SMTP Config test email" src="../_images/SMTP_config_test_email.png"/></p>
 <blockquote>
 <div><p><strong>NOTE:</strong> Emails and an SMTP connection are not required to use invitations.
 Invitation links can still be generated and manually distributed without an
@@ -376,33 +199,33 @@ configure FiftyOne teams to authenticate users via OIDC or OAuth2 compatible
 Identity Providers. Below is an example configuration for KeyCloak as an
 Identity Provider.</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;keycloak-example&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;wellKnown&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://keycloak.dev.acme.ai/auth/realms/acme/.well-known/openid-configuration&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;KeyCloak&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;oauth&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;authorization&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://keycloak.acme.ai/auth/realms/acme/protocol/openid-connect/auth&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;params&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;scope&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;openid email profile&quot;</span>
+<span class="w">    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"keycloak-example"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"wellKnown"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://keycloak.dev.acme.ai/auth/realms/acme/.well-known/openid-configuration"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KeyCloak"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"oauth"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"authorization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://keycloak.acme.ai/auth/realms/acme/protocol/openid-connect/auth"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"scope"</span><span class="p">:</span><span class="w"> </span><span class="s2">"openid email profile"</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;clientId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;clientSecret&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;issuer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://keycloak.dev.acme.ai/auth/realms/acme&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;token&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://keycloak.dev.acme.ai/auth/realms/acme/protocol/openid-connect/token&quot;</span>
+<span class="w">    </span><span class="nt">"clientId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"clientSecret"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://keycloak.dev.acme.ai/auth/realms/acme"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://keycloak.dev.acme.ai/auth/realms/acme/protocol/openid-connect/token"</span>
 <span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;userinfo&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://keycloak.dev.acme.ai/auth/realms/acme/protocol/openid-connect/userinfo&quot;</span>
+<span class="w">    </span><span class="nt">"userinfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://keycloak.dev.acme.ai/auth/realms/acme/protocol/openid-connect/userinfo"</span>
 <span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;idToken&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;style&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;logoDark&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://images.com/keycloak.svg&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;bg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#47abc6&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#fff&quot;</span>
+<span class="w">    </span><span class="nt">"idToken"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"style"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"logoDark"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://images.com/keycloak.svg"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"bg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#47abc6"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#fff"</span>
 <span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;profile&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;(e,l)=&gt;(console.log({profile:e,tokens:l}),{id:e.sub,name:e.name,email:e.email,image:null})&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;allowDangerousEmailAccountLinking&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="nt">"profile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"(e,l)=&gt;(console.log({profile:e,tokens:l}),{id:e.sub,name:e.name,email:e.email,image:null})"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"allowDangerousEmailAccountLinking"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -493,7 +316,7 @@ breakdown of the example:</p>
 
 <span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="nx">trigger</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="c1">// Callback: user is trying to sign in</span>
-<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="s2">&quot;signIn&quot;</span><span class="o">:</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="s2">"signIn"</span><span class="o">:</span>
 <span class="w">            </span><span class="c1">// returning false will prevent user from signing in</span>
 <span class="w">            </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
 <span class="w">                </span><span class="kd">const</span><span class="w"> </span><span class="nx">groups</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">getGroups</span><span class="p">();</span>
@@ -516,7 +339,7 @@ breakdown of the example:</p>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">addUserToGroup</span><span class="p">(</span><span class="nx">groupName</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">orgId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;my_org_id&quot;</span><span class="p">;</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">orgId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"my_org_id"</span><span class="p">;</span>
 <span class="w">        </span><span class="c1">// Retrieve all existing groups</span>
 <span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">groups</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">services</span><span class="p">.</span><span class="nx">directory</span><span class="p">.</span><span class="nx">groups</span><span class="p">.</span><span class="nx">listGroups</span><span class="p">(</span><span class="nx">orgId</span><span class="p">);</span>
 <span class="w">        </span><span class="c1">// Find an existing group by name</span>
@@ -596,76 +419,76 @@ above) or by directly visiting <code class="docutils literal notranslate"><span 
 <div class="section" id="configuration">
 <h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
 <table>
-  <tr>
-   <td><strong>Setting</strong>
+<tr>
+<td><strong>Setting</strong>
+</td>
+<td>Type
    </td>
-   <td>Type
+<td>Default
    </td>
-   <td>Default
+<td>Description
    </td>
-   <td>Description
+</tr>
+<tr>
+<td><code>authentication_providers</code>
+</td>
+<td><code>Array</code>
+</td>
+<td><code>[]</code>
+</td>
+<td>A list of definitions of OIDC and/or OAuth providers.
    </td>
-  </tr>
-  <tr>
-   <td><code>authentication_providers</code>
+</tr>
+<tr>
+<td><code>authentication_provider.profile</code>
+</td>
+<td><code>String</code> (parseable to JS function)
    </td>
-   <td><code>Array</code>
+<td><code>null</code>
+</td>
+<td>When provided this function is called to map the external user_info to the internal fiftyone user/account.
    </td>
-   <td><code>[]</code>
+</tr>
+<tr>
+<td><code>session_ttl</code>
+</td>
+<td><code>Number</code>
+</td>
+<td><code>300</code>
+</td>
+<td>Time in seconds for sessions to live after which users will be forced to log out. Must be greater than 120 seconds to support refreshing of user session using refresh token.
    </td>
-   <td>A list of definitions of OIDC and/or OAuth providers.
+</tr>
+<tr>
+<td><code>js_hook_enabled</code>
+</td>
+<td><code>Boolean</code>
+</td>
+<td><code>true</code>
+</td>
+<td>When set to False, configured JavaScript hooks will not be invoked.
    </td>
-  </tr>
-  <tr>
-   <td><code>authentication_provider.profile</code>
+</tr>
+<tr>
+<td><code>js_hook</code>
+</td>
+<td><code>String</code> (parseable to a single JS function)
    </td>
-   <td><code>String</code> (parseable to JS function)
+<td><code>null</code>
+</td>
+<td>JavaScript hook which is invoked on several CAS events described in JS Hooks section below
    </td>
-   <td><code>null</code>
+</tr>
+<tr>
+<td><code>skipSignInPage</code>
+</td>
+<td><code>Boolean</code>
+</td>
+<td><code>false</code>
+</td>
+<td>When set to True, sign in page with identity provider choices will be skipped when there is only one identity provider is configured
    </td>
-   <td>When provided this function is called to map the external user_info to the internal fiftyone user/account.
-   </td>
-  </tr>
-  <tr>
-   <td><code>session_ttl</code>
-   </td>
-   <td><code>Number</code>
-   </td>
-   <td><code>300</code>
-   </td>
-   <td>Time in seconds for sessions to live after which users will be forced to log out. Must be greater than 120 seconds to support refreshing of user session using refresh token.
-   </td>
-  </tr>
-  <tr>
-   <td><code>js_hook_enabled</code>
-   </td>
-   <td><code>Boolean</code>
-   </td>
-   <td><code>true</code>
-   </td>
-   <td>When set to False, configured JavaScript hooks will not be invoked.
-   </td>
-  </tr>
-  <tr>
-   <td><code>js_hook</code>
-   </td>
-   <td><code>String</code> (parseable to a single JS function)
-   </td>
-   <td><code>null</code>
-   </td>
-   <td>JavaScript hook which is invoked on several CAS events described in JS Hooks section below
-   </td>
-  </tr>
-  <tr>
-   <td><code>skipSignInPage</code>
-   </td>
-   <td><code>Boolean</code>
-   </td>
-   <td><code>false</code>
-   </td>
-   <td>When set to True, sign in page with identity provider choices will be skipped when there is only one identity provider is configured
-   </td>
-  </tr>
+</tr>
 </table>
 </div>
 <div class="section" id="javascript-hooks">
@@ -690,24 +513,24 @@ hook.</p>
 
 <span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="nx">trigger</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="c1">// user is trying to sign in</span>
-<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="s2">&quot;signIn&quot;</span><span class="o">:</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="s2">"signIn"</span><span class="o">:</span>
 <span class="w">            </span><span class="c1">// returning false will prevent user from signing in</span>
 <span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
 
 <span class="w">        </span><span class="c1">// JWT token is created for user session</span>
-<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="s2">&quot;jwt&quot;</span><span class="o">:</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="s2">"jwt"</span><span class="o">:</span>
 <span class="w">            </span><span class="c1">// custom payload returned will be merged with default payload</span>
 <span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="p">{};</span>
 
 <span class="w">        </span><span class="c1">// user has logged out</span>
-<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="s2">&quot;logout&quot;</span><span class="o">:</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="s2">"logout"</span><span class="o">:</span>
 <span class="w">            </span><span class="c1">// returning or throwing here does not affect the sign out flow</span>
 <span class="w">            </span><span class="k">break</span><span class="p">;</span>
 
 <span class="w">        </span><span class="c1">// user is being redirected on sign in our sign out</span>
-<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="s2">&quot;redirect&quot;</span><span class="o">:</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="s2">"redirect"</span><span class="o">:</span>
 <span class="w">            </span><span class="c1">// user will be redirected to this URL on sign in our sign out</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;/settings/accounts&quot;</span><span class="p">;</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="s2">"/settings/accounts"</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -716,279 +539,264 @@ hook.</p>
 <div class="section" id="actionable-triggers">
 <h3>Actionable Triggers<a class="headerlink" href="#actionable-triggers" title="Permalink to this headline">¶</a></h3>
 <table>
-  <tr>
-   <td><strong>Trigger</strong>
+<tr>
+<td><strong>Trigger</strong>
+</td>
+<td><strong>Description</strong>
+</td>
+<td><strong>Return Type</strong>
+</td>
+</tr>
+<tr>
+<td><code>signIn</code>
+</td>
+<td>Invoked when a user signs in. If the hook returns false or error is thrown, sign-in will be prevented.
    </td>
-   <td><strong>Description</strong>
+<td>Boolean
    </td>
-   <td><strong>Return Type</strong>
+</tr>
+<tr>
+<td><code>signUp</code>
+</td>
+<td>Invoked when a new user signs in for the very first time. If the hook returns false or an error is thrown, sign-in will be prevented and a user/account will not be created.
    </td>
-  </tr>
-  <tr>
-   <td><code>signIn</code>
+<td>
+</td>
+</tr>
+<tr>
+<td><code>jwt</code>
+</td>
+<td>Invoked when JWT is created (on signIn, signUp, refresh token). The returned object will override payload of default JWT payload. If an error is thrown, the session will be expired and user will be redirected to sign-in
    </td>
-   <td>Invoked when a user signs in. If the hook returns false or error is thrown, sign-in will be prevented.
+<td>Object | undefined
    </td>
-   <td>Boolean
+</tr>
+<tr>
+<td><code>redirect</code>
+</td>
+<td>Invoked post signIn or signOut. The user will be redirected to the URL/Path returned from the hook.
    </td>
-  </tr>
-  <tr>
-   <td><code>signUp</code>
+<td>String (URL)
    </td>
-   <td>Invoked when a new user signs in for the very first time. If the hook returns false or an error is thrown, sign-in will be prevented and a user/account will not be created.
+</tr>
+<tr>
+<td><code>session</code>
+</td>
+<td>Invoked when a request for a session (on signIn, signUp, refresh token) is received.
    </td>
-   <td>
-   </td>
-  </tr>
-  <tr>
-   <td><code>jwt</code>
-   </td>
-   <td>Invoked when JWT is created (on signIn, signUp, refresh token). The returned object will override payload of default JWT payload. If an error is thrown, the session will be expired and user will be redirected to sign-in
-   </td>
-   <td>Object | undefined
-   </td>
-  </tr>
-  <tr>
-   <td><code>redirect</code>
-   </td>
-   <td>Invoked post signIn or signOut. The user will be redirected to the URL/Path returned from the hook.
-   </td>
-   <td>String (URL)
-   </td>
-  </tr>
-  <tr>
-   <td><code>session</code>
-   </td>
-   <td>Invoked when a request for a session (on signIn, signUp, refresh token) is received.
-   </td>
-   <td>
-   </td>
-  </tr>
+<td>
+</td>
+</tr>
 </table>
 <p><strong>Event-Only Triggers</strong></p>
 <table>
-  <tr>
-   <td><strong>Trigger</strong>
+<tr>
+<td><strong>Trigger</strong>
+</td>
+<td><strong>Description</strong>
+</td>
+</tr>
+<tr>
+<td><code>signOut</code>
+</td>
+<td>Invoked when a user signs out.
    </td>
-   <td><strong>Description</strong>
+</tr>
+<tr>
+<td><code>createUser</code>
+</td>
+<td>Invoked when the adapter is asked to create a user.
    </td>
-  </tr>
-  <tr>
-   <td><code>signOut</code>
+</tr>
+<tr>
+<td><code>linkAccount</code>
+</td>
+<td>Invoked when an account is linked to a user.
    </td>
-   <td>Invoked when a user signs out.
-   </td>
-  </tr>
-  <tr>
-   <td><code>createUser</code>
-   </td>
-   <td>Invoked when the adapter is asked to create a user.
-   </td>
-  </tr>
-  <tr>
-   <td><code>linkAccount</code>
-   </td>
-   <td>Invoked when an account is linked to a user.
-   </td>
-  </tr>
+</tr>
 </table>
 <p><strong>JavaScript Hooks Contextual Parameters</strong></p>
 <table>
-  <tr>
-   <td>
-    <strong>Parameter</strong>
-   </td>
-   <td>
-    <strong>Description</strong>
-   </td>
-   <td>
-    <strong>Available in Triggers</strong>
-   </td>
-  </tr>
-  <tr>
-   <td>
-    <code>token</code>
-   </td>
-   <td>
+<tr>
+<td>
+<strong>Parameter</strong>
+</td>
+<td>
+<strong>Description</strong>
+</td>
+<td>
+<strong>Available in Triggers</strong>
+</td>
+</tr>
+<tr>
+<td>
+<code>token</code>
+</td>
+<td>
     The payload of a JWT token.
    </td>
-   <td>
-    <code>signIn<strong>, </strong>signUp<strong>, </strong>jwt<strong>, </strong>session<strong>, </strong>signOut<strong>, </strong>linkAccount<strong>, </strong>createUser</code>
-   </td>
-  </tr>
-  <tr>
-   <td>
-    <code>user</code>
-   </td>
-   <td>
+<td>
+<code>signIn<strong>, </strong>signUp<strong>, </strong>jwt<strong>, </strong>session<strong>, </strong>signOut<strong>, </strong>linkAccount<strong>, </strong>createUser</code>
+</td>
+</tr>
+<tr>
+<td>
+<code>user</code>
+</td>
+<td>
     The signed-in user object.
    </td>
-   <td>
-    <code>signIn<strong>, </strong>signUp<strong>, </strong>jwt<strong>, </strong>linkAccount</code>
-   </td>
-  </tr>
-  <tr>
-   <td>
-    <code>account</code>
-   </td>
-   <td>
+<td>
+<code>signIn<strong>, </strong>signUp<strong>, </strong>jwt<strong>, </strong>linkAccount</code>
+</td>
+</tr>
+<tr>
+<td>
+<code>account</code>
+</td>
+<td>
     The account from an identity provider.
    </td>
-   <td>
-    <code>signIn<strong>, </strong>signUp<strong>, </strong>jwt<strong>, </strong>linkAccount</code>
-   </td>
-  </tr>
-  <tr>
-   <td>
-    <code>profile</code>
-   </td>
-   <td>
+<td>
+<code>signIn<strong>, </strong>signUp<strong>, </strong>jwt<strong>, </strong>linkAccount</code>
+</td>
+</tr>
+<tr>
+<td>
+<code>profile</code>
+</td>
+<td>
     The profile from an identity provider.
    </td>
-   <td>
-    <code>signIn<strong>, </strong>signUp<strong>, </strong>jwt<strong>, </strong>linkAccount</code>
-   </td>
-  </tr>
-  <tr>
-   <td>
-    <code>isNewUser</code>
-   </td>
-   <td>
+<td>
+<code>signIn<strong>, </strong>signUp<strong>, </strong>jwt<strong>, </strong>linkAccount</code>
+</td>
+</tr>
+<tr>
+<td>
+<code>isNewUser</code>
+</td>
+<td>
     True if a user is signing in for the first time.
    </td>
-   <td>
-    <code>jwt</code>
-   </td>
-  </tr>
-  <tr>
-   <td>
-    <code>trigger</code>
-   </td>
-   <td>
+<td>
+<code>jwt</code>
+</td>
+</tr>
+<tr>
+<td>
+<code>trigger</code>
+</td>
+<td>
     Specifies the current trigger event.
    </td>
-   <td>
-    <code>jwt</code>
-   </td>
-  </tr>
-  <tr>
-   <td>
-    <code>Session</code>
-   </td>
-   <td>
+<td>
+<code>jwt</code>
+</td>
+</tr>
+<tr>
+<td>
+<code>Session</code>
+</td>
+<td>
     The session object.
    </td>
-   <td>
-    <code>session</code>
-   </td>
-  </tr>
-  <tr>
-   <td>
-    <code>services</code>
-   </td>
-   <td>
+<td>
+<code>session</code>
+</td>
+</tr>
+<tr>
+<td>
+<code>services</code>
+</td>
+<td>
     Provides access to various services.
    </td>
-   <td><strong>all</strong>
-   </td>
-  </tr>
+<td><strong>all</strong>
+</td>
+</tr>
 </table>
 <p><strong>Services</strong></p>
 <table>
-  <tr>
-   <td><strong>Service</strong>
+<tr>
+<td><strong>Service</strong>
+</td>
+<td><strong>Description</strong>
+</td>
+</tr>
+<tr>
+<td><code>services.util.http</code>
+</td>
+<td>Provides <code>get</code>, <code>post</code>, <code>put</code>, and <code>delete</code> functions for making <code>HTTP</code> requests from a JS Hook.
    </td>
-   <td><strong>Description</strong>
+</tr>
+<tr>
+<td><code>services.userContext</code>
+</td>
+<td>Object containing information about the user performing the current action.
    </td>
-  </tr>
-  <tr>
-   <td><code>services.util.http</code>
+</tr>
+<tr>
+<td><code>services.directory</code>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td><code>services.directory.users</code>
+</td>
+<td>The <code>UserService</code> - providing methods for interacting with the directory of users.
    </td>
-   <td>Provides <code>get</code>, <code>post</code>, <code>put</code>, and <code>delete</code> functions for making <code>HTTP</code> requests from a JS Hook.
+</tr>
+<tr>
+<td><code>services.directory.groups</code>
+</td>
+<td>The <code>GroupsService </code>- providing methods for interacting with the directory of groups.
    </td>
-  </tr>
-  <tr>
-   <td><code>services.userContext</code>
+</tr>
+<tr>
+<td><code>services.config</code>
+</td>
+<td>The <code>ConfigService </code>- providing methods for reading and writing the <code>AuthenticationConfig</code>.
    </td>
-   <td>Object containing information about the user performing the current action.
+</tr>
+<tr>
+<td><code>services.util</code>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td><code>services.directory.orgs</code>
+</td>
+<td>The <code>OrgsService </code>- providing methods for interacting with the directory of organizations.
    </td>
-  </tr>
-  <tr>
-   <td><code>services.directory</code>
+</tr>
+<tr>
+<td><code>services.webhookService</code>
+</td>
+<td>Experimental
    </td>
-   <td>
+</tr>
+<tr>
+<td><code>process.env['MY_ENV_VAR']</code>
+</td>
+<td>Syntax for reading environment variables in a JS Hook.
    </td>
-  </tr>
-  <tr>
-   <td><code>services.directory.users</code>
-   </td>
-   <td>The <code>UserService</code> - providing methods for interacting with the directory of users.
-   </td>
-  </tr>
-  <tr>
-   <td><code>services.directory.groups</code>
-   </td>
-   <td>The <code>GroupsService </code>- providing methods for interacting with the directory of groups.
-   </td>
-  </tr>
-  <tr>
-   <td><code>services.config</code>
-   </td>
-   <td>The <code>ConfigService </code>- providing methods for reading and writing the <code>AuthenticationConfig</code>.
-   </td>
-  </tr>
-  <tr>
-   <td><code>services.util</code>
-   </td>
-   <td>
-   </td>
-  </tr>
-  <tr>
-   <td><code>services.directory.orgs</code>
-   </td>
-   <td>The <code>OrgsService </code>- providing methods for interacting with the directory of organizations.
-   </td>
-  </tr>
-  <tr>
-   <td><code>services.webhookService</code>
-   </td>
-   <td>Experimental
-   </td>
-  </tr>
-  <tr>
-   <td><code>process.env['MY_ENV_VAR']</code>
-   </td>
-   <td>Syntax for reading environment variables in a JS Hook.
-   </td>
-  </tr>
+</tr>
 </table>
 </div>
 </div>
 </div>
+</article>
+</div>
 
-
-             </article>
-             
-            </div>
-            <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../getting_started/install.html" class="btn btn-neutral float-right" title="FiftyOne Installation" accesskey="n" rel="next">Next <img src="../_static/images/chevron-right-orange.svg" class="next-page"></a>
-      
-      
-        <a href="migrations.html" class="btn btn-neutral" title="Migrations" accesskey="p" rel="prev"><img src="../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
-      
-    </div>
-  
-</footer>
-          </div>
-        </div>
-
-        <div class="pytorch-content-right" id="pytorch-content-right">
-          <div class="pytorch-right-menu" id="pytorch-right-menu">
-            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
-              <ul>
+</div>
+</div>
+<div class="pytorch-content-right" id="pytorch-content-right">
+<div class="pytorch-right-menu" id="pytorch-right-menu">
+<div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+<ul>
 <li><a class="reference internal" href="#">Pluggable Authentication</a><ul>
 <li><a class="reference internal" href="#fiftyone-authentication-modes">FiftyOne Authentication Modes</a><ul>
 <li><a class="reference internal" href="#legacy-mode">Legacy Mode</a></li>
@@ -1019,214 +827,36 @@ hook.</p>
 </ul>
 </li>
 </ul>
-
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
-
-  
-
-
-  
-
-     
-       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-         <script src="../_static/jquery.js"></script>
-         <script src="../_static/underscore.js"></script>
-         <script src="../_static/doctools.js"></script>
-         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
-         <script src="../_static/js/voxel51-website.js"></script>
-         <script src="../_static/js/custom.js"></script>
-     
-
-  
-
-  <script type="text/javascript" src="../_static/js/vendor/popper.min.js"></script>
-  <script type="text/javascript" src="../_static/js/vendor/bootstrap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-  <script type="text/javascript">
+</div>
+</div>
+</div>
+</section>
+</div>
+<script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js" type="text/javascript"></script>
+<script src="../_static/jquery.js"></script>
+<script src="../_static/underscore.js"></script>
+<script src="../_static/doctools.js"></script>
+<script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+<script src="../_static/js/voxel51-website.js"></script>
+<script src="../_static/js/custom.js"></script>
+<script src="../_static/js/vendor/popper.min.js" type="text/javascript"></script>
+<script src="../_static/js/vendor/bootstrap.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+<script src="../_static/js/theme.js" type="text/javascript"></script>
+<script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
-
-  <!-- Begin Footer -->
-
-
-  <div class="container-fluid docs-tutorials-resources" id="docs-tutorials-resources">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4 text-center">
-          <h2>Docs</h2>
-          <p>Access comprehensive developer documentation for PyTorch</p>
-          <a class="with-right-arrow" href="https://pytorch.org/docs/stable/index.html">View Docs</a>
-        </div>
-
-        <div class="col-md-4 text-center">
-          <h2>Tutorials</h2>
-          <p>Get in-depth tutorials for beginners and advanced developers</p>
-          <a class="with-right-arrow" href="https://pytorch.org/tutorials">View Tutorials</a>
-        </div>
-
-        <div class="col-md-4 text-center">
-          <h2>Resources</h2>
-          <p>Find development resources and get your questions answered</p>
-          <a class="with-right-arrow" href="https://pytorch.org/resources">View Resources</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <footer class="site-footer">
-    <div class="container footer-container">
-      <div class="footer-logo-wrapper">
-        <a href="https://pytorch.org/" class="footer-logo"></a>
-      </div>
-
-      <div class="footer-links-wrapper">
-        <div class="footer-links-col">
-          <ul>
-            <li class="list-title"><a href="https://pytorch.org/">PyTorch</a></li>
-            <li><a href="https://pytorch.org/get-started">Get Started</a></li>
-            <li><a href="https://pytorch.org/features">Features</a></li>
-            <li><a href="https://pytorch.org/ecosystem">Ecosystem</a></li>
-            <li><a href="https://pytorch.org/blog/">Blog</a></li>
-            <li><a href="https://github.com/pytorch/pytorch/blob/master/CONTRIBUTING.md">Contributing</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-links-col">
-          <ul>
-            <li class="list-title"><a href="https://pytorch.org/resources">Resources</a></li>
-            <li><a href="https://pytorch.org/tutorials">Tutorials</a></li>
-            <li><a href="https://pytorch.org/docs/stable/index.html">Docs</a></li>
-            <li><a href="https://discuss.pytorch.org" target="_blank">Discuss</a></li>
-            <li><a href="https://github.com/pytorch/pytorch/issues" target="_blank">Github Issues</a></li>
-            <li><a href="https://pytorch.org/assets/brand-guidelines/PyTorch-Brand-Guidelines.pdf" target="_blank">Brand Guidelines</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-links-col follow-us-col">
-          <ul>
-            <li class="list-title">Stay Connected</li>
-            <li>
-              <div id="mc_embed_signup">
-                <form
-                  action="https://twitter.us14.list-manage.com/subscribe/post?u=75419c71fe0a935e53dfa4a3f&id=91d0dccd39"
-                  method="post"
-                  id="mc-embedded-subscribe-form"
-                  name="mc-embedded-subscribe-form"
-                  class="email-subscribe-form validate"
-                  target="_blank"
-                  novalidate>
-                  <div id="mc_embed_signup_scroll" class="email-subscribe-form-fields-wrapper">
-                    <div class="mc-field-group">
-                      <label for="mce-EMAIL" style="display:none;">Email Address</label>
-                      <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="Email Address">
-                    </div>
-
-                    <div id="mce-responses" class="clear">
-                      <div class="response" id="mce-error-response" style="display:none"></div>
-                      <div class="response" id="mce-success-response" style="display:none"></div>
-                    </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-
-                    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_75419c71fe0a935e53dfa4a3f_91d0dccd39" tabindex="-1" value=""></div>
-
-                    <div class="clear">
-                      <input type="submit" value="" name="subscribe" id="mc-embedded-subscribe" class="button email-subscribe-button">
-                    </div>
-                  </div>
-                </form>
-              </div>
-
-            </li>
-          </ul>
-
-          <div class="footer-social-icons">
-            <a href="https://www.facebook.com/pytorch" target="_blank" class="facebook"></a>
-            <a href="https://twitter.com/pytorch" target="_blank" class="twitter"></a>
-            <a href="https://www.youtube.com/pytorch" target="_blank" class="youtube"></a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
+  </script>
+<!-- Begin Footer -->
 
 
-  
+<!-- End Footer -->
+<!-- Begin Mobile Menu -->
 
-  <!-- End Footer -->
-
-  <!-- Begin Mobile Menu -->
-
-
-  <div class="mobile-main-menu">
-    <div class="container-fluid">
-      <div class="container">
-        <div class="mobile-main-menu-header-container">
-          <a class="header-logo" href="https://pytorch.org/" aria-label="PyTorch"></a>
-          <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
-        </div>
-      </div>
-    </div>
-
-    <div class="mobile-main-menu-links-container">
-      <div class="main-menu">
-        <ul>
-          <li>
-            <a href="https://pytorch.org/get-started">Get Started</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/features">Features</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/ecosystem">Ecosystem</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/mobile">Mobile</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/hub">PyTorch Hub</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/blog/">Blog</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/tutorials">Tutorials</a>
-          </li>
-
-          <li class="active">
-            <a href="https://pytorch.org/docs/stable/index.html">Docs</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/resources">Resources</a>
-          </li>
-
-          <li>
-            <a href="https://github.com/pytorch/pytorch">Github</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-
-  <!-- End Mobile Menu -->
-
-  <script type="text/javascript" src="../_static/js/vendor/anchor.min.js"></script>
-
-  <script type="text/javascript">
+<!-- End Mobile Menu -->
+<script src="../_static/js/vendor/anchor.min.js" type="text/javascript"></script>
+<script type="text/javascript">
     $(document).ready(function() {
       mobileMenu.bind();
       mobileTOC.bind();

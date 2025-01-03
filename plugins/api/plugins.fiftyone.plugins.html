@@ -1,183 +1,46 @@
 
-
-
 <!DOCTYPE html>
+
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>@fiftyone/plugins &mdash; FiftyOne 1.3.0 documentation</title>
-  
-
-  
-  
-    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
-  
-  
-  
-
-  
-
-  
-  
-    
-
-  
-
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <!-- <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" /> -->
-  <link rel="stylesheet" href="../../_static/css/voxel51-website.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
-    <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="@fiftyone/operators" href="plugins.fiftyone.operators.html" />
-    <link rel="prev" title="@fiftyone/state" href="plugins.fiftyone.state.html" />
-<meta property="og:image" content="https://voxel51.com/wp-content/uploads/2024/03/3.24_webpages_Home_AV.png" />
-
-<link
-  href="https://fonts.googleapis.com/css?family=Palanquin:400,600,700,800"
-  rel="stylesheet"
-/>
-<link
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
-  rel="stylesheet"
-/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>@fiftyone/plugins — FiftyOne 1.3.0 documentation</title>
+<link href="../../_static/favicon.ico" rel="shortcut icon"/>
+<link href="../../_static/css/theme.css" rel="stylesheet" type="text/css"/>
+<!-- <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" /> -->
+<link href="../../_static/css/voxel51-website.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/css/custom.css" rel="stylesheet" type="text/css"/>
+<link href="../../genindex.html" rel="index" title="Index"/>
+<link href="../../search.html" rel="search" title="Search"/>
+<link href="plugins.fiftyone.operators.html" rel="next" title="@fiftyone/operators"/>
+<link href="plugins.fiftyone.state.html" rel="prev" title="@fiftyone/state"/>
+<meta content="https://voxel51.com/wp-content/uploads/2024/03/3.24_webpages_Home_AV.png" property="og:image">
+<link href="https://fonts.googleapis.com/css?family=Palanquin:400,600,700,800" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet"/>
 <script src="https://tag.clearbitscripts.com/v1/pk_b9ed71c8234edd4f77326bcbfab5a4ca/tags.js"></script>
-
-
-  
-  <script src="../../_static/js/modernizr.min.js"></script>
-
-  
-</head>
-
-
-<div class="container-fluid header-holder tutorials-header" id="header-holder">
-  <div class="container">
-    <div class="header-container">
-      <a class="header-logo" href="https://pytorch.org/" aria-label="PyTorch"></a>
-
-      <div class="main-menu">
-        <ul>
-          <li>
-            <a href="https://pytorch.org/get-started">Get Started</a>
-          </li>
-
-          <li>
-            <div class="ecosystem-dropdown">
-              <a id="dropdownMenuButton" data-toggle="ecosystem-dropdown">
-                Ecosystem
-              </a>
-              <div class="ecosystem-dropdown-menu">
-                <a class="nav-dropdown-item" href="https://pytorch.org/hub"">
-                  <span class=dropdown-title>Models (Beta)</span>
-                  <p>Discover, publish, and reuse pre-trained models</p>
-                </a>
-                <a class="nav-dropdown-item" href="https://pytorch.org/ecosystem">
-                  <span class=dropdown-title>Tools & Libraries</span>
-                  <p>Explore the ecosystem of tools and libraries</p>
-                </a>
-              </div>
-            </div>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/mobile">Mobile</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/blog/">Blog</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/tutorials">Tutorials</a>
-          </li>
-
-          <li class="active">
-            <a href="https://pytorch.org/docs/stable/index.html">Docs</a>
-          </li>
-
-          <li>
-            <div class="resources-dropdown">
-              <a id="resourcesDropdownButton" data-toggle="resources-dropdown">
-                Resources
-              </a>
-              <div class="resources-dropdown-menu">
-                <a class="nav-dropdown-item" href="https://pytorch.org/resources"">
-                  <span class=dropdown-title>Developer Resources</span>
-                  <p>Find resources and get questions answered</p>
-                </a>
-                <a class="nav-dropdown-item" href="https://pytorch.org/features">
-                  <span class=dropdown-title>About</span>
-                  <p>Learn about PyTorch’s features and capabilities</p>
-                </a>
-              </div>
-            </div>
-          </li>
-
-          <li>
-            <a href="https://github.com/pytorch/pytorch">Github</a>
-          </li>
-        </ul>
-      </div>
-
-      <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
-    </div>
-
-  </div>
-</div>
-
-
+<script src="../../_static/js/modernizr.min.js"></script>
+</meta></head>
 
 <body class="pytorch-body">
-
-   
-
-    
-
-    <div class="table-of-contents-link-wrapper">
-      <span>Table of Contents</span>
-      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
-    </div>
-
-    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
-      <div class="pytorch-side-scroll">
-        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          <div class="pytorch-left-menu-search">
-            
-
-            
-              
-              
-            
-
-            
-
-
-  
-
-
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search Docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
+<div class="table-of-contents-link-wrapper">
+<span>Table of Contents</span>
+<a class="toggle-table-of-contents" data-behavior="toggle-table-of-contents" href="#"></a>
 </div>
-
-            
-          </div>
-
-          
-            
-            
-              
-            
-            
-              <ul class="current">
+<nav class="pytorch-left-menu" data-toggle="wy-nav-shift" id="pytorch-left-menu">
+<div class="pytorch-side-scroll">
+<div aria-label="main navigation" class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation">
+<div class="pytorch-left-menu-search">
+<div role="search">
+<form action="../../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input name="q" placeholder="Search Docs" type="text"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../index.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../teams/index.html">FiftyOne Teams 🚀</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../getting_started/install.html">Installation</a></li>
@@ -197,90 +60,49 @@
 <li class="toctree-l1"><a class="reference internal" href="../../deprecation.html">Deprecation Notices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../faq/index.html">FAQ</a></li>
 </ul>
-
-            
-          
-        </div>
-      </div>
-    </nav>
-
-    <div class="pytorch-container">
-      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
-        <div class="pytorch-breadcrumbs-wrapper">
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
-  <ul class="pytorch-breadcrumbs">
-    
-      <li>
-        <a href="../../index.html">
+</div>
+</div>
+</nav>
+<div class="pytorch-container">
+<div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+<div class="pytorch-breadcrumbs-wrapper">
+<div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="pytorch-breadcrumbs">
+<li>
+<a href="../../index.html">
           
             Docs
           
         </a> &gt;
       </li>
-
-        
-          <li><a href="../index.html">Plugins Overview</a> &gt;</li>
-        
-          <li><a href="../ts-api.html">TypeScript API Reference</a> &gt;</li>
-        
-      <li>&#64;fiftyone/plugins</li>
-    
-    
-      <li class="pytorch-breadcrumbs-aside">
-        
-            
-        
-      </li>
-    
-  </ul>
-
-  
+<li><a href="../index.html">Plugins Overview</a> &gt;</li>
+<li><a href="../ts-api.html">TypeScript API Reference</a> &gt;</li>
+<li>@fiftyone/plugins</li>
+<li class="pytorch-breadcrumbs-aside">
+</li>
+</ul>
 </div>
-        </div>
-
-        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+</div>
+<div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
           Contents
         </div>
-      </div>
-
-      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
-        <div class="pytorch-content-left">
-
-        
-          
-          <div class="rst-content style-external-links">
-          
-            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
-             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
-              
-  <div class="section" id="module-fiftyone-plugins">
-<span id="module-@fiftyone/plugins"></span><span id="fiftyone-plugins"></span><h1>&#64;fiftyone/plugins<a class="headerlink" href="#module-fiftyone-plugins" title="Permalink to this headline">¶</a></h1>
+</div>
+<section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+<div class="pytorch-content-left">
+<div class="rst-content style-external-links">
+<div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+<div class="section" id="module-fiftyone-plugins">
+<span id="module-@fiftyone/plugins"></span><span id="fiftyone-plugins"></span><h1>@fiftyone/plugins<a class="headerlink" href="#module-fiftyone-plugins" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="state">
 <h2>State<a class="headerlink" href="#state" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="pluginsloaderatom">
 <span id="fos-fiftyone-fiftyone-fiftyone-plugins-pluginsloaderatom"></span><h3>pluginsLoaderAtom<a class="headerlink" href="#pluginsloaderatom" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -306,7 +128,7 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-plugins-useactiveplugins"></span><h3>useActivePlugins<a class="headerlink" href="#useactiveplugins" title="Permalink to this headline">¶</a></h3>
 <dl class="js function">
 <dt id="fiftyone-plugins.useActivePlugins">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/plugins.</span></code><code class="sig-name descname"><span class="pre">useActivePlugins</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">type</span></em>, <em class="sig-param"><span class="pre">ctx</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-plugins.useActivePlugins" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/plugins.</span></code><code class="sig-name descname"><span class="pre">useActivePlugins</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">type</span></em>, <em class="sig-param"><span class="pre">ctx</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-plugins.useActivePlugins" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Arguments</dt>
 <dd class="field-odd"><ul class="simple">
@@ -319,7 +141,6 @@
 </dd>
 </dl>
 </dd></dl>
-
 <p>A react hook that returns a list of active plugins.</p>
 <p><strong>Returns</strong></p>
 <p>A list of active plugins</p>
@@ -328,7 +149,7 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-plugins-useplugin"></span><h3>usePlugin<a class="headerlink" href="#useplugin" title="Permalink to this headline">¶</a></h3>
 <dl class="js function">
 <dt id="fiftyone-plugins.usePlugin">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/plugins.</span></code><code class="sig-name descname"><span class="pre">usePlugin</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">type</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-plugins.usePlugin" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/plugins.</span></code><code class="sig-name descname"><span class="pre">usePlugin</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">type</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-plugins.usePlugin" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Arguments</dt>
 <dd class="field-odd"><ul class="simple">
@@ -340,13 +161,12 @@
 </dd>
 </dl>
 </dd></dl>
-
 </div>
 <div class="section" id="useplugincomponent">
 <span id="fos-fiftyone-fiftyone-fiftyone-plugins-useplugincomponent"></span><h3>usePluginComponent<a class="headerlink" href="#useplugincomponent" title="Permalink to this headline">¶</a></h3>
 <dl class="js function">
 <dt id="fiftyone-plugins.usePluginComponent">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/plugins.</span></code><code class="sig-name descname"><span class="pre">usePluginComponent</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">name</span></em>, <em class="sig-param"><span class="pre">ctx</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-plugins.usePluginComponent" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/plugins.</span></code><code class="sig-name descname"><span class="pre">usePluginComponent</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">name</span></em>, <em class="sig-param"><span class="pre">ctx</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-plugins.usePluginComponent" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Arguments</dt>
 <dd class="field-odd"><ul class="simple">
@@ -359,7 +179,6 @@
 </dd>
 </dl>
 </dd></dl>
-
 <p>A react hook that returns a component plugin by name if exist.</p>
 <p><strong>Returns</strong></p>
 <p>The plugin component or</p>
@@ -371,7 +190,7 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-plugins-useplugindefinition"></span><h3>usePluginDefinition<a class="headerlink" href="#useplugindefinition" title="Permalink to this headline">¶</a></h3>
 <dl class="js function">
 <dt id="fiftyone-plugins.usePluginDefinition">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/plugins.</span></code><code class="sig-name descname"><span class="pre">usePluginDefinition</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-plugins.usePluginDefinition" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/plugins.</span></code><code class="sig-name descname"><span class="pre">usePluginDefinition</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-plugins.usePluginDefinition" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Arguments</dt>
 <dd class="field-odd"><ul class="simple">
@@ -383,7 +202,6 @@
 </dd>
 </dl>
 </dd></dl>
-
 <p>Get a plugin definition by name.</p>
 <p><strong>Returns</strong></p>
 <p>The plugin definition</p>
@@ -392,7 +210,7 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-plugins-usepluginsettings"></span><h3>usePluginSettings<a class="headerlink" href="#usepluginsettings" title="Permalink to this headline">¶</a></h3>
 <dl class="js function">
 <dt id="fiftyone-plugins.usePluginSettings">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/plugins.</span></code><code class="sig-name descname"><span class="pre">usePluginSettings</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">pluginName</span></em>, <em class="sig-param"><span class="pre">defaults</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-plugins.usePluginSettings" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/plugins.</span></code><code class="sig-name descname"><span class="pre">usePluginSettings</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">pluginName</span></em>, <em class="sig-param"><span class="pre">defaults</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-plugins.usePluginSettings" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Arguments</dt>
 <dd class="field-odd"><ul class="simple">
@@ -405,20 +223,18 @@
 </dd>
 </dl>
 </dd></dl>
-
 </div>
 <div class="section" id="useplugins">
 <span id="fos-fiftyone-fiftyone-fiftyone-plugins-useplugins"></span><h3>usePlugins<a class="headerlink" href="#useplugins" title="Permalink to this headline">¶</a></h3>
 <dl class="js function">
 <dt id="fiftyone-plugins.usePlugins">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/plugins.</span></code><code class="sig-name descname"><span class="pre">usePlugins</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-plugins.usePlugins" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/plugins.</span></code><code class="sig-name descname"><span class="pre">usePlugins</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-plugins.usePlugins" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">Object</span></code></p>
 </dd>
 </dl>
 </dd></dl>
-
 <p>A react hook for loading the plugin system.</p>
 </div>
 </div>
@@ -428,7 +244,7 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-plugins-getabsolutepluginpath"></span><h3>getAbsolutePluginPath<a class="headerlink" href="#getabsolutepluginpath" title="Permalink to this headline">¶</a></h3>
 <dl class="js function">
 <dt id="fiftyone-plugins.getAbsolutePluginPath">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/plugins.</span></code><code class="sig-name descname"><span class="pre">getAbsolutePluginPath</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">name</span></em>, <em class="sig-param"><span class="pre">path</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-plugins.getAbsolutePluginPath" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/plugins.</span></code><code class="sig-name descname"><span class="pre">getAbsolutePluginPath</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">name</span></em>, <em class="sig-param"><span class="pre">path</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-plugins.getAbsolutePluginPath" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Arguments</dt>
 <dd class="field-odd"><ul class="simple">
@@ -441,7 +257,6 @@
 </dd>
 </dl>
 </dd></dl>
-
 <p>Get the absolute path to a file within a plugin directory.</p>
 <p><strong>Returns</strong></p>
 <p>An absolute path to the file</p>
@@ -450,7 +265,7 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-plugins-getbytype"></span><h3>getByType<a class="headerlink" href="#getbytype" title="Permalink to this headline">¶</a></h3>
 <dl class="js function">
 <dt id="fiftyone-plugins.getByType">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/plugins.</span></code><code class="sig-name descname"><span class="pre">getByType</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">type</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-plugins.getByType" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/plugins.</span></code><code class="sig-name descname"><span class="pre">getByType</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">type</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-plugins.getByType" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Arguments</dt>
 <dd class="field-odd"><ul class="simple">
@@ -462,7 +277,6 @@
 </dd>
 </dl>
 </dd></dl>
-
 <p>Get a list of plugins match the given <cite>type</cite>.</p>
 <p><strong>Returns</strong></p>
 <p>A list of plugins</p>
@@ -471,7 +285,7 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-plugins-getcategoryforpanel"></span><h3>getCategoryForPanel<a class="headerlink" href="#getcategoryforpanel" title="Permalink to this headline">¶</a></h3>
 <dl class="js function">
 <dt id="fiftyone-plugins.getCategoryForPanel">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/plugins.</span></code><code class="sig-name descname"><span class="pre">getCategoryForPanel</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">panel</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-plugins.getCategoryForPanel" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/plugins.</span></code><code class="sig-name descname"><span class="pre">getCategoryForPanel</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">panel</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-plugins.getCategoryForPanel" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Arguments</dt>
 <dd class="field-odd"><ul class="simple">
@@ -483,13 +297,12 @@
 </dd>
 </dl>
 </dd></dl>
-
 </div>
 <div class="section" id="getcategorylabel">
 <span id="fos-fiftyone-fiftyone-fiftyone-plugins-getcategorylabel"></span><h3>getCategoryLabel<a class="headerlink" href="#getcategorylabel" title="Permalink to this headline">¶</a></h3>
 <dl class="js function">
 <dt id="fiftyone-plugins.getCategoryLabel">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/plugins.</span></code><code class="sig-name descname"><span class="pre">getCategoryLabel</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">category</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-plugins.getCategoryLabel" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/plugins.</span></code><code class="sig-name descname"><span class="pre">getCategoryLabel</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">category</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-plugins.getCategoryLabel" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Arguments</dt>
 <dd class="field-odd"><ul class="simple">
@@ -501,13 +314,12 @@
 </dd>
 </dl>
 </dd></dl>
-
 </div>
 <div class="section" id="getplugindefinition">
 <span id="fos-fiftyone-fiftyone-fiftyone-plugins-getplugindefinition"></span><h3>getPluginDefinition<a class="headerlink" href="#getplugindefinition" title="Permalink to this headline">¶</a></h3>
 <dl class="js function">
 <dt id="fiftyone-plugins.getPluginDefinition">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/plugins.</span></code><code class="sig-name descname"><span class="pre">getPluginDefinition</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-plugins.getPluginDefinition" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/plugins.</span></code><code class="sig-name descname"><span class="pre">getPluginDefinition</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-plugins.getPluginDefinition" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Arguments</dt>
 <dd class="field-odd"><ul class="simple">
@@ -519,7 +331,6 @@
 </dd>
 </dl>
 </dd></dl>
-
 <p>Get a plugin definition by name.</p>
 <p><strong>Returns</strong></p>
 <p>The plugin definition</p>
@@ -528,20 +339,19 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-plugins-loadplugins"></span><h3>loadPlugins<a class="headerlink" href="#loadplugins" title="Permalink to this headline">¶</a></h3>
 <dl class="js function">
 <dt id="fiftyone-plugins.loadPlugins">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/plugins.</span></code><code class="sig-name descname"><span class="pre">loadPlugins</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-plugins.loadPlugins" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/plugins.</span></code><code class="sig-name descname"><span class="pre">loadPlugins</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-plugins.loadPlugins" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">Promise</span> <span class="pre">&lt;</span> <span class="pre">void</span> <span class="pre">&gt;</span></code> <code class="docutils literal notranslate"><span class="pre">&lt;</span></code> <code class="docutils literal notranslate"><span class="pre">void</span></code> <code class="docutils literal notranslate"><span class="pre">&gt;</span></code></p>
 </dd>
 </dl>
 </dd></dl>
-
 </div>
 <div class="section" id="registercomponent">
 <span id="fos-fiftyone-fiftyone-fiftyone-plugins-registercomponent"></span><h3>registerComponent<a class="headerlink" href="#registercomponent" title="Permalink to this headline">¶</a></h3>
 <dl class="js function">
 <dt id="fiftyone-plugins.registerComponent">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/plugins.</span></code><code class="sig-name descname"><span class="pre">registerComponent</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">registration</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-plugins.registerComponent" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/plugins.</span></code><code class="sig-name descname"><span class="pre">registerComponent</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">registration</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-plugins.registerComponent" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Arguments</dt>
 <dd class="field-odd"><ul class="simple">
@@ -553,14 +363,13 @@
 </dd>
 </dl>
 </dd></dl>
-
 <p>Adds a plugin to the registry. This is called by the plugin itself.</p>
 </div>
 <div class="section" id="safepluginactivator">
 <span id="fos-fiftyone-fiftyone-fiftyone-plugins-safepluginactivator"></span><h3>safePluginActivator<a class="headerlink" href="#safepluginactivator" title="Permalink to this headline">¶</a></h3>
 <dl class="js function">
 <dt id="fiftyone-plugins.safePluginActivator">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/plugins.</span></code><code class="sig-name descname"><span class="pre">safePluginActivator</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">plugin</span></em>, <em class="sig-param"><span class="pre">ctx</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-plugins.safePluginActivator" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/plugins.</span></code><code class="sig-name descname"><span class="pre">safePluginActivator</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">plugin</span></em>, <em class="sig-param"><span class="pre">ctx</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-plugins.safePluginActivator" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Arguments</dt>
 <dd class="field-odd"><ul class="simple">
@@ -573,14 +382,13 @@
 </dd>
 </dl>
 </dd></dl>
-
 <p>a utility for safely calling plugin defined activator functions</p>
 </div>
 <div class="section" id="subscribetoregistry">
 <span id="fos-fiftyone-fiftyone-fiftyone-plugins-subscribetoregistry"></span><h3>subscribeToRegistry<a class="headerlink" href="#subscribetoregistry" title="Permalink to this headline">¶</a></h3>
 <dl class="js function">
 <dt id="fiftyone-plugins.subscribeToRegistry">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/plugins.</span></code><code class="sig-name descname"><span class="pre">subscribeToRegistry</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">handler</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-plugins.subscribeToRegistry" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/plugins.</span></code><code class="sig-name descname"><span class="pre">subscribeToRegistry</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">handler</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-plugins.subscribeToRegistry" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Arguments</dt>
 <dd class="field-odd"><ul class="simple">
@@ -589,28 +397,26 @@
 </dd>
 </dl>
 </dd></dl>
-
 <p>Subscribe to plugin registry’s “subscribe” and “unsubscribe” event.</p>
 <p><strong>Returns</strong></p>
 <p>A function to unsubscribe</p>
 <blockquote>
 <div><dl class="js function">
 <dt id="id0">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/plugins.</span></code><code class="sig-name descname"><span class="pre">subscribeToRegistry</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">handler</span></em><span class="sig-paren">)</span><a class="headerlink" href="#id0" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/plugins.</span></code><code class="sig-name descname"><span class="pre">subscribeToRegistry</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">handler</span></em><span class="sig-paren">)</span><a class="headerlink" href="#id0" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">void</span></code></p>
 </dd>
 </dl>
 </dd></dl>
-
 </div></blockquote>
 </div>
 <div class="section" id="unregistercomponent">
 <span id="fos-fiftyone-fiftyone-fiftyone-plugins-unregistercomponent"></span><h3>unregisterComponent<a class="headerlink" href="#unregistercomponent" title="Permalink to this headline">¶</a></h3>
 <dl class="js function">
 <dt id="fiftyone-plugins.unregisterComponent">
-<code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/plugins.</span></code><code class="sig-name descname"><span class="pre">unregisterComponent</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-plugins.unregisterComponent" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">@fiftyone/plugins.</span></code><code class="sig-name descname"><span class="pre">unregisterComponent</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-plugins.unregisterComponent" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Arguments</dt>
 <dd class="field-odd"><ul class="simple">
@@ -622,7 +428,6 @@
 </dd>
 </dl>
 </dd></dl>
-
 <p>Remove a plugin from the registry.</p>
 </div>
 </div>
@@ -632,17 +437,16 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-plugins-plugincomponentregistration"></span><h3>PluginComponentRegistration<a class="headerlink" href="#plugincomponentregistration" title="Permalink to this headline">¶</a></h3>
 <dl class="js class">
 <dt id="fiftyone-plugins.PluginComponentRegistration">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">&#64;fiftyone/plugins.</span></code><code class="sig-name descname"><span class="pre">PluginComponentRegistration</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-plugins.PluginComponentRegistration" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">@fiftyone/plugins.</span></code><code class="sig-name descname"><span class="pre">PluginComponentRegistration</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fiftyone-plugins.PluginComponentRegistration" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
 <p>A plugin registration.</p>
 <div class="section" id="properties">
 <h4>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h4>
 <table class="docutils align-left">
 <colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -652,7 +456,7 @@
 </thead>
 <tbody>
 <tr class="row-even"><td><p>Icon</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ComponentType</span> <span class="pre">&lt;</span>&#160; <span class="pre">&gt;</span></code> <code class="docutils literal notranslate"><span class="pre">&lt;</span></code> <code class="docutils literal notranslate"><span class="pre">Any</span></code> <code class="docutils literal notranslate"><span class="pre">&gt;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ComponentType</span> <span class="pre">&lt;</span>  <span class="pre">&gt;</span></code> <code class="docutils literal notranslate"><span class="pre">&lt;</span></code> <code class="docutils literal notranslate"><span class="pre">Any</span></code> <code class="docutils literal notranslate"><span class="pre">&gt;</span></code></p></td>
 <td><p>Primary icon for the plugin, also used in panel title bar</p></td>
 </tr>
 <tr class="row-odd"><td><p>activator</p></td>
@@ -690,8 +494,8 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-plugins-categories"></span><h3>Categories<a class="headerlink" href="#categories" title="Permalink to this headline">¶</a></h3>
 <table class="colwidths-given docutils align-left">
 <colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
+<col style="width: 50%"/>
+<col style="width: 50%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -718,13 +522,13 @@
 <span id="fos-fiftyone-fiftyone-fiftyone-plugins-plugincomponenttype"></span><h3>PluginComponentType<a class="headerlink" href="#plugincomponenttype" title="Permalink to this headline">¶</a></h3>
 <p>The type of plugin component.</p>
 <ul class="simple">
-<li><p><cite>Panel</cite> - A panel that can be added to <cite>&#64;fiftyone/spaces</cite></p></li>
+<li><p><cite>Panel</cite> - A panel that can be added to <cite>@fiftyone/spaces</cite></p></li>
 <li><p><cite>Plot</cite> - <strong>deprecated</strong> - A plot that can be added as a panel</p></li>
 </ul>
 <table class="colwidths-given docutils align-left">
 <colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
+<col style="width: 50%"/>
+<col style="width: 50%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
@@ -746,31 +550,16 @@
 </div>
 </div>
 </div>
+</article>
+</div>
 
-
-             </article>
-             
-            </div>
-            <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="plugins.fiftyone.operators.html" class="btn btn-neutral float-right" title="@fiftyone/operators" accesskey="n" rel="next">Next <img src="../../_static/images/chevron-right-orange.svg" class="next-page"></a>
-      
-      
-        <a href="plugins.fiftyone.state.html" class="btn btn-neutral" title="@fiftyone/state" accesskey="p" rel="prev"><img src="../../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
-      
-    </div>
-  
-</footer>
-          </div>
-        </div>
-
-        <div class="pytorch-content-right" id="pytorch-content-right">
-          <div class="pytorch-right-menu" id="pytorch-right-menu">
-            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
-              <ul>
-<li><a class="reference internal" href="#">&#64;fiftyone/plugins</a><ul>
+</div>
+</div>
+<div class="pytorch-content-right" id="pytorch-content-right">
+<div class="pytorch-right-menu" id="pytorch-right-menu">
+<div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+<ul>
+<li><a class="reference internal" href="#">@fiftyone/plugins</a><ul>
 <li><a class="reference internal" href="#state">State</a><ul>
 <li><a class="reference internal" href="#pluginsloaderatom">pluginsLoaderAtom</a></li>
 </ul>
@@ -812,214 +601,36 @@
 </ul>
 </li>
 </ul>
-
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
-
-  
-
-
-  
-
-     
-       <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-         <script src="../../_static/jquery.js"></script>
-         <script src="../../_static/underscore.js"></script>
-         <script src="../../_static/doctools.js"></script>
-         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
-         <script src="../../_static/js/voxel51-website.js"></script>
-         <script src="../../_static/js/custom.js"></script>
-     
-
-  
-
-  <script type="text/javascript" src="../../_static/js/vendor/popper.min.js"></script>
-  <script type="text/javascript" src="../../_static/js/vendor/bootstrap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
-  <script type="text/javascript" src="../../_static/js/theme.js"></script>
-
-  <script type="text/javascript">
+</div>
+</div>
+</div>
+</section>
+</div>
+<script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js" type="text/javascript"></script>
+<script src="../../_static/jquery.js"></script>
+<script src="../../_static/underscore.js"></script>
+<script src="../../_static/doctools.js"></script>
+<script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+<script src="../../_static/js/voxel51-website.js"></script>
+<script src="../../_static/js/custom.js"></script>
+<script src="../../_static/js/vendor/popper.min.js" type="text/javascript"></script>
+<script src="../../_static/js/vendor/bootstrap.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+<script src="../../_static/js/theme.js" type="text/javascript"></script>
+<script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
-
-  <!-- Begin Footer -->
-
-
-  <div class="container-fluid docs-tutorials-resources" id="docs-tutorials-resources">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4 text-center">
-          <h2>Docs</h2>
-          <p>Access comprehensive developer documentation for PyTorch</p>
-          <a class="with-right-arrow" href="https://pytorch.org/docs/stable/index.html">View Docs</a>
-        </div>
-
-        <div class="col-md-4 text-center">
-          <h2>Tutorials</h2>
-          <p>Get in-depth tutorials for beginners and advanced developers</p>
-          <a class="with-right-arrow" href="https://pytorch.org/tutorials">View Tutorials</a>
-        </div>
-
-        <div class="col-md-4 text-center">
-          <h2>Resources</h2>
-          <p>Find development resources and get your questions answered</p>
-          <a class="with-right-arrow" href="https://pytorch.org/resources">View Resources</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <footer class="site-footer">
-    <div class="container footer-container">
-      <div class="footer-logo-wrapper">
-        <a href="https://pytorch.org/" class="footer-logo"></a>
-      </div>
-
-      <div class="footer-links-wrapper">
-        <div class="footer-links-col">
-          <ul>
-            <li class="list-title"><a href="https://pytorch.org/">PyTorch</a></li>
-            <li><a href="https://pytorch.org/get-started">Get Started</a></li>
-            <li><a href="https://pytorch.org/features">Features</a></li>
-            <li><a href="https://pytorch.org/ecosystem">Ecosystem</a></li>
-            <li><a href="https://pytorch.org/blog/">Blog</a></li>
-            <li><a href="https://github.com/pytorch/pytorch/blob/master/CONTRIBUTING.md">Contributing</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-links-col">
-          <ul>
-            <li class="list-title"><a href="https://pytorch.org/resources">Resources</a></li>
-            <li><a href="https://pytorch.org/tutorials">Tutorials</a></li>
-            <li><a href="https://pytorch.org/docs/stable/index.html">Docs</a></li>
-            <li><a href="https://discuss.pytorch.org" target="_blank">Discuss</a></li>
-            <li><a href="https://github.com/pytorch/pytorch/issues" target="_blank">Github Issues</a></li>
-            <li><a href="https://pytorch.org/assets/brand-guidelines/PyTorch-Brand-Guidelines.pdf" target="_blank">Brand Guidelines</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-links-col follow-us-col">
-          <ul>
-            <li class="list-title">Stay Connected</li>
-            <li>
-              <div id="mc_embed_signup">
-                <form
-                  action="https://twitter.us14.list-manage.com/subscribe/post?u=75419c71fe0a935e53dfa4a3f&id=91d0dccd39"
-                  method="post"
-                  id="mc-embedded-subscribe-form"
-                  name="mc-embedded-subscribe-form"
-                  class="email-subscribe-form validate"
-                  target="_blank"
-                  novalidate>
-                  <div id="mc_embed_signup_scroll" class="email-subscribe-form-fields-wrapper">
-                    <div class="mc-field-group">
-                      <label for="mce-EMAIL" style="display:none;">Email Address</label>
-                      <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="Email Address">
-                    </div>
-
-                    <div id="mce-responses" class="clear">
-                      <div class="response" id="mce-error-response" style="display:none"></div>
-                      <div class="response" id="mce-success-response" style="display:none"></div>
-                    </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-
-                    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_75419c71fe0a935e53dfa4a3f_91d0dccd39" tabindex="-1" value=""></div>
-
-                    <div class="clear">
-                      <input type="submit" value="" name="subscribe" id="mc-embedded-subscribe" class="button email-subscribe-button">
-                    </div>
-                  </div>
-                </form>
-              </div>
-
-            </li>
-          </ul>
-
-          <div class="footer-social-icons">
-            <a href="https://www.facebook.com/pytorch" target="_blank" class="facebook"></a>
-            <a href="https://twitter.com/pytorch" target="_blank" class="twitter"></a>
-            <a href="https://www.youtube.com/pytorch" target="_blank" class="youtube"></a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
+  </script>
+<!-- Begin Footer -->
 
 
-  
+<!-- End Footer -->
+<!-- Begin Mobile Menu -->
 
-  <!-- End Footer -->
-
-  <!-- Begin Mobile Menu -->
-
-
-  <div class="mobile-main-menu">
-    <div class="container-fluid">
-      <div class="container">
-        <div class="mobile-main-menu-header-container">
-          <a class="header-logo" href="https://pytorch.org/" aria-label="PyTorch"></a>
-          <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
-        </div>
-      </div>
-    </div>
-
-    <div class="mobile-main-menu-links-container">
-      <div class="main-menu">
-        <ul>
-          <li>
-            <a href="https://pytorch.org/get-started">Get Started</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/features">Features</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/ecosystem">Ecosystem</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/mobile">Mobile</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/hub">PyTorch Hub</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/blog/">Blog</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/tutorials">Tutorials</a>
-          </li>
-
-          <li class="active">
-            <a href="https://pytorch.org/docs/stable/index.html">Docs</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/resources">Resources</a>
-          </li>
-
-          <li>
-            <a href="https://github.com/pytorch/pytorch">Github</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-
-  <!-- End Mobile Menu -->
-
-  <script type="text/javascript" src="../../_static/js/vendor/anchor.min.js"></script>
-
-  <script type="text/javascript">
+<!-- End Mobile Menu -->
+<script src="../../_static/js/vendor/anchor.min.js" type="text/javascript"></script>
+<script type="text/javascript">
     $(document).ready(function() {
       mobileMenu.bind();
       mobileTOC.bind();

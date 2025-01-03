@@ -1,183 +1,46 @@
 
-
-
 <!DOCTYPE html>
+
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>Dataset Views &mdash; FiftyOne 1.3.0 documentation</title>
-  
-
-  
-  
-    <link rel="shortcut icon" href="../_static/favicon.ico"/>
-  
-  
-  
-
-  
-
-  
-  
-    
-
-  
-
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
-  <link rel="stylesheet" href="../_static/css/voxel51-website.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Using the FiftyOne App" href="app.html" />
-    <link rel="prev" title="Using FiftyOne Datasets" href="using_datasets.html" />
-<meta property="og:image" content="https://voxel51.com/wp-content/uploads/2024/03/3.24_webpages_Home_AV.png" />
-
-<link
-  href="https://fonts.googleapis.com/css?family=Palanquin:400,600,700,800"
-  rel="stylesheet"
-/>
-<link
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
-  rel="stylesheet"
-/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dataset Views — FiftyOne 1.3.0 documentation</title>
+<link href="../_static/favicon.ico" rel="shortcut icon"/>
+<link href="../_static/css/theme.css" rel="stylesheet" type="text/css"/>
+<!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+<link href="../_static/css/voxel51-website.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/css/custom.css" rel="stylesheet" type="text/css"/>
+<link href="../genindex.html" rel="index" title="Index"/>
+<link href="../search.html" rel="search" title="Search"/>
+<link href="app.html" rel="next" title="Using the FiftyOne App"/>
+<link href="using_datasets.html" rel="prev" title="Using FiftyOne Datasets"/>
+<meta content="https://voxel51.com/wp-content/uploads/2024/03/3.24_webpages_Home_AV.png" property="og:image">
+<link href="https://fonts.googleapis.com/css?family=Palanquin:400,600,700,800" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet"/>
 <script src="https://tag.clearbitscripts.com/v1/pk_b9ed71c8234edd4f77326bcbfab5a4ca/tags.js"></script>
-
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
-  
-</head>
-
-
-<div class="container-fluid header-holder tutorials-header" id="header-holder">
-  <div class="container">
-    <div class="header-container">
-      <a class="header-logo" href="https://pytorch.org/" aria-label="PyTorch"></a>
-
-      <div class="main-menu">
-        <ul>
-          <li>
-            <a href="https://pytorch.org/get-started">Get Started</a>
-          </li>
-
-          <li>
-            <div class="ecosystem-dropdown">
-              <a id="dropdownMenuButton" data-toggle="ecosystem-dropdown">
-                Ecosystem
-              </a>
-              <div class="ecosystem-dropdown-menu">
-                <a class="nav-dropdown-item" href="https://pytorch.org/hub"">
-                  <span class=dropdown-title>Models (Beta)</span>
-                  <p>Discover, publish, and reuse pre-trained models</p>
-                </a>
-                <a class="nav-dropdown-item" href="https://pytorch.org/ecosystem">
-                  <span class=dropdown-title>Tools & Libraries</span>
-                  <p>Explore the ecosystem of tools and libraries</p>
-                </a>
-              </div>
-            </div>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/mobile">Mobile</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/blog/">Blog</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/tutorials">Tutorials</a>
-          </li>
-
-          <li class="active">
-            <a href="https://pytorch.org/docs/stable/index.html">Docs</a>
-          </li>
-
-          <li>
-            <div class="resources-dropdown">
-              <a id="resourcesDropdownButton" data-toggle="resources-dropdown">
-                Resources
-              </a>
-              <div class="resources-dropdown-menu">
-                <a class="nav-dropdown-item" href="https://pytorch.org/resources"">
-                  <span class=dropdown-title>Developer Resources</span>
-                  <p>Find resources and get questions answered</p>
-                </a>
-                <a class="nav-dropdown-item" href="https://pytorch.org/features">
-                  <span class=dropdown-title>About</span>
-                  <p>Learn about PyTorch’s features and capabilities</p>
-                </a>
-              </div>
-            </div>
-          </li>
-
-          <li>
-            <a href="https://github.com/pytorch/pytorch">Github</a>
-          </li>
-        </ul>
-      </div>
-
-      <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
-    </div>
-
-  </div>
-</div>
-
-
+<script src="../_static/js/modernizr.min.js"></script>
+</meta></head>
 
 <body class="pytorch-body">
-
-   
-
-    
-
-    <div class="table-of-contents-link-wrapper">
-      <span>Table of Contents</span>
-      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
-    </div>
-
-    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
-      <div class="pytorch-side-scroll">
-        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          <div class="pytorch-left-menu-search">
-            
-
-            
-              
-              
-            
-
-            
-
-
-  
-
-
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search Docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
+<div class="table-of-contents-link-wrapper">
+<span>Table of Contents</span>
+<a class="toggle-table-of-contents" data-behavior="toggle-table-of-contents" href="#"></a>
 </div>
-
-            
-          </div>
-
-          
-            
-            
-              
-            
-            
-              <ul class="current">
+<nav class="pytorch-left-menu" data-toggle="wy-nav-shift" id="pytorch-left-menu">
+<div class="pytorch-side-scroll">
+<div aria-label="main navigation" class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation">
+<div class="pytorch-left-menu-search">
+<div role="search">
+<form action="../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input name="q" placeholder="Search Docs" type="text"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../teams/index.html">FiftyOne Teams 🚀</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/install.html">Installation</a></li>
@@ -197,78 +60,38 @@
 <li class="toctree-l1"><a class="reference internal" href="../deprecation.html">Deprecation Notices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a></li>
 </ul>
-
-            
-          
-        </div>
-      </div>
-    </nav>
-
-    <div class="pytorch-container">
-      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
-        <div class="pytorch-breadcrumbs-wrapper">
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
-  <ul class="pytorch-breadcrumbs">
-    
-      <li>
-        <a href="../index.html">
+</div>
+</div>
+</nav>
+<div class="pytorch-container">
+<div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+<div class="pytorch-breadcrumbs-wrapper">
+<div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="pytorch-breadcrumbs">
+<li>
+<a href="../index.html">
           
             Docs
           
         </a> &gt;
       </li>
-
-        
-          <li><a href="index.html">FiftyOne User Guide</a> &gt;</li>
-        
-      <li>Dataset Views</li>
-    
-    
-      <li class="pytorch-breadcrumbs-aside">
-        
-            
-        
-      </li>
-    
-  </ul>
-
-  
+<li><a href="index.html">FiftyOne User Guide</a> &gt;</li>
+<li>Dataset Views</li>
+<li class="pytorch-breadcrumbs-aside">
+</li>
+</ul>
 </div>
-        </div>
-
-        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+</div>
+<div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
           Contents
         </div>
-      </div>
-
-      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
-        <div class="pytorch-content-left">
-
-        
-          
-          <div class="rst-content style-external-links">
-          
-            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
-             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
-              
-  <div class="section" id="dataset-views">
+</div>
+<section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+<div class="pytorch-content-left">
+<div class="rst-content style-external-links">
+<div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+<div class="section" id="dataset-views">
 <span id="using-views"></span><h1>Dataset Views<a class="headerlink" href="#dataset-views" title="Permalink to this headline">¶</a></h1>
 <p>FiftyOne provides methods that allow you to sort, slice, and search your
 <a class="reference internal" href="../api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset" title="fiftyone.core.dataset.Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dataset</span></code></a> using any information that you have added to the <a class="reference internal" href="../api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset" title="fiftyone.core.dataset.Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dataset</span></code></a>.
@@ -290,7 +113,7 @@ operation is performed on a <a class="reference internal" href="../api/fiftyone.
 <a class="reference internal" href="../api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset.view" title="fiftyone.core.dataset.Dataset.view"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Dataset.view()</span></code></a>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"quickstart"</span><span class="p">)</span>
 
 <span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">view</span><span class="p">()</span>
 
@@ -319,7 +142,7 @@ View stages:
 <span class="c1"># 200</span>
 
 <span class="n">view</span><span class="o">.</span><span class="n">media_type</span>
-<span class="c1"># &quot;image&quot;</span>
+<span class="c1"># "image"</span>
 </pre></div>
 </div>
 <p>Like datasets, you access the samples in a view by iterating over it:</p>
@@ -358,19 +181,19 @@ your dataset under a name of your choice:</p>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 <span class="kn">from</span> <span class="nn">fiftyone</span> <span class="kn">import</span> <span class="n">ViewField</span> <span class="k">as</span> <span class="n">F</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"quickstart"</span><span class="p">)</span>
 <span class="n">dataset</span><span class="o">.</span><span class="n">persistent</span> <span class="o">=</span> <span class="kc">True</span>
 
 <span class="c1"># Create a view</span>
 <span class="n">cats_view</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">dataset</span>
-    <span class="o">.</span><span class="n">select_fields</span><span class="p">(</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span> <span class="n">F</span><span class="p">(</span><span class="s2">&quot;label&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;cat&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">sort_by</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s2">&quot;ground_truth.detections&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">length</span><span class="p">(),</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">select_fields</span><span class="p">(</span><span class="s2">"ground_truth"</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span><span class="s2">"ground_truth"</span><span class="p">,</span> <span class="n">F</span><span class="p">(</span><span class="s2">"label"</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"cat"</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">sort_by</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s2">"ground_truth.detections"</span><span class="p">)</span><span class="o">.</span><span class="n">length</span><span class="p">(),</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="p">)</span>
 
 <span class="c1"># Save the view</span>
-<span class="n">dataset</span><span class="o">.</span><span class="n">save_view</span><span class="p">(</span><span class="s2">&quot;cats-view&quot;</span><span class="p">,</span> <span class="n">cats_view</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">save_view</span><span class="p">(</span><span class="s2">"cats-view"</span><span class="p">,</span> <span class="n">cats_view</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Then you can conveniently use
@@ -378,10 +201,10 @@ your dataset under a name of your choice:</p>
 to load the view in a future session:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">"quickstart"</span><span class="p">)</span>
 
 <span class="c1"># Retrieve a saved view</span>
-<span class="n">cats_view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">load_saved_view</span><span class="p">(</span><span class="s2">&quot;cats-view&quot;</span><span class="p">)</span>
+<span class="n">cats_view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">load_saved_view</span><span class="p">(</span><span class="s2">"cats-view"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">cats_view</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -395,18 +218,18 @@ view via
 <a class="reference internal" href="../api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset.get_saved_view_info" title="fiftyone.core.dataset.Dataset.get_saved_view_info"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_saved_view_info()</span></code></a>
 and update via
 <a class="reference internal" href="../api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset.update_saved_view_info" title="fiftyone.core.dataset.Dataset.update_saved_view_info"><code class="xref py py-meth docutils literal notranslate"><span class="pre">update_saved_view_info()</span></code></a>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get a saved view&#39;s editable info</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">get_saved_view_info</span><span class="p">(</span><span class="s2">&quot;cats-view&quot;</span><span class="p">))</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get a saved view's editable info</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">get_saved_view_info</span><span class="p">(</span><span class="s2">"cats-view"</span><span class="p">))</span>
 
-<span class="c1"># Update the saved view&#39;s name and add a description</span>
+<span class="c1"># Update the saved view's name and add a description</span>
 <span class="n">info</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
-    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;still-cats-view&quot;</span><span class="p">,</span>
-    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;a view that only contains cats&quot;</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">"still-cats-view"</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">"a view that only contains cats"</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="n">dataset</span><span class="o">.</span><span class="n">update_saved_view_info</span><span class="p">(</span><span class="s2">&quot;cats-view&quot;</span><span class="p">,</span> <span class="n">info</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">update_saved_view_info</span><span class="p">(</span><span class="s2">"cats-view"</span><span class="p">,</span> <span class="n">info</span><span class="p">)</span>
 
 <span class="c1"># Verify that the info has been updated</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">get_saved_view_info</span><span class="p">(</span><span class="s2">&quot;still-cats-view&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">get_saved_view_info</span><span class="p">(</span><span class="s2">"still-cats-view"</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>You can also use
@@ -433,7 +256,7 @@ samples appear in the view (and perhaps what subset of their contents).</p>
 <p>Each view operation is captured by a <a class="reference internal" href="../api/fiftyone.core.stages.html#fiftyone.core.stages.ViewStage" title="fiftyone.core.stages.ViewStage"><code class="xref py py-class docutils literal notranslate"><span class="pre">ViewStage</span></code></a>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># List available view operations on a dataset</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">list_view_stages</span><span class="p">())</span>
-<span class="c1"># [&#39;exclude&#39;, &#39;exclude_fields&#39;, &#39;exists&#39;, ..., &#39;skip&#39;, &#39;sort_by&#39;, &#39;take&#39;]</span>
+<span class="c1"># ['exclude', 'exclude_fields', 'exists', ..., 'skip', 'sort_by', 'take']</span>
 </pre></div>
 </div>
 <p>These operations are conveniently exposed as methods on <a class="reference internal" href="../api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset" title="fiftyone.core.dataset.Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dataset</span></code></a> instances,
@@ -449,7 +272,7 @@ in which case they create an initial <a class="reference internal" href="../api/
 another <a class="reference internal" href="../api/fiftyone.core.view.html#fiftyone.core.view.DatasetView" title="fiftyone.core.view.DatasetView"><code class="xref py py-class docutils literal notranslate"><span class="pre">DatasetView</span></code></a> with the operation appended to its internal pipeline so
 that multiple operations can be chained together:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Sort `random_view` by filepath</span>
-<span class="n">sorted_random_view</span> <span class="o">=</span> <span class="n">random_view</span><span class="o">.</span><span class="n">sort_by</span><span class="p">(</span><span class="s2">&quot;filepath&quot;</span><span class="p">)</span>
+<span class="n">sorted_random_view</span> <span class="o">=</span> <span class="n">random_view</span><span class="o">.</span><span class="n">sort_by</span><span class="p">(</span><span class="s2">"filepath"</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The sections below discuss some interesting view stages in more detail. You can
@@ -514,7 +337,7 @@ extract:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="c1"># A boolean array encoding the samples to extract</span>
-<span class="n">bool_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;uniqueness&quot;</span><span class="p">))</span> <span class="o">&gt;</span> <span class="mf">0.7</span>
+<span class="n">bool_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">"uniqueness"</span><span class="p">))</span> <span class="o">&gt;</span> <span class="mf">0.7</span>
 
 <span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="n">bool_array</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">view</span><span class="p">))</span>
@@ -525,7 +348,7 @@ extract:</p>
 <a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.select" title="fiftyone.core.collections.SampleCollection.select"><code class="xref py py-meth docutils literal notranslate"><span class="pre">select()</span></code></a> statement:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">itertools</span>
 
-<span class="n">ids</span> <span class="o">=</span> <span class="n">itertools</span><span class="o">.</span><span class="n">compress</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">),</span> <span class="n">bool_array</span><span class="p">)</span>
+<span class="n">ids</span> <span class="o">=</span> <span class="n">itertools</span><span class="o">.</span><span class="n">compress</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">"id"</span><span class="p">),</span> <span class="n">bool_array</span><span class="p">)</span>
 <span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">ids</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">view</span><span class="p">))</span>
 <span class="c1"># 17</span>
@@ -536,7 +359,7 @@ implemented using <a class="reference internal" href="#querying-samples"><span c
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fiftyone</span> <span class="kn">import</span> <span class="n">ViewField</span> <span class="k">as</span> <span class="n">F</span>
 
 <span class="c1"># ViewExpression defining the samples to match</span>
-<span class="n">expr</span> <span class="o">=</span> <span class="n">F</span><span class="p">(</span><span class="s2">&quot;uniqueness&quot;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">0.7</span>
+<span class="n">expr</span> <span class="o">=</span> <span class="n">F</span><span class="p">(</span><span class="s2">"uniqueness"</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">0.7</span>
 
 <span class="c1"># Use a match() expression to define the view</span>
 <span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span>
@@ -557,15 +380,15 @@ implemented using <a class="reference internal" href="#querying-samples"><span c
 to sort the samples in a <a class="reference internal" href="../api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset" title="fiftyone.core.dataset.Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dataset</span></code></a> or <a class="reference internal" href="../api/fiftyone.core.view.html#fiftyone.core.view.DatasetView" title="fiftyone.core.view.DatasetView"><code class="xref py py-class docutils literal notranslate"><span class="pre">DatasetView</span></code></a> by a field of interest. The
 samples in the returned <a class="reference internal" href="../api/fiftyone.core.view.html#fiftyone.core.view.DatasetView" title="fiftyone.core.view.DatasetView"><code class="xref py py-class docutils literal notranslate"><span class="pre">DatasetView</span></code></a> can be sorted in ascending or descending
 order:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">sort_by</span><span class="p">(</span><span class="s2">&quot;filepath&quot;</span><span class="p">)</span>
-<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">sort_by</span><span class="p">(</span><span class="s2">&quot;filepath&quot;</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">sort_by</span><span class="p">(</span><span class="s2">"filepath"</span><span class="p">)</span>
+<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">sort_by</span><span class="p">(</span><span class="s2">"filepath"</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>You can also sort by <a class="reference internal" href="#querying-samples"><span class="std std-ref">expressions</span></a>!</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fiftyone</span> <span class="kn">import</span> <span class="n">ViewField</span> <span class="k">as</span> <span class="n">F</span>
 
 <span class="c1"># Sort by number of detections in `Detections` field `ground_truth`</span>
-<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">sort_by</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s2">&quot;ground_truth.detections&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">length</span><span class="p">(),</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">sort_by</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s2">"ground_truth.detections"</span><span class="p">)</span><span class="o">.</span><span class="n">length</span><span class="p">(),</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">view</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">ground_truth</span><span class="o">.</span><span class="n">detections</span><span class="p">))</span>  <span class="c1"># 39</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">view</span><span class="o">.</span><span class="n">last</span><span class="p">()</span><span class="o">.</span><span class="n">ground_truth</span><span class="o">.</span><span class="n">detections</span><span class="p">))</span>  <span class="c1"># 0</span>
@@ -643,13 +466,13 @@ for a full list of supported operations.</p>
 <span class="n">dataset</span><span class="o">.</span><span class="n">compute_metadata</span><span class="p">()</span>
 
 <span class="c1"># Samples whose image is less than 48 KB</span>
-<span class="n">small_images_view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s2">&quot;metadata.size_bytes&quot;</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">48</span> <span class="o">*</span> <span class="mi">1024</span><span class="p">)</span>
+<span class="n">small_images_view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s2">"metadata.size_bytes"</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">48</span> <span class="o">*</span> <span class="mi">1024</span><span class="p">)</span>
 
 <span class="c1"># Samples that contain at least one prediction with confidence above 0.99</span>
-<span class="c1"># or whose label ifs &quot;cat&quot; or &quot;dog&quot;</span>
-<span class="n">match</span> <span class="o">=</span> <span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s2">&quot;confidence&quot;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">0.99</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s2">&quot;label&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">is_in</span><span class="p">((</span><span class="s2">&quot;cat&quot;</span><span class="p">,</span> <span class="s2">&quot;dog&quot;</span><span class="p">)))</span>
+<span class="c1"># or whose label ifs "cat" or "dog"</span>
+<span class="n">match</span> <span class="o">=</span> <span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s2">"confidence"</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">0.99</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s2">"label"</span><span class="p">)</span><span class="o">.</span><span class="n">is_in</span><span class="p">((</span><span class="s2">"cat"</span><span class="p">,</span> <span class="s2">"dog"</span><span class="p">)))</span>
 <span class="n">matching_view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">match</span><span class="p">(</span>
-    <span class="n">F</span><span class="p">(</span><span class="s2">&quot;predictions.detections&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">match</span><span class="p">)</span><span class="o">.</span><span class="n">length</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span>
+    <span class="n">F</span><span class="p">(</span><span class="s2">"predictions.detections"</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">match</span><span class="p">)</span><span class="o">.</span><span class="n">length</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -661,16 +484,16 @@ for a full list of supported operations.</p>
 <a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.match_tags" title="fiftyone.core.collections.SampleCollection.match_tags"><code class="xref py py-meth docutils literal notranslate"><span class="pre">match_tags()</span></code></a>
 method to match samples that have the specified tag(s) in their <code class="code docutils literal notranslate"><span class="pre">tags</span></code> field:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># The validation split of the dataset</span>
-<span class="n">val_view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">match_tags</span><span class="p">(</span><span class="s2">&quot;validation&quot;</span><span class="p">)</span>
+<span class="n">val_view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">match_tags</span><span class="p">(</span><span class="s2">"validation"</span><span class="p">)</span>
 
 <span class="c1"># Union of the validation and test splits</span>
-<span class="n">val_test_view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">match_tags</span><span class="p">((</span><span class="s2">&quot;validation&quot;</span><span class="p">,</span> <span class="s2">&quot;test&quot;</span><span class="p">))</span>
+<span class="n">val_test_view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">match_tags</span><span class="p">((</span><span class="s2">"validation"</span><span class="p">,</span> <span class="s2">"test"</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>Use <a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.exists" title="fiftyone.core.collections.SampleCollection.exists"><code class="xref py py-meth docutils literal notranslate"><span class="pre">exists()</span></code></a> to
 only include samples for which a given <a class="reference internal" href="../api/fiftyone.core.fields.html#fiftyone.core.fields.Field" title="fiftyone.core.fields.Field"><code class="xref py py-class docutils literal notranslate"><span class="pre">Field</span></code></a> exists and is not <code class="docutils literal notranslate"><span class="pre">None</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># The subset of samples where predictions have been computed</span>
-<span class="n">predictions_view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s2">&quot;predictions&quot;</span><span class="p">)</span>
+<span class="n">predictions_view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s2">"predictions"</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Use <a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.select" title="fiftyone.core.collections.SampleCollection.select"><code class="xref py py-meth docutils literal notranslate"><span class="pre">select()</span></code></a> and
@@ -717,12 +540,12 @@ updated version of the sample’s contents.</p></li>
 and
 <a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.exclude_fields" title="fiftyone.core.collections.SampleCollection.exclude_fields"><code class="xref py py-meth docutils literal notranslate"><span class="pre">exclude_fields()</span></code></a>
 stages to select or exclude fields from the returned <a class="reference internal" href="../api/fiftyone.core.sample.html#fiftyone.core.sample.SampleView" title="fiftyone.core.sample.SampleView"><code class="xref py py-class docutils literal notranslate"><span class="pre">SampleView</span></code></a>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">sample</span> <span class="ow">in</span> <span class="n">dataset</span><span class="o">.</span><span class="n">select_fields</span><span class="p">(</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">sample</span> <span class="ow">in</span> <span class="n">dataset</span><span class="o">.</span><span class="n">select_fields</span><span class="p">(</span><span class="s2">"ground_truth"</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">sample</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>            <span class="c1"># OKAY: `id` is always available</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">sample</span><span class="o">.</span><span class="n">ground_truth</span><span class="p">)</span>  <span class="c1"># OKAY: `ground_truth` was selected</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">sample</span><span class="o">.</span><span class="n">predictions</span><span class="p">)</span>   <span class="c1"># AttributeError: `predictions` was not selected</span>
 
-<span class="k">for</span> <span class="n">sample</span> <span class="ow">in</span> <span class="n">dataset</span><span class="o">.</span><span class="n">exclude_fields</span><span class="p">(</span><span class="s2">&quot;predictions&quot;</span><span class="p">):</span>
+<span class="k">for</span> <span class="n">sample</span> <span class="ow">in</span> <span class="n">dataset</span><span class="o">.</span><span class="n">exclude_fields</span><span class="p">(</span><span class="s2">"predictions"</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">sample</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>            <span class="c1"># OKAY: `id` is always available</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">sample</span><span class="o">.</span><span class="n">ground_truth</span><span class="p">)</span>  <span class="c1"># OKAY: `ground_truth` was not excluded</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">sample</span><span class="o">.</span><span class="n">predictions</span><span class="p">)</span>   <span class="c1"># AttributeError: `predictions` was excluded</span>
@@ -737,8 +560,8 @@ respectively.</p>
 <p>You can also use the
 <a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.filter_field" title="fiftyone.core.collections.SampleCollection.filter_field"><code class="xref py py-meth docutils literal notranslate"><span class="pre">filter_field()</span></code></a>
 stage to filter the contents of arbitrarily-typed fields:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Remove tags from samples that don&#39;t include the &quot;validation&quot; tag</span>
-<span class="n">clean_tags_view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">filter_field</span><span class="p">(</span><span class="s2">&quot;tags&quot;</span><span class="p">,</span> <span class="n">F</span><span class="p">()</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">&quot;validation&quot;</span><span class="p">))</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Remove tags from samples that don't include the "validation" tag</span>
+<span class="n">clean_tags_view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">filter_field</span><span class="p">(</span><span class="s2">"tags"</span><span class="p">,</span> <span class="n">F</span><span class="p">()</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">"validation"</span><span class="p">))</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -749,14 +572,14 @@ even if you <a class="reference internal" href="../api/fiftyone.core.sample.html
 <a class="reference internal" href="../api/fiftyone.core.sample.html#fiftyone.core.sample.SampleView" title="fiftyone.core.sample.SampleView"><code class="xref py py-class docutils literal notranslate"><span class="pre">SampleView</span></code></a> after modifying the filtered detections. This is because each
 label is updated individually, and other labels in the field are left
 unchanged.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span><span class="s2">&quot;predictions&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span><span class="s2">"predictions"</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">sample</span> <span class="ow">in</span> <span class="n">view</span><span class="p">:</span>
     <span class="n">predictions</span> <span class="o">=</span> <span class="n">sample</span><span class="o">.</span><span class="n">predictions</span>
 
     <span class="c1"># Modify the detections in the view</span>
     <span class="k">for</span> <span class="n">detection</span> <span class="ow">in</span> <span class="n">predictions</span><span class="o">.</span><span class="n">detections</span><span class="p">:</span>
-        <span class="n">detection</span><span class="p">[</span><span class="s2">&quot;new_field&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">detection</span><span class="p">[</span><span class="s2">"new_field"</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
 
     <span class="c1"># Other detections in the `predictions` field of the samples that</span>
     <span class="c1"># did not appear in the `view` are not deleted or modified</span>
@@ -765,7 +588,7 @@ unchanged.</p>
 </div>
 <p>If you <em>do want to delete data</em> from your samples, assign a new value to
 the field:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span><span class="s2">&quot;predictions&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span><span class="s2">"predictions"</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">sample</span> <span class="ow">in</span> <span class="n">view</span><span class="p">:</span>
     <span class="n">sample</span><span class="o">.</span><span class="n">predictions</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Detections</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
@@ -787,10 +610,10 @@ dynamically group the samples in a collection by a specified field:</p>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 <span class="kn">from</span> <span class="nn">fiftyone</span> <span class="kn">import</span> <span class="n">ViewField</span> <span class="k">as</span> <span class="n">F</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;cifar10&quot;</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="s2">&quot;test&quot;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"cifar10"</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="s2">"test"</span><span class="p">)</span>
 
 <span class="c1"># Take 100 samples and group by ground truth label</span>
-<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">51</span><span class="p">)</span><span class="o">.</span><span class="n">group_by</span><span class="p">(</span><span class="s2">&quot;ground_truth.label&quot;</span><span class="p">)</span>
+<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">51</span><span class="p">)</span><span class="o">.</span><span class="n">group_by</span><span class="p">(</span><span class="s2">"ground_truth.label"</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">view</span><span class="o">.</span><span class="n">media_type</span><span class="p">)</span>  <span class="c1"># group</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">view</span><span class="p">))</span>  <span class="c1"># 10</span>
@@ -809,7 +632,7 @@ specify an ordering for the samples in each group:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create an image dataset that contains one sample per frame of the</span>
 <span class="c1"># `quickstart-video` dataset</span>
 <span class="n">dataset2</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart-video&quot;</span><span class="p">)</span>
+    <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"quickstart-video"</span><span class="p">)</span>
     <span class="o">.</span><span class="n">to_frames</span><span class="p">(</span><span class="n">sample_frames</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="o">.</span><span class="n">clone</span><span class="p">()</span>
 <span class="p">)</span>
@@ -817,24 +640,24 @@ specify an ordering for the samples in each group:</p>
 <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dataset2</span><span class="p">))</span>  <span class="c1"># 1279</span>
 
 <span class="c1"># Group by video ID and order each group by frame number</span>
-<span class="n">view2</span> <span class="o">=</span> <span class="n">dataset2</span><span class="o">.</span><span class="n">group_by</span><span class="p">(</span><span class="s2">&quot;sample_id&quot;</span><span class="p">,</span> <span class="n">order_by</span><span class="o">=</span><span class="s2">&quot;frame_number&quot;</span><span class="p">)</span>
+<span class="n">view2</span> <span class="o">=</span> <span class="n">dataset2</span><span class="o">.</span><span class="n">group_by</span><span class="p">(</span><span class="s2">"sample_id"</span><span class="p">,</span> <span class="n">order_by</span><span class="o">=</span><span class="s2">"frame_number"</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">view2</span><span class="p">))</span>  <span class="c1"># 10</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">view2</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;frame_number&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">view2</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">"frame_number"</span><span class="p">))</span>
 <span class="c1"># [1, 1, 1, ..., 1]</span>
 
 <span class="n">sample_id</span> <span class="o">=</span> <span class="n">dataset2</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">sample_id</span>
 <span class="n">video</span> <span class="o">=</span> <span class="n">view2</span><span class="o">.</span><span class="n">get_dynamic_group</span><span class="p">(</span><span class="n">sample_id</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">video</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;frame_number&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">video</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">"frame_number"</span><span class="p">))</span>
 <span class="c1"># [1, 2, 3, ..., 120]</span>
 </pre></div>
 </div>
 <p>You can also group by an arbitrary <a class="reference internal" href="#querying-samples"><span class="std std-ref">expressions</span></a>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dataset3</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dataset3</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"quickstart"</span><span class="p">)</span>
 
 <span class="c1"># Group samples by the number of ground truth objects they contain</span>
-<span class="n">expr</span> <span class="o">=</span> <span class="n">F</span><span class="p">(</span><span class="s2">&quot;ground_truth.detections&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">length</span><span class="p">()</span>
+<span class="n">expr</span> <span class="o">=</span> <span class="n">F</span><span class="p">(</span><span class="s2">"ground_truth.detections"</span><span class="p">)</span><span class="o">.</span><span class="n">length</span><span class="p">()</span>
 <span class="n">view3</span> <span class="o">=</span> <span class="n">dataset3</span><span class="o">.</span><span class="n">group_by</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">view3</span><span class="p">))</span>  <span class="c1"># 26</span>
@@ -845,7 +668,7 @@ specify an ordering for the samples in each group:</p>
 group. Like any other view, you can chain additional view stages to further
 refine the view’s contents:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Sort the groups by label</span>
-<span class="n">sorted_view</span> <span class="o">=</span> <span class="n">view</span><span class="o">.</span><span class="n">sort_by</span><span class="p">(</span><span class="s2">&quot;ground_truth.label&quot;</span><span class="p">)</span>
+<span class="n">sorted_view</span> <span class="o">=</span> <span class="n">view</span><span class="o">.</span><span class="n">sort_by</span><span class="p">(</span><span class="s2">"ground_truth.label"</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">sample</span> <span class="ow">in</span> <span class="n">sorted_view</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">sample</span><span class="o">.</span><span class="n">ground_truth</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
@@ -870,8 +693,8 @@ unravel the samples in a dynamic grouped view back into a flat view:</p>
 <span class="n">flat_sorted_view</span> <span class="o">=</span> <span class="n">sorted_view</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">flat_sorted_view</span><span class="p">))</span>  <span class="c1"># 1000</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">flat_sorted_view</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;ground_truth.label&quot;</span><span class="p">))</span>
-<span class="c1"># [&#39;airplane&#39;, &#39;airplane&#39;, &#39;airplane&#39;, ..., &#39;truck&#39;]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">flat_sorted_view</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">"ground_truth.label"</span><span class="p">))</span>
+<span class="c1"># ['airplane', 'airplane', 'airplane', ..., 'truck']</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -885,7 +708,7 @@ and view all samples in the group.</p>
 <a class="reference internal" href="../api/fiftyone.core.view.html#fiftyone.core.view.DatasetView.get_dynamic_group" title="fiftyone.core.view.DatasetView.get_dynamic_group"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_dynamic_group()</span></code></a>
 to retrieve a view containing the samples with a specific group value of
 interest:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">group</span> <span class="o">=</span> <span class="n">view</span><span class="o">.</span><span class="n">get_dynamic_group</span><span class="p">(</span><span class="s2">&quot;horse&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">group</span> <span class="o">=</span> <span class="n">view</span><span class="o">.</span><span class="n">get_dynamic_group</span><span class="p">(</span><span class="s2">"horse"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">group</span><span class="p">))</span>  <span class="c1"># 11</span>
 </pre></div>
 </div>
@@ -893,7 +716,7 @@ interest:</p>
 <a class="reference internal" href="../api/fiftyone.core.view.html#fiftyone.core.view.DatasetView.iter_dynamic_groups" title="fiftyone.core.view.DatasetView.iter_dynamic_groups"><code class="xref py py-meth docutils literal notranslate"><span class="pre">iter_dynamic_groups()</span></code></a>
 to iterate over all groups in a dynamic group view:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">sorted_view</span><span class="o">.</span><span class="n">iter_dynamic_groups</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">: </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">group</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">ground_truth</span><span class="o">.</span><span class="n">label</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">group</span><span class="p">)))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="si">%s</span><span class="s2">: </span><span class="si">%d</span><span class="s2">"</span> <span class="o">%</span> <span class="p">(</span><span class="n">group</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">ground_truth</span><span class="o">.</span><span class="n">label</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">group</span><span class="p">)))</span>
 </pre></div>
 </div>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>airplane: 11
@@ -918,10 +741,10 @@ concatenate views into the same dataset:</p>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 <span class="kn">from</span> <span class="nn">fiftyone</span> <span class="kn">import</span> <span class="n">ViewField</span> <span class="k">as</span> <span class="n">F</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"quickstart"</span><span class="p">)</span>
 
-<span class="n">view1</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s2">&quot;uniqueness&quot;</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.2</span><span class="p">)</span>
-<span class="n">view2</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s2">&quot;uniqueness&quot;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">0.7</span><span class="p">)</span>
+<span class="n">view1</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s2">"uniqueness"</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.2</span><span class="p">)</span>
+<span class="n">view2</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s2">"uniqueness"</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">0.7</span><span class="p">)</span>
 
 <span class="n">view</span> <span class="o">=</span> <span class="n">view1</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">view2</span><span class="p">)</span>
 
@@ -936,7 +759,7 @@ concatenate views into the same dataset:</p>
 </div>
 <p>Concatenating <em>generated views</em> such as <a class="reference internal" href="#object-patches-views"><span class="std std-ref">patches</span></a>
 and <a class="reference internal" href="#frame-views"><span class="std std-ref">frames</span></a> is also allowed:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">gt_patches</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">to_patches</span><span class="p">(</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">gt_patches</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">to_patches</span><span class="p">(</span><span class="s2">"ground_truth"</span><span class="p">)</span>
 
 <span class="n">patches1</span> <span class="o">=</span> <span class="n">gt_patches</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
 <span class="n">patches2</span> <span class="o">=</span> <span class="n">gt_patches</span><span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">:]</span>
@@ -947,8 +770,8 @@ and <a class="reference internal" href="#frame-views"><span class="std std-ref">
 </pre></div>
 </div>
 <p>as long as each view is derived from the same root generated view:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">patches1</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span><span class="o">.</span><span class="n">to_patches</span><span class="p">(</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">)</span>
-<span class="n">patches2</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">:]</span><span class="o">.</span><span class="n">to_patches</span><span class="p">(</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">patches1</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span><span class="o">.</span><span class="n">to_patches</span><span class="p">(</span><span class="s2">"ground_truth"</span><span class="p">)</span>
+<span class="n">patches2</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">:]</span><span class="o">.</span><span class="n">to_patches</span><span class="p">(</span><span class="s2">"ground_truth"</span><span class="p">)</span>
 
 <span class="n">patches</span> <span class="o">=</span> <span class="n">patches1</span> <span class="o">+</span> <span class="n">patches2</span>  <span class="c1"># ERROR: not allowed</span>
 </pre></div>
@@ -1012,15 +835,15 @@ filter a dataset by date as follows:</p>
 <span class="n">dataset</span><span class="o">.</span><span class="n">add_samples</span><span class="p">(</span>
     <span class="p">[</span>
         <span class="n">fo</span><span class="o">.</span><span class="n">Sample</span><span class="p">(</span>
-            <span class="n">filepath</span><span class="o">=</span><span class="s2">&quot;image1.png&quot;</span><span class="p">,</span>
+            <span class="n">filepath</span><span class="o">=</span><span class="s2">"image1.png"</span><span class="p">,</span>
             <span class="n">capture_date</span><span class="o">=</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2021</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
         <span class="p">),</span>
         <span class="n">fo</span><span class="o">.</span><span class="n">Sample</span><span class="p">(</span>
-            <span class="n">filepath</span><span class="o">=</span><span class="s2">&quot;image2.png&quot;</span><span class="p">,</span>
+            <span class="n">filepath</span><span class="o">=</span><span class="s2">"image2.png"</span><span class="p">,</span>
             <span class="n">capture_date</span><span class="o">=</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2021</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
         <span class="p">),</span>
         <span class="n">fo</span><span class="o">.</span><span class="n">Sample</span><span class="p">(</span>
-            <span class="n">filepath</span><span class="o">=</span><span class="s2">&quot;image3.png&quot;</span><span class="p">,</span>
+            <span class="n">filepath</span><span class="o">=</span><span class="s2">"image3.png"</span><span class="p">,</span>
             <span class="n">capture_date</span><span class="o">=</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2021</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
         <span class="p">),</span>
     <span class="p">]</span>
@@ -1030,11 +853,11 @@ filter a dataset by date as follows:</p>
 <span class="n">query_delta</span> <span class="o">=</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
 
 <span class="c1"># Samples with capture date after 2021-08-24 02:01:00</span>
-<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s2">&quot;capture_date&quot;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">query_date</span><span class="p">)</span>
+<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s2">"capture_date"</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">query_date</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">view</span><span class="p">)</span>
 
 <span class="c1"># Samples with capture date within 30 minutes of 2021-08-24 02:01:00</span>
-<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s2">&quot;capture_date&quot;</span><span class="p">)</span> <span class="o">-</span> <span class="n">query_date</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">query_delta</span><span class="p">)</span>
+<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s2">"capture_date"</span><span class="p">)</span> <span class="o">-</span> <span class="n">query_date</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">query_delta</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">view</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1059,12 +882,12 @@ detection dataset:</p>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 <span class="kn">from</span> <span class="nn">fiftyone</span> <span class="kn">import</span> <span class="n">ViewField</span> <span class="k">as</span> <span class="n">F</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"quickstart"</span><span class="p">)</span>
 
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
 
 <span class="c1"># Convert to ground truth patches</span>
-<span class="n">gt_patches</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">to_patches</span><span class="p">(</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">)</span>
+<span class="n">gt_patches</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">to_patches</span><span class="p">(</span><span class="s2">"ground_truth"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">gt_patches</span><span class="p">)</span>
 
 <span class="c1"># View patches in the App</span>
@@ -1084,7 +907,7 @@ Patch fields:
     last_modified_at: fiftyone.core.fields.DateTimeField
     ground_truth:     fiftyone.core.fields.EmbeddedDocumentField(fiftyone.core.labels.Detection)
 View stages:
-    1. ToPatches(field=&#39;ground_truth&#39;, config=None)
+    1. ToPatches(field='ground_truth', config=None)
 </pre></div>
 </div>
 <div class="admonition note">
@@ -1100,10 +923,10 @@ contains patches for a filtered set of predictions:</p>
 <span class="n">person_patches</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">dataset</span>
     <span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span>
-        <span class="s2">&quot;predictions&quot;</span><span class="p">,</span>
-        <span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s2">&quot;label&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;person&quot;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s2">&quot;confidence&quot;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">0.9</span><span class="p">)</span>
+        <span class="s2">"predictions"</span><span class="p">,</span>
+        <span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s2">"label"</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"person"</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s2">"confidence"</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">0.9</span><span class="p">)</span>
     <span class="p">)</span>
-    <span class="o">.</span><span class="n">to_patches</span><span class="p">(</span><span class="s2">&quot;predictions&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">to_patches</span><span class="p">(</span><span class="s2">"predictions"</span><span class="p">)</span>
 <span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">person_patches</span><span class="p">)</span>
 
@@ -1169,21 +992,21 @@ respectively.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"quickstart"</span><span class="p">)</span>
 
 <span class="c1"># Evaluate `predictions` w.r.t. labels in `ground_truth` field</span>
 <span class="n">dataset</span><span class="o">.</span><span class="n">evaluate_detections</span><span class="p">(</span>
-    <span class="s2">&quot;predictions&quot;</span><span class="p">,</span> <span class="n">gt_field</span><span class="o">=</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span> <span class="n">eval_key</span><span class="o">=</span><span class="s2">&quot;eval&quot;</span>
+    <span class="s2">"predictions"</span><span class="p">,</span> <span class="n">gt_field</span><span class="o">=</span><span class="s2">"ground_truth"</span><span class="p">,</span> <span class="n">eval_key</span><span class="o">=</span><span class="s2">"eval"</span>
 <span class="p">)</span>
 
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
 
 <span class="c1"># Convert to evaluation patches</span>
-<span class="n">eval_patches</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">to_evaluation_patches</span><span class="p">(</span><span class="s2">&quot;eval&quot;</span><span class="p">)</span>
+<span class="n">eval_patches</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">to_evaluation_patches</span><span class="p">(</span><span class="s2">"eval"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">eval_patches</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">eval_patches</span><span class="o">.</span><span class="n">count_values</span><span class="p">(</span><span class="s2">&quot;type&quot;</span><span class="p">))</span>
-<span class="c1"># {&#39;fn&#39;: 246, &#39;fp&#39;: 4131, &#39;tp&#39;: 986}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">eval_patches</span><span class="o">.</span><span class="n">count_values</span><span class="p">(</span><span class="s2">"type"</span><span class="p">))</span>
+<span class="c1"># {'fn': 246, 'fp': 4131, 'tp': 986}</span>
 
 <span class="c1"># View patches in the App</span>
 <span class="n">session</span><span class="o">.</span><span class="n">view</span> <span class="o">=</span> <span class="n">eval_patches</span>
@@ -1206,7 +1029,7 @@ Patch fields:
     iou:              fiftyone.core.fields.FloatField
     crowd:            fiftyone.core.fields.BooleanField
 View stages:
-    1. ToEvaluationPatches(eval_key=&#39;eval&#39;, config=None)
+    1. ToEvaluationPatches(eval_key='eval', config=None)
 </pre></div>
 </div>
 <div class="admonition note">
@@ -1263,19 +1086,19 @@ on the source dataset</p></li>
 <span id="id6"></span><h2>Video views<a class="headerlink" href="#video-views" title="Permalink to this headline">¶</a></h2>
 <p>Most view stages naturally support video datasets. For example, stages that
 refer to fields can be applied to the frame-level fields of video samples by
-prepending <code class="docutils literal notranslate"><span class="pre">&quot;frames.&quot;</span></code> to the relevant parameters:</p>
+prepending <code class="docutils literal notranslate"><span class="pre">"frames."</span></code> to the relevant parameters:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 <span class="kn">from</span> <span class="nn">fiftyone</span> <span class="kn">import</span> <span class="n">ViewField</span> <span class="k">as</span> <span class="n">F</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart-video&quot;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"quickstart-video"</span><span class="p">)</span>
 
 <span class="c1"># Create a view that only contains vehicles</span>
-<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span><span class="s2">&quot;frames.detections&quot;</span><span class="p">,</span> <span class="n">F</span><span class="p">(</span><span class="s2">&quot;label&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;vehicle&quot;</span><span class="p">)</span>
+<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span><span class="s2">"frames.detections"</span><span class="p">,</span> <span class="n">F</span><span class="p">(</span><span class="s2">"label"</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"vehicle"</span><span class="p">)</span>
 
 <span class="c1"># Compare the number of objects in the view and the source dataset</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;frames.detections.detections&quot;</span><span class="p">))</span>  <span class="c1"># 11345</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">view</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;frames.detections.detections&quot;</span><span class="p">))</span>  <span class="c1"># 7511</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">"frames.detections.detections"</span><span class="p">))</span>  <span class="c1"># 11345</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">view</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">"frames.detections.detections"</span><span class="p">))</span>  <span class="c1"># 7511</span>
 </pre></div>
 </div>
 <p>In addition, FiftyOne provides a variety of dedicated view stages for
@@ -1295,22 +1118,22 @@ temporal segment by simply passing the name of the temporal detection field to
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Dataset</span><span class="p">()</span>
 
 <span class="n">sample1</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Sample</span><span class="p">(</span>
-    <span class="n">filepath</span><span class="o">=</span><span class="s2">&quot;video1.mp4&quot;</span><span class="p">,</span>
+    <span class="n">filepath</span><span class="o">=</span><span class="s2">"video1.mp4"</span><span class="p">,</span>
     <span class="n">events</span><span class="o">=</span><span class="n">fo</span><span class="o">.</span><span class="n">TemporalDetections</span><span class="p">(</span>
         <span class="n">detections</span><span class="o">=</span><span class="p">[</span>
-            <span class="n">fo</span><span class="o">.</span><span class="n">TemporalDetection</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;meeting&quot;</span><span class="p">,</span> <span class="n">support</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]),</span>
-            <span class="n">fo</span><span class="o">.</span><span class="n">TemporalDetection</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;party&quot;</span><span class="p">,</span> <span class="n">support</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">]),</span>
+            <span class="n">fo</span><span class="o">.</span><span class="n">TemporalDetection</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">"meeting"</span><span class="p">,</span> <span class="n">support</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]),</span>
+            <span class="n">fo</span><span class="o">.</span><span class="n">TemporalDetection</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">"party"</span><span class="p">,</span> <span class="n">support</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">]),</span>
         <span class="p">]</span>
     <span class="p">),</span>
 <span class="p">)</span>
 
 <span class="n">sample2</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Sample</span><span class="p">(</span>
-    <span class="n">filepath</span><span class="o">=</span><span class="s2">&quot;video2.mp4&quot;</span><span class="p">,</span>
+    <span class="n">filepath</span><span class="o">=</span><span class="s2">"video2.mp4"</span><span class="p">,</span>
     <span class="n">metadata</span><span class="o">=</span><span class="n">fo</span><span class="o">.</span><span class="n">VideoMetadata</span><span class="p">(</span><span class="n">total_frame_count</span><span class="o">=</span><span class="mi">5</span><span class="p">),</span>
     <span class="n">events</span><span class="o">=</span><span class="n">fo</span><span class="o">.</span><span class="n">TemporalDetections</span><span class="p">(</span>
         <span class="n">detections</span><span class="o">=</span><span class="p">[</span>
-            <span class="n">fo</span><span class="o">.</span><span class="n">TemporalDetection</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;party&quot;</span><span class="p">,</span> <span class="n">support</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]),</span>
-            <span class="n">fo</span><span class="o">.</span><span class="n">TemporalDetection</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;meeting&quot;</span><span class="p">,</span> <span class="n">support</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">]),</span>
+            <span class="n">fo</span><span class="o">.</span><span class="n">TemporalDetection</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">"party"</span><span class="p">,</span> <span class="n">support</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]),</span>
+            <span class="n">fo</span><span class="o">.</span><span class="n">TemporalDetection</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">"meeting"</span><span class="p">,</span> <span class="n">support</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">]),</span>
         <span class="p">]</span>
     <span class="p">),</span>
 <span class="p">)</span>
@@ -1318,11 +1141,11 @@ temporal segment by simply passing the name of the temporal detection field to
 <span class="n">dataset</span><span class="o">.</span><span class="n">add_samples</span><span class="p">([</span><span class="n">sample1</span><span class="p">,</span> <span class="n">sample2</span><span class="p">])</span>
 
 <span class="c1"># Create a clips view with one clip per event</span>
-<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">to_clips</span><span class="p">(</span><span class="s2">&quot;events&quot;</span><span class="p">)</span>
+<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">to_clips</span><span class="p">(</span><span class="s2">"events"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">view</span><span class="p">)</span>
 
 <span class="c1"># Verify that one sample per clip was created</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;events.detections&quot;</span><span class="p">))</span>  <span class="c1"># 4</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">"events.detections"</span><span class="p">))</span>  <span class="c1"># 4</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">view</span><span class="p">))</span>  <span class="c1"># 4</span>
 </pre></div>
 </div>
@@ -1345,7 +1168,7 @@ Frame fields:
     created_at:       fiftyone.core.fields.DateTimeField
     last_modified_at: fiftyone.core.fields.DateTimeField
 View stages:
-    1. ToClips(field_or_expr=&#39;events&#39;, config=None)
+    1. ToClips(field_or_expr='events', config=None)
 </pre></div>
 </div>
 <p>All clips views contain a top-level <code class="code docutils literal notranslate"><span class="pre">support</span></code> field that contains the
@@ -1375,12 +1198,12 @@ specific temporal detection labels, you can achieve this by first
 <span class="c1"># Create a clips view with one clip per meeting</span>
 <span class="n">view</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">dataset</span>
-    <span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span><span class="s2">&quot;events&quot;</span><span class="p">,</span> <span class="n">F</span><span class="p">(</span><span class="s2">&quot;label&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;meeting&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">to_clips</span><span class="p">(</span><span class="s2">&quot;events&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span><span class="s2">"events"</span><span class="p">,</span> <span class="n">F</span><span class="p">(</span><span class="s2">"label"</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"meeting"</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">to_clips</span><span class="p">(</span><span class="s2">"events"</span><span class="p">)</span>
 <span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">view</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;events.label&quot;</span><span class="p">))</span>
-<span class="c1"># [&#39;meeting&#39;, &#39;meeting&#39;]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">view</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">"events.label"</span><span class="p">))</span>
+<span class="c1"># ['meeting', 'meeting']</span>
 </pre></div>
 </div>
 <p>Clips views can also be created based on frame-level labels, which provides a
@@ -1394,11 +1217,11 @@ label in the specified field:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart-video&quot;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"quickstart-video"</span><span class="p">)</span>
 
 <span class="c1"># Create a view that contains one clip per contiguous range of frames that</span>
 <span class="c1"># contains at least one detection</span>
-<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">to_clips</span><span class="p">(</span><span class="s2">&quot;frames.detections&quot;</span><span class="p">)</span>
+<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">to_clips</span><span class="p">(</span><span class="s2">"frames.detections"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">view</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1413,8 +1236,8 @@ that contains at least one person:</p>
 <span class="c1"># contains at least one person</span>
 <span class="n">view</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">dataset</span>
-    <span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span><span class="s2">&quot;frames.detections&quot;</span><span class="p">,</span> <span class="n">F</span><span class="p">(</span><span class="s2">&quot;label&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;person&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">to_clips</span><span class="p">(</span><span class="s2">&quot;frames.detections&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span><span class="s2">"frames.detections"</span><span class="p">,</span> <span class="n">F</span><span class="p">(</span><span class="s2">"label"</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"person"</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">to_clips</span><span class="p">(</span><span class="s2">"frames.detections"</span><span class="p">)</span>
 <span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">view</span><span class="p">)</span>
 </pre></div>
@@ -1438,8 +1261,8 @@ Frame fields:
     last_modified_at: fiftyone.core.fields.DateTimeField
     detections:       fiftyone.core.fields.EmbeddedDocumentField(fiftyone.core.labels.Detections)
 View stages:
-    1. FilterLabels(field=&#39;frames.detections&#39;, filter={&#39;$eq&#39;: [&#39;$$this.label&#39;, &#39;person&#39;]}, only_matches=True)
-    2. ToClips(field_or_expr=&#39;frames.detections&#39;, config=None)
+    1. FilterLabels(field='frames.detections', filter={'$eq': ['$$this.label', 'person']}, only_matches=True)
+    2. ToClips(field_or_expr='frames.detections', config=None)
 </pre></div>
 </div>
 <p>When you iterate over the frames of a sample in a clip view, you will only get
@@ -1480,8 +1303,8 @@ expression evaluates to true:</p>
 <span class="c1"># contains at least 10 vehicles</span>
 <span class="n">view</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">dataset</span>
-    <span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span><span class="s2">&quot;frames.detections&quot;</span><span class="p">,</span> <span class="n">F</span><span class="p">(</span><span class="s2">&quot;label&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;vehicle&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">to_clips</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s2">&quot;detections.detections&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">length</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span><span class="s2">"frames.detections"</span><span class="p">,</span> <span class="n">F</span><span class="p">(</span><span class="s2">"label"</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"vehicle"</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">to_clips</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s2">"detections.detections"</span><span class="p">)</span><span class="o">.</span><span class="n">length</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="mi">10</span><span class="p">)</span>
 <span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">view</span><span class="p">)</span>
 </pre></div>
@@ -1551,13 +1374,13 @@ as shown below:</p>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 <span class="kn">from</span> <span class="nn">fiftyone</span> <span class="kn">import</span> <span class="n">ViewField</span> <span class="k">as</span> <span class="n">F</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart-video&quot;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"quickstart-video"</span><span class="p">)</span>
 
 <span class="c1"># Create a trajectories view for the vehicles in the dataset</span>
 <span class="n">trajectories</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">dataset</span>
-    <span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span><span class="s2">&quot;frames.detections&quot;</span><span class="p">,</span> <span class="n">F</span><span class="p">(</span><span class="s2">&quot;label&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;vehicle&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">to_trajectories</span><span class="p">(</span><span class="s2">&quot;frames.detections&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span><span class="s2">"frames.detections"</span><span class="p">,</span> <span class="n">F</span><span class="p">(</span><span class="s2">"label"</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"vehicle"</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">to_trajectories</span><span class="p">(</span><span class="s2">"frames.detections"</span><span class="p">)</span>
 <span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">trajectories</span><span class="p">)</span>
 
@@ -1584,8 +1407,8 @@ Frame fields:
     last_modified_at: fiftyone.core.fields.DateTimeField
     detections:       fiftyone.core.fields.EmbeddedDocumentField(fiftyone.core.labels.Detections)
 View stages:
-    1. FilterLabels(field=&#39;frames.detections&#39;, filter={&#39;$eq&#39;: [&#39;$$this.label&#39;, &#39;vehicle&#39;]}, only_matches=True, trajectories=False)
-    2. ToTrajectories(field=&#39;frames.detections&#39;, config=None)
+    1. FilterLabels(field='frames.detections', filter={'$eq': ['$$this.label', 'vehicle']}, only_matches=True, trajectories=False)
+    2. ToTrajectories(field='frames.detections', config=None)
 </pre></div>
 </div>
 <div class="admonition warning">
@@ -1615,7 +1438,7 @@ frame of the videos in a <a class="reference internal" href="../api/fiftyone.cor
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart-video&quot;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"quickstart-video"</span><span class="p">)</span>
 
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
 
@@ -1624,7 +1447,7 @@ frame of the videos in a <a class="reference internal" href="../api/fiftyone.cor
 <span class="nb">print</span><span class="p">(</span><span class="n">frames</span><span class="p">)</span>
 
 <span class="c1"># Verify that one sample per frame was created</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s2">&quot;metadata.total_frame_count&quot;</span><span class="p">))</span>  <span class="c1"># 1279</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s2">"metadata.total_frame_count"</span><span class="p">))</span>  <span class="c1"># 1279</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">frames</span><span class="p">))</span>  <span class="c1"># 1279</span>
 
 <span class="c1"># View frames in the App</span>
@@ -1689,15 +1512,15 @@ for frames with at least 10 objects, sampling at most one frame per second:</p>
 <span class="c1"># objects, sampled at a maximum frame rate of 1fps</span>
 <span class="c1">#</span>
 
-<span class="n">num_objects</span> <span class="o">=</span> <span class="n">F</span><span class="p">(</span><span class="s2">&quot;detections.detections&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">length</span><span class="p">()</span>
+<span class="n">num_objects</span> <span class="o">=</span> <span class="n">F</span><span class="p">(</span><span class="s2">"detections.detections"</span><span class="p">)</span><span class="o">.</span><span class="n">length</span><span class="p">()</span>
 <span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">match_frames</span><span class="p">(</span><span class="n">num_objects</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">)</span>
 
 <span class="n">frames</span> <span class="o">=</span> <span class="n">view</span><span class="o">.</span><span class="n">to_frames</span><span class="p">(</span><span class="n">max_fps</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">frames</span><span class="p">)</span>
 
 <span class="c1"># Compare the number of frames in each step</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;frames&quot;</span><span class="p">))</span>  <span class="c1"># 1279</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">view</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;frames&quot;</span><span class="p">))</span>  <span class="c1"># 354</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">"frames"</span><span class="p">))</span>  <span class="c1"># 1279</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">view</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">"frames"</span><span class="p">))</span>  <span class="c1"># 354</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">frames</span><span class="p">))</span>  <span class="c1"># 13</span>
 
 <span class="c1"># View frames in the App</span>
@@ -1746,7 +1569,7 @@ sample per object patch in the frames of the dataset!</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart-video&quot;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"quickstart-video"</span><span class="p">)</span>
 
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
 
@@ -1754,11 +1577,11 @@ sample per object patch in the frames of the dataset!</p>
 <span class="n">frames</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">to_frames</span><span class="p">(</span><span class="n">sample_frames</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="c1"># Create a frame patches view</span>
-<span class="n">frame_patches</span> <span class="o">=</span> <span class="n">frames</span><span class="o">.</span><span class="n">to_patches</span><span class="p">(</span><span class="s2">&quot;detections&quot;</span><span class="p">)</span>
+<span class="n">frame_patches</span> <span class="o">=</span> <span class="n">frames</span><span class="o">.</span><span class="n">to_patches</span><span class="p">(</span><span class="s2">"detections"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">frame_patches</span><span class="p">)</span>
 
 <span class="c1"># Verify that one sample per object was created</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;frames.detections.detections&quot;</span><span class="p">))</span>  <span class="c1"># 11345</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">"frames.detections.detections"</span><span class="p">))</span>  <span class="c1"># 11345</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">frame_patches</span><span class="p">))</span>  <span class="c1"># 11345</span>
 
 <span class="c1"># View frame patches in the App</span>
@@ -1781,7 +1604,7 @@ Patch fields:
     detections:       fiftyone.core.fields.EmbeddedDocumentField(fiftyone.core.labels.Detection)
 View stages:
     1. ToFrames(config=None)
-    2. ToPatches(field=&#39;detections&#39;, config=None)
+    2. ToPatches(field='detections', config=None)
 </pre></div>
 </div>
 </div>
@@ -1808,15 +1631,15 @@ Any resulting <a class="reference internal" href="../api/fiftyone.core.expressio
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 <span class="kn">from</span> <span class="nn">fiftyone</span> <span class="kn">import</span> <span class="n">ViewField</span> <span class="k">as</span> <span class="n">F</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart-video&quot;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"quickstart-video"</span><span class="p">)</span>
 
 <span class="c1"># Create a view that only contains frames with at least 10 objects</span>
-<span class="n">num_objects</span> <span class="o">=</span> <span class="n">F</span><span class="p">(</span><span class="s2">&quot;detections.detections&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">length</span><span class="p">()</span>
+<span class="n">num_objects</span> <span class="o">=</span> <span class="n">F</span><span class="p">(</span><span class="s2">"detections.detections"</span><span class="p">)</span><span class="o">.</span><span class="n">length</span><span class="p">()</span>
 <span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">match_frames</span><span class="p">(</span><span class="n">num_objects</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">)</span>
 
 <span class="c1"># Compare the number of frames in each collection</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;frames&quot;</span><span class="p">))</span>  <span class="c1"># 1279</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">view</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;frames&quot;</span><span class="p">))</span>  <span class="c1"># 354</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">"frames"</span><span class="p">))</span>  <span class="c1"># 1279</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">view</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">"frames"</span><span class="p">))</span>  <span class="c1"># 354</span>
 </pre></div>
 </div>
 <p>You can also use
@@ -1855,10 +1678,10 @@ to sort the dataset by similarity to a chosen image:</p>
 <span class="kn">import</span> <span class="nn">fiftyone.brain</span> <span class="k">as</span> <span class="nn">fob</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"quickstart"</span><span class="p">)</span>
 
 <span class="c1"># Index the dataset by image similarity</span>
-<span class="n">fob</span><span class="o">.</span><span class="n">compute_similarity</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">brain_key</span><span class="o">=</span><span class="s2">&quot;image_sim&quot;</span><span class="p">)</span>
+<span class="n">fob</span><span class="o">.</span><span class="n">compute_similarity</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">brain_key</span><span class="o">=</span><span class="s2">"image_sim"</span><span class="p">)</span>
 
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
 
@@ -1866,7 +1689,7 @@ to sort the dataset by similarity to a chosen image:</p>
 <span class="n">query_id</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">id</span>
 
 <span class="c1"># Sort the samples by similarity to the query image</span>
-<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">sort_by_similarity</span><span class="p">(</span><span class="n">query_id</span><span class="p">,</span> <span class="n">brain_key</span><span class="o">=</span><span class="s2">&quot;image_sim&quot;</span><span class="p">)</span>
+<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">sort_by_similarity</span><span class="p">(</span><span class="n">query_id</span><span class="p">,</span> <span class="n">brain_key</span><span class="o">=</span><span class="s2">"image_sim"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">view</span><span class="p">)</span>
 
 <span class="c1"># View results in the App</span>
@@ -1892,15 +1715,15 @@ to retrieve the 15 most similar objects to a chosen object:</p>
 <span class="kn">import</span> <span class="nn">fiftyone.brain</span> <span class="k">as</span> <span class="nn">fob</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"quickstart"</span><span class="p">)</span>
 
 <span class="c1"># Index the dataset by `ground_truth` object similarity</span>
 <span class="n">fob</span><span class="o">.</span><span class="n">compute_similarity</span><span class="p">(</span>
-    <span class="n">dataset</span><span class="p">,</span> <span class="n">patches_field</span><span class="o">=</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span> <span class="n">brain_key</span><span class="o">=</span><span class="s2">&quot;gt_sim&quot;</span>
+    <span class="n">dataset</span><span class="p">,</span> <span class="n">patches_field</span><span class="o">=</span><span class="s2">"ground_truth"</span><span class="p">,</span> <span class="n">brain_key</span><span class="o">=</span><span class="s2">"gt_sim"</span>
 <span class="p">)</span>
 
 <span class="c1"># Convert to ground truth patches view</span>
-<span class="n">patches</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">to_patches</span><span class="p">(</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">)</span>
+<span class="n">patches</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">to_patches</span><span class="p">(</span><span class="s2">"ground_truth"</span><span class="p">)</span>
 
 <span class="c1"># View patches in the App</span>
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">view</span><span class="o">=</span><span class="n">patches</span><span class="p">)</span>
@@ -1909,7 +1732,7 @@ to retrieve the 15 most similar objects to a chosen object:</p>
 <span class="n">query_id</span> <span class="o">=</span> <span class="n">patches</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">id</span>
 
 <span class="c1"># Retrieve the 15 most similar objects</span>
-<span class="n">similar_objects</span> <span class="o">=</span> <span class="n">patches</span><span class="o">.</span><span class="n">sort_by_similarity</span><span class="p">(</span><span class="n">query_id</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">brain_key</span><span class="o">=</span><span class="s2">&quot;gt_sim&quot;</span><span class="p">)</span>
+<span class="n">similar_objects</span> <span class="o">=</span> <span class="n">patches</span><span class="o">.</span><span class="n">sort_by_similarity</span><span class="p">(</span><span class="n">query_id</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">brain_key</span><span class="o">=</span><span class="s2">"gt_sim"</span><span class="p">)</span>
 
 <span class="c1"># View results in the App</span>
 <span class="n">session</span><span class="o">.</span><span class="n">view</span> <span class="o">=</span> <span class="n">similar_objects</span>
@@ -1960,7 +1783,7 @@ sort your samples by proximity to a location:</p>
 
 <span class="n">TIMES_SQUARE</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">73.9855</span><span class="p">,</span> <span class="mf">40.7580</span><span class="p">]</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart-geo&quot;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"quickstart-geo"</span><span class="p">)</span>
 
 <span class="c1"># Sort the samples by their proximity to Times Square, and only include</span>
 <span class="c1"># samples within 5km</span>
@@ -1984,7 +1807,7 @@ choice:</p>
     <span class="p">]</span>
 <span class="p">]</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart-geo&quot;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"quickstart-geo"</span><span class="p">)</span>
 
 <span class="c1"># Only contains samples in Manhattan</span>
 <span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">geo_within</span><span class="p">(</span><span class="n">MANHATTAN</span><span class="p">)</span>
@@ -2002,15 +1825,15 @@ view:</p>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 <span class="kn">from</span> <span class="nn">fiftyone</span> <span class="kn">import</span> <span class="n">ViewField</span> <span class="k">as</span> <span class="n">F</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
-<span class="n">dataset</span><span class="o">.</span><span class="n">untag_samples</span><span class="p">(</span><span class="s2">&quot;validation&quot;</span><span class="p">)</span> <span class="c1"># remove pre-existing tags</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"quickstart"</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">untag_samples</span><span class="p">(</span><span class="s2">"validation"</span><span class="p">)</span> <span class="c1"># remove pre-existing tags</span>
 
 <span class="c1"># Perform a random 90-10 test-train split</span>
-<span class="n">dataset</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mf">0.1</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="p">))</span><span class="o">.</span><span class="n">tag_samples</span><span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">)</span>
-<span class="n">dataset</span><span class="o">.</span><span class="n">match_tags</span><span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">,</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">tag_samples</span><span class="p">(</span><span class="s2">&quot;train&quot;</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mf">0.1</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="p">))</span><span class="o">.</span><span class="n">tag_samples</span><span class="p">(</span><span class="s2">"test"</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">match_tags</span><span class="p">(</span><span class="s2">"test"</span><span class="p">,</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">tag_samples</span><span class="p">(</span><span class="s2">"train"</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">count_sample_tags</span><span class="p">())</span>
-<span class="c1"># {&#39;train&#39;: 180, &#39;test&#39;: 20}</span>
+<span class="c1"># {'train': 180, 'test': 20}</span>
 </pre></div>
 </div>
 <p>You can also use the
@@ -2019,11 +1842,11 @@ and <a class="reference internal" href="../api/fiftyone.core.collections.html#fi
 methods to add or remove <a class="reference internal" href="using_datasets.html#label-tags"><span class="std std-ref">label tags</span></a> from the labels in one
 or more fields of a view:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add a tag to all low confidence predictions</span>
-<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span><span class="s2">&quot;predictions&quot;</span><span class="p">,</span> <span class="n">F</span><span class="p">(</span><span class="s2">&quot;confidence&quot;</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.06</span><span class="p">)</span>
-<span class="n">view</span><span class="o">.</span><span class="n">tag_labels</span><span class="p">(</span><span class="s2">&quot;low_confidence&quot;</span><span class="p">,</span> <span class="n">label_fields</span><span class="o">=</span><span class="s2">&quot;predictions&quot;</span><span class="p">)</span>
+<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span><span class="s2">"predictions"</span><span class="p">,</span> <span class="n">F</span><span class="p">(</span><span class="s2">"confidence"</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.06</span><span class="p">)</span>
+<span class="n">view</span><span class="o">.</span><span class="n">tag_labels</span><span class="p">(</span><span class="s2">"low_confidence"</span><span class="p">,</span> <span class="n">label_fields</span><span class="o">=</span><span class="s2">"predictions"</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">count_label_tags</span><span class="p">())</span>
-<span class="c1"># {&#39;low_confidence&#39;: 447}</span>
+<span class="c1"># {'low_confidence': 447}</span>
 </pre></div>
 </div>
 </div>
@@ -2037,17 +1860,17 @@ contents and editing the samples directly:</p>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 <span class="kn">from</span> <span class="nn">fiftyone</span> <span class="kn">import</span> <span class="n">ViewField</span> <span class="k">as</span> <span class="n">F</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"quickstart"</span><span class="p">)</span>
 
 <span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
 
 <span class="c1"># Populate a new field on each sample in the view</span>
 <span class="k">for</span> <span class="n">sample</span> <span class="ow">in</span> <span class="n">view</span><span class="p">:</span>
-    <span class="n">sample</span><span class="p">[</span><span class="s2">&quot;random&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
+    <span class="n">sample</span><span class="p">[</span><span class="s2">"random"</span><span class="p">]</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
     <span class="n">sample</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;random&quot;</span><span class="p">))</span>  <span class="c1"># 50</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">bounds</span><span class="p">(</span><span class="s2">&quot;random&quot;</span><span class="p">))</span> <span class="c1"># (0.0005, 0.9928)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">"random"</span><span class="p">))</span>  <span class="c1"># 50</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">bounds</span><span class="p">(</span><span class="s2">"random"</span><span class="p">))</span> <span class="c1"># (0.0005, 0.9928)</span>
 </pre></div>
 </div>
 <p>However, the above pattern can be inefficient for large views because each
@@ -2059,7 +1882,7 @@ emitted by the iterator to be automatically saved using an efficient batch
 update strategy:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Automatically saves sample edits in efficient batches</span>
 <span class="k">for</span> <span class="n">sample</span> <span class="ow">in</span> <span class="n">view</span><span class="o">.</span><span class="n">select_fields</span><span class="p">()</span><span class="o">.</span><span class="n">iter_samples</span><span class="p">(</span><span class="n">autosave</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-    <span class="n">sample</span><span class="p">[</span><span class="s2">&quot;random&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
+    <span class="n">sample</span><span class="p">[</span><span class="s2">"random"</span><span class="p">]</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -2078,7 +1901,7 @@ method to perform batched edits using the pattern below:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use a context to save sample edits in efficient batches</span>
 <span class="k">with</span> <span class="n">view</span><span class="o">.</span><span class="n">save_context</span><span class="p">()</span> <span class="k">as</span> <span class="n">context</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">sample</span> <span class="ow">in</span> <span class="n">view</span><span class="o">.</span><span class="n">select_fields</span><span class="p">():</span>
-        <span class="n">sample</span><span class="p">[</span><span class="s2">&quot;random&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
+        <span class="n">sample</span><span class="p">[</span><span class="s2">"random"</span><span class="p">]</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
         <span class="n">context</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -2092,14 +1915,14 @@ computations if your loop only edits certain samples.</p>
 set a field (or embedded field) on each sample in the collection in a single
 batch operation:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Delete the field we added earlier</span>
-<span class="n">dataset</span><span class="o">.</span><span class="n">delete_sample_field</span><span class="p">(</span><span class="s2">&quot;random&quot;</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">delete_sample_field</span><span class="p">(</span><span class="s2">"random"</span><span class="p">)</span>
 
 <span class="c1"># Equivalent way to populate a new field on each sample in a view</span>
 <span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">view</span><span class="p">))]</span>
-<span class="n">view</span><span class="o">.</span><span class="n">set_values</span><span class="p">(</span><span class="s2">&quot;random&quot;</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span>
+<span class="n">view</span><span class="o">.</span><span class="n">set_values</span><span class="p">(</span><span class="s2">"random"</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;random&quot;</span><span class="p">))</span>  <span class="c1"># 50</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">bounds</span><span class="p">(</span><span class="s2">&quot;random&quot;</span><span class="p">))</span> <span class="c1"># (0.0272, 0.9921)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">"random"</span><span class="p">))</span>  <span class="c1"># 50</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">bounds</span><span class="p">(</span><span class="s2">"random"</span><span class="p">))</span> <span class="c1"># (0.0272, 0.9921)</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -2113,17 +1936,17 @@ read <a class="reference internal" href="../api/fiftyone.core.sample.html#fiftyo
 <p>Naturally, you can edit nested sample fields of a <a class="reference internal" href="../api/fiftyone.core.view.html#fiftyone.core.view.DatasetView" title="fiftyone.core.view.DatasetView"><code class="xref py py-class docutils literal notranslate"><span class="pre">DatasetView</span></code></a> by iterating
 over the view and editing the necessary data:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a view that contains only low confidence predictions</span>
-<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span><span class="s2">&quot;predictions&quot;</span><span class="p">,</span> <span class="n">F</span><span class="p">(</span><span class="s2">&quot;confidence&quot;</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.06</span><span class="p">)</span>
+<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span><span class="s2">"predictions"</span><span class="p">,</span> <span class="n">F</span><span class="p">(</span><span class="s2">"confidence"</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.06</span><span class="p">)</span>
 
 <span class="c1"># Add a tag to all predictions in the view</span>
 <span class="k">for</span> <span class="n">sample</span> <span class="ow">in</span> <span class="n">view</span><span class="p">:</span>
-    <span class="k">for</span> <span class="n">detection</span> <span class="ow">in</span> <span class="n">sample</span><span class="p">[</span><span class="s2">&quot;predictions&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">detections</span><span class="p">:</span>
-        <span class="n">detection</span><span class="o">.</span><span class="n">tags</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;low_confidence&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">detection</span> <span class="ow">in</span> <span class="n">sample</span><span class="p">[</span><span class="s2">"predictions"</span><span class="p">]</span><span class="o">.</span><span class="n">detections</span><span class="p">:</span>
+        <span class="n">detection</span><span class="o">.</span><span class="n">tags</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">"low_confidence"</span><span class="p">)</span>
 
     <span class="n">sample</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">count_label_tags</span><span class="p">())</span>
-<span class="c1"># {&#39;low_confidence&#39;: 447}</span>
+<span class="c1"># {'low_confidence': 447}</span>
 </pre></div>
 </div>
 <p>However, an equivalent and often more efficient approach is to use
@@ -2132,22 +1955,22 @@ extract the slice of data you wish to modify and then use
 <a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.set_values" title="fiftyone.core.collections.SampleCollection.set_values"><code class="xref py py-meth docutils literal notranslate"><span class="pre">set_values()</span></code></a> to
 save the updated data in a single batch operation:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Remove the tags we added in the previous variation</span>
-<span class="n">dataset</span><span class="o">.</span><span class="n">untag_labels</span><span class="p">(</span><span class="s2">&quot;low_confidence&quot;</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">untag_labels</span><span class="p">(</span><span class="s2">"low_confidence"</span><span class="p">)</span>
 
 <span class="c1"># Load all predicted detections</span>
 <span class="c1"># This is a list of lists of `Detection` instances for each sample</span>
-<span class="n">detections</span> <span class="o">=</span> <span class="n">view</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;predictions.detections&quot;</span><span class="p">)</span>
+<span class="n">detections</span> <span class="o">=</span> <span class="n">view</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">"predictions.detections"</span><span class="p">)</span>
 
 <span class="c1"># Add a tag to all low confidence detections</span>
 <span class="k">for</span> <span class="n">sample_detections</span> <span class="ow">in</span> <span class="n">detections</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">detection</span> <span class="ow">in</span> <span class="n">sample_detections</span><span class="p">:</span>
-        <span class="n">detection</span><span class="o">.</span><span class="n">tags</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;low_confidence&quot;</span><span class="p">)</span>
+        <span class="n">detection</span><span class="o">.</span><span class="n">tags</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">"low_confidence"</span><span class="p">)</span>
 
 <span class="c1"># Save the updated predictions</span>
-<span class="n">view</span><span class="o">.</span><span class="n">set_values</span><span class="p">(</span><span class="s2">&quot;predictions.detections&quot;</span><span class="p">,</span> <span class="n">detections</span><span class="p">)</span>
+<span class="n">view</span><span class="o">.</span><span class="n">set_values</span><span class="p">(</span><span class="s2">"predictions.detections"</span><span class="p">,</span> <span class="n">detections</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">count_label_tags</span><span class="p">())</span>
-<span class="c1"># {&#39;low_confidence&#39;: 447}</span>
+<span class="c1"># {'low_confidence': 447}</span>
 </pre></div>
 </div>
 <p>In the particular case of updating the attributes of a <a class="reference internal" href="../api/fiftyone.core.labels.html#fiftyone.core.labels.Label" title="fiftyone.core.labels.Label"><code class="xref py py-class docutils literal notranslate"><span class="pre">Label</span></code></a> field of your
@@ -2157,13 +1980,13 @@ can use
 <a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.set_label_values" title="fiftyone.core.collections.SampleCollection.set_label_values"><code class="xref py py-meth docutils literal notranslate"><span class="pre">set_label_values()</span></code></a>
 to conveniently perform the updates:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Grab the IDs of all labels in `view`</span>
-<span class="n">label_ids</span> <span class="o">=</span> <span class="n">view</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;predictions.detections.id&quot;</span><span class="p">,</span> <span class="n">unwind</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">label_ids</span> <span class="o">=</span> <span class="n">view</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">"predictions.detections.id"</span><span class="p">,</span> <span class="n">unwind</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="c1"># Populate an `is_low_conf` attribute on all of the labels</span>
 <span class="n">values</span> <span class="o">=</span> <span class="p">{</span><span class="n">_id</span><span class="p">:</span> <span class="kc">True</span> <span class="k">for</span> <span class="n">_id</span> <span class="ow">in</span> <span class="n">label_ids</span><span class="p">}</span>
-<span class="n">dataset</span><span class="o">.</span><span class="n">set_label_values</span><span class="p">(</span><span class="s2">&quot;predictions.detections.is_low_conf&quot;</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">set_label_values</span><span class="p">(</span><span class="s2">"predictions.detections.is_low_conf"</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">count_values</span><span class="p">(</span><span class="s2">&quot;predictions.detections.is_low_conf&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">count_values</span><span class="p">(</span><span class="s2">"predictions.detections.is_low_conf"</span><span class="p">))</span>
 <span class="c1"># {True: 447, None: 5173}</span>
 </pre></div>
 </div>
@@ -2185,19 +2008,19 @@ to do this:</p>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 <span class="kn">from</span> <span class="nn">fiftyone</span> <span class="kn">import</span> <span class="n">ViewField</span> <span class="k">as</span> <span class="n">F</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"quickstart"</span><span class="p">)</span>
 
 <span class="n">ANIMALS</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s2">&quot;bear&quot;</span><span class="p">,</span> <span class="s2">&quot;bird&quot;</span><span class="p">,</span> <span class="s2">&quot;cat&quot;</span><span class="p">,</span> <span class="s2">&quot;cow&quot;</span><span class="p">,</span> <span class="s2">&quot;dog&quot;</span><span class="p">,</span> <span class="s2">&quot;elephant&quot;</span><span class="p">,</span> <span class="s2">&quot;giraffe&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;horse&quot;</span><span class="p">,</span> <span class="s2">&quot;sheep&quot;</span><span class="p">,</span> <span class="s2">&quot;zebra&quot;</span>
+    <span class="s2">"bear"</span><span class="p">,</span> <span class="s2">"bird"</span><span class="p">,</span> <span class="s2">"cat"</span><span class="p">,</span> <span class="s2">"cow"</span><span class="p">,</span> <span class="s2">"dog"</span><span class="p">,</span> <span class="s2">"elephant"</span><span class="p">,</span> <span class="s2">"giraffe"</span><span class="p">,</span>
+    <span class="s2">"horse"</span><span class="p">,</span> <span class="s2">"sheep"</span><span class="p">,</span> <span class="s2">"zebra"</span>
 <span class="p">]</span>
 
-<span class="c1"># Replace all animal detection&#39;s labels with &quot;animal&quot;</span>
-<span class="n">mapping</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="s2">&quot;animal&quot;</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">ANIMALS</span><span class="p">}</span>
-<span class="n">animals_view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">map_labels</span><span class="p">(</span><span class="s2">&quot;predictions&quot;</span><span class="p">,</span> <span class="n">mapping</span><span class="p">)</span>
+<span class="c1"># Replace all animal detection's labels with "animal"</span>
+<span class="n">mapping</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="s2">"animal"</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">ANIMALS</span><span class="p">}</span>
+<span class="n">animals_view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">map_labels</span><span class="p">(</span><span class="s2">"predictions"</span><span class="p">,</span> <span class="n">mapping</span><span class="p">)</span>
 
-<span class="n">counts</span> <span class="o">=</span> <span class="n">animals_view</span><span class="o">.</span><span class="n">count_values</span><span class="p">(</span><span class="s2">&quot;predictions.detections.label&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">counts</span><span class="p">[</span><span class="s2">&quot;animal&quot;</span><span class="p">])</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="n">animals_view</span><span class="o">.</span><span class="n">count_values</span><span class="p">(</span><span class="s2">"predictions.detections.label"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">counts</span><span class="p">[</span><span class="s2">"animal"</span><span class="p">])</span>
 <span class="c1"># 529</span>
 </pre></div>
 </div>
@@ -2207,11 +2030,11 @@ to do this:</p>
 to do this:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Lower bound all confidences in the `predictions` field to 0.5</span>
 <span class="n">bounded_view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">set_field</span><span class="p">(</span>
-    <span class="s2">&quot;predictions.detections.confidence&quot;</span><span class="p">,</span>
-    <span class="n">F</span><span class="p">(</span><span class="s2">&quot;confidence&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span>
+    <span class="s2">"predictions.detections.confidence"</span><span class="p">,</span>
+    <span class="n">F</span><span class="p">(</span><span class="s2">"confidence"</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span>
 <span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">bounded_view</span><span class="o">.</span><span class="n">bounds</span><span class="p">(</span><span class="s2">&quot;predictions.detections.confidence&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bounded_view</span><span class="o">.</span><span class="n">bounds</span><span class="p">(</span><span class="s2">"predictions.detections.confidence"</span><span class="p">))</span>
 <span class="c1"># (0.5, 0.9999035596847534)</span>
 </pre></div>
 </div>
@@ -2222,11 +2045,11 @@ to do this:</p>
 you must first declare the new field on the dataset via
 <a class="reference internal" href="../api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset.add_sample_field" title="fiftyone.core.dataset.Dataset.add_sample_field"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_sample_field()</span></code></a>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Record the number of predictions in each sample in a new field</span>
-<span class="n">dataset</span><span class="o">.</span><span class="n">add_sample_field</span><span class="p">(</span><span class="s2">&quot;num_predictions&quot;</span><span class="p">,</span> <span class="n">fo</span><span class="o">.</span><span class="n">IntField</span><span class="p">)</span>
-<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">set_field</span><span class="p">(</span><span class="s2">&quot;num_predictions&quot;</span><span class="p">,</span> <span class="n">F</span><span class="p">(</span><span class="s2">&quot;predictions.detections&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">length</span><span class="p">())</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">add_sample_field</span><span class="p">(</span><span class="s2">"num_predictions"</span><span class="p">,</span> <span class="n">fo</span><span class="o">.</span><span class="n">IntField</span><span class="p">)</span>
+<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">set_field</span><span class="p">(</span><span class="s2">"num_predictions"</span><span class="p">,</span> <span class="n">F</span><span class="p">(</span><span class="s2">"predictions.detections"</span><span class="p">)</span><span class="o">.</span><span class="n">length</span><span class="p">())</span>
 
-<span class="n">view</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;num_predictions&quot;</span><span class="p">)</span>  <span class="c1"># save the new field&#39;s values on the dataset</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">bounds</span><span class="p">(</span><span class="s2">&quot;num_predictions&quot;</span><span class="p">))</span>  <span class="c1"># (1, 100)</span>
+<span class="n">view</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">"num_predictions"</span><span class="p">)</span>  <span class="c1"># save the new field's values on the dataset</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">bounds</span><span class="p">(</span><span class="s2">"num_predictions"</span><span class="p">))</span>  <span class="c1"># (1, 100)</span>
 </pre></div>
 </div>
 </div>
@@ -2238,12 +2061,12 @@ predictions for each sample in the dataset:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fiftyone</span> <span class="kn">import</span> <span class="n">ViewField</span> <span class="k">as</span> <span class="n">F</span>
 
 <span class="c1"># Extracts the 5 highest confidence predictions for each sample</span>
-<span class="n">top5_preds</span> <span class="o">=</span> <span class="n">F</span><span class="p">(</span><span class="s2">&quot;detections&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="s2">&quot;confidence&quot;</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)[:</span><span class="mi">5</span><span class="p">]</span>
+<span class="n">top5_preds</span> <span class="o">=</span> <span class="n">F</span><span class="p">(</span><span class="s2">"detections"</span><span class="p">)</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="s2">"confidence"</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)[:</span><span class="mi">5</span><span class="p">]</span>
 
 <span class="n">top5_view</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">dataset</span>
-    <span class="o">.</span><span class="n">set_field</span><span class="p">(</span><span class="s2">&quot;predictions.detections&quot;</span><span class="p">,</span> <span class="n">top5_preds</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">select_fields</span><span class="p">(</span><span class="s2">&quot;predictions&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">set_field</span><span class="p">(</span><span class="s2">"predictions.detections"</span><span class="p">,</span> <span class="n">top5_preds</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">select_fields</span><span class="p">(</span><span class="s2">"predictions"</span><span class="p">)</span>
 <span class="p">)</span>
 
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">view</span><span class="o">=</span><span class="n">top5_view</span><span class="p">)</span>
@@ -2253,8 +2076,8 @@ predictions for each sample in the dataset:</p>
 dataset, you can do so by calling
 <a class="reference internal" href="../api/fiftyone.core.view.html#fiftyone.core.view.DatasetView.save" title="fiftyone.core.view.DatasetView.save"><code class="xref py py-meth docutils literal notranslate"><span class="pre">save()</span></code></a> on the view and optionally
 passing the name(s) of specific field(s) that you want to save:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Saves `predictions` field&#39;s contents in the view permanently to dataset</span>
-<span class="n">top5_view</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;predictions&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Saves `predictions` field's contents in the view permanently to dataset</span>
+<span class="n">top5_view</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">"predictions"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2268,22 +2091,22 @@ contents of a view you’ve created to the underlying dataset:</p>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 <span class="kn">from</span> <span class="nn">fiftyone</span> <span class="kn">import</span> <span class="n">ViewField</span> <span class="k">as</span> <span class="n">F</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"quickstart"</span><span class="p">)</span>
 
 <span class="c1"># Capitalize some labels</span>
-<span class="n">rename_view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">map_labels</span><span class="p">(</span><span class="s2">&quot;predictions&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;cat&quot;</span><span class="p">:</span> <span class="s2">&quot;CAT&quot;</span><span class="p">,</span> <span class="s2">&quot;dog&quot;</span><span class="p">:</span> <span class="s2">&quot;DOG&quot;</span><span class="p">})</span>
+<span class="n">rename_view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">map_labels</span><span class="p">(</span><span class="s2">"predictions"</span><span class="p">,</span> <span class="p">{</span><span class="s2">"cat"</span><span class="p">:</span> <span class="s2">"CAT"</span><span class="p">,</span> <span class="s2">"dog"</span><span class="p">:</span> <span class="s2">"DOG"</span><span class="p">})</span>
 <span class="n">rename_view</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">count_values</span><span class="p">(</span><span class="s2">&quot;predictions.detections.label&quot;</span><span class="p">))</span>
-<span class="c1"># {&#39;CAT&#39;: 35, &#39;DOG&#39;: 49, ...}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">count_values</span><span class="p">(</span><span class="s2">"predictions.detections.label"</span><span class="p">))</span>
+<span class="c1"># {'CAT': 35, 'DOG': 49, ...}</span>
 
 <span class="c1"># Discard all predictions with confidence below 0.3</span>
 <span class="n">high_conf_view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span>
-    <span class="s2">&quot;predictions&quot;</span><span class="p">,</span> <span class="n">F</span><span class="p">(</span><span class="s2">&quot;confidence&quot;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">0.3</span><span class="p">,</span> <span class="n">only_matches</span><span class="o">=</span><span class="kc">False</span>
+    <span class="s2">"predictions"</span><span class="p">,</span> <span class="n">F</span><span class="p">(</span><span class="s2">"confidence"</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">0.3</span><span class="p">,</span> <span class="n">only_matches</span><span class="o">=</span><span class="kc">False</span>
 <span class="p">)</span>
 <span class="n">high_conf_view</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">bounds</span><span class="p">(</span><span class="s2">&quot;predictions.detections.confidence&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">bounds</span><span class="p">(</span><span class="s2">"predictions.detections.confidence"</span><span class="p">))</span>
 <span class="c1"># (0.3001, 0.9999)</span>
 </pre></div>
 </div>
@@ -2296,7 +2119,7 @@ samples from the underlying dataset that do not appear in a view you created:</p
 <span class="c1"># 200</span>
 
 <span class="c1"># Discard all samples with no people</span>
-<span class="n">people_view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span> <span class="n">F</span><span class="p">(</span><span class="s2">&quot;label&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;person&quot;</span><span class="p">)</span>
+<span class="n">people_view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span><span class="s2">"ground_truth"</span><span class="p">,</span> <span class="n">F</span><span class="p">(</span><span class="s2">"label"</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"person"</span><span class="p">)</span>
 <span class="n">people_view</span><span class="o">.</span><span class="n">keep</span><span class="p">()</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="p">))</span>
@@ -2308,7 +2131,7 @@ samples from the underlying dataset that do not appear in a view you created:</p
 to delete any sample/frame fields from the underlying dataset that you have
 excluded from a view you created:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Delete the `predictions` field</span>
-<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">exclude_fields</span><span class="p">(</span><span class="s2">&quot;predictions&quot;</span><span class="p">)</span>
+<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">exclude_fields</span><span class="p">(</span><span class="s2">"predictions"</span><span class="p">)</span>
 <span class="n">view</span><span class="o">.</span><span class="n">keep_fields</span><span class="p">()</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
@@ -2325,13 +2148,13 @@ excluded from a view you created:</p>
 <a class="reference internal" href="../api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset" title="fiftyone.core.dataset.Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dataset</span></code></a> that contains a copy of (only) the contents of a <a class="reference internal" href="../api/fiftyone.core.view.html#fiftyone.core.view.DatasetView" title="fiftyone.core.view.DatasetView"><code class="xref py py-class docutils literal notranslate"><span class="pre">DatasetView</span></code></a>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Reload full quickstart dataset</span>
 <span class="n">dataset</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"quickstart"</span><span class="p">)</span>
 
 <span class="c1"># Create a new dataset that contains only the high confidence predictions</span>
-<span class="n">high_conf_view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span><span class="s2">&quot;predictions&quot;</span><span class="p">,</span> <span class="n">F</span><span class="p">(</span><span class="s2">&quot;confidence&quot;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">0.3</span><span class="p">)</span>
+<span class="n">high_conf_view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span><span class="s2">"predictions"</span><span class="p">,</span> <span class="n">F</span><span class="p">(</span><span class="s2">"confidence"</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">0.3</span><span class="p">)</span>
 <span class="n">high_conf_dataset</span> <span class="o">=</span> <span class="n">high_conf_view</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">high_conf_dataset</span><span class="o">.</span><span class="n">bounds</span><span class="p">(</span><span class="s2">&quot;predictions.detections.confidence&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">high_conf_dataset</span><span class="o">.</span><span class="n">bounds</span><span class="p">(</span><span class="s2">"predictions.detections.confidence"</span><span class="p">))</span>
 <span class="c1"># (0.3001, 0.9999)</span>
 </pre></div>
 </div>
@@ -2339,15 +2162,15 @@ excluded from a view you created:</p>
 <a class="reference internal" href="../api/fiftyone.core.view.html#fiftyone.core.view.DatasetView.clone_sample_field" title="fiftyone.core.view.DatasetView.clone_sample_field"><code class="xref py py-meth docutils literal notranslate"><span class="pre">clone_sample_field()</span></code></a>
 to copy the contents of a view’s field into a new field of the underlying
 <a class="reference internal" href="../api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset" title="fiftyone.core.dataset.Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dataset</span></code></a>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;predictions.detections&quot;</span><span class="p">))</span>  <span class="c1"># 5620</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">"predictions.detections"</span><span class="p">))</span>  <span class="c1"># 5620</span>
 
 <span class="c1"># Make view containing only high confidence predictions</span>
-<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span><span class="s2">&quot;predictions&quot;</span><span class="p">,</span> <span class="n">F</span><span class="p">(</span><span class="s2">&quot;confidence&quot;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">view</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;predictions.detections&quot;</span><span class="p">))</span>  <span class="c1"># 1564</span>
+<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span><span class="s2">"predictions"</span><span class="p">,</span> <span class="n">F</span><span class="p">(</span><span class="s2">"confidence"</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">view</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">"predictions.detections"</span><span class="p">))</span>  <span class="c1"># 1564</span>
 
 <span class="c1"># Copy high confidence predictions to a new field</span>
-<span class="n">view</span><span class="o">.</span><span class="n">clone_sample_field</span><span class="p">(</span><span class="s2">&quot;predictions&quot;</span><span class="p">,</span> <span class="s2">&quot;high_conf_predictions&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;high_conf_predictions.detections&quot;</span><span class="p">))</span>  <span class="c1"># 1564</span>
+<span class="n">view</span><span class="o">.</span><span class="n">clone_sample_field</span><span class="p">(</span><span class="s2">"predictions"</span><span class="p">,</span> <span class="s2">"high_conf_predictions"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">"high_conf_predictions.detections"</span><span class="p">))</span>  <span class="c1"># 1564</span>
 </pre></div>
 </div>
 </div>
@@ -2358,14 +2181,14 @@ to copy the contents of a view’s field into a new field of the underlying
 <p>View stages can be chained together to perform complex operations:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fiftyone</span> <span class="kn">import</span> <span class="n">ViewField</span> <span class="k">as</span> <span class="n">F</span>
 
-<span class="c1"># Extract the first 5 samples with the &quot;validation&quot; tag, alphabetically by</span>
+<span class="c1"># Extract the first 5 samples with the "validation" tag, alphabetically by</span>
 <span class="c1"># filepath, whose images are &gt;= 48 KB</span>
 <span class="n">complex_view</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">dataset</span>
-    <span class="o">.</span><span class="n">match_tags</span><span class="p">(</span><span class="s2">&quot;validation&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s2">&quot;metadata&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s2">&quot;metadata.size_bytes&quot;</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">48</span> <span class="o">*</span> <span class="mi">1024</span><span class="p">)</span>  <span class="c1"># &gt;= 48 KB</span>
-    <span class="o">.</span><span class="n">sort_by</span><span class="p">(</span><span class="s2">&quot;filepath&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">match_tags</span><span class="p">(</span><span class="s2">"validation"</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s2">"metadata"</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s2">"metadata.size_bytes"</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">48</span> <span class="o">*</span> <span class="mi">1024</span><span class="p">)</span>  <span class="c1"># &gt;= 48 KB</span>
+    <span class="o">.</span><span class="n">sort_by</span><span class="p">(</span><span class="s2">"filepath"</span><span class="p">)</span>
     <span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 <span class="p">)</span>
 </pre></div>
@@ -2377,11 +2200,11 @@ to copy the contents of a view’s field into a new field of the underlying
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fiftyone</span> <span class="kn">import</span> <span class="n">ViewField</span> <span class="k">as</span> <span class="n">F</span>
 
 <span class="c1"># Bboxes are in [top-left-x, top-left-y, width, height] format</span>
-<span class="n">bbox_area</span> <span class="o">=</span> <span class="n">F</span><span class="p">(</span><span class="s2">&quot;bounding_box&quot;</span><span class="p">)[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="n">F</span><span class="p">(</span><span class="s2">&quot;bounding_box&quot;</span><span class="p">)[</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">bbox_area</span> <span class="o">=</span> <span class="n">F</span><span class="p">(</span><span class="s2">"bounding_box"</span><span class="p">)[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="n">F</span><span class="p">(</span><span class="s2">"bounding_box"</span><span class="p">)[</span><span class="mi">3</span><span class="p">]</span>
 
 <span class="c1"># Only contains boxes whose area is between 5% and 50% of the image</span>
 <span class="n">medium_boxes_view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span>
-    <span class="s2">&quot;predictions&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.05</span> <span class="o">&lt;=</span> <span class="n">bbox_area</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">bbox_area</span> <span class="o">&lt;</span> <span class="mf">0.5</span><span class="p">)</span>
+    <span class="s2">"predictions"</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.05</span> <span class="o">&lt;=</span> <span class="n">bbox_area</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">bbox_area</span> <span class="o">&lt;</span> <span class="mf">0.5</span><span class="p">)</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -2393,13 +2216,13 @@ However, you can use the expression below to filter by absolute pixel area:</p>
 
 <span class="c1"># Computes the area of each bounding box in pixels</span>
 <span class="n">bbox_area</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">F</span><span class="p">(</span><span class="s2">&quot;$metadata.width&quot;</span><span class="p">)</span> <span class="o">*</span> <span class="n">F</span><span class="p">(</span><span class="s2">&quot;bounding_box&quot;</span><span class="p">)[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span>
-    <span class="n">F</span><span class="p">(</span><span class="s2">&quot;$metadata.height&quot;</span><span class="p">)</span> <span class="o">*</span> <span class="n">F</span><span class="p">(</span><span class="s2">&quot;bounding_box&quot;</span><span class="p">)[</span><span class="mi">3</span><span class="p">]</span>
+    <span class="n">F</span><span class="p">(</span><span class="s2">"$metadata.width"</span><span class="p">)</span> <span class="o">*</span> <span class="n">F</span><span class="p">(</span><span class="s2">"bounding_box"</span><span class="p">)[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span>
+    <span class="n">F</span><span class="p">(</span><span class="s2">"$metadata.height"</span><span class="p">)</span> <span class="o">*</span> <span class="n">F</span><span class="p">(</span><span class="s2">"bounding_box"</span><span class="p">)[</span><span class="mi">3</span><span class="p">]</span>
 <span class="p">)</span>
 
 <span class="c1"># Only contains boxes whose area is between 32^2 and 96^2 pixels</span>
 <span class="n">medium_boxes_view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span>
-    <span class="s2">&quot;predictions&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mi">32</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">&lt;</span> <span class="n">bbox_area</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">bbox_area</span> <span class="o">&lt;</span> <span class="mi">96</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="s2">"predictions"</span><span class="p">,</span> <span class="p">(</span><span class="mi">32</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">&lt;</span> <span class="n">bbox_area</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">bbox_area</span> <span class="o">&lt;</span> <span class="mi">96</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -2462,7 +2285,7 @@ to load only the <code class="docutils literal notranslate"><span class="pre">op
 
 <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 <span class="n">oids</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">sample</span> <span class="ow">in</span> <span class="n">dataset</span><span class="o">.</span><span class="n">select_fields</span><span class="p">(</span><span class="s2">&quot;open_images_id&quot;</span><span class="p">):</span>
+<span class="k">for</span> <span class="n">sample</span> <span class="ow">in</span> <span class="n">dataset</span><span class="o">.</span><span class="n">select_fields</span><span class="p">(</span><span class="s2">"open_images_id"</span><span class="p">):</span>
     <span class="n">oids</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sample</span><span class="o">.</span><span class="n">open_images_id</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span><span class="p">)</span>
@@ -2472,30 +2295,15 @@ to load only the <code class="docutils literal notranslate"><span class="pre">op
 </div>
 </div>
 </div>
+</article>
+</div>
 
-
-             </article>
-             
-            </div>
-            <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="app.html" class="btn btn-neutral float-right" title="Using the FiftyOne App" accesskey="n" rel="next">Next <img src="../_static/images/chevron-right-orange.svg" class="next-page"></a>
-      
-      
-        <a href="using_datasets.html" class="btn btn-neutral" title="Using FiftyOne Datasets" accesskey="p" rel="prev"><img src="../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
-      
-    </div>
-  
-</footer>
-          </div>
-        </div>
-
-        <div class="pytorch-content-right" id="pytorch-content-right">
-          <div class="pytorch-right-menu" id="pytorch-right-menu">
-            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
-              <ul>
+</div>
+</div>
+<div class="pytorch-content-right" id="pytorch-content-right">
+<div class="pytorch-right-menu" id="pytorch-right-menu">
+<div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+<ul>
 <li><a class="reference internal" href="#">Dataset Views</a><ul>
 <li><a class="reference internal" href="#overview">Overview</a></li>
 <li><a class="reference internal" href="#saving-views">Saving views</a></li>
@@ -2544,214 +2352,36 @@ to load only the <code class="docutils literal notranslate"><span class="pre">op
 </ul>
 </li>
 </ul>
-
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
-
-  
-
-
-  
-
-     
-       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-         <script src="../_static/jquery.js"></script>
-         <script src="../_static/underscore.js"></script>
-         <script src="../_static/doctools.js"></script>
-         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
-         <script src="../_static/js/voxel51-website.js"></script>
-         <script src="../_static/js/custom.js"></script>
-     
-
-  
-
-  <script type="text/javascript" src="../_static/js/vendor/popper.min.js"></script>
-  <script type="text/javascript" src="../_static/js/vendor/bootstrap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-  <script type="text/javascript">
+</div>
+</div>
+</div>
+</section>
+</div>
+<script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js" type="text/javascript"></script>
+<script src="../_static/jquery.js"></script>
+<script src="../_static/underscore.js"></script>
+<script src="../_static/doctools.js"></script>
+<script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+<script src="../_static/js/voxel51-website.js"></script>
+<script src="../_static/js/custom.js"></script>
+<script src="../_static/js/vendor/popper.min.js" type="text/javascript"></script>
+<script src="../_static/js/vendor/bootstrap.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+<script src="../_static/js/theme.js" type="text/javascript"></script>
+<script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
-
-  <!-- Begin Footer -->
-
-
-  <div class="container-fluid docs-tutorials-resources" id="docs-tutorials-resources">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4 text-center">
-          <h2>Docs</h2>
-          <p>Access comprehensive developer documentation for PyTorch</p>
-          <a class="with-right-arrow" href="https://pytorch.org/docs/stable/index.html">View Docs</a>
-        </div>
-
-        <div class="col-md-4 text-center">
-          <h2>Tutorials</h2>
-          <p>Get in-depth tutorials for beginners and advanced developers</p>
-          <a class="with-right-arrow" href="https://pytorch.org/tutorials">View Tutorials</a>
-        </div>
-
-        <div class="col-md-4 text-center">
-          <h2>Resources</h2>
-          <p>Find development resources and get your questions answered</p>
-          <a class="with-right-arrow" href="https://pytorch.org/resources">View Resources</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <footer class="site-footer">
-    <div class="container footer-container">
-      <div class="footer-logo-wrapper">
-        <a href="https://pytorch.org/" class="footer-logo"></a>
-      </div>
-
-      <div class="footer-links-wrapper">
-        <div class="footer-links-col">
-          <ul>
-            <li class="list-title"><a href="https://pytorch.org/">PyTorch</a></li>
-            <li><a href="https://pytorch.org/get-started">Get Started</a></li>
-            <li><a href="https://pytorch.org/features">Features</a></li>
-            <li><a href="https://pytorch.org/ecosystem">Ecosystem</a></li>
-            <li><a href="https://pytorch.org/blog/">Blog</a></li>
-            <li><a href="https://github.com/pytorch/pytorch/blob/master/CONTRIBUTING.md">Contributing</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-links-col">
-          <ul>
-            <li class="list-title"><a href="https://pytorch.org/resources">Resources</a></li>
-            <li><a href="https://pytorch.org/tutorials">Tutorials</a></li>
-            <li><a href="https://pytorch.org/docs/stable/index.html">Docs</a></li>
-            <li><a href="https://discuss.pytorch.org" target="_blank">Discuss</a></li>
-            <li><a href="https://github.com/pytorch/pytorch/issues" target="_blank">Github Issues</a></li>
-            <li><a href="https://pytorch.org/assets/brand-guidelines/PyTorch-Brand-Guidelines.pdf" target="_blank">Brand Guidelines</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-links-col follow-us-col">
-          <ul>
-            <li class="list-title">Stay Connected</li>
-            <li>
-              <div id="mc_embed_signup">
-                <form
-                  action="https://twitter.us14.list-manage.com/subscribe/post?u=75419c71fe0a935e53dfa4a3f&id=91d0dccd39"
-                  method="post"
-                  id="mc-embedded-subscribe-form"
-                  name="mc-embedded-subscribe-form"
-                  class="email-subscribe-form validate"
-                  target="_blank"
-                  novalidate>
-                  <div id="mc_embed_signup_scroll" class="email-subscribe-form-fields-wrapper">
-                    <div class="mc-field-group">
-                      <label for="mce-EMAIL" style="display:none;">Email Address</label>
-                      <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="Email Address">
-                    </div>
-
-                    <div id="mce-responses" class="clear">
-                      <div class="response" id="mce-error-response" style="display:none"></div>
-                      <div class="response" id="mce-success-response" style="display:none"></div>
-                    </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-
-                    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_75419c71fe0a935e53dfa4a3f_91d0dccd39" tabindex="-1" value=""></div>
-
-                    <div class="clear">
-                      <input type="submit" value="" name="subscribe" id="mc-embedded-subscribe" class="button email-subscribe-button">
-                    </div>
-                  </div>
-                </form>
-              </div>
-
-            </li>
-          </ul>
-
-          <div class="footer-social-icons">
-            <a href="https://www.facebook.com/pytorch" target="_blank" class="facebook"></a>
-            <a href="https://twitter.com/pytorch" target="_blank" class="twitter"></a>
-            <a href="https://www.youtube.com/pytorch" target="_blank" class="youtube"></a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
+  </script>
+<!-- Begin Footer -->
 
 
-  
+<!-- End Footer -->
+<!-- Begin Mobile Menu -->
 
-  <!-- End Footer -->
-
-  <!-- Begin Mobile Menu -->
-
-
-  <div class="mobile-main-menu">
-    <div class="container-fluid">
-      <div class="container">
-        <div class="mobile-main-menu-header-container">
-          <a class="header-logo" href="https://pytorch.org/" aria-label="PyTorch"></a>
-          <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
-        </div>
-      </div>
-    </div>
-
-    <div class="mobile-main-menu-links-container">
-      <div class="main-menu">
-        <ul>
-          <li>
-            <a href="https://pytorch.org/get-started">Get Started</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/features">Features</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/ecosystem">Ecosystem</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/mobile">Mobile</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/hub">PyTorch Hub</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/blog/">Blog</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/tutorials">Tutorials</a>
-          </li>
-
-          <li class="active">
-            <a href="https://pytorch.org/docs/stable/index.html">Docs</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/resources">Resources</a>
-          </li>
-
-          <li>
-            <a href="https://github.com/pytorch/pytorch">Github</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-
-  <!-- End Mobile Menu -->
-
-  <script type="text/javascript" src="../_static/js/vendor/anchor.min.js"></script>
-
-  <script type="text/javascript">
+<!-- End Mobile Menu -->
+<script src="../_static/js/vendor/anchor.min.js" type="text/javascript"></script>
+<script type="text/javascript">
     $(document).ready(function() {
       mobileMenu.bind();
       mobileTOC.bind();

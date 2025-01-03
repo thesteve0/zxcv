@@ -1,183 +1,46 @@
 
-
-
 <!DOCTYPE html>
+
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>Milvus Integration &mdash; FiftyOne 1.3.0 documentation</title>
-  
-
-  
-  
-    <link rel="shortcut icon" href="../_static/favicon.ico"/>
-  
-  
-  
-
-  
-
-  
-  
-    
-
-  
-
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
-  <link rel="stylesheet" href="../_static/css/voxel51-website.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="LanceDB Integration" href="lancedb.html" />
-    <link rel="prev" title="Elasticsearch Vector Search Integration" href="elasticsearch.html" />
-<meta property="og:image" content="https://voxel51.com/wp-content/uploads/2024/03/3.24_webpages_Home_AV.png" />
-
-<link
-  href="https://fonts.googleapis.com/css?family=Palanquin:400,600,700,800"
-  rel="stylesheet"
-/>
-<link
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
-  rel="stylesheet"
-/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Milvus Integration — FiftyOne 1.3.0 documentation</title>
+<link href="../_static/favicon.ico" rel="shortcut icon"/>
+<link href="../_static/css/theme.css" rel="stylesheet" type="text/css"/>
+<!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+<link href="../_static/css/voxel51-website.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/css/custom.css" rel="stylesheet" type="text/css"/>
+<link href="../genindex.html" rel="index" title="Index"/>
+<link href="../search.html" rel="search" title="Search"/>
+<link href="lancedb.html" rel="next" title="LanceDB Integration"/>
+<link href="elasticsearch.html" rel="prev" title="Elasticsearch Vector Search Integration"/>
+<meta content="https://voxel51.com/wp-content/uploads/2024/03/3.24_webpages_Home_AV.png" property="og:image">
+<link href="https://fonts.googleapis.com/css?family=Palanquin:400,600,700,800" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet"/>
 <script src="https://tag.clearbitscripts.com/v1/pk_b9ed71c8234edd4f77326bcbfab5a4ca/tags.js"></script>
-
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
-  
-</head>
-
-
-<div class="container-fluid header-holder tutorials-header" id="header-holder">
-  <div class="container">
-    <div class="header-container">
-      <a class="header-logo" href="https://pytorch.org/" aria-label="PyTorch"></a>
-
-      <div class="main-menu">
-        <ul>
-          <li>
-            <a href="https://pytorch.org/get-started">Get Started</a>
-          </li>
-
-          <li>
-            <div class="ecosystem-dropdown">
-              <a id="dropdownMenuButton" data-toggle="ecosystem-dropdown">
-                Ecosystem
-              </a>
-              <div class="ecosystem-dropdown-menu">
-                <a class="nav-dropdown-item" href="https://pytorch.org/hub"">
-                  <span class=dropdown-title>Models (Beta)</span>
-                  <p>Discover, publish, and reuse pre-trained models</p>
-                </a>
-                <a class="nav-dropdown-item" href="https://pytorch.org/ecosystem">
-                  <span class=dropdown-title>Tools & Libraries</span>
-                  <p>Explore the ecosystem of tools and libraries</p>
-                </a>
-              </div>
-            </div>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/mobile">Mobile</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/blog/">Blog</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/tutorials">Tutorials</a>
-          </li>
-
-          <li class="active">
-            <a href="https://pytorch.org/docs/stable/index.html">Docs</a>
-          </li>
-
-          <li>
-            <div class="resources-dropdown">
-              <a id="resourcesDropdownButton" data-toggle="resources-dropdown">
-                Resources
-              </a>
-              <div class="resources-dropdown-menu">
-                <a class="nav-dropdown-item" href="https://pytorch.org/resources"">
-                  <span class=dropdown-title>Developer Resources</span>
-                  <p>Find resources and get questions answered</p>
-                </a>
-                <a class="nav-dropdown-item" href="https://pytorch.org/features">
-                  <span class=dropdown-title>About</span>
-                  <p>Learn about PyTorch’s features and capabilities</p>
-                </a>
-              </div>
-            </div>
-          </li>
-
-          <li>
-            <a href="https://github.com/pytorch/pytorch">Github</a>
-          </li>
-        </ul>
-      </div>
-
-      <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
-    </div>
-
-  </div>
-</div>
-
-
+<script src="../_static/js/modernizr.min.js"></script>
+</meta></head>
 
 <body class="pytorch-body">
-
-   
-
-    
-
-    <div class="table-of-contents-link-wrapper">
-      <span>Table of Contents</span>
-      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
-    </div>
-
-    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
-      <div class="pytorch-side-scroll">
-        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          <div class="pytorch-left-menu-search">
-            
-
-            
-              
-              
-            
-
-            
-
-
-  
-
-
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search Docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
+<div class="table-of-contents-link-wrapper">
+<span>Table of Contents</span>
+<a class="toggle-table-of-contents" data-behavior="toggle-table-of-contents" href="#"></a>
 </div>
-
-            
-          </div>
-
-          
-            
-            
-              
-            
-            
-              <ul class="current">
+<nav class="pytorch-left-menu" data-toggle="wy-nav-shift" id="pytorch-left-menu">
+<div class="pytorch-side-scroll">
+<div aria-label="main navigation" class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation">
+<div class="pytorch-left-menu-search">
+<div role="search">
+<form action="../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input name="q" placeholder="Search Docs" type="text"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../teams/index.html">FiftyOne Teams 🚀</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/install.html">Installation</a></li>
@@ -197,78 +60,38 @@
 <li class="toctree-l1"><a class="reference internal" href="../deprecation.html">Deprecation Notices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a></li>
 </ul>
-
-            
-          
-        </div>
-      </div>
-    </nav>
-
-    <div class="pytorch-container">
-      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
-        <div class="pytorch-breadcrumbs-wrapper">
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
-  <ul class="pytorch-breadcrumbs">
-    
-      <li>
-        <a href="../index.html">
+</div>
+</div>
+</nav>
+<div class="pytorch-container">
+<div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+<div class="pytorch-breadcrumbs-wrapper">
+<div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="pytorch-breadcrumbs">
+<li>
+<a href="../index.html">
           
             Docs
           
         </a> &gt;
       </li>
-
-        
-          <li><a href="index.html">FiftyOne Integrations</a> &gt;</li>
-        
-      <li>Milvus Integration</li>
-    
-    
-      <li class="pytorch-breadcrumbs-aside">
-        
-            
-        
-      </li>
-    
-  </ul>
-
-  
+<li><a href="index.html">FiftyOne Integrations</a> &gt;</li>
+<li>Milvus Integration</li>
+<li class="pytorch-breadcrumbs-aside">
+</li>
+</ul>
 </div>
-        </div>
-
-        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+</div>
+<div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
           Contents
         </div>
-      </div>
-
-      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
-        <div class="pytorch-content-left">
-
-        
-          
-          <div class="rst-content style-external-links">
-          
-            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
-             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
-              
-  <div class="section" id="milvus-integration">
+</div>
+<section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+<div class="pytorch-content-left">
+<div class="rst-content style-external-links">
+<div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+<div class="section" id="milvus-integration">
 <span id="id1"></span><h1>Milvus Integration<a class="headerlink" href="#milvus-integration" title="Permalink to this headline">¶</a></h1>
 <p><a class="reference external" href="https://milvus.io/">Milvus</a> is one of the most popular vector databases
 available, and we’ve made it easy to use Milvus’s vector search
@@ -284,7 +107,7 @@ via point-and-click in the App.</p>
 <a class="reference internal" href="../brain.html#brain-similarity-text"><span class="std std-ref">search by natural language</span></a> using Milvus
 similarity indexes!</p>
 </div>
-<img alt="object-similarity" class="align-center" src="../_images/brain-object-similarity.gif" />
+<img alt="object-similarity" class="align-center" src="../_images/brain-object-similarity.gif"/>
 <div class="section" id="basic-recipe">
 <span id="milvus-basic-recipe"></span><h2>Basic recipe<a class="headerlink" href="#basic-recipe" title="Permalink to this headline">¶</a></h2>
 <p>The basic workflow to use Milvus to create a similarity index on your FiftyOne
@@ -295,13 +118,13 @@ datasets and use this to query your data is as follows:</p>
 a model to use to generate embeddings</p></li>
 <li><p>Use the <code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_similarity()</span></code>
 methodto generate a Milvus similarity index for the samples or object
-patches in a dataset by setting the parameter <code class="code docutils literal notranslate"><span class="pre">backend=&quot;milvus&quot;</span></code> and
+patches in a dataset by setting the parameter <code class="code docutils literal notranslate"><span class="pre">backend="milvus"</span></code> and
 specifying a <code class="code docutils literal notranslate"><span class="pre">brain_key</span></code> of your choice</p></li>
 <li><p>Use this Milvus similarity index to query your data with
 <a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.sort_by_similarity" title="fiftyone.core.collections.SampleCollection.sort_by_similarity"><code class="xref py py-meth docutils literal notranslate"><span class="pre">sort_by_similarity()</span></code></a></p></li>
 <li><p>If desired, delete the index</p></li>
 </ol>
-<p><br />
+<p><br/>
 The example below demonstrates this workflow.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -326,13 +149,13 @@ samples:</p>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
 <span class="c1"># Step 1: Load your data into FiftyOne</span>
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"quickstart"</span><span class="p">)</span>
 
 <span class="c1"># Steps 2 and 3: Compute embeddings and create a similarity index</span>
 <span class="n">milvus_index</span> <span class="o">=</span> <span class="n">fob</span><span class="o">.</span><span class="n">compute_similarity</span><span class="p">(</span>
     <span class="n">dataset</span><span class="p">,</span>
-    <span class="n">brain_key</span><span class="o">=</span><span class="s2">&quot;milvus_index&quot;</span><span class="p">,</span>
-    <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;milvus&quot;</span><span class="p">,</span>
+    <span class="n">brain_key</span><span class="o">=</span><span class="s2">"milvus_index"</span><span class="p">,</span>
+    <span class="n">backend</span><span class="o">=</span><span class="s2">"milvus"</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -342,7 +165,7 @@ by specifying the <code class="code docutils literal notranslate"><span class="p
 <span class="n">query</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">id</span>  <span class="c1"># query by sample ID</span>
 <span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">sort_by_similarity</span><span class="p">(</span>
     <span class="n">query</span><span class="p">,</span>
-    <span class="n">brain_key</span><span class="o">=</span><span class="s2">&quot;milvus_index&quot;</span><span class="p">,</span>
+    <span class="n">brain_key</span><span class="o">=</span><span class="s2">"milvus_index"</span><span class="p">,</span>
     <span class="n">k</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>  <span class="c1"># limit to 10 most similar samples</span>
 <span class="p">)</span>
 
@@ -352,7 +175,7 @@ by specifying the <code class="code docutils literal notranslate"><span class="p
 <span class="n">milvus_index</span><span class="o">.</span><span class="n">cleanup</span><span class="p">()</span>
 
 <span class="c1"># Delete run record from FiftyOne</span>
-<span class="n">dataset</span><span class="o">.</span><span class="n">delete_brain_run</span><span class="p">(</span><span class="s2">&quot;milvus_index&quot;</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">delete_brain_run</span><span class="p">(</span><span class="s2">"milvus_index"</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -385,10 +208,10 @@ sudo<span class="w"> </span>docker<span class="w"> </span>compose<span class="w"
 will use an sklearn backend.</p>
 <p>To use the Milvus backend, simply set the optional <code class="code docutils literal notranslate"><span class="pre">backend</span></code> parameter of
 <code class="xref py py-meth docutils literal notranslate"><span class="pre">compute_similarity()</span></code> to
-<code class="code docutils literal notranslate"><span class="pre">&quot;milvus&quot;</span></code>:</p>
+<code class="code docutils literal notranslate"><span class="pre">"milvus"</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone.brain</span> <span class="k">as</span> <span class="nn">fob</span>
 
-<span class="n">fob</span><span class="o">.</span><span class="n">compute_similarity</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;milvus&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+<span class="n">fob</span><span class="o">.</span><span class="n">compute_similarity</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="s2">"milvus"</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Alternatively, you can permanently configure FiftyOne to use the Milvus
@@ -399,7 +222,7 @@ backend by setting the following environment variable:</p>
 <p>or by setting the <code class="code docutils literal notranslate"><span class="pre">default_similarity_backend</span></code> parameter of your
 <a class="reference internal" href="../brain.html#brain-config"><span class="std std-ref">brain config</span></a> located at <code class="code docutils literal notranslate"><span class="pre">~/.fiftyone/brain_config.json</span></code>:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;default_similarity_backend&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;milvus&quot;</span>
+<span class="w">    </span><span class="nt">"default_similarity_backend"</span><span class="p">:</span><span class="w"> </span><span class="s2">"milvus"</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -431,21 +254,21 @@ FiftyOne whenever a connection to Milvus is made.</p>
 <p>You can also store your credentials in your <a class="reference internal" href="../brain.html#brain-config"><span class="std std-ref">brain config</span></a>
 located at <code class="code docutils literal notranslate"><span class="pre">~/.fiftyone/brain_config.json</span></code>:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span>{
-    &quot;similarity_backends&quot;: {
-        &quot;milvus&quot;: {
-            &quot;uri&quot;: &quot;XXXXXX&quot;,
-            &quot;user&quot;: &quot;XXXXXX&quot;,
-            &quot;password&quot;: &quot;XXXXXX&quot;,
+    "similarity_backends": {
+        "milvus": {
+            "uri": "XXXXXX",
+            "user": "XXXXXX",
+            "password": "XXXXXX",
 
             # also available if necessary
-            &quot;secure&quot;: true,
-            &quot;token&quot;: &quot;XXXXXX&quot;,
-            &quot;db_name&quot;: &quot;XXXXXX&quot;,
-            &quot;client_key_path&quot;: &quot;XXXXXX&quot;,
-            &quot;client_pem_path&quot;: &quot;XXXXXX&quot;,
-            &quot;ca_pem_path&quot;: &quot;XXXXXX&quot;,
-            &quot;server_pem_path&quot;: &quot;XXXXXX&quot;,
-            &quot;server_name&quot;: &quot;XXXXXX&quot;
+            "secure": true,
+            "token": "XXXXXX",
+            "db_name": "XXXXXX",
+            "client_key_path": "XXXXXX",
+            "client_pem_path": "XXXXXX",
+            "ca_pem_path": "XXXXXX",
+            "server_pem_path": "XXXXXX",
+            "server_name": "XXXXXX"
         }
     }
 }
@@ -461,21 +284,21 @@ connections to Milvus:</p>
 
 <span class="n">milvus_index</span> <span class="o">=</span> <span class="n">fob</span><span class="o">.</span><span class="n">compute_similarity</span><span class="p">(</span>
     <span class="o">...</span>
-    <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;milvus&quot;</span><span class="p">,</span>
-    <span class="n">brain_key</span><span class="o">=</span><span class="s2">&quot;milvus_index&quot;</span><span class="p">,</span>
-    <span class="n">uri</span><span class="o">=</span><span class="s2">&quot;XXXXXX&quot;</span><span class="p">,</span>
-    <span class="n">user</span><span class="o">=</span><span class="s2">&quot;XXXXXX&quot;</span><span class="p">,</span>
-    <span class="n">password</span><span class="o">=</span><span class="s2">&quot;XXXXXX&quot;</span><span class="p">,</span>
+    <span class="n">backend</span><span class="o">=</span><span class="s2">"milvus"</span><span class="p">,</span>
+    <span class="n">brain_key</span><span class="o">=</span><span class="s2">"milvus_index"</span><span class="p">,</span>
+    <span class="n">uri</span><span class="o">=</span><span class="s2">"XXXXXX"</span><span class="p">,</span>
+    <span class="n">user</span><span class="o">=</span><span class="s2">"XXXXXX"</span><span class="p">,</span>
+    <span class="n">password</span><span class="o">=</span><span class="s2">"XXXXXX"</span><span class="p">,</span>
 
     <span class="c1"># also available if necessary</span>
     <span class="n">secure</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">token</span><span class="o">=</span><span class="s2">&quot;XXXXXX&quot;</span><span class="p">,</span>
-    <span class="n">db_name</span><span class="o">=</span><span class="s2">&quot;XXXXXX&quot;</span><span class="p">,</span>
-    <span class="n">client_key_path</span><span class="o">=</span><span class="s2">&quot;XXXXXX&quot;</span><span class="p">,</span>
-    <span class="n">client_pem_path</span><span class="o">=</span><span class="s2">&quot;XXXXXX&quot;</span><span class="p">,</span>
-    <span class="n">ca_pem_path</span><span class="o">=</span><span class="s2">&quot;XXXXXX&quot;</span><span class="p">,</span>
-    <span class="n">server_pem_path</span><span class="o">=</span><span class="s2">&quot;XXXXXX&quot;</span><span class="p">,</span>
-    <span class="n">server_name</span><span class="o">=</span><span class="s2">&quot;XXXXXX&quot;</span><span class="p">,</span>
+    <span class="n">token</span><span class="o">=</span><span class="s2">"XXXXXX"</span><span class="p">,</span>
+    <span class="n">db_name</span><span class="o">=</span><span class="s2">"XXXXXX"</span><span class="p">,</span>
+    <span class="n">client_key_path</span><span class="o">=</span><span class="s2">"XXXXXX"</span><span class="p">,</span>
+    <span class="n">client_pem_path</span><span class="o">=</span><span class="s2">"XXXXXX"</span><span class="p">,</span>
+    <span class="n">ca_pem_path</span><span class="o">=</span><span class="s2">"XXXXXX"</span><span class="p">,</span>
+    <span class="n">server_pem_path</span><span class="o">=</span><span class="s2">"XXXXXX"</span><span class="p">,</span>
+    <span class="n">server_name</span><span class="o">=</span><span class="s2">"XXXXXX"</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -483,20 +306,20 @@ connections to Milvus:</p>
 when loading an index later via
 <a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.load_brain_results" title="fiftyone.core.collections.SampleCollection.load_brain_results"><code class="xref py py-meth docutils literal notranslate"><span class="pre">load_brain_results()</span></code></a>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">milvus_index</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">load_brain_results</span><span class="p">(</span>
-    <span class="s2">&quot;milvus_index&quot;</span><span class="p">,</span>
-    <span class="n">uri</span><span class="o">=</span><span class="s2">&quot;XXXXXX&quot;</span><span class="p">,</span>
-    <span class="n">user</span><span class="o">=</span><span class="s2">&quot;XXXXXX&quot;</span><span class="p">,</span>
-    <span class="n">password</span><span class="o">=</span><span class="s2">&quot;XXXXXX&quot;</span><span class="p">,</span>
+    <span class="s2">"milvus_index"</span><span class="p">,</span>
+    <span class="n">uri</span><span class="o">=</span><span class="s2">"XXXXXX"</span><span class="p">,</span>
+    <span class="n">user</span><span class="o">=</span><span class="s2">"XXXXXX"</span><span class="p">,</span>
+    <span class="n">password</span><span class="o">=</span><span class="s2">"XXXXXX"</span><span class="p">,</span>
 
     <span class="c1"># also available if necessary</span>
     <span class="n">secure</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">token</span><span class="o">=</span><span class="s2">&quot;XXXXXX&quot;</span><span class="p">,</span>
-    <span class="n">db_name</span><span class="o">=</span><span class="s2">&quot;XXXXXX&quot;</span><span class="p">,</span>
-    <span class="n">client_key_path</span><span class="o">=</span><span class="s2">&quot;XXXXXX&quot;</span><span class="p">,</span>
-    <span class="n">client_pem_path</span><span class="o">=</span><span class="s2">&quot;XXXXXX&quot;</span><span class="p">,</span>
-    <span class="n">ca_pem_path</span><span class="o">=</span><span class="s2">&quot;XXXXXX&quot;</span><span class="p">,</span>
-    <span class="n">server_pem_path</span><span class="o">=</span><span class="s2">&quot;XXXXXX&quot;</span><span class="p">,</span>
-    <span class="n">server_name</span><span class="o">=</span><span class="s2">&quot;XXXXXX&quot;</span><span class="p">,</span>
+    <span class="n">token</span><span class="o">=</span><span class="s2">"XXXXXX"</span><span class="p">,</span>
+    <span class="n">db_name</span><span class="o">=</span><span class="s2">"XXXXXX"</span><span class="p">,</span>
+    <span class="n">client_key_path</span><span class="o">=</span><span class="s2">"XXXXXX"</span><span class="p">,</span>
+    <span class="n">client_pem_path</span><span class="o">=</span><span class="s2">"XXXXXX"</span><span class="p">,</span>
+    <span class="n">ca_pem_path</span><span class="o">=</span><span class="s2">"XXXXXX"</span><span class="p">,</span>
+    <span class="n">server_pem_path</span><span class="o">=</span><span class="s2">"XXXXXX"</span><span class="p">,</span>
+    <span class="n">server_name</span><span class="o">=</span><span class="s2">"XXXXXX"</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -510,9 +333,9 @@ customize your similarity queries. These parameters include:</p>
 create. If none is provided, a new collection will be created</p></li>
 <li><p><strong>metric</strong> (<em>“dotproduct”</em>): the embedding distance metric to use when
 creating a new index. The supported values are
-<code class="docutils literal notranslate"><span class="pre">(&quot;cosine&quot;,</span> <span class="pre">&quot;dotproduct&quot;,</span> <span class="pre">&quot;euclidean&quot;)</span></code></p></li>
+<code class="docutils literal notranslate"><span class="pre">("cosine",</span> <span class="pre">"dotproduct",</span> <span class="pre">"euclidean")</span></code></p></li>
 <li><p><strong>consistency_level</strong> (<em>“Session”</em>):  the consistency level to use.
-Supported values are <code class="docutils literal notranslate"><span class="pre">(&quot;Strong&quot;,</span> <span class="pre">&quot;Session&quot;,</span> <span class="pre">&quot;Bounded&quot;,</span> <span class="pre">&quot;Eventually&quot;)</span></code></p></li>
+Supported values are <code class="docutils literal notranslate"><span class="pre">("Strong",</span> <span class="pre">"Session",</span> <span class="pre">"Bounded",</span> <span class="pre">"Eventually")</span></code></p></li>
 </ul>
 <p>For detailed information on these parameters, see the
 <a class="reference external" href="https://milvus.io/docs/authenticate.md">Milvus authentication documentation</a>
@@ -521,11 +344,11 @@ and <a class="reference external" href="https://milvus.io/docs/consistency.md#Co
 previous section. Here’s an example of a <a class="reference internal" href="../brain.html#brain-config"><span class="std std-ref">brain config</span></a>
 that includes all of the available parameters:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;similarity_backends&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;milvus&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;collection_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;your_collection&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;metric&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dotproduct&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;consistency_level&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Strong&quot;</span>
+<span class="w">    </span><span class="nt">"similarity_backends"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"milvus"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"collection_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"your_collection"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"metric"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dotproduct"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"consistency_level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Strong"</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
@@ -536,11 +359,11 @@ that includes all of the available parameters:</p>
 a specific new index:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">milvus_index</span> <span class="o">=</span> <span class="n">fob</span><span class="o">.</span><span class="n">compute_similarity</span><span class="p">(</span>
     <span class="o">...</span>
-    <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;milvus&quot;</span><span class="p">,</span>
-    <span class="n">brain_key</span><span class="o">=</span><span class="s2">&quot;milvus_index&quot;</span><span class="p">,</span>
-    <span class="n">collection_name</span><span class="o">=</span><span class="s2">&quot;your_collection&quot;</span><span class="p">,</span>
-    <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;dotproduct&quot;</span><span class="p">,</span>
-    <span class="n">consistency_level</span><span class="o">=</span><span class="s2">&quot;Strong&quot;</span><span class="p">,</span>
+    <span class="n">backend</span><span class="o">=</span><span class="s2">"milvus"</span><span class="p">,</span>
+    <span class="n">brain_key</span><span class="o">=</span><span class="s2">"milvus_index"</span><span class="p">,</span>
+    <span class="n">collection_name</span><span class="o">=</span><span class="s2">"your_collection"</span><span class="p">,</span>
+    <span class="n">metric</span><span class="o">=</span><span class="s2">"dotproduct"</span><span class="p">,</span>
+    <span class="n">consistency_level</span><span class="o">=</span><span class="s2">"Strong"</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -563,7 +386,7 @@ to see the available brain keys on a dataset:</p>
 <span class="c1"># Only list specific similarity runs</span>
 <span class="n">dataset</span><span class="o">.</span><span class="n">list_brain_runs</span><span class="p">(</span>
     <span class="nb">type</span><span class="o">=</span><span class="n">fob</span><span class="o">.</span><span class="n">Similarity</span><span class="p">,</span>
-    <span class="n">patches_field</span><span class="o">=</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span>
+    <span class="n">patches_field</span><span class="o">=</span><span class="s2">"ground_truth"</span><span class="p">,</span>
     <span class="n">supports_prompts</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
@@ -622,16 +445,16 @@ possibilities:</p>
 <span class="kn">import</span> <span class="nn">fiftyone.brain</span> <span class="k">as</span> <span class="nn">fob</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
-<span class="n">model_name</span> <span class="o">=</span> <span class="s2">&quot;clip-vit-base32-torch&quot;</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"quickstart"</span><span class="p">)</span>
+<span class="n">model_name</span> <span class="o">=</span> <span class="s2">"clip-vit-base32-torch"</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_model</span><span class="p">(</span><span class="n">model_name</span><span class="p">)</span>
-<span class="n">brain_key</span> <span class="o">=</span> <span class="s2">&quot;milvus_index&quot;</span>
+<span class="n">brain_key</span> <span class="o">=</span> <span class="s2">"milvus_index"</span>
 
 <span class="c1"># Option 1: Compute embeddings on the fly from model name</span>
 <span class="n">fob</span><span class="o">.</span><span class="n">compute_similarity</span><span class="p">(</span>
     <span class="n">dataset</span><span class="p">,</span>
     <span class="n">model</span><span class="o">=</span><span class="n">model_name</span><span class="p">,</span>
-    <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;milvus&quot;</span><span class="p">,</span>
+    <span class="n">backend</span><span class="o">=</span><span class="s2">"milvus"</span><span class="p">,</span>
     <span class="n">brain_key</span><span class="o">=</span><span class="n">brain_key</span><span class="p">,</span>
 <span class="p">)</span>
 
@@ -639,7 +462,7 @@ possibilities:</p>
 <span class="n">fob</span><span class="o">.</span><span class="n">compute_similarity</span><span class="p">(</span>
     <span class="n">dataset</span><span class="p">,</span>
     <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span>
-    <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;milvus&quot;</span><span class="p">,</span>
+    <span class="n">backend</span><span class="o">=</span><span class="s2">"milvus"</span><span class="p">,</span>
     <span class="n">brain_key</span><span class="o">=</span><span class="n">brain_key</span><span class="p">,</span>
 <span class="p">)</span>
 
@@ -648,16 +471,16 @@ possibilities:</p>
 <span class="n">fob</span><span class="o">.</span><span class="n">compute_similarity</span><span class="p">(</span>
     <span class="n">dataset</span><span class="p">,</span>
     <span class="n">embeddings</span><span class="o">=</span><span class="n">embeddings</span><span class="p">,</span>
-    <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;milvus&quot;</span><span class="p">,</span>
+    <span class="n">backend</span><span class="o">=</span><span class="s2">"milvus"</span><span class="p">,</span>
     <span class="n">brain_key</span><span class="o">=</span><span class="n">brain_key</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="c1"># Option 4: Pass precomputed embeddings by field name</span>
-<span class="n">dataset</span><span class="o">.</span><span class="n">compute_embeddings</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">embeddings_field</span><span class="o">=</span><span class="s2">&quot;embeddings&quot;</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">compute_embeddings</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">embeddings_field</span><span class="o">=</span><span class="s2">"embeddings"</span><span class="p">)</span>
 <span class="n">fob</span><span class="o">.</span><span class="n">compute_similarity</span><span class="p">(</span>
     <span class="n">dataset</span><span class="p">,</span>
-    <span class="n">embeddings</span><span class="o">=</span><span class="s2">&quot;embeddings&quot;</span><span class="p">,</span>
-    <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;milvus&quot;</span><span class="p">,</span>
+    <span class="n">embeddings</span><span class="o">=</span><span class="s2">"embeddings"</span><span class="p">,</span>
+    <span class="n">backend</span><span class="o">=</span><span class="s2">"milvus"</span><span class="p">,</span>
     <span class="n">brain_key</span><span class="o">=</span><span class="n">brain_key</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
@@ -678,14 +501,14 @@ specifying a <code class="code docutils literal notranslate"><span class="pre">p
 <span class="kn">import</span> <span class="nn">fiftyone.brain</span> <span class="k">as</span> <span class="nn">fob</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"quickstart"</span><span class="p">)</span>
 
 <span class="n">fob</span><span class="o">.</span><span class="n">compute_similarity</span><span class="p">(</span>
     <span class="n">dataset</span><span class="p">,</span>
-    <span class="n">patches_field</span><span class="o">=</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span>
-    <span class="n">model</span><span class="o">=</span><span class="s2">&quot;clip-vit-base32-torch&quot;</span><span class="p">,</span>
-    <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;milvus&quot;</span><span class="p">,</span>
-    <span class="n">brain_key</span><span class="o">=</span><span class="s2">&quot;milvus_patches&quot;</span><span class="p">,</span>
+    <span class="n">patches_field</span><span class="o">=</span><span class="s2">"ground_truth"</span><span class="p">,</span>
+    <span class="n">model</span><span class="o">=</span><span class="s2">"clip-vit-base32-torch"</span><span class="p">,</span>
+    <span class="n">backend</span><span class="o">=</span><span class="s2">"milvus"</span><span class="p">,</span>
+    <span class="n">brain_key</span><span class="o">=</span><span class="s2">"milvus_patches"</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -705,15 +528,15 @@ the <code class="code docutils literal notranslate"><span class="pre">collection
 <span class="kn">import</span> <span class="nn">fiftyone.brain</span> <span class="k">as</span> <span class="nn">fob</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"quickstart"</span><span class="p">)</span>
 
 <span class="n">fob</span><span class="o">.</span><span class="n">compute_similarity</span><span class="p">(</span>
     <span class="n">dataset</span><span class="p">,</span>
-    <span class="n">model</span><span class="o">=</span><span class="s2">&quot;clip-vit-base32-torch&quot;</span><span class="p">,</span>      <span class="c1"># zoo model used (if applicable)</span>
-    <span class="n">embeddings</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>                   <span class="c1"># don&#39;t compute embeddings</span>
-    <span class="n">collection_name</span><span class="o">=</span><span class="s2">&quot;your_collection&quot;</span><span class="p">,</span>  <span class="c1"># the existing Milvus collection</span>
-    <span class="n">brain_key</span><span class="o">=</span><span class="s2">&quot;milvus_index&quot;</span><span class="p">,</span>
-    <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;milvus&quot;</span><span class="p">,</span>
+    <span class="n">model</span><span class="o">=</span><span class="s2">"clip-vit-base32-torch"</span><span class="p">,</span>      <span class="c1"># zoo model used (if applicable)</span>
+    <span class="n">embeddings</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>                   <span class="c1"># don't compute embeddings</span>
+    <span class="n">collection_name</span><span class="o">=</span><span class="s2">"your_collection"</span><span class="p">,</span>  <span class="c1"># the existing Milvus collection</span>
+    <span class="n">brain_key</span><span class="o">=</span><span class="s2">"milvus_index"</span><span class="p">,</span>
+    <span class="n">backend</span><span class="o">=</span><span class="s2">"milvus"</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -733,18 +556,18 @@ to update the Milvus similarity index to reflect these changes:</p>
 <span class="kn">import</span> <span class="nn">fiftyone.brain</span> <span class="k">as</span> <span class="nn">fob</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"quickstart"</span><span class="p">)</span>
 
 <span class="n">milvus_index</span> <span class="o">=</span> <span class="n">fob</span><span class="o">.</span><span class="n">compute_similarity</span><span class="p">(</span>
     <span class="n">dataset</span><span class="p">,</span>
-    <span class="n">model</span><span class="o">=</span><span class="s2">&quot;clip-vit-base32-torch&quot;</span><span class="p">,</span>
-    <span class="n">brain_key</span><span class="o">=</span><span class="s2">&quot;milvus_index&quot;</span><span class="p">,</span>
-    <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;milvus&quot;</span><span class="p">,</span>
+    <span class="n">model</span><span class="o">=</span><span class="s2">"clip-vit-base32-torch"</span><span class="p">,</span>
+    <span class="n">brain_key</span><span class="o">=</span><span class="s2">"milvus_index"</span><span class="p">,</span>
+    <span class="n">backend</span><span class="o">=</span><span class="s2">"milvus"</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">milvus_index</span><span class="o">.</span><span class="n">total_index_size</span><span class="p">)</span>  <span class="c1"># 200</span>
 
 <span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">ids</span> <span class="o">=</span> <span class="n">view</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">)</span>
+<span class="n">ids</span> <span class="o">=</span> <span class="n">view</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">"id"</span><span class="p">)</span>
 
 <span class="c1"># Delete 10 samples from a dataset</span>
 <span class="n">dataset</span><span class="o">.</span><span class="n">delete_samples</span><span class="p">(</span><span class="n">view</span><span class="p">)</span>
@@ -753,7 +576,7 @@ to update the Milvus similarity index to reflect these changes:</p>
 <span class="n">milvus_index</span><span class="o">.</span><span class="n">remove_from_index</span><span class="p">(</span><span class="n">sample_ids</span><span class="o">=</span><span class="n">ids</span><span class="p">)</span>
 
 <span class="c1"># Add 20 samples to a dataset</span>
-<span class="n">samples</span> <span class="o">=</span> <span class="p">[</span><span class="n">fo</span><span class="o">.</span><span class="n">Sample</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="s2">&quot;tmp</span><span class="si">%d</span><span class="s2">.jpg&quot;</span> <span class="o">%</span> <span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">)]</span>
+<span class="n">samples</span> <span class="o">=</span> <span class="p">[</span><span class="n">fo</span><span class="o">.</span><span class="n">Sample</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="s2">"tmp</span><span class="si">%d</span><span class="s2">.jpg"</span> <span class="o">%</span> <span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">)]</span>
 <span class="n">sample_ids</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">add_samples</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span>
 
 <span class="c1"># Add corresponding embeddings to the index</span>
@@ -773,23 +596,23 @@ to retrieve embeddings from a Milvus index by ID:</p>
 <span class="kn">import</span> <span class="nn">fiftyone.brain</span> <span class="k">as</span> <span class="nn">fob</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"quickstart"</span><span class="p">)</span>
 
 <span class="n">milvus_index</span> <span class="o">=</span> <span class="n">fob</span><span class="o">.</span><span class="n">compute_similarity</span><span class="p">(</span>
     <span class="n">dataset</span><span class="p">,</span>
-    <span class="n">model</span><span class="o">=</span><span class="s2">&quot;clip-vit-base32-torch&quot;</span><span class="p">,</span>
-    <span class="n">brain_key</span><span class="o">=</span><span class="s2">&quot;milvus_index&quot;</span><span class="p">,</span>
-    <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;milvus&quot;</span><span class="p">,</span>
+    <span class="n">model</span><span class="o">=</span><span class="s2">"clip-vit-base32-torch"</span><span class="p">,</span>
+    <span class="n">brain_key</span><span class="o">=</span><span class="s2">"milvus_index"</span><span class="p">,</span>
+    <span class="n">backend</span><span class="o">=</span><span class="s2">"milvus"</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="c1"># Retrieve embeddings for the entire dataset</span>
-<span class="n">ids</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">)</span>
+<span class="n">ids</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">"id"</span><span class="p">)</span>
 <span class="n">embeddings</span><span class="p">,</span> <span class="n">sample_ids</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">milvus_index</span><span class="o">.</span><span class="n">get_embeddings</span><span class="p">(</span><span class="n">sample_ids</span><span class="o">=</span><span class="n">ids</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">embeddings</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>  <span class="c1"># (200, 512)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">sample_ids</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>  <span class="c1"># (200,)</span>
 
 <span class="c1"># Retrieve embeddings for a view</span>
-<span class="n">ids</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">)</span>
+<span class="n">ids</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">"id"</span><span class="p">)</span>
 <span class="n">embeddings</span><span class="p">,</span> <span class="n">sample_ids</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">milvus_index</span><span class="o">.</span><span class="n">get_embeddings</span><span class="p">(</span><span class="n">sample_ids</span><span class="o">=</span><span class="n">ids</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">embeddings</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>  <span class="c1"># (10, 512)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">sample_ids</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>  <span class="c1"># (10,)</span>
@@ -813,30 +636,30 @@ stage to any dataset or view. The query can be any of the following:</p>
 <span class="kn">import</span> <span class="nn">fiftyone.brain</span> <span class="k">as</span> <span class="nn">fob</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"quickstart"</span><span class="p">)</span>
 
 <span class="n">fob</span><span class="o">.</span><span class="n">compute_similarity</span><span class="p">(</span>
     <span class="n">dataset</span><span class="p">,</span>
-    <span class="n">model</span><span class="o">=</span><span class="s2">&quot;clip-vit-base32-torch&quot;</span><span class="p">,</span>
-    <span class="n">brain_key</span><span class="o">=</span><span class="s2">&quot;milvus_index&quot;</span><span class="p">,</span>
-    <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;milvus&quot;</span><span class="p">,</span>
+    <span class="n">model</span><span class="o">=</span><span class="s2">"clip-vit-base32-torch"</span><span class="p">,</span>
+    <span class="n">brain_key</span><span class="o">=</span><span class="s2">"milvus_index"</span><span class="p">,</span>
+    <span class="n">backend</span><span class="o">=</span><span class="s2">"milvus"</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="c1"># Query by vector</span>
 <span class="n">query</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">512</span><span class="p">)</span>  <span class="c1"># matches the dimension of CLIP embeddings</span>
-<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">sort_by_similarity</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">brain_key</span><span class="o">=</span><span class="s2">&quot;milvus_index&quot;</span><span class="p">)</span>
+<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">sort_by_similarity</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">brain_key</span><span class="o">=</span><span class="s2">"milvus_index"</span><span class="p">)</span>
 
 <span class="c1"># Query by sample ID</span>
 <span class="n">query</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">id</span>
-<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">sort_by_similarity</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">brain_key</span><span class="o">=</span><span class="s2">&quot;milvus_index&quot;</span><span class="p">)</span>
+<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">sort_by_similarity</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">brain_key</span><span class="o">=</span><span class="s2">"milvus_index"</span><span class="p">)</span>
 
 <span class="c1"># Query by a list of IDs</span>
 <span class="n">query</span> <span class="o">=</span> <span class="p">[</span><span class="n">dataset</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">dataset</span><span class="o">.</span><span class="n">last</span><span class="p">()</span><span class="o">.</span><span class="n">id</span><span class="p">]</span>
-<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">sort_by_similarity</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">brain_key</span><span class="o">=</span><span class="s2">&quot;milvus_index&quot;</span><span class="p">)</span>
+<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">sort_by_similarity</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">brain_key</span><span class="o">=</span><span class="s2">"milvus_index"</span><span class="p">)</span>
 
 <span class="c1"># Query by text prompt</span>
-<span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;a photo of a dog&quot;</span>
-<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">sort_by_similarity</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">brain_key</span><span class="o">=</span><span class="s2">&quot;milvus_index&quot;</span><span class="p">)</span>
+<span class="n">query</span> <span class="o">=</span> <span class="s2">"a photo of a dog"</span>
+<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">sort_by_similarity</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">brain_key</span><span class="o">=</span><span class="s2">"milvus_index"</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -858,13 +681,13 @@ underlying Milvus collection and use its methods as desired:</p>
 <span class="kn">import</span> <span class="nn">fiftyone.brain</span> <span class="k">as</span> <span class="nn">fob</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"quickstart"</span><span class="p">)</span>
 
 <span class="n">milvus_index</span> <span class="o">=</span> <span class="n">fob</span><span class="o">.</span><span class="n">compute_similarity</span><span class="p">(</span>
     <span class="n">dataset</span><span class="p">,</span>
-    <span class="n">model</span><span class="o">=</span><span class="s2">&quot;clip-vit-base32-torch&quot;</span><span class="p">,</span>
-    <span class="n">brain_key</span><span class="o">=</span><span class="s2">&quot;milvus_index&quot;</span><span class="p">,</span>
-    <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;milvus&quot;</span><span class="p">,</span>
+    <span class="n">model</span><span class="o">=</span><span class="s2">"clip-vit-base32-torch"</span><span class="p">,</span>
+    <span class="n">brain_key</span><span class="o">=</span><span class="s2">"milvus_index"</span><span class="p">,</span>
+    <span class="n">backend</span><span class="o">=</span><span class="s2">"milvus"</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">milvus_index</span><span class="o">.</span><span class="n">collection</span><span class="p">)</span>
@@ -888,17 +711,17 @@ dataset:</p>
 <span class="kn">import</span> <span class="nn">fiftyone.brain</span> <span class="k">as</span> <span class="nn">fob</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"quickstart"</span><span class="p">)</span>
 
 <span class="c1"># Create a custom Milvus index</span>
 <span class="n">milvus_index</span> <span class="o">=</span> <span class="n">fob</span><span class="o">.</span><span class="n">compute_similarity</span><span class="p">(</span>
     <span class="n">dataset</span><span class="p">,</span>
-    <span class="n">model</span><span class="o">=</span><span class="s2">&quot;clip-vit-base32-torch&quot;</span><span class="p">,</span>
-    <span class="n">embeddings</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>  <span class="c1"># we&#39;ll add embeddings below</span>
-    <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;euclidean&quot;</span><span class="p">,</span>
-    <span class="n">brain_key</span><span class="o">=</span><span class="s2">&quot;milvus_index&quot;</span><span class="p">,</span>
-    <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;milvus&quot;</span><span class="p">,</span>
-    <span class="n">collection_name</span><span class="o">=</span><span class="s2">&quot;custom_milvus_collection&quot;</span><span class="p">,</span>
+    <span class="n">model</span><span class="o">=</span><span class="s2">"clip-vit-base32-torch"</span><span class="p">,</span>
+    <span class="n">embeddings</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>  <span class="c1"># we'll add embeddings below</span>
+    <span class="n">metric</span><span class="o">=</span><span class="s2">"euclidean"</span><span class="p">,</span>
+    <span class="n">brain_key</span><span class="o">=</span><span class="s2">"milvus_index"</span><span class="p">,</span>
+    <span class="n">backend</span><span class="o">=</span><span class="s2">"milvus"</span><span class="p">,</span>
+    <span class="n">collection_name</span><span class="o">=</span><span class="s2">"custom_milvus_collection"</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="c1"># Add embeddings for a subset of the dataset</span>
@@ -916,30 +739,15 @@ dataset:</p>
 </div>
 </div>
 </div>
+</article>
+</div>
 
-
-             </article>
-             
-            </div>
-            <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="lancedb.html" class="btn btn-neutral float-right" title="LanceDB Integration" accesskey="n" rel="next">Next <img src="../_static/images/chevron-right-orange.svg" class="next-page"></a>
-      
-      
-        <a href="elasticsearch.html" class="btn btn-neutral" title="Elasticsearch Vector Search Integration" accesskey="p" rel="prev"><img src="../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
-      
-    </div>
-  
-</footer>
-          </div>
-        </div>
-
-        <div class="pytorch-content-right" id="pytorch-content-right">
-          <div class="pytorch-right-menu" id="pytorch-right-menu">
-            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
-              <ul>
+</div>
+</div>
+<div class="pytorch-content-right" id="pytorch-content-right">
+<div class="pytorch-right-menu" id="pytorch-right-menu">
+<div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+<ul>
 <li><a class="reference internal" href="#">Milvus Integration</a><ul>
 <li><a class="reference internal" href="#basic-recipe">Basic recipe</a></li>
 <li><a class="reference internal" href="#setup">Setup</a><ul>
@@ -964,214 +772,36 @@ dataset:</p>
 </ul>
 </li>
 </ul>
-
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
-
-  
-
-
-  
-
-     
-       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-         <script src="../_static/jquery.js"></script>
-         <script src="../_static/underscore.js"></script>
-         <script src="../_static/doctools.js"></script>
-         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
-         <script src="../_static/js/voxel51-website.js"></script>
-         <script src="../_static/js/custom.js"></script>
-     
-
-  
-
-  <script type="text/javascript" src="../_static/js/vendor/popper.min.js"></script>
-  <script type="text/javascript" src="../_static/js/vendor/bootstrap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-  <script type="text/javascript">
+</div>
+</div>
+</div>
+</section>
+</div>
+<script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js" type="text/javascript"></script>
+<script src="../_static/jquery.js"></script>
+<script src="../_static/underscore.js"></script>
+<script src="../_static/doctools.js"></script>
+<script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+<script src="../_static/js/voxel51-website.js"></script>
+<script src="../_static/js/custom.js"></script>
+<script src="../_static/js/vendor/popper.min.js" type="text/javascript"></script>
+<script src="../_static/js/vendor/bootstrap.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+<script src="../_static/js/theme.js" type="text/javascript"></script>
+<script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
-
-  <!-- Begin Footer -->
-
-
-  <div class="container-fluid docs-tutorials-resources" id="docs-tutorials-resources">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4 text-center">
-          <h2>Docs</h2>
-          <p>Access comprehensive developer documentation for PyTorch</p>
-          <a class="with-right-arrow" href="https://pytorch.org/docs/stable/index.html">View Docs</a>
-        </div>
-
-        <div class="col-md-4 text-center">
-          <h2>Tutorials</h2>
-          <p>Get in-depth tutorials for beginners and advanced developers</p>
-          <a class="with-right-arrow" href="https://pytorch.org/tutorials">View Tutorials</a>
-        </div>
-
-        <div class="col-md-4 text-center">
-          <h2>Resources</h2>
-          <p>Find development resources and get your questions answered</p>
-          <a class="with-right-arrow" href="https://pytorch.org/resources">View Resources</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <footer class="site-footer">
-    <div class="container footer-container">
-      <div class="footer-logo-wrapper">
-        <a href="https://pytorch.org/" class="footer-logo"></a>
-      </div>
-
-      <div class="footer-links-wrapper">
-        <div class="footer-links-col">
-          <ul>
-            <li class="list-title"><a href="https://pytorch.org/">PyTorch</a></li>
-            <li><a href="https://pytorch.org/get-started">Get Started</a></li>
-            <li><a href="https://pytorch.org/features">Features</a></li>
-            <li><a href="https://pytorch.org/ecosystem">Ecosystem</a></li>
-            <li><a href="https://pytorch.org/blog/">Blog</a></li>
-            <li><a href="https://github.com/pytorch/pytorch/blob/master/CONTRIBUTING.md">Contributing</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-links-col">
-          <ul>
-            <li class="list-title"><a href="https://pytorch.org/resources">Resources</a></li>
-            <li><a href="https://pytorch.org/tutorials">Tutorials</a></li>
-            <li><a href="https://pytorch.org/docs/stable/index.html">Docs</a></li>
-            <li><a href="https://discuss.pytorch.org" target="_blank">Discuss</a></li>
-            <li><a href="https://github.com/pytorch/pytorch/issues" target="_blank">Github Issues</a></li>
-            <li><a href="https://pytorch.org/assets/brand-guidelines/PyTorch-Brand-Guidelines.pdf" target="_blank">Brand Guidelines</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-links-col follow-us-col">
-          <ul>
-            <li class="list-title">Stay Connected</li>
-            <li>
-              <div id="mc_embed_signup">
-                <form
-                  action="https://twitter.us14.list-manage.com/subscribe/post?u=75419c71fe0a935e53dfa4a3f&id=91d0dccd39"
-                  method="post"
-                  id="mc-embedded-subscribe-form"
-                  name="mc-embedded-subscribe-form"
-                  class="email-subscribe-form validate"
-                  target="_blank"
-                  novalidate>
-                  <div id="mc_embed_signup_scroll" class="email-subscribe-form-fields-wrapper">
-                    <div class="mc-field-group">
-                      <label for="mce-EMAIL" style="display:none;">Email Address</label>
-                      <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="Email Address">
-                    </div>
-
-                    <div id="mce-responses" class="clear">
-                      <div class="response" id="mce-error-response" style="display:none"></div>
-                      <div class="response" id="mce-success-response" style="display:none"></div>
-                    </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-
-                    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_75419c71fe0a935e53dfa4a3f_91d0dccd39" tabindex="-1" value=""></div>
-
-                    <div class="clear">
-                      <input type="submit" value="" name="subscribe" id="mc-embedded-subscribe" class="button email-subscribe-button">
-                    </div>
-                  </div>
-                </form>
-              </div>
-
-            </li>
-          </ul>
-
-          <div class="footer-social-icons">
-            <a href="https://www.facebook.com/pytorch" target="_blank" class="facebook"></a>
-            <a href="https://twitter.com/pytorch" target="_blank" class="twitter"></a>
-            <a href="https://www.youtube.com/pytorch" target="_blank" class="youtube"></a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
+  </script>
+<!-- Begin Footer -->
 
 
-  
+<!-- End Footer -->
+<!-- Begin Mobile Menu -->
 
-  <!-- End Footer -->
-
-  <!-- Begin Mobile Menu -->
-
-
-  <div class="mobile-main-menu">
-    <div class="container-fluid">
-      <div class="container">
-        <div class="mobile-main-menu-header-container">
-          <a class="header-logo" href="https://pytorch.org/" aria-label="PyTorch"></a>
-          <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
-        </div>
-      </div>
-    </div>
-
-    <div class="mobile-main-menu-links-container">
-      <div class="main-menu">
-        <ul>
-          <li>
-            <a href="https://pytorch.org/get-started">Get Started</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/features">Features</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/ecosystem">Ecosystem</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/mobile">Mobile</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/hub">PyTorch Hub</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/blog/">Blog</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/tutorials">Tutorials</a>
-          </li>
-
-          <li class="active">
-            <a href="https://pytorch.org/docs/stable/index.html">Docs</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/resources">Resources</a>
-          </li>
-
-          <li>
-            <a href="https://github.com/pytorch/pytorch">Github</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-
-  <!-- End Mobile Menu -->
-
-  <script type="text/javascript" src="../_static/js/vendor/anchor.min.js"></script>
-
-  <script type="text/javascript">
+<!-- End Mobile Menu -->
+<script src="../_static/js/vendor/anchor.min.js" type="text/javascript"></script>
+<script type="text/javascript">
     $(document).ready(function() {
       mobileMenu.bind();
       mobileTOC.bind();

@@ -1,183 +1,46 @@
 
-
-
 <!DOCTYPE html>
+
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>Grouped datasets &mdash; FiftyOne 1.3.0 documentation</title>
-  
-
-  
-  
-    <link rel="shortcut icon" href="../_static/favicon.ico"/>
-  
-  
-  
-
-  
-
-  
-  
-    
-
-  
-
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
-  <link rel="stylesheet" href="../_static/css/voxel51-website.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Annotating Datasets" href="annotation.html" />
-    <link rel="prev" title="Using the FiftyOne App" href="app.html" />
-<meta property="og:image" content="https://voxel51.com/wp-content/uploads/2024/03/3.24_webpages_Home_AV.png" />
-
-<link
-  href="https://fonts.googleapis.com/css?family=Palanquin:400,600,700,800"
-  rel="stylesheet"
-/>
-<link
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
-  rel="stylesheet"
-/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Grouped datasets — FiftyOne 1.3.0 documentation</title>
+<link href="../_static/favicon.ico" rel="shortcut icon"/>
+<link href="../_static/css/theme.css" rel="stylesheet" type="text/css"/>
+<!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+<link href="../_static/css/voxel51-website.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/css/custom.css" rel="stylesheet" type="text/css"/>
+<link href="../genindex.html" rel="index" title="Index"/>
+<link href="../search.html" rel="search" title="Search"/>
+<link href="annotation.html" rel="next" title="Annotating Datasets"/>
+<link href="app.html" rel="prev" title="Using the FiftyOne App"/>
+<meta content="https://voxel51.com/wp-content/uploads/2024/03/3.24_webpages_Home_AV.png" property="og:image">
+<link href="https://fonts.googleapis.com/css?family=Palanquin:400,600,700,800" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet"/>
 <script src="https://tag.clearbitscripts.com/v1/pk_b9ed71c8234edd4f77326bcbfab5a4ca/tags.js"></script>
-
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
-  
-</head>
-
-
-<div class="container-fluid header-holder tutorials-header" id="header-holder">
-  <div class="container">
-    <div class="header-container">
-      <a class="header-logo" href="https://pytorch.org/" aria-label="PyTorch"></a>
-
-      <div class="main-menu">
-        <ul>
-          <li>
-            <a href="https://pytorch.org/get-started">Get Started</a>
-          </li>
-
-          <li>
-            <div class="ecosystem-dropdown">
-              <a id="dropdownMenuButton" data-toggle="ecosystem-dropdown">
-                Ecosystem
-              </a>
-              <div class="ecosystem-dropdown-menu">
-                <a class="nav-dropdown-item" href="https://pytorch.org/hub"">
-                  <span class=dropdown-title>Models (Beta)</span>
-                  <p>Discover, publish, and reuse pre-trained models</p>
-                </a>
-                <a class="nav-dropdown-item" href="https://pytorch.org/ecosystem">
-                  <span class=dropdown-title>Tools & Libraries</span>
-                  <p>Explore the ecosystem of tools and libraries</p>
-                </a>
-              </div>
-            </div>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/mobile">Mobile</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/blog/">Blog</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/tutorials">Tutorials</a>
-          </li>
-
-          <li class="active">
-            <a href="https://pytorch.org/docs/stable/index.html">Docs</a>
-          </li>
-
-          <li>
-            <div class="resources-dropdown">
-              <a id="resourcesDropdownButton" data-toggle="resources-dropdown">
-                Resources
-              </a>
-              <div class="resources-dropdown-menu">
-                <a class="nav-dropdown-item" href="https://pytorch.org/resources"">
-                  <span class=dropdown-title>Developer Resources</span>
-                  <p>Find resources and get questions answered</p>
-                </a>
-                <a class="nav-dropdown-item" href="https://pytorch.org/features">
-                  <span class=dropdown-title>About</span>
-                  <p>Learn about PyTorch’s features and capabilities</p>
-                </a>
-              </div>
-            </div>
-          </li>
-
-          <li>
-            <a href="https://github.com/pytorch/pytorch">Github</a>
-          </li>
-        </ul>
-      </div>
-
-      <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
-    </div>
-
-  </div>
-</div>
-
-
+<script src="../_static/js/modernizr.min.js"></script>
+</meta></head>
 
 <body class="pytorch-body">
-
-   
-
-    
-
-    <div class="table-of-contents-link-wrapper">
-      <span>Table of Contents</span>
-      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
-    </div>
-
-    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
-      <div class="pytorch-side-scroll">
-        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          <div class="pytorch-left-menu-search">
-            
-
-            
-              
-              
-            
-
-            
-
-
-  
-
-
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search Docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
+<div class="table-of-contents-link-wrapper">
+<span>Table of Contents</span>
+<a class="toggle-table-of-contents" data-behavior="toggle-table-of-contents" href="#"></a>
 </div>
-
-            
-          </div>
-
-          
-            
-            
-              
-            
-            
-              <ul class="current">
+<nav class="pytorch-left-menu" data-toggle="wy-nav-shift" id="pytorch-left-menu">
+<div class="pytorch-side-scroll">
+<div aria-label="main navigation" class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation">
+<div class="pytorch-left-menu-search">
+<div role="search">
+<form action="../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input name="q" placeholder="Search Docs" type="text"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../teams/index.html">FiftyOne Teams 🚀</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/install.html">Installation</a></li>
@@ -197,78 +60,38 @@
 <li class="toctree-l1"><a class="reference internal" href="../deprecation.html">Deprecation Notices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a></li>
 </ul>
-
-            
-          
-        </div>
-      </div>
-    </nav>
-
-    <div class="pytorch-container">
-      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
-        <div class="pytorch-breadcrumbs-wrapper">
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
-  <ul class="pytorch-breadcrumbs">
-    
-      <li>
-        <a href="../index.html">
+</div>
+</div>
+</nav>
+<div class="pytorch-container">
+<div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+<div class="pytorch-breadcrumbs-wrapper">
+<div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="pytorch-breadcrumbs">
+<li>
+<a href="../index.html">
           
             Docs
           
         </a> &gt;
       </li>
-
-        
-          <li><a href="index.html">FiftyOne User Guide</a> &gt;</li>
-        
-      <li>Grouped datasets</li>
-    
-    
-      <li class="pytorch-breadcrumbs-aside">
-        
-            
-        
-      </li>
-    
-  </ul>
-
-  
+<li><a href="index.html">FiftyOne User Guide</a> &gt;</li>
+<li>Grouped datasets</li>
+<li class="pytorch-breadcrumbs-aside">
+</li>
+</ul>
 </div>
-        </div>
-
-        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+</div>
+<div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
           Contents
         </div>
-      </div>
-
-      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
-        <div class="pytorch-content-left">
-
-        
-          
-          <div class="rst-content style-external-links">
-          
-            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
-             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
-              
-  <div class="section" id="grouped-datasets">
+</div>
+<section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+<div class="pytorch-content-left">
+<div class="rst-content style-external-links">
+<div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+<div class="section" id="grouped-datasets">
 <span id="groups"></span><h1>Grouped datasets<a class="headerlink" href="#grouped-datasets" title="Permalink to this headline">¶</a></h1>
 <p>FiftyOne supports the creation of <strong>grouped datasets</strong>, which contain multiple
 slices of samples of possibly different modalities (e.g.,
@@ -277,7 +100,7 @@ slices of samples of possibly different modalities (e.g.,
 <p>Grouped datasets can be used to represent multiview scenes, where data for
 multiple perspectives of the same scene can be stored, visualized, and queried
 in ways that respect the relationships between the slices of data.</p>
-<img alt="groups-sizzle" class="align-center" src="../_images/groups-modal.gif" />
+<img alt="groups-sizzle" class="align-center" src="../_images/groups-modal.gif"/>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Did you know? You can also create <a class="reference internal" href="using_views.html#view-groups"><span class="std std-ref">dynamic group views</span></a>
@@ -293,11 +116,11 @@ construct some mocked triples of left/center/right images:</p>
 <span class="kn">import</span> <span class="nn">fiftyone.utils.random</span> <span class="k">as</span> <span class="nn">four</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
-<span class="n">groups</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="s2">&quot;center&quot;</span><span class="p">,</span> <span class="s2">&quot;right&quot;</span><span class="p">]</span>
+<span class="n">groups</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"left"</span><span class="p">,</span> <span class="s2">"center"</span><span class="p">,</span> <span class="s2">"right"</span><span class="p">]</span>
 
-<span class="n">d</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"quickstart"</span><span class="p">)</span>
 <span class="n">four</span><span class="o">.</span><span class="n">random_split</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="p">{</span><span class="n">g</span><span class="p">:</span> <span class="mi">1</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">groups</span><span class="p">)</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">groups</span><span class="p">})</span>
-<span class="n">filepaths</span> <span class="o">=</span> <span class="p">[</span><span class="n">d</span><span class="o">.</span><span class="n">match_tags</span><span class="p">(</span><span class="n">g</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;filepath&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">groups</span><span class="p">]</span>
+<span class="n">filepaths</span> <span class="o">=</span> <span class="p">[</span><span class="n">d</span><span class="o">.</span><span class="n">match_tags</span><span class="p">(</span><span class="n">g</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">"filepath"</span><span class="p">)</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">groups</span><span class="p">]</span>
 <span class="n">filepaths</span> <span class="o">=</span> <span class="p">[</span><span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">groups</span><span class="p">,</span> <span class="n">fps</span><span class="p">))</span> <span class="k">for</span> <span class="n">fps</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">filepaths</span><span class="p">)]</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">filepaths</span><span class="p">[:</span><span class="mi">2</span><span class="p">])</span>
@@ -305,14 +128,14 @@ construct some mocked triples of left/center/right images:</p>
 </div>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[
     {
-        &#39;left&#39;: &#39;~/fiftyone/quickstart/data/000880.jpg&#39;,
-        &#39;center&#39;: &#39;~/fiftyone/quickstart/data/002799.jpg&#39;,
-        &#39;right&#39;: &#39;~/fiftyone/quickstart/data/001599.jpg&#39;,
+        'left': '~/fiftyone/quickstart/data/000880.jpg',
+        'center': '~/fiftyone/quickstart/data/002799.jpg',
+        'right': '~/fiftyone/quickstart/data/001599.jpg',
     },
     {
-        &#39;left&#39;: &#39;~/fiftyone/quickstart/data/003344.jpg&#39;,
-        &#39;center&#39;: &#39;~/fiftyone/quickstart/data/001057.jpg&#39;,
-        &#39;right&#39;: &#39;~/fiftyone/quickstart/data/001430.jpg&#39;,
+        'left': '~/fiftyone/quickstart/data/003344.jpg',
+        'center': '~/fiftyone/quickstart/data/001057.jpg',
+        'right': '~/fiftyone/quickstart/data/001430.jpg',
     },
 ]
 </pre></div>
@@ -322,8 +145,8 @@ construct some mocked triples of left/center/right images:</p>
 <p>To create a grouped dataset, simply use
 <a class="reference internal" href="../api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset.add_group_field" title="fiftyone.core.dataset.Dataset.add_group_field"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_group_field()</span></code></a> to
 declare a <a class="reference internal" href="../api/fiftyone.core.groups.html#fiftyone.core.groups.Group" title="fiftyone.core.groups.Group"><code class="xref py py-class docutils literal notranslate"><span class="pre">Group</span></code></a> field on your dataset before you add samples to it:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="s2">&quot;groups-overview&quot;</span><span class="p">)</span>
-<span class="n">dataset</span><span class="o">.</span><span class="n">add_group_field</span><span class="p">(</span><span class="s2">&quot;group&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="s2">"groups-overview"</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">add_group_field</span><span class="p">(</span><span class="s2">"group"</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">"center"</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The optional <code class="code docutils literal notranslate"><span class="pre">default</span></code> parameter specifies the slice of samples that will be
@@ -378,7 +201,7 @@ a <a class="reference internal" href="../api/fiftyone.core.groups.html#fiftyone.
 </div>
 <div class="section" id="dataset-properties">
 <span id="groups-dataset-properties"></span><h3>Dataset properties<a class="headerlink" href="#dataset-properties" title="Permalink to this headline">¶</a></h3>
-<p>Grouped datasets have a <code class="code docutils literal notranslate"><span class="pre">media_type</span></code> of <code class="code docutils literal notranslate"><span class="pre">&quot;group&quot;</span></code>:</p>
+<p>Grouped datasets have a <code class="code docutils literal notranslate"><span class="pre">media_type</span></code> of <code class="code docutils literal notranslate"><span class="pre">"group"</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">media_type</span><span class="p">)</span>
 <span class="c1"># group</span>
 </pre></div>
@@ -393,13 +216,13 @@ information:</p>
 <p>The <a class="reference internal" href="../api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset.group_slices" title="fiftyone.core.dataset.Dataset.group_slices"><code class="xref py py-meth docutils literal notranslate"><span class="pre">group_slices</span></code></a> property
 contains the names of all group slices in the dataset:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">group_slices</span><span class="p">)</span>
-<span class="c1"># [&#39;left&#39;, &#39;center&#39;, &#39;right&#39;]</span>
+<span class="c1"># ['left', 'center', 'right']</span>
 </pre></div>
 </div>
 <p>The <a class="reference internal" href="../api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset.group_media_types" title="fiftyone.core.dataset.Dataset.group_media_types"><code class="xref py py-meth docutils literal notranslate"><span class="pre">group_media_types</span></code></a>
 property is a dict mapping each slice name to its corresponding media type:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">group_media_types</span><span class="p">)</span>
-<span class="c1"># {&#39;left&#39;: &#39;image&#39;, &#39;center&#39;: &#39;image&#39;, &#39;right&#39;: &#39;image&#39;}</span>
+<span class="c1"># {'left': 'image', 'center': 'image', 'right': 'image'}</span>
 </pre></div>
 </div>
 <p>The list of group slices and their corresponding media types are dynamically
@@ -425,33 +248,33 @@ visualized in the App’s grid view by default:</p>
 </pre></div>
 </div>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&lt;Sample: {
-    &#39;id&#39;: &#39;62db2ce147e9efc3615cd450&#39;,
-    &#39;media_type&#39;: &#39;image&#39;,
-    &#39;filepath&#39;: &#39;~/fiftyone/quickstart/data/003344.jpg&#39;,
-    &#39;tags&#39;: [],
-    &#39;metadata&#39;: None,
-    &#39;created_at&#39;: datetime.datetime(2024, 7, 22, 5, 16, 10, 701907),
-    &#39;last_modified_at&#39;: datetime.datetime(2024, 7, 22, 5, 16, 10, 701907),
-    &#39;group&#39;: &lt;Group: {&#39;id&#39;: &#39;62db2ce147e9efc3615cd346&#39;, &#39;name&#39;: &#39;center&#39;}&gt;,
+    'id': '62db2ce147e9efc3615cd450',
+    'media_type': 'image',
+    'filepath': '~/fiftyone/quickstart/data/003344.jpg',
+    'tags': [],
+    'metadata': None,
+    'created_at': datetime.datetime(2024, 7, 22, 5, 16, 10, 701907),
+    'last_modified_at': datetime.datetime(2024, 7, 22, 5, 16, 10, 701907),
+    'group': &lt;Group: {'id': '62db2ce147e9efc3615cd346', 'name': 'center'}&gt;,
 }&gt;
 </pre></div>
 </div>
 <p>You can change the <em>active group slice</em> in your current session by setting the
 <a class="reference internal" href="../api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset.group_slice" title="fiftyone.core.dataset.Dataset.group_slice"><code class="xref py py-meth docutils literal notranslate"><span class="pre">group_slice</span></code></a> property:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">group_slice</span> <span class="o">=</span> <span class="s2">&quot;left&quot;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">group_slice</span> <span class="o">=</span> <span class="s2">"left"</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">first</span><span class="p">())</span>
 </pre></div>
 </div>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&lt;Sample: {
-    &#39;id&#39;: &#39;62db2ce147e9efc3615cd44e&#39;,
-    &#39;media_type&#39;: &#39;image&#39;,
-    &#39;filepath&#39;: &#39;~/fiftyone/quickstart/data/001599.jpg&#39;,
-    &#39;tags&#39;: [],
-    &#39;metadata&#39;: None,
-    &#39;created_at&#39;: datetime.datetime(2024, 7, 22, 5, 16, 10, 701907),
-    &#39;last_modified_at&#39;: datetime.datetime(2024, 7, 22, 5, 16, 10, 701907),
-    &#39;group&#39;: &lt;Group: {&#39;id&#39;: &#39;62db2ce147e9efc3615cd346&#39;, &#39;name&#39;: &#39;left&#39;}&gt;,
+    'id': '62db2ce147e9efc3615cd44e',
+    'media_type': 'image',
+    'filepath': '~/fiftyone/quickstart/data/001599.jpg',
+    'tags': [],
+    'metadata': None,
+    'created_at': datetime.datetime(2024, 7, 22, 5, 16, 10, 701907),
+    'last_modified_at': datetime.datetime(2024, 7, 22, 5, 16, 10, 701907),
+    'group': &lt;Group: {'id': '62db2ce147e9efc3615cd346', 'name': 'left'}&gt;,
 }&gt;
 </pre></div>
 </div>
@@ -471,8 +294,8 @@ property.</p>
 datasets just as you would with ungrouped datasets:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sample</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
 
-<span class="n">sample</span><span class="p">[</span><span class="s2">&quot;int_field&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">51</span>
-<span class="n">sample</span><span class="p">[</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Classification</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;outdoor&quot;</span><span class="p">)</span>
+<span class="n">sample</span><span class="p">[</span><span class="s2">"int_field"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">51</span>
+<span class="n">sample</span><span class="p">[</span><span class="s2">"ground_truth"</span><span class="p">]</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Classification</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">"outdoor"</span><span class="p">)</span>
 
 <span class="n">sample</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 </pre></div>
@@ -542,35 +365,35 @@ dict containing all samples in a group with a given ID:</p>
 </pre></div>
 </div>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
-    &#39;left&#39;: &lt;Sample: {
-        &#39;id&#39;: &#39;62f810ba59e644568f229dac&#39;,
-        &#39;media_type&#39;: &#39;image&#39;,
-        &#39;filepath&#39;: &#39;~/fiftyone/quickstart/data/001227.jpg&#39;,
-        &#39;tags&#39;: [],
-        &#39;metadata&#39;: None,
-        &#39;created_at&#39;: datetime.datetime(2024, 7, 22, 5, 16, 10, 701907),
-        &#39;last_modified_at&#39;: datetime.datetime(2024, 7, 22, 5, 16, 10, 701907),
-        &#39;group&#39;: &lt;Group: {&#39;id&#39;: &#39;62f810ba59e644568f229c62&#39;, &#39;name&#39;: &#39;left&#39;}&gt;,
+    'left': &lt;Sample: {
+        'id': '62f810ba59e644568f229dac',
+        'media_type': 'image',
+        'filepath': '~/fiftyone/quickstart/data/001227.jpg',
+        'tags': [],
+        'metadata': None,
+        'created_at': datetime.datetime(2024, 7, 22, 5, 16, 10, 701907),
+        'last_modified_at': datetime.datetime(2024, 7, 22, 5, 16, 10, 701907),
+        'group': &lt;Group: {'id': '62f810ba59e644568f229c62', 'name': 'left'}&gt;,
     }&gt;,
-    &#39;center&#39;: &lt;Sample: {
-        &#39;id&#39;: &#39;62f810ba59e644568f229dad&#39;,
-        &#39;media_type&#39;: &#39;image&#39;,
-        &#39;filepath&#39;: &#39;~/fiftyone/quickstart/data/004172.jpg&#39;,
-        &#39;tags&#39;: [],
-        &#39;metadata&#39;: None,
-        &#39;created_at&#39;: datetime.datetime(2024, 7, 22, 5, 16, 10, 701907),
-        &#39;last_modified_at&#39;: datetime.datetime(2024, 7, 22, 5, 16, 10, 701907),
-        &#39;group&#39;: &lt;Group: {&#39;id&#39;: &#39;62f810ba59e644568f229c62&#39;, &#39;name&#39;: &#39;center&#39;}&gt;,
+    'center': &lt;Sample: {
+        'id': '62f810ba59e644568f229dad',
+        'media_type': 'image',
+        'filepath': '~/fiftyone/quickstart/data/004172.jpg',
+        'tags': [],
+        'metadata': None,
+        'created_at': datetime.datetime(2024, 7, 22, 5, 16, 10, 701907),
+        'last_modified_at': datetime.datetime(2024, 7, 22, 5, 16, 10, 701907),
+        'group': &lt;Group: {'id': '62f810ba59e644568f229c62', 'name': 'center'}&gt;,
     }&gt;,
-    &#39;right&#39;: &lt;Sample: {
-        &#39;id&#39;: &#39;62f810ba59e644568f229dae&#39;,
-        &#39;media_type&#39;: &#39;image&#39;,
-        &#39;filepath&#39;: &#39;~/fiftyone/quickstart/data/000594.jpg&#39;,
-        &#39;tags&#39;: [],
-        &#39;metadata&#39;: None,
-        &#39;created_at&#39;: datetime.datetime(2024, 7, 22, 5, 16, 10, 701907),
-        &#39;last_modified_at&#39;: datetime.datetime(2024, 7, 22, 5, 16, 10, 701907),
-        &#39;group&#39;: &lt;Group: {&#39;id&#39;: &#39;62f810ba59e644568f229c62&#39;, &#39;name&#39;: &#39;right&#39;}&gt;,
+    'right': &lt;Sample: {
+        'id': '62f810ba59e644568f229dae',
+        'media_type': 'image',
+        'filepath': '~/fiftyone/quickstart/data/000594.jpg',
+        'tags': [],
+        'metadata': None,
+        'created_at': datetime.datetime(2024, 7, 22, 5, 16, 10, 701907),
+        'last_modified_at': datetime.datetime(2024, 7, 22, 5, 16, 10, 701907),
+        'group': &lt;Group: {'id': '62f810ba59e644568f229c62', 'name': 'right'}&gt;,
     }&gt;,
 }
 </pre></div>
@@ -615,14 +438,14 @@ dataset’s <a class="reference internal" href="#groups-dataset-properties"><spa
 </pre></div>
 </div>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&lt;Sample: {
-    &#39;id&#39;: &#39;62f10dbb68f4ed13eba7c5e7&#39;,
-    &#39;media_type&#39;: &#39;image&#39;,
-    &#39;filepath&#39;: &#39;~/fiftyone/quickstart/data/001394.jpg&#39;,
-    &#39;tags&#39;: [],
-    &#39;metadata&#39;: None,
-    &#39;created_at&#39;: datetime.datetime(2024, 7, 22, 5, 16, 10, 701907),
-    &#39;last_modified_at&#39;: datetime.datetime(2024, 7, 22, 5, 16, 10, 701907),
-    &#39;group&#39;: &lt;Group: {&#39;id&#39;: &#39;62f10dbb68f4ed13eba7c4a0&#39;, &#39;name&#39;: &#39;center&#39;}&gt;,
+    'id': '62f10dbb68f4ed13eba7c5e7',
+    'media_type': 'image',
+    'filepath': '~/fiftyone/quickstart/data/001394.jpg',
+    'tags': [],
+    'metadata': None,
+    'created_at': datetime.datetime(2024, 7, 22, 5, 16, 10, 701907),
+    'last_modified_at': datetime.datetime(2024, 7, 22, 5, 16, 10, 701907),
+    'group': &lt;Group: {'id': '62f10dbb68f4ed13eba7c4a0', 'name': 'center'}&gt;,
 }&gt;
 </pre></div>
 </div>
@@ -642,35 +465,35 @@ over dicts containing all samples in each group:</p>
 </pre></div>
 </div>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
-    &#39;left&#39;: &lt;Sample: {
-        &#39;id&#39;: &#39;62f10dbb68f4ed13eba7c5e6&#39;,
-        &#39;media_type&#39;: &#39;image&#39;,
-        &#39;filepath&#39;: &#39;~/fiftyone/quickstart/data/002538.jpg&#39;,
-        &#39;tags&#39;: [],
-        &#39;metadata&#39;: None,
-        &#39;created_at&#39;: datetime.datetime(2024, 7, 22, 5, 16, 10, 701907),
-        &#39;last_modified_at&#39;: datetime.datetime(2024, 7, 22, 5, 16, 10, 701907),
-        &#39;group&#39;: &lt;Group: {&#39;id&#39;: &#39;62f10dbb68f4ed13eba7c4a0&#39;, &#39;name&#39;: &#39;left&#39;}&gt;,
+    'left': &lt;Sample: {
+        'id': '62f10dbb68f4ed13eba7c5e6',
+        'media_type': 'image',
+        'filepath': '~/fiftyone/quickstart/data/002538.jpg',
+        'tags': [],
+        'metadata': None,
+        'created_at': datetime.datetime(2024, 7, 22, 5, 16, 10, 701907),
+        'last_modified_at': datetime.datetime(2024, 7, 22, 5, 16, 10, 701907),
+        'group': &lt;Group: {'id': '62f10dbb68f4ed13eba7c4a0', 'name': 'left'}&gt;,
     }&gt;,
-    &#39;center&#39;: &lt;Sample: {
-        &#39;id&#39;: &#39;62f10dbb68f4ed13eba7c5e7&#39;,
-        &#39;media_type&#39;: &#39;image&#39;,
-        &#39;filepath&#39;: &#39;~/fiftyone/quickstart/data/001394.jpg&#39;,
-        &#39;tags&#39;: [],
-        &#39;metadata&#39;: None,
-        &#39;created_at&#39;: datetime.datetime(2024, 7, 22, 5, 16, 10, 701907),
-        &#39;last_modified_at&#39;: datetime.datetime(2024, 7, 22, 5, 16, 10, 701907),
-        &#39;group&#39;: &lt;Group: {&#39;id&#39;: &#39;62f10dbb68f4ed13eba7c4a0&#39;, &#39;name&#39;: &#39;center&#39;}&gt;,
+    'center': &lt;Sample: {
+        'id': '62f10dbb68f4ed13eba7c5e7',
+        'media_type': 'image',
+        'filepath': '~/fiftyone/quickstart/data/001394.jpg',
+        'tags': [],
+        'metadata': None,
+        'created_at': datetime.datetime(2024, 7, 22, 5, 16, 10, 701907),
+        'last_modified_at': datetime.datetime(2024, 7, 22, 5, 16, 10, 701907),
+        'group': &lt;Group: {'id': '62f10dbb68f4ed13eba7c4a0', 'name': 'center'}&gt;,
     }&gt;,
-    &#39;right&#39;: &lt;Sample: {
-        &#39;id&#39;: &#39;62f10dbb68f4ed13eba7c5e8&#39;,
-        &#39;media_type&#39;: &#39;image&#39;,
-        &#39;filepath&#39;: &#39;~/fiftyone/quickstart/data/000020.jpg&#39;,
-        &#39;tags&#39;: [],
-        &#39;metadata&#39;: None,
-        &#39;created_at&#39;: datetime.datetime(2024, 7, 22, 5, 16, 10, 701907),
-        &#39;last_modified_at&#39;: datetime.datetime(2024, 7, 22, 5, 16, 10, 701907),
-        &#39;group&#39;: &lt;Group: {&#39;id&#39;: &#39;62f10dbb68f4ed13eba7c4a0&#39;, &#39;name&#39;: &#39;right&#39;}&gt;,
+    'right': &lt;Sample: {
+        'id': '62f10dbb68f4ed13eba7c5e8',
+        'media_type': 'image',
+        'filepath': '~/fiftyone/quickstart/data/000020.jpg',
+        'tags': [],
+        'metadata': None,
+        'created_at': datetime.datetime(2024, 7, 22, 5, 16, 10, 701907),
+        'last_modified_at': datetime.datetime(2024, 7, 22, 5, 16, 10, 701907),
+        'group': &lt;Group: {'id': '62f10dbb68f4ed13eba7c4a0', 'name': 'right'}&gt;,
     }&gt;,
 }
 </pre></div>
@@ -691,10 +514,10 @@ data:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart-groups&quot;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"quickstart-groups"</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">group_media_types</span><span class="p">)</span>
-<span class="c1"># {&#39;left&#39;: &#39;image&#39;, &#39;right&#39;: &#39;image&#39;, &#39;pcd&#39;: &#39;3d&#39;}</span>
+<span class="c1"># {'left': 'image', 'right': 'image', 'pcd': '3d'}</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
 </pre></div>
@@ -724,10 +547,10 @@ dataset:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;kitti-multiview&quot;</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"kitti-multiview"</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="s2">"train"</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="kitti-multiview-train" class="align-center" src="../_images/kitti-multiview-train.png" />
+<img alt="kitti-multiview-train" class="align-center" src="../_images/kitti-multiview-train.png"/>
 </div>
 <div class="section" id="toy-dataset">
 <h3>Toy dataset<a class="headerlink" href="#toy-dataset" title="Permalink to this headline">¶</a></h3>
@@ -760,21 +583,21 @@ points that demonstrates how
 
 <span class="n">pc</span> <span class="o">=</span> <span class="n">o3d</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">PointCloud</span><span class="p">()</span>
 <span class="n">pc</span><span class="o">.</span><span class="n">points</span> <span class="o">=</span> <span class="n">o3d</span><span class="o">.</span><span class="n">utility</span><span class="o">.</span><span class="n">Vector3dVector</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">point_cloud</span><span class="p">))</span>
-<span class="n">o3d</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write_point_cloud</span><span class="p">(</span><span class="s2">&quot;/tmp/toy.pcd&quot;</span><span class="p">,</span> <span class="n">pc</span><span class="p">)</span>
+<span class="n">o3d</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write_point_cloud</span><span class="p">(</span><span class="s2">"/tmp/toy.pcd"</span><span class="p">,</span> <span class="n">pc</span><span class="p">)</span>
 
 <span class="n">scene</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Scene</span><span class="p">()</span>
-<span class="n">scene</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">fo</span><span class="o">.</span><span class="n">PointCloud</span><span class="p">(</span><span class="s2">&quot;point cloud&quot;</span><span class="p">,</span> <span class="s2">&quot;/tmp/toy.pcd&quot;</span><span class="p">))</span>
-<span class="n">scene</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;/tmp/toy.fo3d&quot;</span><span class="p">)</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">fo</span><span class="o">.</span><span class="n">PointCloud</span><span class="p">(</span><span class="s2">"point cloud"</span><span class="p">,</span> <span class="s2">"/tmp/toy.pcd"</span><span class="p">))</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"/tmp/toy.fo3d"</span><span class="p">)</span>
 
 <span class="n">group</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Group</span><span class="p">()</span>
 <span class="n">samples</span> <span class="o">=</span> <span class="p">[</span>
     <span class="n">fo</span><span class="o">.</span><span class="n">Sample</span><span class="p">(</span>
-        <span class="n">filepath</span><span class="o">=</span><span class="s2">&quot;/tmp/toy.png&quot;</span><span class="p">,</span>  <span class="c1"># non-existent</span>
-        <span class="n">group</span><span class="o">=</span><span class="n">group</span><span class="o">.</span><span class="n">element</span><span class="p">(</span><span class="s2">&quot;image&quot;</span><span class="p">),</span>
+        <span class="n">filepath</span><span class="o">=</span><span class="s2">"/tmp/toy.png"</span><span class="p">,</span>  <span class="c1"># non-existent</span>
+        <span class="n">group</span><span class="o">=</span><span class="n">group</span><span class="o">.</span><span class="n">element</span><span class="p">(</span><span class="s2">"image"</span><span class="p">),</span>
     <span class="p">),</span>
     <span class="n">fo</span><span class="o">.</span><span class="n">Sample</span><span class="p">(</span>
-        <span class="n">filepath</span><span class="o">=</span><span class="s2">&quot;/tmp/toy.fo3d&quot;</span><span class="p">,</span>
-        <span class="n">group</span><span class="o">=</span><span class="n">group</span><span class="o">.</span><span class="n">element</span><span class="p">(</span><span class="s2">&quot;pcd&quot;</span><span class="p">),</span>
+        <span class="n">filepath</span><span class="o">=</span><span class="s2">"/tmp/toy.fo3d"</span><span class="p">,</span>
+        <span class="n">group</span><span class="o">=</span><span class="n">group</span><span class="o">.</span><span class="n">element</span><span class="p">(</span><span class="s2">"pcd"</span><span class="p">),</span>
         <span class="n">detections</span><span class="o">=</span><span class="n">fo</span><span class="o">.</span><span class="n">Detections</span><span class="p">(</span><span class="n">detections</span><span class="o">=</span><span class="n">detections</span><span class="p">),</span>
     <span class="p">)</span>
 <span class="p">]</span>
@@ -782,15 +605,15 @@ points that demonstrates how
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Dataset</span><span class="p">()</span>
 <span class="n">dataset</span><span class="o">.</span><span class="n">add_samples</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span>
 
-<span class="n">dataset</span><span class="o">.</span><span class="n">app_config</span><span class="o">.</span><span class="n">plugins</span><span class="p">[</span><span class="s2">&quot;3d&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;defaultCameraPosition&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;z&quot;</span><span class="p">:</span> <span class="mi">20</span><span class="p">}</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">app_config</span><span class="o">.</span><span class="n">plugins</span><span class="p">[</span><span class="s2">"3d"</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"defaultCameraPosition"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"x"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"y"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"z"</span><span class="p">:</span> <span class="mi">20</span><span class="p">}</span>
 <span class="p">}</span>
 <span class="n">dataset</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="toy-point-cloud" class="align-center" src="../_images/toy-point-cloud.png" />
+<img alt="toy-point-cloud" class="align-center" src="../_images/toy-point-cloud.png"/>
 </div>
 </div>
 <div class="section" id="grouped-views">
@@ -832,7 +655,7 @@ grouped datasets carry over to views into them:</p>
 <span class="c1"># center</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">view</span><span class="o">.</span><span class="n">group_media_types</span><span class="p">)</span>
-<span class="c1"># {&#39;left&#39;: &#39;image&#39;, &#39;center&#39;: &#39;image&#39;, &#39;right&#39;: &#39;image&#39;}</span>
+<span class="c1"># {'left': 'image', 'center': 'image', 'right': 'image'}</span>
 </pre></div>
 </div>
 <p>You can also perform all the usual operations on grouped views, such as
@@ -858,16 +681,16 @@ of grouped datasets:</p>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 <span class="kn">from</span> <span class="nn">fiftyone</span> <span class="kn">import</span> <span class="n">ViewField</span> <span class="k">as</span> <span class="n">F</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart-groups&quot;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"quickstart-groups"</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">group_slice</span><span class="p">)</span>
 <span class="c1"># left</span>
 
-<span class="c1"># Filters based on the content in the &#39;left&#39; slice</span>
+<span class="c1"># Filters based on the content in the 'left' slice</span>
 <span class="n">view</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">dataset</span>
-    <span class="o">.</span><span class="n">match_tags</span><span class="p">(</span><span class="s2">&quot;train&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span> <span class="n">F</span><span class="p">(</span><span class="s2">&quot;label&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Pedestrian&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">match_tags</span><span class="p">(</span><span class="s2">"train"</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span><span class="s2">"ground_truth"</span><span class="p">,</span> <span class="n">F</span><span class="p">(</span><span class="s2">"label"</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"Pedestrian"</span><span class="p">)</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -875,7 +698,7 @@ of grouped datasets:</p>
 datasets, any filtering operations will only be applied to the
 <a class="reference internal" href="#groups-dataset-properties"><span class="std std-ref">active slice</span></a>.</p>
 <p>However, you can write views that reference specific slice(s) of a grouped
-collection via the special <code class="code docutils literal notranslate"><span class="pre">&quot;groups.&lt;slice&gt;.field.name&quot;</span></code> syntax:</p>
+collection via the special <code class="code docutils literal notranslate"><span class="pre">"groups.&lt;slice&gt;.field.name"</span></code> syntax:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fiftyone</span> <span class="kn">import</span> <span class="n">ViewField</span> <span class="k">as</span> <span class="n">F</span>
 
 <span class="n">dataset</span><span class="o">.</span><span class="n">compute_metadata</span><span class="p">()</span>
@@ -883,8 +706,8 @@ collection via the special <code class="code docutils literal notranslate"><span
 <span class="c1"># Match groups whose `left` image has a height of at least 640 pixels and</span>
 <span class="c1"># whose `right` image has a height of at most 480 pixels</span>
 <span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">match</span><span class="p">(</span>
-    <span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s2">&quot;groups.left.metadata.height&quot;</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">640</span><span class="p">)</span>
-    <span class="o">&amp;</span> <span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s2">&quot;groups.right.metadata.height&quot;</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">480</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s2">"groups.left.metadata.height"</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">640</span><span class="p">)</span>
+    <span class="o">&amp;</span> <span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s2">"groups.right.metadata.height"</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">480</span><span class="p">)</span>
 <span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">view</span><span class="p">)</span>
@@ -899,15 +722,15 @@ to create a view that contains certain group(s) of interest by their IDs:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Select two groups at random</span>
 <span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 
-<span class="n">group_ids</span> <span class="o">=</span> <span class="n">view</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;group.id&quot;</span><span class="p">)</span>
+<span class="n">group_ids</span> <span class="o">=</span> <span class="n">view</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">"group.id"</span><span class="p">)</span>
 
 <span class="c1"># Select the same groups (default: unordered)</span>
 <span class="n">same_groups</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">select_groups</span><span class="p">(</span><span class="n">group_ids</span><span class="p">)</span>
-<span class="k">assert</span> <span class="nb">set</span><span class="p">(</span><span class="n">view</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">))</span> <span class="o">==</span> <span class="nb">set</span><span class="p">(</span><span class="n">same_groups</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">))</span>
+<span class="k">assert</span> <span class="nb">set</span><span class="p">(</span><span class="n">view</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">"id"</span><span class="p">))</span> <span class="o">==</span> <span class="nb">set</span><span class="p">(</span><span class="n">same_groups</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">"id"</span><span class="p">))</span>
 
 <span class="c1"># Select the same groups (ordered)</span>
 <span class="n">same_order</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">select_groups</span><span class="p">(</span><span class="n">group_ids</span><span class="p">,</span> <span class="n">ordered</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="k">assert</span> <span class="n">view</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="n">same_order</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">view</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">"id"</span><span class="p">)</span> <span class="o">==</span> <span class="n">same_order</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">"id"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -919,9 +742,9 @@ to create a view that excludes certain group(s) of interest by their IDs:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Exclude two groups at random</span>
 <span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 
-<span class="n">group_ids</span> <span class="o">=</span> <span class="n">view</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;group.id&quot;</span><span class="p">)</span>
+<span class="n">group_ids</span> <span class="o">=</span> <span class="n">view</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">"group.id"</span><span class="p">)</span>
 <span class="n">other_groups</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">exclude_groups</span><span class="p">(</span><span class="n">group_ids</span><span class="p">)</span>
-<span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">group_ids</span><span class="p">)</span> <span class="o">&amp;</span> <span class="nb">set</span><span class="p">(</span><span class="n">other_groups</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;group.id&quot;</span><span class="p">)))</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">group_ids</span><span class="p">)</span> <span class="o">&amp;</span> <span class="nb">set</span><span class="p">(</span><span class="n">other_groups</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">"group.id"</span><span class="p">)))</span> <span class="o">==</span> <span class="mi">0</span>
 </pre></div>
 </div>
 </div>
@@ -933,7 +756,7 @@ to create <em>non-grouped views</em> that contain one or more slices of data fro
 grouped dataset.</p>
 <p>For example, you can create an image view that contains only the left camera
 images from the grouped dataset:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">left_view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">select_group_slices</span><span class="p">(</span><span class="s2">&quot;left&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">left_view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">select_group_slices</span><span class="p">(</span><span class="s2">"left"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">left_view</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -949,12 +772,12 @@ Sample fields:
     last_modified_at: fiftyone.core.fields.DateTimeField
     group:            fiftyone.core.fields.EmbeddedDocumentField(fiftyone.core.groups.Group)
 View stages:
-    1. SelectGroupSlices(slices=&#39;left&#39;)
+    1. SelectGroupSlices(slices='left')
 </pre></div>
 </div>
 <p>or you could create an image collection containing the left and right camera
 images:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">lr_view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">select_group_slices</span><span class="p">([</span><span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="s2">&quot;right&quot;</span><span class="p">])</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">lr_view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">select_group_slices</span><span class="p">([</span><span class="s2">"left"</span><span class="p">,</span> <span class="s2">"right"</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">lr_view</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -970,16 +793,16 @@ Sample fields:
     last_modified_at: fiftyone.core.fields.DateTimeField
     group:            fiftyone.core.fields.EmbeddedDocumentField(fiftyone.core.groups.Group)
 View stages:
-    1. SelectGroupSlices(slices=[&#39;left&#39;, &#39;right&#39;])
+    1. SelectGroupSlices(slices=['left', 'right'])
 </pre></div>
 </div>
 <p>Note that the <a class="reference internal" href="../api/fiftyone.core.view.html#fiftyone.core.view.DatasetView.media_type" title="fiftyone.core.view.DatasetView.media_type"><code class="xref py py-meth docutils literal notranslate"><span class="pre">media_type</span></code></a> of
 the above collections are <code class="code docutils literal notranslate"><span class="pre">image</span></code>, not <code class="code docutils literal notranslate"><span class="pre">group</span></code>. This means you can perform any
 valid operation for image collections to these views, without worrying about
 the fact that their data is sourced from a grouped dataset!</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">image_view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">shuffle</span><span class="p">()</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">select_group_slices</span><span class="p">(</span><span class="s2">&quot;left&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">image_view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">shuffle</span><span class="p">()</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">select_group_slices</span><span class="p">(</span><span class="s2">"left"</span><span class="p">)</span>
 
-<span class="n">another_view</span> <span class="o">=</span> <span class="n">image_view</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s2">&quot;metadata.width&quot;</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">640</span><span class="p">)</span>
+<span class="n">another_view</span> <span class="o">=</span> <span class="n">image_view</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s2">"metadata.width"</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">640</span><span class="p">)</span>
 
 <span class="c1"># Add fields/tags, run evaluation, export, etc</span>
 </pre></div>
@@ -993,7 +816,7 @@ stage looks up unfiltered slice data from the source collection:</p>
 
 <span class="c1"># Lookup all image slices for the matching groups</span>
 <span class="c1"># This view contains *unfiltered* image slices</span>
-<span class="n">images_view</span> <span class="o">=</span> <span class="n">match_view</span><span class="o">.</span><span class="n">select_group_slices</span><span class="p">(</span><span class="n">media_type</span><span class="o">=</span><span class="s2">&quot;image&quot;</span><span class="p">)</span>
+<span class="n">images_view</span> <span class="o">=</span> <span class="n">match_view</span><span class="o">.</span><span class="n">select_group_slices</span><span class="p">(</span><span class="n">media_type</span><span class="o">=</span><span class="s2">"image"</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Instead, you can apply the same (or different) filtering <em>after</em> the
@@ -1016,58 +839,58 @@ only include samples from the <a class="reference internal" href="#groups-datase
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 <span class="kn">from</span> <span class="nn">fiftyone</span> <span class="kn">import</span> <span class="n">ViewField</span> <span class="k">as</span> <span class="n">F</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart-groups&quot;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"quickstart-groups"</span><span class="p">)</span>
 
 <span class="c1"># Expression that computes the area of a bounding box, in pixels</span>
-<span class="n">bbox_width</span> <span class="o">=</span> <span class="n">F</span><span class="p">(</span><span class="s2">&quot;bounding_box&quot;</span><span class="p">)[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="n">F</span><span class="p">(</span><span class="s2">&quot;$metadata.width&quot;</span><span class="p">)</span>
-<span class="n">bbox_height</span> <span class="o">=</span> <span class="n">F</span><span class="p">(</span><span class="s2">&quot;bounding_box&quot;</span><span class="p">)[</span><span class="mi">3</span><span class="p">]</span> <span class="o">*</span> <span class="n">F</span><span class="p">(</span><span class="s2">&quot;$metadata.height&quot;</span><span class="p">)</span>
+<span class="n">bbox_width</span> <span class="o">=</span> <span class="n">F</span><span class="p">(</span><span class="s2">"bounding_box"</span><span class="p">)[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="n">F</span><span class="p">(</span><span class="s2">"$metadata.width"</span><span class="p">)</span>
+<span class="n">bbox_height</span> <span class="o">=</span> <span class="n">F</span><span class="p">(</span><span class="s2">"bounding_box"</span><span class="p">)[</span><span class="mi">3</span><span class="p">]</span> <span class="o">*</span> <span class="n">F</span><span class="p">(</span><span class="s2">"$metadata.height"</span><span class="p">)</span>
 <span class="n">bbox_area</span> <span class="o">=</span> <span class="n">bbox_width</span> <span class="o">*</span> <span class="n">bbox_height</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">group_slice</span><span class="p">)</span>
 <span class="c1"># left</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;ground_truth.detections&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">"ground_truth.detections"</span><span class="p">))</span>
 <span class="c1"># 1438</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="s2">&quot;ground_truth.detections[]&quot;</span><span class="p">,</span> <span class="n">expr</span><span class="o">=</span><span class="n">bbox_area</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="s2">"ground_truth.detections[]"</span><span class="p">,</span> <span class="n">expr</span><span class="o">=</span><span class="n">bbox_area</span><span class="p">))</span>
 <span class="c1"># 8878.752327468706</span>
 </pre></div>
 </div>
 <p>You can customize the dataset’s active slice by setting the
 <a class="reference internal" href="../api/fiftyone.core.dataset.html#fiftyone.core.dataset.Dataset.group_slice" title="fiftyone.core.dataset.Dataset.group_slice"><code class="xref py py-meth docutils literal notranslate"><span class="pre">group_slice</span></code></a> property to
 another slice name:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">group_slice</span> <span class="o">=</span> <span class="s2">&quot;right&quot;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">group_slice</span> <span class="o">=</span> <span class="s2">"right"</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;ground_truth.detections&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">"ground_truth.detections"</span><span class="p">))</span>
 <span class="c1"># 1438</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">bounds</span><span class="p">(</span><span class="s2">&quot;ground_truth.detections[]&quot;</span><span class="p">,</span> <span class="n">expr</span><span class="o">=</span><span class="n">bbox_area</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">bounds</span><span class="p">(</span><span class="s2">"ground_truth.detections[]"</span><span class="p">,</span> <span class="n">expr</span><span class="o">=</span><span class="n">bbox_area</span><span class="p">))</span>
 <span class="c1"># 9457.586300995526</span>
 </pre></div>
 </div>
 <p>As usual, you can combine views and aggregations to refine your statistics to
 any subset of the dataset:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">count_values</span><span class="p">(</span><span class="s2">&quot;ground_truth.detections.label&quot;</span><span class="p">))</span>
-<span class="c1"># {&#39;Pedestrian&#39;: 128, &#39;Car&#39;: 793, ...}</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">count_values</span><span class="p">(</span><span class="s2">"ground_truth.detections.label"</span><span class="p">))</span>
+<span class="c1"># {'Pedestrian': 128, 'Car': 793, ...}</span>
 
 <span class="n">view1</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">view1</span><span class="o">.</span><span class="n">count_values</span><span class="p">(</span><span class="s2">&quot;ground_truth.detections.label&quot;</span><span class="p">))</span>
-<span class="c1"># {&#39;Pedestrian&#39;: 1, &#39;Car&#39;: 23, ...}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">view1</span><span class="o">.</span><span class="n">count_values</span><span class="p">(</span><span class="s2">"ground_truth.detections.label"</span><span class="p">))</span>
+<span class="c1"># {'Pedestrian': 1, 'Car': 23, ...}</span>
 
-<span class="n">view2</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span> <span class="n">F</span><span class="p">(</span><span class="s2">&quot;label&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Pedestrian&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">view2</span><span class="o">.</span><span class="n">count_values</span><span class="p">(</span><span class="s2">&quot;ground_truth.detections.label&quot;</span><span class="p">))</span>
-<span class="c1"># {&#39;Pedestrian&#39;: 128}</span>
+<span class="n">view2</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span><span class="s2">"ground_truth"</span><span class="p">,</span> <span class="n">F</span><span class="p">(</span><span class="s2">"label"</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"Pedestrian"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">view2</span><span class="o">.</span><span class="n">count_values</span><span class="p">(</span><span class="s2">"ground_truth.detections.label"</span><span class="p">))</span>
+<span class="c1"># {'Pedestrian': 128}</span>
 </pre></div>
 </div>
 <p>In particular, if you would like to compute statistics across multiple group
 slices, you can <a class="reference internal" href="#groups-selecting-slices"><span class="std std-ref">select them</span></a>!</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">count</span><span class="p">())</span>  <span class="c1"># 200</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;ground_truth.detections&quot;</span><span class="p">))</span>  <span class="c1"># 1438</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">"ground_truth.detections"</span><span class="p">))</span>  <span class="c1"># 1438</span>
 
-<span class="n">view3</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">select_group_slices</span><span class="p">([</span><span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="s2">&quot;right&quot;</span><span class="p">])</span>
+<span class="n">view3</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">select_group_slices</span><span class="p">([</span><span class="s2">"left"</span><span class="p">,</span> <span class="s2">"right"</span><span class="p">])</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">view3</span><span class="o">.</span><span class="n">count</span><span class="p">())</span>  <span class="c1"># 400</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">view3</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;ground_truth.detections&quot;</span><span class="p">))</span>  <span class="c1"># 2876</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">view3</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">"ground_truth.detections"</span><span class="p">))</span>  <span class="c1"># 2876</span>
 </pre></div>
 </div>
 </div>
@@ -1080,13 +903,13 @@ default.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart-groups&quot;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"quickstart-groups"</span><span class="p">)</span>
 
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>You can use the selector shown below to change which slice you are viewing:</p>
-<img alt="groups-grid-view" class="align-center" src="../_images/groups-grid-view.gif" />
+<img alt="groups-grid-view" class="align-center" src="../_images/groups-grid-view.gif"/>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>In order to view 3D scenes in the grid view, you must populate
@@ -1099,20 +922,20 @@ contain a scrollable carousel that you can use to choose which sample to load
 in the maximized image/video visualizer below.</p>
 <p>If the group contains 3D slices, the righthand side of the modal will contain a
 <a class="reference internal" href="app.html#app-3d-visualizer"><span class="std std-ref">3D visualizer</span></a>:</p>
-<img alt="groups-modal" class="align-center" src="../_images/groups-modal.gif" />
+<img alt="groups-modal" class="align-center" src="../_images/groups-modal.gif"/>
 <p>By default, the filters sidebar shows statistics for <strong>only</strong> the group slice
 that currently has focus in the grid/modal. In the grid view, the active slice
 is denoted by the selector in the upper-right corner of the grid, and in the
 modal, the active sample is denoted by the <code class="code docutils literal notranslate"><span class="pre">pin</span> <span class="pre">icon</span></code> in the upper-left corner.</p>
 <p>However, you can opt to show statistics across all slices of a grouped dataset
 by selecting <code class="code docutils literal notranslate"><span class="pre">group</span></code> mode under the App’s settings menu:</p>
-<img alt="groups-stats" class="align-center" src="../_images/groups-stats.gif" />
+<img alt="groups-stats" class="align-center" src="../_images/groups-stats.gif"/>
 <p>You can also use the App’s <a class="reference internal" href="app.html#app-dynamic-groups"><span class="std std-ref">dynamic groups</span></a> feature
 to view <em>groups of groups</em> organized by a field of your choice.</p>
 <p>For example, if you have a grouped dataset whose group slices contain different
 sensor modalities for each <code class="code docutils literal notranslate"><span class="pre">frame_number</span></code> of a scene with a given <code class="code docutils literal notranslate"><span class="pre">scene_id</span></code>,
 you can use the dynamic grouping action to playback scenes in sequential order:</p>
-<img alt="dynamic-groups" class="align-center" src="../_images/dynamic-groups.gif" />
+<img alt="dynamic-groups" class="align-center" src="../_images/dynamic-groups.gif"/>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Did you know? You can also create <a class="reference internal" href="using_views.html#view-groups"><span class="std std-ref">dynamic group views</span></a>
@@ -1156,12 +979,12 @@ use <a class="reference internal" href="export_datasets.html#fiftyonedataset-exp
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">shuffle</span><span class="p">()</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 
 <span class="n">view</span><span class="o">.</span><span class="n">export</span><span class="p">(</span>
-    <span class="n">export_dir</span><span class="o">=</span><span class="s2">&quot;/tmp/groups&quot;</span><span class="p">,</span>
+    <span class="n">export_dir</span><span class="o">=</span><span class="s2">"/tmp/groups"</span><span class="p">,</span>
     <span class="n">dataset_type</span><span class="o">=</span><span class="n">fo</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">FiftyOneDataset</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="n">dataset2</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Dataset</span><span class="o">.</span><span class="n">from_dir</span><span class="p">(</span>
-    <span class="n">dataset_dir</span><span class="o">=</span><span class="s2">&quot;/tmp/groups&quot;</span><span class="p">,</span>
+    <span class="n">dataset_dir</span><span class="o">=</span><span class="s2">"/tmp/groups"</span><span class="p">,</span>
     <span class="n">dataset_type</span><span class="o">=</span><span class="n">fo</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">FiftyOneDataset</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
@@ -1169,10 +992,10 @@ use <a class="reference internal" href="export_datasets.html#fiftyonedataset-exp
 <p>You can also <a class="reference internal" href="#groups-selecting-slices"><span class="std std-ref">select specific slice(s)</span></a> and then
 export the resulting ungrouped collection in
 <a class="reference internal" href="export_datasets.html#exporting-datasets"><span class="std std-ref">all the usual ways</span></a>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">left_view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">shuffle</span><span class="p">()</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">select_group_slices</span><span class="p">(</span><span class="s2">&quot;left&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">left_view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">shuffle</span><span class="p">()</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">select_group_slices</span><span class="p">(</span><span class="s2">"left"</span><span class="p">)</span>
 
 <span class="n">left_view</span><span class="o">.</span><span class="n">export</span><span class="p">(</span>
-    <span class="n">export_dir</span><span class="o">=</span><span class="s2">&quot;/tmp/groups-left&quot;</span><span class="p">,</span>
+    <span class="n">export_dir</span><span class="o">=</span><span class="s2">"/tmp/groups-left"</span><span class="p">,</span>
     <span class="n">dataset_type</span><span class="o">=</span><span class="n">fo</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">ImageDirectory</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
@@ -1188,30 +1011,15 @@ export grouped datasets in your custom format using the syntax below:</p>
 </div>
 </div>
 </div>
+</article>
+</div>
 
-
-             </article>
-             
-            </div>
-            <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="annotation.html" class="btn btn-neutral float-right" title="Annotating Datasets" accesskey="n" rel="next">Next <img src="../_static/images/chevron-right-orange.svg" class="next-page"></a>
-      
-      
-        <a href="app.html" class="btn btn-neutral" title="Using the FiftyOne App" accesskey="p" rel="prev"><img src="../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
-      
-    </div>
-  
-</footer>
-          </div>
-        </div>
-
-        <div class="pytorch-content-right" id="pytorch-content-right">
-          <div class="pytorch-right-menu" id="pytorch-right-menu">
-            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
-              <ul>
+</div>
+</div>
+<div class="pytorch-content-right" id="pytorch-content-right">
+<div class="pytorch-right-menu" id="pytorch-right-menu">
+<div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+<ul>
 <li><a class="reference internal" href="#">Grouped datasets</a><ul>
 <li><a class="reference internal" href="#overview">Overview</a><ul>
 <li><a class="reference internal" href="#creating-grouped-datasets">Creating grouped datasets</a></li>
@@ -1244,214 +1052,36 @@ export grouped datasets in your custom format using the syntax below:</p>
 </ul>
 </li>
 </ul>
-
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
-
-  
-
-
-  
-
-     
-       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-         <script src="../_static/jquery.js"></script>
-         <script src="../_static/underscore.js"></script>
-         <script src="../_static/doctools.js"></script>
-         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
-         <script src="../_static/js/voxel51-website.js"></script>
-         <script src="../_static/js/custom.js"></script>
-     
-
-  
-
-  <script type="text/javascript" src="../_static/js/vendor/popper.min.js"></script>
-  <script type="text/javascript" src="../_static/js/vendor/bootstrap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-  <script type="text/javascript">
+</div>
+</div>
+</div>
+</section>
+</div>
+<script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js" type="text/javascript"></script>
+<script src="../_static/jquery.js"></script>
+<script src="../_static/underscore.js"></script>
+<script src="../_static/doctools.js"></script>
+<script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+<script src="../_static/js/voxel51-website.js"></script>
+<script src="../_static/js/custom.js"></script>
+<script src="../_static/js/vendor/popper.min.js" type="text/javascript"></script>
+<script src="../_static/js/vendor/bootstrap.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+<script src="../_static/js/theme.js" type="text/javascript"></script>
+<script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
-
-  <!-- Begin Footer -->
-
-
-  <div class="container-fluid docs-tutorials-resources" id="docs-tutorials-resources">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4 text-center">
-          <h2>Docs</h2>
-          <p>Access comprehensive developer documentation for PyTorch</p>
-          <a class="with-right-arrow" href="https://pytorch.org/docs/stable/index.html">View Docs</a>
-        </div>
-
-        <div class="col-md-4 text-center">
-          <h2>Tutorials</h2>
-          <p>Get in-depth tutorials for beginners and advanced developers</p>
-          <a class="with-right-arrow" href="https://pytorch.org/tutorials">View Tutorials</a>
-        </div>
-
-        <div class="col-md-4 text-center">
-          <h2>Resources</h2>
-          <p>Find development resources and get your questions answered</p>
-          <a class="with-right-arrow" href="https://pytorch.org/resources">View Resources</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <footer class="site-footer">
-    <div class="container footer-container">
-      <div class="footer-logo-wrapper">
-        <a href="https://pytorch.org/" class="footer-logo"></a>
-      </div>
-
-      <div class="footer-links-wrapper">
-        <div class="footer-links-col">
-          <ul>
-            <li class="list-title"><a href="https://pytorch.org/">PyTorch</a></li>
-            <li><a href="https://pytorch.org/get-started">Get Started</a></li>
-            <li><a href="https://pytorch.org/features">Features</a></li>
-            <li><a href="https://pytorch.org/ecosystem">Ecosystem</a></li>
-            <li><a href="https://pytorch.org/blog/">Blog</a></li>
-            <li><a href="https://github.com/pytorch/pytorch/blob/master/CONTRIBUTING.md">Contributing</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-links-col">
-          <ul>
-            <li class="list-title"><a href="https://pytorch.org/resources">Resources</a></li>
-            <li><a href="https://pytorch.org/tutorials">Tutorials</a></li>
-            <li><a href="https://pytorch.org/docs/stable/index.html">Docs</a></li>
-            <li><a href="https://discuss.pytorch.org" target="_blank">Discuss</a></li>
-            <li><a href="https://github.com/pytorch/pytorch/issues" target="_blank">Github Issues</a></li>
-            <li><a href="https://pytorch.org/assets/brand-guidelines/PyTorch-Brand-Guidelines.pdf" target="_blank">Brand Guidelines</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-links-col follow-us-col">
-          <ul>
-            <li class="list-title">Stay Connected</li>
-            <li>
-              <div id="mc_embed_signup">
-                <form
-                  action="https://twitter.us14.list-manage.com/subscribe/post?u=75419c71fe0a935e53dfa4a3f&id=91d0dccd39"
-                  method="post"
-                  id="mc-embedded-subscribe-form"
-                  name="mc-embedded-subscribe-form"
-                  class="email-subscribe-form validate"
-                  target="_blank"
-                  novalidate>
-                  <div id="mc_embed_signup_scroll" class="email-subscribe-form-fields-wrapper">
-                    <div class="mc-field-group">
-                      <label for="mce-EMAIL" style="display:none;">Email Address</label>
-                      <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="Email Address">
-                    </div>
-
-                    <div id="mce-responses" class="clear">
-                      <div class="response" id="mce-error-response" style="display:none"></div>
-                      <div class="response" id="mce-success-response" style="display:none"></div>
-                    </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-
-                    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_75419c71fe0a935e53dfa4a3f_91d0dccd39" tabindex="-1" value=""></div>
-
-                    <div class="clear">
-                      <input type="submit" value="" name="subscribe" id="mc-embedded-subscribe" class="button email-subscribe-button">
-                    </div>
-                  </div>
-                </form>
-              </div>
-
-            </li>
-          </ul>
-
-          <div class="footer-social-icons">
-            <a href="https://www.facebook.com/pytorch" target="_blank" class="facebook"></a>
-            <a href="https://twitter.com/pytorch" target="_blank" class="twitter"></a>
-            <a href="https://www.youtube.com/pytorch" target="_blank" class="youtube"></a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
+  </script>
+<!-- Begin Footer -->
 
 
-  
+<!-- End Footer -->
+<!-- Begin Mobile Menu -->
 
-  <!-- End Footer -->
-
-  <!-- Begin Mobile Menu -->
-
-
-  <div class="mobile-main-menu">
-    <div class="container-fluid">
-      <div class="container">
-        <div class="mobile-main-menu-header-container">
-          <a class="header-logo" href="https://pytorch.org/" aria-label="PyTorch"></a>
-          <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
-        </div>
-      </div>
-    </div>
-
-    <div class="mobile-main-menu-links-container">
-      <div class="main-menu">
-        <ul>
-          <li>
-            <a href="https://pytorch.org/get-started">Get Started</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/features">Features</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/ecosystem">Ecosystem</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/mobile">Mobile</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/hub">PyTorch Hub</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/blog/">Blog</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/tutorials">Tutorials</a>
-          </li>
-
-          <li class="active">
-            <a href="https://pytorch.org/docs/stable/index.html">Docs</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/resources">Resources</a>
-          </li>
-
-          <li>
-            <a href="https://github.com/pytorch/pytorch">Github</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-
-  <!-- End Mobile Menu -->
-
-  <script type="text/javascript" src="../_static/js/vendor/anchor.min.js"></script>
-
-  <script type="text/javascript">
+<!-- End Mobile Menu -->
+<script src="../_static/js/vendor/anchor.min.js" type="text/javascript"></script>
+<script type="text/javascript">
     $(document).ready(function() {
       mobileMenu.bind();
       mobileTOC.bind();

@@ -1,183 +1,46 @@
 
-
-
 <!DOCTYPE html>
+
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>Ultralytics Integration &mdash; FiftyOne 1.3.0 documentation</title>
-  
-
-  
-  
-    <link rel="shortcut icon" href="../_static/favicon.ico"/>
-  
-  
-  
-
-  
-
-  
-  
-    
-
-  
-
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
-  <link rel="stylesheet" href="../_static/css/voxel51-website.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Albumentations Integration" href="albumentations.html" />
-    <link rel="prev" title="Hugging Face Integration" href="huggingface.html" />
-<meta property="og:image" content="https://voxel51.com/wp-content/uploads/2024/03/3.24_webpages_Home_AV.png" />
-
-<link
-  href="https://fonts.googleapis.com/css?family=Palanquin:400,600,700,800"
-  rel="stylesheet"
-/>
-<link
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
-  rel="stylesheet"
-/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ultralytics Integration — FiftyOne 1.3.0 documentation</title>
+<link href="../_static/favicon.ico" rel="shortcut icon"/>
+<link href="../_static/css/theme.css" rel="stylesheet" type="text/css"/>
+<!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+<link href="../_static/css/voxel51-website.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/css/custom.css" rel="stylesheet" type="text/css"/>
+<link href="../genindex.html" rel="index" title="Index"/>
+<link href="../search.html" rel="search" title="Search"/>
+<link href="albumentations.html" rel="next" title="Albumentations Integration"/>
+<link href="huggingface.html" rel="prev" title="Hugging Face Integration"/>
+<meta content="https://voxel51.com/wp-content/uploads/2024/03/3.24_webpages_Home_AV.png" property="og:image">
+<link href="https://fonts.googleapis.com/css?family=Palanquin:400,600,700,800" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet"/>
 <script src="https://tag.clearbitscripts.com/v1/pk_b9ed71c8234edd4f77326bcbfab5a4ca/tags.js"></script>
-
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
-  
-</head>
-
-
-<div class="container-fluid header-holder tutorials-header" id="header-holder">
-  <div class="container">
-    <div class="header-container">
-      <a class="header-logo" href="https://pytorch.org/" aria-label="PyTorch"></a>
-
-      <div class="main-menu">
-        <ul>
-          <li>
-            <a href="https://pytorch.org/get-started">Get Started</a>
-          </li>
-
-          <li>
-            <div class="ecosystem-dropdown">
-              <a id="dropdownMenuButton" data-toggle="ecosystem-dropdown">
-                Ecosystem
-              </a>
-              <div class="ecosystem-dropdown-menu">
-                <a class="nav-dropdown-item" href="https://pytorch.org/hub"">
-                  <span class=dropdown-title>Models (Beta)</span>
-                  <p>Discover, publish, and reuse pre-trained models</p>
-                </a>
-                <a class="nav-dropdown-item" href="https://pytorch.org/ecosystem">
-                  <span class=dropdown-title>Tools & Libraries</span>
-                  <p>Explore the ecosystem of tools and libraries</p>
-                </a>
-              </div>
-            </div>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/mobile">Mobile</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/blog/">Blog</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/tutorials">Tutorials</a>
-          </li>
-
-          <li class="active">
-            <a href="https://pytorch.org/docs/stable/index.html">Docs</a>
-          </li>
-
-          <li>
-            <div class="resources-dropdown">
-              <a id="resourcesDropdownButton" data-toggle="resources-dropdown">
-                Resources
-              </a>
-              <div class="resources-dropdown-menu">
-                <a class="nav-dropdown-item" href="https://pytorch.org/resources"">
-                  <span class=dropdown-title>Developer Resources</span>
-                  <p>Find resources and get questions answered</p>
-                </a>
-                <a class="nav-dropdown-item" href="https://pytorch.org/features">
-                  <span class=dropdown-title>About</span>
-                  <p>Learn about PyTorch’s features and capabilities</p>
-                </a>
-              </div>
-            </div>
-          </li>
-
-          <li>
-            <a href="https://github.com/pytorch/pytorch">Github</a>
-          </li>
-        </ul>
-      </div>
-
-      <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
-    </div>
-
-  </div>
-</div>
-
-
+<script src="../_static/js/modernizr.min.js"></script>
+</meta></head>
 
 <body class="pytorch-body">
-
-   
-
-    
-
-    <div class="table-of-contents-link-wrapper">
-      <span>Table of Contents</span>
-      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
-    </div>
-
-    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
-      <div class="pytorch-side-scroll">
-        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          <div class="pytorch-left-menu-search">
-            
-
-            
-              
-              
-            
-
-            
-
-
-  
-
-
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search Docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
+<div class="table-of-contents-link-wrapper">
+<span>Table of Contents</span>
+<a class="toggle-table-of-contents" data-behavior="toggle-table-of-contents" href="#"></a>
 </div>
-
-            
-          </div>
-
-          
-            
-            
-              
-            
-            
-              <ul class="current">
+<nav class="pytorch-left-menu" data-toggle="wy-nav-shift" id="pytorch-left-menu">
+<div class="pytorch-side-scroll">
+<div aria-label="main navigation" class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation">
+<div class="pytorch-left-menu-search">
+<div role="search">
+<form action="../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input name="q" placeholder="Search Docs" type="text"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../teams/index.html">FiftyOne Teams 🚀</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/install.html">Installation</a></li>
@@ -197,78 +60,38 @@
 <li class="toctree-l1"><a class="reference internal" href="../deprecation.html">Deprecation Notices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a></li>
 </ul>
-
-            
-          
-        </div>
-      </div>
-    </nav>
-
-    <div class="pytorch-container">
-      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
-        <div class="pytorch-breadcrumbs-wrapper">
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
-  <ul class="pytorch-breadcrumbs">
-    
-      <li>
-        <a href="../index.html">
+</div>
+</div>
+</nav>
+<div class="pytorch-container">
+<div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+<div class="pytorch-breadcrumbs-wrapper">
+<div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="pytorch-breadcrumbs">
+<li>
+<a href="../index.html">
           
             Docs
           
         </a> &gt;
       </li>
-
-        
-          <li><a href="index.html">FiftyOne Integrations</a> &gt;</li>
-        
-      <li>Ultralytics Integration</li>
-    
-    
-      <li class="pytorch-breadcrumbs-aside">
-        
-            
-        
-      </li>
-    
-  </ul>
-
-  
+<li><a href="index.html">FiftyOne Integrations</a> &gt;</li>
+<li>Ultralytics Integration</li>
+<li class="pytorch-breadcrumbs-aside">
+</li>
+</ul>
 </div>
-        </div>
-
-        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+</div>
+<div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
           Contents
         </div>
-      </div>
-
-      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
-        <div class="pytorch-content-left">
-
-        
-          
-          <div class="rst-content style-external-links">
-          
-            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
-             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
-              
-  <div class="section" id="ultralytics-integration">
+</div>
+<section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+<div class="pytorch-content-left">
+<div class="rst-content style-external-links">
+<div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+<div class="section" id="ultralytics-integration">
 <span id="id1"></span><h1>Ultralytics Integration<a class="headerlink" href="#ultralytics-integration" title="Permalink to this headline">¶</a></h1>
 <p>FiftyOne integrates natively with
 <a class="reference external" href="https://github.com/ultralytics/ultralytics">Ultralytics</a>, so
@@ -279,7 +102,7 @@ models on your FiftyOne datasets with just a few lines of code!</p>
 <p>To get started with
 <a class="reference external" href="https://github.com/ultralytics/ultralytics">Ultralytics</a>, just install the
 following packages:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">&quot;ultralytics&gt;=8.1.0&quot;</span><span class="w"> </span><span class="s2">&quot;torch&gt;=1.8&quot;</span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">"ultralytics&gt;=8.1.0"</span><span class="w"> </span><span class="s2">"torch&gt;=1.8"</span>
 </pre></div>
 </div>
 </div>
@@ -288,7 +111,7 @@ following packages:</p>
 <p>The examples below show how to run inference with various Ultralytics models on
 the following sample dataset:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Suppress Ultralytics logging</span>
-<span class="kn">import</span> <span class="nn">os</span><span class="p">;</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;YOLO_VERBOSE&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;False&quot;</span>
+<span class="kn">import</span> <span class="nn">os</span><span class="p">;</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">"YOLO_VERBOSE"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"False"</span>
 
 <span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
@@ -297,7 +120,7 @@ the following sample dataset:</p>
 <span class="kn">from</span> <span class="nn">ultralytics</span> <span class="kn">import</span> <span class="n">YOLO</span>
 
 <span class="c1"># Load an example dataset</span>
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">,</span> <span class="n">max_samples</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"quickstart"</span><span class="p">,</span> <span class="n">max_samples</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
 <span class="n">dataset</span><span class="o">.</span><span class="n">select_fields</span><span class="p">()</span><span class="o">.</span><span class="n">keep_fields</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -306,13 +129,13 @@ the following sample dataset:</p>
 <p>You can directly pass Ultralytics <code class="code docutils literal notranslate"><span class="pre">YOLO</span></code> classification models to
 <a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.apply_model" title="fiftyone.core.collections.SampleCollection.apply_model"><code class="xref py py-meth docutils literal notranslate"><span class="pre">apply_model()</span></code></a>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># YOLOv8</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">YOLO</span><span class="p">(</span><span class="s2">&quot;yolov8n-cls.pt&quot;</span><span class="p">)</span>
-<span class="c1"># model = YOLO(&quot;yolov8s-cls.pt&quot;)</span>
-<span class="c1"># model = YOLO(&quot;yolov8m-cls.pt&quot;)</span>
-<span class="c1"># model = YOLO(&quot;yolov8l-cls.pt&quot;)</span>
-<span class="c1"># model = YOLO(&quot;yolov8x-cls.pt&quot;)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">YOLO</span><span class="p">(</span><span class="s2">"yolov8n-cls.pt"</span><span class="p">)</span>
+<span class="c1"># model = YOLO("yolov8s-cls.pt")</span>
+<span class="c1"># model = YOLO("yolov8m-cls.pt")</span>
+<span class="c1"># model = YOLO("yolov8l-cls.pt")</span>
+<span class="c1"># model = YOLO("yolov8x-cls.pt")</span>
 
-<span class="n">dataset</span><span class="o">.</span><span class="n">apply_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;classif&quot;</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">apply_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">label_field</span><span class="o">=</span><span class="s2">"classif"</span><span class="p">)</span>
 
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
 </pre></div>
@@ -323,40 +146,40 @@ the following sample dataset:</p>
 <p>You can directly pass Ultralytics <code class="code docutils literal notranslate"><span class="pre">YOLO</span></code> or <code class="code docutils literal notranslate"><span class="pre">RTDETR</span></code> detection models to
 <a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.apply_model" title="fiftyone.core.collections.SampleCollection.apply_model"><code class="xref py py-meth docutils literal notranslate"><span class="pre">apply_model()</span></code></a>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># YOLOv8</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">YOLO</span><span class="p">(</span><span class="s2">&quot;yolov8s.pt&quot;</span><span class="p">)</span>
-<span class="c1"># model = YOLO(&quot;yolov8m.pt&quot;)</span>
-<span class="c1"># model = YOLO(&quot;yolov8l.pt&quot;)</span>
-<span class="c1"># model = YOLO(&quot;yolov8x.pt&quot;)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">YOLO</span><span class="p">(</span><span class="s2">"yolov8s.pt"</span><span class="p">)</span>
+<span class="c1"># model = YOLO("yolov8m.pt")</span>
+<span class="c1"># model = YOLO("yolov8l.pt")</span>
+<span class="c1"># model = YOLO("yolov8x.pt")</span>
 
 <span class="c1"># YOLOv5</span>
-<span class="c1"># model = YOLO(&quot;yolov5s.pt&quot;)</span>
-<span class="c1"># model = YOLO(&quot;yolov5m.pt&quot;)</span>
-<span class="c1"># model = YOLO(&quot;yolov5l.pt&quot;)</span>
-<span class="c1"># model = YOLO(&quot;yolov5x.pt&quot;)</span>
+<span class="c1"># model = YOLO("yolov5s.pt")</span>
+<span class="c1"># model = YOLO("yolov5m.pt")</span>
+<span class="c1"># model = YOLO("yolov5l.pt")</span>
+<span class="c1"># model = YOLO("yolov5x.pt")</span>
 
 <span class="c1"># YOLOv9</span>
-<span class="c1"># model = YOLO(&quot;yolov9c.pt&quot;)</span>
-<span class="c1"># model = YOLO(&quot;yolov9e.pt&quot;)</span>
+<span class="c1"># model = YOLO("yolov9c.pt")</span>
+<span class="c1"># model = YOLO("yolov9e.pt")</span>
 
 <span class="c1"># YOLOv10</span>
-<span class="c1"># model = YOLO(&quot;yolov10n.pt)</span>
-<span class="c1"># model = YOLO(&quot;yolov10s.pt)</span>
-<span class="c1"># model = YOLO(&quot;yolov10m.pt)</span>
-<span class="c1"># model = YOLO(&quot;yolov10l.pt)</span>
-<span class="c1"># model = YOLO(&quot;yolov10x.pt)</span>
+<span class="c1"># model = YOLO("yolov10n.pt)</span>
+<span class="c1"># model = YOLO("yolov10s.pt)</span>
+<span class="c1"># model = YOLO("yolov10m.pt)</span>
+<span class="c1"># model = YOLO("yolov10l.pt)</span>
+<span class="c1"># model = YOLO("yolov10x.pt)</span>
 
 <span class="c1"># YOLOv11</span>
-<span class="c1"># model = YOLO(&quot;yolo11n.pt)</span>
-<span class="c1"># model = YOLO(&quot;yolo11s.pt)</span>
-<span class="c1"># model = YOLO(&quot;yolo11m.pt)</span>
-<span class="c1"># model = YOLO(&quot;yolo11l.pt)</span>
-<span class="c1"># model = YOLO(&quot;yolo11x.pt)</span>
+<span class="c1"># model = YOLO("yolo11n.pt)</span>
+<span class="c1"># model = YOLO("yolo11s.pt)</span>
+<span class="c1"># model = YOLO("yolo11m.pt)</span>
+<span class="c1"># model = YOLO("yolo11l.pt)</span>
+<span class="c1"># model = YOLO("yolo11x.pt)</span>
 
 <span class="c1"># RTDETR</span>
-<span class="c1"># model = YOLO(&quot;rtdetr-l.pt&quot;)</span>
-<span class="c1"># model = YOLO(&quot;rtdetr-x.pt&quot;)</span>
+<span class="c1"># model = YOLO("rtdetr-l.pt")</span>
+<span class="c1"># model = YOLO("rtdetr-x.pt")</span>
 
-<span class="n">dataset</span><span class="o">.</span><span class="n">apply_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;boxes&quot;</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">apply_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">label_field</span><span class="o">=</span><span class="s2">"boxes"</span><span class="p">)</span>
 
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
 </pre></div>
@@ -367,23 +190,23 @@ manually convert Ultralytics predictions to
 <a class="reference internal" href="../user_guide/using_datasets.html#object-detection"><span class="std std-ref">FiftyOne format</span></a>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">sample</span> <span class="ow">in</span> <span class="n">dataset</span><span class="o">.</span><span class="n">iter_samples</span><span class="p">(</span><span class="n">progress</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
     <span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">sample</span><span class="o">.</span><span class="n">filepath</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">sample</span><span class="p">[</span><span class="s2">&quot;boxes&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fou</span><span class="o">.</span><span class="n">to_detections</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+    <span class="n">sample</span><span class="p">[</span><span class="s2">"boxes"</span><span class="p">]</span> <span class="o">=</span> <span class="n">fou</span><span class="o">.</span><span class="n">to_detections</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
     <span class="n">sample</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 </pre></div>
 </div>
-<img alt="ultralytics-boxes" class="align-center" src="../_images/ultralytics_boxes.jpg" />
+<img alt="ultralytics-boxes" class="align-center" src="../_images/ultralytics_boxes.jpg"/>
 <p>You can also load any of these models directly from the
 <a class="reference internal" href="../model_zoo/index.html#model-zoo"><span class="std std-ref">FiftyOne Model Zoo</span></a>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model_name</span> <span class="o">=</span> <span class="s2">&quot;yolov5l-coco-torch&quot;</span>
-<span class="c1"># model_name = &quot;yolov8m-coco-torch&quot;</span>
-<span class="c1"># model_name = &quot;yolov9e-coco-torch&quot;</span>
-<span class="c1"># model_name = &quot;yolov10s-coco-torch&quot;</span>
-<span class="c1"># model_name = &quot;yolo11x-coco-torch&quot;</span>
-<span class="c1"># model_name = &quot;rtdetr-l-coco-torch&quot;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model_name</span> <span class="o">=</span> <span class="s2">"yolov5l-coco-torch"</span>
+<span class="c1"># model_name = "yolov8m-coco-torch"</span>
+<span class="c1"># model_name = "yolov9e-coco-torch"</span>
+<span class="c1"># model_name = "yolov10s-coco-torch"</span>
+<span class="c1"># model_name = "yolo11x-coco-torch"</span>
+<span class="c1"># model_name = "rtdetr-l-coco-torch"</span>
 
 <span class="n">model</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_model</span><span class="p">(</span>
     <span class="n">model_name</span><span class="p">,</span>
-    <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;boxes&quot;</span><span class="p">,</span>
+    <span class="n">label_field</span><span class="o">=</span><span class="s2">"boxes"</span><span class="p">,</span>
     <span class="n">confidence_thresh</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
     <span class="n">iou_thresh</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
 <span class="p">)</span>
@@ -395,7 +218,7 @@ manually convert Ultralytics predictions to
 </div>
 <p>You can use <a class="reference internal" href="../api/fiftyone.zoo.html#fiftyone.zoo.list_zoo_models" title="fiftyone.zoo.list_zoo_models"><code class="xref py py-func docutils literal notranslate"><span class="pre">list_zoo_models()</span></code></a> to see all
 available YOLO models that are compatible with Ultralytics or SuperGradients:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">foz</span><span class="o">.</span><span class="n">list_zoo_models</span><span class="p">(</span><span class="n">tags</span><span class="o">=</span><span class="s2">&quot;yolo&quot;</span><span class="p">))</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">foz</span><span class="o">.</span><span class="n">list_zoo_models</span><span class="p">(</span><span class="n">tags</span><span class="o">=</span><span class="s2">"yolo"</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>In general, YOLO model names will contain “yolov”, followed by the version number,
@@ -407,17 +230,17 @@ label classes (“coco” for MS COCO or “world” for open-world), followed b
 <span id="ultralytics-instance-segmentation"></span><h3>Instance segmentation<a class="headerlink" href="#instance-segmentation" title="Permalink to this headline">¶</a></h3>
 <p>You can directly pass Ultralytics YOLO segmentation models to
 <a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.apply_model" title="fiftyone.core.collections.SampleCollection.apply_model"><code class="xref py py-meth docutils literal notranslate"><span class="pre">apply_model()</span></code></a>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">YOLO</span><span class="p">(</span><span class="s2">&quot;yolov8s-seg.pt&quot;</span><span class="p">)</span>
-<span class="c1"># model = YOLO(&quot;yolov8m-seg.pt&quot;)</span>
-<span class="c1"># model = YOLO(&quot;yolov8l-seg.pt&quot;)</span>
-<span class="c1"># model = YOLO(&quot;yolov8x-seg.pt&quot;)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">YOLO</span><span class="p">(</span><span class="s2">"yolov8s-seg.pt"</span><span class="p">)</span>
+<span class="c1"># model = YOLO("yolov8m-seg.pt")</span>
+<span class="c1"># model = YOLO("yolov8l-seg.pt")</span>
+<span class="c1"># model = YOLO("yolov8x-seg.pt")</span>
 
-<span class="c1"># model = YOLO(&quot;yolo11s-seg.pt&quot;)</span>
-<span class="c1"># model = YOLO(&quot;yolo11m-seg.pt&quot;)</span>
-<span class="c1"># model = YOLO(&quot;yolo11l-seg.pt&quot;)</span>
-<span class="c1"># model = YOLO(&quot;yolo11x-seg.pt&quot;)</span>
+<span class="c1"># model = YOLO("yolo11s-seg.pt")</span>
+<span class="c1"># model = YOLO("yolo11m-seg.pt")</span>
+<span class="c1"># model = YOLO("yolo11l-seg.pt")</span>
+<span class="c1"># model = YOLO("yolo11x-seg.pt")</span>
 
-<span class="n">dataset</span><span class="o">.</span><span class="n">apply_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;instances&quot;</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">apply_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">label_field</span><span class="o">=</span><span class="s2">"instances"</span><span class="p">)</span>
 
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
 </pre></div>
@@ -429,32 +252,32 @@ manually convert Ultralytics predictions into the desired
 <a class="reference internal" href="../user_guide/using_datasets.html#instance-segmentation"><span class="std std-ref">FiftyOne format</span></a>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">sample</span> <span class="ow">in</span> <span class="n">dataset</span><span class="o">.</span><span class="n">iter_samples</span><span class="p">(</span><span class="n">progress</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
     <span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">sample</span><span class="o">.</span><span class="n">filepath</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">sample</span><span class="p">[</span><span class="s2">&quot;detections&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fou</span><span class="o">.</span><span class="n">to_detections</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
-    <span class="n">sample</span><span class="p">[</span><span class="s2">&quot;instances&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fou</span><span class="o">.</span><span class="n">to_instances</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
-    <span class="n">sample</span><span class="p">[</span><span class="s2">&quot;polylines&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fou</span><span class="o">.</span><span class="n">to_polylines</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+    <span class="n">sample</span><span class="p">[</span><span class="s2">"detections"</span><span class="p">]</span> <span class="o">=</span> <span class="n">fou</span><span class="o">.</span><span class="n">to_detections</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+    <span class="n">sample</span><span class="p">[</span><span class="s2">"instances"</span><span class="p">]</span> <span class="o">=</span> <span class="n">fou</span><span class="o">.</span><span class="n">to_instances</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+    <span class="n">sample</span><span class="p">[</span><span class="s2">"polylines"</span><span class="p">]</span> <span class="o">=</span> <span class="n">fou</span><span class="o">.</span><span class="n">to_polylines</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
     <span class="n">sample</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 </pre></div>
 </div>
-<img alt="ultralytics-instances" class="align-center" src="../_images/ultralytics_instances.jpg" />
+<img alt="ultralytics-instances" class="align-center" src="../_images/ultralytics_instances.jpg"/>
 <p>You can also load YOLOv8, YOLOv9, and YOLO11 segmentation models from the
 <a class="reference internal" href="../model_zoo/index.html#model-zoo"><span class="std std-ref">FiftyOne Model Zoo</span></a>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model_name</span> <span class="o">=</span> <span class="s2">&quot;yolov8n-seg-coco-torch&quot;</span>
-<span class="c1"># model_name = &quot;yolov8s-seg-coco-torch&quot;</span>
-<span class="c1"># model_name = &quot;yolov8m-seg-coco-torch&quot;</span>
-<span class="c1"># model_name = &quot;yolov8l-seg-coco-torch&quot;</span>
-<span class="c1"># model_name = &quot;yolov8x-seg-coco-torch&quot;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model_name</span> <span class="o">=</span> <span class="s2">"yolov8n-seg-coco-torch"</span>
+<span class="c1"># model_name = "yolov8s-seg-coco-torch"</span>
+<span class="c1"># model_name = "yolov8m-seg-coco-torch"</span>
+<span class="c1"># model_name = "yolov8l-seg-coco-torch"</span>
+<span class="c1"># model_name = "yolov8x-seg-coco-torch"</span>
 
-<span class="c1"># model_name = &quot;yolov9c-seg-coco-torch&quot;</span>
-<span class="c1"># model_name = &quot;yolov9e-seg-coco-torch&quot;</span>
+<span class="c1"># model_name = "yolov9c-seg-coco-torch"</span>
+<span class="c1"># model_name = "yolov9e-seg-coco-torch"</span>
 
-<span class="c1"># model_name = &quot;yolo11n-seg-coco-torch&quot;</span>
-<span class="c1"># model_name = &quot;yolo11s-seg-coco-torch&quot;</span>
-<span class="c1"># model_name = &quot;yolo11m-seg-coco-torch&quot;</span>
-<span class="c1"># model_name = &quot;yolo11l-seg-coco-torch&quot;</span>
-<span class="c1"># model_name = &quot;yolo11x-seg-coco-torch&quot;</span>
+<span class="c1"># model_name = "yolo11n-seg-coco-torch"</span>
+<span class="c1"># model_name = "yolo11s-seg-coco-torch"</span>
+<span class="c1"># model_name = "yolo11m-seg-coco-torch"</span>
+<span class="c1"># model_name = "yolo11l-seg-coco-torch"</span>
+<span class="c1"># model_name = "yolo11x-seg-coco-torch"</span>
 
 
-<span class="n">model</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_model</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;yolo_seg&quot;</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_model</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="n">label_field</span><span class="o">=</span><span class="s2">"yolo_seg"</span><span class="p">)</span>
 
 <span class="n">dataset</span><span class="o">.</span><span class="n">apply_model</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
 
@@ -466,20 +289,20 @@ manually convert Ultralytics predictions into the desired
 <span id="ultralytics-keypoints"></span><h3>Keypoints<a class="headerlink" href="#keypoints" title="Permalink to this headline">¶</a></h3>
 <p>You can directly pass Ultralytics YOLO pose models to
 <a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.apply_model" title="fiftyone.core.collections.SampleCollection.apply_model"><code class="xref py py-meth docutils literal notranslate"><span class="pre">apply_model()</span></code></a>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">YOLO</span><span class="p">(</span><span class="s2">&quot;yolov8s-pose.pt&quot;</span><span class="p">)</span>
-<span class="c1"># model = YOLO(&quot;yolov8m-pose.pt&quot;)</span>
-<span class="c1"># model = YOLO(&quot;yolov8l-pose.pt&quot;)</span>
-<span class="c1"># model = YOLO(&quot;yolov8x-pose.pt&quot;)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">YOLO</span><span class="p">(</span><span class="s2">"yolov8s-pose.pt"</span><span class="p">)</span>
+<span class="c1"># model = YOLO("yolov8m-pose.pt")</span>
+<span class="c1"># model = YOLO("yolov8l-pose.pt")</span>
+<span class="c1"># model = YOLO("yolov8x-pose.pt")</span>
 
-<span class="n">dataset</span><span class="o">.</span><span class="n">apply_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;keypoints&quot;</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">apply_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">label_field</span><span class="o">=</span><span class="s2">"keypoints"</span><span class="p">)</span>
 
 <span class="c1"># Store the COCO-pose keypoint skeleton so the App can render it</span>
 <span class="n">dataset</span><span class="o">.</span><span class="n">default_skeleton</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">KeypointSkeleton</span><span class="p">(</span>
     <span class="n">labels</span><span class="o">=</span><span class="p">[</span>
-        <span class="s2">&quot;nose&quot;</span><span class="p">,</span> <span class="s2">&quot;left eye&quot;</span><span class="p">,</span> <span class="s2">&quot;right eye&quot;</span><span class="p">,</span> <span class="s2">&quot;left ear&quot;</span><span class="p">,</span> <span class="s2">&quot;right ear&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;left shoulder&quot;</span><span class="p">,</span> <span class="s2">&quot;right shoulder&quot;</span><span class="p">,</span> <span class="s2">&quot;left elbow&quot;</span><span class="p">,</span> <span class="s2">&quot;right elbow&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;left wrist&quot;</span><span class="p">,</span> <span class="s2">&quot;right wrist&quot;</span><span class="p">,</span> <span class="s2">&quot;left hip&quot;</span><span class="p">,</span> <span class="s2">&quot;right hip&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;left knee&quot;</span><span class="p">,</span> <span class="s2">&quot;right knee&quot;</span><span class="p">,</span> <span class="s2">&quot;left ankle&quot;</span><span class="p">,</span> <span class="s2">&quot;right ankle&quot;</span><span class="p">,</span>
+        <span class="s2">"nose"</span><span class="p">,</span> <span class="s2">"left eye"</span><span class="p">,</span> <span class="s2">"right eye"</span><span class="p">,</span> <span class="s2">"left ear"</span><span class="p">,</span> <span class="s2">"right ear"</span><span class="p">,</span>
+        <span class="s2">"left shoulder"</span><span class="p">,</span> <span class="s2">"right shoulder"</span><span class="p">,</span> <span class="s2">"left elbow"</span><span class="p">,</span> <span class="s2">"right elbow"</span><span class="p">,</span>
+        <span class="s2">"left wrist"</span><span class="p">,</span> <span class="s2">"right wrist"</span><span class="p">,</span> <span class="s2">"left hip"</span><span class="p">,</span> <span class="s2">"right hip"</span><span class="p">,</span>
+        <span class="s2">"left knee"</span><span class="p">,</span> <span class="s2">"right knee"</span><span class="p">,</span> <span class="s2">"left ankle"</span><span class="p">,</span> <span class="s2">"right ankle"</span><span class="p">,</span>
     <span class="p">],</span>
     <span class="n">edges</span><span class="o">=</span><span class="p">[</span>
         <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span>
@@ -496,38 +319,38 @@ manually convert Ultralytics predictions into the desired
 manually convert Ultralytics predictions to <a class="reference internal" href="../user_guide/using_datasets.html#keypoints"><span class="std std-ref">FiftyOne format</span></a>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">sample</span> <span class="ow">in</span> <span class="n">dataset</span><span class="o">.</span><span class="n">iter_samples</span><span class="p">(</span><span class="n">progress</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
     <span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">sample</span><span class="o">.</span><span class="n">filepath</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">sample</span><span class="p">[</span><span class="s2">&quot;keypoints&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fou</span><span class="o">.</span><span class="n">to_keypoints</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+    <span class="n">sample</span><span class="p">[</span><span class="s2">"keypoints"</span><span class="p">]</span> <span class="o">=</span> <span class="n">fou</span><span class="o">.</span><span class="n">to_keypoints</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
     <span class="n">sample</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 </pre></div>
 </div>
-<img alt="ultralytics-keypoints" class="align-center" src="../_images/ultralytics_keypoints.jpg" />
+<img alt="ultralytics-keypoints" class="align-center" src="../_images/ultralytics_keypoints.jpg"/>
 </div>
 <div class="section" id="oriented-bounding-boxes">
 <span id="ultralytics-oriented-bounding-boxes"></span><h3>Oriented bounding boxes<a class="headerlink" href="#oriented-bounding-boxes" title="Permalink to this headline">¶</a></h3>
 <p>You can directly pass Ultralytics YOLO oriented bounding box models to
 <a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.apply_model" title="fiftyone.core.collections.SampleCollection.apply_model"><code class="xref py py-meth docutils literal notranslate"><span class="pre">apply_model()</span></code></a>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">YOLO</span><span class="p">(</span><span class="s2">&quot;yolov8n-obb.pt&quot;</span><span class="p">)</span>
-<span class="c1"># model = YOLO(&quot;yolov8s-obb.pt&quot;)</span>
-<span class="c1"># model = YOLO(&quot;yolov8m-obb.pt&quot;)</span>
-<span class="c1"># model = YOLO(&quot;yolov8l-obb.pt&quot;)</span>
-<span class="c1"># model = YOLO(&quot;yolov8x-obb.pt&quot;)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">YOLO</span><span class="p">(</span><span class="s2">"yolov8n-obb.pt"</span><span class="p">)</span>
+<span class="c1"># model = YOLO("yolov8s-obb.pt")</span>
+<span class="c1"># model = YOLO("yolov8m-obb.pt")</span>
+<span class="c1"># model = YOLO("yolov8l-obb.pt")</span>
+<span class="c1"># model = YOLO("yolov8x-obb.pt")</span>
 
-<span class="n">dataset</span><span class="o">.</span><span class="n">apply_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;oriented_boxes&quot;</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">apply_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">label_field</span><span class="o">=</span><span class="s2">"oriented_boxes"</span><span class="p">)</span>
 
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>You can also load YOLOv8 oriented bounding box models from the
 <a class="reference internal" href="../model_zoo/index.html#model-zoo"><span class="std std-ref">FiftyOne Model Zoo</span></a>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model_name</span> <span class="o">=</span> <span class="s2">&quot;yolov8n-obb-dotav1-torch&quot;</span>
-<span class="c1"># model_name = &quot;yolov8s-obb-dotav1-torch&quot;</span>
-<span class="c1"># model_name = &quot;yolov8m-obb-dotav1-torch&quot;</span>
-<span class="c1"># model_name = &quot;yolov8l-obb-dotav1-torch&quot;</span>
-<span class="c1"># model_name = &quot;yolov8x-obb-dotav1-torch&quot;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model_name</span> <span class="o">=</span> <span class="s2">"yolov8n-obb-dotav1-torch"</span>
+<span class="c1"># model_name = "yolov8s-obb-dotav1-torch"</span>
+<span class="c1"># model_name = "yolov8m-obb-dotav1-torch"</span>
+<span class="c1"># model_name = "yolov8l-obb-dotav1-torch"</span>
+<span class="c1"># model_name = "yolov8x-obb-dotav1-torch"</span>
 
 <span class="n">model</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_model</span><span class="p">(</span><span class="n">model_name</span><span class="p">)</span>
 
-<span class="n">dataset</span><span class="o">.</span><span class="n">apply_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;oriented_boxes&quot;</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">apply_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">label_field</span><span class="o">=</span><span class="s2">"oriented_boxes"</span><span class="p">)</span>
 
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
 </pre></div>
@@ -554,22 +377,22 @@ that you can set the classes that the model should detect:</p>
 
 <span class="c1">## Load dataset</span>
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span>
-    <span class="s2">&quot;voc-2007&quot;</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="s2">&quot;validation&quot;</span><span class="p">,</span> <span class="n">max_samples</span><span class="o">=</span><span class="mi">100</span>
+    <span class="s2">"voc-2007"</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="s2">"validation"</span><span class="p">,</span> <span class="n">max_samples</span><span class="o">=</span><span class="mi">100</span>
 <span class="p">)</span>
 <span class="n">dataset</span><span class="o">.</span><span class="n">select_fields</span><span class="p">()</span><span class="o">.</span><span class="n">keep_fields</span><span class="p">()</span>
 
 <span class="c1">## Load model</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">YOLO</span><span class="p">(</span><span class="s2">&quot;yolov8l-world.pt&quot;</span><span class="p">)</span>
-<span class="c1"># model = YOLO(&quot;yolov8s-world.pt&quot;)</span>
-<span class="c1"># model =  YOLO(&quot;yolov8m-world.pt&quot;)</span>
-<span class="c1"># model =  YOLO(&quot;yolov8x-world.pt&quot;)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">YOLO</span><span class="p">(</span><span class="s2">"yolov8l-world.pt"</span><span class="p">)</span>
+<span class="c1"># model = YOLO("yolov8s-world.pt")</span>
+<span class="c1"># model =  YOLO("yolov8m-world.pt")</span>
+<span class="c1"># model =  YOLO("yolov8x-world.pt")</span>
 
 <span class="c1">## Set open vocabulary classes</span>
 <span class="n">model</span><span class="o">.</span><span class="n">set_classes</span><span class="p">(</span>
-    <span class="p">[</span><span class="s2">&quot;plant&quot;</span><span class="p">,</span> <span class="s2">&quot;window&quot;</span><span class="p">,</span> <span class="s2">&quot;keyboard&quot;</span><span class="p">,</span> <span class="s2">&quot;human baby&quot;</span><span class="p">,</span> <span class="s2">&quot;computer monitor&quot;</span><span class="p">]</span>
+    <span class="p">[</span><span class="s2">"plant"</span><span class="p">,</span> <span class="s2">"window"</span><span class="p">,</span> <span class="s2">"keyboard"</span><span class="p">,</span> <span class="s2">"human baby"</span><span class="p">,</span> <span class="s2">"computer monitor"</span><span class="p">]</span>
 <span class="p">)</span>
 
-<span class="n">label_field</span> <span class="o">=</span> <span class="s2">&quot;yolo_world_detections&quot;</span>
+<span class="n">label_field</span> <span class="o">=</span> <span class="s2">"yolo_world_detections"</span>
 
 <span class="c1">## Apply model</span>
 <span class="n">dataset</span><span class="o">.</span><span class="n">apply_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">label_field</span><span class="o">=</span><span class="n">label_field</span><span class="p">)</span>
@@ -579,20 +402,20 @@ that you can set the classes that the model should detect:</p>
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">patches</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="ultralytics-open-world-boxes" class="align-center" src="../_images/ultralytics_open_world_boxes.png" />
+<img alt="ultralytics-open-world-boxes" class="align-center" src="../_images/ultralytics_open_world_boxes.png"/>
 <p>You can also load these open-vocabulary models from the
 <a class="reference internal" href="../model_zoo/index.html#model-zoo"><span class="std std-ref">FiftyOne Model Zoo</span></a>, optionally specifying the classes that
 the model should detect:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model_name</span> <span class="o">=</span> <span class="s2">&quot;yolov8l-world-torch&quot;</span>
-<span class="c1"># model_name = &quot;yolov8m-world-torch&quot;</span>
-<span class="c1"># model_name = &quot;yolov8x-world-torch&quot;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model_name</span> <span class="o">=</span> <span class="s2">"yolov8l-world-torch"</span>
+<span class="c1"># model_name = "yolov8m-world-torch"</span>
+<span class="c1"># model_name = "yolov8x-world-torch"</span>
 
 <span class="n">model</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_model</span><span class="p">(</span>
     <span class="n">model_name</span><span class="p">,</span>
-    <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;plant&quot;</span><span class="p">,</span> <span class="s2">&quot;window&quot;</span><span class="p">,</span> <span class="s2">&quot;keyboard&quot;</span><span class="p">,</span> <span class="s2">&quot;human baby&quot;</span><span class="p">,</span> <span class="s2">&quot;computer monitor&quot;</span><span class="p">],</span>
+    <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">"plant"</span><span class="p">,</span> <span class="s2">"window"</span><span class="p">,</span> <span class="s2">"keyboard"</span><span class="p">,</span> <span class="s2">"human baby"</span><span class="p">,</span> <span class="s2">"computer monitor"</span><span class="p">],</span>
 <span class="p">)</span>
 
-<span class="n">dataset</span><span class="o">.</span><span class="n">apply_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;yolo_world_detections&quot;</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">apply_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">label_field</span><span class="o">=</span><span class="s2">"yolo_world_detections"</span><span class="p">)</span>
 
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
 </pre></div>
@@ -603,14 +426,14 @@ the model should detect:</p>
 <p>When using
 <a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.apply_model" title="fiftyone.core.collections.SampleCollection.apply_model"><code class="xref py py-meth docutils literal notranslate"><span class="pre">apply_model()</span></code></a>,
 you can request batch inference by passing the optional <code class="code docutils literal notranslate"><span class="pre">batch_size</span></code> parameter:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">apply_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;predictions&quot;</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">apply_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">label_field</span><span class="o">=</span><span class="s2">"predictions"</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The manual inference loops can be also executed using batch inference via the
 pattern below:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fiftyone.core.utils</span> <span class="kn">import</span> <span class="n">iter_batches</span>
 
-<span class="n">filepaths</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;filepath&quot;</span><span class="p">)</span>
+<span class="n">filepaths</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">"filepath"</span><span class="p">)</span>
 <span class="n">batch_size</span> <span class="o">=</span> <span class="mi">16</span>
 
 <span class="n">predictions</span> <span class="o">=</span> <span class="p">[]</span>
@@ -618,7 +441,7 @@ pattern below:</p>
     <span class="n">results</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">paths</span><span class="p">)</span>
     <span class="n">predictions</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">fou</span><span class="o">.</span><span class="n">to_detections</span><span class="p">(</span><span class="n">results</span><span class="p">))</span>
 
-<span class="n">dataset</span><span class="o">.</span><span class="n">set_values</span><span class="p">(</span><span class="s2">&quot;predictions&quot;</span><span class="p">,</span> <span class="n">predictions</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">set_values</span><span class="p">(</span><span class="s2">"predictions"</span><span class="p">,</span> <span class="n">predictions</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -639,14 +462,14 @@ export your FiftyOne datasets for use with Ultralytics models.</p>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
 <span class="c1"># The path to export the dataset</span>
-<span class="n">EXPORT_DIR</span> <span class="o">=</span> <span class="s2">&quot;/tmp/oiv7-yolo&quot;</span>
+<span class="n">EXPORT_DIR</span> <span class="o">=</span> <span class="s2">"/tmp/oiv7-yolo"</span>
 
 <span class="c1"># Prepare train split</span>
 
 <span class="n">train</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span>
-    <span class="s2">&quot;open-images-v7&quot;</span><span class="p">,</span>
-    <span class="n">split</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span>
-    <span class="n">label_types</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;detections&quot;</span><span class="p">],</span>
+    <span class="s2">"open-images-v7"</span><span class="p">,</span>
+    <span class="n">split</span><span class="o">=</span><span class="s2">"train"</span><span class="p">,</span>
+    <span class="n">label_types</span><span class="o">=</span><span class="p">[</span><span class="s2">"detections"</span><span class="p">],</span>
     <span class="n">max_samples</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
 <span class="p">)</span>
 
@@ -656,25 +479,25 @@ export your FiftyOne datasets for use with Ultralytics models.</p>
 <span class="n">train</span><span class="o">.</span><span class="n">export</span><span class="p">(</span>
     <span class="n">export_dir</span><span class="o">=</span><span class="n">EXPORT_DIR</span><span class="p">,</span>
     <span class="n">dataset_type</span><span class="o">=</span><span class="n">fo</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">YOLOv5Dataset</span><span class="p">,</span>
-    <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span>
-    <span class="n">split</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span>
+    <span class="n">label_field</span><span class="o">=</span><span class="s2">"ground_truth"</span><span class="p">,</span>
+    <span class="n">split</span><span class="o">=</span><span class="s2">"train"</span><span class="p">,</span>
     <span class="n">classes</span><span class="o">=</span><span class="n">classes</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="c1"># Prepare validation split</span>
 
 <span class="n">validation</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span>
-    <span class="s2">&quot;open-images-v7&quot;</span><span class="p">,</span>
-    <span class="n">split</span><span class="o">=</span><span class="s2">&quot;validation&quot;</span><span class="p">,</span>
-    <span class="n">label_types</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;detections&quot;</span><span class="p">],</span>
+    <span class="s2">"open-images-v7"</span><span class="p">,</span>
+    <span class="n">split</span><span class="o">=</span><span class="s2">"validation"</span><span class="p">,</span>
+    <span class="n">label_types</span><span class="o">=</span><span class="p">[</span><span class="s2">"detections"</span><span class="p">],</span>
     <span class="n">max_samples</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="n">validation</span><span class="o">.</span><span class="n">export</span><span class="p">(</span>
     <span class="n">export_dir</span><span class="o">=</span><span class="n">EXPORT_DIR</span><span class="p">,</span>
     <span class="n">dataset_type</span><span class="o">=</span><span class="n">fo</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">YOLOv5Dataset</span><span class="p">,</span>
-    <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span>
-    <span class="n">split</span><span class="o">=</span><span class="s2">&quot;val&quot;</span><span class="p">,</span>  <span class="c1"># Ultralytics uses &#39;val&#39;</span>
+    <span class="n">label_field</span><span class="o">=</span><span class="s2">"ground_truth"</span><span class="p">,</span>
+    <span class="n">split</span><span class="o">=</span><span class="s2">"val"</span><span class="p">,</span>  <span class="c1"># Ultralytics uses 'val'</span>
     <span class="n">classes</span><span class="o">=</span><span class="n">classes</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
@@ -685,11 +508,11 @@ as simple as passing the path to the dataset YAML file:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ultralytics</span> <span class="kn">import</span> <span class="n">YOLO</span>
 
 <span class="c1"># The path to the `dataset.yaml` file we created above</span>
-<span class="n">YAML_FILE</span> <span class="o">=</span> <span class="s2">&quot;/tmp/oiv7-yolo/dataset.yaml&quot;</span>
+<span class="n">YAML_FILE</span> <span class="o">=</span> <span class="s2">"/tmp/oiv7-yolo/dataset.yaml"</span>
 
 <span class="c1"># Load a model</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">YOLO</span><span class="p">(</span><span class="s2">&quot;yolov8s.pt&quot;</span><span class="p">)</span>  <span class="c1"># load a pretrained model</span>
-<span class="c1"># model = YOLO(&quot;yolov8s.yaml&quot;)  # build a model from scratch</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">YOLO</span><span class="p">(</span><span class="s2">"yolov8s.pt"</span><span class="p">)</span>  <span class="c1"># load a pretrained model</span>
+<span class="c1"># model = YOLO("yolov8s.yaml")  # build a model from scratch</span>
 
 <span class="c1"># Train the model</span>
 <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">YAML_FILE</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
@@ -698,35 +521,20 @@ as simple as passing the path to the dataset YAML file:</p>
 <span class="n">metrics</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">val</span><span class="p">()</span>
 
 <span class="c1"># Export the model</span>
-<span class="n">path</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">export</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="s2">&quot;onnx&quot;</span><span class="p">)</span>
+<span class="n">path</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">export</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="s2">"onnx"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
+</article>
+</div>
 
-
-             </article>
-             
-            </div>
-            <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="albumentations.html" class="btn btn-neutral float-right" title="Albumentations Integration" accesskey="n" rel="next">Next <img src="../_static/images/chevron-right-orange.svg" class="next-page"></a>
-      
-      
-        <a href="huggingface.html" class="btn btn-neutral" title="Hugging Face Integration" accesskey="p" rel="prev"><img src="../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
-      
-    </div>
-  
-</footer>
-          </div>
-        </div>
-
-        <div class="pytorch-content-right" id="pytorch-content-right">
-          <div class="pytorch-right-menu" id="pytorch-right-menu">
-            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
-              <ul>
+</div>
+</div>
+<div class="pytorch-content-right" id="pytorch-content-right">
+<div class="pytorch-right-menu" id="pytorch-right-menu">
+<div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+<ul>
 <li><a class="reference internal" href="#">Ultralytics Integration</a><ul>
 <li><a class="reference internal" href="#setup">Setup</a></li>
 <li><a class="reference internal" href="#inference">Inference</a><ul>
@@ -743,214 +551,36 @@ as simple as passing the path to the dataset YAML file:</p>
 </ul>
 </li>
 </ul>
-
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
-
-  
-
-
-  
-
-     
-       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-         <script src="../_static/jquery.js"></script>
-         <script src="../_static/underscore.js"></script>
-         <script src="../_static/doctools.js"></script>
-         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
-         <script src="../_static/js/voxel51-website.js"></script>
-         <script src="../_static/js/custom.js"></script>
-     
-
-  
-
-  <script type="text/javascript" src="../_static/js/vendor/popper.min.js"></script>
-  <script type="text/javascript" src="../_static/js/vendor/bootstrap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-  <script type="text/javascript">
+</div>
+</div>
+</div>
+</section>
+</div>
+<script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js" type="text/javascript"></script>
+<script src="../_static/jquery.js"></script>
+<script src="../_static/underscore.js"></script>
+<script src="../_static/doctools.js"></script>
+<script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+<script src="../_static/js/voxel51-website.js"></script>
+<script src="../_static/js/custom.js"></script>
+<script src="../_static/js/vendor/popper.min.js" type="text/javascript"></script>
+<script src="../_static/js/vendor/bootstrap.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+<script src="../_static/js/theme.js" type="text/javascript"></script>
+<script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
-
-  <!-- Begin Footer -->
-
-
-  <div class="container-fluid docs-tutorials-resources" id="docs-tutorials-resources">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4 text-center">
-          <h2>Docs</h2>
-          <p>Access comprehensive developer documentation for PyTorch</p>
-          <a class="with-right-arrow" href="https://pytorch.org/docs/stable/index.html">View Docs</a>
-        </div>
-
-        <div class="col-md-4 text-center">
-          <h2>Tutorials</h2>
-          <p>Get in-depth tutorials for beginners and advanced developers</p>
-          <a class="with-right-arrow" href="https://pytorch.org/tutorials">View Tutorials</a>
-        </div>
-
-        <div class="col-md-4 text-center">
-          <h2>Resources</h2>
-          <p>Find development resources and get your questions answered</p>
-          <a class="with-right-arrow" href="https://pytorch.org/resources">View Resources</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <footer class="site-footer">
-    <div class="container footer-container">
-      <div class="footer-logo-wrapper">
-        <a href="https://pytorch.org/" class="footer-logo"></a>
-      </div>
-
-      <div class="footer-links-wrapper">
-        <div class="footer-links-col">
-          <ul>
-            <li class="list-title"><a href="https://pytorch.org/">PyTorch</a></li>
-            <li><a href="https://pytorch.org/get-started">Get Started</a></li>
-            <li><a href="https://pytorch.org/features">Features</a></li>
-            <li><a href="https://pytorch.org/ecosystem">Ecosystem</a></li>
-            <li><a href="https://pytorch.org/blog/">Blog</a></li>
-            <li><a href="https://github.com/pytorch/pytorch/blob/master/CONTRIBUTING.md">Contributing</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-links-col">
-          <ul>
-            <li class="list-title"><a href="https://pytorch.org/resources">Resources</a></li>
-            <li><a href="https://pytorch.org/tutorials">Tutorials</a></li>
-            <li><a href="https://pytorch.org/docs/stable/index.html">Docs</a></li>
-            <li><a href="https://discuss.pytorch.org" target="_blank">Discuss</a></li>
-            <li><a href="https://github.com/pytorch/pytorch/issues" target="_blank">Github Issues</a></li>
-            <li><a href="https://pytorch.org/assets/brand-guidelines/PyTorch-Brand-Guidelines.pdf" target="_blank">Brand Guidelines</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-links-col follow-us-col">
-          <ul>
-            <li class="list-title">Stay Connected</li>
-            <li>
-              <div id="mc_embed_signup">
-                <form
-                  action="https://twitter.us14.list-manage.com/subscribe/post?u=75419c71fe0a935e53dfa4a3f&id=91d0dccd39"
-                  method="post"
-                  id="mc-embedded-subscribe-form"
-                  name="mc-embedded-subscribe-form"
-                  class="email-subscribe-form validate"
-                  target="_blank"
-                  novalidate>
-                  <div id="mc_embed_signup_scroll" class="email-subscribe-form-fields-wrapper">
-                    <div class="mc-field-group">
-                      <label for="mce-EMAIL" style="display:none;">Email Address</label>
-                      <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="Email Address">
-                    </div>
-
-                    <div id="mce-responses" class="clear">
-                      <div class="response" id="mce-error-response" style="display:none"></div>
-                      <div class="response" id="mce-success-response" style="display:none"></div>
-                    </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-
-                    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_75419c71fe0a935e53dfa4a3f_91d0dccd39" tabindex="-1" value=""></div>
-
-                    <div class="clear">
-                      <input type="submit" value="" name="subscribe" id="mc-embedded-subscribe" class="button email-subscribe-button">
-                    </div>
-                  </div>
-                </form>
-              </div>
-
-            </li>
-          </ul>
-
-          <div class="footer-social-icons">
-            <a href="https://www.facebook.com/pytorch" target="_blank" class="facebook"></a>
-            <a href="https://twitter.com/pytorch" target="_blank" class="twitter"></a>
-            <a href="https://www.youtube.com/pytorch" target="_blank" class="youtube"></a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
+  </script>
+<!-- Begin Footer -->
 
 
-  
+<!-- End Footer -->
+<!-- Begin Mobile Menu -->
 
-  <!-- End Footer -->
-
-  <!-- Begin Mobile Menu -->
-
-
-  <div class="mobile-main-menu">
-    <div class="container-fluid">
-      <div class="container">
-        <div class="mobile-main-menu-header-container">
-          <a class="header-logo" href="https://pytorch.org/" aria-label="PyTorch"></a>
-          <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
-        </div>
-      </div>
-    </div>
-
-    <div class="mobile-main-menu-links-container">
-      <div class="main-menu">
-        <ul>
-          <li>
-            <a href="https://pytorch.org/get-started">Get Started</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/features">Features</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/ecosystem">Ecosystem</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/mobile">Mobile</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/hub">PyTorch Hub</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/blog/">Blog</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/tutorials">Tutorials</a>
-          </li>
-
-          <li class="active">
-            <a href="https://pytorch.org/docs/stable/index.html">Docs</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/resources">Resources</a>
-          </li>
-
-          <li>
-            <a href="https://github.com/pytorch/pytorch">Github</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-
-  <!-- End Mobile Menu -->
-
-  <script type="text/javascript" src="../_static/js/vendor/anchor.min.js"></script>
-
-  <script type="text/javascript">
+<!-- End Mobile Menu -->
+<script src="../_static/js/vendor/anchor.min.js" type="text/javascript"></script>
+<script type="text/javascript">
     $(document).ready(function() {
       mobileMenu.bind();
       mobileTOC.bind();

@@ -1,183 +1,46 @@
 
-
-
 <!DOCTYPE html>
+
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>Evaluating Models &mdash; FiftyOne 1.3.0 documentation</title>
-  
-
-  
-  
-    <link rel="shortcut icon" href="../_static/favicon.ico"/>
-  
-  
-  
-
-  
-
-  
-  
-    
-
-  
-
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
-  <link rel="stylesheet" href="../_static/css/voxel51-website.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Using Aggregations" href="using_aggregations.html" />
-    <link rel="prev" title="Annotating Datasets" href="annotation.html" />
-<meta property="og:image" content="https://voxel51.com/wp-content/uploads/2024/03/3.24_webpages_Home_AV.png" />
-
-<link
-  href="https://fonts.googleapis.com/css?family=Palanquin:400,600,700,800"
-  rel="stylesheet"
-/>
-<link
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
-  rel="stylesheet"
-/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Evaluating Models — FiftyOne 1.3.0 documentation</title>
+<link href="../_static/favicon.ico" rel="shortcut icon"/>
+<link href="../_static/css/theme.css" rel="stylesheet" type="text/css"/>
+<!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+<link href="../_static/css/voxel51-website.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/css/custom.css" rel="stylesheet" type="text/css"/>
+<link href="../genindex.html" rel="index" title="Index"/>
+<link href="../search.html" rel="search" title="Search"/>
+<link href="using_aggregations.html" rel="next" title="Using Aggregations"/>
+<link href="annotation.html" rel="prev" title="Annotating Datasets"/>
+<meta content="https://voxel51.com/wp-content/uploads/2024/03/3.24_webpages_Home_AV.png" property="og:image">
+<link href="https://fonts.googleapis.com/css?family=Palanquin:400,600,700,800" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet"/>
 <script src="https://tag.clearbitscripts.com/v1/pk_b9ed71c8234edd4f77326bcbfab5a4ca/tags.js"></script>
-
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
-  
-</head>
-
-
-<div class="container-fluid header-holder tutorials-header" id="header-holder">
-  <div class="container">
-    <div class="header-container">
-      <a class="header-logo" href="https://pytorch.org/" aria-label="PyTorch"></a>
-
-      <div class="main-menu">
-        <ul>
-          <li>
-            <a href="https://pytorch.org/get-started">Get Started</a>
-          </li>
-
-          <li>
-            <div class="ecosystem-dropdown">
-              <a id="dropdownMenuButton" data-toggle="ecosystem-dropdown">
-                Ecosystem
-              </a>
-              <div class="ecosystem-dropdown-menu">
-                <a class="nav-dropdown-item" href="https://pytorch.org/hub"">
-                  <span class=dropdown-title>Models (Beta)</span>
-                  <p>Discover, publish, and reuse pre-trained models</p>
-                </a>
-                <a class="nav-dropdown-item" href="https://pytorch.org/ecosystem">
-                  <span class=dropdown-title>Tools & Libraries</span>
-                  <p>Explore the ecosystem of tools and libraries</p>
-                </a>
-              </div>
-            </div>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/mobile">Mobile</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/blog/">Blog</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/tutorials">Tutorials</a>
-          </li>
-
-          <li class="active">
-            <a href="https://pytorch.org/docs/stable/index.html">Docs</a>
-          </li>
-
-          <li>
-            <div class="resources-dropdown">
-              <a id="resourcesDropdownButton" data-toggle="resources-dropdown">
-                Resources
-              </a>
-              <div class="resources-dropdown-menu">
-                <a class="nav-dropdown-item" href="https://pytorch.org/resources"">
-                  <span class=dropdown-title>Developer Resources</span>
-                  <p>Find resources and get questions answered</p>
-                </a>
-                <a class="nav-dropdown-item" href="https://pytorch.org/features">
-                  <span class=dropdown-title>About</span>
-                  <p>Learn about PyTorch’s features and capabilities</p>
-                </a>
-              </div>
-            </div>
-          </li>
-
-          <li>
-            <a href="https://github.com/pytorch/pytorch">Github</a>
-          </li>
-        </ul>
-      </div>
-
-      <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
-    </div>
-
-  </div>
-</div>
-
-
+<script src="../_static/js/modernizr.min.js"></script>
+</meta></head>
 
 <body class="pytorch-body">
-
-   
-
-    
-
-    <div class="table-of-contents-link-wrapper">
-      <span>Table of Contents</span>
-      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
-    </div>
-
-    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
-      <div class="pytorch-side-scroll">
-        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          <div class="pytorch-left-menu-search">
-            
-
-            
-              
-              
-            
-
-            
-
-
-  
-
-
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search Docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
+<div class="table-of-contents-link-wrapper">
+<span>Table of Contents</span>
+<a class="toggle-table-of-contents" data-behavior="toggle-table-of-contents" href="#"></a>
 </div>
-
-            
-          </div>
-
-          
-            
-            
-              
-            
-            
-              <ul class="current">
+<nav class="pytorch-left-menu" data-toggle="wy-nav-shift" id="pytorch-left-menu">
+<div class="pytorch-side-scroll">
+<div aria-label="main navigation" class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation">
+<div class="pytorch-left-menu-search">
+<div role="search">
+<form action="../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input name="q" placeholder="Search Docs" type="text"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../teams/index.html">FiftyOne Teams 🚀</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/install.html">Installation</a></li>
@@ -197,78 +60,38 @@
 <li class="toctree-l1"><a class="reference internal" href="../deprecation.html">Deprecation Notices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a></li>
 </ul>
-
-            
-          
-        </div>
-      </div>
-    </nav>
-
-    <div class="pytorch-container">
-      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
-        <div class="pytorch-breadcrumbs-wrapper">
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
-  <ul class="pytorch-breadcrumbs">
-    
-      <li>
-        <a href="../index.html">
+</div>
+</div>
+</nav>
+<div class="pytorch-container">
+<div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+<div class="pytorch-breadcrumbs-wrapper">
+<div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="pytorch-breadcrumbs">
+<li>
+<a href="../index.html">
           
             Docs
           
         </a> &gt;
       </li>
-
-        
-          <li><a href="index.html">FiftyOne User Guide</a> &gt;</li>
-        
-      <li>Evaluating Models</li>
-    
-    
-      <li class="pytorch-breadcrumbs-aside">
-        
-            
-        
-      </li>
-    
-  </ul>
-
-  
+<li><a href="index.html">FiftyOne User Guide</a> &gt;</li>
+<li>Evaluating Models</li>
+<li class="pytorch-breadcrumbs-aside">
+</li>
+</ul>
 </div>
-        </div>
-
-        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+</div>
+<div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
           Contents
         </div>
-      </div>
-
-      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
-        <div class="pytorch-content-left">
-
-        
-          
-          <div class="rst-content style-external-links">
-          
-            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
-             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
-              
-  <div class="section" id="evaluating-models">
+</div>
+<section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+<div class="pytorch-content-left">
+<div class="rst-content style-external-links">
+<div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+<div class="section" id="evaluating-models">
 <span id="id1"></span><h1>Evaluating Models<a class="headerlink" href="#evaluating-models" title="Permalink to this headline">¶</a></h1>
 <p>FiftyOne provides a variety of builtin methods for evaluating your model
 predictions, including regressions, classifications, detections, polygons,
@@ -304,14 +127,14 @@ method:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"quickstart"</span><span class="p">)</span>
 
 <span class="c1"># Evaluate the objects in the `predictions` field with respect to the</span>
 <span class="c1"># objects in the `ground_truth` field</span>
 <span class="n">results</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">evaluate_detections</span><span class="p">(</span>
-    <span class="s2">&quot;predictions&quot;</span><span class="p">,</span>
-    <span class="n">gt_field</span><span class="o">=</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span>
-    <span class="n">eval_key</span><span class="o">=</span><span class="s2">&quot;eval&quot;</span><span class="p">,</span>
+    <span class="s2">"predictions"</span><span class="p">,</span>
+    <span class="n">gt_field</span><span class="o">=</span><span class="s2">"ground_truth"</span><span class="p">,</span>
+    <span class="n">eval_key</span><span class="o">=</span><span class="s2">"eval"</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
@@ -323,7 +146,7 @@ method:</p>
 <a class="reference internal" href="#evaluating-models"><span class="std std-ref">evaluations</span></a>, you can open the
 <a class="reference internal" href="app.html#app-model-evaluation-panel"><span class="std std-ref">Model Evaluation panel</span></a> to visualize and
 interactively explore the evaluation results in the App:</p>
-<img alt="model-evaluation-compare" class="align-center" src="../_images/model-evaluation-compare.gif" />
+<img alt="model-evaluation-compare" class="align-center" src="../_images/model-evaluation-compare.gif"/>
 </div>
 <div class="section" id="per-class-metrics">
 <h3>Per-class metrics<a class="headerlink" href="#per-class-metrics" title="Permalink to this headline">¶</a></h3>
@@ -332,7 +155,7 @@ interactively explore the evaluation results in the App:</p>
 <a class="reference internal" href="../api/fiftyone.core.evaluation.html#fiftyone.core.evaluation.EvaluationResults" title="fiftyone.core.evaluation.EvaluationResults"><code class="xref py py-class docutils literal notranslate"><span class="pre">EvaluationResults</span></code></a> that provides a handful of methods for generating aggregate
 statistics about your dataset.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get the 10 most common classes in the dataset</span>
-<span class="n">counts</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">count_values</span><span class="p">(</span><span class="s2">&quot;ground_truth.detections.label&quot;</span><span class="p">)</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">count_values</span><span class="p">(</span><span class="s2">"ground_truth.detections.label"</span><span class="p">)</span>
 <span class="n">classes</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">counts</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">counts</span><span class="o">.</span><span class="n">get</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)[:</span><span class="mi">10</span><span class="p">]</span>
 
 <span class="c1"># Print a classification report for the top-10 classes</span>
@@ -380,16 +203,16 @@ dataset:</p>
 <span class="c1"># only includes false positive boxes in the `predictions` field</span>
 <span class="n">view</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">dataset</span>
-    <span class="o">.</span><span class="n">sort_by</span><span class="p">(</span><span class="s2">&quot;eval_fp&quot;</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span><span class="s2">&quot;predictions&quot;</span><span class="p">,</span> <span class="n">F</span><span class="p">(</span><span class="s2">&quot;eval&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;fp&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">sort_by</span><span class="p">(</span><span class="s2">"eval_fp"</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span><span class="s2">"predictions"</span><span class="p">,</span> <span class="n">F</span><span class="p">(</span><span class="s2">"eval"</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"fp"</span><span class="p">)</span>
 <span class="p">)</span>
 
 <span class="c1"># Visualize results in the App</span>
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">view</span><span class="o">=</span><span class="n">view</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="quickstart-evaluate-detections" class="align-center" src="../_images/quickstart_evaluate_detections.gif" />
-<p><br />
+<img alt="quickstart-evaluate-detections" class="align-center" src="../_images/quickstart_evaluate_detections.gif"/>
+<p><br/>
 Notice anything wrong? The sample with the most false positives is a plate of
 carrots where the entire plate has been boxed as a single example in the ground
 truth while the model is generating predictions for individual carrots!</p>
@@ -422,7 +245,7 @@ interactively explore specific cases of your model’s performance:</p>
 <span class="n">session</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">attach</span><span class="p">(</span><span class="n">plot</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="detection-evaluation" class="align-center" src="../_images/detection-evaluation.gif" />
+<img alt="detection-evaluation" class="align-center" src="../_images/detection-evaluation.gif"/>
 <p>In this setup, you can click on individual cells of the confusion matrix to
 select the corresponding ground truth and/or predicted objects in the App. For
 example, if you click on a diagonal cell of the confusion matrix, you will
@@ -449,24 +272,24 @@ on using the following methods on your dataset:</p>
 <li><p><a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.delete_evaluation" title="fiftyone.core.collections.SampleCollection.delete_evaluation"><code class="xref py py-meth docutils literal notranslate"><span class="pre">delete_evaluation()</span></code></a></p></li>
 </ul>
 <p>The example below demonstrates the basic interface:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># List evaluations you&#39;ve run on a dataset</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># List evaluations you've run on a dataset</span>
 <span class="n">dataset</span><span class="o">.</span><span class="n">list_evaluations</span><span class="p">()</span>
-<span class="c1"># [&#39;eval&#39;]</span>
+<span class="c1"># ['eval']</span>
 
 <span class="c1"># Print information about an evaluation</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">get_evaluation_info</span><span class="p">(</span><span class="s2">&quot;eval&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">get_evaluation_info</span><span class="p">(</span><span class="s2">"eval"</span><span class="p">))</span>
 
 <span class="c1"># Load existing evaluation results and use them</span>
-<span class="n">results</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">load_evaluation_results</span><span class="p">(</span><span class="s2">&quot;eval&quot;</span><span class="p">)</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">load_evaluation_results</span><span class="p">(</span><span class="s2">"eval"</span><span class="p">)</span>
 <span class="n">results</span><span class="o">.</span><span class="n">print_report</span><span class="p">()</span>
 
 <span class="c1"># Rename the evaluation</span>
 <span class="c1"># This will automatically rename any evaluation fields on your dataset</span>
-<span class="n">dataset</span><span class="o">.</span><span class="n">rename_evaluation</span><span class="p">(</span><span class="s2">&quot;eval&quot;</span><span class="p">,</span> <span class="s2">&quot;still_eval&quot;</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">rename_evaluation</span><span class="p">(</span><span class="s2">"eval"</span><span class="p">,</span> <span class="s2">"still_eval"</span><span class="p">)</span>
 
 <span class="c1"># Delete the evaluation</span>
 <span class="c1"># This will remove any evaluation data that was populated on your dataset</span>
-<span class="n">dataset</span><span class="o">.</span><span class="n">delete_evaluation</span><span class="p">(</span><span class="s2">&quot;still_eval&quot;</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">delete_evaluation</span><span class="p">(</span><span class="s2">"still_eval"</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The sections below discuss evaluating various types of predictions in more
@@ -494,7 +317,7 @@ weaknesses of your model on individual samples.</p>
 will evaluate each prediction by directly comparing its <code class="docutils literal notranslate"><span class="pre">value</span></code> to the
 associated ground truth value.</p>
 <p>You can explicitly request that simple evaluation be used by setting the
-<code class="docutils literal notranslate"><span class="pre">method</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">&quot;simple&quot;</span></code>.</p>
+<code class="docutils literal notranslate"><span class="pre">method</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">"simple"</span></code>.</p>
 <p>When you specify an <code class="docutils literal notranslate"><span class="pre">eval_key</span></code> parameter, a float <code class="docutils literal notranslate"><span class="pre">eval_key</span></code> field will be
 populated on each sample that records the error of that sample’s prediction
 with respect to its ground truth value. By default, the squared error will be
@@ -512,16 +335,16 @@ data added to it to demonstrate the workflow:</p>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 <span class="kn">from</span> <span class="nn">fiftyone</span> <span class="kn">import</span> <span class="n">ViewField</span> <span class="k">as</span> <span class="n">F</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">select_fields</span><span class="p">()</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"quickstart"</span><span class="p">)</span><span class="o">.</span><span class="n">select_fields</span><span class="p">()</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
 
 <span class="c1"># Populate some fake regression + weather data</span>
 <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">sample</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
     <span class="n">ytrue</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">*</span> <span class="n">idx</span>
     <span class="n">ypred</span> <span class="o">=</span> <span class="n">ytrue</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">()</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">ytrue</span><span class="p">)</span>
     <span class="n">confidence</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
-    <span class="n">sample</span><span class="p">[</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Regression</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="n">ytrue</span><span class="p">)</span>
-    <span class="n">sample</span><span class="p">[</span><span class="s2">&quot;predictions&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Regression</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="n">ypred</span><span class="p">,</span> <span class="n">confidence</span><span class="o">=</span><span class="n">confidence</span><span class="p">)</span>
-    <span class="n">sample</span><span class="p">[</span><span class="s2">&quot;weather&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s2">&quot;sunny&quot;</span><span class="p">,</span> <span class="s2">&quot;cloudy&quot;</span><span class="p">,</span> <span class="s2">&quot;rainy&quot;</span><span class="p">])</span>
+    <span class="n">sample</span><span class="p">[</span><span class="s2">"ground_truth"</span><span class="p">]</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Regression</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="n">ytrue</span><span class="p">)</span>
+    <span class="n">sample</span><span class="p">[</span><span class="s2">"predictions"</span><span class="p">]</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Regression</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="n">ypred</span><span class="p">,</span> <span class="n">confidence</span><span class="o">=</span><span class="n">confidence</span><span class="p">)</span>
+    <span class="n">sample</span><span class="p">[</span><span class="s2">"weather"</span><span class="p">]</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s2">"sunny"</span><span class="p">,</span> <span class="s2">"cloudy"</span><span class="p">,</span> <span class="s2">"rainy"</span><span class="p">])</span>
     <span class="n">sample</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
@@ -529,9 +352,9 @@ data added to it to demonstrate the workflow:</p>
 <span class="c1"># Evaluate the predictions in the `predictions` field with respect to the</span>
 <span class="c1"># values in the `ground_truth` field</span>
 <span class="n">results</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">evaluate_regressions</span><span class="p">(</span>
-    <span class="s2">&quot;predictions&quot;</span><span class="p">,</span>
-    <span class="n">gt_field</span><span class="o">=</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span>
-    <span class="n">eval_key</span><span class="o">=</span><span class="s2">&quot;eval&quot;</span><span class="p">,</span>
+    <span class="s2">"predictions"</span><span class="p">,</span>
+    <span class="n">gt_field</span><span class="o">=</span><span class="s2">"ground_truth"</span><span class="p">,</span>
+    <span class="n">eval_key</span><span class="o">=</span><span class="s2">"eval"</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="c1"># Print some standard regression evaluation metrics</span>
@@ -539,17 +362,17 @@ data added to it to demonstrate the workflow:</p>
 
 <span class="c1"># Plot a scatterplot of the results colored by `weather` and scaled by</span>
 <span class="c1"># `confidence`</span>
-<span class="n">plot</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">plot_results</span><span class="p">(</span><span class="n">labels</span><span class="o">=</span><span class="s2">&quot;weather&quot;</span><span class="p">,</span> <span class="n">sizes</span><span class="o">=</span><span class="s2">&quot;predictions.confidence&quot;</span><span class="p">)</span>
+<span class="n">plot</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">plot_results</span><span class="p">(</span><span class="n">labels</span><span class="o">=</span><span class="s2">"weather"</span><span class="p">,</span> <span class="n">sizes</span><span class="o">=</span><span class="s2">"predictions.confidence"</span><span class="p">)</span>
 <span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
 <span class="c1"># Launch the App to explore</span>
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
 
 <span class="c1"># Show the samples with the smallest regression error</span>
-<span class="n">session</span><span class="o">.</span><span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">sort_by</span><span class="p">(</span><span class="s2">&quot;eval&quot;</span><span class="p">)</span>
+<span class="n">session</span><span class="o">.</span><span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">sort_by</span><span class="p">(</span><span class="s2">"eval"</span><span class="p">)</span>
 
 <span class="c1"># Show the samples with the largest regression error</span>
-<span class="n">session</span><span class="o">.</span><span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">sort_by</span><span class="p">(</span><span class="s2">&quot;eval&quot;</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">session</span><span class="o">.</span><span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">sort_by</span><span class="p">(</span><span class="s2">"eval"</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>mean squared error        59.69
@@ -562,7 +385,7 @@ max error                 31.77
 support                   200
 </pre></div>
 </div>
-<img alt="regression-evaluation-plot" class="align-center" src="../_images/regression_evaluation_plot.png" />
+<img alt="regression-evaluation-plot" class="align-center" src="../_images/regression_evaluation_plot.png"/>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Did you know? You can
@@ -597,7 +420,7 @@ will treat your classifications as generic multiclass predictions, and it will
 evaluate each prediction by directly comparing its <code class="docutils literal notranslate"><span class="pre">label</span></code> to the associated
 ground truth prediction.</p>
 <p>You can explicitly request that simple evaluation be used by setting the
-<code class="docutils literal notranslate"><span class="pre">method</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">&quot;simple&quot;</span></code>.</p>
+<code class="docutils literal notranslate"><span class="pre">method</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">"simple"</span></code>.</p>
 <p>When you specify an <code class="docutils literal notranslate"><span class="pre">eval_key</span></code> parameter, a boolean <code class="docutils literal notranslate"><span class="pre">eval_key</span></code> field will
 be populated on each sample that records whether that sample’s prediction is
 correct.</p>
@@ -611,8 +434,8 @@ to it to demonstrate the workflow:</p>
 <span class="kn">from</span> <span class="nn">fiftyone</span> <span class="kn">import</span> <span class="n">ViewField</span> <span class="k">as</span> <span class="n">F</span>
 
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span>
-    <span class="s2">&quot;cifar10&quot;</span><span class="p">,</span>
-    <span class="n">split</span><span class="o">=</span><span class="s2">&quot;test&quot;</span><span class="p">,</span>
+    <span class="s2">"cifar10"</span><span class="p">,</span>
+    <span class="n">split</span><span class="o">=</span><span class="s2">"test"</span><span class="p">,</span>
     <span class="n">max_samples</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
     <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 <span class="p">)</span>
@@ -622,7 +445,7 @@ to it to demonstrate the workflow:</p>
 <span class="c1"># new `predictions` field with 10% of the labels perturbed at random</span>
 <span class="c1">#</span>
 
-<span class="n">classes</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">distinct</span><span class="p">(</span><span class="s2">&quot;ground_truth.label&quot;</span><span class="p">)</span>
+<span class="n">classes</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">distinct</span><span class="p">(</span><span class="s2">"ground_truth.label"</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">jitter</span><span class="p">(</span><span class="n">val</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mf">0.10</span><span class="p">:</span>
@@ -632,19 +455,19 @@ to it to demonstrate the workflow:</p>
 
 <span class="n">predictions</span> <span class="o">=</span> <span class="p">[</span>
     <span class="n">fo</span><span class="o">.</span><span class="n">Classification</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="n">jitter</span><span class="p">(</span><span class="n">gt</span><span class="o">.</span><span class="n">label</span><span class="p">),</span> <span class="n">confidence</span><span class="o">=</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">())</span>
-    <span class="k">for</span> <span class="n">gt</span> <span class="ow">in</span> <span class="n">dataset</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">gt</span> <span class="ow">in</span> <span class="n">dataset</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">"ground_truth"</span><span class="p">)</span>
 <span class="p">]</span>
 
-<span class="n">dataset</span><span class="o">.</span><span class="n">set_values</span><span class="p">(</span><span class="s2">&quot;predictions&quot;</span><span class="p">,</span> <span class="n">predictions</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">set_values</span><span class="p">(</span><span class="s2">"predictions"</span><span class="p">,</span> <span class="n">predictions</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
 
 <span class="c1"># Evaluate the predictions in the `predictions` field with respect to the</span>
 <span class="c1"># labels in the `ground_truth` field</span>
 <span class="n">results</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">evaluate_classifications</span><span class="p">(</span>
-    <span class="s2">&quot;predictions&quot;</span><span class="p">,</span>
-    <span class="n">gt_field</span><span class="o">=</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span>
-    <span class="n">eval_key</span><span class="o">=</span><span class="s2">&quot;eval_simple&quot;</span><span class="p">,</span>
+    <span class="s2">"predictions"</span><span class="p">,</span>
+    <span class="n">gt_field</span><span class="o">=</span><span class="s2">"ground_truth"</span><span class="p">,</span>
+    <span class="n">eval_key</span><span class="o">=</span><span class="s2">"eval_simple"</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="c1"># Print a classification report</span>
@@ -658,7 +481,7 @@ to it to demonstrate the workflow:</p>
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
 
 <span class="c1"># View only the incorrect predictions in the App</span>
-<span class="n">session</span><span class="o">.</span><span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s2">&quot;eval_simple&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">False</span><span class="p">)</span>
+<span class="n">session</span><span class="o">.</span><span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s2">"eval_simple"</span><span class="p">)</span> <span class="o">==</span> <span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
@@ -679,7 +502,7 @@ to it to demonstrate the workflow:</p>
 weighted avg       0.90      0.90      0.90      1000
 </pre></div>
 </div>
-<img alt="cifar10-simple-confusion-matrix" class="align-center" src="../_images/cifar10_simple_confusion_matrix.png" />
+<img alt="cifar10-simple-confusion-matrix" class="align-center" src="../_images/cifar10_simple_confusion_matrix.png"/>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The easiest way to analyze models in FiftyOne is via the
@@ -713,7 +536,7 @@ from a pre-trained model from the <a class="reference internal" href="../model_z
 <span class="kn">from</span> <span class="nn">fiftyone</span> <span class="kn">import</span> <span class="n">ViewField</span> <span class="k">as</span> <span class="n">F</span>
 
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span>
-    <span class="s2">&quot;imagenet-sample&quot;</span><span class="p">,</span> <span class="n">dataset_name</span><span class="o">=</span><span class="s2">&quot;top-k-eval-demo&quot;</span>
+    <span class="s2">"imagenet-sample"</span><span class="p">,</span> <span class="n">dataset_name</span><span class="o">=</span><span class="s2">"top-k-eval-demo"</span>
 <span class="p">)</span>
 
 <span class="c1"># We need the list of class labels corresponding to the logits</span>
@@ -721,24 +544,24 @@ from a pre-trained model from the <a class="reference internal" href="../model_z
 
 <span class="c1"># Add predictions (with logits) to 25 random samples</span>
 <span class="n">predictions_view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">51</span><span class="p">)</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_model</span><span class="p">(</span><span class="s2">&quot;resnet50-imagenet-torch&quot;</span><span class="p">)</span>
-<span class="n">predictions_view</span><span class="o">.</span><span class="n">apply_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="s2">&quot;predictions&quot;</span><span class="p">,</span> <span class="n">store_logits</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_model</span><span class="p">(</span><span class="s2">"resnet50-imagenet-torch"</span><span class="p">)</span>
+<span class="n">predictions_view</span><span class="o">.</span><span class="n">apply_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="s2">"predictions"</span><span class="p">,</span> <span class="n">store_logits</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">predictions_view</span><span class="p">)</span>
 
 <span class="c1"># Evaluate the predictions in the `predictions` field with respect to the</span>
 <span class="c1"># labels in the `ground_truth` field using top-5 accuracy</span>
 <span class="n">results</span> <span class="o">=</span> <span class="n">predictions_view</span><span class="o">.</span><span class="n">evaluate_classifications</span><span class="p">(</span>
-    <span class="s2">&quot;predictions&quot;</span><span class="p">,</span>
-    <span class="n">gt_field</span><span class="o">=</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span>
-    <span class="n">eval_key</span><span class="o">=</span><span class="s2">&quot;eval_top_k&quot;</span><span class="p">,</span>
-    <span class="n">method</span><span class="o">=</span><span class="s2">&quot;top-k&quot;</span><span class="p">,</span>
+    <span class="s2">"predictions"</span><span class="p">,</span>
+    <span class="n">gt_field</span><span class="o">=</span><span class="s2">"ground_truth"</span><span class="p">,</span>
+    <span class="n">eval_key</span><span class="o">=</span><span class="s2">"eval_top_k"</span><span class="p">,</span>
+    <span class="n">method</span><span class="o">=</span><span class="s2">"top-k"</span><span class="p">,</span>
     <span class="n">classes</span><span class="o">=</span><span class="n">logits_classes</span><span class="p">,</span>
     <span class="n">k</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="c1"># Get the 10 most common classes in the view</span>
-<span class="n">counts</span> <span class="o">=</span> <span class="n">predictions_view</span><span class="o">.</span><span class="n">count_values</span><span class="p">(</span><span class="s2">&quot;ground_truth.label&quot;</span><span class="p">)</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="n">predictions_view</span><span class="o">.</span><span class="n">count_values</span><span class="p">(</span><span class="s2">"ground_truth.label"</span><span class="p">)</span>
 <span class="n">classes</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">counts</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">counts</span><span class="o">.</span><span class="n">get</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)[:</span><span class="mi">10</span><span class="p">]</span>
 
 <span class="c1"># Print a classification report for the top-10 classes</span>
@@ -750,12 +573,12 @@ from a pre-trained model from the <a class="reference internal" href="../model_z
 <span class="c1"># View only the incorrect predictions for the 10 most common classes</span>
 <span class="n">session</span><span class="o">.</span><span class="n">view</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">predictions_view</span>
-    <span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s2">&quot;ground_truth.label&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">is_in</span><span class="p">(</span><span class="n">classes</span><span class="p">))</span>
-    <span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s2">&quot;eval_top_k&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">False</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s2">"ground_truth.label"</span><span class="p">)</span><span class="o">.</span><span class="n">is_in</span><span class="p">(</span><span class="n">classes</span><span class="p">))</span>
+    <span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s2">"eval_top_k"</span><span class="p">)</span> <span class="o">==</span> <span class="kc">False</span><span class="p">)</span>
 <span class="p">)</span>
 </pre></div>
 </div>
-<img alt="imagenet-top-k-eval" class="align-center" src="../_images/imagenet_top_k_eval.png" />
+<img alt="imagenet-top-k-eval" class="align-center" src="../_images/imagenet_top_k_eval.png"/>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The easiest way to analyze models in FiftyOne is via the
@@ -766,7 +589,7 @@ from a pre-trained model from the <a class="reference internal" href="../model_z
 <h3>Binary evaluation<a class="headerlink" href="#binary-evaluation" title="Permalink to this headline">¶</a></h3>
 <p>If your classifier is binary, set the <code class="docutils literal notranslate"><span class="pre">method</span></code> parameter of
 <a class="reference internal" href="../api/fiftyone.core.collections.html#fiftyone.core.collections.SampleCollection.evaluate_classifications" title="fiftyone.core.collections.SampleCollection.evaluate_classifications"><code class="xref py py-meth docutils literal notranslate"><span class="pre">evaluate_classifications()</span></code></a>
-to <code class="docutils literal notranslate"><span class="pre">&quot;binary&quot;</span></code> in order to access binary-specific evaluation information such
+to <code class="docutils literal notranslate"><span class="pre">"binary"</span></code> in order to access binary-specific evaluation information such
 as precision-recall curves for your model.</p>
 <p>When you specify an <code class="docutils literal notranslate"><span class="pre">eval_key</span></code> parameter, a string <code class="docutils literal notranslate"><span class="pre">eval_key</span></code> field will
 be populated on each sample that records whether the sample is a true positive,
@@ -787,8 +610,8 @@ added to it to demonstrate the workflow:</p>
 
 <span class="c1"># Load a small sample from the ImageNet dataset</span>
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span>
-    <span class="s2">&quot;cifar10&quot;</span><span class="p">,</span>
-    <span class="n">split</span><span class="o">=</span><span class="s2">&quot;test&quot;</span><span class="p">,</span>
+    <span class="s2">"cifar10"</span><span class="p">,</span>
+    <span class="n">split</span><span class="o">=</span><span class="s2">"test"</span><span class="p">,</span>
     <span class="n">max_samples</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
     <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 <span class="p">)</span>
@@ -798,19 +621,19 @@ added to it to demonstrate the workflow:</p>
 <span class="c1"># predictions that are correct proportionally to their confidence</span>
 <span class="c1">#</span>
 
-<span class="n">classes</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;other&quot;</span><span class="p">,</span> <span class="s2">&quot;cat&quot;</span><span class="p">]</span>
+<span class="n">classes</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"other"</span><span class="p">,</span> <span class="s2">"cat"</span><span class="p">]</span>
 
 <span class="k">for</span> <span class="n">sample</span> <span class="ow">in</span> <span class="n">dataset</span><span class="p">:</span>
-    <span class="n">gt_label</span> <span class="o">=</span> <span class="s2">&quot;cat&quot;</span> <span class="k">if</span> <span class="n">sample</span><span class="o">.</span><span class="n">ground_truth</span><span class="o">.</span><span class="n">label</span> <span class="o">==</span> <span class="s2">&quot;cat&quot;</span> <span class="k">else</span> <span class="s2">&quot;other&quot;</span>
+    <span class="n">gt_label</span> <span class="o">=</span> <span class="s2">"cat"</span> <span class="k">if</span> <span class="n">sample</span><span class="o">.</span><span class="n">ground_truth</span><span class="o">.</span><span class="n">label</span> <span class="o">==</span> <span class="s2">"cat"</span> <span class="k">else</span> <span class="s2">"other"</span>
 
     <span class="n">confidence</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
     <span class="k">if</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">&gt;</span> <span class="n">confidence</span><span class="p">:</span>
-        <span class="n">pred_label</span> <span class="o">=</span> <span class="s2">&quot;cat&quot;</span> <span class="k">if</span> <span class="n">gt_label</span> <span class="o">==</span> <span class="s2">&quot;other&quot;</span> <span class="k">else</span> <span class="s2">&quot;other&quot;</span>
+        <span class="n">pred_label</span> <span class="o">=</span> <span class="s2">"cat"</span> <span class="k">if</span> <span class="n">gt_label</span> <span class="o">==</span> <span class="s2">"other"</span> <span class="k">else</span> <span class="s2">"other"</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">pred_label</span> <span class="o">=</span> <span class="n">gt_label</span>
 
     <span class="n">sample</span><span class="o">.</span><span class="n">ground_truth</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="n">gt_label</span>
-    <span class="n">sample</span><span class="p">[</span><span class="s2">&quot;predictions&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Classification</span><span class="p">(</span>
+    <span class="n">sample</span><span class="p">[</span><span class="s2">"predictions"</span><span class="p">]</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Classification</span><span class="p">(</span>
         <span class="n">label</span><span class="o">=</span><span class="n">pred_label</span><span class="p">,</span> <span class="n">confidence</span><span class="o">=</span><span class="n">confidence</span>
     <span class="p">)</span>
 
@@ -821,10 +644,10 @@ added to it to demonstrate the workflow:</p>
 <span class="c1"># Evaluate the predictions in the `predictions` field with respect to the</span>
 <span class="c1"># labels in the `ground_truth` field</span>
 <span class="n">results</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">evaluate_classifications</span><span class="p">(</span>
-    <span class="s2">&quot;predictions&quot;</span><span class="p">,</span>
-    <span class="n">gt_field</span><span class="o">=</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span>
-    <span class="n">eval_key</span><span class="o">=</span><span class="s2">&quot;eval_binary&quot;</span><span class="p">,</span>
-    <span class="n">method</span><span class="o">=</span><span class="s2">&quot;binary&quot;</span><span class="p">,</span>
+    <span class="s2">"predictions"</span><span class="p">,</span>
+    <span class="n">gt_field</span><span class="o">=</span><span class="s2">"ground_truth"</span><span class="p">,</span>
+    <span class="n">eval_key</span><span class="o">=</span><span class="s2">"eval_binary"</span><span class="p">,</span>
+    <span class="n">method</span><span class="o">=</span><span class="s2">"binary"</span><span class="p">,</span>
     <span class="n">classes</span><span class="o">=</span><span class="n">classes</span><span class="p">,</span>
 <span class="p">)</span>
 
@@ -846,7 +669,7 @@ added to it to demonstrate the workflow:</p>
 weighted avg       0.83      0.48      0.59      1000
 </pre></div>
 </div>
-<img alt="cifar10-binary-pr-curve" class="align-center" src="../_images/cifar10_binary_pr_curve.png" />
+<img alt="cifar10-binary-pr-curve" class="align-center" src="../_images/cifar10_binary_pr_curve.png"/>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The easiest way to analyze models in FiftyOne is via the
@@ -974,21 +797,21 @@ results of an evaluation on the
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"quickstart"</span><span class="p">)</span>
 
 <span class="c1"># Evaluate `predictions` w.r.t. labels in `ground_truth` field</span>
 <span class="n">dataset</span><span class="o">.</span><span class="n">evaluate_detections</span><span class="p">(</span>
-    <span class="s2">&quot;predictions&quot;</span><span class="p">,</span> <span class="n">gt_field</span><span class="o">=</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span> <span class="n">eval_key</span><span class="o">=</span><span class="s2">&quot;eval&quot;</span>
+    <span class="s2">"predictions"</span><span class="p">,</span> <span class="n">gt_field</span><span class="o">=</span><span class="s2">"ground_truth"</span><span class="p">,</span> <span class="n">eval_key</span><span class="o">=</span><span class="s2">"eval"</span>
 <span class="p">)</span>
 
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
 
 <span class="c1"># Convert to evaluation patches</span>
-<span class="n">eval_patches</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">to_evaluation_patches</span><span class="p">(</span><span class="s2">&quot;eval&quot;</span><span class="p">)</span>
+<span class="n">eval_patches</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">to_evaluation_patches</span><span class="p">(</span><span class="s2">"eval"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">eval_patches</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">eval_patches</span><span class="o">.</span><span class="n">count_values</span><span class="p">(</span><span class="s2">&quot;type&quot;</span><span class="p">))</span>
-<span class="c1"># {&#39;fn&#39;: 246, &#39;fp&#39;: 4131, &#39;tp&#39;: 986}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">eval_patches</span><span class="o">.</span><span class="n">count_values</span><span class="p">(</span><span class="s2">"type"</span><span class="p">))</span>
+<span class="c1"># {'fn': 246, 'fp': 4131, 'tp': 986}</span>
 
 <span class="c1"># View patches in the App</span>
 <span class="n">session</span><span class="o">.</span><span class="n">view</span> <span class="o">=</span> <span class="n">eval_patches</span>
@@ -1008,7 +831,7 @@ Patch fields:
     iou:          fiftyone.core.fields.FloatField
     crowd:        fiftyone.core.fields.BooleanField
 View stages:
-    1. ToEvaluationPatches(eval_key=&#39;eval&#39;, config=None)
+    1. ToEvaluationPatches(eval_key='eval', config=None)
 </pre></div>
 </div>
 <div class="admonition note">
@@ -1016,8 +839,8 @@ View stages:
 <p>Did you know? You can convert to evaluation patches view directly
 <a class="reference internal" href="app.html#app-evaluation-patches"><span class="std std-ref">from the App</span></a>!</p>
 </div>
-<img alt="evaluation-patches" class="align-center" src="../_images/evaluation_patches.gif" />
-<p><br />
+<img alt="evaluation-patches" class="align-center" src="../_images/evaluation_patches.gif"/>
+<p><br/>
 Evaluation patches views are just like any other
 <a class="reference internal" href="using_views.html#using-views"><span class="std std-ref">dataset view</span></a> in the sense that:</p>
 <ul class="simple">
@@ -1056,7 +879,7 @@ will use <a class="reference external" href="https://cocodataset.org/#detection-
 analyze predictions when the specified label fields are <a class="reference internal" href="../api/fiftyone.core.labels.html#fiftyone.core.labels.Detections" title="fiftyone.core.labels.Detections"><code class="xref py py-class docutils literal notranslate"><span class="pre">Detections</span></code></a> or
 <a class="reference internal" href="../api/fiftyone.core.labels.html#fiftyone.core.labels.Polylines" title="fiftyone.core.labels.Polylines"><code class="xref py py-class docutils literal notranslate"><span class="pre">Polylines</span></code></a>.</p>
 <p>You can also explicitly request that COCO-style evaluation be used by setting
-the <code class="docutils literal notranslate"><span class="pre">method</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">&quot;coco&quot;</span></code>.</p>
+the <code class="docutils literal notranslate"><span class="pre">method</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">"coco"</span></code>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>FiftyOne’s implementation of COCO-style evaluation matches the reference
@@ -1117,35 +940,35 @@ when running COCO-style evaluation.</p>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 <span class="kn">from</span> <span class="nn">fiftyone</span> <span class="kn">import</span> <span class="n">ViewField</span> <span class="k">as</span> <span class="n">F</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"quickstart"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
 
 <span class="c1"># Evaluate the objects in the `predictions` field with respect to the</span>
 <span class="c1"># objects in the `ground_truth` field</span>
 <span class="n">results</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">evaluate_detections</span><span class="p">(</span>
-    <span class="s2">&quot;predictions&quot;</span><span class="p">,</span>
-    <span class="n">gt_field</span><span class="o">=</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span>
-    <span class="n">eval_key</span><span class="o">=</span><span class="s2">&quot;eval&quot;</span><span class="p">,</span>
+    <span class="s2">"predictions"</span><span class="p">,</span>
+    <span class="n">gt_field</span><span class="o">=</span><span class="s2">"ground_truth"</span><span class="p">,</span>
+    <span class="n">eval_key</span><span class="o">=</span><span class="s2">"eval"</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="c1"># Get the 10 most common classes in the dataset</span>
-<span class="n">counts</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">count_values</span><span class="p">(</span><span class="s2">&quot;ground_truth.detections.label&quot;</span><span class="p">)</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">count_values</span><span class="p">(</span><span class="s2">"ground_truth.detections.label"</span><span class="p">)</span>
 <span class="n">classes</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">counts</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">counts</span><span class="o">.</span><span class="n">get</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)[:</span><span class="mi">10</span><span class="p">]</span>
 
 <span class="c1"># Print a classification report for the top-10 classes</span>
 <span class="n">results</span><span class="o">.</span><span class="n">print_report</span><span class="p">(</span><span class="n">classes</span><span class="o">=</span><span class="n">classes</span><span class="p">)</span>
 
 <span class="c1"># Print some statistics about the total TP/FP/FN counts</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;TP: </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">dataset</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s2">&quot;eval_tp&quot;</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;FP: </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">dataset</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s2">&quot;eval_fp&quot;</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;FN: </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">dataset</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s2">&quot;eval_fn&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"TP: </span><span class="si">%d</span><span class="s2">"</span> <span class="o">%</span> <span class="n">dataset</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s2">"eval_tp"</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"FP: </span><span class="si">%d</span><span class="s2">"</span> <span class="o">%</span> <span class="n">dataset</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s2">"eval_fp"</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"FN: </span><span class="si">%d</span><span class="s2">"</span> <span class="o">%</span> <span class="n">dataset</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s2">"eval_fn"</span><span class="p">))</span>
 
 <span class="c1"># Create a view that has samples with the most false positives first, and</span>
 <span class="c1"># only includes false positive boxes in the `predictions` field</span>
 <span class="n">view</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">dataset</span>
-    <span class="o">.</span><span class="n">sort_by</span><span class="p">(</span><span class="s2">&quot;eval_fp&quot;</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span><span class="s2">&quot;predictions&quot;</span><span class="p">,</span> <span class="n">F</span><span class="p">(</span><span class="s2">&quot;eval&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;fp&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">sort_by</span><span class="p">(</span><span class="s2">"eval_fp"</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span><span class="s2">"predictions"</span><span class="p">,</span> <span class="n">F</span><span class="p">(</span><span class="s2">"eval"</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"fp"</span><span class="p">)</span>
 <span class="p">)</span>
 
 <span class="c1"># Visualize results in the App</span>
@@ -1170,7 +993,7 @@ traffic light       0.22      0.54      0.31        24
  weighted avg       0.42      0.68      0.50      1311
 </pre></div>
 </div>
-<img alt="quickstart-evaluate-detections" class="align-center" src="../_images/quickstart_evaluate_detections.png" />
+<img alt="quickstart-evaluate-detections" class="align-center" src="../_images/quickstart_evaluate_detections.png"/>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The easiest way to analyze models in FiftyOne is via the
@@ -1191,13 +1014,13 @@ precision-recall (PR) curves for your predictions by passing the
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"quickstart"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
 
 <span class="c1"># Performs an IoU sweep so that mAP, mAR, and PR curves can be computed</span>
 <span class="n">results</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">evaluate_detections</span><span class="p">(</span>
-    <span class="s2">&quot;predictions&quot;</span><span class="p">,</span>
-    <span class="n">gt_field</span><span class="o">=</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span>
+    <span class="s2">"predictions"</span><span class="p">,</span>
+    <span class="n">gt_field</span><span class="o">=</span><span class="s2">"ground_truth"</span><span class="p">,</span>
     <span class="n">compute_mAP</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 <span class="p">)</span>
 
@@ -1207,11 +1030,11 @@ precision-recall (PR) curves for your predictions by passing the
 <span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">mAR</span><span class="p">())</span>
 <span class="c1"># 0.5210</span>
 
-<span class="n">plot</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">plot_pr_curves</span><span class="p">(</span><span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;person&quot;</span><span class="p">,</span> <span class="s2">&quot;kite&quot;</span><span class="p">,</span> <span class="s2">&quot;car&quot;</span><span class="p">])</span>
+<span class="n">plot</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">plot_pr_curves</span><span class="p">(</span><span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">"person"</span><span class="p">,</span> <span class="s2">"kite"</span><span class="p">,</span> <span class="s2">"car"</span><span class="p">])</span>
 <span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img alt="coco-pr-curves" class="align-center" src="../_images/coco_pr_curves.png" />
+<img alt="coco-pr-curves" class="align-center" src="../_images/coco_pr_curves.png"/>
 </div>
 <div class="section" id="id6">
 <h4>Confusion matrices<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
@@ -1225,19 +1048,19 @@ ground truth objects of different classes.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"quickstart"</span><span class="p">)</span>
 
 <span class="c1"># Perform evaluation, allowing objects to be matched between classes</span>
 <span class="n">results</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">evaluate_detections</span><span class="p">(</span>
-    <span class="s2">&quot;predictions&quot;</span><span class="p">,</span> <span class="n">gt_field</span><span class="o">=</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span> <span class="n">classwise</span><span class="o">=</span><span class="kc">False</span>
+    <span class="s2">"predictions"</span><span class="p">,</span> <span class="n">gt_field</span><span class="o">=</span><span class="s2">"ground_truth"</span><span class="p">,</span> <span class="n">classwise</span><span class="o">=</span><span class="kc">False</span>
 <span class="p">)</span>
 
 <span class="c1"># Generate a confusion matrix for the specified classes</span>
-<span class="n">plot</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">plot_confusion_matrix</span><span class="p">(</span><span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;car&quot;</span><span class="p">,</span> <span class="s2">&quot;truck&quot;</span><span class="p">,</span> <span class="s2">&quot;motorcycle&quot;</span><span class="p">])</span>
+<span class="n">plot</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">plot_confusion_matrix</span><span class="p">(</span><span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">"car"</span><span class="p">,</span> <span class="s2">"truck"</span><span class="p">,</span> <span class="s2">"motorcycle"</span><span class="p">])</span>
 <span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img alt="coco-confusion-matrix" class="align-center" src="../_images/coco_confusion_matrix.png" />
+<img alt="coco-confusion-matrix" class="align-center" src="../_images/coco_confusion_matrix.png"/>
 </div>
 </div>
 <div class="section" id="open-images-style-evaluation">
@@ -1246,7 +1069,7 @@ ground truth objects of different classes.</p>
 method also supports
 <a class="reference external" href="https://storage.googleapis.com/openimages/web/evaluation.html">Open Images-style evaluation</a>.</p>
 <p>In order to run Open Images-style evaluation, simply set the <code class="docutils literal notranslate"><span class="pre">method</span></code>
-parameter to <code class="docutils literal notranslate"><span class="pre">&quot;open-images&quot;</span></code>.</p>
+parameter to <code class="docutils literal notranslate"><span class="pre">"open-images"</span></code>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>FiftyOne’s implementation of Open Images-style evaluation matches the
@@ -1325,36 +1148,36 @@ when running Open Images-style evaluation.</p>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 <span class="kn">from</span> <span class="nn">fiftyone</span> <span class="kn">import</span> <span class="n">ViewField</span> <span class="k">as</span> <span class="n">F</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"quickstart"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
 
 <span class="c1"># Evaluate the objects in the `predictions` field with respect to the</span>
 <span class="c1"># objects in the `ground_truth` field</span>
 <span class="n">results</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">evaluate_detections</span><span class="p">(</span>
-    <span class="s2">&quot;predictions&quot;</span><span class="p">,</span>
-    <span class="n">gt_field</span><span class="o">=</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span>
-    <span class="n">method</span><span class="o">=</span><span class="s2">&quot;open-images&quot;</span><span class="p">,</span>
-    <span class="n">eval_key</span><span class="o">=</span><span class="s2">&quot;eval&quot;</span><span class="p">,</span>
+    <span class="s2">"predictions"</span><span class="p">,</span>
+    <span class="n">gt_field</span><span class="o">=</span><span class="s2">"ground_truth"</span><span class="p">,</span>
+    <span class="n">method</span><span class="o">=</span><span class="s2">"open-images"</span><span class="p">,</span>
+    <span class="n">eval_key</span><span class="o">=</span><span class="s2">"eval"</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="c1"># Get the 10 most common classes in the dataset</span>
-<span class="n">counts</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">count_values</span><span class="p">(</span><span class="s2">&quot;ground_truth.detections.label&quot;</span><span class="p">)</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">count_values</span><span class="p">(</span><span class="s2">"ground_truth.detections.label"</span><span class="p">)</span>
 <span class="n">classes</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">counts</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">counts</span><span class="o">.</span><span class="n">get</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)[:</span><span class="mi">10</span><span class="p">]</span>
 
 <span class="c1"># Print a classification report for the top-10 classes</span>
 <span class="n">results</span><span class="o">.</span><span class="n">print_report</span><span class="p">(</span><span class="n">classes</span><span class="o">=</span><span class="n">classes</span><span class="p">)</span>
 
 <span class="c1"># Print some statistics about the total TP/FP/FN counts</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;TP: </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">dataset</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s2">&quot;eval_tp&quot;</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;FP: </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">dataset</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s2">&quot;eval_fp&quot;</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;FN: </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">dataset</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s2">&quot;eval_fn&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"TP: </span><span class="si">%d</span><span class="s2">"</span> <span class="o">%</span> <span class="n">dataset</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s2">"eval_tp"</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"FP: </span><span class="si">%d</span><span class="s2">"</span> <span class="o">%</span> <span class="n">dataset</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s2">"eval_fp"</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"FN: </span><span class="si">%d</span><span class="s2">"</span> <span class="o">%</span> <span class="n">dataset</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s2">"eval_fn"</span><span class="p">))</span>
 
 <span class="c1"># Create a view that has samples with the most false positives first, and</span>
 <span class="c1"># only includes false positive boxes in the `predictions` field</span>
 <span class="n">view</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">dataset</span>
-    <span class="o">.</span><span class="n">sort_by</span><span class="p">(</span><span class="s2">&quot;eval_fp&quot;</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span><span class="s2">&quot;predictions&quot;</span><span class="p">,</span> <span class="n">F</span><span class="p">(</span><span class="s2">&quot;eval&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;fp&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">sort_by</span><span class="p">(</span><span class="s2">"eval_fp"</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span><span class="s2">"predictions"</span><span class="p">,</span> <span class="n">F</span><span class="p">(</span><span class="s2">"eval"</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"fp"</span><span class="p">)</span>
 <span class="p">)</span>
 
 <span class="c1"># Visualize results in the App</span>
@@ -1379,7 +1202,7 @@ traffic light       0.32      0.79      0.45        24
  weighted avg       0.23      0.79      0.36       750
 </pre></div>
 </div>
-<img alt="quickstart-evaluate-detections-oi" class="align-center" src="../_images/quickstart_evaluate_detections_oi.png" />
+<img alt="quickstart-evaluate-detections-oi" class="align-center" src="../_images/quickstart_evaluate_detections_oi.png"/>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The easiest way to analyze models in FiftyOne is via the
@@ -1400,23 +1223,23 @@ reference implementation available via the
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"quickstart"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
 
 <span class="n">results</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">evaluate_detections</span><span class="p">(</span>
-    <span class="s2">&quot;predictions&quot;</span><span class="p">,</span>
-    <span class="n">gt_field</span><span class="o">=</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span>
-    <span class="n">method</span><span class="o">=</span><span class="s2">&quot;open-images&quot;</span><span class="p">,</span>
+    <span class="s2">"predictions"</span><span class="p">,</span>
+    <span class="n">gt_field</span><span class="o">=</span><span class="s2">"ground_truth"</span><span class="p">,</span>
+    <span class="n">method</span><span class="o">=</span><span class="s2">"open-images"</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">mAP</span><span class="p">())</span>
 <span class="c1"># 0.599</span>
 
-<span class="n">plot</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">plot_pr_curves</span><span class="p">(</span><span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;person&quot;</span><span class="p">,</span> <span class="s2">&quot;dog&quot;</span><span class="p">,</span> <span class="s2">&quot;car&quot;</span><span class="p">])</span>
+<span class="n">plot</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">plot_pr_curves</span><span class="p">(</span><span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">"person"</span><span class="p">,</span> <span class="s2">"dog"</span><span class="p">,</span> <span class="s2">"car"</span><span class="p">])</span>
 <span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img alt="oi-pr-curve" class="align-center" src="../_images/oi_pr_curve.png" />
+<img alt="oi-pr-curve" class="align-center" src="../_images/oi_pr_curve.png"/>
 </div>
 <div class="section" id="id11">
 <h4>Confusion matrices<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h4>
@@ -1430,22 +1253,22 @@ matched with ground truth objects of different classes.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"quickstart"</span><span class="p">)</span>
 
 <span class="c1"># Perform evaluation, allowing objects to be matched between classes</span>
 <span class="n">results</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">evaluate_detections</span><span class="p">(</span>
-    <span class="s2">&quot;predictions&quot;</span><span class="p">,</span>
-    <span class="n">gt_field</span><span class="o">=</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span>
-    <span class="n">method</span><span class="o">=</span><span class="s2">&quot;open-images&quot;</span><span class="p">,</span>
+    <span class="s2">"predictions"</span><span class="p">,</span>
+    <span class="n">gt_field</span><span class="o">=</span><span class="s2">"ground_truth"</span><span class="p">,</span>
+    <span class="n">method</span><span class="o">=</span><span class="s2">"open-images"</span><span class="p">,</span>
     <span class="n">classwise</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="c1"># Generate a confusion matrix for the specified classes</span>
-<span class="n">plot</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">plot_confusion_matrix</span><span class="p">(</span><span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;car&quot;</span><span class="p">,</span> <span class="s2">&quot;truck&quot;</span><span class="p">,</span> <span class="s2">&quot;motorcycle&quot;</span><span class="p">])</span>
+<span class="n">plot</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">plot_confusion_matrix</span><span class="p">(</span><span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">"car"</span><span class="p">,</span> <span class="s2">"truck"</span><span class="p">,</span> <span class="s2">"motorcycle"</span><span class="p">])</span>
 <span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img alt="oi-confusion-matrix" class="align-center" src="../_images/oi_confusion_matrix.png" />
+<img alt="oi-confusion-matrix" class="align-center" src="../_images/oi_confusion_matrix.png"/>
 </div>
 </div>
 <div class="section" id="activitynet-style-evaluation-default-temporal">
@@ -1456,7 +1279,7 @@ will use
 <a class="reference external" href="https://github.com/activitynet/ActivityNet/tree/master/Evaluation">ActivityNet-style temporal detection evaluation</a>.
 to analyze predictions when the specified label fields are <a class="reference internal" href="../api/fiftyone.core.labels.html#fiftyone.core.labels.TemporalDetections" title="fiftyone.core.labels.TemporalDetections"><code class="xref py py-class docutils literal notranslate"><span class="pre">TemporalDetections</span></code></a>.</p>
 <p>You can also explicitly request that ActivityNet-style evaluation be used by setting
-the <code class="docutils literal notranslate"><span class="pre">method</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">&quot;activitynet&quot;</span></code>.</p>
+the <code class="docutils literal notranslate"><span class="pre">method</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">"activitynet"</span></code>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>FiftyOne’s implementation of ActivityNet-style evaluation matches the
@@ -1516,10 +1339,10 @@ on the <a class="reference internal" href="../dataset_zoo/datasets.html#dataset-
 <span class="kn">import</span> <span class="nn">random</span>
 
 <span class="c1"># Load subset of ActivityNet 200</span>
-<span class="n">classes</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Bathing dog&quot;</span><span class="p">,</span> <span class="s2">&quot;Walking the dog&quot;</span><span class="p">]</span>
+<span class="n">classes</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"Bathing dog"</span><span class="p">,</span> <span class="s2">"Walking the dog"</span><span class="p">]</span>
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span>
-    <span class="s2">&quot;activitynet-200&quot;</span><span class="p">,</span>
-    <span class="n">split</span><span class="o">=</span><span class="s2">&quot;validation&quot;</span><span class="p">,</span>
+    <span class="s2">"activitynet-200"</span><span class="p">,</span>
+    <span class="n">split</span><span class="o">=</span><span class="s2">"validation"</span><span class="p">,</span>
     <span class="n">classes</span><span class="o">=</span><span class="n">classes</span><span class="p">,</span>
     <span class="n">max_samples</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
 <span class="p">)</span>
@@ -1527,7 +1350,7 @@ on the <a class="reference internal" href="../dataset_zoo/datasets.html#dataset-
 
 <span class="c1"># Generate some fake predictions for this example</span>
 <span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">51</span><span class="p">)</span>
-<span class="n">dataset</span><span class="o">.</span><span class="n">clone_sample_field</span><span class="p">(</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span> <span class="s2">&quot;predictions&quot;</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">clone_sample_field</span><span class="p">(</span><span class="s2">"ground_truth"</span><span class="p">,</span> <span class="s2">"predictions"</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">sample</span> <span class="ow">in</span> <span class="n">dataset</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">det</span> <span class="ow">in</span> <span class="n">sample</span><span class="o">.</span><span class="n">predictions</span><span class="o">.</span><span class="n">detections</span><span class="p">:</span>
         <span class="n">det</span><span class="o">.</span><span class="n">support</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
@@ -1542,25 +1365,25 @@ on the <a class="reference internal" href="../dataset_zoo/datasets.html#dataset-
 <span class="c1"># Evaluate the segments in the `predictions` field with respect to the</span>
 <span class="c1"># segments in the `ground_truth` field</span>
 <span class="n">results</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">evaluate_detections</span><span class="p">(</span>
-    <span class="s2">&quot;predictions&quot;</span><span class="p">,</span>
-    <span class="n">gt_field</span><span class="o">=</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span>
-    <span class="n">eval_key</span><span class="o">=</span><span class="s2">&quot;eval&quot;</span><span class="p">,</span>
+    <span class="s2">"predictions"</span><span class="p">,</span>
+    <span class="n">gt_field</span><span class="o">=</span><span class="s2">"ground_truth"</span><span class="p">,</span>
+    <span class="n">eval_key</span><span class="o">=</span><span class="s2">"eval"</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="c1"># Print a classification report for the classes</span>
 <span class="n">results</span><span class="o">.</span><span class="n">print_report</span><span class="p">(</span><span class="n">classes</span><span class="o">=</span><span class="n">classes</span><span class="p">)</span>
 
 <span class="c1"># Print some statistics about the total TP/FP/FN counts</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;TP: </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">dataset</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s2">&quot;eval_tp&quot;</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;FP: </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">dataset</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s2">&quot;eval_fp&quot;</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;FN: </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">dataset</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s2">&quot;eval_fn&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"TP: </span><span class="si">%d</span><span class="s2">"</span> <span class="o">%</span> <span class="n">dataset</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s2">"eval_tp"</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"FP: </span><span class="si">%d</span><span class="s2">"</span> <span class="o">%</span> <span class="n">dataset</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s2">"eval_fp"</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"FN: </span><span class="si">%d</span><span class="s2">"</span> <span class="o">%</span> <span class="n">dataset</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s2">"eval_fn"</span><span class="p">))</span>
 
 <span class="c1"># Create a view that has samples with the most false positives first, and</span>
 <span class="c1"># only includes false positive segments in the `predictions` field</span>
 <span class="n">view</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">dataset</span>
-    <span class="o">.</span><span class="n">sort_by</span><span class="p">(</span><span class="s2">&quot;eval_fp&quot;</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span><span class="s2">&quot;predictions&quot;</span><span class="p">,</span> <span class="n">F</span><span class="p">(</span><span class="s2">&quot;eval&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;fp&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">sort_by</span><span class="p">(</span><span class="s2">"eval_fp"</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span><span class="s2">"predictions"</span><span class="p">,</span> <span class="n">F</span><span class="p">(</span><span class="s2">"eval"</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"fp"</span><span class="p">)</span>
 <span class="p">)</span>
 
 <span class="c1"># Visualize results in the App</span>
@@ -1577,7 +1400,7 @@ Walking the dog       0.50      0.60      0.55         5
    weighted avg       0.50      0.50      0.49        10
 </pre></div>
 </div>
-<img alt="activitynet-evaluate-detections" class="align-center" src="../_images/activitynet_evaluate_detections.png" />
+<img alt="activitynet-evaluate-detections" class="align-center" src="../_images/activitynet_evaluate_detections.png"/>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The easiest way to analyze models in FiftyOne is via the
@@ -1600,10 +1423,10 @@ for your segments by passing the <code class="docutils literal notranslate"><spa
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
 <span class="c1"># Load subset of ActivityNet 200</span>
-<span class="n">classes</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Bathing dog&quot;</span><span class="p">,</span> <span class="s2">&quot;Walking the dog&quot;</span><span class="p">]</span>
+<span class="n">classes</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"Bathing dog"</span><span class="p">,</span> <span class="s2">"Walking the dog"</span><span class="p">]</span>
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span>
-    <span class="s2">&quot;activitynet-200&quot;</span><span class="p">,</span>
-    <span class="n">split</span><span class="o">=</span><span class="s2">&quot;validation&quot;</span><span class="p">,</span>
+    <span class="s2">"activitynet-200"</span><span class="p">,</span>
+    <span class="n">split</span><span class="o">=</span><span class="s2">"validation"</span><span class="p">,</span>
     <span class="n">classes</span><span class="o">=</span><span class="n">classes</span><span class="p">,</span>
     <span class="n">max_samples</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
 <span class="p">)</span>
@@ -1611,7 +1434,7 @@ for your segments by passing the <code class="docutils literal notranslate"><spa
 
 <span class="c1"># Generate some fake predictions for this example</span>
 <span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">51</span><span class="p">)</span>
-<span class="n">dataset</span><span class="o">.</span><span class="n">clone_sample_field</span><span class="p">(</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span> <span class="s2">&quot;predictions&quot;</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">clone_sample_field</span><span class="p">(</span><span class="s2">"ground_truth"</span><span class="p">,</span> <span class="s2">"predictions"</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">sample</span> <span class="ow">in</span> <span class="n">dataset</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">det</span> <span class="ow">in</span> <span class="n">sample</span><span class="o">.</span><span class="n">predictions</span><span class="o">.</span><span class="n">detections</span><span class="p">:</span>
         <span class="n">det</span><span class="o">.</span><span class="n">support</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
@@ -1625,9 +1448,9 @@ for your segments by passing the <code class="docutils literal notranslate"><spa
 
 <span class="c1"># Performs an IoU sweep so that mAP and PR curves can be computed</span>
 <span class="n">results</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">evaluate_detections</span><span class="p">(</span>
-    <span class="s2">&quot;predictions&quot;</span><span class="p">,</span>
-    <span class="n">gt_field</span><span class="o">=</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span>
-    <span class="n">eval_key</span><span class="o">=</span><span class="s2">&quot;eval&quot;</span><span class="p">,</span>
+    <span class="s2">"predictions"</span><span class="p">,</span>
+    <span class="n">gt_field</span><span class="o">=</span><span class="s2">"ground_truth"</span><span class="p">,</span>
+    <span class="n">eval_key</span><span class="o">=</span><span class="s2">"eval"</span><span class="p">,</span>
     <span class="n">compute_mAP</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 <span class="p">)</span>
 
@@ -1638,7 +1461,7 @@ for your segments by passing the <code class="docutils literal notranslate"><spa
 <span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img alt="activitynet-pr-curves" class="align-center" src="../_images/activitynet_pr_curves.png" />
+<img alt="activitynet-pr-curves" class="align-center" src="../_images/activitynet_pr_curves.png"/>
 </div>
 <div class="section" id="id15">
 <h4>Confusion matrices<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h4>
@@ -1655,10 +1478,10 @@ matched with ground truth segments of different classes.</p>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
 <span class="c1"># Load subset of ActivityNet 200</span>
-<span class="n">classes</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Bathing dog&quot;</span><span class="p">,</span> <span class="s2">&quot;Grooming dog&quot;</span><span class="p">,</span> <span class="s2">&quot;Grooming horse&quot;</span><span class="p">,</span> <span class="s2">&quot;Walking the dog&quot;</span><span class="p">]</span>
+<span class="n">classes</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"Bathing dog"</span><span class="p">,</span> <span class="s2">"Grooming dog"</span><span class="p">,</span> <span class="s2">"Grooming horse"</span><span class="p">,</span> <span class="s2">"Walking the dog"</span><span class="p">]</span>
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span>
-    <span class="s2">&quot;activitynet-200&quot;</span><span class="p">,</span>
-    <span class="n">split</span><span class="o">=</span><span class="s2">&quot;validation&quot;</span><span class="p">,</span>
+    <span class="s2">"activitynet-200"</span><span class="p">,</span>
+    <span class="n">split</span><span class="o">=</span><span class="s2">"validation"</span><span class="p">,</span>
     <span class="n">classes</span><span class="o">=</span><span class="n">classes</span><span class="p">,</span>
     <span class="n">max_samples</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
 <span class="p">)</span>
@@ -1666,7 +1489,7 @@ matched with ground truth segments of different classes.</p>
 
 <span class="c1"># Generate some fake predictions for this example</span>
 <span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">51</span><span class="p">)</span>
-<span class="n">dataset</span><span class="o">.</span><span class="n">clone_sample_field</span><span class="p">(</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span> <span class="s2">&quot;predictions&quot;</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">clone_sample_field</span><span class="p">(</span><span class="s2">"ground_truth"</span><span class="p">,</span> <span class="s2">"predictions"</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">sample</span> <span class="ow">in</span> <span class="n">dataset</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">det</span> <span class="ow">in</span> <span class="n">sample</span><span class="o">.</span><span class="n">predictions</span><span class="o">.</span><span class="n">detections</span><span class="p">:</span>
         <span class="n">det</span><span class="o">.</span><span class="n">support</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
@@ -1680,7 +1503,7 @@ matched with ground truth segments of different classes.</p>
 
 <span class="c1"># Perform evaluation, allowing objects to be matched between classes</span>
 <span class="n">results</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">evaluate_detections</span><span class="p">(</span>
-    <span class="s2">&quot;predictions&quot;</span><span class="p">,</span> <span class="n">gt_field</span><span class="o">=</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span> <span class="n">classwise</span><span class="o">=</span><span class="kc">False</span>
+    <span class="s2">"predictions"</span><span class="p">,</span> <span class="n">gt_field</span><span class="o">=</span><span class="s2">"ground_truth"</span><span class="p">,</span> <span class="n">classwise</span><span class="o">=</span><span class="kc">False</span>
 <span class="p">)</span>
 
 <span class="c1"># Generate a confusion matrix for the specified classes</span>
@@ -1688,7 +1511,7 @@ matched with ground truth segments of different classes.</p>
 <span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img alt="activitynet-confusion-matrix" class="align-center" src="../_images/activitynet_confusion_matrix.png" />
+<img alt="activitynet-confusion-matrix" class="align-center" src="../_images/activitynet_confusion_matrix.png"/>
 </div>
 </div>
 </div>
@@ -1733,7 +1556,7 @@ the contours of the ground truth masks. By default, the entire masks are
 evaluated.</p></li>
 </ul>
 <p>You can explicitly request that this strategy be used by setting the <code class="docutils literal notranslate"><span class="pre">method</span></code>
-parameter to <code class="docutils literal notranslate"><span class="pre">&quot;simple&quot;</span></code>.</p>
+parameter to <code class="docutils literal notranslate"><span class="pre">"simple"</span></code>.</p>
 <p>When you specify an <code class="docutils literal notranslate"><span class="pre">eval_key</span></code> parameter, the accuracy, precision, and recall
 of each sample is recorded in top-level fields of each sample:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span> Accuracy: sample.&lt;eval_key&gt;_accuracy
@@ -1756,44 +1579,44 @@ masks generated by two DeepLabv3 models (with
 
 <span class="c1"># Load a few samples from COCO-2017</span>
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span>
-    <span class="s2">&quot;quickstart&quot;</span><span class="p">,</span>
-    <span class="n">dataset_name</span><span class="o">=</span><span class="s2">&quot;segmentation-eval-demo&quot;</span><span class="p">,</span>
+    <span class="s2">"quickstart"</span><span class="p">,</span>
+    <span class="n">dataset_name</span><span class="o">=</span><span class="s2">"segmentation-eval-demo"</span><span class="p">,</span>
     <span class="n">max_samples</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
     <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="c1"># The models are trained on the VOC classes</span>
 <span class="n">CLASSES</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="s2">&quot;background,aeroplane,bicycle,bird,boat,bottle,bus,car,cat,chair,cow,&quot;</span> <span class="o">+</span>
-    <span class="s2">&quot;diningtable,dog,horse,motorbike,person,pottedplant,sheep,sofa,train,&quot;</span> <span class="o">+</span>
-    <span class="s2">&quot;tvmonitor&quot;</span>
+    <span class="s2">"background,aeroplane,bicycle,bird,boat,bottle,bus,car,cat,chair,cow,"</span> <span class="o">+</span>
+    <span class="s2">"diningtable,dog,horse,motorbike,person,pottedplant,sheep,sofa,train,"</span> <span class="o">+</span>
+    <span class="s2">"tvmonitor"</span>
 <span class="p">)</span>
 <span class="n">dataset</span><span class="o">.</span><span class="n">default_mask_targets</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">idx</span><span class="p">:</span> <span class="n">label</span> <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">CLASSES</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">))</span>
+    <span class="n">idx</span><span class="p">:</span> <span class="n">label</span> <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">CLASSES</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">","</span><span class="p">))</span>
 <span class="p">}</span>
 
 <span class="c1"># Add DeepLabv3-ResNet101 predictions to dataset</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_model</span><span class="p">(</span><span class="s2">&quot;deeplabv3-resnet101-coco-torch&quot;</span><span class="p">)</span>
-<span class="n">dataset</span><span class="o">.</span><span class="n">apply_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="s2">&quot;resnet101&quot;</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_model</span><span class="p">(</span><span class="s2">"deeplabv3-resnet101-coco-torch"</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">apply_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="s2">"resnet101"</span><span class="p">)</span>
 
 <span class="c1"># Add DeepLabv3-ResNet50 predictions to dataset</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_model</span><span class="p">(</span><span class="s2">&quot;deeplabv3-resnet50-coco-torch&quot;</span><span class="p">)</span>
-<span class="n">dataset</span><span class="o">.</span><span class="n">apply_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="s2">&quot;resnet50&quot;</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_model</span><span class="p">(</span><span class="s2">"deeplabv3-resnet50-coco-torch"</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">apply_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="s2">"resnet50"</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
 
 <span class="c1"># Evaluate the masks w/ ResNet50 backbone, treating the masks w/ ResNet101</span>
-<span class="c1"># backbone as &quot;ground truth&quot;</span>
+<span class="c1"># backbone as "ground truth"</span>
 <span class="n">results</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">evaluate_segmentations</span><span class="p">(</span>
-    <span class="s2">&quot;resnet50&quot;</span><span class="p">,</span>
-    <span class="n">gt_field</span><span class="o">=</span><span class="s2">&quot;resnet101&quot;</span><span class="p">,</span>
-    <span class="n">eval_key</span><span class="o">=</span><span class="s2">&quot;eval_simple&quot;</span><span class="p">,</span>
+    <span class="s2">"resnet50"</span><span class="p">,</span>
+    <span class="n">gt_field</span><span class="o">=</span><span class="s2">"resnet101"</span><span class="p">,</span>
+    <span class="n">eval_key</span><span class="o">=</span><span class="s2">"eval_simple"</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="c1"># Get a sense for the per-sample variation in likeness</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy range: (</span><span class="si">%f</span><span class="s2">, </span><span class="si">%f</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="n">dataset</span><span class="o">.</span><span class="n">bounds</span><span class="p">(</span><span class="s2">&quot;eval_simple_accuracy&quot;</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Precision range: (</span><span class="si">%f</span><span class="s2">, </span><span class="si">%f</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="n">dataset</span><span class="o">.</span><span class="n">bounds</span><span class="p">(</span><span class="s2">&quot;eval_simple_precision&quot;</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Recall range: (</span><span class="si">%f</span><span class="s2">, </span><span class="si">%f</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="n">dataset</span><span class="o">.</span><span class="n">bounds</span><span class="p">(</span><span class="s2">&quot;eval_simple_recall&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Accuracy range: (</span><span class="si">%f</span><span class="s2">, </span><span class="si">%f</span><span class="s2">)"</span> <span class="o">%</span> <span class="n">dataset</span><span class="o">.</span><span class="n">bounds</span><span class="p">(</span><span class="s2">"eval_simple_accuracy"</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Precision range: (</span><span class="si">%f</span><span class="s2">, </span><span class="si">%f</span><span class="s2">)"</span> <span class="o">%</span> <span class="n">dataset</span><span class="o">.</span><span class="n">bounds</span><span class="p">(</span><span class="s2">"eval_simple_precision"</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Recall range: (</span><span class="si">%f</span><span class="s2">, </span><span class="si">%f</span><span class="s2">)"</span> <span class="o">%</span> <span class="n">dataset</span><span class="o">.</span><span class="n">bounds</span><span class="p">(</span><span class="s2">"eval_simple_recall"</span><span class="p">))</span>
 
 <span class="c1"># Print a classification report</span>
 <span class="n">results</span><span class="o">.</span><span class="n">print_report</span><span class="p">()</span>
@@ -1802,7 +1625,7 @@ masks generated by two DeepLabv3 models (with
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="evaluate-segmentations" class="align-center" src="../_images/evaluate_segmentations.gif" />
+<img alt="evaluate-segmentations" class="align-center" src="../_images/evaluate_segmentations.gif"/>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The easiest way to analyze models in FiftyOne is via the
@@ -1823,31 +1646,31 @@ dataset:</p>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 <span class="kn">from</span> <span class="nn">fiftyone</span> <span class="kn">import</span> <span class="n">ViewField</span> <span class="k">as</span> <span class="n">F</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">,</span> <span class="n">dataset_name</span><span class="o">=</span><span class="s2">&quot;eval-demo&quot;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"quickstart"</span><span class="p">,</span> <span class="n">dataset_name</span><span class="o">=</span><span class="s2">"eval-demo"</span><span class="p">)</span>
 <span class="n">dataset</span><span class="o">.</span><span class="n">compute_metadata</span><span class="p">()</span>
 
 <span class="c1"># Create an expression that will match objects whose bounding boxes have</span>
 <span class="c1"># areas between 32^2 and 96^2 pixels</span>
 <span class="n">bbox_area</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">F</span><span class="p">(</span><span class="s2">&quot;$metadata.width&quot;</span><span class="p">)</span> <span class="o">*</span> <span class="n">F</span><span class="p">(</span><span class="s2">&quot;bounding_box&quot;</span><span class="p">)[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span>
-    <span class="n">F</span><span class="p">(</span><span class="s2">&quot;$metadata.height&quot;</span><span class="p">)</span> <span class="o">*</span> <span class="n">F</span><span class="p">(</span><span class="s2">&quot;bounding_box&quot;</span><span class="p">)[</span><span class="mi">3</span><span class="p">]</span>
+    <span class="n">F</span><span class="p">(</span><span class="s2">"$metadata.width"</span><span class="p">)</span> <span class="o">*</span> <span class="n">F</span><span class="p">(</span><span class="s2">"bounding_box"</span><span class="p">)[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span>
+    <span class="n">F</span><span class="p">(</span><span class="s2">"$metadata.height"</span><span class="p">)</span> <span class="o">*</span> <span class="n">F</span><span class="p">(</span><span class="s2">"bounding_box"</span><span class="p">)[</span><span class="mi">3</span><span class="p">]</span>
 <span class="p">)</span>
 <span class="n">medium_boxes</span> <span class="o">=</span> <span class="p">(</span><span class="mi">32</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">&lt;</span> <span class="n">bbox_area</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">bbox_area</span> <span class="o">&lt;</span> <span class="mi">96</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
 
 <span class="c1"># Create a view that contains only medium-sized objects</span>
 <span class="n">medium_view</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">dataset</span>
-    <span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span> <span class="n">medium_boxes</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span><span class="s2">&quot;predictions&quot;</span><span class="p">,</span> <span class="n">medium_boxes</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span><span class="s2">"ground_truth"</span><span class="p">,</span> <span class="n">medium_boxes</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span><span class="s2">"predictions"</span><span class="p">,</span> <span class="n">medium_boxes</span><span class="p">)</span>
 <span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">medium_view</span><span class="p">)</span>
 
 <span class="c1"># Evaluate the medium-sized objects</span>
 <span class="n">results</span> <span class="o">=</span> <span class="n">medium_view</span><span class="o">.</span><span class="n">evaluate_detections</span><span class="p">(</span>
-    <span class="s2">&quot;predictions&quot;</span><span class="p">,</span>
-    <span class="n">gt_field</span><span class="o">=</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span>
-    <span class="n">eval_key</span><span class="o">=</span><span class="s2">&quot;eval_medium&quot;</span><span class="p">,</span>
+    <span class="s2">"predictions"</span><span class="p">,</span>
+    <span class="n">gt_field</span><span class="o">=</span><span class="s2">"ground_truth"</span><span class="p">,</span>
+    <span class="n">eval_key</span><span class="o">=</span><span class="s2">"eval_medium"</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="c1"># Print some aggregate metrics</span>
@@ -1878,10 +1701,10 @@ to retrieve the exact view on which you evaluated:</p>
 
 <span class="c1"># List available evaluations</span>
 <span class="n">dataset</span><span class="o">.</span><span class="n">list_evaluations</span><span class="p">()</span>
-<span class="c1"># [&quot;my_eval1&quot;, &quot;my_eval2&quot;, ...]</span>
+<span class="c1"># ["my_eval1", "my_eval2", ...]</span>
 
 <span class="c1"># Load the view into the dataset on which `my_eval1` was run</span>
-<span class="n">eval1_view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">load_evaluation_view</span><span class="p">(</span><span class="s2">&quot;my_eval1&quot;</span><span class="p">)</span>
+<span class="n">eval1_view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">load_evaluation_view</span><span class="p">(</span><span class="s2">"my_eval1"</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -1898,7 +1721,7 @@ in the App:</p>
 
 <span class="c1"># Load a view that contains the results of evaluation `my_eval1` and</span>
 <span class="c1"># hides all other evaluation data</span>
-<span class="n">eval1_view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">load_evaluation_view</span><span class="p">(</span><span class="s2">&quot;my_eval1&quot;</span><span class="p">,</span> <span class="n">select_fields</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">eval1_view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">load_evaluation_view</span><span class="p">(</span><span class="s2">"my_eval1"</span><span class="p">,</span> <span class="n">select_fields</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">view</span><span class="o">=</span><span class="n">eval1_view</span><span class="p">)</span>
 </pre></div>
@@ -1926,7 +1749,7 @@ Dataset Zoo:</p>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span>
-    <span class="s2">&quot;quickstart-video&quot;</span><span class="p">,</span> <span class="n">dataset_name</span><span class="o">=</span><span class="s2">&quot;video-eval-demo&quot;</span>
+    <span class="s2">"quickstart-video"</span><span class="p">,</span> <span class="n">dataset_name</span><span class="o">=</span><span class="s2">"video-eval-demo"</span>
 <span class="p">)</span>
 
 <span class="c1">#</span>
@@ -1935,7 +1758,7 @@ Dataset Zoo:</p>
 <span class="c1"># random</span>
 <span class="c1">#</span>
 
-<span class="n">classes</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">distinct</span><span class="p">(</span><span class="s2">&quot;frames.detections.detections.label&quot;</span><span class="p">)</span>
+<span class="n">classes</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">distinct</span><span class="p">(</span><span class="s2">"frames.detections.detections.label"</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">jitter</span><span class="p">(</span><span class="n">val</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mf">0.10</span><span class="p">:</span>
@@ -1944,7 +1767,7 @@ Dataset Zoo:</p>
     <span class="k">return</span> <span class="n">val</span>
 
 <span class="n">predictions</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">sample_gts</span> <span class="ow">in</span> <span class="n">dataset</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">&quot;frames.detections&quot;</span><span class="p">):</span>
+<span class="k">for</span> <span class="n">sample_gts</span> <span class="ow">in</span> <span class="n">dataset</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s2">"frames.detections"</span><span class="p">):</span>
     <span class="n">sample_predictions</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">frame_gts</span> <span class="ow">in</span> <span class="n">sample_gts</span><span class="p">:</span>
         <span class="n">sample_predictions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
@@ -1962,16 +1785,16 @@ Dataset Zoo:</p>
 
     <span class="n">predictions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sample_predictions</span><span class="p">)</span>
 
-<span class="n">dataset</span><span class="o">.</span><span class="n">set_values</span><span class="p">(</span><span class="s2">&quot;frames.predictions&quot;</span><span class="p">,</span> <span class="n">predictions</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">set_values</span><span class="p">(</span><span class="s2">"frames.predictions"</span><span class="p">,</span> <span class="n">predictions</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
 
 <span class="c1"># Evaluate the frame-level `predictions` against the frame-level</span>
 <span class="c1"># `detections` objects</span>
 <span class="n">results</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">evaluate_detections</span><span class="p">(</span>
-    <span class="s2">&quot;frames.predictions&quot;</span><span class="p">,</span>
-    <span class="n">gt_field</span><span class="o">=</span><span class="s2">&quot;frames.detections&quot;</span><span class="p">,</span>
-    <span class="n">eval_key</span><span class="o">=</span><span class="s2">&quot;eval&quot;</span><span class="p">,</span>
+    <span class="s2">"frames.predictions"</span><span class="p">,</span>
+    <span class="n">gt_field</span><span class="o">=</span><span class="s2">"frames.detections"</span><span class="p">,</span>
+    <span class="n">eval_key</span><span class="o">=</span><span class="s2">"eval"</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="c1"># Print a classification report</span>
@@ -1994,11 +1817,11 @@ weighted avg       0.94      0.94      0.94     11345
 <a class="reference internal" href="using_views.html#frame-views"><span class="std std-ref">to frames</span></a> and then <a class="reference internal" href="using_views.html#eval-patches-views"><span class="std std-ref">to patches</span></a>!</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Convert to frame evaluation patches</span>
 <span class="n">frames</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">to_frames</span><span class="p">(</span><span class="n">sample_frames</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">frame_eval_patches</span> <span class="o">=</span> <span class="n">frames</span><span class="o">.</span><span class="n">to_evaluation_patches</span><span class="p">(</span><span class="s2">&quot;eval&quot;</span><span class="p">)</span>
+<span class="n">frame_eval_patches</span> <span class="o">=</span> <span class="n">frames</span><span class="o">.</span><span class="n">to_evaluation_patches</span><span class="p">(</span><span class="s2">"eval"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">frame_eval_patches</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">frame_eval_patches</span><span class="o">.</span><span class="n">count_values</span><span class="p">(</span><span class="s2">&quot;type&quot;</span><span class="p">))</span>
-<span class="c1"># {&#39;tp&#39;: 10578, &#39;fn&#39;: 767, &#39;fp&#39;: 767}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">frame_eval_patches</span><span class="o">.</span><span class="n">count_values</span><span class="p">(</span><span class="s2">"type"</span><span class="p">))</span>
+<span class="c1"># {'tp': 10578, 'fn': 767, 'fp': 767}</span>
 
 <span class="n">session</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">launch_app</span><span class="p">(</span><span class="n">view</span><span class="o">=</span><span class="n">frame_eval_patches</span><span class="p">)</span>
 </pre></div>
@@ -2023,7 +1846,7 @@ Patch fields:
     crowd:            fiftyone.core.fields.BooleanField
 View stages:
     1. ToFrames(config=None)
-    2. ToEvaluationPatches(eval_key=&#39;eval&#39;, config=None)
+    2. ToEvaluationPatches(eval_key='eval', config=None)
 </pre></div>
 </div>
 </div>
@@ -2074,10 +1897,10 @@ contain any desired subset of config fields that you wish to customize.</p>
 <p>For example, the following config JSON file declares a new <code class="code docutils literal notranslate"><span class="pre">custom</span></code> detection
 evaluation backend without changing any other default config settings:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;default_detection_backend&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;custom&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;detection_backends&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;custom&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;config_cls&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;path.to.your.CustomDetectionEvaluationConfig&quot;</span>
+<span class="w">    </span><span class="nt">"default_detection_backend"</span><span class="p">:</span><span class="w"> </span><span class="s2">"custom"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"detection_backends"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"custom"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"config_cls"</span><span class="p">:</span><span class="w"> </span><span class="s2">"path.to.your.CustomDetectionEvaluationConfig"</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
@@ -2135,37 +1958,22 @@ take effect in all subsequent calls to <code class="code docutils literal notran
 current session.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 
-<span class="n">fo</span><span class="o">.</span><span class="n">evaluation_config</span><span class="o">.</span><span class="n">default_detection_backend</span> <span class="o">=</span> <span class="s2">&quot;custom&quot;</span>
+<span class="n">fo</span><span class="o">.</span><span class="n">evaluation_config</span><span class="o">.</span><span class="n">default_detection_backend</span> <span class="o">=</span> <span class="s2">"custom"</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 </div>
+</article>
+</div>
 
-
-             </article>
-             
-            </div>
-            <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="using_aggregations.html" class="btn btn-neutral float-right" title="Using Aggregations" accesskey="n" rel="next">Next <img src="../_static/images/chevron-right-orange.svg" class="next-page"></a>
-      
-      
-        <a href="annotation.html" class="btn btn-neutral" title="Annotating Datasets" accesskey="p" rel="prev"><img src="../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
-      
-    </div>
-  
-</footer>
-          </div>
-        </div>
-
-        <div class="pytorch-content-right" id="pytorch-content-right">
-          <div class="pytorch-right-menu" id="pytorch-right-menu">
-            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
-              <ul>
+</div>
+</div>
+<div class="pytorch-content-right" id="pytorch-content-right">
+<div class="pytorch-right-menu" id="pytorch-right-menu">
+<div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+<ul>
 <li><a class="reference internal" href="#">Evaluating Models</a><ul>
 <li><a class="reference internal" href="#overview">Overview</a><ul>
 <li><a class="reference internal" href="#model-evaluation-panel-sub-new">Model Evaluation panel <strong style="color: hsl(25, 100%, 51%); font-size: 0.85em; vertical-align: top">NEW</strong></a></li>
@@ -2236,216 +2044,38 @@ current session.</p>
 </ul>
 </li>
 </ul>
-
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
-
-  
-
-
-  
-
-     
-       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-         <script src="../_static/jquery.js"></script>
-         <script src="../_static/underscore.js"></script>
-         <script src="../_static/doctools.js"></script>
-         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
-         <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-         <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
-         <script src="../_static/js/voxel51-website.js"></script>
-         <script src="../_static/js/custom.js"></script>
-     
-
-  
-
-  <script type="text/javascript" src="../_static/js/vendor/popper.min.js"></script>
-  <script type="text/javascript" src="../_static/js/vendor/bootstrap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-  <script type="text/javascript">
+</div>
+</div>
+</div>
+</section>
+</div>
+<script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js" type="text/javascript"></script>
+<script src="../_static/jquery.js"></script>
+<script src="../_static/underscore.js"></script>
+<script src="../_static/doctools.js"></script>
+<script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+<script src="../_static/js/voxel51-website.js"></script>
+<script src="../_static/js/custom.js"></script>
+<script src="../_static/js/vendor/popper.min.js" type="text/javascript"></script>
+<script src="../_static/js/vendor/bootstrap.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+<script src="../_static/js/theme.js" type="text/javascript"></script>
+<script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
-
-  <!-- Begin Footer -->
-
-
-  <div class="container-fluid docs-tutorials-resources" id="docs-tutorials-resources">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4 text-center">
-          <h2>Docs</h2>
-          <p>Access comprehensive developer documentation for PyTorch</p>
-          <a class="with-right-arrow" href="https://pytorch.org/docs/stable/index.html">View Docs</a>
-        </div>
-
-        <div class="col-md-4 text-center">
-          <h2>Tutorials</h2>
-          <p>Get in-depth tutorials for beginners and advanced developers</p>
-          <a class="with-right-arrow" href="https://pytorch.org/tutorials">View Tutorials</a>
-        </div>
-
-        <div class="col-md-4 text-center">
-          <h2>Resources</h2>
-          <p>Find development resources and get your questions answered</p>
-          <a class="with-right-arrow" href="https://pytorch.org/resources">View Resources</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <footer class="site-footer">
-    <div class="container footer-container">
-      <div class="footer-logo-wrapper">
-        <a href="https://pytorch.org/" class="footer-logo"></a>
-      </div>
-
-      <div class="footer-links-wrapper">
-        <div class="footer-links-col">
-          <ul>
-            <li class="list-title"><a href="https://pytorch.org/">PyTorch</a></li>
-            <li><a href="https://pytorch.org/get-started">Get Started</a></li>
-            <li><a href="https://pytorch.org/features">Features</a></li>
-            <li><a href="https://pytorch.org/ecosystem">Ecosystem</a></li>
-            <li><a href="https://pytorch.org/blog/">Blog</a></li>
-            <li><a href="https://github.com/pytorch/pytorch/blob/master/CONTRIBUTING.md">Contributing</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-links-col">
-          <ul>
-            <li class="list-title"><a href="https://pytorch.org/resources">Resources</a></li>
-            <li><a href="https://pytorch.org/tutorials">Tutorials</a></li>
-            <li><a href="https://pytorch.org/docs/stable/index.html">Docs</a></li>
-            <li><a href="https://discuss.pytorch.org" target="_blank">Discuss</a></li>
-            <li><a href="https://github.com/pytorch/pytorch/issues" target="_blank">Github Issues</a></li>
-            <li><a href="https://pytorch.org/assets/brand-guidelines/PyTorch-Brand-Guidelines.pdf" target="_blank">Brand Guidelines</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-links-col follow-us-col">
-          <ul>
-            <li class="list-title">Stay Connected</li>
-            <li>
-              <div id="mc_embed_signup">
-                <form
-                  action="https://twitter.us14.list-manage.com/subscribe/post?u=75419c71fe0a935e53dfa4a3f&id=91d0dccd39"
-                  method="post"
-                  id="mc-embedded-subscribe-form"
-                  name="mc-embedded-subscribe-form"
-                  class="email-subscribe-form validate"
-                  target="_blank"
-                  novalidate>
-                  <div id="mc_embed_signup_scroll" class="email-subscribe-form-fields-wrapper">
-                    <div class="mc-field-group">
-                      <label for="mce-EMAIL" style="display:none;">Email Address</label>
-                      <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="Email Address">
-                    </div>
-
-                    <div id="mce-responses" class="clear">
-                      <div class="response" id="mce-error-response" style="display:none"></div>
-                      <div class="response" id="mce-success-response" style="display:none"></div>
-                    </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-
-                    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_75419c71fe0a935e53dfa4a3f_91d0dccd39" tabindex="-1" value=""></div>
-
-                    <div class="clear">
-                      <input type="submit" value="" name="subscribe" id="mc-embedded-subscribe" class="button email-subscribe-button">
-                    </div>
-                  </div>
-                </form>
-              </div>
-
-            </li>
-          </ul>
-
-          <div class="footer-social-icons">
-            <a href="https://www.facebook.com/pytorch" target="_blank" class="facebook"></a>
-            <a href="https://twitter.com/pytorch" target="_blank" class="twitter"></a>
-            <a href="https://www.youtube.com/pytorch" target="_blank" class="youtube"></a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
+  </script>
+<!-- Begin Footer -->
 
 
-  
+<!-- End Footer -->
+<!-- Begin Mobile Menu -->
 
-  <!-- End Footer -->
-
-  <!-- Begin Mobile Menu -->
-
-
-  <div class="mobile-main-menu">
-    <div class="container-fluid">
-      <div class="container">
-        <div class="mobile-main-menu-header-container">
-          <a class="header-logo" href="https://pytorch.org/" aria-label="PyTorch"></a>
-          <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
-        </div>
-      </div>
-    </div>
-
-    <div class="mobile-main-menu-links-container">
-      <div class="main-menu">
-        <ul>
-          <li>
-            <a href="https://pytorch.org/get-started">Get Started</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/features">Features</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/ecosystem">Ecosystem</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/mobile">Mobile</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/hub">PyTorch Hub</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/blog/">Blog</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/tutorials">Tutorials</a>
-          </li>
-
-          <li class="active">
-            <a href="https://pytorch.org/docs/stable/index.html">Docs</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/resources">Resources</a>
-          </li>
-
-          <li>
-            <a href="https://github.com/pytorch/pytorch">Github</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-
-  <!-- End Mobile Menu -->
-
-  <script type="text/javascript" src="../_static/js/vendor/anchor.min.js"></script>
-
-  <script type="text/javascript">
+<!-- End Mobile Menu -->
+<script src="../_static/js/vendor/anchor.min.js" type="text/javascript"></script>
+<script type="text/javascript">
     $(document).ready(function() {
       mobileMenu.bind();
       mobileTOC.bind();

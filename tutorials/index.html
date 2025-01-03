@@ -1,183 +1,45 @@
 
-
-
 <!DOCTYPE html>
+
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>FiftyOne Tutorials &mdash; FiftyOne 1.3.0 documentation</title>
-  
-
-  
-  
-    <link rel="shortcut icon" href="../_static/favicon.ico"/>
-  
-  
-  
-
-  
-
-  
-  
-    
-
-  
-
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
-  <link rel="stylesheet" href="../_static/css/voxel51-website.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="pandas-style queries in FiftyOne" href="pandas_comparison.html" />
-    <link rel="prev" title="FiftyOne Environments" href="../environments/index.html" />
-<meta property="og:image" content="https://voxel51.com/wp-content/uploads/2024/03/3.24_webpages_Home_AV.png" />
-
-<link
-  href="https://fonts.googleapis.com/css?family=Palanquin:400,600,700,800"
-  rel="stylesheet"
-/>
-<link
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
-  rel="stylesheet"
-/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FiftyOne Tutorials — FiftyOne 1.3.0 documentation</title>
+<link href="../_static/favicon.ico" rel="shortcut icon"/>
+<link href="../_static/css/theme.css" rel="stylesheet" type="text/css"/>
+<!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+<link href="../_static/css/voxel51-website.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/css/custom.css" rel="stylesheet" type="text/css"/>
+<link href="../genindex.html" rel="index" title="Index"/>
+<link href="../search.html" rel="search" title="Search"/>
+<link href="pandas_comparison.html" rel="next" title="pandas-style queries in FiftyOne"/>
+<link href="../environments/index.html" rel="prev" title="FiftyOne Environments"/>
+<meta content="https://voxel51.com/wp-content/uploads/2024/03/3.24_webpages_Home_AV.png" property="og:image"/>
+<link href="https://fonts.googleapis.com/css?family=Palanquin:400,600,700,800" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet"/>
 <script src="https://tag.clearbitscripts.com/v1/pk_b9ed71c8234edd4f77326bcbfab5a4ca/tags.js"></script>
-
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
-  
+<script src="../_static/js/modernizr.min.js"></script>
 </head>
-
-
-<div class="container-fluid header-holder tutorials-header" id="header-holder">
-  <div class="container">
-    <div class="header-container">
-      <a class="header-logo" href="https://pytorch.org/" aria-label="PyTorch"></a>
-
-      <div class="main-menu">
-        <ul>
-          <li>
-            <a href="https://pytorch.org/get-started">Get Started</a>
-          </li>
-
-          <li>
-            <div class="ecosystem-dropdown">
-              <a id="dropdownMenuButton" data-toggle="ecosystem-dropdown">
-                Ecosystem
-              </a>
-              <div class="ecosystem-dropdown-menu">
-                <a class="nav-dropdown-item" href="https://pytorch.org/hub"">
-                  <span class=dropdown-title>Models (Beta)</span>
-                  <p>Discover, publish, and reuse pre-trained models</p>
-                </a>
-                <a class="nav-dropdown-item" href="https://pytorch.org/ecosystem">
-                  <span class=dropdown-title>Tools & Libraries</span>
-                  <p>Explore the ecosystem of tools and libraries</p>
-                </a>
-              </div>
-            </div>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/mobile">Mobile</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/blog/">Blog</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/tutorials">Tutorials</a>
-          </li>
-
-          <li class="active">
-            <a href="https://pytorch.org/docs/stable/index.html">Docs</a>
-          </li>
-
-          <li>
-            <div class="resources-dropdown">
-              <a id="resourcesDropdownButton" data-toggle="resources-dropdown">
-                Resources
-              </a>
-              <div class="resources-dropdown-menu">
-                <a class="nav-dropdown-item" href="https://pytorch.org/resources"">
-                  <span class=dropdown-title>Developer Resources</span>
-                  <p>Find resources and get questions answered</p>
-                </a>
-                <a class="nav-dropdown-item" href="https://pytorch.org/features">
-                  <span class=dropdown-title>About</span>
-                  <p>Learn about PyTorch’s features and capabilities</p>
-                </a>
-              </div>
-            </div>
-          </li>
-
-          <li>
-            <a href="https://github.com/pytorch/pytorch">Github</a>
-          </li>
-        </ul>
-      </div>
-
-      <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
-    </div>
-
-  </div>
-</div>
-
-
-
 <body class="pytorch-body">
-
-   
-
-    
-
-    <div class="table-of-contents-link-wrapper">
-      <span>Table of Contents</span>
-      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
-    </div>
-
-    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
-      <div class="pytorch-side-scroll">
-        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          <div class="pytorch-left-menu-search">
-            
-
-            
-              
-              
-            
-
-            
-
-
-  
-
-
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search Docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
+<div class="table-of-contents-link-wrapper">
+<span>Table of Contents</span>
+<a class="toggle-table-of-contents" data-behavior="toggle-table-of-contents" href="#"></a>
 </div>
-
-            
-          </div>
-
-          
-            
-            
-              
-            
-            
-              <ul class="current">
+<nav class="pytorch-left-menu" data-toggle="wy-nav-shift" id="pytorch-left-menu">
+<div class="pytorch-side-scroll">
+<div aria-label="main navigation" class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation">
+<div class="pytorch-left-menu-search">
+<div role="search">
+<form action="../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input name="q" placeholder="Search Docs" type="text"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../teams/index.html">FiftyOne Teams 🚀</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/install.html">Installation</a></li>
@@ -197,543 +59,308 @@
 <li class="toctree-l1"><a class="reference internal" href="../deprecation.html">Deprecation Notices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a></li>
 </ul>
-
-            
-          
-        </div>
-      </div>
-    </nav>
-
-    <div class="pytorch-container">
-      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
-        <div class="pytorch-breadcrumbs-wrapper">
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
-  <ul class="pytorch-breadcrumbs">
-    
-      <li>
-        <a href="../index.html">
+</div>
+</div>
+</nav>
+<div class="pytorch-container">
+<div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+<div class="pytorch-breadcrumbs-wrapper">
+<div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="pytorch-breadcrumbs">
+<li>
+<a href="../index.html">
           
             Docs
           
         </a> &gt;
       </li>
-
-        
-      <li>FiftyOne Tutorials</li>
-    
-    
-      <li class="pytorch-breadcrumbs-aside">
-        
-            
-        
-      </li>
-    
-  </ul>
-
-  
+<li>FiftyOne Tutorials</li>
+<li class="pytorch-breadcrumbs-aside">
+</li>
+</ul>
 </div>
-        </div>
-
-        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+</div>
+<div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
           Contents
         </div>
-      </div>
-
-      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
-        <div class="pytorch-content-left">
-
-        
-          
-          <div class="rst-content style-external-links">
-          
-            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
-             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
-              
-  <div class="section" id="fiftyone-tutorials">
+</div>
+<section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+<div class="pytorch-content-left">
+<div class="rst-content style-external-links">
+<div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+<div class="section" id="fiftyone-tutorials">
 <span id="tutorials"></span><h1>FiftyOne Tutorials<a class="headerlink" href="#fiftyone-tutorials" title="Permalink to this headline">¶</a></h1>
 <p>Each tutorial below is a curated demonstration of how FiftyOne can help refine
 your datasets and turn your good models into <em>great models</em>.</p>
 <div id="tutorial-cards-container">
-
 <nav class="navbar navbar-expand-lg navbar-light tutorials-nav col-12">
-    <div class="tutorial-tags-container">
-        <div id="dropdown-filter-tags">
-            <div class="tutorial-filter-menu">
-                <div class="tutorial-filter filter-btn all-tag-selected" data-tag="all">All</div>
-            </div>
-        </div>
-    </div>
+<div class="tutorial-tags-container">
+<div id="dropdown-filter-tags">
+<div class="tutorial-filter-menu">
+<div class="tutorial-filter filter-btn all-tag-selected" data-tag="all">All</div>
+</div>
+</div>
+</div>
 </nav>
-
-<hr class="tutorials-hr">
-
+<hr class="tutorials-hr"/>
 <div class="row">
-
 <div id="tutorial-cards">
-<div class="list"><p><div class="col-md-12 tutorials-card-container" data-tags=Filtering,Dataset-Evaluation>
-
-<div class="card tutorials-card" link=pandas_comparison.html>
-
+<div class="list"><p><div class="col-md-12 tutorials-card-container" data-tags="Filtering,Dataset-Evaluation">
+<div class="card tutorials-card" link="pandas_comparison.html">
 <div class="card-body">
-
 <div class="card-title-container">
-    <h4>pandas-style queries in FiftyOne</h4>
+<h4>pandas-style queries in FiftyOne</h4>
 </div>
-
 <p class="card-summary">Translate your pandas knowledge to FiftyOne. This tutorial gives a side-by-side comparison of performing common operations in pandas and FiftyOne.</p>
-
 <p class="tags">Filtering,Dataset-Evaluation</p>
-
-<div class="tutorials-image"><img src="../_static/images/tutorials/pandas_tutorial.png"></div>
-
+<div class="tutorials-image"><img src="../_static/images/tutorials/pandas_tutorial.png"/></div>
 </div>
-
 </div>
-
 </div></p>
-<p><div class="col-md-12 tutorials-card-container" data-tags=Model-Evaluation>
-
-<div class="card tutorials-card" link=evaluate_detections.html>
-
+<p><div class="col-md-12 tutorials-card-container" data-tags="Model-Evaluation">
+<div class="card tutorials-card" link="evaluate_detections.html">
 <div class="card-body">
-
 <div class="card-title-container">
-    <h4>Evaluating object detections</h4>
+<h4>Evaluating object detections</h4>
 </div>
-
 <p class="card-summary">Aggregate statistics aren't sufficient for object detection. This tutorial shows how to use FiftyOne to perform powerful evaluation workflows on your detector.</p>
-
 <p class="tags">Model-Evaluation</p>
-
-<div class="tutorials-image"><img src="../_static/images/tutorials/evaluate_detections.png"></div>
-
+<div class="tutorials-image"><img src="../_static/images/tutorials/evaluate_detections.png"/></div>
 </div>
-
 </div>
-
 </div></p>
-<p><div class="col-md-12 tutorials-card-container" data-tags=Model-Evaluation>
-
-<div class="card tutorials-card" link=evaluate_classifications.html>
-
+<p><div class="col-md-12 tutorials-card-container" data-tags="Model-Evaluation">
+<div class="card tutorials-card" link="evaluate_classifications.html">
 <div class="card-body">
-
 <div class="card-title-container">
-    <h4>Evaluating a classifier</h4>
+<h4>Evaluating a classifier</h4>
 </div>
-
 <p class="card-summary">Evaluation made easy. This tutorial walks through an end-to-end example of fine-tuning a classifier and understanding its failure modes using FiftyOne.</p>
-
 <p class="tags">Model-Evaluation</p>
-
-<div class="tutorials-image"><img src="../_static/images/tutorials/evaluate_classifications.png"></div>
-
+<div class="tutorials-image"><img src="../_static/images/tutorials/evaluate_classifications.png"/></div>
 </div>
-
 </div>
-
 </div></p>
-<p><div class="col-md-12 tutorials-card-container" data-tags=Visualization,Brain,Embeddings>
-
-<div class="card tutorials-card" link=image_embeddings.html>
-
+<p><div class="col-md-12 tutorials-card-container" data-tags="Visualization,Brain,Embeddings">
+<div class="card tutorials-card" link="image_embeddings.html">
 <div class="card-body">
-
 <div class="card-title-container">
-    <h4>Using image embeddings</h4>
+<h4>Using image embeddings</h4>
 </div>
-
 <p class="card-summary">Visualize your data in new ways. This tutorial shows how to use FiftyOne's powerful embeddings visualization capabilities to improve your image datasets.</p>
-
 <p class="tags">Visualization,Brain,Embeddings</p>
-
-<div class="tutorials-image"><img src="../_static/images/tutorials/image_embeddings.png"></div>
-
+<div class="tutorials-image"><img src="../_static/images/tutorials/image_embeddings.png"/></div>
 </div>
-
 </div>
-
 </div></p>
-<p><div class="col-md-12 tutorials-card-container" data-tags=Annotation,Dataset-Evaluation>
-
-<div class="card tutorials-card" link=cvat_annotation.html>
-
+<p><div class="col-md-12 tutorials-card-container" data-tags="Annotation,Dataset-Evaluation">
+<div class="card tutorials-card" link="cvat_annotation.html">
 <div class="card-body">
-
 <div class="card-title-container">
-    <h4>Annotating with CVAT</h4>
+<h4>Annotating with CVAT</h4>
 </div>
-
 <p class="card-summary">So you've loaded and explored your data in FiftyOne... but now what? See how to send it off to CVAT for annotation in just one line of code.</p>
-
 <p class="tags">Annotation,Dataset-Evaluation</p>
-
-<div class="tutorials-image"><img src="../_static/images/tutorials/cvat_segmentation.png"></div>
-
+<div class="tutorials-image"><img src="../_static/images/tutorials/cvat_segmentation.png"/></div>
 </div>
-
 </div>
-
 </div></p>
-<p><div class="col-md-12 tutorials-card-container" data-tags=Annotation,Dataset-Evaluation>
-
-<div class="card tutorials-card" link=labelbox_annotation.html>
-
+<p><div class="col-md-12 tutorials-card-container" data-tags="Annotation,Dataset-Evaluation">
+<div class="card tutorials-card" link="labelbox_annotation.html">
 <div class="card-body">
-
 <div class="card-title-container">
-    <h4>Annotating with Labelbox</h4>
+<h4>Annotating with Labelbox</h4>
 </div>
-
 <p class="card-summary">Unlock the power of the Labelbox platform. See how you can get your FiftyOne datasets annotated with just one line of code.</p>
-
 <p class="tags">Annotation,Dataset-Evaluation</p>
-
-<div class="tutorials-image"><img src="../_static/images/tutorials/labelbox_square.png"></div>
-
+<div class="tutorials-image"><img src="../_static/images/tutorials/labelbox_square.png"/></div>
 </div>
-
 </div>
-
 </div></p>
-<p><div class="col-md-12 tutorials-card-container" data-tags=Model-Training,Model-Evaluation>
-
-<div class="card tutorials-card" link=detectron2.html>
-
+<p><div class="col-md-12 tutorials-card-container" data-tags="Model-Training,Model-Evaluation">
+<div class="card tutorials-card" link="detectron2.html">
 <div class="card-body">
-
 <div class="card-title-container">
-    <h4>Training with Detectron2</h4>
+<h4>Training with Detectron2</h4>
 </div>
-
 <p class="card-summary">Put your FiftyOne datasets to work and learn how to train and evaluate Detectron2 models directly on your data.</p>
-
 <p class="tags">Model-Training,Model-Evaluation</p>
-
-<div class="tutorials-image"><img src="../_static/images/tutorials/detectron2.png"></div>
-
+<div class="tutorials-image"><img src="../_static/images/tutorials/detectron2.png"/></div>
 </div>
-
 </div>
-
 </div></p>
-<p><div class="col-md-12 tutorials-card-container" data-tags=Dataset-Evaluation,Model-Evaluation,Dataset-Zoo>
-
-<div class="card tutorials-card" link=open_images.html>
-
+<p><div class="col-md-12 tutorials-card-container" data-tags="Dataset-Evaluation,Model-Evaluation,Dataset-Zoo">
+<div class="card tutorials-card" link="open_images.html">
 <div class="card-body">
-
 <div class="card-title-container">
-    <h4>Downloading and evaluating Open Images</h4>
+<h4>Downloading and evaluating Open Images</h4>
 </div>
-
 <p class="card-summary">Expand your data lake and evaluate your object detection models with Google's Open Images dataset and evaluation protocol, all natively within FiftyOne.</p>
-
 <p class="tags">Dataset-Evaluation,Model-Evaluation,Dataset-Zoo</p>
-
-<div class="tutorials-image"><img src="../_static/images/tutorials/open_images.png"></div>
-
+<div class="tutorials-image"><img src="../_static/images/tutorials/open_images.png"/></div>
 </div>
-
 </div>
-
 </div></p>
-<p><div class="col-md-12 tutorials-card-container" data-tags=Dataset-Evaluation,Brain>
-
-<div class="card tutorials-card" link=uniqueness.html>
-
+<p><div class="col-md-12 tutorials-card-container" data-tags="Dataset-Evaluation,Brain">
+<div class="card tutorials-card" link="uniqueness.html">
 <div class="card-body">
-
 <div class="card-title-container">
-    <h4>Exploring image uniqueness</h4>
+<h4>Exploring image uniqueness</h4>
 </div>
-
 <p class="card-summary">Your models need diverse data. This tutorial shows how FiftyOne can remove near-duplicate images and recommend unique samples for model training.</p>
-
 <p class="tags">Dataset-Evaluation,Brain</p>
-
-<div class="tutorials-image"><img src="../_static/images/tutorials/uniqueness.png"></div>
-
+<div class="tutorials-image"><img src="../_static/images/tutorials/uniqueness.png"/></div>
 </div>
-
 </div>
-
 </div></p>
-<p><div class="col-md-12 tutorials-card-container" data-tags=Dataset-Evaluation,Brain>
-
-<div class="card tutorials-card" link=classification_mistakes.html>
-
+<p><div class="col-md-12 tutorials-card-container" data-tags="Dataset-Evaluation,Brain">
+<div class="card tutorials-card" link="classification_mistakes.html">
 <div class="card-body">
-
 <div class="card-title-container">
-    <h4>Finding classification mistakes</h4>
+<h4>Finding classification mistakes</h4>
 </div>
-
 <p class="card-summary">Better models start with better data. This tutorial shows how FiftyOne can automatically find label mistakes in your classification datasets.</p>
-
 <p class="tags">Dataset-Evaluation,Brain</p>
-
-<div class="tutorials-image"><img src="../_static/images/tutorials/classification_mistakes.png"></div>
-
+<div class="tutorials-image"><img src="../_static/images/tutorials/classification_mistakes.png"/></div>
 </div>
-
 </div>
-
 </div></p>
-<p><div class="col-md-12 tutorials-card-container" data-tags=Dataset-Evaluation,Brain>
-
-<div class="card tutorials-card" link=detection_mistakes.html>
-
+<p><div class="col-md-12 tutorials-card-container" data-tags="Dataset-Evaluation,Brain">
+<div class="card tutorials-card" link="detection_mistakes.html">
 <div class="card-body">
-
 <div class="card-title-container">
-    <h4>Finding detection mistakes</h4>
+<h4>Finding detection mistakes</h4>
 </div>
-
 <p class="card-summary">How good are your ground truth objects? Use the FiftyOne Brain's mistakenness feature to find annotation errors in your object detections.</p>
-
 <p class="tags">Dataset-Evaluation,Brain</p>
-
-<div class="tutorials-image"><img src="../_static/images/tutorials/detection_mistakes.png"></div>
-
+<div class="tutorials-image"><img src="../_static/images/tutorials/detection_mistakes.png"/></div>
 </div>
-
 </div>
-
 </div></p>
-<p><div class="col-md-12 tutorials-card-container" data-tags=Dataset-Evaluation,Model-Evaluation,Embeddings>
-
-<div class="card tutorials-card" link=qdrant.html>
-
+<p><div class="col-md-12 tutorials-card-container" data-tags="Dataset-Evaluation,Model-Evaluation,Embeddings">
+<div class="card tutorials-card" link="qdrant.html">
 <div class="card-body">
-
 <div class="card-title-container">
-    <h4>Nearest Neighbor Embeddings Classification with Qdrant</h4>
+<h4>Nearest Neighbor Embeddings Classification with Qdrant</h4>
 </div>
-
 <p class="card-summary">Easily pre-annotate your FiftyOne datasets using approximate nearest neighbors search on embeddings with Qdrant.</p>
-
 <p class="tags">Dataset-Evaluation,Model-Evaluation,Embeddings</p>
-
-<div class="tutorials-image"><img src="../_static/images/tutorials/qdrant.png"></div>
-
+<div class="tutorials-image"><img src="../_static/images/tutorials/qdrant.png"/></div>
 </div>
-
 </div>
-
 </div></p>
-<p><div class="col-md-12 tutorials-card-container" data-tags=Model-Evaluation>
-
-<div class="card tutorials-card" link=yolov8.html>
-
+<p><div class="col-md-12 tutorials-card-container" data-tags="Model-Evaluation">
+<div class="card tutorials-card" link="yolov8.html">
 <div class="card-body">
-
 <div class="card-title-container">
-    <h4>Fine-tuning YOLOv8 model predictions</h4>
+<h4>Fine-tuning YOLOv8 model predictions</h4>
 </div>
-
 <p class="card-summary">Visualize and evaluate YOLOv8 model predictions before fine-tuning for your custom use case.</p>
-
 <p class="tags">Model-Evaluation</p>
-
-<div class="tutorials-image"><img src="../_static/images/tutorials/yolov8.png"></div>
-
+<div class="tutorials-image"><img src="../_static/images/tutorials/yolov8.png"/></div>
 </div>
-
 </div>
-
 </div></p>
-<p><div class="col-md-12 tutorials-card-container" data-tags=Dataset-Curation,Filtering,Visualization>
-
-<div class="card tutorials-card" link=pointe.html>
-
+<p><div class="col-md-12 tutorials-card-container" data-tags="Dataset-Curation,Filtering,Visualization">
+<div class="card tutorials-card" link="pointe.html">
 <div class="card-body">
-
 <div class="card-title-container">
-    <h4>Build 3D point cloud datasets with Point-E</h4>
+<h4>Build 3D point cloud datasets with Point-E</h4>
 </div>
-
 <p class="card-summary">Lidar is expensive. This tutorial shows how FiftyOne can help you construct high quality 3D point cloud datasets using Point-E point cloud models.</p>
-
 <p class="tags">Dataset-Curation,Filtering,Visualization</p>
-
-<div class="tutorials-image"><img src="../_static/images/tutorials/pointe.png"></div>
-
+<div class="tutorials-image"><img src="../_static/images/tutorials/pointe.png"/></div>
 </div>
-
 </div>
-
 </div></p>
-<p><div class="col-md-12 tutorials-card-container" data-tags=Model-Evaluation,Visualization>
-
-<div class="card tutorials-card" link=monocular_depth_estimation.html>
-
+<p><div class="col-md-12 tutorials-card-container" data-tags="Model-Evaluation,Visualization">
+<div class="card tutorials-card" link="monocular_depth_estimation.html">
 <div class="card-body">
-
 <div class="card-title-container">
-    <h4>Monocular Depth Estimation with Hugging Face</h4>
+<h4>Monocular Depth Estimation with Hugging Face</h4>
 </div>
-
 <p class="card-summary">Metrics for monocular depth estimation can be deceiving. Run MDE models on your data and visualize their predictions with FiftyOne.</p>
-
 <p class="tags">Model-Evaluation,Visualization</p>
-
-<div class="tutorials-image"><img src="../_static/images/tutorials/monocular_depth_estimation.png"></div>
-
+<div class="tutorials-image"><img src="../_static/images/tutorials/monocular_depth_estimation.png"/></div>
 </div>
-
 </div>
-
 </div></p>
-<p><div class="col-md-12 tutorials-card-container" data-tags=Brain,Visualization>
-
-<div class="card tutorials-card" link=dimension_reduction.html>
-
+<p><div class="col-md-12 tutorials-card-container" data-tags="Brain,Visualization">
+<div class="card tutorials-card" link="dimension_reduction.html">
 <div class="card-body">
-
 <div class="card-title-container">
-    <h4>Visualizing Data with Dimensionality Reduction</h4>
+<h4>Visualizing Data with Dimensionality Reduction</h4>
 </div>
-
 <p class="card-summary">Compare and contrast dimensionality reduction techniques for visualizing your data in FiftyOne.</p>
-
 <p class="tags">Brain,Visualization</p>
-
-<div class="tutorials-image"><img src="../_static/images/tutorials/dimension_reduction.png"></div>
-
+<div class="tutorials-image"><img src="../_static/images/tutorials/dimension_reduction.png"/></div>
 </div>
-
 </div>
-
 </div></p>
-<p><div class="col-md-12 tutorials-card-container" data-tags=Filtering,Model-Evaluation,Model-Zoo>
-
-<div class="card tutorials-card" link=zero_shot_classification.html>
-
+<p><div class="col-md-12 tutorials-card-container" data-tags="Filtering,Model-Evaluation,Model-Zoo">
+<div class="card tutorials-card" link="zero_shot_classification.html">
 <div class="card-body">
-
 <div class="card-title-container">
-    <h4>Zero-Shot Image Classification</h4>
+<h4>Zero-Shot Image Classification</h4>
 </div>
-
 <p class="card-summary">Run and evaluate zero-shot image classification models with OpenCLIP, Hugging Face Transformers, and FiftyOne.</p>
-
 <p class="tags">Filtering,Model-Evaluation,Model-Zoo</p>
-
-<div class="tutorials-image"><img src="../_static/images/tutorials/zero_shot_classification.png"></div>
-
+<div class="tutorials-image"><img src="../_static/images/tutorials/zero_shot_classification.png"/></div>
 </div>
-
 </div>
-
 </div></p>
-<p><div class="col-md-12 tutorials-card-container" data-tags=App,Dataset-Curation,Visualization>
-
-<div class="card tutorials-card" link=data_augmentation.html>
-
+<p><div class="col-md-12 tutorials-card-container" data-tags="App,Dataset-Curation,Visualization">
+<div class="card tutorials-card" link="data_augmentation.html">
 <div class="card-body">
-
 <div class="card-title-container">
-    <h4>Augmenting Datasets with Albumentations</h4>
+<h4>Augmenting Datasets with Albumentations</h4>
 </div>
-
 <p class="card-summary">Learn how to apply and test out different augmentations on your datasets using FiftyOne and Albumentations.</p>
-
 <p class="tags">App,Dataset-Curation,Visualization</p>
-
-<div class="tutorials-image"><img src="../_static/images/tutorials/data_augmentation.png"></div>
-
+<div class="tutorials-image"><img src="../_static/images/tutorials/data_augmentation.png"/></div>
 </div>
-
 </div>
-
 </div></p>
-<p><div class="col-md-12 tutorials-card-container" data-tags=App,Brain,Dataset-Curation,Embeddings,Visualization>
-
-<div class="card tutorials-card" link=clustering.html>
-
+<p><div class="col-md-12 tutorials-card-container" data-tags="App,Brain,Dataset-Curation,Embeddings,Visualization">
+<div class="card tutorials-card" link="clustering.html">
 <div class="card-body">
-
 <div class="card-title-container">
-    <h4>Clustering Images with Embeddings</h4>
+<h4>Clustering Images with Embeddings</h4>
 </div>
-
 <p class="card-summary">Use embeddings to cluster images in your dataset and visualize the results in FiftyOne.</p>
-
 <p class="tags">App,Brain,Dataset-Curation,Embeddings,Visualization</p>
-
-<div class="tutorials-image"><img src="../_static/images/tutorials/clustering.jpg"></div>
-
+<div class="tutorials-image"><img src="../_static/images/tutorials/clustering.jpg"/></div>
 </div>
-
 </div>
-
 </div></p>
-<p><div class="col-md-12 tutorials-card-container" data-tags=Model-Evaluation,Model-Zoo>
-
-<div class="card tutorials-card" link=small_object_detection.html>
-
+<p><div class="col-md-12 tutorials-card-container" data-tags="Model-Evaluation,Model-Zoo">
+<div class="card tutorials-card" link="small_object_detection.html">
 <div class="card-body">
-
 <div class="card-title-container">
-    <h4>Small Object Detection with SAHI</h4>
+<h4>Small Object Detection with SAHI</h4>
 </div>
-
 <p class="card-summary">Detect small objects in your images with Slicing-Aided Hyper-Inference (SAHI) and FiftyOne.</p>
-
 <p class="tags">Model-Evaluation,Model-Zoo</p>
-
-<div class="tutorials-image"><img src="../_static/images/tutorials/small_object_detection.jpg"></div>
-
+<div class="tutorials-image"><img src="../_static/images/tutorials/small_object_detection.jpg"/></div>
 </div>
-
 </div>
-
 </div></p>
-<p><div class="col-md-12 tutorials-card-container" data-tags=Embeddings,Model-Evaluation,Model-Training,Visualization>
-
-<div class="card tutorials-card" link=anomaly_detection.html>
-
+<p><div class="col-md-12 tutorials-card-container" data-tags="Embeddings,Model-Evaluation,Model-Training,Visualization">
+<div class="card tutorials-card" link="anomaly_detection.html">
 <div class="card-body">
-
 <div class="card-title-container">
-    <h4>Anomaly Detection with Anomalib</h4>
+<h4>Anomaly Detection with Anomalib</h4>
 </div>
-
 <p class="card-summary">Detect anomalies in your images with Anomalib and FiftyOne.</p>
-
 <p class="tags">Embeddings,Model-Evaluation,Model-Training,Visualization</p>
-
-<div class="tutorials-image"><img src="../_static/images/tutorials/anomaly_detection.jpg"></div>
-
+<div class="tutorials-image"><img src="../_static/images/tutorials/anomaly_detection.jpg"/></div>
 </div>
-
 </div>
-
 </div></p>
 </div>
-
 <div class="pagination d-flex justify-content-center"></div>
-
 </div>
-
 </div><div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Check out the
@@ -743,240 +370,43 @@ repository for more examples of using FiftyOne!</p>
 <div class="toctree-wrapper compound">
 </div>
 </div>
-
-
-             </article>
-             
-            </div>
-            <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="pandas_comparison.html" class="btn btn-neutral float-right" title="pandas-style queries in FiftyOne" accesskey="n" rel="next">Next <img src="../_static/images/chevron-right-orange.svg" class="next-page"></a>
-      
-      
-        <a href="../environments/index.html" class="btn btn-neutral" title="FiftyOne Environments" accesskey="p" rel="prev"><img src="../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
-      
-    </div>
-  
-</footer>
-          </div>
-        </div>
-
-        <div class="pytorch-content-right" id="pytorch-content-right">
-          <div class="pytorch-right-menu" id="pytorch-right-menu">
-            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
-              <ul>
+</div></article>
+</div>
+</div>
+</div>
+<div class="pytorch-content-right" id="pytorch-content-right">
+<div class="pytorch-right-menu" id="pytorch-right-menu">
+<div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+<ul>
 <li><a class="reference internal" href="#">FiftyOne Tutorials</a></li>
 </ul>
-
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
-
-  
-
-
-  
-
-     
-       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-         <script src="../_static/jquery.js"></script>
-         <script src="../_static/underscore.js"></script>
-         <script src="../_static/doctools.js"></script>
-         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
-         <script src="../_static/js/voxel51-website.js"></script>
-         <script src="../_static/js/custom.js"></script>
-     
-
-  
-
-  <script type="text/javascript" src="../_static/js/vendor/popper.min.js"></script>
-  <script type="text/javascript" src="../_static/js/vendor/bootstrap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-  <script type="text/javascript">
+</div>
+</div>
+</div>
+</section>
+</div>
+<script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js" type="text/javascript"></script>
+<script src="../_static/jquery.js"></script>
+<script src="../_static/underscore.js"></script>
+<script src="../_static/doctools.js"></script>
+<script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+<script src="../_static/js/voxel51-website.js"></script>
+<script src="../_static/js/custom.js"></script>
+<script src="../_static/js/vendor/popper.min.js" type="text/javascript"></script>
+<script src="../_static/js/vendor/bootstrap.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+<script src="../_static/js/theme.js" type="text/javascript"></script>
+<script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
-
-  <!-- Begin Footer -->
-
-
-  <div class="container-fluid docs-tutorials-resources" id="docs-tutorials-resources">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4 text-center">
-          <h2>Docs</h2>
-          <p>Access comprehensive developer documentation for PyTorch</p>
-          <a class="with-right-arrow" href="https://pytorch.org/docs/stable/index.html">View Docs</a>
-        </div>
-
-        <div class="col-md-4 text-center">
-          <h2>Tutorials</h2>
-          <p>Get in-depth tutorials for beginners and advanced developers</p>
-          <a class="with-right-arrow" href="https://pytorch.org/tutorials">View Tutorials</a>
-        </div>
-
-        <div class="col-md-4 text-center">
-          <h2>Resources</h2>
-          <p>Find development resources and get your questions answered</p>
-          <a class="with-right-arrow" href="https://pytorch.org/resources">View Resources</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <footer class="site-footer">
-    <div class="container footer-container">
-      <div class="footer-logo-wrapper">
-        <a href="https://pytorch.org/" class="footer-logo"></a>
-      </div>
-
-      <div class="footer-links-wrapper">
-        <div class="footer-links-col">
-          <ul>
-            <li class="list-title"><a href="https://pytorch.org/">PyTorch</a></li>
-            <li><a href="https://pytorch.org/get-started">Get Started</a></li>
-            <li><a href="https://pytorch.org/features">Features</a></li>
-            <li><a href="https://pytorch.org/ecosystem">Ecosystem</a></li>
-            <li><a href="https://pytorch.org/blog/">Blog</a></li>
-            <li><a href="https://github.com/pytorch/pytorch/blob/master/CONTRIBUTING.md">Contributing</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-links-col">
-          <ul>
-            <li class="list-title"><a href="https://pytorch.org/resources">Resources</a></li>
-            <li><a href="https://pytorch.org/tutorials">Tutorials</a></li>
-            <li><a href="https://pytorch.org/docs/stable/index.html">Docs</a></li>
-            <li><a href="https://discuss.pytorch.org" target="_blank">Discuss</a></li>
-            <li><a href="https://github.com/pytorch/pytorch/issues" target="_blank">Github Issues</a></li>
-            <li><a href="https://pytorch.org/assets/brand-guidelines/PyTorch-Brand-Guidelines.pdf" target="_blank">Brand Guidelines</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-links-col follow-us-col">
-          <ul>
-            <li class="list-title">Stay Connected</li>
-            <li>
-              <div id="mc_embed_signup">
-                <form
-                  action="https://twitter.us14.list-manage.com/subscribe/post?u=75419c71fe0a935e53dfa4a3f&id=91d0dccd39"
-                  method="post"
-                  id="mc-embedded-subscribe-form"
-                  name="mc-embedded-subscribe-form"
-                  class="email-subscribe-form validate"
-                  target="_blank"
-                  novalidate>
-                  <div id="mc_embed_signup_scroll" class="email-subscribe-form-fields-wrapper">
-                    <div class="mc-field-group">
-                      <label for="mce-EMAIL" style="display:none;">Email Address</label>
-                      <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="Email Address">
-                    </div>
-
-                    <div id="mce-responses" class="clear">
-                      <div class="response" id="mce-error-response" style="display:none"></div>
-                      <div class="response" id="mce-success-response" style="display:none"></div>
-                    </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-
-                    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_75419c71fe0a935e53dfa4a3f_91d0dccd39" tabindex="-1" value=""></div>
-
-                    <div class="clear">
-                      <input type="submit" value="" name="subscribe" id="mc-embedded-subscribe" class="button email-subscribe-button">
-                    </div>
-                  </div>
-                </form>
-              </div>
-
-            </li>
-          </ul>
-
-          <div class="footer-social-icons">
-            <a href="https://www.facebook.com/pytorch" target="_blank" class="facebook"></a>
-            <a href="https://twitter.com/pytorch" target="_blank" class="twitter"></a>
-            <a href="https://www.youtube.com/pytorch" target="_blank" class="youtube"></a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-
-  
-
-  <!-- End Footer -->
-
-  <!-- Begin Mobile Menu -->
-
-
-  <div class="mobile-main-menu">
-    <div class="container-fluid">
-      <div class="container">
-        <div class="mobile-main-menu-header-container">
-          <a class="header-logo" href="https://pytorch.org/" aria-label="PyTorch"></a>
-          <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
-        </div>
-      </div>
-    </div>
-
-    <div class="mobile-main-menu-links-container">
-      <div class="main-menu">
-        <ul>
-          <li>
-            <a href="https://pytorch.org/get-started">Get Started</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/features">Features</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/ecosystem">Ecosystem</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/mobile">Mobile</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/hub">PyTorch Hub</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/blog/">Blog</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/tutorials">Tutorials</a>
-          </li>
-
-          <li class="active">
-            <a href="https://pytorch.org/docs/stable/index.html">Docs</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/resources">Resources</a>
-          </li>
-
-          <li>
-            <a href="https://github.com/pytorch/pytorch">Github</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-
-  <!-- End Mobile Menu -->
-
-  <script type="text/javascript" src="../_static/js/vendor/anchor.min.js"></script>
-
-  <script type="text/javascript">
+  </script>
+<!-- Begin Footer -->
+<!-- End Footer -->
+<!-- Begin Mobile Menu -->
+<!-- End Mobile Menu -->
+<script src="../_static/js/vendor/anchor.min.js" type="text/javascript"></script>
+<script type="text/javascript">
     $(document).ready(function() {
       mobileMenu.bind();
       mobileTOC.bind();

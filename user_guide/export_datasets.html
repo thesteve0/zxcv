@@ -1,183 +1,46 @@
 
-
-
 <!DOCTYPE html>
+
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>Exporting FiftyOne Datasets &mdash; FiftyOne 1.3.0 documentation</title>
-  
-
-  
-  
-    <link rel="shortcut icon" href="../_static/favicon.ico"/>
-  
-  
-  
-
-  
-
-  
-  
-    
-
-  
-
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
-  <link rel="stylesheet" href="../_static/css/voxel51-website.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Drawing Labels on Samples" href="draw_labels.html" />
-    <link rel="prev" title="Interactive Plots" href="plots.html" />
-<meta property="og:image" content="https://voxel51.com/wp-content/uploads/2024/03/3.24_webpages_Home_AV.png" />
-
-<link
-  href="https://fonts.googleapis.com/css?family=Palanquin:400,600,700,800"
-  rel="stylesheet"
-/>
-<link
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
-  rel="stylesheet"
-/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Exporting FiftyOne Datasets — FiftyOne 1.3.0 documentation</title>
+<link href="../_static/favicon.ico" rel="shortcut icon"/>
+<link href="../_static/css/theme.css" rel="stylesheet" type="text/css"/>
+<!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+<link href="../_static/css/voxel51-website.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/css/custom.css" rel="stylesheet" type="text/css"/>
+<link href="../genindex.html" rel="index" title="Index"/>
+<link href="../search.html" rel="search" title="Search"/>
+<link href="draw_labels.html" rel="next" title="Drawing Labels on Samples"/>
+<link href="plots.html" rel="prev" title="Interactive Plots"/>
+<meta content="https://voxel51.com/wp-content/uploads/2024/03/3.24_webpages_Home_AV.png" property="og:image">
+<link href="https://fonts.googleapis.com/css?family=Palanquin:400,600,700,800" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet"/>
 <script src="https://tag.clearbitscripts.com/v1/pk_b9ed71c8234edd4f77326bcbfab5a4ca/tags.js"></script>
-
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
-  
-</head>
-
-
-<div class="container-fluid header-holder tutorials-header" id="header-holder">
-  <div class="container">
-    <div class="header-container">
-      <a class="header-logo" href="https://pytorch.org/" aria-label="PyTorch"></a>
-
-      <div class="main-menu">
-        <ul>
-          <li>
-            <a href="https://pytorch.org/get-started">Get Started</a>
-          </li>
-
-          <li>
-            <div class="ecosystem-dropdown">
-              <a id="dropdownMenuButton" data-toggle="ecosystem-dropdown">
-                Ecosystem
-              </a>
-              <div class="ecosystem-dropdown-menu">
-                <a class="nav-dropdown-item" href="https://pytorch.org/hub"">
-                  <span class=dropdown-title>Models (Beta)</span>
-                  <p>Discover, publish, and reuse pre-trained models</p>
-                </a>
-                <a class="nav-dropdown-item" href="https://pytorch.org/ecosystem">
-                  <span class=dropdown-title>Tools & Libraries</span>
-                  <p>Explore the ecosystem of tools and libraries</p>
-                </a>
-              </div>
-            </div>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/mobile">Mobile</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/blog/">Blog</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/tutorials">Tutorials</a>
-          </li>
-
-          <li class="active">
-            <a href="https://pytorch.org/docs/stable/index.html">Docs</a>
-          </li>
-
-          <li>
-            <div class="resources-dropdown">
-              <a id="resourcesDropdownButton" data-toggle="resources-dropdown">
-                Resources
-              </a>
-              <div class="resources-dropdown-menu">
-                <a class="nav-dropdown-item" href="https://pytorch.org/resources"">
-                  <span class=dropdown-title>Developer Resources</span>
-                  <p>Find resources and get questions answered</p>
-                </a>
-                <a class="nav-dropdown-item" href="https://pytorch.org/features">
-                  <span class=dropdown-title>About</span>
-                  <p>Learn about PyTorch’s features and capabilities</p>
-                </a>
-              </div>
-            </div>
-          </li>
-
-          <li>
-            <a href="https://github.com/pytorch/pytorch">Github</a>
-          </li>
-        </ul>
-      </div>
-
-      <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
-    </div>
-
-  </div>
-</div>
-
-
+<script src="../_static/js/modernizr.min.js"></script>
+</meta></head>
 
 <body class="pytorch-body">
-
-   
-
-    
-
-    <div class="table-of-contents-link-wrapper">
-      <span>Table of Contents</span>
-      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
-    </div>
-
-    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
-      <div class="pytorch-side-scroll">
-        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          <div class="pytorch-left-menu-search">
-            
-
-            
-              
-              
-            
-
-            
-
-
-  
-
-
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search Docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
+<div class="table-of-contents-link-wrapper">
+<span>Table of Contents</span>
+<a class="toggle-table-of-contents" data-behavior="toggle-table-of-contents" href="#"></a>
 </div>
-
-            
-          </div>
-
-          
-            
-            
-              
-            
-            
-              <ul class="current">
+<nav class="pytorch-left-menu" data-toggle="wy-nav-shift" id="pytorch-left-menu">
+<div class="pytorch-side-scroll">
+<div aria-label="main navigation" class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation">
+<div class="pytorch-left-menu-search">
+<div role="search">
+<form action="../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input name="q" placeholder="Search Docs" type="text"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../teams/index.html">FiftyOne Teams 🚀</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/install.html">Installation</a></li>
@@ -197,78 +60,38 @@
 <li class="toctree-l1"><a class="reference internal" href="../deprecation.html">Deprecation Notices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a></li>
 </ul>
-
-            
-          
-        </div>
-      </div>
-    </nav>
-
-    <div class="pytorch-container">
-      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
-        <div class="pytorch-breadcrumbs-wrapper">
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
-  <ul class="pytorch-breadcrumbs">
-    
-      <li>
-        <a href="../index.html">
+</div>
+</div>
+</nav>
+<div class="pytorch-container">
+<div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+<div class="pytorch-breadcrumbs-wrapper">
+<div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="pytorch-breadcrumbs">
+<li>
+<a href="../index.html">
           
             Docs
           
         </a> &gt;
       </li>
-
-        
-          <li><a href="index.html">FiftyOne User Guide</a> &gt;</li>
-        
-      <li>Exporting FiftyOne Datasets</li>
-    
-    
-      <li class="pytorch-breadcrumbs-aside">
-        
-            
-        
-      </li>
-    
-  </ul>
-
-  
+<li><a href="index.html">FiftyOne User Guide</a> &gt;</li>
+<li>Exporting FiftyOne Datasets</li>
+<li class="pytorch-breadcrumbs-aside">
+</li>
+</ul>
 </div>
-        </div>
-
-        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+</div>
+<div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
           Contents
         </div>
-      </div>
-
-      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
-        <div class="pytorch-content-left">
-
-        
-          
-          <div class="rst-content style-external-links">
-          
-            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
-             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
-              
-  <div class="section" id="exporting-fiftyone-datasets">
+</div>
+<section class="pytorch-content-wrap" data-toggle="wy-nav-shift" id="pytorch-content-wrap">
+<div class="pytorch-content-left">
+<div class="rst-content style-external-links">
+<div class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<article class="pytorch-article" id="pytorch-article" itemprop="articleBody">
+<div class="section" id="exporting-fiftyone-datasets">
 <span id="exporting-datasets"></span><h1>Exporting FiftyOne Datasets<a class="headerlink" href="#exporting-fiftyone-datasets" title="Permalink to this headline">¶</a></h1>
 <p>FiftyOne provides native support for exporting datasets to disk in a
 variety of <a class="reference internal" href="#supported-export-formats"><span class="std std-ref">common formats</span></a>, and it can be
@@ -278,7 +101,7 @@ easily extended to export datasets in
 <p class="admonition-title">Note</p>
 <p>Did you know? You can export media and/or labels from within the FiftyOne
 App by installing the
-<a class="reference external" href="https://github.com/voxel51/fiftyone-plugins/tree/main/plugins/io">&#64;voxel51/io</a>
+<a class="reference external" href="https://github.com/voxel51/fiftyone-plugins/tree/main/plugins/io">@voxel51/io</a>
 plugin!</p>
 </div>
 <div class="section" id="basic-recipe">
@@ -306,15 +129,15 @@ lists to match the export type’s expectations.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
-<span class="n">patches</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">to_patches</span><span class="p">(</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"quickstart"</span><span class="p">)</span>
+<span class="n">patches</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">to_patches</span><span class="p">(</span><span class="s2">"ground_truth"</span><span class="p">)</span>
 
 <span class="c1"># The `ground_truth` field has type `Detection`, but COCO format expects</span>
 <span class="c1"># `Detections`, so the labels are automatically coerced to single-label lists</span>
 <span class="n">patches</span><span class="o">.</span><span class="n">export</span><span class="p">(</span>
-    <span class="n">export_dir</span><span class="o">=</span><span class="s2">&quot;/tmp/quickstart/detections&quot;</span><span class="p">,</span>
+    <span class="n">export_dir</span><span class="o">=</span><span class="s2">"/tmp/quickstart/detections"</span><span class="p">,</span>
     <span class="n">dataset_type</span><span class="o">=</span><span class="n">fo</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">COCODetectionDataset</span><span class="p">,</span>
-    <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span>
+    <span class="n">label_field</span><span class="o">=</span><span class="s2">"ground_truth"</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -329,17 +152,17 @@ to detections that span the entire images.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"quickstart"</span><span class="p">)</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
 
 <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">sample</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">dataset</span><span class="p">):</span>
-    <span class="n">sample</span><span class="p">[</span><span class="s2">&quot;attribute&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Classification</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">idx</span><span class="p">))</span>
+    <span class="n">sample</span><span class="p">[</span><span class="s2">"attribute"</span><span class="p">]</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">Classification</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">idx</span><span class="p">))</span>
     <span class="n">sample</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 
 <span class="c1"># Exports the `attribute` classifications as detections that span entire images</span>
 <span class="n">dataset</span><span class="o">.</span><span class="n">export</span><span class="p">(</span>
-    <span class="n">export_dir</span><span class="o">=</span><span class="s2">&quot;/tmp/quickstart/attributes&quot;</span><span class="p">,</span>
+    <span class="n">export_dir</span><span class="o">=</span><span class="s2">"/tmp/quickstart/attributes"</span><span class="p">,</span>
     <span class="n">dataset_type</span><span class="o">=</span><span class="n">fo</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">COCODetectionDataset</span><span class="p">,</span>
-    <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;attribute&quot;</span><span class="p">,</span>
+    <span class="n">label_field</span><span class="o">=</span><span class="s2">"attribute"</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -355,28 +178,28 @@ exported.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart&quot;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"quickstart"</span><span class="p">)</span>
 
 <span class="c1"># No label field is provided; only images are exported</span>
 <span class="n">dataset</span><span class="o">.</span><span class="n">export</span><span class="p">(</span>
-    <span class="n">export_dir</span><span class="o">=</span><span class="s2">&quot;/tmp/quickstart/images&quot;</span><span class="p">,</span>
+    <span class="n">export_dir</span><span class="o">=</span><span class="s2">"/tmp/quickstart/images"</span><span class="p">,</span>
     <span class="n">dataset_type</span><span class="o">=</span><span class="n">fo</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">ImageDirectory</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="c1"># A detections field is provided, so the object patches are exported as a</span>
 <span class="c1"># directory of images</span>
 <span class="n">dataset</span><span class="o">.</span><span class="n">export</span><span class="p">(</span>
-    <span class="n">export_dir</span><span class="o">=</span><span class="s2">&quot;/tmp/quickstart/patches&quot;</span><span class="p">,</span>
+    <span class="n">export_dir</span><span class="o">=</span><span class="s2">"/tmp/quickstart/patches"</span><span class="p">,</span>
     <span class="n">dataset_type</span><span class="o">=</span><span class="n">fo</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">ImageDirectory</span><span class="p">,</span>
-    <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span>
+    <span class="n">label_field</span><span class="o">=</span><span class="s2">"ground_truth"</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="c1"># A detections field is provided, so the object patches are exported as an</span>
 <span class="c1"># image classification directory tree</span>
 <span class="n">dataset</span><span class="o">.</span><span class="n">export</span><span class="p">(</span>
-    <span class="n">export_dir</span><span class="o">=</span><span class="s2">&quot;/tmp/quickstart/objects&quot;</span><span class="p">,</span>
+    <span class="n">export_dir</span><span class="o">=</span><span class="s2">"/tmp/quickstart/objects"</span><span class="p">,</span>
     <span class="n">dataset_type</span><span class="o">=</span><span class="n">fo</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">ImageClassificationDirectoryTree</span><span class="p">,</span>
-    <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span>
+    <span class="n">label_field</span><span class="o">=</span><span class="s2">"ground_truth"</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -386,17 +209,17 @@ exported.</p>
 patches along with their appropriately typed labels.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Continuing from above...</span>
 
-<span class="n">patches</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">to_patches</span><span class="p">(</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">)</span>
+<span class="n">patches</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">to_patches</span><span class="p">(</span><span class="s2">"ground_truth"</span><span class="p">)</span>
 
 <span class="c1"># Export the object patches as a directory of images</span>
 <span class="n">patches</span><span class="o">.</span><span class="n">export</span><span class="p">(</span>
-    <span class="n">export_dir</span><span class="o">=</span><span class="s2">&quot;/tmp/quickstart/also-patches&quot;</span><span class="p">,</span>
+    <span class="n">export_dir</span><span class="o">=</span><span class="s2">"/tmp/quickstart/also-patches"</span><span class="p">,</span>
     <span class="n">dataset_type</span><span class="o">=</span><span class="n">fo</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">ImageDirectory</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="c1"># Export the object patches as an image classification directory tree</span>
 <span class="n">patches</span><span class="o">.</span><span class="n">export</span><span class="p">(</span>
-    <span class="n">export_dir</span><span class="o">=</span><span class="s2">&quot;/tmp/quickstart/also-objects&quot;</span><span class="p">,</span>
+    <span class="n">export_dir</span><span class="o">=</span><span class="s2">"/tmp/quickstart/also-objects"</span><span class="p">,</span>
     <span class="n">dataset_type</span><span class="o">=</span><span class="n">fo</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">ImageClassificationDirectoryTree</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
@@ -411,23 +234,23 @@ specified <a class="reference internal" href="app.html#app-video-clips"><span cl
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 <span class="kn">import</span> <span class="nn">fiftyone.zoo</span> <span class="k">as</span> <span class="nn">foz</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">&quot;quickstart-video&quot;</span><span class="p">,</span> <span class="n">max_samples</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span><span class="s2">"quickstart-video"</span><span class="p">,</span> <span class="n">max_samples</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 
 <span class="c1"># Add some temporal detections to the dataset</span>
 <span class="n">sample1</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
-<span class="n">sample1</span><span class="p">[</span><span class="s2">&quot;events&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">TemporalDetections</span><span class="p">(</span>
+<span class="n">sample1</span><span class="p">[</span><span class="s2">"events"</span><span class="p">]</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">TemporalDetections</span><span class="p">(</span>
     <span class="n">detections</span><span class="o">=</span><span class="p">[</span>
-        <span class="n">fo</span><span class="o">.</span><span class="n">TemporalDetection</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;first&quot;</span><span class="p">,</span> <span class="n">support</span><span class="o">=</span><span class="p">[</span><span class="mi">31</span><span class="p">,</span> <span class="mi">60</span><span class="p">]),</span>
-        <span class="n">fo</span><span class="o">.</span><span class="n">TemporalDetection</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;second&quot;</span><span class="p">,</span> <span class="n">support</span><span class="o">=</span><span class="p">[</span><span class="mi">90</span><span class="p">,</span> <span class="mi">120</span><span class="p">]),</span>
+        <span class="n">fo</span><span class="o">.</span><span class="n">TemporalDetection</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">"first"</span><span class="p">,</span> <span class="n">support</span><span class="o">=</span><span class="p">[</span><span class="mi">31</span><span class="p">,</span> <span class="mi">60</span><span class="p">]),</span>
+        <span class="n">fo</span><span class="o">.</span><span class="n">TemporalDetection</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">"second"</span><span class="p">,</span> <span class="n">support</span><span class="o">=</span><span class="p">[</span><span class="mi">90</span><span class="p">,</span> <span class="mi">120</span><span class="p">]),</span>
     <span class="p">]</span>
 <span class="p">)</span>
 <span class="n">sample1</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 
 <span class="n">sample2</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">last</span><span class="p">()</span>
-<span class="n">sample2</span><span class="p">[</span><span class="s2">&quot;events&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">TemporalDetections</span><span class="p">(</span>
+<span class="n">sample2</span><span class="p">[</span><span class="s2">"events"</span><span class="p">]</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">TemporalDetections</span><span class="p">(</span>
     <span class="n">detections</span><span class="o">=</span><span class="p">[</span>
-        <span class="n">fo</span><span class="o">.</span><span class="n">TemporalDetection</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;first&quot;</span><span class="p">,</span> <span class="n">support</span><span class="o">=</span><span class="p">[</span><span class="mi">16</span><span class="p">,</span> <span class="mi">45</span><span class="p">]),</span>
-        <span class="n">fo</span><span class="o">.</span><span class="n">TemporalDetection</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;second&quot;</span><span class="p">,</span> <span class="n">support</span><span class="o">=</span><span class="p">[</span><span class="mi">75</span><span class="p">,</span> <span class="mi">104</span><span class="p">]),</span>
+        <span class="n">fo</span><span class="o">.</span><span class="n">TemporalDetection</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">"first"</span><span class="p">,</span> <span class="n">support</span><span class="o">=</span><span class="p">[</span><span class="mi">16</span><span class="p">,</span> <span class="mi">45</span><span class="p">]),</span>
+        <span class="n">fo</span><span class="o">.</span><span class="n">TemporalDetection</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">"second"</span><span class="p">,</span> <span class="n">support</span><span class="o">=</span><span class="p">[</span><span class="mi">75</span><span class="p">,</span> <span class="mi">104</span><span class="p">]),</span>
     <span class="p">]</span>
 <span class="p">)</span>
 <span class="n">sample2</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
@@ -435,17 +258,17 @@ specified <a class="reference internal" href="app.html#app-video-clips"><span cl
 <span class="c1"># A temporal detection field is provided, so the clips are exported as a</span>
 <span class="c1"># directory of videos</span>
 <span class="n">dataset</span><span class="o">.</span><span class="n">export</span><span class="p">(</span>
-    <span class="n">export_dir</span><span class="o">=</span><span class="s2">&quot;/tmp/quickstart-video/clips&quot;</span><span class="p">,</span>
+    <span class="n">export_dir</span><span class="o">=</span><span class="s2">"/tmp/quickstart-video/clips"</span><span class="p">,</span>
     <span class="n">dataset_type</span><span class="o">=</span><span class="n">fo</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">VideoDirectory</span><span class="p">,</span>
-    <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;events&quot;</span><span class="p">,</span>
+    <span class="n">label_field</span><span class="o">=</span><span class="s2">"events"</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="c1"># A temporal detection field is provided, so the clips are exported as a</span>
 <span class="c1"># video classification directory tree</span>
 <span class="n">dataset</span><span class="o">.</span><span class="n">export</span><span class="p">(</span>
-    <span class="n">export_dir</span><span class="o">=</span><span class="s2">&quot;/tmp/quickstart-video/video-classifications&quot;</span><span class="p">,</span>
+    <span class="n">export_dir</span><span class="o">=</span><span class="s2">"/tmp/quickstart-video/video-classifications"</span><span class="p">,</span>
     <span class="n">dataset_type</span><span class="o">=</span><span class="n">fo</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">VideoClassificationDirectoryTree</span><span class="p">,</span>
-    <span class="n">label_field</span><span class="o">=</span><span class="s2">&quot;events&quot;</span><span class="p">,</span>
+    <span class="n">label_field</span><span class="o">=</span><span class="s2">"events"</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -455,25 +278,25 @@ specified <a class="reference internal" href="app.html#app-video-clips"><span cl
 their appropriately typed labels.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Continuing from above...</span>
 
-<span class="n">clips</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">to_clips</span><span class="p">(</span><span class="s2">&quot;events&quot;</span><span class="p">)</span>
+<span class="n">clips</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">to_clips</span><span class="p">(</span><span class="s2">"events"</span><span class="p">)</span>
 
 <span class="c1"># Export the clips as a directory of videos</span>
 <span class="n">clips</span><span class="o">.</span><span class="n">export</span><span class="p">(</span>
-    <span class="n">export_dir</span><span class="o">=</span><span class="s2">&quot;/tmp/quickstart-video/also-clips&quot;</span><span class="p">,</span>
+    <span class="n">export_dir</span><span class="o">=</span><span class="s2">"/tmp/quickstart-video/also-clips"</span><span class="p">,</span>
     <span class="n">dataset_type</span><span class="o">=</span><span class="n">fo</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">VideoDirectory</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="c1"># Export the clips as a video classification directory tree</span>
 <span class="n">clips</span><span class="o">.</span><span class="n">export</span><span class="p">(</span>
-    <span class="n">export_dir</span><span class="o">=</span><span class="s2">&quot;/tmp/quickstart-video/clip-classifications&quot;</span><span class="p">,</span>
+    <span class="n">export_dir</span><span class="o">=</span><span class="s2">"/tmp/quickstart-video/clip-classifications"</span><span class="p">,</span>
     <span class="n">dataset_type</span><span class="o">=</span><span class="n">fo</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">VideoClassificationDirectoryTree</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="c1"># Export the clips along with their associated frame labels</span>
 <span class="n">clips</span><span class="o">.</span><span class="n">export</span><span class="p">(</span>
-    <span class="n">export_dir</span><span class="o">=</span><span class="s2">&quot;/tmp/quickstart-video/clip-frame-labels&quot;</span><span class="p">,</span>
+    <span class="n">export_dir</span><span class="o">=</span><span class="s2">"/tmp/quickstart-video/clip-frame-labels"</span><span class="p">,</span>
     <span class="n">dataset_type</span><span class="o">=</span><span class="n">fo</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">FiftyOneVideoLabelsDataset</span><span class="p">,</span>
-    <span class="n">frame_labels_field</span><span class="o">=</span><span class="s2">&quot;detections&quot;</span><span class="p">,</span>
+    <span class="n">frame_labels_field</span><span class="o">=</span><span class="s2">"detections"</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -501,9 +324,9 @@ storing class lists on FiftyOne datasets.</p>
 
 <span class="c1"># Load 10 samples containing cats and dogs (among other objects)</span>
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">foz</span><span class="o">.</span><span class="n">load_zoo_dataset</span><span class="p">(</span>
-    <span class="s2">&quot;coco-2017&quot;</span><span class="p">,</span>
-    <span class="n">split</span><span class="o">=</span><span class="s2">&quot;validation&quot;</span><span class="p">,</span>
-    <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;cat&quot;</span><span class="p">,</span> <span class="s2">&quot;dog&quot;</span><span class="p">],</span>
+    <span class="s2">"coco-2017"</span><span class="p">,</span>
+    <span class="n">split</span><span class="o">=</span><span class="s2">"validation"</span><span class="p">,</span>
+    <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">"cat"</span><span class="p">,</span> <span class="s2">"dog"</span><span class="p">],</span>
     <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="n">max_samples</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
 <span class="p">)</span>
@@ -512,17 +335,17 @@ storing class lists on FiftyOne datasets.</p>
 <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">default_classes</span><span class="p">))</span>  <span class="c1"># 91</span>
 
 <span class="c1"># Create a view that only contains cats and dogs</span>
-<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span><span class="s2">&quot;ground_truth&quot;</span><span class="p">,</span> <span class="n">F</span><span class="p">(</span><span class="s2">&quot;label&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">is_in</span><span class="p">([</span><span class="s2">&quot;cat&quot;</span><span class="p">,</span> <span class="s2">&quot;dog&quot;</span><span class="p">]))</span>
+<span class="n">view</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">filter_labels</span><span class="p">(</span><span class="s2">"ground_truth"</span><span class="p">,</span> <span class="n">F</span><span class="p">(</span><span class="s2">"label"</span><span class="p">)</span><span class="o">.</span><span class="n">is_in</span><span class="p">([</span><span class="s2">"cat"</span><span class="p">,</span> <span class="s2">"dog"</span><span class="p">]))</span>
 
 <span class="c1"># By default, only the observed classes will be stored as COCO categories</span>
 <span class="n">view</span><span class="o">.</span><span class="n">export</span><span class="p">(</span>
-    <span class="n">labels_path</span><span class="o">=</span><span class="s2">&quot;/tmp/coco1.json&quot;</span><span class="p">,</span>
+    <span class="n">labels_path</span><span class="o">=</span><span class="s2">"/tmp/coco1.json"</span><span class="p">,</span>
     <span class="n">dataset_type</span><span class="o">=</span><span class="n">fo</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">COCODetectionDataset</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="c1"># However, if desired, we can explicitly provide a classes list</span>
 <span class="n">view</span><span class="o">.</span><span class="n">export</span><span class="p">(</span>
-    <span class="n">labels_path</span><span class="o">=</span><span class="s2">&quot;/tmp/coco2.json&quot;</span><span class="p">,</span>
+    <span class="n">labels_path</span><span class="o">=</span><span class="s2">"/tmp/coco2.json"</span><span class="p">,</span>
     <span class="n">dataset_type</span><span class="o">=</span><span class="n">fo</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">COCODetectionDataset</span><span class="p">,</span>
     <span class="n">classes</span><span class="o">=</span><span class="n">dataset</span><span class="o">.</span><span class="n">default_classes</span><span class="p">,</span>
 <span class="p">)</span>
@@ -536,8 +359,8 @@ storing class lists on FiftyOne datasets.</p>
 refer to the corresponding dataset format when writing the dataset to disk.</p>
 <table class="colwidths-given docutils align-default">
 <colgroup>
-<col style="width: 40%" />
-<col style="width: 60%" />
+<col style="width: 40%"/>
+<col style="width: 60%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Dataset Type</p></th>
@@ -727,14 +550,14 @@ label(s) stored in a simple JSON format.</p>
 <p>In the simplest case, <code class="code docutils literal notranslate"><span class="pre">labels.json</span></code> will be a JSON file in the following
 format:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
-    &quot;classes&quot;: [
-        &quot;&lt;labelA&gt;&quot;,
-        &quot;&lt;labelB&gt;&quot;,
+    "classes": [
+        "&lt;labelA&gt;",
+        "&lt;labelB&gt;",
         ...
     ],
-    &quot;labels&quot;: {
-        &quot;&lt;uuid1&gt;&quot;: &lt;target&gt;,
-        &quot;&lt;uuid2&gt;&quot;: &lt;target&gt;,
+    "labels": {
+        "&lt;uuid1&gt;": &lt;target&gt;,
+        "&lt;uuid2&gt;": &lt;target&gt;,
         ...
     }
 }
@@ -750,24 +573,24 @@ additional  attributes, you can use the <code class="code docutils literal notra
 <code class="code docutils literal notranslate"><span class="pre">include_attributes</span></code> parameters to include this information in the export.
 In this case, <code class="code docutils literal notranslate"><span class="pre">labels.json</span></code> will have the following format:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
-    &quot;classes&quot;: [
-        &quot;&lt;labelA&gt;&quot;,
-        &quot;&lt;labelB&gt;&quot;,
+    "classes": [
+        "&lt;labelA&gt;",
+        "&lt;labelB&gt;",
         ...
     ],
-    &quot;labels&quot;: {
-        &quot;&lt;uuid1&gt;&quot;: {
-            &quot;label&quot;: &lt;target&gt;,
-            &quot;confidence&quot;: &lt;optional-confidence&gt;,
-            &quot;attributes&quot;: {
+    "labels": {
+        "&lt;uuid1&gt;": {
+            "label": &lt;target&gt;,
+            "confidence": &lt;optional-confidence&gt;,
+            "attributes": {
                 &lt;optional-name&gt;: &lt;optional-value&gt;,
                 ...
             }
         },
-        &quot;&lt;uuid2&gt;&quot;: {
-            &quot;label&quot;: &lt;target&gt;,
-            &quot;confidence&quot;: &lt;optional-confidence&gt;,
-            &quot;attributes&quot;: {
+        "&lt;uuid2&gt;": {
+            "label": &lt;target&gt;,
+            "confidence": &lt;optional-confidence&gt;,
+            "attributes": {
                 &lt;optional-name&gt;: &lt;optional-value&gt;,
                 ...
             }
@@ -780,14 +603,14 @@ In this case, <code class="code docutils literal notranslate"><span class="pre">
 <p>You can also export multilabel classification fields, in which case
 <code class="code docutils literal notranslate"><span class="pre">labels.json</span></code> will have the following format:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
-    &quot;classes&quot;: [
-        &quot;&lt;labelA&gt;&quot;,
-        &quot;&lt;labelB&gt;&quot;,
+    "classes": [
+        "&lt;labelA&gt;",
+        "&lt;labelB&gt;",
         ...
     ],
-    &quot;labels&quot;: {
-        &quot;&lt;uuid1&gt;&quot;: [&lt;target1&gt;, &lt;target2&gt;, ...],
-        &quot;&lt;uuid2&gt;&quot;: [&lt;target1&gt;, &lt;target2&gt;, ...],
+    "labels": {
+        "&lt;uuid1&gt;": [&lt;target1&gt;, &lt;target2&gt;, ...],
+        "&lt;uuid2&gt;": [&lt;target1&gt;, &lt;target2&gt;, ...],
         ...
     }
 }
@@ -914,17 +737,17 @@ stored as
 following format:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="c1"># Image dimensions</span>
-    <span class="s2">&quot;height&quot;</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">FixedLenFeature</span><span class="p">([],</span> <span class="n">tf</span><span class="o">.</span><span class="n">int64</span><span class="p">),</span>
-    <span class="s2">&quot;width&quot;</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">FixedLenFeature</span><span class="p">([],</span> <span class="n">tf</span><span class="o">.</span><span class="n">int64</span><span class="p">),</span>
-    <span class="s2">&quot;depth&quot;</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">FixedLenFeature</span><span class="p">([],</span> <span class="n">tf</span><span class="o">.</span><span class="n">int64</span><span class="p">),</span>
+    <span class="s2">"height"</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">FixedLenFeature</span><span class="p">([],</span> <span class="n">tf</span><span class="o">.</span><span class="n">int64</span><span class="p">),</span>
+    <span class="s2">"width"</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">FixedLenFeature</span><span class="p">([],</span> <span class="n">tf</span><span class="o">.</span><span class="n">int64</span><span class="p">),</span>
+    <span class="s2">"depth"</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">FixedLenFeature</span><span class="p">([],</span> <span class="n">tf</span><span class="o">.</span><span class="n">int64</span><span class="p">),</span>
     <span class="c1"># Image filename</span>
-    <span class="s2">&quot;filename&quot;</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">FixedLenFeature</span><span class="p">([],</span> <span class="n">tf</span><span class="o">.</span><span class="n">int64</span><span class="p">),</span>
+    <span class="s2">"filename"</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">FixedLenFeature</span><span class="p">([],</span> <span class="n">tf</span><span class="o">.</span><span class="n">int64</span><span class="p">),</span>
     <span class="c1"># The image extension</span>
-    <span class="s2">&quot;format&quot;</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">FixedLenFeature</span><span class="p">([],</span> <span class="n">tf</span><span class="o">.</span><span class="n">string</span><span class="p">),</span>
+    <span class="s2">"format"</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">FixedLenFeature</span><span class="p">([],</span> <span class="n">tf</span><span class="o">.</span><span class="n">string</span><span class="p">),</span>
     <span class="c1"># Encoded image bytes</span>
-    <span class="s2">&quot;image_bytes&quot;</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">FixedLenFeature</span><span class="p">([],</span> <span class="n">tf</span><span class="o">.</span><span class="n">string</span><span class="p">),</span>
+    <span class="s2">"image_bytes"</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">FixedLenFeature</span><span class="p">([],</span> <span class="n">tf</span><span class="o">.</span><span class="n">string</span><span class="p">),</span>
     <span class="c1"># Class label string</span>
-    <span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">FixedLenFeature</span><span class="p">([],</span> <span class="n">tf</span><span class="o">.</span><span class="n">string</span><span class="p">,</span> <span class="n">default_value</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">),</span>
+    <span class="s2">"label"</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">FixedLenFeature</span><span class="p">([],</span> <span class="n">tf</span><span class="o">.</span><span class="n">string</span><span class="p">,</span> <span class="n">default_value</span><span class="o">=</span><span class="s2">""</span><span class="p">),</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -967,20 +790,20 @@ stored in a simple JSON format.</p>
 </div>
 <p>where <code class="code docutils literal notranslate"><span class="pre">labels.json</span></code> is a JSON file in the following format:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
-    &quot;classes&quot;: [
+    "classes": [
         &lt;labelA&gt;,
         &lt;labelB&gt;,
         ...
     ],
-    &quot;labels&quot;: {
+    "labels": {
         &lt;uuid1&gt;: [
             {
-                &quot;label&quot;: &lt;target&gt;,
-                &quot;bounding_box&quot;: [
+                "label": &lt;target&gt;,
+                "bounding_box": [
                     &lt;top-left-x&gt;, &lt;top-left-y&gt;, &lt;width&gt;, &lt;height&gt;
                 ],
-                &quot;confidence&quot;: &lt;optional-confidence&gt;,
-                &quot;attributes&quot;: {
+                "confidence": &lt;optional-confidence&gt;,
+                "attributes": {
                     &lt;optional-name&gt;: &lt;optional-value&gt;,
                     ...
                 }
@@ -1061,48 +884,48 @@ stored in a simple JSON format.</p>
 </div>
 <p>where <code class="code docutils literal notranslate"><span class="pre">labels.json</span></code> is a JSON file in the following format:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
-    &quot;classes&quot;: [
-        &quot;&lt;labelA&gt;&quot;,
-        &quot;&lt;labelB&gt;&quot;,
+    "classes": [
+        "&lt;labelA&gt;",
+        "&lt;labelB&gt;",
         ...
     ],
-    &quot;labels&quot;: {
-        &quot;&lt;uuid1&gt;&quot;: [
+    "labels": {
+        "&lt;uuid1&gt;": [
             {
-                &quot;label&quot;: &lt;target&gt;,
-                &quot;support&quot;: [&lt;first-frame&gt;, &lt;last-frame&gt;],
-                &quot;confidence&quot;: &lt;optional-confidence&gt;,
-                &quot;attributes&quot;: {
+                "label": &lt;target&gt;,
+                "support": [&lt;first-frame&gt;, &lt;last-frame&gt;],
+                "confidence": &lt;optional-confidence&gt;,
+                "attributes": {
                     &lt;optional-name&gt;: &lt;optional-value&gt;,
                     ...
                 }
             },
             {
-                &quot;label&quot;: &lt;target&gt;,
-                &quot;support&quot;: [&lt;first-frame&gt;, &lt;last-frame&gt;],
-                &quot;confidence&quot;: &lt;optional-confidence&gt;,
-                &quot;attributes&quot;: {
+                "label": &lt;target&gt;,
+                "support": [&lt;first-frame&gt;, &lt;last-frame&gt;],
+                "confidence": &lt;optional-confidence&gt;,
+                "attributes": {
                     &lt;optional-name&gt;: &lt;optional-value&gt;,
                     ...
                 }
             },
             ...
         ],
-        &quot;&lt;uuid2&gt;&quot;: [
+        "&lt;uuid2&gt;": [
             {
-                &quot;label&quot;: &lt;target&gt;,
-                &quot;timestamps&quot;: [&lt;start-timestamp&gt;, &lt;stop-timestamp&gt;],
-                &quot;confidence&quot;: &lt;optional-confidence&gt;,
-                &quot;attributes&quot;: {
+                "label": &lt;target&gt;,
+                "timestamps": [&lt;start-timestamp&gt;, &lt;stop-timestamp&gt;],
+                "confidence": &lt;optional-confidence&gt;,
+                "attributes": {
                     &lt;optional-name&gt;: &lt;optional-value&gt;,
                     ...
                 }
             },
             {
-                &quot;label&quot;: &lt;target&gt;,
-                &quot;timestamps&quot;: [&lt;start-timestamp&gt;, &lt;stop-timestamp&gt;],
-                &quot;confidence&quot;: &lt;optional-confidence&gt;,
-                &quot;attributes&quot;: {
+                "label": &lt;target&gt;,
+                "timestamps": [&lt;start-timestamp&gt;, &lt;stop-timestamp&gt;],
+                "confidence": &lt;optional-confidence&gt;,
+                "attributes": {
                     &lt;optional-name&gt;: &lt;optional-value&gt;,
                     ...
                 }
@@ -1181,44 +1004,44 @@ dataset consisting of images and their associated object detections saved in
 </div>
 <p>where <code class="code docutils literal notranslate"><span class="pre">labels.json</span></code> is a JSON file in the following format:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
-    &quot;info&quot;: {
-        &quot;year&quot;: &quot;&quot;,
-        &quot;version&quot;: &quot;&quot;,
-        &quot;description&quot;: &quot;Exported from FiftyOne&quot;,
-        &quot;contributor&quot;: &quot;&quot;,
-        &quot;url&quot;: &quot;https://voxel51.com/fiftyone&quot;,
-        &quot;date_created&quot;: &quot;2020-06-19T09:48:27&quot;
+    "info": {
+        "year": "",
+        "version": "",
+        "description": "Exported from FiftyOne",
+        "contributor": "",
+        "url": "https://voxel51.com/fiftyone",
+        "date_created": "2020-06-19T09:48:27"
     },
-    &quot;licenses&quot;: [],
-    &quot;categories&quot;: [
+    "licenses": [],
+    "categories": [
         {
-            &quot;id&quot;: 1,
-            &quot;name&quot;: &quot;cat&quot;,
-            &quot;supercategory&quot;: &quot;animal&quot;
+            "id": 1,
+            "name": "cat",
+            "supercategory": "animal"
         },
         ...
     ],
-    &quot;images&quot;: [
+    "images": [
         {
-            &quot;id&quot;: 1,
-            &quot;license&quot;: null,
-            &quot;file_name&quot;: &quot;&lt;filename0&gt;.&lt;ext&gt;&quot;,
-            &quot;height&quot;: 480,
-            &quot;width&quot;: 640,
-            &quot;date_captured&quot;: null
+            "id": 1,
+            "license": null,
+            "file_name": "&lt;filename0&gt;.&lt;ext&gt;",
+            "height": 480,
+            "width": 640,
+            "date_captured": null
         },
         ...
     ],
-    &quot;annotations&quot;: [
+    "annotations": [
         {
-            &quot;id&quot;: 1,
-            &quot;image_id&quot;: 1,
-            &quot;category_id&quot;: 1,
-            &quot;bbox&quot;: [260, 177, 231, 199],
-            &quot;segmentation&quot;: [...],
-            &quot;score&quot;: 0.95,
-            &quot;area&quot;: 45969,
-            &quot;iscrowd&quot;: 0
+            "id": 1,
+            "image_id": 1,
+            "category_id": 1,
+            "bbox": [260, 177, 231, 199],
+            "segmentation": [...],
+            "score": 0.95,
+            "area": 45969,
+            "iscrowd": 0
         },
         ...
     ]
@@ -1364,10 +1187,10 @@ to an object and the 15 (and optional 16th score) columns have the following
 meanings:</p>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 11%" />
-<col style="width: 14%" />
-<col style="width: 66%" />
-<col style="width: 10%" />
+<col style="width: 11%"/>
+<col style="width: 14%"/>
+<col style="width: 66%"/>
+<col style="width: 10%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p># of
@@ -1598,14 +1421,14 @@ to customize the export of datasets of this type.</p>
 follows:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 
-<span class="n">export_dir</span> <span class="o">=</span> <span class="s2">&quot;/path/for/yolov5-dataset&quot;</span>
-<span class="n">label_field</span> <span class="o">=</span> <span class="s2">&quot;ground_truth&quot;</span>  <span class="c1"># for example</span>
+<span class="n">export_dir</span> <span class="o">=</span> <span class="s2">"/path/for/yolov5-dataset"</span>
+<span class="n">label_field</span> <span class="o">=</span> <span class="s2">"ground_truth"</span>  <span class="c1"># for example</span>
 
 <span class="c1"># The splits to export</span>
-<span class="n">splits</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;train&quot;</span><span class="p">,</span> <span class="s2">&quot;val&quot;</span><span class="p">]</span>
+<span class="n">splits</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"train"</span><span class="p">,</span> <span class="s2">"val"</span><span class="p">]</span>
 
 <span class="c1"># All splits must use the same classes list</span>
-<span class="n">classes</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;list&quot;</span><span class="p">,</span> <span class="s2">&quot;of&quot;</span><span class="p">,</span> <span class="s2">&quot;classes&quot;</span><span class="p">]</span>
+<span class="n">classes</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"list"</span><span class="p">,</span> <span class="s2">"of"</span><span class="p">,</span> <span class="s2">"classes"</span><span class="p">]</span>
 
 <span class="c1"># The dataset or view to export</span>
 <span class="c1"># We assume the dataset uses sample tags to encode the splits to export</span>
@@ -1635,8 +1458,8 @@ used to populate the class list.</p>
 the <code class="code docutils literal notranslate"><span class="pre">labels_path</span></code> parameter instead of <code class="code docutils literal notranslate"><span class="pre">export_dir</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 
-<span class="n">labels_path</span> <span class="o">=</span> <span class="s2">&quot;/path/for/yolo-labels&quot;</span>
-<span class="n">label_field</span> <span class="o">=</span> <span class="s2">&quot;ground_truth&quot;</span>  <span class="c1"># for example</span>
+<span class="n">labels_path</span> <span class="o">=</span> <span class="s2">"/path/for/yolo-labels"</span>
+<span class="n">label_field</span> <span class="o">=</span> <span class="s2">"ground_truth"</span>  <span class="c1"># for example</span>
 
 <span class="c1"># The dataset or view to export</span>
 <span class="n">dataset_or_view</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
@@ -1669,40 +1492,40 @@ dataset consisting of images and their associated object detections stored as
 following format:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="c1"># Image dimensions</span>
-    <span class="s2">&quot;image/height&quot;</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">FixedLenFeature</span><span class="p">([],</span> <span class="n">tf</span><span class="o">.</span><span class="n">int64</span><span class="p">),</span>
-    <span class="s2">&quot;image/width&quot;</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">FixedLenFeature</span><span class="p">([],</span> <span class="n">tf</span><span class="o">.</span><span class="n">int64</span><span class="p">),</span>
+    <span class="s2">"image/height"</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">FixedLenFeature</span><span class="p">([],</span> <span class="n">tf</span><span class="o">.</span><span class="n">int64</span><span class="p">),</span>
+    <span class="s2">"image/width"</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">FixedLenFeature</span><span class="p">([],</span> <span class="n">tf</span><span class="o">.</span><span class="n">int64</span><span class="p">),</span>
 
     <span class="c1"># Image filename is used for both of these when writing</span>
-    <span class="s2">&quot;image/filename&quot;</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">FixedLenFeature</span><span class="p">([],</span> <span class="n">tf</span><span class="o">.</span><span class="n">string</span><span class="p">),</span>
-    <span class="s2">&quot;image/source_id&quot;</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">FixedLenFeature</span><span class="p">([],</span> <span class="n">tf</span><span class="o">.</span><span class="n">string</span><span class="p">),</span>
+    <span class="s2">"image/filename"</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">FixedLenFeature</span><span class="p">([],</span> <span class="n">tf</span><span class="o">.</span><span class="n">string</span><span class="p">),</span>
+    <span class="s2">"image/source_id"</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">FixedLenFeature</span><span class="p">([],</span> <span class="n">tf</span><span class="o">.</span><span class="n">string</span><span class="p">),</span>
 
     <span class="c1"># Encoded image bytes</span>
-    <span class="s2">&quot;image/encoded&quot;</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">FixedLenFeature</span><span class="p">([],</span> <span class="n">tf</span><span class="o">.</span><span class="n">string</span><span class="p">),</span>
+    <span class="s2">"image/encoded"</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">FixedLenFeature</span><span class="p">([],</span> <span class="n">tf</span><span class="o">.</span><span class="n">string</span><span class="p">),</span>
 
     <span class="c1"># Image format, either `jpeg` or `png`</span>
-    <span class="s2">&quot;image/format&quot;</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">FixedLenFeature</span><span class="p">([],</span> <span class="n">tf</span><span class="o">.</span><span class="n">string</span><span class="p">),</span>
+    <span class="s2">"image/format"</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">FixedLenFeature</span><span class="p">([],</span> <span class="n">tf</span><span class="o">.</span><span class="n">string</span><span class="p">),</span>
 
     <span class="c1"># Normalized bounding box coordinates in `[0, 1]`</span>
-    <span class="s2">&quot;image/object/bbox/xmin&quot;</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">FixedLenSequenceFeature</span><span class="p">(</span>
+    <span class="s2">"image/object/bbox/xmin"</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">FixedLenSequenceFeature</span><span class="p">(</span>
         <span class="p">[],</span> <span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">allow_missing</span><span class="o">=</span><span class="kc">True</span>
     <span class="p">),</span>
-    <span class="s2">&quot;image/object/bbox/xmax&quot;</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">FixedLenSequenceFeature</span><span class="p">(</span>
+    <span class="s2">"image/object/bbox/xmax"</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">FixedLenSequenceFeature</span><span class="p">(</span>
         <span class="p">[],</span> <span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">allow_missing</span><span class="o">=</span><span class="kc">True</span>
     <span class="p">),</span>
-    <span class="s2">&quot;image/object/bbox/ymin&quot;</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">FixedLenSequenceFeature</span><span class="p">(</span>
+    <span class="s2">"image/object/bbox/ymin"</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">FixedLenSequenceFeature</span><span class="p">(</span>
         <span class="p">[],</span> <span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">allow_missing</span><span class="o">=</span><span class="kc">True</span>
     <span class="p">),</span>
-    <span class="s2">&quot;image/object/bbox/ymax&quot;</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">FixedLenSequenceFeature</span><span class="p">(</span>
+    <span class="s2">"image/object/bbox/ymax"</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">FixedLenSequenceFeature</span><span class="p">(</span>
         <span class="p">[],</span> <span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">allow_missing</span><span class="o">=</span><span class="kc">True</span>
     <span class="p">),</span>
 
     <span class="c1"># Class label string</span>
-    <span class="s2">&quot;image/object/class/text&quot;</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">FixedLenSequenceFeature</span><span class="p">(</span>
+    <span class="s2">"image/object/class/text"</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">FixedLenSequenceFeature</span><span class="p">(</span>
         <span class="p">[],</span> <span class="n">tf</span><span class="o">.</span><span class="n">string</span><span class="p">,</span> <span class="n">allow_missing</span><span class="o">=</span><span class="kc">True</span>
     <span class="p">),</span>
 
     <span class="c1"># Integer class ID</span>
-    <span class="s2">&quot;image/object/class/label&quot;</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">FixedLenSequenceFeature</span><span class="p">(</span>
+    <span class="s2">"image/object/class/label"</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">FixedLenSequenceFeature</span><span class="p">(</span>
         <span class="p">[],</span> <span class="n">tf</span><span class="o">.</span><span class="n">int64</span><span class="p">,</span> <span class="n">allow_missing</span><span class="o">=</span><span class="kc">True</span>
     <span class="p">),</span>
 <span class="p">}</span>
@@ -1792,7 +1615,7 @@ consisting of images and their associated tags and object detections stored in
 </pre></div>
 </div>
 <p>where <code class="code docutils literal notranslate"><span class="pre">labels.xml</span></code> is an XML file in the following format:</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
 <span class="nt">&lt;annotations&gt;</span>
 <span class="w">    </span><span class="nt">&lt;version&gt;</span>1.1<span class="nt">&lt;/version&gt;</span>
 <span class="w">    </span><span class="nt">&lt;meta&gt;</span>
@@ -1844,32 +1667,32 @@ consisting of images and their associated tags and object detections stored in
 <span class="w">        </span><span class="nt">&lt;/owner&gt;</span>
 <span class="w">        </span><span class="nt">&lt;dumped&gt;</span>2017-11-20<span class="w"> </span>11:51:51.000000+00:00<span class="nt">&lt;/dumped&gt;</span>
 <span class="w">    </span><span class="nt">&lt;/meta&gt;</span>
-<span class="w">    </span><span class="nt">&lt;image</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;&lt;uuid1&gt;.&lt;ext&gt;&quot;</span><span class="w"> </span><span class="na">width=</span><span class="s">&quot;640&quot;</span><span class="w"> </span><span class="na">height=</span><span class="s">&quot;480&quot;</span><span class="nt">&gt;</span>
-<span class="w">        </span><span class="nt">&lt;tag</span><span class="w"> </span><span class="na">label=</span><span class="s">&quot;urban&quot;</span><span class="nt">&gt;&lt;/tag&gt;</span>
+<span class="w">    </span><span class="nt">&lt;image</span><span class="w"> </span><span class="na">id=</span><span class="s">"0"</span><span class="w"> </span><span class="na">name=</span><span class="s">"&lt;uuid1&gt;.&lt;ext&gt;"</span><span class="w"> </span><span class="na">width=</span><span class="s">"640"</span><span class="w"> </span><span class="na">height=</span><span class="s">"480"</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;tag</span><span class="w"> </span><span class="na">label=</span><span class="s">"urban"</span><span class="nt">&gt;&lt;/tag&gt;</span>
 <span class="w">        </span>...
-<span class="w">        </span><span class="nt">&lt;box</span><span class="w"> </span><span class="na">label=</span><span class="s">&quot;car&quot;</span><span class="w"> </span><span class="na">xtl=</span><span class="s">&quot;100&quot;</span><span class="w"> </span><span class="na">ytl=</span><span class="s">&quot;50&quot;</span><span class="w"> </span><span class="na">xbr=</span><span class="s">&quot;325&quot;</span><span class="w"> </span><span class="na">ybr=</span><span class="s">&quot;190&quot;</span><span class="w"> </span><span class="na">occluded=</span><span class="s">&quot;0&quot;</span><span class="nt">&gt;</span>
-<span class="w">            </span><span class="nt">&lt;attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;type&quot;</span><span class="nt">&gt;</span>sedan<span class="nt">&lt;/attribute&gt;</span>
+<span class="w">        </span><span class="nt">&lt;box</span><span class="w"> </span><span class="na">label=</span><span class="s">"car"</span><span class="w"> </span><span class="na">xtl=</span><span class="s">"100"</span><span class="w"> </span><span class="na">ytl=</span><span class="s">"50"</span><span class="w"> </span><span class="na">xbr=</span><span class="s">"325"</span><span class="w"> </span><span class="na">ybr=</span><span class="s">"190"</span><span class="w"> </span><span class="na">occluded=</span><span class="s">"0"</span><span class="nt">&gt;</span>
+<span class="w">            </span><span class="nt">&lt;attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">"type"</span><span class="nt">&gt;</span>sedan<span class="nt">&lt;/attribute&gt;</span>
 <span class="w">            </span>...
 <span class="w">        </span><span class="nt">&lt;/box&gt;</span>
 <span class="w">        </span>...
-<span class="w">        </span><span class="nt">&lt;polygon</span><span class="w"> </span><span class="na">label=</span><span class="s">&quot;car&quot;</span><span class="w"> </span><span class="na">points=</span><span class="s">&quot;561.30,916.23;561.30,842.77;...;560.20,966.67&quot;</span><span class="w"> </span><span class="na">occluded=</span><span class="s">&quot;0&quot;</span><span class="nt">&gt;</span>
-<span class="w">            </span><span class="nt">&lt;attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;make&quot;</span><span class="nt">&gt;</span>Honda<span class="nt">&lt;/attribute&gt;</span>
+<span class="w">        </span><span class="nt">&lt;polygon</span><span class="w"> </span><span class="na">label=</span><span class="s">"car"</span><span class="w"> </span><span class="na">points=</span><span class="s">"561.30,916.23;561.30,842.77;...;560.20,966.67"</span><span class="w"> </span><span class="na">occluded=</span><span class="s">"0"</span><span class="nt">&gt;</span>
+<span class="w">            </span><span class="nt">&lt;attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">"make"</span><span class="nt">&gt;</span>Honda<span class="nt">&lt;/attribute&gt;</span>
 <span class="w">            </span>...
 <span class="w">        </span><span class="nt">&lt;/polygon&gt;</span>
 <span class="w">        </span>...
-<span class="w">        </span><span class="nt">&lt;polyline</span><span class="w"> </span><span class="na">label=</span><span class="s">&quot;traffic_line&quot;</span><span class="w"> </span><span class="na">points=</span><span class="s">&quot;462.10,0.00;126.80,1200.00&quot;</span><span class="w"> </span><span class="na">occluded=</span><span class="s">&quot;0&quot;</span><span class="nt">&gt;</span>
-<span class="w">            </span><span class="nt">&lt;attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;color&quot;</span><span class="nt">&gt;</span>yellow<span class="nt">&lt;/attribute&gt;</span>
+<span class="w">        </span><span class="nt">&lt;polyline</span><span class="w"> </span><span class="na">label=</span><span class="s">"traffic_line"</span><span class="w"> </span><span class="na">points=</span><span class="s">"462.10,0.00;126.80,1200.00"</span><span class="w"> </span><span class="na">occluded=</span><span class="s">"0"</span><span class="nt">&gt;</span>
+<span class="w">            </span><span class="nt">&lt;attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">"color"</span><span class="nt">&gt;</span>yellow<span class="nt">&lt;/attribute&gt;</span>
 <span class="w">            </span>...
 <span class="w">        </span><span class="nt">&lt;/polyline&gt;</span>
 <span class="w">        </span>...
-<span class="w">        </span><span class="nt">&lt;points</span><span class="w"> </span><span class="na">label=</span><span class="s">&quot;wheel&quot;</span><span class="w"> </span><span class="na">points=</span><span class="s">&quot;574.90,939.48;1170.16,907.90;...;600.16,459.48&quot;</span><span class="w"> </span><span class="na">occluded=</span><span class="s">&quot;0&quot;</span><span class="nt">&gt;</span>
-<span class="w">            </span><span class="nt">&lt;attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;location&quot;</span><span class="nt">&gt;</span>front_driver_side<span class="nt">&lt;/attribute&gt;</span>
+<span class="w">        </span><span class="nt">&lt;points</span><span class="w"> </span><span class="na">label=</span><span class="s">"wheel"</span><span class="w"> </span><span class="na">points=</span><span class="s">"574.90,939.48;1170.16,907.90;...;600.16,459.48"</span><span class="w"> </span><span class="na">occluded=</span><span class="s">"0"</span><span class="nt">&gt;</span>
+<span class="w">            </span><span class="nt">&lt;attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">"location"</span><span class="nt">&gt;</span>front_driver_side<span class="nt">&lt;/attribute&gt;</span>
 <span class="w">            </span>...
 <span class="w">        </span><span class="nt">&lt;/points&gt;</span>
 <span class="w">        </span>...
 <span class="w">    </span><span class="nt">&lt;/image&gt;</span>
 <span class="w">    </span>...
-<span class="w">    </span><span class="nt">&lt;image</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;50&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;&lt;uuid51&gt;.&lt;ext&gt;&quot;</span><span class="w"> </span><span class="na">width=</span><span class="s">&quot;640&quot;</span><span class="w"> </span><span class="na">height=</span><span class="s">&quot;480&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;image</span><span class="w"> </span><span class="na">id=</span><span class="s">"50"</span><span class="w"> </span><span class="na">name=</span><span class="s">"&lt;uuid51&gt;.&lt;ext&gt;"</span><span class="w"> </span><span class="na">width=</span><span class="s">"640"</span><span class="w"> </span><span class="na">height=</span><span class="s">"480"</span><span class="nt">&gt;</span>
 <span class="w">        </span>...
 <span class="w">    </span><span class="nt">&lt;/image&gt;</span>
 <span class="nt">&lt;/annotations&gt;</span>
@@ -1918,7 +1741,7 @@ consisting of videos and their associated object detections stored in
 </pre></div>
 </div>
 <p>where the labels XML files are stored in the following format:</p>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
 <span class="nt">&lt;annotations&gt;</span>
 <span class="w">    </span><span class="nt">&lt;version&gt;</span>1.1<span class="nt">&lt;/version&gt;</span>
 <span class="w">    </span><span class="nt">&lt;meta&gt;</span>
@@ -1974,32 +1797,32 @@ consisting of videos and their associated object detections stored in
 <span class="w">        </span><span class="nt">&lt;/original_size&gt;</span>
 <span class="w">        </span><span class="nt">&lt;dumped&gt;</span>2017-11-20<span class="w"> </span>11:51:51.000000+00:00<span class="nt">&lt;/dumped&gt;</span>
 <span class="w">    </span><span class="nt">&lt;/meta&gt;</span>
-<span class="w">    </span><span class="nt">&lt;track</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">label=</span><span class="s">&quot;car&quot;</span><span class="nt">&gt;</span>
-<span class="w">        </span><span class="nt">&lt;box</span><span class="w"> </span><span class="na">frame=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">xtl=</span><span class="s">&quot;100&quot;</span><span class="w"> </span><span class="na">ytl=</span><span class="s">&quot;50&quot;</span><span class="w"> </span><span class="na">xbr=</span><span class="s">&quot;325&quot;</span><span class="w"> </span><span class="na">ybr=</span><span class="s">&quot;190&quot;</span><span class="w"> </span><span class="na">outside=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">occluded=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">keyframe=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>
-<span class="w">            </span><span class="nt">&lt;attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;type&quot;</span><span class="nt">&gt;</span>sedan<span class="nt">&lt;/attribute&gt;</span>
+<span class="w">    </span><span class="nt">&lt;track</span><span class="w"> </span><span class="na">id=</span><span class="s">"0"</span><span class="w"> </span><span class="na">label=</span><span class="s">"car"</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;box</span><span class="w"> </span><span class="na">frame=</span><span class="s">"0"</span><span class="w"> </span><span class="na">xtl=</span><span class="s">"100"</span><span class="w"> </span><span class="na">ytl=</span><span class="s">"50"</span><span class="w"> </span><span class="na">xbr=</span><span class="s">"325"</span><span class="w"> </span><span class="na">ybr=</span><span class="s">"190"</span><span class="w"> </span><span class="na">outside=</span><span class="s">"0"</span><span class="w"> </span><span class="na">occluded=</span><span class="s">"0"</span><span class="w"> </span><span class="na">keyframe=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+<span class="w">            </span><span class="nt">&lt;attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">"type"</span><span class="nt">&gt;</span>sedan<span class="nt">&lt;/attribute&gt;</span>
 <span class="w">            </span>...
 <span class="w">        </span><span class="nt">&lt;/box&gt;</span>
 <span class="w">        </span>...
 <span class="w">    </span><span class="nt">&lt;/track&gt;</span>
-<span class="w">    </span><span class="nt">&lt;track</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;1&quot;</span><span class="w"> </span><span class="na">label=</span><span class="s">&quot;car&quot;</span><span class="nt">&gt;</span>
-<span class="w">        </span><span class="nt">&lt;polygon</span><span class="w"> </span><span class="na">frame=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">points=</span><span class="s">&quot;561.30,916.23;561.30,842.77;...;560.20,966.67&quot;</span><span class="w"> </span><span class="na">outside=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">occluded=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">keyframe=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>
-<span class="w">            </span><span class="nt">&lt;attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;make&quot;</span><span class="nt">&gt;</span>Honda<span class="nt">&lt;/attribute&gt;</span>
+<span class="w">    </span><span class="nt">&lt;track</span><span class="w"> </span><span class="na">id=</span><span class="s">"1"</span><span class="w"> </span><span class="na">label=</span><span class="s">"car"</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;polygon</span><span class="w"> </span><span class="na">frame=</span><span class="s">"0"</span><span class="w"> </span><span class="na">points=</span><span class="s">"561.30,916.23;561.30,842.77;...;560.20,966.67"</span><span class="w"> </span><span class="na">outside=</span><span class="s">"0"</span><span class="w"> </span><span class="na">occluded=</span><span class="s">"0"</span><span class="w"> </span><span class="na">keyframe=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+<span class="w">            </span><span class="nt">&lt;attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">"make"</span><span class="nt">&gt;</span>Honda<span class="nt">&lt;/attribute&gt;</span>
 <span class="w">            </span>...
 <span class="w">        </span><span class="nt">&lt;/polygon&gt;</span>
 <span class="w">        </span>...
 <span class="w">    </span><span class="nt">&lt;/track&gt;</span>
 <span class="w">    </span>...
-<span class="w">    </span><span class="nt">&lt;track</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;10&quot;</span><span class="w"> </span><span class="na">label=</span><span class="s">&quot;traffic_line&quot;</span><span class="nt">&gt;</span>
-<span class="w">        </span><span class="nt">&lt;polyline</span><span class="w"> </span><span class="na">frame=</span><span class="s">&quot;10&quot;</span><span class="w"> </span><span class="na">points=</span><span class="s">&quot;462.10,0.00;126.80,1200.00&quot;</span><span class="w"> </span><span class="na">outside=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">occluded=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">keyframe=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>
-<span class="w">            </span><span class="nt">&lt;attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;color&quot;</span><span class="nt">&gt;</span>yellow<span class="nt">&lt;/attribute&gt;</span>
+<span class="w">    </span><span class="nt">&lt;track</span><span class="w"> </span><span class="na">id=</span><span class="s">"10"</span><span class="w"> </span><span class="na">label=</span><span class="s">"traffic_line"</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;polyline</span><span class="w"> </span><span class="na">frame=</span><span class="s">"10"</span><span class="w"> </span><span class="na">points=</span><span class="s">"462.10,0.00;126.80,1200.00"</span><span class="w"> </span><span class="na">outside=</span><span class="s">"0"</span><span class="w"> </span><span class="na">occluded=</span><span class="s">"0"</span><span class="w"> </span><span class="na">keyframe=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+<span class="w">            </span><span class="nt">&lt;attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">"color"</span><span class="nt">&gt;</span>yellow<span class="nt">&lt;/attribute&gt;</span>
 <span class="w">            </span>...
 <span class="w">        </span><span class="nt">&lt;/polyline&gt;</span>
 <span class="w">        </span>...
 <span class="w">    </span><span class="nt">&lt;/track&gt;</span>
 <span class="w">    </span>...
-<span class="w">    </span><span class="nt">&lt;track</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;88&quot;</span><span class="w"> </span><span class="na">label=</span><span class="s">&quot;wheel&quot;</span><span class="nt">&gt;</span>
-<span class="w">        </span><span class="nt">&lt;points</span><span class="w"> </span><span class="na">frame=</span><span class="s">&quot;176&quot;</span><span class="w"> </span><span class="na">points=</span><span class="s">&quot;574.90,939.48;1170.16,907.90;...;600.16,459.48&quot;</span><span class="w"> </span><span class="na">outside=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">occluded=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">keyframe=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>
-<span class="w">            </span><span class="nt">&lt;attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;location&quot;</span><span class="nt">&gt;</span>front_driver_side<span class="nt">&lt;/attribute&gt;</span>
+<span class="w">    </span><span class="nt">&lt;track</span><span class="w"> </span><span class="na">id=</span><span class="s">"88"</span><span class="w"> </span><span class="na">label=</span><span class="s">"wheel"</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;points</span><span class="w"> </span><span class="na">frame=</span><span class="s">"176"</span><span class="w"> </span><span class="na">points=</span><span class="s">"574.90,939.48;1170.16,907.90;...;600.16,459.48"</span><span class="w"> </span><span class="na">outside=</span><span class="s">"0"</span><span class="w"> </span><span class="na">occluded=</span><span class="s">"0"</span><span class="w"> </span><span class="na">keyframe=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+<span class="w">            </span><span class="nt">&lt;attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">"location"</span><span class="nt">&gt;</span>front_driver_side<span class="nt">&lt;/attribute&gt;</span>
 <span class="w">            </span>...
 <span class="w">        </span><span class="nt">&lt;/points&gt;</span>
 <span class="w">        </span>...
@@ -2045,16 +1868,16 @@ stored in
 </div>
 <p>where <code class="code docutils literal notranslate"><span class="pre">manifest.json</span></code> is a JSON file in the following format:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
-    &quot;type&quot;: &quot;eta.core.datasets.LabeledImageDataset&quot;,
-    &quot;description&quot;: &quot;&quot;,
-    &quot;index&quot;: [
+    "type": "eta.core.datasets.LabeledImageDataset",
+    "description": "",
+    "index": [
         {
-            &quot;data&quot;: &quot;data/&lt;uuid1&gt;.&lt;ext&gt;&quot;,
-            &quot;labels&quot;: &quot;labels/&lt;uuid1&gt;.json&quot;
+            "data": "data/&lt;uuid1&gt;.&lt;ext&gt;",
+            "labels": "labels/&lt;uuid1&gt;.json"
         },
         {
-            &quot;data&quot;: &quot;data/&lt;uuid2&gt;.&lt;ext&gt;&quot;,
-            &quot;labels&quot;: &quot;labels/&lt;uuid2&gt;.json&quot;
+            "data": "data/&lt;uuid2&gt;.&lt;ext&gt;",
+            "labels": "labels/&lt;uuid2&gt;.json"
         },
         ...
     ]
@@ -2098,16 +1921,16 @@ labeled dataset consisting of videos and their associated labels stored in
 </div>
 <p>where <code class="code docutils literal notranslate"><span class="pre">manifest.json</span></code> is a JSON file in the following format:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
-    &quot;type&quot;: &quot;eta.core.datasets.LabeledVideoDataset&quot;,
-    &quot;description&quot;: &quot;&quot;,
-    &quot;index&quot;: [
+    "type": "eta.core.datasets.LabeledVideoDataset",
+    "description": "",
+    "index": [
         {
-            &quot;data&quot;: &quot;data/&lt;uuid1&gt;.&lt;ext&gt;&quot;,
-            &quot;labels&quot;: &quot;labels/&lt;uuid1&gt;.json&quot;
+            "data": "data/&lt;uuid1&gt;.&lt;ext&gt;",
+            "labels": "labels/&lt;uuid1&gt;.json"
         },
         {
-            &quot;data&quot;: &quot;data/&lt;uuid2&gt;.&lt;ext&gt;&quot;,
-            &quot;labels&quot;: &quot;labels/&lt;uuid2&gt;.json&quot;
+            "data": "data/&lt;uuid2&gt;.&lt;ext&gt;",
+            "labels": "labels/&lt;uuid2&gt;.json"
         },
         ...
     ]
@@ -2148,76 +1971,76 @@ consisting of images and their associated multitask predictions saved in
 <p>where <code class="code docutils literal notranslate"><span class="pre">labels.json</span></code> is a JSON file in the following format:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[
     {
-        &quot;name&quot;: &quot;&lt;filename0&gt;.&lt;ext&gt;&quot;,
-        &quot;attributes&quot;: {
-            &quot;scene&quot;: &quot;city street&quot;,
-            &quot;timeofday&quot;: &quot;daytime&quot;,
-            &quot;weather&quot;: &quot;overcast&quot;
+        "name": "&lt;filename0&gt;.&lt;ext&gt;",
+        "attributes": {
+            "scene": "city street",
+            "timeofday": "daytime",
+            "weather": "overcast"
         },
-        &quot;labels&quot;: [
+        "labels": [
             {
-                &quot;id&quot;: 0,
-                &quot;category&quot;: &quot;traffic sign&quot;,
-                &quot;manualAttributes&quot;: true,
-                &quot;manualShape&quot;: true,
-                &quot;attributes&quot;: {
-                    &quot;occluded&quot;: false,
-                    &quot;trafficLightColor&quot;: &quot;none&quot;,
-                    &quot;truncated&quot;: false
+                "id": 0,
+                "category": "traffic sign",
+                "manualAttributes": true,
+                "manualShape": true,
+                "attributes": {
+                    "occluded": false,
+                    "trafficLightColor": "none",
+                    "truncated": false
                 },
-                &quot;box2d&quot;: {
-                    &quot;x1&quot;: 1000.698742,
-                    &quot;x2&quot;: 1040.626872,
-                    &quot;y1&quot;: 281.992415,
-                    &quot;y2&quot;: 326.91156
+                "box2d": {
+                    "x1": 1000.698742,
+                    "x2": 1040.626872,
+                    "y1": 281.992415,
+                    "y2": 326.91156
                 },
-                &quot;score&quot;: 0.95
+                "score": 0.95
             },
             ...
             {
-                &quot;id&quot;: 34,
-                &quot;category&quot;: &quot;drivable area&quot;,
-                &quot;manualAttributes&quot;: true,
-                &quot;manualShape&quot;: true,
-                &quot;attributes&quot;: {
-                    &quot;areaType&quot;: &quot;direct&quot;
+                "id": 34,
+                "category": "drivable area",
+                "manualAttributes": true,
+                "manualShape": true,
+                "attributes": {
+                    "areaType": "direct"
                 },
-                &quot;poly2d&quot;: [
+                "poly2d": [
                     {
-                        &quot;types&quot;: &quot;LLLLCCC&quot;,
-                        &quot;closed&quot;: true,
-                        &quot;vertices&quot;: [
+                        "types": "LLLLCCC",
+                        "closed": true,
+                        "vertices": [
                             [241.143645, 697.923453],
                             [541.525255, 380.564983],
                             ...
                         ]
                     }
                 ],
-                &quot;score&quot;: 0.87
+                "score": 0.87
             },
             ...
             {
-                &quot;id&quot;: 109356,
-                &quot;category&quot;: &quot;lane&quot;,
-                &quot;attributes&quot;: {
-                    &quot;laneDirection&quot;: &quot;parallel&quot;,
-                    &quot;laneStyle&quot;: &quot;dashed&quot;,
-                    &quot;laneType&quot;: &quot;single white&quot;
+                "id": 109356,
+                "category": "lane",
+                "attributes": {
+                    "laneDirection": "parallel",
+                    "laneStyle": "dashed",
+                    "laneType": "single white"
                 },
-                &quot;manualShape&quot;: true,
-                &quot;manualAttributes&quot;: true,
-                &quot;poly2d&quot;: [
+                "manualShape": true,
+                "manualAttributes": true,
+                "poly2d": [
                     {
-                        &quot;types&quot;: &quot;LL&quot;,
-                        &quot;closed&quot;: false,
-                        &quot;vertices&quot;: [
+                        "types": "LL",
+                        "closed": false,
+                        "vertices": [
                             [492.879546, 331.939543],
                             [0, 471.076658],
                             ...
                         ]
                     }
                 ],
-                &quot;score&quot;: 0.98
+                "score": 0.98
             },
             ...
         }
@@ -2270,7 +2093,7 @@ value1,value2,value3,...
 <p>where the columns of interest are specified via the <code class="code docutils literal notranslate"><span class="pre">fields</span></code> parameter, and may
 contain any number of top-level or embedded fields such as strings, ints,
 floats, booleans, or lists of such values.</p>
-<p>List values are encoded as <code class="code docutils literal notranslate"><span class="pre">&quot;list,of,values&quot;</span></code> with double quotes to escape the
+<p>List values are encoded as <code class="code docutils literal notranslate"><span class="pre">"list,of,values"</span></code> with double quotes to escape the
 commas. Missing field values are encoded as empty cells.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -2302,33 +2125,33 @@ properties stored in <a class="reference external" href="https://en.wikipedia.or
 <p>where <code class="code docutils literal notranslate"><span class="pre">labels.json</span></code> is a GeoJSON file containing a <code class="code docutils literal notranslate"><span class="pre">FeatureCollection</span></code> in
 the following format:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
-    &quot;type&quot;: &quot;FeatureCollection&quot;,
-    &quot;features&quot;: [
+    "type": "FeatureCollection",
+    "features": [
         {
-            &quot;type&quot;: &quot;Feature&quot;,
-            &quot;geometry&quot;: {
-                &quot;type&quot;: &quot;Point&quot;,
-                &quot;coordinates&quot;: [
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     -73.99496451958454,
                     40.66338032487842
                 ]
             },
-            &quot;properties&quot;: {
-                &quot;filename&quot;: &lt;filename1&gt;.&lt;ext&gt;,
+            "properties": {
+                "filename": &lt;filename1&gt;.&lt;ext&gt;,
                 ...
             }
         },
         {
-            &quot;type&quot;: &quot;Feature&quot;,
-            &quot;geometry&quot;: {
-                &quot;type&quot;: &quot;Point&quot;,
-                &quot;coordinates&quot;: [
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     -73.80992143421788,
                     40.65611832778962
                 ]
             },
-            &quot;properties&quot;: {
-                &quot;filename&quot;: &lt;filename2&gt;.&lt;ext&gt;,
+            "properties": {
+                "filename": &lt;filename2&gt;.&lt;ext&gt;,
                 ...
             }
         },
@@ -2426,7 +2249,7 @@ in a single directory.</p>
 media files per directory:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiftyone</span> <span class="k">as</span> <span class="nn">fo</span>
 
-<span class="n">export_dir</span> <span class="o">=</span> <span class="s2">&quot;/path/for/fiftyone-dataset&quot;</span>
+<span class="n">export_dir</span> <span class="o">=</span> <span class="s2">"/path/for/fiftyone-dataset"</span>
 
 <span class="c1"># The dataset or view to export</span>
 <span class="n">dataset_or_view</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
@@ -2508,30 +2331,15 @@ corresponding to the type of dataset that you are working with.</p>
 </div>
 </div>
 </div>
+</article>
+</div>
 
-
-             </article>
-             
-            </div>
-            <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="draw_labels.html" class="btn btn-neutral float-right" title="Drawing Labels on Samples" accesskey="n" rel="next">Next <img src="../_static/images/chevron-right-orange.svg" class="next-page"></a>
-      
-      
-        <a href="plots.html" class="btn btn-neutral" title="Interactive Plots" accesskey="p" rel="prev"><img src="../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
-      
-    </div>
-  
-</footer>
-          </div>
-        </div>
-
-        <div class="pytorch-content-right" id="pytorch-content-right">
-          <div class="pytorch-right-menu" id="pytorch-right-menu">
-            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
-              <ul>
+</div>
+</div>
+<div class="pytorch-content-right" id="pytorch-content-right">
+<div class="pytorch-right-menu" id="pytorch-right-menu">
+<div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+<ul>
 <li><a class="reference internal" href="#">Exporting FiftyOne Datasets</a><ul>
 <li><a class="reference internal" href="#basic-recipe">Basic recipe</a></li>
 <li><a class="reference internal" href="#label-type-coercion">Label type coercion</a><ul>
@@ -2575,214 +2383,36 @@ corresponding to the type of dataset that you are working with.</p>
 </ul>
 </li>
 </ul>
-
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
-
-  
-
-
-  
-
-     
-       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-         <script src="../_static/jquery.js"></script>
-         <script src="../_static/underscore.js"></script>
-         <script src="../_static/doctools.js"></script>
-         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
-         <script src="../_static/js/voxel51-website.js"></script>
-         <script src="../_static/js/custom.js"></script>
-     
-
-  
-
-  <script type="text/javascript" src="../_static/js/vendor/popper.min.js"></script>
-  <script type="text/javascript" src="../_static/js/vendor/bootstrap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-  <script type="text/javascript">
+</div>
+</div>
+</div>
+</section>
+</div>
+<script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js" type="text/javascript"></script>
+<script src="../_static/jquery.js"></script>
+<script src="../_static/underscore.js"></script>
+<script src="../_static/doctools.js"></script>
+<script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+<script src="../_static/js/voxel51-website.js"></script>
+<script src="../_static/js/custom.js"></script>
+<script src="../_static/js/vendor/popper.min.js" type="text/javascript"></script>
+<script src="../_static/js/vendor/bootstrap.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+<script src="../_static/js/theme.js" type="text/javascript"></script>
+<script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
-
-  <!-- Begin Footer -->
-
-
-  <div class="container-fluid docs-tutorials-resources" id="docs-tutorials-resources">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4 text-center">
-          <h2>Docs</h2>
-          <p>Access comprehensive developer documentation for PyTorch</p>
-          <a class="with-right-arrow" href="https://pytorch.org/docs/stable/index.html">View Docs</a>
-        </div>
-
-        <div class="col-md-4 text-center">
-          <h2>Tutorials</h2>
-          <p>Get in-depth tutorials for beginners and advanced developers</p>
-          <a class="with-right-arrow" href="https://pytorch.org/tutorials">View Tutorials</a>
-        </div>
-
-        <div class="col-md-4 text-center">
-          <h2>Resources</h2>
-          <p>Find development resources and get your questions answered</p>
-          <a class="with-right-arrow" href="https://pytorch.org/resources">View Resources</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <footer class="site-footer">
-    <div class="container footer-container">
-      <div class="footer-logo-wrapper">
-        <a href="https://pytorch.org/" class="footer-logo"></a>
-      </div>
-
-      <div class="footer-links-wrapper">
-        <div class="footer-links-col">
-          <ul>
-            <li class="list-title"><a href="https://pytorch.org/">PyTorch</a></li>
-            <li><a href="https://pytorch.org/get-started">Get Started</a></li>
-            <li><a href="https://pytorch.org/features">Features</a></li>
-            <li><a href="https://pytorch.org/ecosystem">Ecosystem</a></li>
-            <li><a href="https://pytorch.org/blog/">Blog</a></li>
-            <li><a href="https://github.com/pytorch/pytorch/blob/master/CONTRIBUTING.md">Contributing</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-links-col">
-          <ul>
-            <li class="list-title"><a href="https://pytorch.org/resources">Resources</a></li>
-            <li><a href="https://pytorch.org/tutorials">Tutorials</a></li>
-            <li><a href="https://pytorch.org/docs/stable/index.html">Docs</a></li>
-            <li><a href="https://discuss.pytorch.org" target="_blank">Discuss</a></li>
-            <li><a href="https://github.com/pytorch/pytorch/issues" target="_blank">Github Issues</a></li>
-            <li><a href="https://pytorch.org/assets/brand-guidelines/PyTorch-Brand-Guidelines.pdf" target="_blank">Brand Guidelines</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-links-col follow-us-col">
-          <ul>
-            <li class="list-title">Stay Connected</li>
-            <li>
-              <div id="mc_embed_signup">
-                <form
-                  action="https://twitter.us14.list-manage.com/subscribe/post?u=75419c71fe0a935e53dfa4a3f&id=91d0dccd39"
-                  method="post"
-                  id="mc-embedded-subscribe-form"
-                  name="mc-embedded-subscribe-form"
-                  class="email-subscribe-form validate"
-                  target="_blank"
-                  novalidate>
-                  <div id="mc_embed_signup_scroll" class="email-subscribe-form-fields-wrapper">
-                    <div class="mc-field-group">
-                      <label for="mce-EMAIL" style="display:none;">Email Address</label>
-                      <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="Email Address">
-                    </div>
-
-                    <div id="mce-responses" class="clear">
-                      <div class="response" id="mce-error-response" style="display:none"></div>
-                      <div class="response" id="mce-success-response" style="display:none"></div>
-                    </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-
-                    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_75419c71fe0a935e53dfa4a3f_91d0dccd39" tabindex="-1" value=""></div>
-
-                    <div class="clear">
-                      <input type="submit" value="" name="subscribe" id="mc-embedded-subscribe" class="button email-subscribe-button">
-                    </div>
-                  </div>
-                </form>
-              </div>
-
-            </li>
-          </ul>
-
-          <div class="footer-social-icons">
-            <a href="https://www.facebook.com/pytorch" target="_blank" class="facebook"></a>
-            <a href="https://twitter.com/pytorch" target="_blank" class="twitter"></a>
-            <a href="https://www.youtube.com/pytorch" target="_blank" class="youtube"></a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
+  </script>
+<!-- Begin Footer -->
 
 
-  
+<!-- End Footer -->
+<!-- Begin Mobile Menu -->
 
-  <!-- End Footer -->
-
-  <!-- Begin Mobile Menu -->
-
-
-  <div class="mobile-main-menu">
-    <div class="container-fluid">
-      <div class="container">
-        <div class="mobile-main-menu-header-container">
-          <a class="header-logo" href="https://pytorch.org/" aria-label="PyTorch"></a>
-          <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
-        </div>
-      </div>
-    </div>
-
-    <div class="mobile-main-menu-links-container">
-      <div class="main-menu">
-        <ul>
-          <li>
-            <a href="https://pytorch.org/get-started">Get Started</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/features">Features</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/ecosystem">Ecosystem</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/mobile">Mobile</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/hub">PyTorch Hub</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/blog/">Blog</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/tutorials">Tutorials</a>
-          </li>
-
-          <li class="active">
-            <a href="https://pytorch.org/docs/stable/index.html">Docs</a>
-          </li>
-
-          <li>
-            <a href="https://pytorch.org/resources">Resources</a>
-          </li>
-
-          <li>
-            <a href="https://github.com/pytorch/pytorch">Github</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-
-  <!-- End Mobile Menu -->
-
-  <script type="text/javascript" src="../_static/js/vendor/anchor.min.js"></script>
-
-  <script type="text/javascript">
+<!-- End Mobile Menu -->
+<script src="../_static/js/vendor/anchor.min.js" type="text/javascript"></script>
+<script type="text/javascript">
     $(document).ready(function() {
       mobileMenu.bind();
       mobileTOC.bind();
